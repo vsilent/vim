@@ -1,0 +1,139 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <title>Необратимое шифрование (хэширование)</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+ </head>
+ <body><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="function.crc32.html">crc32</a></div>
+ <div class="next" style="float: right;"><a href="function.echo.html">echo</a></div>
+ <div class="up"><a href="ref.strings.html">Функции обработки строк</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="function.crypt" class="refentry">
+   <div class="refnamediv">
+    <h1 class="refname">crypt</h1>
+    <p class="verinfo">(PHP 4, PHP 5)</p><p class="refpurpose dc-title">crypt — Необратимое шифрование (хэширование)</p>
+
+   </div>
+   <div class="refsect1 unknown">
+    <h3 class="title">Описание</h3>
+     <div class="methodsynopsis dc-description">
+      <span class="type">string</span> <span class="methodname"><b><b>crypt</b></b></span>
+       ( <span class="methodparam"><span class="type">string</span> <tt class="parameter">$str</tt></span>
+      [, <span class="methodparam"><span class="type">string</span> <tt class="parameter">$salt</tt></span>
+     ] )</div>
+
+    <p class="para rdfs-comment">
+     <b>crypt()</b> возвращает строку, зашифрованную по 
+     стандартному алгоритму UNIX, основанному на <abbr class="abbrev">DES</abbr>, или другому 
+     алгоритму, имеющемуся в системе.  Аргументами являются строка, 
+     которую требуется зашифровать, и необязательная 
+     salt-последовательность, на которой основывается шифрование. Для 
+     получения дополнительной информации обратитесь к руководству UNIX по 
+     функции crypt.
+    </p>
+    <p class="simpara">
+    Если аргумент <i><tt class="parameter">salt</tt></i>
+ не передан, он будет выбран 
+    случайным образом.
+    </p>
+    <p class="simpara">
+     Некоторые операционные системы поддерживают несколько алгоритмов 
+     шифрования. Иногда стандартный алгоритм, основанный на DES, 
+     заменяется алгоритмом на основе MD5. Вид шифрования определяется 
+     salt-последовательностью.  При инсталляции PHP определяет, какие 
+     алгоритмы шифрования поддерживает crypt. Если salt-последовательность 
+     не передана, будет автоматически сгенерирована стандартная случайная
+     двухсимвольная salt-последовательность, если только в системе по 
+     умолчанию не используется MD5, в этом случае будет создана случайная
+     salt-последовательность, совместимая с MD5. Предопределенная 
+     константа CRYPT_SALT_LENGTH позволяет определить, используется ли в 
+     системе стандартная двухсимвольная salt, или 12-символьная.
+    </p>
+    <p class="simpara">
+     Если вы опускаете аргумент <i><tt class="parameter">salt</tt></i>
+, вы должны 
+     знать, что salt генериуется только при первом вызове этой функции, и 
+     для всех последующих вызовов используется полученное значение. Это в 
+     конечном итоге может привести к снижению безопасности.
+    </p>
+    <p class="simpara">
+     Стандартная функция <b>crypt()</b> на основе DES копирует 
+     salt в начало возвращаемой строки. Кроме того, она использует только 
+     первые восемь символов строки <i><tt class="parameter">str</tt></i>
+, поэтому 
+     для различных строк, первые восемь символов в которых совпадают, 
+     будет возвращаться один и тот же результат (при использовании 
+     одинаковых salt-последовательностей).
+    </p>
+    <p class="simpara">
+     На системах, где функция crypt() поддерживает несколько алгоритмов 
+     шифрования, следующие константы устанавливаются в 0 или 1 в 
+     зависимости от доступности соответствующего алгоритма:
+    </p>
+    <ul class="itemizedlist">
+     <li class="listitem">
+      <span class="simpara">
+       CRYPT_STD_DES - Стандартное DES-шифрование с двухсимвольной salt
+      </span>
+     </li>
+     <li class="listitem">
+      <span class="simpara">
+       CRYPT_EXT_DES - Расширенное DES-шифрование с девятисимвольной salt
+      </span>
+     </li>
+     <li class="listitem">
+      <span class="simpara">
+       CRYPT_MD5 - MD5-шифрование с 12-символьной salt, начинающейся с $1$
+      </span>
+     </li>
+     <li class="listitem">
+      <span class="simpara">
+       CRYPT_BLOWFISH - Blowfish-шифрование с 16-символьной salt, 
+       начинающейся с $2$
+      </span>
+     </li>
+    </ul>
+    <blockquote><p><b class="note">Замечание</b>: 
+     <span class="simpara">
+      Функция расшифровки отсутствует, так как <b>crypt()</b> 
+      использует необратимый алгоритм шифрования.
+     </span>
+     </p></blockquote>
+    <div class="example">
+     <p><b>Пример #1 Пример использования <b>crypt()</b></b></p>
+     <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$password&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">crypt</span><span style="color: #007700">(</span><span style="color: #DD0000">'My1sTpassword'</span><span style="color: #007700">);&nbsp;</span><span style="color: #FF8000">//&nbsp;salt&nbsp;будет&nbsp;сгенерирована&nbsp;автоматически<br /><br />//&nbsp;Для&nbsp;проверки&nbsp;пароля&nbsp;в&nbsp;качестве&nbsp;salt&nbsp;следует&nbsp;передавать&nbsp;результат&nbsp;работы&nbsp;<br />//&nbsp;crypt()&nbsp;целиком&nbsp;во&nbsp;избежание&nbsp;проблем&nbsp;при&nbsp;использовании&nbsp;различных&nbsp;<br />//&nbsp;алгоритмов&nbsp;(как&nbsp;уже&nbsp;было&nbsp;отмечено&nbsp;выше,&nbsp;стандартный&nbsp;DES-алгоритм&nbsp;<br />//&nbsp;использует&nbsp;2-символьную&nbsp;salt,&nbsp;а&nbsp;MD5&nbsp;-&nbsp;12-символьную.<br /><br /></span><span style="color: #007700">if&nbsp;(</span><span style="color: #0000BB">crypt</span><span style="color: #007700">(</span><span style="color: #0000BB">$user_input</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$password</span><span style="color: #007700">)&nbsp;==&nbsp;</span><span style="color: #0000BB">$password</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"Пароль&nbsp;верен&nbsp;!"</span><span style="color: #007700">;<br />}<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+     </div>
+
+    </div>
+    <div class="example">
+     <p><b>Пример #2 Использование <b>crypt()</b> с файлом .htpasswd</b></p>
+     <div class="example-contents"><p>
+      При создании пароля для использования в файле .htpasswd  Apache, нужно
+      использовать 2 первых символа пароля в качестве salt.
+     </p></div>
+     <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">//&nbsp;пароль&nbsp;<br /></span><span style="color: #0000BB">$password&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">'mypassword'</span><span style="color: #007700">;<br /><br /></span><span style="color: #FF8000">//&nbsp;получение&nbsp;хэша<br /></span><span style="color: #0000BB">$hash&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">crypt</span><span style="color: #007700">(</span><span style="color: #0000BB">$password</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">substr</span><span style="color: #007700">(</span><span style="color: #0000BB">$password</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">0</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">2</span><span style="color: #007700">));<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+     </div>
+
+    </div>
+    <p class="simpara">
+     См. также описание функции
+     <a href="function.md5.html" class="function">md5()</a> и 
+     <a href="ref.mcrypt.html" class="link">модуля Mcrypt</a>.
+    </p>
+   </div>
+
+  </div><hr /><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="function.crc32.html">crc32</a></div>
+ <div class="next" style="float: right;"><a href="function.echo.html">echo</a></div>
+ <div class="up"><a href="ref.strings.html">Функции обработки строк</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

@@ -1,0 +1,81 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <title>Получить информацию о правах на файл</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+ </head>
+ <body><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="function.fileowner.html">fileowner</a></div>
+ <div class="next" style="float: right;"><a href="function.filesize.html">filesize</a></div>
+ <div class="up"><a href="ref.filesystem.html">Файловая система</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="function.fileperms" class="refentry">
+   <div class="refnamediv">
+    <h1 class="refname">fileperms</h1>
+    <p class="verinfo">(PHP 4, PHP 5)</p><p class="refpurpose dc-title">fileperms — Получить информацию о правах на файл</p>
+
+   </div>
+   <div class="refsect1 unknown">
+    <h3 class="title">Описание</h3>
+     <div class="methodsynopsis dc-description">
+      <span class="type">int</span> <span class="methodname"><b><b>fileperms</b></b></span>
+       ( <span class="methodparam"><span class="type">string</span> <tt class="parameter">$filename</tt></span>
+      )</div>
+
+    <p class="para rdfs-comment">
+     Функция возвращает информацию о правах на указанный файл или
+     <b><tt>FALSE</tt></b> в случае возникновения ошибки.
+    </p>
+    <blockquote><p><b class="note">Замечание</b>: <span class="simpara">Результаты этой функции
+кэшируются. Более подробную информацию смотрите в разделе
+<a href="function.clearstatcache.html" class="function">clearstatcache()</a>.</span></p></blockquote>
+    <div class="tip"><b class="tip">Подсказка</b><p class="simpara">Начиная с 
+<i>PHP 5.0.0</i>, эта функция также может быть
+использована с <em class="emphasis">некоторыми</em> упаковщиками url.
+Список упаковщиков, поддерживаемых семейством функций
+<a href="function.stat.html" class="function">stat()</a>, смотрите в <a href="wrappers.html" class="xref">List of Supported Protocols/Wrappers</a>.</p></div>
+    <div class="example">
+        <p><b>Пример #1 Display permissions as an octal value</b></p>
+        <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">substr</span><span style="color: #007700">(</span><span style="color: #0000BB">sprintf</span><span style="color: #007700">(</span><span style="color: #DD0000">'%o'</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">fileperms</span><span style="color: #007700">(</span><span style="color: #DD0000">'/tmp'</span><span style="color: #007700">)),&nbsp;-</span><span style="color: #0000BB">4</span><span style="color: #007700">);<br />echo&nbsp;</span><span style="color: #0000BB">substr</span><span style="color: #007700">(</span><span style="color: #0000BB">sprintf</span><span style="color: #007700">(</span><span style="color: #DD0000">'%o'</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">fileperms</span><span style="color: #007700">(</span><span style="color: #DD0000">'/etc/passwd'</span><span style="color: #007700">)),&nbsp;-</span><span style="color: #0000BB">4</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+        </div>
+
+        <div class="example-contents"><p>This would produce the output:</p></div>
+        <div class="example-contents"><pre>
+<div class="cdata"><pre>
+1777
+0644
+</pre></div>
+        </pre></div>
+    </div>
+    <div class="example">
+        <p><b>Пример #2 Display full permissions</b></p>
+        <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$perms&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">fileperms</span><span style="color: #007700">(</span><span style="color: #DD0000">'/etc/passwd'</span><span style="color: #007700">);<br /><br />if&nbsp;((</span><span style="color: #0000BB">$perms&nbsp;</span><span style="color: #007700">&amp;&nbsp;</span><span style="color: #0000BB">0xC000</span><span style="color: #007700">)&nbsp;==&nbsp;</span><span style="color: #0000BB">0xC000</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;Сокет<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$info&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">'s'</span><span style="color: #007700">;<br />}&nbsp;elseif&nbsp;((</span><span style="color: #0000BB">$perms&nbsp;</span><span style="color: #007700">&amp;&nbsp;</span><span style="color: #0000BB">0xA000</span><span style="color: #007700">)&nbsp;==&nbsp;</span><span style="color: #0000BB">0xA000</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;Символическая&nbsp;ссылка<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$info&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">'l'</span><span style="color: #007700">;<br />}&nbsp;elseif&nbsp;((</span><span style="color: #0000BB">$perms&nbsp;</span><span style="color: #007700">&amp;&nbsp;</span><span style="color: #0000BB">0x8000</span><span style="color: #007700">)&nbsp;==&nbsp;</span><span style="color: #0000BB">0x8000</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;Обычный<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$info&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">'-'</span><span style="color: #007700">;<br />}&nbsp;elseif&nbsp;((</span><span style="color: #0000BB">$perms&nbsp;</span><span style="color: #007700">&amp;&nbsp;</span><span style="color: #0000BB">0x6000</span><span style="color: #007700">)&nbsp;==&nbsp;</span><span style="color: #0000BB">0x6000</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;Специальный&nbsp;блок<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$info&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">'b'</span><span style="color: #007700">;<br />}&nbsp;elseif&nbsp;((</span><span style="color: #0000BB">$perms&nbsp;</span><span style="color: #007700">&amp;&nbsp;</span><span style="color: #0000BB">0x4000</span><span style="color: #007700">)&nbsp;==&nbsp;</span><span style="color: #0000BB">0x4000</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;Директория<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$info&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">'d'</span><span style="color: #007700">;<br />}&nbsp;elseif&nbsp;((</span><span style="color: #0000BB">$perms&nbsp;</span><span style="color: #007700">&amp;&nbsp;</span><span style="color: #0000BB">0x2000</span><span style="color: #007700">)&nbsp;==&nbsp;</span><span style="color: #0000BB">0x2000</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;Специальный&nbsp;символ<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$info&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">'c'</span><span style="color: #007700">;<br />}&nbsp;elseif&nbsp;((</span><span style="color: #0000BB">$perms&nbsp;</span><span style="color: #007700">&amp;&nbsp;</span><span style="color: #0000BB">0x1000</span><span style="color: #007700">)&nbsp;==&nbsp;</span><span style="color: #0000BB">0x1000</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;Поток&nbsp;FIFO<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$info&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">'p'</span><span style="color: #007700">;<br />}&nbsp;else&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;Неизвестный<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$info&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">'u'</span><span style="color: #007700">;<br />}<br /><br /></span><span style="color: #FF8000">//&nbsp;Владелец<br /></span><span style="color: #0000BB">$info&nbsp;</span><span style="color: #007700">.=&nbsp;((</span><span style="color: #0000BB">$perms&nbsp;</span><span style="color: #007700">&amp;&nbsp;</span><span style="color: #0000BB">0x0100</span><span style="color: #007700">)&nbsp;?&nbsp;</span><span style="color: #DD0000">'r'&nbsp;</span><span style="color: #007700">:&nbsp;</span><span style="color: #DD0000">'-'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$info&nbsp;</span><span style="color: #007700">.=&nbsp;((</span><span style="color: #0000BB">$perms&nbsp;</span><span style="color: #007700">&amp;&nbsp;</span><span style="color: #0000BB">0x0080</span><span style="color: #007700">)&nbsp;?&nbsp;</span><span style="color: #DD0000">'w'&nbsp;</span><span style="color: #007700">:&nbsp;</span><span style="color: #DD0000">'-'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$info&nbsp;</span><span style="color: #007700">.=&nbsp;((</span><span style="color: #0000BB">$perms&nbsp;</span><span style="color: #007700">&amp;&nbsp;</span><span style="color: #0000BB">0x0040</span><span style="color: #007700">)&nbsp;?<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;((</span><span style="color: #0000BB">$perms&nbsp;</span><span style="color: #007700">&amp;&nbsp;</span><span style="color: #0000BB">0x0800</span><span style="color: #007700">)&nbsp;?&nbsp;</span><span style="color: #DD0000">'s'&nbsp;</span><span style="color: #007700">:&nbsp;</span><span style="color: #DD0000">'x'&nbsp;</span><span style="color: #007700">)&nbsp;:<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;((</span><span style="color: #0000BB">$perms&nbsp;</span><span style="color: #007700">&amp;&nbsp;</span><span style="color: #0000BB">0x0800</span><span style="color: #007700">)&nbsp;?&nbsp;</span><span style="color: #DD0000">'S'&nbsp;</span><span style="color: #007700">:&nbsp;</span><span style="color: #DD0000">'-'</span><span style="color: #007700">));<br /><br /></span><span style="color: #FF8000">//&nbsp;Группа<br /></span><span style="color: #0000BB">$info&nbsp;</span><span style="color: #007700">.=&nbsp;((</span><span style="color: #0000BB">$perms&nbsp;</span><span style="color: #007700">&amp;&nbsp;</span><span style="color: #0000BB">0x0020</span><span style="color: #007700">)&nbsp;?&nbsp;</span><span style="color: #DD0000">'r'&nbsp;</span><span style="color: #007700">:&nbsp;</span><span style="color: #DD0000">'-'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$info&nbsp;</span><span style="color: #007700">.=&nbsp;((</span><span style="color: #0000BB">$perms&nbsp;</span><span style="color: #007700">&amp;&nbsp;</span><span style="color: #0000BB">0x0010</span><span style="color: #007700">)&nbsp;?&nbsp;</span><span style="color: #DD0000">'w'&nbsp;</span><span style="color: #007700">:&nbsp;</span><span style="color: #DD0000">'-'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$info&nbsp;</span><span style="color: #007700">.=&nbsp;((</span><span style="color: #0000BB">$perms&nbsp;</span><span style="color: #007700">&amp;&nbsp;</span><span style="color: #0000BB">0x0008</span><span style="color: #007700">)&nbsp;?<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;((</span><span style="color: #0000BB">$perms&nbsp;</span><span style="color: #007700">&amp;&nbsp;</span><span style="color: #0000BB">0x0400</span><span style="color: #007700">)&nbsp;?&nbsp;</span><span style="color: #DD0000">'s'&nbsp;</span><span style="color: #007700">:&nbsp;</span><span style="color: #DD0000">'x'&nbsp;</span><span style="color: #007700">)&nbsp;:<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;((</span><span style="color: #0000BB">$perms&nbsp;</span><span style="color: #007700">&amp;&nbsp;</span><span style="color: #0000BB">0x0400</span><span style="color: #007700">)&nbsp;?&nbsp;</span><span style="color: #DD0000">'S'&nbsp;</span><span style="color: #007700">:&nbsp;</span><span style="color: #DD0000">'-'</span><span style="color: #007700">));<br /><br /></span><span style="color: #FF8000">//&nbsp;Мир<br /></span><span style="color: #0000BB">$info&nbsp;</span><span style="color: #007700">.=&nbsp;((</span><span style="color: #0000BB">$perms&nbsp;</span><span style="color: #007700">&amp;&nbsp;</span><span style="color: #0000BB">0x0004</span><span style="color: #007700">)&nbsp;?&nbsp;</span><span style="color: #DD0000">'r'&nbsp;</span><span style="color: #007700">:&nbsp;</span><span style="color: #DD0000">'-'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$info&nbsp;</span><span style="color: #007700">.=&nbsp;((</span><span style="color: #0000BB">$perms&nbsp;</span><span style="color: #007700">&amp;&nbsp;</span><span style="color: #0000BB">0x0002</span><span style="color: #007700">)&nbsp;?&nbsp;</span><span style="color: #DD0000">'w'&nbsp;</span><span style="color: #007700">:&nbsp;</span><span style="color: #DD0000">'-'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$info&nbsp;</span><span style="color: #007700">.=&nbsp;((</span><span style="color: #0000BB">$perms&nbsp;</span><span style="color: #007700">&amp;&nbsp;</span><span style="color: #0000BB">0x0001</span><span style="color: #007700">)&nbsp;?<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;((</span><span style="color: #0000BB">$perms&nbsp;</span><span style="color: #007700">&amp;&nbsp;</span><span style="color: #0000BB">0x0200</span><span style="color: #007700">)&nbsp;?&nbsp;</span><span style="color: #DD0000">'t'&nbsp;</span><span style="color: #007700">:&nbsp;</span><span style="color: #DD0000">'x'&nbsp;</span><span style="color: #007700">)&nbsp;:<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;((</span><span style="color: #0000BB">$perms&nbsp;</span><span style="color: #007700">&amp;&nbsp;</span><span style="color: #0000BB">0x0200</span><span style="color: #007700">)&nbsp;?&nbsp;</span><span style="color: #DD0000">'T'&nbsp;</span><span style="color: #007700">:&nbsp;</span><span style="color: #DD0000">'-'</span><span style="color: #007700">));<br /><br />echo&nbsp;</span><span style="color: #0000BB">$info</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+        </div>
+
+        <div class="example-contents"><p>Результат:</p></div>
+        <div class="example-contents"><pre>
+<div class="cdata"><pre>
+-r--r--r--
+</pre></div>
+        </pre></div>
+    </div>
+    <p class="simpara">
+     См.также описания функций <a href="function.is-readable.html" class="function">is_readable()</a>
+     и <a href="function.stat.html" class="function">stat()</a>
+    </p>
+   </div>
+
+  </div><hr /><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="function.fileowner.html">fileowner</a></div>
+ <div class="next" style="float: right;"><a href="function.filesize.html">filesize</a></div>
+ <div class="up"><a href="ref.filesystem.html">Файловая система</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

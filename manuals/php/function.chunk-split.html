@@ -1,0 +1,61 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <title>Разбивает строку на фрагменты</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+ </head>
+ <body><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="function.chr.html">chr</a></div>
+ <div class="next" style="float: right;"><a href="function.convert-cyr-string.html">convert_cyr_string</a></div>
+ <div class="up"><a href="ref.strings.html">Функции обработки строк</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="function.chunk-split" class="refentry">
+   <div class="refnamediv">
+    <h1 class="refname">chunk_split</h1>
+    <p class="verinfo">(PHP 4, PHP 5)</p><p class="refpurpose dc-title">chunk_split — Разбивает строку на фрагменты</p>
+
+   </div>
+   <div class="refsect1 unknown">
+    <h3 class="title">Описание</h3>
+     <div class="methodsynopsis dc-description">
+      <span class="type">string</span> <span class="methodname"><b><b>chunk_split</b></b></span>
+       ( <span class="methodparam"><span class="type">string</span> <tt class="parameter">$body</tt></span>
+      [, <span class="methodparam"><span class="type">int</span> <tt class="parameter">$chunklen</tt></span>
+      [, <span class="methodparam"><span class="type">string</span> <tt class="parameter">$end</tt></span>
+     ]] )</div>
+
+    <p class="para rdfs-comment">
+     Функция используется для разбиения строки на фрагменты, например, для 
+     приведения результата функции <a href="function.base64-encode.html" class="function">base64_encode()</a>
+     в соответствие с требованиями <a href="http://www.faqs.org/rfcs/rfc2045" class="link external">&raquo; RFC 
+     2045</a>. Она вставляет строку <i><tt class="parameter">end</tt></i>
+ (по 
+     умолчанию &quot;\r\n&quot;) после каждых <i><tt class="parameter">chunklen</tt></i>
+ 
+     символов (по умолчанию 76). Возвращает преобразованную строку без 
+     изменения исходной.
+     <div class="example">
+      <p><b>Пример #1 Пример использования <b>chunk_split()</b></b></p>
+      <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">//&nbsp;форматирование&nbsp;данных&nbsp;в&nbsp;соответствии&nbsp;с&nbsp;RFC&nbsp;2045<br /></span><span style="color: #0000BB">$new_string&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">chunk_split</span><span style="color: #007700">(</span><span style="color: #0000BB">base64_encode</span><span style="color: #007700">(</span><span style="color: #0000BB">$data</span><span style="color: #007700">));<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+      </div>
+
+     </div>
+    </p>
+    <p class="simpara">
+     См. также описание функций <a href="function.str-split.html" class="function">str_split()</a>,
+     <a href="function.explode.html" class="function">explode()</a>, <a href="function.split.html" class="function">split()</a>, 
+     <a href="function.wordwrap.html" class="function">wordwrap()</a>, и
+     <a href="http://www.faqs.org/rfcs/rfc2045" class="link external">&raquo; RFC 2045</a>.
+    </p>
+   </div>
+
+  </div><hr /><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="function.chr.html">chr</a></div>
+ <div class="next" style="float: right;"><a href="function.convert-cyr-string.html">convert_cyr_string</a></div>
+ <div class="up"><a href="ref.strings.html">Функции обработки строк</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

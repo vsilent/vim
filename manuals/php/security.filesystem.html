@@ -1,0 +1,118 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <title>Безопасность файловой системы</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+ </head>
+ <body><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="security.apache.html">Если PHP установлен как модуль Apache</a></div>
+ <div class="next" style="float: right;"><a href="security.database.html">Безопасность баз данных</a></div>
+ <div class="up"><a href="security.html">Безопасность</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div>
+   <h1>Безопасность файловой системы</h1>
+
+   <p class="simpara">
+    PHP является одним из важных моментов в вопросе безопасности сервера,
+    поскольку PHP-скрипты могут манипулировать файлами и каталогами 
+    на диске. В связи с этим существуют конфигурационные настройки,
+    указывающие, какие файлы могут быть доступны и какие операции с ними можно
+    выполнять. Необходимо проявлять осторожность, поскольку любой из файлов с 
+    соответствующими правами доступа может быть прочитан каждым, кто имеет доступ 
+    к файловой системе.
+   </p>
+   <p class="simpara">
+    Поскольку в PHP изначально предполагался полноправный пользовательский
+    доступ к файловой системе, можно написать скрипт, который позволит читать
+    системные файлы, такие как /etc/passwd, управлять сетевыми соединениями,
+    отправлять задания принтеру, и так далее. Как следствие вы всегда должны быть
+    уверены в том, что файлы, которые вы читаете или модифицируете, соответствуют вашим
+    намерениям.
+   </p>
+   <p class="simpara">
+    Рассмотрим следующий пример, в коротом пользователь создал скрипт, удаляющий
+    файл из его домашней директории. Предполагается ситуация, когда веб-интерфейс,
+    написанный на PHP, регулярно используется для работы с файлами, и настройки
+    безопасности позволяют удалять файлы в домашнем каталоге.
+   </p>
+   <p class="para">
+    <div class="example">
+     <p><b>Пример #1 Недостаточная проверка внешних данных.</b></p>
+     <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">//&nbsp;Удаление&nbsp;файла&nbsp;из&nbsp;домашней&nbsp;директории&nbsp;пользователя<br /></span><span style="color: #0000BB">$username&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$_POST</span><span style="color: #007700">[</span><span style="color: #DD0000">'user_submitted_name'</span><span style="color: #007700">];<br /></span><span style="color: #0000BB">$homedir&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">"/home/$username"</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$file_to_delete&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">"$userfile"</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">unlink&nbsp;</span><span style="color: #007700">(</span><span style="color: #DD0000">"$homedir/$userfile"</span><span style="color: #007700">);<br />echo&nbsp;</span><span style="color: #DD0000">"$file_to_delete&nbsp;has&nbsp;been&nbsp;deleted!"</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+     </div>
+
+    </div>
+   Поскольку переменные вводятся в пользовательской форме, существует
+   возможность удалить файлы, принадлежащие кому-либо другому, введя
+   соответствующие значения. В этом случае может понадобиться авторизация.
+   Посмотрим, что произойдет, если будут отправлены значения
+   &quot;../etc/&quot; и &quot;passwd&quot;. Скрипт выполнит следующие действия:
+    <div class="example">
+     <p><b>Пример #2 Атака на файловую систему</b></p>
+     <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">//&nbsp;Удаление&nbsp;любого&nbsp;файла,&nbsp;доступного&nbsp;из&nbsp;PHP-скрипта.<br />//&nbsp;В&nbsp;случае,&nbsp;если&nbsp;PHP&nbsp;работает&nbsp;с&nbsp;правами&nbsp;пользователя&nbsp;root:<br /></span><span style="color: #0000BB">$username&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">"../etc/"</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$homedir&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">"/home/../etc/"</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$file_to_delete&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">"passwd"</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">unlink&nbsp;</span><span style="color: #007700">(</span><span style="color: #DD0000">"/home/../etc/passwd"</span><span style="color: #007700">);<br />echo&nbsp;</span><span style="color: #DD0000">"/home/../etc/passwd&nbsp;has&nbsp;been&nbsp;deleted!"</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+     </div>
+
+    </div>
+    Cуществуют два решения описанной проблемы.
+    <ul class="itemizedlist">
+     <li class="listitem">
+      <span class="simpara">
+       Ограничить доступ пользователя, с правами которого работает веб-сервер.
+      </span>
+     </li>
+     <li class="listitem">
+      <span class="simpara">
+      Проверять все данные, вводимые пользователем.
+      </span>
+     </li>
+    </ul>
+    Вот улучшеный вариант кода:
+    <div class="example">
+     <p><b>Пример #3 Более безопасная проверка имени файла</b></p>
+     <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">//&nbsp;Удаление&nbsp;любого&nbsp;файла,&nbsp;доступного&nbsp;из&nbsp;PHP-скрипта.<br /></span><span style="color: #0000BB">$username&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$_SERVER</span><span style="color: #007700">[</span><span style="color: #DD0000">'REMOTE_USER'</span><span style="color: #007700">];&nbsp;</span><span style="color: #FF8000">//&nbsp;использование&nbsp;авторизации<br /><br /></span><span style="color: #0000BB">$homedir&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">"/home/$username"</span><span style="color: #007700">;<br /><br /></span><span style="color: #0000BB">$file_to_delete&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">basename</span><span style="color: #007700">(</span><span style="color: #DD0000">"$userfile"</span><span style="color: #007700">);&nbsp;</span><span style="color: #FF8000">//&nbsp;усечение&nbsp;пути<br /></span><span style="color: #0000BB">unlink&nbsp;</span><span style="color: #007700">(</span><span style="color: #0000BB">$homedir</span><span style="color: #007700">/</span><span style="color: #0000BB">$file_to_delete</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">$fp&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">fopen</span><span style="color: #007700">(</span><span style="color: #DD0000">"/home/logging/filedelete.log"</span><span style="color: #007700">,</span><span style="color: #DD0000">"+a"</span><span style="color: #007700">);&nbsp;</span><span style="color: #FF8000">//логируем&nbsp;удаление<br /></span><span style="color: #0000BB">$logstring&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">"$username&nbsp;$homedir&nbsp;$file_to_delete"</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">fwrite&nbsp;</span><span style="color: #007700">(</span><span style="color: #0000BB">$fp</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$logstring</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">fclose</span><span style="color: #007700">(</span><span style="color: #0000BB">$fp</span><span style="color: #007700">);<br /><br />echo&nbsp;</span><span style="color: #DD0000">"$file_to_delete&nbsp;has&nbsp;been&nbsp;deleted!"</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+     </div>
+
+    </div>
+    Однако и такая проверка не учитывает все возможные ситуации. Если
+    система авторизации позволяет пользователям выбирать произвольные логины,
+    вломщик может создать учетную запись вида &quot;../etc/&quot; и система опять 
+    окажется уязвимой. Исходя из этого, вам может понадобиться более строгая проверка:
+    <div class="example">
+     <p><b>Пример #4 Более строгая проверка имени файла</b></p>
+     <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$username&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$_SERVER</span><span style="color: #007700">[</span><span style="color: #DD0000">'REMOTE_USER'</span><span style="color: #007700">];&nbsp;</span><span style="color: #FF8000">//&nbsp;использование&nbsp;авторизации<br /></span><span style="color: #0000BB">$homedir&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">"/home/$username"</span><span style="color: #007700">;<br /><br />if&nbsp;(!</span><span style="color: #0000BB">ereg</span><span style="color: #007700">(</span><span style="color: #DD0000">'^[^./][^/]*$'</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$userfile</span><span style="color: #007700">))<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;die(</span><span style="color: #DD0000">'bad&nbsp;filename'</span><span style="color: #007700">);&nbsp;</span><span style="color: #FF8000">//завершение&nbsp;работы<br /><br /></span><span style="color: #007700">if&nbsp;(!</span><span style="color: #0000BB">ereg</span><span style="color: #007700">(</span><span style="color: #DD0000">'^[^./][^/]*$'</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$username</span><span style="color: #007700">))<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;die(</span><span style="color: #DD0000">'bad&nbsp;username'</span><span style="color: #007700">);&nbsp;</span><span style="color: #FF8000">//завершение&nbsp;работы<br />//etc...<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+     </div>
+
+    </div>
+   </p>
+   <p class="para">
+    В зависимости от используемой вами операционной системы необходимо
+    предусматривать возможность атаки на разнообразные файлы, включая 
+    системные файлы устройств (/dev/ или COM1), конфигурационные файлы 
+    (например /etc/ или файлы с расширением .ini), хорошо известные области хранения данных 
+    (/home/, My Documents), и так далее. Исходя из этого, как правило, легче
+    реализовать такую политику безопасности, в которой запрещено все, исключая
+    то, что явно разрешено.
+   </p>
+  </div>
+<hr /><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="security.apache.html">Если PHP установлен как модуль Apache</a></div>
+ <div class="next" style="float: right;"><a href="security.database.html">Безопасность баз данных</a></div>
+ <div class="up"><a href="security.html">Безопасность</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

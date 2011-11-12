@@ -1,0 +1,210 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <title>Выражения</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+ </head>
+ <body><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="language.constants.predefined.html">Предопределенные константы</a></div>
+ <div class="next" style="float: right;"><a href="language.operators.html">Операторы</a></div>
+ <div class="up"><a href="langref.html">Справочник языка</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div>
+   <h1>Выражения</h1>
+
+   <p class="simpara">
+    Выражения - это краеугольный камень PHP. Почти все, что вы пишите
+    в PHP, является выражением. Самое простое и точное определение
+    выражения - &quot;все что угодно, имеющее значение&quot;.
+   </p>
+   <p class="simpara">
+    Основными формами выражений являются константы и переменные. Если
+    вы записываете &quot;$a = 5&quot;, вы присваиваете &#039;5&#039; переменной $a. &#039;5&#039;,
+    очевидно, имеет значение 5 или, другими словами, &#039;5&#039; это выражение
+    со значением 5 (в данном случае &#039;5&#039; это целочисленная константа).
+   </p>
+   <p class="simpara">
+    После этого присвоения вы ожидаете, что значением $a также является
+    5, поэтому, если вы написали $b = $a, вы полагаете, что работать
+    это будет так же, как если бы вы написали $b = 5. Другими словами,
+    $a это также выражение со значением 5. Если все работает верно, то
+    именно так и произойдет.
+   </p>
+   <p class="para">
+    Немного более сложными примерами выражений являются функции. Например,
+    рассмотрим следующую функцию:
+    <div class="informalexample">
+     <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">function&nbsp;</span><span style="color: #0000BB">foo&nbsp;</span><span style="color: #007700">()<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">5</span><span style="color: #007700">;<br />}<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+     </div>
+
+    </div>
+   </p>
+   <p class="simpara">
+    Исходя из того, что вы хорошо знакомы с концепцией функций (если нет,
+    то прочитайте главу о <a href="language.functions.html" class="link">функциях</a>), вы
+    полагаете, что запись <i>$c = foo()</i> абсолютно
+    эквивалента записи <i>$c = 5</i>, и вы правы. Функции -
+    это выражения, значением которых является то, что возвращает функция.
+    Поскольку foo() возвращает 5, значением выражения &#039;foo()&#039; является 5.
+    Как правило, функции возвращают не просто статическое значение, а
+    что-то вычисляют.
+   </p>
+   <p class="simpara">
+    Разумеется, значения в PHP не обязаны быть целочисленными, и очень
+    часто ими не являются. PHP поддерживает три типа скалярных значений:
+    целочисленные, с плавающей точкой и строковые значения (скалярными
+    являются значения, которые вы не можете &#039;разбить&#039; на меньшие части, в
+    отличие, например, от массивов). PHP поддерживает также два
+    комбинированных (не скалярных) типа: массивы и объекты. Каждый из этих
+    типов значений может присваиваться переменной или возвращаться
+    функцией.
+   </p>
+   <p class="simpara">
+    До сих пор пользователи PHP/FI 2 не должны были почувствовать
+    каких-либо изменений. Однако PHP, как и многие другие языки,
+    понимает гораздо больше выражений. PHP - это язык, ориентированный
+    на выражения и рассматривающий почти все как выражение. Вернемся к
+    примеру, с которым мы уже имели дело: &#039;$a = 5&#039;. Легко заметить, что
+    здесь присутствуют два значения - значение целочисленной константы
+    &#039;5&#039; и значение переменной $a, также принимающей значение 5. Но на
+    самом деле здесь присутствует и еще одно значение - значение самого
+    присвоения. Само присвоение вычисляется в присвоенное значение, в
+    данном случае - в 5. На практике это означает, что &#039;$a = 5&#039;,
+    независимо от того, что оно делает, является выражением со значением
+    5. Таким образом, запись &#039;$b = ($a = 5)&#039; равносильна записи
+    &#039;$a = 5; $b = 5;&#039; (точка с запятой обозначает конец выражения).
+    Поскольку операции присвоения анализируются справа налево, вы также
+    можете написать &#039;$b = $a = 5&#039;.
+   </p>
+   <p class="simpara">
+    Другой хороший пример ориентированности на выражения - пре- и
+    постфиксный инкремент и декремент. Пользователи PHP/FI 2 и многих
+    других языков возможно уже знакомы с формой записи переменная++ и
+    переменная--. Это операторы инкремента и декремента. В PHP/FI 2
+    операция &#039;$a++&#039; не имеет значения (это не выражение), и, таким
+    образом, вы не можете присвоить ее или каким-либо образом
+    использовать. PHP увеличивает возможности инкремента/декремента,
+    также сделав их выражениями, как в C. Также как и C, PHP
+    поддерживает два типа инкремента - префиксный и постфиксный. Они
+    оба инкрементируют значение переменной и эффект их действия на нее
+    одинаков. Разница состоит в значении выражения инкремента.
+    Префиксный инкремент, записываемый как &#039;++$variable&#039;, вычисляется в
+    инкрементированное значение (PHP инкрементирует переменную перед
+    тем как прочесть ее значение, отсюда название &#039;пре-инкремент&#039;).
+    Постфиксный инкремент, записываемый как &#039;$variable++&#039;, вычисляется
+    в первоначальное значение переменной $variable перед ее приращением
+    (PHP инкрементирует переменную после прочтения ее значения, отсюда
+    название &#039;пост-инкремент&#039;).
+   </p>
+   <p class="simpara">
+    Очень распространенным типом выражений являются выражения сравнения.
+    Они вычисляются в 0 или 1, означающих соответственно <b><tt>FALSE</tt></b> (ложь)
+    или <b><tt>TRUE</tt></b> (истину). PHP поддерживает &gt; (больше), &gt;= (больше
+    либо равно), == (равно), != (не равно), &lt; (меньше) и &lt;=
+    (меньше либо равно). Он также поддерживает операторы строгого
+    равенства: === (равно и одного типа) и !== (не равно или не одного
+    типа). Чаще всего эти выражения используются в условиях выполнения
+    операторов, таких как <i>if</i>.
+   </p>
+   <p class="simpara">
+    Последний пример выражений, который мы здесь рассмотрим, это
+    смешанные выражения операции и присвоения. Вы уже знаете, что если
+    вы хотите увеличить $a на 1, вы можете просто написать &#039;$a++&#039; или
+    &#039;++$a&#039;. Но что, если вы хотите прибавить больше, чем единицу,
+    например, 3? Вы могли бы написать &#039;$a++&#039; много раз, однако, очевидно
+    это не очень рациональный или удобный способ. Гораздо более
+    распространенной практикой является запись вида &#039;$a = $a + 3&#039;.
+    &#039;$a + 3&#039; вычисляется в значение $a плюс 3 и снова присваивается $a,
+    увеличивая в результате $a на 3. В PHP, как и в некоторых других
+    языках, таких как C, вы можете записать это более коротким образом,
+    что увеличит очевидность смысла и быстроту понимания кода по
+    прошествии времени. Прибавить 3 к текущему значению $a можно с
+    помощью записи &#039;$a += 3&#039;. Это означает дословно &quot;взять значение $a,
+    прибавить к нему 3 и снова присвоить его переменной $a&quot;. Кроме
+    большей понятности и краткости, это быстрее работает. Значением
+    &#039;$a += 3&#039;, как и обычного присвоения, является присвоенное
+    значение. Обратите внимание, что это НЕ 3, а суммированное значение
+    $a плюс 3 (то, что было присвоено $a). Таким образом может
+    использоваться любой двухместный оператор, например, &#039;$a -= 5&#039;
+    (вычесть 5 из значения $a), &#039;$b *= 7&#039; (умножить значение $b на 7) и
+    т.д.
+   </p>
+   <p class="para">
+    Существует еще одно выражение, которое может выглядеть необычным,
+    если вы не встречали его в других языках - тернарный условный
+    оператор:
+   </p>
+   <p class="para">
+    <div class="informalexample">
+     <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$first&nbsp;</span><span style="color: #007700">?&nbsp;</span><span style="color: #0000BB">$second&nbsp;</span><span style="color: #007700">:&nbsp;</span><span style="color: #0000BB">$third<br />?&gt;</span>
+</span>
+</code></div>
+     </div>
+
+    </div>
+   </p>
+   <p class="para">
+    Если значением первого подвыражения является <b><tt>TRUE</tt></b> (не ноль),
+    выполняется второе подвыражение, которое и будет результатом
+    условного выражения. В противном случае, будет выполнено третье
+    подвыражение и его значение будет результатом.
+   </p>
+   <p class="para">
+    Следующий пример должен помочь вам немного улучшить понимание
+    префиксного и постфиксного инкремента и выражений:
+   </p>
+   <p class="para">
+    <div class="informalexample">
+     <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">function&nbsp;</span><span style="color: #0000BB">double</span><span style="color: #007700">(</span><span style="color: #0000BB">$i</span><span style="color: #007700">)<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">$i</span><span style="color: #007700">*</span><span style="color: #0000BB">2</span><span style="color: #007700">;<br />}<br /></span><span style="color: #0000BB">$b&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$a&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">5</span><span style="color: #007700">;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">/*&nbsp;присвоить&nbsp;значение&nbsp;пять&nbsp;переменным&nbsp;$a&nbsp;и&nbsp;$b&nbsp;*/<br /></span><span style="color: #0000BB">$c&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$a</span><span style="color: #007700">++;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">/*&nbsp;постфиксный&nbsp;инкремент,&nbsp;присвоить&nbsp;значение&nbsp;$a&nbsp;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(5)&nbsp;переменной&nbsp;$c&nbsp;*/<br /></span><span style="color: #0000BB">$e&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$d&nbsp;</span><span style="color: #007700">=&nbsp;++</span><span style="color: #0000BB">$b</span><span style="color: #007700">;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">/*&nbsp;префиксный&nbsp;инкремент,&nbsp;присвоить&nbsp;увеличенное<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;значение&nbsp;$b&nbsp;(6)&nbsp;переменным&nbsp;$d&nbsp;и&nbsp;$e&nbsp;*/<br /><br />/*&nbsp;в&nbsp;этой&nbsp;точке&nbsp;и&nbsp;$d,&nbsp;и&nbsp;$e&nbsp;равны&nbsp;6&nbsp;*/<br /><br /></span><span style="color: #0000BB">$f&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">double</span><span style="color: #007700">(</span><span style="color: #0000BB">$d</span><span style="color: #007700">++);&nbsp;&nbsp;</span><span style="color: #FF8000">/*&nbsp;присвоить&nbsp;удвоенное&nbsp;значение&nbsp;$d&nbsp;перед<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;инкрементом&nbsp;(2*6&nbsp;=&nbsp;12)&nbsp;переменной&nbsp;$f&nbsp;*/<br /></span><span style="color: #0000BB">$g&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">double</span><span style="color: #007700">(++</span><span style="color: #0000BB">$e</span><span style="color: #007700">);&nbsp;&nbsp;</span><span style="color: #FF8000">/*&nbsp;присвоить&nbsp;удвоенное&nbsp;значение&nbsp;$e&nbsp;после<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;инкремента&nbsp;(2*7&nbsp;=&nbsp;14)&nbsp;переменной&nbsp;$g&nbsp;*/<br /></span><span style="color: #0000BB">$h&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$g&nbsp;</span><span style="color: #007700">+=&nbsp;</span><span style="color: #0000BB">10</span><span style="color: #007700">;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">/*&nbsp;сначала&nbsp;переменная&nbsp;$g&nbsp;увеличивается&nbsp;на&nbsp;10,<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;приобретая,&nbsp;в&nbsp;итоге,&nbsp;значение&nbsp;24.&nbsp;Затем&nbsp;значение<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;присвоения&nbsp;(24)&nbsp;присваивается&nbsp;переменной&nbsp;$h,<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;которая&nbsp;в&nbsp;итоге&nbsp;также&nbsp;становится&nbsp;равной&nbsp;24.&nbsp;*/<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+     </div>
+
+    </div>
+   </p>
+   <p class="simpara">
+    Некоторые выражения могут рассматриваться как инструкции. В
+    данном случае инструкция имеет вид &#039;выражение&#039; &#039;;&#039; - выражение с
+    последующей точкой с запятой. В записи &#039;$b=$a=5;&#039;, $a=5 - это
+    верное выражение, но само по себе не инструкция. Тогда как
+    &#039;$b=$a=5;&#039; является верной инструкцией.
+   </p>
+   <p class="simpara">
+    Последнее, что стоит упомянуть, это истинность значения выражений.
+    Во многих случаях, как правило, в условных операторах и циклах,
+    вас может интересовать не конкретное значение выражения, а только
+    значат ли они <b><tt>TRUE</tt></b> или <b><tt>FALSE</tt></b>.
+    
+    
+    
+    Константы <b><tt>TRUE</tt></b> и <b><tt>FALSE</tt></b> (регистро-независимые) - это два
+    возможных булевых значения. При необходимости выражение
+    автоматически преобразуется в булев тип. Подробнее о том, как это
+    происходит, смотрите в
+    <a href="language.types.type-juggling.html#language.types.typecasting" class="link">разделе о приведении
+    типов</a>.
+   </p>
+   <p class="simpara">
+    PHP предоставляет полную и мощную реализацию выражений, и их
+    полное документирование выходит за рамки этого руководства.
+    Вышеприведенные примеры должны дать вам представление о том, что
+    они из себя представляют и как вы сами можете создавать полезные
+    выражения. Далее, для обозначения любого верного выражения PHP в
+    этой документации мы будем использовать сокращение
+    <span class="replaceable">expr</span>.
+   </p>
+  </div>
+<hr /><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="language.constants.predefined.html">Предопределенные константы</a></div>
+ <div class="next" style="float: right;"><a href="language.operators.html">Операторы</a></div>
+ <div class="up"><a href="langref.html">Справочник языка</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

@@ -1,0 +1,74 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <title>Клонирование объектов</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+ </head>
+ <body><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="language.oop5.final.html">Ключевое слово "final"</a></div>
+ <div class="next" style="float: right;"><a href="language.oop5.object-comparison.html">Сравнение объектов</a></div>
+ <div class="up"><a href="language.oop5.html">Классы и объекты (PHP 5)</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="language.oop5.cloning" class="sect1">
+  <h2 class="title">Клонирование объектов</h2>
+  
+  <p class="para">
+   Создание копии объекта с абсолютно идентичными свойствами
+   не всегда является приемлемым вариантом. Хорошим примером
+   необходимости копирования конструкторов может послужить
+   ситуация, когда у вас есть объект, представляющий собой
+   окно GTK и содержащий ресурс-идентификатор этого окна; когда
+   вы создаете копию этого объекта, вам может понадобиться,
+   чтобы копия объекта содержала ресурс-идентификатор
+   нового окна. Другим примером может послужить ситуация,
+   когда ваш объект содержит ссылку на какой-либо другой используемый
+   объект и, когда вы создаёте копию ссылающегося объекта,
+   вам нужно также создать новый экземпляр содержащегося объекта,
+   так, чтобы копия объекта содержала собственный отдельный
+   экземпляр содержащегося объекта.
+  </p>
+
+  <p class="para">
+   Копия объекта создается с использованием вызова clone
+   (который вызывает метод __clone() объекта, если это возможно).
+   Вызов метода __clone() не может быть осуществлён непосредственно.
+  </p>
+
+  <div class="informalexample">
+   <div class="example-contents">
+<div class="cdata"><pre>
+$copy_of_object = clone $object;
+</pre></div>
+   </div>
+
+  </div>
+
+  <p class="para">
+   Когда программист запрашивает создание копии объекта, PHP 5 определит,
+   был ли для этого объекта объявлен метод __clone() или нет. Если нет,
+   будет вызван метод __clone(), объявленный по умолчанию, который
+   скопирует все свойства объекта. Если метод __clone() был объявлен,
+   создание копий свойств в копии объекта полностью возлагается на него.
+   Для удобства, движок обеспечивает программиста функцией, которая
+   импортирует все свойства из объекта-источника, так что программист
+   может осуществить позначное копирование свойств и переопределять
+   только необходимые.
+  </p>
+
+  <div class="example">
+   <p><b>Пример #1 Клонирование объекта</b></p>
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">class&nbsp;</span><span style="color: #0000BB">MyCloneable&nbsp;</span><span style="color: #007700">{<br />&nbsp;&nbsp;&nbsp;static&nbsp;</span><span style="color: #0000BB">$id&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">0</span><span style="color: #007700">;<br /><br />&nbsp;&nbsp;&nbsp;function&nbsp;</span><span style="color: #0000BB">MyCloneable</span><span style="color: #007700">()&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">id&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">self</span><span style="color: #007700">::</span><span style="color: #0000BB">$id</span><span style="color: #007700">++;<br />&nbsp;&nbsp;&nbsp;}<br /><br />&nbsp;&nbsp;&nbsp;function&nbsp;</span><span style="color: #0000BB">__clone</span><span style="color: #007700">()&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">address&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">"Москва"</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">id&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">self</span><span style="color: #007700">::</span><span style="color: #0000BB">$id</span><span style="color: #007700">++;<br />&nbsp;&nbsp;&nbsp;}<br />}<br /><br /></span><span style="color: #0000BB">$obj&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">MyCloneable</span><span style="color: #007700">();<br /><br /></span><span style="color: #0000BB">$obj</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">name&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">"Привет"</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$obj</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">address&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">"Самара"</span><span style="color: #007700">;<br /><br />print&nbsp;</span><span style="color: #0000BB">$obj</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">id&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br /><br /></span><span style="color: #0000BB">$obj_cloned&nbsp;</span><span style="color: #007700">=&nbsp;clone&nbsp;</span><span style="color: #0000BB">$obj</span><span style="color: #007700">;<br /><br />print&nbsp;</span><span style="color: #0000BB">$obj_cloned</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">id&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br />print&nbsp;</span><span style="color: #0000BB">$obj_cloned</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">name&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br />print&nbsp;</span><span style="color: #0000BB">$obj_cloned</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">address&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+   </div>
+
+  </div>
+
+ </div><hr /><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="language.oop5.final.html">Ключевое слово "final"</a></div>
+ <div class="next" style="float: right;"><a href="language.oop5.object-comparison.html">Сравнение объектов</a></div>
+ <div class="up"><a href="language.oop5.html">Классы и объекты (PHP 5)</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

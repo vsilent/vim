@@ -1,0 +1,143 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <title>Вычисляет расстояние Левенштейна между двумя строками</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+ </head>
+ <body><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="function.lcfirst.html">lcfirst</a></div>
+ <div class="next" style="float: right;"><a href="function.localeconv.html">localeconv</a></div>
+ <div class="up"><a href="ref.strings.html">Функции обработки строк</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="function.levenshtein" class="refentry">
+   <div class="refnamediv">
+    <h1 class="refname">levenshtein</h1> 
+    <p class="verinfo">(PHP 4 &gt;= 4.0.1, PHP 5)</p><p class="refpurpose dc-title">levenshtein — 
+     Вычисляет расстояние Левенштейна между двумя строками
+    </p>
+
+   </div>
+   <div class="refsect1 unknown">
+    <h3 class="title">Описание</h3>
+     <div class="methodsynopsis dc-description">
+      <span class="type">int</span> <span class="methodname"><b><b>levenshtein</b></b></span>
+       ( <span class="methodparam"><span class="type">string</span> <tt class="parameter">$str1</tt></span>
+      , <span class="methodparam"><span class="type">string</span> <tt class="parameter">$str2</tt></span>
+      )</div>
+
+     <div class="methodsynopsis dc-description">
+      <span class="type">int</span> <span class="methodname"><b><b>levenshtein</b></b></span>
+       ( <span class="methodparam"><span class="type">string</span> <tt class="parameter">$str1</tt></span>
+      , <span class="methodparam"><span class="type">string</span> <tt class="parameter">$str2</tt></span>
+      , <span class="methodparam"><span class="type">int</span> <tt class="parameter">$cost_ins</tt></span>
+      , <span class="methodparam"><span class="type">int</span> <tt class="parameter">$cost_rep</tt></span>
+      , <span class="methodparam"><span class="type">int</span> <tt class="parameter">$cost_del</tt></span>
+      )</div>
+
+     <div class="methodsynopsis dc-description">
+      <span class="type">int</span> <span class="methodname"><b><b>levenshtein</b></b></span>
+       ( <span class="methodparam"><span class="type">string</span> <tt class="parameter">$str1</tt></span>
+      , <span class="methodparam"><span class="type">string</span> <tt class="parameter">$str2</tt></span>
+      , <span class="methodparam"><span class="type"><span class="type function">function</span></span> <tt class="parameter">$cost</tt></span>
+      )</div>
+
+    <p class="para rdfs-comment">
+     Функция возвращает расстояние Левенштейна между двумя строками, или 
+     -1, если хотя бы одна из строк длиннее 255 символов (этого более чем 
+     достаточно для сравнения имен или поиска по словарю, а проводить 
+     генетический анализ на PHP просто несерьезно).
+    </p>
+    <p class="para">
+     Расстояние Левенштейна - это минимальное количество вставок, замен и 
+     удалений символов, необходимое для преобразования 
+     <i><tt class="parameter">str1</tt></i>
+ в <i><tt class="parameter">str2</tt></i>
+.
+     Сложность алгоритма равна <i>O(m*n)</i>,
+     где <i>n</i> и <i>m</i> - длины строк
+     <i><tt class="parameter">str1</tt></i>
+ и <i><tt class="parameter">str2</tt></i>
+ (неплохо по
+     сравнению с <a href="function.similar-text.html" class="function">similar_text()</a>, имеющей сложность O(max(n,m)**3),
+     но все же довольно много).
+    </p>
+    <p class="para">
+     В простейшей форме функция принимает в качестве аргументов две строки
+     и возвращает минимальное количество вставок, замен и 
+     удалений символов, необходимое для преобразования 
+     <i><tt class="parameter">str1</tt></i>
+ в <i><tt class="parameter">str2</tt></i>
+.
+    </p>
+    <p class="para"> 
+     Второй вариант принимает три дополнительных аргумента, задающих 
+     стоимость операций вставки, замены и удаления. Этот вариант 
+     универсальнее первого, но не так эффективен.
+    </p>
+    <p class="para"> 
+     Третий вариант (который еще не реализован) будет наиболее 
+     универсальным, но и самым медленным. Он будет принимать в качестве 
+     третьего аргумента пользовательскую функцию, которая будет вычислять 
+     стоимость каждой возможной операции.
+    </p>
+    <p class="para">
+     Пользовательская функция будет иметь следующие аргументы:
+     <ul class="itemizedlist">
+      <li class="listitem">
+       <span class="simpara">
+        тип операции: &#039;I&#039;, &#039;R&#039; or &#039;D&#039;
+       </span>
+      </li>
+      <li class="listitem">
+       <span class="simpara">
+        текущий символ в строке 1
+       </span>
+      </li>
+      <li class="listitem">
+       <span class="simpara">
+        текущий символ в строке 2
+       </span>
+      </li>
+      <li class="listitem">
+       <span class="simpara">
+        текущая позиция символа в строке 1
+       </span>
+      </li>
+      <li class="listitem">
+       <span class="simpara">
+        текущая позиция символа в строке 2
+       </span>
+      </li>
+      <li class="listitem">
+       <span class="simpara">
+        количество символов, оставшихся в строке 1
+       </span>
+      </li>
+      <li class="listitem">
+       <span class="simpara">
+        количество символов, оставшихся в строке 2
+       </span>
+      </li>
+     </ul>
+     Пользовательская функция должна возвращать положительное целое, 
+     определяющее стоимость конкретной операции.
+    </p>
+    <p class="para">
+     Использование пользовательской функции позволяет учитывать различия 
+     между символами и даже контекст символов при вычислении стоимости 
+     операций вставки, замены и удаления, но ценой потери скорости по 
+     сравнению с двумя первыми вариантами.
+    </p>
+    <p class="para">
+     См. также описание функций <a href="function.soundex.html" class="function">soundex()</a>,
+     <a href="function.similar-text.html" class="function">similar_text()</a> и
+     <a href="function.metaphone.html" class="function">metaphone()</a>.
+    </p>
+   </div>
+
+  </div><hr /><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="function.lcfirst.html">lcfirst</a></div>
+ <div class="next" style="float: right;"><a href="function.localeconv.html">localeconv</a></div>
+ <div class="up"><a href="ref.strings.html">Функции обработки строк</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

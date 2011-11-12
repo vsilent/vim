@@ -1,0 +1,67 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <title>Возвращает информацию о соединении с MySQL</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+ </head>
+ <body><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="function.mysql-get-client-info.html">mysql_get_client_info</a></div>
+ <div class="next" style="float: right;"><a href="function.mysql-get-proto-info.html">mysql_get_proto_info</a></div>
+ <div class="up"><a href="ref.mysql.html">MySQL</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="function.mysql-get-host-info" class="refentry">
+   <div class="refnamediv">
+    <h1 class="refname">mysql_get_host_info</h1>
+    <p class="verinfo">(PHP 4 &gt;= 4.0.5, PHP 5, PECL mysql:1.0)</p><p class="refpurpose dc-title">mysql_get_host_info — Возвращает информацию о соединении с MySQL</p>
+
+   </div>
+   <div class="refsect1 unknown">
+    <h3 class="title">Описание</h3>
+     <div class="methodsynopsis dc-description">
+      <span class="type">string</span> <span class="methodname"><b><b>mysql_get_host_info</b></b></span>
+       ([ <span class="methodparam"><span class="type">resource</span> <tt class="parameter">$link_identifier</tt></span>
+     ] )</div>
+
+    <p class="para rdfs-comment">
+     <b>mysql_get_host_info()</b> возвращает строку, описывающую
+     соединение, на которое ссылается переданный указатель 
+     <i><tt class="parameter">link_identifier</tt></i>
+, включая имя хоста.
+     Если параметр <i><tt class="parameter">link_identifier</tt></i>
+ опущен, будет
+     использовано последнее соединение.
+    </p>
+    <p class="para">
+     <div class="example">
+      <p><b>Пример #1 Пример использования <b>mysql_get_host_info()</b></b></p>
+      <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />&nbsp;&nbsp;&nbsp;&nbsp;mysql_connect</span><span style="color: #007700">(</span><span style="color: #DD0000">"localhost"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"mysql_user"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"mysql_password"</span><span style="color: #007700">)&nbsp;or<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;die(</span><span style="color: #DD0000">"Could&nbsp;not&nbsp;connect:&nbsp;"&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #0000BB">mysql_error</span><span style="color: #007700">());<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">printf&nbsp;</span><span style="color: #007700">(</span><span style="color: #DD0000">"MySQL&nbsp;host&nbsp;info:&nbsp;%s\n"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">mysql_get_host_info</span><span style="color: #007700">());<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+      </div>
+
+      <div class="example-contents"><p>
+       Вышеописанный пример выдаст следующий результат:
+      </p></div>
+      <div class="example-contents"><pre>
+<div class="cdata"><pre>
+MySQL host info: Localhost via UNIX socket
+</pre></div>
+      </pre></div>
+     </div>
+    </p>
+    <p class="para">
+     См. также 
+     <a href="function.mysql-get-client-info.html" class="function">mysql_get_client_info()</a>,
+     <a href="function.mysql-get-proto-info.html" class="function">mysql_get_proto_info()</a> и 
+     <a href="function.mysql-get-server-info.html" class="function">mysql_get_server_info()</a>.
+    </p>
+   </div>
+
+  </div><hr /><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="function.mysql-get-client-info.html">mysql_get_client_info</a></div>
+ <div class="next" style="float: right;"><a href="function.mysql-get-proto-info.html">mysql_get_proto_info</a></div>
+ <div class="up"><a href="ref.mysql.html">MySQL</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

@@ -1,0 +1,181 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <title>Изменения, повлекшие за собой обратную несовместимость</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+ </head>
+ <body><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="migration5.html">Миграция с PHP 4 на PHP 5</a></div>
+ <div class="next" style="float: right;"><a href="migration5.cli-cgi.html">CLI и CGI</a></div>
+ <div class="up"><a href="migration5.html">Миграция с PHP 4 на PHP 5</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="migration5.incompatible" class="section">
+   <h2 class="title">Изменения, повлекшие за собой обратную несовместимость</h2>
+   <p class="para">
+    Несмотря на то, что большинство кода на PHP 4 должно работать безо 
+    всяких изменений, вам следует обратить вимание на следующие 
+    изменения, повлекшие за собой обратную несовместимость:
+   </p>
+   <ul class="itemizedlist">
+    <li class="listitem">
+     <span class="simpara">
+      Несколько <a href="reserved.html#reserved.keywords" class="link">новых зарезирвированных 
+      ключевых слов</a>.
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <a href="function.strrpos.html" class="function">strrpos()</a> и <a href="function.strripos.html" class="function">strripos()</a> теперь используют 
+      всю строку как needle.
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      Неправильное использование смещения внутри строки вызывает 
+      <b><tt>E_ERROR</tt></b> вместо <b><tt>E_WARNING</tt></b>. 
+      Пример неправильного использования: 
+      <i>$str = &#039;abc&#039;; unset($str[0]);</i>.
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <a href="function.array-merge.html" class="function">array_merge()</a> изменена таким образом, что принимает 
+      в качестве аргумента только массивы. Если была передана переменная, 
+      не являющаяся массивом, будет сгенерированна ошибка 
+      <b><tt>E_WARNING</tt></b> для каждого такого параметра. Будьте
+      внимательны, потому что ваш код может вдруг начать генерировать 
+      ошибки <b><tt>E_WARNING</tt></b>.
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      Переменная сервера PATH_TRANSLATED больше не определяется неявно под
+      Apache2 SAPI, в отличие от ситуации в PHP 4, где ей присваивается то же
+      значение, что и переменной сервера SCRIPT_FILENAME, когда она
+      не определяется Apache. Это изменение было сделано для соответствия <a href="http://hoohoo.ncsa.uiuc.edu/cgi/" class="link external">&raquo; спецификации CGI</a>. Пожалуйста, обратитесь к <a href="http://bugs.php.net/23610" class="link external">&raquo; ошибке #23610</a> для получения дальнейший информации,
+      а также посмотрите описание <a href="reserved.variables.server.html" class="link">
+      $_SERVER[&#039;PATH_TRANSLATED&#039;]</a> в данном руководстве. Это изменение 
+      также имеет место в PHP версий &gt;= 4.3.2.
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      Константа <b><tt>T_ML_COMMENT</tt></b> больше
+      не объявляется расширением <a href="ref.tokenizer.html" class="link">Tokenizer</a>. Если
+      директива error_reporting установлена в <b><tt>E_ALL</tt></b>, PHP 
+      сгенерирует ошибку уровня <b><tt>E_NOTICE</tt></b>. Несмотря на то, 
+      что <b><tt>T_ML_COMMENT</tt></b> не использовалась вообще, она 
+      была объявлена в PHP 4. Как в PHP 4, так и в PHP 5
+      // и /* */ определяются как <b><tt>T_COMMENT</tt></b>.
+      Так или иначе, комментарии /** */ в стиле PHPDoс, которые начиная с PHP
+      5 анализируются PHP, распознаются как <b><tt>T_DOC_COMMENT</tt></b>. 
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      Суперглобальный массив $_SERVER будет создан вместе с переменными argc и argv, 
+      если  <a href="ini.core.html#ini.variables-order" class="link">variables_order</a> включает &quot;S&quot;. Если
+      вы сконфигурировали интерпретатор таким образом, что $_SERVER не
+      создаётся, тогда, конечно, её не будет. Изменение заключается в том, чтобы 
+      сделать argc и argv всегда доступными в CLI-версии, вне зависимости от <a href="ini.core.html#ini.variables-order" class="link">variables_order</a>. Как уже было сказано,
+      CLI-версия теперь всегда будет объявлять переменные $argc и $argv.
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      Объект без свойств больше не считается &quot;пустым&quot;.
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      В некоторых случаях класс должен быть объявлен перед использованием. Это
+      происходит только в том случае, если используются некоторые новые функции PHP 5. 
+      Иначе поведение остается старым.
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <a href="function.get-class.html" class="function">get_class()</a>, <a href="function.get-parent-class.html" class="function">get_parent_class()</a>
+      и <a href="function.get-class-methods.html" class="function">get_class_methods()</a> теперь возвращают имя
+      классов/методов так, как они были объявлены (с учетом регистра), что
+      может привести к проблемам со старыми скриптами, которые полагаются на 
+      прежнее поведение (имя класса/метода всегда было приведено к нижнему регистру).
+      Возможным решением является поиск этих функций в ваших скриптах и добавление перед ними
+      <a href="function.strtolower.html" class="function">strtolower()</a>.
+     </span>
+     <span class="simpara">
+      Изменения относительно регистрозависимости также затрагивают 
+      <a href="language.constants.predefined.html" class="link">магические 
+      константы</a> <b><tt>__CLASS__</tt></b>, 
+      <b><tt>__METHOD__</tt></b> и <b><tt>__FUNCTION__</tt></b>.
+      Значения возвращаются в именно таком виде, в каком они обявлены (с учетом регистра).
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <a href="function.ip2long.html" class="function">ip2long()</a> теперь возвращает <b><tt>FALSE</tt></b>, а не <i>-1</i>, когда 
+      в качестве аргумента функции передается неправильный IP-адрес.
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      Если во включенном файле объявлены какие-либо функции, они могут использоваться и в 
+      главном файле, вне зависимости от того, располагаются они до <b>return()</b> или после.
+      Если файл включается дважды, PHP 5 генерирует фатальную ошибку, так как функции уже были объявлены, 
+      в то время, как PHP 4 не жалуется на это.
+      Рекомендуется использовать <b>include_once()</b> вместо проверки, был ли уже включен файл
+      и условного возврата внутри включенного файла.
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <b>include_once()</b> и <b>require_once()</b>
+      сначала стандартизируют путь к включенному файлу в Windows, так что при включении
+      A.php и a.php файл включается только один раз.
+     </span>
+    </li>
+   </ul>
+
+   <p class="para">
+    <div class="example">
+     <p><b>Пример #1 <a href="function.strrpos.html" class="function">strrpos()</a> и <a href="function.strripos.html" class="function">strripos()</a> теперь 
+      используют всю строку как needle</b></p>
+     <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">strrpos</span><span style="color: #007700">(</span><span style="color: #DD0000">'ABCDEF'</span><span style="color: #007700">,</span><span style="color: #DD0000">'DEF'</span><span style="color: #007700">));&nbsp;</span><span style="color: #FF8000">//int(3)<br /><br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">strrpos</span><span style="color: #007700">(</span><span style="color: #DD0000">'ABCDEF'</span><span style="color: #007700">,</span><span style="color: #DD0000">'DAF'</span><span style="color: #007700">));&nbsp;</span><span style="color: #FF8000">//bool(false)<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+     </div>
+
+    </div>
+   </p>
+   <p class="para">
+    <div class="example">
+     <p><b>Пример #2 Объект без свойств больше не считается &quot;пустым&quot;</b></p>
+     <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">class&nbsp;</span><span style="color: #0000BB">test&nbsp;</span><span style="color: #007700">{&nbsp;}<br /></span><span style="color: #0000BB">$t&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">test</span><span style="color: #007700">();<br /><br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(empty(</span><span style="color: #0000BB">$t</span><span style="color: #007700">));&nbsp;</span><span style="color: #FF8000">//&nbsp;echo&nbsp;bool(false)<br /><br /></span><span style="color: #007700">if&nbsp;(</span><span style="color: #0000BB">$t</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;Будет&nbsp;выполнено<br /></span><span style="color: #007700">}<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+     </div>
+
+    </div>
+   </p>
+   <p class="para">
+    <div class="example">
+     <p><b>Пример #3 В некоторых случаях классы должны быть объявлены перед использованием</b></p>
+     <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /><br /></span><span style="color: #FF8000">//работает&nbsp;без&nbsp;ошибок:<br /></span><span style="color: #0000BB">$a&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">a</span><span style="color: #007700">();<br />class&nbsp;</span><span style="color: #0000BB">a&nbsp;</span><span style="color: #007700">{<br />}<br /><br /><br /></span><span style="color: #FF8000">//вызывает&nbsp;ошибку:<br /></span><span style="color: #0000BB">$a&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">b</span><span style="color: #007700">();<br /><br />interface&nbsp;</span><span style="color: #0000BB">c</span><span style="color: #007700">{<br />}<br />class&nbsp;</span><span style="color: #0000BB">b&nbsp;</span><span style="color: #007700">implements&nbsp;</span><span style="color: #0000BB">c&nbsp;</span><span style="color: #007700">{<br />}&nbsp;<br /><br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+     </div>
+
+    </div>
+   </p>
+  </div><hr /><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="migration5.html">Миграция с PHP 4 на PHP 5</a></div>
+ <div class="next" style="float: right;"><a href="migration5.cli-cgi.html">CLI и CGI</a></div>
+ <div class="up"><a href="migration5.html">Миграция с PHP 4 на PHP 5</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

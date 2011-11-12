@@ -1,0 +1,205 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <title>Выполняет проверку на соответствие регулярному выражению</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+ </head>
+ <body><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="function.preg-match-all.html">preg_match_all</a></div>
+ <div class="next" style="float: right;"><a href="function.preg-quote.html">preg_quote</a></div>
+ <div class="up"><a href="ref.pcre.html">PCRE</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="function.preg-match" class="refentry">
+   <div class="refnamediv">
+    <h1 class="refname">preg_match</h1>
+    <p class="verinfo">(PHP 4, PHP 5)</p><p class="refpurpose dc-title">preg_match — Выполняет проверку на соответствие регулярному выражению</p>
+
+   </div>
+   <div class="refsect1 unknown">
+    <h3 class="title">Описание</h3>
+     <div class="methodsynopsis dc-description">
+      <span class="type"><a href="language.pseudo-types.html#language.types.mixed" class="type mixed">mixed</a></span> <span class="methodname"><b><b>preg_match</b></b></span>
+       ( <span class="methodparam"><span class="type">string</span> <tt class="parameter">$pattern</tt></span>
+      , <span class="methodparam"><span class="type">string</span> <tt class="parameter">$subject</tt></span>
+      [, <span class="methodparam"><span class="type">array</span> <tt class="parameter">$&amp;matches</tt></span>
+      [, <span class="methodparam"><span class="type">int</span> <tt class="parameter">$flags</tt></span>
+      [, <span class="methodparam"><span class="type">int</span> <tt class="parameter">$offset</tt></span>
+     ]]] )</div>
+
+    <p class="para rdfs-comment">
+     Ищет в заданном тексте <i><tt class="parameter">subject</tt></i>
+ совпадения
+     с шаблоном <i><tt class="parameter">pattern</tt></i>
+
+    </p>
+    <p class="para">
+     В случае, если дополнительный параметр <i><tt class="parameter">matches</tt></i>
+ указан,
+     он будет заполнен результатами поиска. Элемент <var class="varname">$matches[0]</var> будет содержать
+     часть строки, соответствующую вхождению всего шаблона, <var class="varname">$matches[1]</var> - часть строки,
+     соответствующую первой подмаске, и так далее.
+    </p>
+    <p class="para">
+     <i><tt class="parameter">flags</tt></i>
+ может принимать следующие значения:
+     <dl>
+
+      <dt>
+
+       <span class="term">PREG_OFFSET_CAPTURE</span>
+
+       <dd>
+
+        <span class="simpara">
+		  В случае, если этот флаг указан, для каждой найденной подстроки будет указана
+		  ее позиция в исходной строке. Необходимо помнить, что этот флаг меняет 
+		  формат возвращаемых данных: каждое вхождение возвращается в виде массива,
+		  в нулевом элементе которого содержится найденная подстрока, а в первом - смещение.
+		  Данный флаг доступен в PHP 4.3.0 и выше.
+        </span>
+       </dd>
+
+      </dt>
+
+     </dl>
+
+     Дополнительный параметр <i><tt class="parameter">flags</tt></i>
+ доступен начиная с 
+     PHP 4.3.0.
+    </p>
+
+    <p class="para">
+     Поиск осуществляется слева направо, с начала строки. Дополнительный параметр
+     <i><tt class="parameter">offset</tt></i>
+ может быть использован для указания альтернативной 
+     начальной позиции для поиска. Дополнительный параметр 
+     <i><tt class="parameter">offset</tt></i>
+ доступен начиная с PHP 4.3.3.
+    </p>
+    <blockquote><p><b class="note">Замечание</b>:  
+       
+      Использование параметра <i><tt class="parameter">offset</tt></i>
+ не эквивалентно 
+	  замене сопоставляемой строки выражением <i>substr($subject, $offset)</i>
+	  при вызове функции <a href="function.preg-match-all.html" class="function">preg_match_all()</a>, поскольку
+	  шаблон <i><tt class="parameter">pattern</tt></i>
+ может содержать такие условия как
+      <em class="emphasis">^</em>, <em class="emphasis">$</em> или <em class="emphasis">(?&lt;=x)</em>. 
+	  Сравните:
+       <br /> 
+       <div class="informalexample"> 
+        <div class="example-contents"> 
+  <div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php&nbsp;<br />&nbsp;&nbsp;$subject&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">"abcdef"</span><span style="color: #007700">;&nbsp;<br />&nbsp;&nbsp;</span><span style="color: #0000BB">$pattern&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">'/^def/'</span><span style="color: #007700">;&nbsp;<br />&nbsp;&nbsp;</span><span style="color: #0000BB">preg_match</span><span style="color: #007700">(</span><span style="color: #0000BB">$pattern</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$subject</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$matches</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">PREG_OFFSET_CAPTURE</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">3</span><span style="color: #007700">);&nbsp;<br />&nbsp;&nbsp;</span><span style="color: #0000BB">print_r</span><span style="color: #007700">(</span><span style="color: #0000BB">$matches</span><span style="color: #007700">);&nbsp;<br />&nbsp;&nbsp;</span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div> 
+        </div>
+ 
+        <p class="para">Результат выполнения данного примера:</p> 
+        <div class="example-contents"><pre> 
+  <div class="cdata"><pre> 
+  Array 
+  ( 
+  ) 
+  </pre></div> 
+        </pre></div> 
+        <p class="para"> 
+         В то время как этот пример
+        </p> 
+        <div class="example-contents"> 
+  <div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php&nbsp;<br />&nbsp;&nbsp;$subject&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">"abcdef"</span><span style="color: #007700">;&nbsp;<br />&nbsp;&nbsp;</span><span style="color: #0000BB">$pattern&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">'/^def/'</span><span style="color: #007700">;&nbsp;<br />&nbsp;&nbsp;</span><span style="color: #0000BB">preg_match</span><span style="color: #007700">(</span><span style="color: #0000BB">$pattern</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">substr</span><span style="color: #007700">(</span><span style="color: #0000BB">$subject</span><span style="color: #007700">,</span><span style="color: #0000BB">3</span><span style="color: #007700">),&nbsp;</span><span style="color: #0000BB">$matches</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">PREG_OFFSET_CAPTURE</span><span style="color: #007700">);&nbsp;<br />&nbsp;&nbsp;</span><span style="color: #0000BB">print_r</span><span style="color: #007700">(</span><span style="color: #0000BB">$matches</span><span style="color: #007700">);&nbsp;<br />&nbsp;&nbsp;</span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div> 
+        </div>
+ 
+        <p class="para"> 
+         выведет следующее: 
+        </p> 
+        <div class="example-contents"><pre> 
+  <div class="cdata"><pre> 
+  Array 
+  ( 
+      [0] =&gt; Array 
+          ( 
+              [0] =&gt; def 
+              [1] =&gt; 0 
+          ) 
+    
+  ) 
+  </pre></div> 
+        </pre></div> 
+       </div> 
+      </p></blockquote> 
+
+    <p class="para">
+     Функция <b>preg_match()</b> возвращает количество найденных соответствий.
+     Это может быть 0 (совпадения не найдены) и 1, поскольку <b>preg_match()</b> прекращает
+     свою работу после первого найденного совпадения. Если необходимо найти либо сосчитать все совпадения,
+     следует воспользоваться функцией <a href="function.preg-match-all.html" class="function">preg_match_all()</a>.
+     Функция <b>preg_match()</b> возвращает <b><tt>FALSE</tt></b> в случае, если во время выполнения возникли какие-либо ошибки.
+    </p>
+    <div class="tip"><b class="tip">Подсказка</b>
+     <p class="para">
+      Не используйте функцию <b>preg_match()</b>, если необходимо проверить наличие подстроки в заданной строке.
+      Используйте для этого <a href="function.strpos.html" class="function">strpos()</a> либо <a href="function.strstr.html" class="function">strstr()</a>, поскольку они 
+      выполнят эту задачу гораздо быстрее.
+     </p>
+    </div>
+    <p class="para">
+     <div class="example">
+      <p><b>Пример #1 Поиск подстроки &quot;php&quot; в тексте</b></p>
+      <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">//&nbsp;Символ&nbsp;"i"&nbsp;после&nbsp;закрывающего&nbsp;ограничителя&nbsp;шаблона&nbsp;означает<br />//&nbsp;регистронезависимый&nbsp;поиск.<br /></span><span style="color: #007700">if&nbsp;(</span><span style="color: #0000BB">preg_match</span><span style="color: #007700">(</span><span style="color: #DD0000">"/php/i"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"PHP&nbsp;is&nbsp;the&nbsp;web&nbsp;scripting&nbsp;language&nbsp;of&nbsp;choice."</span><span style="color: #007700">))&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"Вхождение&nbsp;найдено."</span><span style="color: #007700">;<br />}&nbsp;else&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"Вхождение&nbsp;не&nbsp;найдено."</span><span style="color: #007700">;<br />}<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+      </div>
+
+     </div>
+    </p>
+    <p class="para">
+     <div class="example">
+      <p><b>Пример #2 Поиск слова &quot;web&quot; в тексте</b></p>
+      <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">/*&nbsp;<br />&nbsp;&nbsp;&nbsp;&nbsp;Специальная&nbsp;последовательность&nbsp;\b&nbsp;в&nbsp;шаблоне&nbsp;означает&nbsp;границу&nbsp;слова,<br />&nbsp;&nbsp;&nbsp;&nbsp;следовательно,&nbsp;только&nbsp;изолированное&nbsp;вхождение&nbsp;слова&nbsp;'web'&nbsp;будет&nbsp;соответствовать<br />&nbsp;&nbsp;&nbsp;&nbsp;маске,&nbsp;в&nbsp;отличие&nbsp;от&nbsp;"webbing"&nbsp;или&nbsp;"cobweb".<br />*/<br /></span><span style="color: #007700">if&nbsp;(</span><span style="color: #0000BB">preg_match</span><span style="color: #007700">(</span><span style="color: #DD0000">"/\bweb\b/i"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"PHP&nbsp;is&nbsp;the&nbsp;web&nbsp;scripting&nbsp;language&nbsp;of&nbsp;choice."</span><span style="color: #007700">))&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"Вхождение&nbsp;найдено."</span><span style="color: #007700">;<br />}&nbsp;else&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"Вхождение&nbsp;не&nbsp;найдено."</span><span style="color: #007700">;<br />}<br /><br />if&nbsp;(</span><span style="color: #0000BB">preg_match</span><span style="color: #007700">(</span><span style="color: #DD0000">"/\bweb\b/i"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"PHP&nbsp;is&nbsp;the&nbsp;website&nbsp;scripting&nbsp;language&nbsp;of&nbsp;choice."</span><span style="color: #007700">))&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"Вхождение&nbsp;найдено."</span><span style="color: #007700">;<br />}&nbsp;else&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"Вхождение&nbsp;не&nbsp;найдено."</span><span style="color: #007700">;<br />}<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+      </div>
+
+     </div>
+    </p>
+    <p class="para">
+     <div class="example">
+      <p><b>Пример #3 Извлечение доменного имени из URL</b></p>
+      <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">//&nbsp;Извлекаем&nbsp;имя&nbsp;хоста&nbsp;из&nbsp;URL<br /></span><span style="color: #0000BB">preg_match</span><span style="color: #007700">(</span><span style="color: #DD0000">"/^(http:\/\/)?([^\/]+)/i"</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">"http://www.php.net/index.html"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$matches</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$host&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$matches</span><span style="color: #007700">[</span><span style="color: #0000BB">2</span><span style="color: #007700">];<br /><br /></span><span style="color: #FF8000">//&nbsp;извлекаем&nbsp;две&nbsp;последние&nbsp;части&nbsp;имени&nbsp;хоста<br /></span><span style="color: #0000BB">preg_match</span><span style="color: #007700">(</span><span style="color: #DD0000">"/[^\.\/]+\.[^\.\/]+$/"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$host</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$matches</span><span style="color: #007700">);<br />echo&nbsp;</span><span style="color: #DD0000">"domain&nbsp;name&nbsp;is:&nbsp;{$matches[0]}\n"</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+      </div>
+
+      <div class="example-contents"><p>
+       Результат работы примера:
+      </p></div>
+      <div class="example-contents"><pre>
+<div class="cdata"><pre>
+domain name is: php.net
+</pre></div>
+      </pre></div>
+     </div>
+    </p>
+    <p class="para">
+     Смотрите также <a href="function.preg-match-all.html" class="function">preg_match_all()</a>, 
+     <a href="function.preg-replace.html" class="function">preg_replace()</a>, и
+     <a href="function.preg-split.html" class="function">preg_split()</a>.
+    </p>
+   </div>
+
+  </div><hr /><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="function.preg-match-all.html">preg_match_all</a></div>
+ <div class="next" style="float: right;"><a href="function.preg-quote.html">preg_quote</a></div>
+ <div class="up"><a href="ref.pcre.html">PCRE</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

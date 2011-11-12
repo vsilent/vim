@@ -1,0 +1,118 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <title>Открывает или создает базу данных SQLite</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+ </head>
+ <body><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="function.sqlite-num-rows.html">sqlite_num_rows</a></div>
+ <div class="next" style="float: right;"><a href="function.sqlite-popen.html">sqlite_popen</a></div>
+ <div class="up"><a href="ref.sqlite.html">SQLite</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="function.sqlite-open" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">sqlite_open</h1>
+  <p class="verinfo">(PHP 5, PECL sqlite:1.0-1.0.3)</p><p class="refpurpose dc-title">sqlite_open — Открывает или создает базу данных SQLite</p>
+
+ </div>
+ <div class="refsect1 unknown">
+  <h3 class="title">Описание</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type">resource</span> <span class="methodname"><b><b>sqlite_open</b></b></span>
+    ( <span class="methodparam"><span class="type">string</span> <tt class="parameter">$filename</tt></span>
+   [, <span class="methodparam"><span class="type">int</span> <tt class="parameter">$mode</tt></span>
+   [, <span class="methodparam"><span class="type">string</span> <tt class="parameter reference">&$error_message</tt></span>
+  ]] )</div>
+
+  <p class="para rdfs-comment">
+   Возвращает ресурс (идентификатор базы данных) при успешном завершении,
+   <b><tt>FALSE</tt></b> при возникновении ошибки.
+  </p>
+  <p class="para">
+   Аргумент <i><tt class="parameter">filename</tt></i>
+ задает имя базы данных. Это может
+   быть абсолютный или относительный путь к файлу, в котором будут храниться
+   данные. Если файл не существует, будет предпринята попытка его создания. У
+   пользователя, от имени которого выполняется скрипт,
+   <em class="emphasis">ДОЛЖНЫ</em> быть права на запись в файл, если необходимо
+   добавлять данные или изменять структуру данных.
+  </p>
+  <p class="para">
+   Аргумент <i><tt class="parameter">mode</tt></i>
+ задает режим доступа к файлу базы
+   данных, и мог бы использоваться для открытия базы данных только для
+   чтения, однако в настоящее время этот аргумент не используется.
+   Рекомендуется использовать восьмеричное <i>0666</i> в качестве
+   значения этого аргумента, если необходимо использовать аргумент
+   <i><tt class="parameter">errmessage</tt></i>
+.
+  </p>
+  <p class="para">
+   Аргумент <i><tt class="parameter">errmessage</tt></i>
+ передается по ссылке, в нем
+   возвращается сообщение об ошибке.
+  </p>
+  <p class="para">
+   <div class="example">
+    <p><b>Пример #1 Пример <b>sqlite_open()</b></b></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">if&nbsp;(</span><span style="color: #0000BB">$db&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">sqlite_open</span><span style="color: #007700">(</span><span style="color: #DD0000">'mysqlitedb'</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">0666</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$sqliteerror</span><span style="color: #007700">))&nbsp;{&nbsp;<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">sqlite_query</span><span style="color: #007700">(</span><span style="color: #0000BB">$db</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'CREATE&nbsp;TABLE&nbsp;foo&nbsp;(bar&nbsp;varchar(10))'</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">sqlite_query</span><span style="color: #007700">(</span><span style="color: #0000BB">$db</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"INSERT&nbsp;INTO&nbsp;foo&nbsp;VALUES&nbsp;('fnord')"</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$result&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">sqlite_query</span><span style="color: #007700">(</span><span style="color: #0000BB">$db</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'select&nbsp;bar&nbsp;from&nbsp;foo'</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">sqlite_fetch_array</span><span style="color: #007700">(</span><span style="color: #0000BB">$result</span><span style="color: #007700">));&nbsp;<br />}&nbsp;else&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;die(</span><span style="color: #0000BB">$sqliteerror</span><span style="color: #007700">);<br />}<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+  </p>
+  <div class="tip"><b class="tip">Подсказка</b>
+   <p class="simpara">
+    На Unix-подобных системах, SQLite может работать некорректно в программах,
+    использующих вызов fork(). В таких программах рекомендуется закрывать базу
+    данных перед запуском дочернего процесса и затем заново открывать ее в
+    дочернем и/или родительском процессе. Дополнительная информация о проблеме
+    содержится в <a href="http://sqlite.org/c_interface.html" class="link external">&raquo; описании интерфейса
+     SQLite на языке C</a> в разделе <i>Multi-Threading And
+     SQLite</i>.
+   </p>
+  </div>
+  <div class="tip"><b class="tip">Подсказка</b>
+   <p class="simpara">
+    Не рекомендуется работать с базами данных SQLite через NFS, из-за
+    возможных проблем с блокировкой файла.
+   </p>
+  </div>
+  <blockquote><p><b class="note">Замечание</b>: 
+   <span class="simpara">
+    Начиная SQLite версии 2.8.2, можно указывать <i>:memory:</i> в
+    качестве значения аргумента <i><tt class="parameter">filename</tt></i>
+ для создания
+    базы данных в памяти. Это может быть полезно в тех случаях,
+    когда необходимо создание временной базы данных, которая должна быть
+    уничтожена при завершении процесса. Также это может использоваться
+    совместно с командой  <i>ATTACH DATABASE</i> для подключения
+    других баз данных и выполнения операций с ними.
+   </span>
+  </p></blockquote>
+  <blockquote><p><b class="note">Замечание</b>: 
+   <span class="simpara">
+    Модуль SQLite учитывает установки <a href="features.safe-mode.html#ini.safe-mode" class="link">безопасный режим</a> и open_basedir.
+   </span>
+  </p></blockquote>
+ </div>
+
+
+ <div class="refsect1 unknown">
+  <h3 class="title">Смотрите также</h3>
+  <p class="para">
+   <a href="function.sqlite-popen.html" class="function">sqlite_popen()</a>,
+   <a href="function.sqlite-close.html" class="function">sqlite_close()</a> и
+   <a href="function.sqlite-query.html" class="function">sqlite_query()</a>
+  </p>
+ </div>
+
+</div><hr /><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="function.sqlite-num-rows.html">sqlite_num_rows</a></div>
+ <div class="next" style="float: right;"><a href="function.sqlite-popen.html">sqlite_popen</a></div>
+ <div class="up"><a href="ref.sqlite.html">SQLite</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

@@ -1,0 +1,71 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <title>Выбрать одно или несколько случайных значений из массива</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+ </head>
+ <body><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="function.array-push.html">array_push</a></div>
+ <div class="next" style="float: right;"><a href="function.array-reduce.html">array_reduce</a></div>
+ <div class="up"><a href="ref.array.html">Функции для работы с массивами</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="function.array-rand" class="refentry">
+   <div class="refnamediv">
+    <h1 class="refname">array_rand</h1>
+    <p class="verinfo">(PHP 4, PHP 5)</p><p class="refpurpose dc-title">array_rand — 
+     Выбрать одно или несколько случайных значений из массива
+    </p>
+
+   </div>
+   <div class="refsect1 unknown">
+    <h3 class="title">Описание</h3>
+     <div class="methodsynopsis dc-description">
+      <span class="type"><a href="language.pseudo-types.html#language.types.mixed" class="type mixed">mixed</a></span> <span class="methodname"><b><b>array_rand</b></b></span>
+       ( <span class="methodparam"><span class="type">array</span> <tt class="parameter">$input</tt></span>
+      [, <span class="methodparam"><span class="type">int</span> <tt class="parameter">$num_req</tt></span>
+     ] )</div>
+
+    <p class="para rdfs-comment">
+     Использование <b>array_rand()</b> предпочтительно, если вам нужно
+     выбрать одно или несколько случайных значений из массива. Эта функция в качестве
+     параметров берёт массив <i><tt class="parameter">input</tt></i>
+ и дополнительный аргумент
+     <i><tt class="parameter">num_req</tt></i>
+, который определяет количество значений, которое
+     вы хотите выбрать - если не определён, то 1.
+    </p>
+    <p class="para">
+     Если вы выбираете только одно значение, функция <b>array_rand()</b>
+     возвращает ключ, соответствующий этому значению. В обратном случае, она возвращает
+     массив ключей, соответствующих случайным значениям. Это означает, что вы можете выбрать
+     из массива как случайные значения, так и случайные ключи.
+    </p>
+    
+    <blockquote><p><b class="note">Замечание</b>: <span class="simpara">Начиная с PHP 4.2.0, больше нет
+необходимости инициализировать генератор случайных чисел функциями
+<a href="function.srand.html" class="function">srand()</a> или <a href="function.mt-srand.html" class="function">mt_srand()</a>, поскольку
+теперь это происходит автоматически.</span></p></blockquote>
+
+    <p class="para">
+     <div class="example">
+      <p><b>Пример #1 Пример использования <b>array_rand()</b></b></p>
+      <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />srand</span><span style="color: #007700">((float)&nbsp;</span><span style="color: #0000BB">microtime</span><span style="color: #007700">()&nbsp;*&nbsp;</span><span style="color: #0000BB">10000000</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$input&nbsp;</span><span style="color: #007700">=&nbsp;array(</span><span style="color: #DD0000">"Neo"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"Morpheus"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"Trinity"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"Cypher"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"Tank"</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$rand_keys&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">array_rand</span><span style="color: #007700">(</span><span style="color: #0000BB">$input</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">2</span><span style="color: #007700">);<br />echo&nbsp;</span><span style="color: #0000BB">$input</span><span style="color: #007700">[</span><span style="color: #0000BB">$rand_keys</span><span style="color: #007700">[</span><span style="color: #0000BB">0</span><span style="color: #007700">]]&nbsp;.&nbsp;</span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br />echo&nbsp;</span><span style="color: #0000BB">$input</span><span style="color: #007700">[</span><span style="color: #0000BB">$rand_keys</span><span style="color: #007700">[</span><span style="color: #0000BB">1</span><span style="color: #007700">]]&nbsp;.&nbsp;</span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+      </div>
+
+     </div>
+    </p>
+    <p class="para">
+     См. также <a href="function.shuffle.html" class="function">shuffle()</a>.
+    </p>
+   </div>
+
+  </div><hr /><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="function.array-push.html">array_push</a></div>
+ <div class="next" style="float: right;"><a href="function.array-reduce.html">array_reduce</a></div>
+ <div class="up"><a href="ref.array.html">Функции для работы с массивами</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

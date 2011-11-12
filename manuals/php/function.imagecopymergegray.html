@@ -1,0 +1,211 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <title>Copy and merge part of an image with gray scale</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+ </head>
+ <body><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="function.imagecopymerge.html">imagecopymerge</a></div>
+ <div class="next" style="float: right;"><a href="function.imagecopyresampled.html">imagecopyresampled</a></div>
+ <div class="up"><a href="ref.image.html">Image Функции</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="function.imagecopymergegray" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">imagecopymergegray</h1>
+  <p class="verinfo">(PHP 4 &gt;= 4.0.6, PHP 5)</p><p class="refpurpose dc-title">imagecopymergegray — Copy and merge part of an image with gray scale</p>
+
+ </div>
+ <div class="refsect1 description">
+  <h3 class="title">Описание</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type">bool</span> <span class="methodname"><b><b>imagecopymergegray</b></b></span>
+    ( <span class="methodparam"><span class="type">resource</span> <tt class="parameter">$dst_im</tt></span>
+   , <span class="methodparam"><span class="type">resource</span> <tt class="parameter">$src_im</tt></span>
+   , <span class="methodparam"><span class="type">int</span> <tt class="parameter">$dst_x</tt></span>
+   , <span class="methodparam"><span class="type">int</span> <tt class="parameter">$dst_y</tt></span>
+   , <span class="methodparam"><span class="type">int</span> <tt class="parameter">$src_x</tt></span>
+   , <span class="methodparam"><span class="type">int</span> <tt class="parameter">$src_y</tt></span>
+   , <span class="methodparam"><span class="type">int</span> <tt class="parameter">$src_w</tt></span>
+   , <span class="methodparam"><span class="type">int</span> <tt class="parameter">$src_h</tt></span>
+   , <span class="methodparam"><span class="type">int</span> <tt class="parameter">$pct</tt></span>
+   )</div>
+
+  <p class="para rdfs-comment">
+   <b>imagecopymergegray()</b> copy a part of <i><tt class="parameter">src_im</tt></i>
+ onto
+   <i><tt class="parameter">dst_im</tt></i>
+ starting at the x,y coordinates
+   <i><tt class="parameter">src_x</tt></i>
+, <i><tt class="parameter">src_y </tt></i>
+ with
+   a width of <i><tt class="parameter">src_w</tt></i>
+ and a height of
+   <i><tt class="parameter">src_h</tt></i>
+.  The portion defined will be copied
+   onto the x,y coordinates, <i><tt class="parameter">dst_x</tt></i>
+ and
+   <i><tt class="parameter">dst_y</tt></i>
+.
+  </p>
+  <p class="para">
+   This function is identical to <a href="function.imagecopymerge.html" class="function">imagecopymerge()</a> except
+   that when merging it preserves the hue of the source by converting
+   the destination pixels to gray scale before the copy operation.
+  </p>
+ </div>
+
+ <div class="refsect1 parameters">
+  <h3 class="title">Список параметров</h3>
+  <p class="para">
+   <dl>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">dst_im</tt></i>
+</span>
+
+     <dd>
+
+      <p class="para">
+       Destination image link resource
+      </p>
+     </dd>
+
+    </dt>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">src_im</tt></i>
+</span>
+
+     <dd>
+
+      <p class="para">
+       Source image link resource
+      </p>
+     </dd>
+
+    </dt>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">dst_x</tt></i>
+</span>
+
+     <dd>
+
+      <p class="para">
+       x-coordinate of destination point
+      </p>
+     </dd>
+
+    </dt>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">dst_y</tt></i>
+</span>
+
+     <dd>
+
+      <p class="para">
+       y-coordinate of destination point
+      </p>
+     </dd>
+
+    </dt>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">src_x</tt></i>
+</span>
+
+     <dd>
+
+      <p class="para">
+       x-coordinate of source point
+      </p>
+     </dd>
+
+    </dt>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">src_y</tt></i>
+</span>
+
+     <dd>
+
+      <p class="para">
+       y-coordinate of source point
+      </p>
+     </dd>
+
+    </dt>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">src_w</tt></i>
+</span>
+
+     <dd>
+
+      <p class="para">
+       Source width
+      </p>
+     </dd>
+
+    </dt>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">src_h</tt></i>
+</span>
+
+     <dd>
+
+      <p class="para">
+       Source height
+      </p>
+     </dd>
+
+    </dt>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">pct</tt></i>
+</span>
+
+     <dd>
+
+      <p class="para">
+       The two images will be merged according to <i><tt class="parameter">pct</tt></i>
+
+       which can range from 0 to 100.  When <i><tt class="parameter">pct</tt></i>
+ = 0,
+       no action is taken, when 100 this function behaves identically
+       to <a href="function.imagecopy.html" class="function">imagecopy()</a> for pallete images, while it
+       implements alpha transparency for true colour images.
+      </p>
+     </dd>
+
+    </dt>
+
+   </dl>
+
+  </p>
+ </div>
+
+ <div class="refsect1 returnvalues">
+  <h3 class="title">Возвращаемые значения</h3>
+  <p class="para">
+   Возвращает <b><tt>TRUE</tt></b> в случае успешного завершения или <b><tt>FALSE</tt></b> в случае возникновения ошибки.
+  </p>
+ </div>
+
+</div><hr /><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="function.imagecopymerge.html">imagecopymerge</a></div>
+ <div class="next" style="float: right;"><a href="function.imagecopyresampled.html">imagecopyresampled</a></div>
+ <div class="up"><a href="ref.image.html">Image Функции</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

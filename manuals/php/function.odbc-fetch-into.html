@@ -1,0 +1,134 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <title>Fetch one result row into array</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+ </head>
+ <body><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="function.odbc-fetch-array.html">odbc_fetch_array</a></div>
+ <div class="next" style="float: right;"><a href="function.odbc-fetch-object.html">odbc_fetch_object</a></div>
+ <div class="up"><a href="ref.uodbc.html">ODBC Функции (Unified)</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="function.odbc-fetch-into" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">odbc_fetch_into</h1>
+  <p class="verinfo">(PHP 4, PHP 5)</p><p class="refpurpose dc-title">odbc_fetch_into — Fetch one result row into array</p>
+
+ </div>
+ <div class="refsect1 unknown">
+  <h3 class="title">Description</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type">int</span> <span class="methodname"><b><b>odbc_fetch_into</b></b></span>
+    ( <span class="methodparam"><span class="type">resource</span> <tt class="parameter">$result_id</tt></span>
+   , <span class="methodparam"><span class="type">array</span> <tt class="parameter reference">&$result_array</tt></span>
+   [, <span class="methodparam"><span class="type">int</span> <tt class="parameter">$rownumber</tt></span>
+  ] )</div>
+
+  <div class="methodsynopsis dc-description">
+   <span class="type">bool</span> <span class="methodname"><b><b>odbc_fetch_into</b></b></span>
+    ( <span class="methodparam"><span class="type">resource</span> <tt class="parameter">$result_id</tt></span>
+   [, <span class="methodparam"><span class="type">int</span> <tt class="parameter">$rownumber</tt></span>
+   ], <span class="methodparam"><span class="type">array</span> <tt class="parameter reference">&$result_array</tt></span>
+   )</div>
+
+  <p class="para rdfs-comment">
+   Returns the number of columns in the result;
+   <b><tt>FALSE</tt></b> on error.
+   <i><tt class="parameter">result_array</tt></i>
+ must be passed by reference,
+   but it can be of any type since it will be converted to type
+   array. The array will contain the column values starting at array
+   index 0.
+  </p>
+  <p class="para">
+   As of PHP 4.0.5 the <i><tt class="parameter">result_array</tt></i>
+ does not
+   need to be passed by reference any longer.
+  </p>
+  <p class="para">
+   As of PHP 4.0.6 the <i><tt class="parameter">rownumber</tt></i>
+ cannot be
+   passed as a constant, but rather as a variable.
+  </p>
+  <p class="para">
+   As of PHP 4.2.0 the <i><tt class="parameter">result_array</tt></i>
+ and
+   <i><tt class="parameter">rownumber</tt></i>
+ have been swapped. This allows the
+   rownumber to be a constant again. This change will also be the last one
+   to this function.
+  </p>
+  <p class="para">
+   <div class="example">
+    <p><b>Пример #1 <b>odbc_fetch_into()</b> pre 4.0.6 example </b></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$rc&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">odbc_fetch_into</span><span style="color: #007700">(</span><span style="color: #0000BB">$res_id</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$my_array</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   <div class="example-contents"><p>
+    or
+   </p></div>
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$rc&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">odbc_fetch_into</span><span style="color: #007700">(</span><span style="color: #0000BB">$res_id</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$row</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$my_array</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">$rc&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">odbc_fetch_into</span><span style="color: #007700">(</span><span style="color: #0000BB">$res_id</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">1</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$my_array</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+  </p>
+  <p class="para">
+   <div class="example">
+    <p><b>Пример #2 <b>odbc_fetch_into()</b> 4.0.6 example</b></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$rc&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">odbc_fetch_into</span><span style="color: #007700">(</span><span style="color: #0000BB">$res_id</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$my_array</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+    <div class="example-contents"><p>
+     or
+    </p></div>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$row&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">1</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$rc&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">odbc_fetch_into</span><span style="color: #007700">(</span><span style="color: #0000BB">$res_id</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$row</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$my_array</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+  </p>
+  <p class="para">
+   <div class="example">
+    <p><b>Пример #3 <b>odbc_fetch_into()</b> 4.2.0 example</b></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$rc&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">odbc_fetch_into</span><span style="color: #007700">(</span><span style="color: #0000BB">$res_id</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$my_array</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+    <div class="example-contents"><p>
+     or
+    </p></div>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$rc&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">odbc_fetch_into</span><span style="color: #007700">(</span><span style="color: #0000BB">$res_id</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$my_array</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">2</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+  </p>
+ </div>
+
+</div><hr /><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="function.odbc-fetch-array.html">odbc_fetch_array</a></div>
+ <div class="next" style="float: right;"><a href="function.odbc-fetch-object.html">odbc_fetch_object</a></div>
+ <div class="up"><a href="ref.uodbc.html">ODBC Функции (Unified)</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

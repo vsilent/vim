@@ -1,0 +1,223 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <title>Манипуляции с типами</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+ </head>
+ <body><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="language.types.html">Типы</a></div>
+ <div class="next" style="float: right;"><a href="language.variables.html">Переменные</a></div>
+ <div class="up"><a href="language.types.html">Типы</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="language.types.type-juggling" class="sect1">
+   <h2 class="title">Манипуляции с типами</h2>
+
+   <p class="simpara">
+    PHP не требует (и не поддерживает) явного определения типа при
+    объявлении переменной; тип переменной определяется по контексту, в
+    котором она используется. То есть, если вы присвоите строковое
+    значение переменной <i><tt class="parameter">$var</tt></i>
+,
+    <i><tt class="parameter">$var</tt></i>
+ станет строкой. Если вы затем
+    присвоите <i><tt class="parameter">$var</tt></i>
+ целочисленное значение, она
+    станет целым числом.
+   </p>
+   <p class="para">
+    Примером автоматического преобразования типа является оператор
+    сложения &#039;+&#039;. Если любой из операндов является числом с плавающей
+    точкой, то все операнды интерпретируются как числа с плавающей
+    точкой, результатом будет также число с плавающей точкой. В
+    противном случае операнды будут интерпретироваться как целые числа
+    и результат также будет целочисленным. Обратите внимание, что это
+    НЕ меняет типы самих операндов; меняется только то, как они
+    вычисляются.
+    <div class="informalexample">
+     <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$foo&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">"0"</span><span style="color: #007700">;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;$foo&nbsp;это&nbsp;строка&nbsp;(ASCII&nbsp;48)<br /></span><span style="color: #0000BB">$foo&nbsp;</span><span style="color: #007700">+=&nbsp;</span><span style="color: #0000BB">2</span><span style="color: #007700">;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;$foo&nbsp;теперь&nbsp;целое&nbsp;число&nbsp;(2)<br /></span><span style="color: #0000BB">$foo&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$foo&nbsp;</span><span style="color: #007700">+&nbsp;</span><span style="color: #0000BB">1.3</span><span style="color: #007700">;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;$foo&nbsp;теперь&nbsp;число&nbsp;с&nbsp;плавающей&nbsp;точкой&nbsp;(3.3)<br /></span><span style="color: #0000BB">$foo&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">5&nbsp;</span><span style="color: #007700">+&nbsp;</span><span style="color: #DD0000">"10&nbsp;Little&nbsp;Piggies"</span><span style="color: #007700">;&nbsp;</span><span style="color: #FF8000">//&nbsp;$foo&nbsp;это&nbsp;целое&nbsp;число&nbsp;(15)<br /></span><span style="color: #0000BB">$foo&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">5&nbsp;</span><span style="color: #007700">+&nbsp;</span><span style="color: #DD0000">"10&nbsp;Small&nbsp;Pigs"</span><span style="color: #007700">;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;$foo&nbsp;это&nbsp;целое&nbsp;число&nbsp;(15)<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+
+     </div>
+
+    </div>
+   </p>
+   <p class="simpara">
+    Если последние два примера вам непонятны, смотрите <a href="language.types.string.html#language.types.string.conversion" class="link">Преобразование строк
+    в числа</a>.
+   </p>
+   <p class="simpara">
+    Если вы хотите, чтобы переменная принудительно вычислялась как
+    определенный тип, смотрите раздел <a href="language.types.type-juggling.html#language.types.typecasting" class="link">приведение
+    типов</a>. Если вы хотите изменить тип переменной, смотрите
+    <a href="function.settype.html" class="function">settype()</a>.
+   </p>
+   <p class="para">
+    Если вы хотите протестировать любой из примеров, приведенных в
+    данном разделе, вы можете использовать функцию
+    <a href="function.var-dump.html" class="function">var_dump()</a>.
+   </p>
+   <blockquote><p><b class="note">Замечание</b>: 
+    
+     Поведение автоматического преобразования в массив в настоящий
+     момент не определено.
+    <br />
+    
+     <div class="informalexample">
+      <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$a&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">"1"</span><span style="color: #007700">;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;$a&nbsp;это&nbsp;строка<br /></span><span style="color: #0000BB">$a</span><span style="color: #007700">[</span><span style="color: #0000BB">0</span><span style="color: #007700">]&nbsp;=&nbsp;</span><span style="color: #DD0000">"f"</span><span style="color: #007700">;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;А&nbsp;как&nbsp;же&nbsp;смещение&nbsp;строки?&nbsp;Что&nbsp;произойдет?<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+      </div>
+
+     </div>
+    <br />
+    
+     Поскольку PHP (по историческим причинам) поддерживает
+     индексирование в строках с использованием такого же синтаксиса,
+     как и при индексировании массива, вышеприведенный пример приводит
+     к проблеме: следует ли $a стать массивом, первым элементом
+     которого будет &quot;f&quot; или &quot;f&quot; должна стать первым символом строки $a?
+    <br />
+    
+     Текущая версия PHP воспринимает второе присваивание как
+     определение смещения строки, поэтому $a станет &quot;f&quot;, результат же
+     этого автоматического преобразования следует, однако, рассматривать
+     как неопределенный. В PHP 4 для доступа к символам строки был
+     введен новый синтаксис фигурных скобок, используйте этот синтаксис
+     вместо вышеприведенного: 
+     <div class="informalexample">
+      <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$a&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">"abc"</span><span style="color: #007700">;&nbsp;</span><span style="color: #FF8000">//&nbsp;$a&nbsp;это&nbsp;строка<br /></span><span style="color: #0000BB">$a</span><span style="color: #007700">{</span><span style="color: #0000BB">1</span><span style="color: #007700">}&nbsp;=&nbsp;</span><span style="color: #DD0000">"f"</span><span style="color: #007700">;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;$a&nbsp;теперь&nbsp;содержит&nbsp;"afc"<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+      </div>
+
+     </div>
+     Для дополнительной информации смотрите раздел
+     <a href="language.types.string.html#language.types.string.substr" class="link">Доступ к символу в
+     строке</a>.
+    <br />
+   </p></blockquote>
+
+   <div id="language.types.typecasting" class="sect2">
+    <h3 class="title">Приведение типов</h3>
+
+    <p class="para">
+     Приведение типов в PHP работает так же, как и в C: имя требуемого
+     типа записывается в круглых скобках перед приводимой переменной.
+     <div class="informalexample">
+      <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$foo&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">10</span><span style="color: #007700">;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;$foo&nbsp;это&nbsp;целое&nbsp;число<br /></span><span style="color: #0000BB">$bar&nbsp;</span><span style="color: #007700">=&nbsp;(boolean)&nbsp;</span><span style="color: #0000BB">$foo</span><span style="color: #007700">;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;$bar&nbsp;это&nbsp;булев&nbsp;тип<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+      </div>
+
+     </div>
+    </p>
+    <p class="para">
+     Допускаются следующие приведения типов:
+     <ul class="itemizedlist">
+      <li class="listitem">
+       <span class="simpara">(int), (integer) - приведение к целому числу</span>
+      </li>
+      <li class="listitem">
+       <span class="simpara">(bool), (boolean) - приведение к булеву типу</span>
+      </li>
+      <li class="listitem">
+       <span class="simpara">(float), (double), (real) - приведение к числу с плавающей точкой (float)</span>
+      </li>
+      <li class="listitem">
+       <span class="simpara">(string) - приведение к строке</span>
+      </li>
+      <li class="listitem">
+       <span class="simpara">(array) - приведение к массиву</span>
+      </li>
+      <li class="listitem">
+       <span class="simpara">(object) - приведение к объекту</span>
+      </li>
+     </ul>
+    </p>
+    <p class="para">
+     Обратите внимание, что внутри скобок допускаются пробелы и
+     символы табуляции, поэтому следующее равносильно по своему
+     действию:
+     <div class="informalexample">
+      <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$foo&nbsp;</span><span style="color: #007700">=&nbsp;(int)&nbsp;</span><span style="color: #0000BB">$bar</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$foo&nbsp;</span><span style="color: #007700">=&nbsp;(&nbsp;int&nbsp;)&nbsp;</span><span style="color: #0000BB">$bar</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+      </div>
+
+     </div>
+    </p>
+    <blockquote><p><b class="note">Замечание</b>: 
+     
+      Вместо приведения переменной к строке, вы можете заключить ее в
+      двойные кавычки.
+     <div class="informalexample">
+      <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$foo&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">10</span><span style="color: #007700">;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;$foo&nbsp;это&nbsp;целое&nbsp;число<br /></span><span style="color: #0000BB">$str&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">"$foo"</span><span style="color: #007700">;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;$str&nbsp;это&nbsp;строка<br /></span><span style="color: #0000BB">$fst&nbsp;</span><span style="color: #007700">=&nbsp;(string)&nbsp;</span><span style="color: #0000BB">$foo</span><span style="color: #007700">;&nbsp;</span><span style="color: #FF8000">//&nbsp;$fst&nbsp;это&nbsp;также&nbsp;строка<br /><br />//&nbsp;Это&nbsp;напечатает&nbsp;"они&nbsp;одинаковы"<br /></span><span style="color: #007700">if&nbsp;(</span><span style="color: #0000BB">$fst&nbsp;</span><span style="color: #007700">===&nbsp;</span><span style="color: #0000BB">$str</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"они&nbsp;одинаковы"</span><span style="color: #007700">;<br />}<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+      </div>
+
+     </div>
+     <br />
+    </p></blockquote>
+     
+    <p class="para">
+     Возможно, вам не совсем ясно, что происходит при приведении
+     между типами. Для дополнительной информации смотрите разделы:
+    
+     <ul class="itemizedlist">
+      <li class="listitem">
+       <span class="simpara"><a href="language.types.boolean.html#language.types.boolean.casting" class="link">Преобразование
+        в булев тип</a></span>
+      </li>
+      <li class="listitem">
+       <span class="simpara"><a href="language.types.integer.html#language.types.integer.casting" class="link">Преобразование
+        в целое число</a></span>
+      </li>
+      <li class="listitem">
+       <span class="simpara"><a href="language.types.float.html#language.types.float.casting" class="link">Преобразование
+        в число с плавающей точкой</a></span>
+      </li>
+      <li class="listitem">
+       <span class="simpara"><a href="language.types.string.html#language.types.string.casting" class="link">Преобразование
+        в строку</a></span>
+      </li>
+      <li class="listitem">
+       <span class="simpara"><a href="language.types.array.html#language.types.array.casting" class="link">Преобразование
+        в массив</a></span>
+      </li>
+      <li class="listitem">
+       <span class="simpara"><a href="language.types.object.html#language.types.object.casting" class="link">Преобразование
+        в объект</a></span>
+      </li>
+      <li class="listitem">
+       <span class="simpara"><a href="language.types.resource.html#language.types.resource.casting" class="link">Преобразование
+        в ресурс</a></span>
+      </li>
+      
+      <li class="listitem">
+       <span class="simpara">
+        <a href="types.comparisons.html" class="link">Таблицы сравнения типов</a>
+       </span>
+      </li>
+     </ul>
+    </p>
+   </div>
+  </div><hr /><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="language.types.html">Типы</a></div>
+ <div class="next" style="float: right;"><a href="language.variables.html">Переменные</a></div>
+ <div class="up"><a href="language.types.html">Типы</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

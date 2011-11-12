@@ -1,0 +1,131 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <title>Flood fill to specific color</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+ </head>
+ <body><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="function.imagefilledrectangle.html">imagefilledrectangle</a></div>
+ <div class="next" style="float: right;"><a href="function.imagefilter.html">imagefilter</a></div>
+ <div class="up"><a href="ref.image.html">Image Функции</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="function.imagefilltoborder" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">imagefilltoborder</h1>
+  <p class="verinfo">(PHP 4, PHP 5)</p><p class="refpurpose dc-title">imagefilltoborder — Flood fill to specific color</p>
+
+ </div>
+ <div class="refsect1 description">
+  <h3 class="title">Описание</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type">bool</span> <span class="methodname"><b><b>imagefilltoborder</b></b></span>
+    ( <span class="methodparam"><span class="type">resource</span> <tt class="parameter">$image</tt></span>
+   , <span class="methodparam"><span class="type">int</span> <tt class="parameter">$x</tt></span>
+   , <span class="methodparam"><span class="type">int</span> <tt class="parameter">$y</tt></span>
+   , <span class="methodparam"><span class="type">int</span> <tt class="parameter">$border</tt></span>
+   , <span class="methodparam"><span class="type">int</span> <tt class="parameter">$color</tt></span>
+   )</div>
+
+  <p class="para rdfs-comment">
+   <b>imagefilltoborder()</b> performs a flood fill
+   whose border color is defined by <i><tt class="parameter">border</tt></i>
+.
+   The starting point for the fill is <i><tt class="parameter">x</tt></i>
+,
+   <i><tt class="parameter">y</tt></i>
+ (top left is 0, 0) and the region is
+   filled with color <i><tt class="parameter">color</tt></i>
+.
+  </p>
+ </div>
+
+ <div class="refsect1 parameters">
+  <h3 class="title">Список параметров</h3>
+  <p class="para">
+   <dl>
+
+    <dt>
+<span class="term"><i><tt class="parameter">
+image</tt></i>
+</span>
+<dd>
+<p class="para">An image resource, returned by one of the image creation functions, 
+such as <a href="function.imagecreatetruecolor.html" class="function">imagecreatetruecolor()</a>.</p></dd>
+</dt>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">x</tt></i>
+</span>
+
+     <dd>
+
+      <p class="para">
+       x-coordinate of start
+      </p>
+     </dd>
+
+    </dt>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">y</tt></i>
+</span>
+
+     <dd>
+
+      <p class="para">
+       y-coordinate of start
+      </p>
+     </dd>
+
+    </dt>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">border</tt></i>
+</span>
+
+     <dd>
+
+      <p class="para">
+       The border color. A color identifier created with 
+       <a href="function.imagecolorallocate.html" class="function">imagecolorallocate()</a>
+      </p>
+     </dd>
+
+    </dt>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">color</tt></i>
+</span>
+
+     <dd>
+
+      <p class="para">
+       The fill color. A color identifier created with 
+       <a href="function.imagecolorallocate.html" class="function">imagecolorallocate()</a>
+      </p>
+     </dd>
+
+    </dt>
+
+   </dl>
+
+  </p>
+ </div>
+
+ <div class="refsect1 returnvalues">
+  <h3 class="title">Возвращаемые значения</h3>
+  <p class="para">
+   Возвращает <b><tt>TRUE</tt></b> в случае успешного завершения или <b><tt>FALSE</tt></b> в случае возникновения ошибки.
+  </p>
+ </div>
+
+</div><hr /><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="function.imagefilledrectangle.html">imagefilledrectangle</a></div>
+ <div class="next" style="float: right;"><a href="function.imagefilter.html">imagefilter</a></div>
+ <div class="up"><a href="ref.image.html">Image Функции</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

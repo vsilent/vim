@@ -1,0 +1,108 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <title>Вычислить расхождение в массивах с дополнительной проверкой индекса,
+     осуществляемой при помощи функции, определённой пользователем</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+ </head>
+ <body><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="function.array-diff-key.html">array_diff_key</a></div>
+ <div class="next" style="float: right;"><a href="function.array-diff-ukey.html">array_diff_ukey</a></div>
+ <div class="up"><a href="ref.array.html">Функции для работы с массивами</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="function.array-diff-uassoc" class="refentry">
+   <div class="refnamediv">
+    <h1 class="refname">array_diff_uassoc</h1>
+    <p class="verinfo">(PHP 5)</p><p class="refpurpose dc-title">array_diff_uassoc — 
+     Вычислить расхождение в массивах с дополнительной проверкой индекса,
+     осуществляемой при помощи функции, определённой пользователем
+    </p>
+
+   </div>
+   <div class="refsect1 unknown">
+    <h3 class="title">Описание</h3>
+     <div class="methodsynopsis dc-description">
+      <span class="type">array</span> <span class="methodname"><b><b>array_diff_uassoc</b></b></span>
+       ( <span class="methodparam"><span class="type">array</span> <tt class="parameter">$array1</tt></span>
+      , <span class="methodparam"><span class="type">array</span> <tt class="parameter">$array2</tt></span>
+      [, <span class="methodparam"><span class="type">array</span> <tt class="parameter">$...</tt></span>
+      ], <span class="methodparam"><span class="type"><a href="language.pseudo-types.html#language.types.callback" class="type callback">callback</a></span> <tt class="parameter">$key_compare_func</tt></span>
+      )</div>
+
+    <p class="para rdfs-comment">
+     <b>array_diff_uassoc()</b> возвращает <a href="language.types.array.html" class="type array">array</a>,
+     содержащий все значения <i><tt class="parameter">array1</tt></i>
+,
+     не содержащиеся в последующих параметрах.
+     Обратите внимание, что в отличие от
+     <a href="function.array-diff.html" class="function">array_diff()</a>, для сравнения используются ключи.
+    </p>
+    <p class="para">
+     Для сравнения используется функция, определённая пользователем.
+     Она должна возвращать целое число меньшее, равное или большее нуля, если
+     первый параметр, соответственно, меньше, равен или больше второго.
+     В отличие от <a href="function.array-diff-assoc.html" class="function">array_diff_assoc()</a>, использующей
+     для сравнения встроенную функцию.
+    </p>
+    <p class="para">
+     <div class="example">
+      <p><b>Пример #1 Пример использования <b>array_diff_uassoc()</b></b></p>
+      <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">function&nbsp;</span><span style="color: #0000BB">key_compare_func</span><span style="color: #007700">(</span><span style="color: #0000BB">$a</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$b</span><span style="color: #007700">)&nbsp;<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(</span><span style="color: #0000BB">$a&nbsp;</span><span style="color: #007700">===&nbsp;</span><span style="color: #0000BB">$b</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">0</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;(</span><span style="color: #0000BB">$a&nbsp;</span><span style="color: #007700">&gt;&nbsp;</span><span style="color: #0000BB">$b</span><span style="color: #007700">)?&nbsp;</span><span style="color: #0000BB">1</span><span style="color: #007700">:-</span><span style="color: #0000BB">1</span><span style="color: #007700">;<br />}<br /><br /></span><span style="color: #0000BB">$array1&nbsp;</span><span style="color: #007700">=&nbsp;array(</span><span style="color: #DD0000">"a"&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">"green"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"b"&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">"brown"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"c"&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">"blue"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"red"</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$array2&nbsp;</span><span style="color: #007700">=&nbsp;array(</span><span style="color: #DD0000">"a"&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">"green"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"yellow"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"red"</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$result&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">array_diff_uassoc</span><span style="color: #007700">(</span><span style="color: #0000BB">$array1</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$array2</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"key_compare_func"</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">print_r</span><span style="color: #007700">(</span><span style="color: #0000BB">$result</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+      </div>
+
+      <div class="example-contents"><p>Результат выполнения данного примера:</p></div>
+      <div class="example-contents"><pre>
+<div class="cdata"><pre>
+Array
+(
+    [b] =&gt; brown
+    [c] =&gt; blue
+    [0] =&gt; red
+)
+</pre></div>
+      </pre></div>
+     </div>
+    </p>
+    <p class="simpara">
+     В нашем примере пара <i>&quot;a&quot; =&gt; &quot;green&quot;</i>
+     существует в обоих массивах и поэтому не присутствует в выводе функции.
+     Наоборот, пара <i>0 =&gt; &quot;red&quot;</i>
+     присутствует в выводе, потому что во втором аргументе значению <i>&quot;red&quot;</i>
+     соответствует ключ <i>1</i>.
+    </p>
+    <p class="simpara">
+     Равенство двух индексов проверяется при помощи функции, определённой пользователем.
+    </p>
+    <blockquote><p><b class="note">Замечание</b>: 
+     <span class="simpara">
+      Обратите внимание, что эта функция обрабатывает только одно измерение
+       n-размерного массива. Естественно, вы можете обрабатывать и более глубокие
+       уровни вложенности, например, используя
+      <i>array_diff_uassoc($array1[0], $array2[0], &quot;key_compare_func&quot;);</i>.
+     </span>
+    </p></blockquote>
+    <p class="para">
+     См. также
+     <a href="function.array-diff.html" class="function">array_diff()</a>,
+     <a href="function.array-diff-assoc.html" class="function">array_diff_assoc()</a>,
+     <a href="function.array-udiff.html" class="function">array_udiff()</a>,
+     <a href="function.array-udiff-assoc.html" class="function">array_udiff_assoc()</a>, 
+     <a href="function.array-udiff-uassoc.html" class="function">array_udiff_uassoc()</a>, 
+     <a href="function.array-intersect.html" class="function">array_intersect()</a>,  
+     <a href="function.array-intersect-assoc.html" class="function">array_intersect_assoc()</a>,
+     <a href="function.array-uintersect.html" class="function">array_uintersect()</a>,  
+     <a href="function.array-uintersect-assoc.html" class="function">array_uintersect_assoc()</a> и 
+     <a href="function.array-uintersect-uassoc.html" class="function">array_uintersect_uassoc()</a>.
+    </p>
+   </div>
+
+  </div><hr /><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="function.array-diff-key.html">array_diff_key</a></div>
+ <div class="next" style="float: right;"><a href="function.array-diff-ukey.html">array_diff_ukey</a></div>
+ <div class="up"><a href="ref.array.html">Функции для работы с массивами</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

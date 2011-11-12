@@ -1,0 +1,174 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <title>Динамически добавляет новый метод в заданный класс</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+ </head>
+ <body><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="function.classkit-import.html">classkit_import</a></div>
+ <div class="next" style="float: right;"><a href="function.classkit-method-copy.html">classkit_method_copy</a></div>
+ <div class="up"><a href="ref.classkit.html">Функции classkit</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="function.classkit-method-add" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">classkit_method_add</h1>
+  <p class="verinfo">(PECL classkit:0.1-0.4 runkit:0.7-0.9)</p><p class="refpurpose dc-title">classkit_method_add — Динамически добавляет новый метод в заданный класс</p>
+
+ </div>
+ <div class="refsect1 description">
+  <h3 class="title">Описание</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type">bool</span> <span class="methodname"><b><b>classkit_method_add</b></b></span>
+    ( <span class="methodparam"><span class="type">string</span> <tt class="parameter">$classname</tt></span>
+   , <span class="methodparam"><span class="type">string</span> <tt class="parameter">$methodname</tt></span>
+   , <span class="methodparam"><span class="type">string</span> <tt class="parameter">$args</tt></span>
+   , <span class="methodparam"><span class="type">string</span> <tt class="parameter">$code</tt></span>
+   [, <span class="methodparam"><span class="type">int</span> <tt class="parameter">$flags</tt></span>
+  ] )</div>
+
+  <div class="warning"><b class="warning">Внимание</b><p class="simpara">
+Эта функция является <em class="emphasis">ЭКСПЕРИМЕНТАЛЬНОЙ</em>.
+Поведение этой функции, ее имя и относящаяся к ней документация
+могут измениться в последующих версиях PHP без уведомления.
+Используйте эту функцию на свой страх и риск.</p></div>
+ </div>
+
+ <div class="refsect1 parameters">
+  <h3 class="title">Список параметров</h3>
+  <p class="para">
+   <dl>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">classname</tt></i>
+</span>
+
+     <dd>
+
+      <p class="para">
+       Класс, в который этот метод будет добавлен
+      </p>
+     </dd>
+
+    </dt>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">methodname</tt></i>
+</span>
+
+     <dd>
+
+      <p class="para">
+       Имя добавляемого метода
+      </p>
+     </dd>
+
+    </dt>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">args</tt></i>
+</span>
+
+     <dd>
+
+      <p class="para">
+       Список аргументов для созданного метода с разделителем &quot;,&quot;
+      </p>
+     </dd>
+
+    </dt>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">code</tt></i>
+</span>
+
+     <dd>
+
+      <p class="para">
+       Код, который будет выполняться во время вызова <i><tt class="parameter">methodname</tt></i>
+
+      </p>
+     </dd>
+
+    </dt>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">flags</tt></i>
+</span>
+
+     <dd>
+
+      <p class="para">
+       Тип создаваемого метода, может быть
+       <b><tt>CLASSKIT_ACC_PUBLIC</tt></b>,
+       <b><tt>CLASSKIT_ACC_PROTECTED</tt></b> или
+       <b><tt>CLASSKIT_ACC_PRIVATE</tt></b>
+      </p>
+      <blockquote><p><b class="note">Замечание</b>: 
+       
+        Этот параметр используется только в PHP начиная с 5 версии,
+        поскольку в предыдущих версиях все методы были общедоступными.
+       <br />
+      </p></blockquote>
+     </dd>
+
+    </dt>
+
+   </dl>
+
+  </p>
+ </div>
+
+ <div class="refsect1 returnvalues">
+  <h3 class="title">Возвращаемые значения</h3>
+  <p class="para">
+   Возвращает <b><tt>TRUE</tt></b> в случае успешного завершения или <b><tt>FALSE</tt></b> в случае возникновения ошибки.
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 examples">
+  <h3 class="title">Примеры</h3>
+  <p class="para">
+   <div class="example">
+    <p><b>Пример #1 Пример использования <b>classkit_method_add()</b></b></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">class&nbsp;</span><span style="color: #0000BB">Example&nbsp;</span><span style="color: #007700">{<br />&nbsp;&nbsp;&nbsp;&nbsp;function&nbsp;</span><span style="color: #0000BB">foo</span><span style="color: #007700">()&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"foo!\n"</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />}<br /><br /></span><span style="color: #FF8000">//&nbsp;создается&nbsp;объект&nbsp;Example<br /></span><span style="color: #0000BB">$e&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">Example</span><span style="color: #007700">();<br /><br /></span><span style="color: #FF8000">//&nbsp;Добавляется&nbsp;новый&nbsp;общедоступный&nbsp;метод<br /></span><span style="color: #0000BB">classkit_method_add</span><span style="color: #007700">(<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'Example'</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'add'</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'$num1,&nbsp;$num2'</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'return&nbsp;$num1&nbsp;+&nbsp;$num2;'</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">CLASSKIT_ACC_PUBLIC<br /></span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">//&nbsp;сложение&nbsp;12&nbsp;+&nbsp;4<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">$e</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">add</span><span style="color: #007700">(</span><span style="color: #0000BB">12</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">4</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+    <div class="example-contents"><p>Результат выполнения данного примера:</p></div>
+    <div class="example-contents"><pre>
+<div class="cdata"><pre>
+16
+</pre></div>
+    </pre></div>
+   </div>
+  </p>
+ </div>
+
+ <div class="refsect1 seealso">
+  <h3 class="title">Смотрите также</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"><a href="function.classkit-method-copy.html" class="function" rel="rdfs-seeAlso">classkit_method_copy()</a></li>
+    <li class="member"><a href="function.classkit-method-redefine.html" class="function" rel="rdfs-seeAlso">classkit_method_redefine()</a></li>
+    <li class="member"><a href="function.classkit-method-remove.html" class="function" rel="rdfs-seeAlso">classkit_method_remove()</a></li>
+    <li class="member"><a href="function.classkit-method-rename.html" class="function" rel="rdfs-seeAlso">classkit_method_rename()</a></li>
+    <li class="member"><a href="function.create-function.html" class="function" rel="rdfs-seeAlso">create_function()</a></li>
+   </ul>
+  </p>
+ </div>
+
+</div><hr /><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="function.classkit-import.html">classkit_import</a></div>
+ <div class="next" style="float: right;"><a href="function.classkit-method-copy.html">classkit_method_copy</a></div>
+ <div class="up"><a href="ref.classkit.html">Функции classkit</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

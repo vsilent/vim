@@ -1,0 +1,107 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <title>Читает строку из файла</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+ </head>
+ <body><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="function.fgetcsv.html">fgetcsv</a></div>
+ <div class="next" style="float: right;"><a href="function.fgetss.html">fgetss</a></div>
+ <div class="up"><a href="ref.filesystem.html">Файловая система</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="function.fgets" class="refentry">
+   <div class="refnamediv">
+    <h1 class="refname">fgets</h1>
+    <p class="verinfo">(PHP 4, PHP 5)</p><p class="refpurpose dc-title">fgets — Читает строку из файла</p>
+
+   </div>
+   <div class="refsect1 unknown">
+    <h3 class="title">Описание</h3>
+     <div class="methodsynopsis dc-description">
+      <span class="type">string</span> <span class="methodname"><b><b>fgets</b></b></span>
+       ( <span class="methodparam"><span class="type">resource</span> <tt class="parameter">$handle</tt></span>
+      [, <span class="methodparam"><span class="type">int</span> <tt class="parameter">$length</tt></span>
+     ] )</div>
+
+    <p class="para rdfs-comment">
+     Возвращает строку размером в <i><tt class="parameter">length</tt></i>
+ - 1 байт, прочитанную
+     из дескриптора файла, на который указывает параметр <i><tt class="parameter">handle</tt></i>
+.
+     Чтение заканчивается, когда количество прочитанных байтов достигает
+     <i><tt class="parameter">length</tt></i>
+ - 1, по достижении конца строки
+     (который включается в возвращаемое значение) или по достижении конца файла
+     (что бы ни встретилось первым). Если длина не указана, по умолчанию ее 
+     значение равно 1 килобайту или 1024 байтам.
+    </p>
+    <p class="para">
+     В случае возникновения ошибки функция возвращает <b><tt>FALSE</tt></b>.
+    </p>
+    <p class="para">
+     Наиболее распространенные ошибки:
+    </p>
+    <p class="simpara">
+     Программисты, привыкшие к семантике &#039;C&#039; функции <b>fgets()</b>,
+     должны принимать во внимание разницу в том, каким образом возвращается
+     признак достижения конца файла (<i>EOF</i>).
+    </p>
+    
+    <p class="para">Указатель на файл должен быть корректным и указывать
+на файл, успешно открытый функциями  <a href="function.fopen.html" class="function">fopen()</a> или
+<a href="function.fsockopen.html" class="function">fsockopen()</a>.</p>
+
+    <p class="para">
+     Ниже приведен простой пример:
+     <div class="example"> 
+      <p><b>Пример #1 Построчное чтение файла</b></p>
+      <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$handle&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">fopen</span><span style="color: #007700">(</span><span style="color: #DD0000">"/tmp/inputfile.txt"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"r"</span><span style="color: #007700">);<br />while&nbsp;(!</span><span style="color: #0000BB">feof</span><span style="color: #007700">(</span><span style="color: #0000BB">$handle</span><span style="color: #007700">))&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$buffer&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">fgets</span><span style="color: #007700">(</span><span style="color: #0000BB">$handle</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">4096</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #0000BB">$buffer</span><span style="color: #007700">;<br />}<br /></span><span style="color: #0000BB">fclose</span><span style="color: #007700">(</span><span style="color: #0000BB">$handle</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+      </div>
+
+     </div>
+    </p>
+    <blockquote><p><b class="note">Замечание</b>: 
+     <span class="simpara">
+      Параметр <i><tt class="parameter">length</tt></i>
+ стал необязательным, начиная
+      с PHP версии 4.2.0. Если этот параметр опущен, длина строки принимается
+      за 1024. С версии PHP 4.3, отсутствие параметра <i><tt class="parameter">length</tt></i>
+
+      будет приводить к чтению потока до конца строки. Если длина большинства строк
+      в файле превышает 8 килобайт, наиболее эффективным решением в отношении
+      ресурсов, используемых скриптом, будет указание максимальной длины строки.
+     </span>
+    </p></blockquote>
+    <blockquote><p><b class="note">Замечание</b>: 
+     <span class="simpara">
+      Данная функция может корректно обрабатывать двоичные данные, начиная
+      с версии PHP 4.3. Более ранние версии не обладали этой функциональностью.
+     </span>
+    </p></blockquote>
+    <blockquote><p><b class="note">Замечание</b>: <span class="simpara">Если у вас возникают проблемы
+с распознаванием <i>PHP</i> окончания строк при чтении
+файлов на Macintosh-совместимом компьютере или при чтении файлов, созданных
+на Macintosh-совместимом компьютере, необходимо включить опцию
+<a href="filesystem.configuration.html#ini.auto-detect-line-endings" class="link">auto_detect_line_endings</a>.
+</span></p></blockquote>
+    <p class="para"> 
+     См. также <a href="function.fread.html" class="function">fread()</a>, 
+     <a href="function.fgetc.html" class="function">fgetc()</a>,
+     <a href="function.stream-get-line.html" class="function">stream_get_line()</a>,
+     <a href="function.fopen.html" class="function">fopen()</a>,
+     <a href="function.popen.html" class="function">popen()</a>, 
+     <a href="function.fsockopen.html" class="function">fsockopen()</a> и
+     <a href="function.stream-set-timeout.html" class="function">stream_set_timeout()</a>.
+    </p>
+   </div>
+
+  </div><hr /><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="function.fgetcsv.html">fgetcsv</a></div>
+ <div class="next" style="float: right;"><a href="function.fgetss.html">fgetss</a></div>
+ <div class="up"><a href="ref.filesystem.html">Файловая система</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

@@ -1,0 +1,51 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <title>Преобразует текст на иврите из логической кодировки в визуальную с 
+      преобразованием перевода строки.</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+ </head>
+ <body><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="function.hebrev.html">hebrev</a></div>
+ <div class="next" style="float: right;"><a href="function.html-entity-decode.html">html_entity_decode</a></div>
+ <div class="up"><a href="ref.strings.html">Функции обработки строк</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="function.hebrevc" class="refentry">
+   <div class="refnamediv">
+    <h1 class="refname">hebrevc</h1>
+    <p class="verinfo">(PHP 4, PHP 5)</p><p class="refpurpose dc-title">hebrevc — 
+      Преобразует текст на иврите из логической кодировки в визуальную с 
+      преобразованием перевода строки.
+    </p>
+
+   </div>
+   <div class="refsect1 unknown">
+    <h3 class="title">Description</h3>
+     <div class="methodsynopsis dc-description">
+      <span class="type">string</span> <span class="methodname"><b><b>hebrevc</b></b></span>
+       ( <span class="methodparam"><span class="type">string</span> <tt class="parameter">$hebrew_text</tt></span>
+      [, <span class="methodparam"><span class="type">int</span> <tt class="parameter">$max_chars_per_line</tt></span>
+     ] )</div>
+
+    <p class="para rdfs-comment">
+     Эта функция похожа на <a href="function.hebrev.html" class="function">hebrev()</a> с тем отличием, что
+     что она преобразует символы перевода строки (\n) в &quot;&lt;br&gt;\n&quot;. 
+     Необязательный аргумент <i><tt class="parameter">max_chars_per_line</tt></i>
+
+     предписывает вставлять символы перевода строки таким образом, чтобы
+     результат не содержал строк длиннее, чем
+     <i><tt class="parameter">max_chars_per_line</tt></i>
+ символов, не разрывая 
+     слова.
+    </p>
+    <p class="para">
+     См. также описание функции <a href="function.hebrev.html" class="function">hebrev()</a>.
+    </p>
+   </div>
+
+  </div><hr /><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="function.hebrev.html">hebrev</a></div>
+ <div class="next" style="float: right;"><a href="function.html-entity-decode.html">html_entity_decode</a></div>
+ <div class="up"><a href="ref.strings.html">Функции обработки строк</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

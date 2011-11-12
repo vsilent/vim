@@ -1,0 +1,82 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <title>Экранирует спецсимволы в строке</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+ </head>
+ <body><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="function.addcslashes.html">addcslashes</a></div>
+ <div class="next" style="float: right;"><a href="function.bin2hex.html">bin2hex</a></div>
+ <div class="up"><a href="ref.strings.html">Функции обработки строк</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="function.addslashes" class="refentry">
+   <div class="refnamediv">
+    <h1 class="refname">addslashes</h1>
+    <p class="verinfo">(PHP 4, PHP 5)</p><p class="refpurpose dc-title">addslashes — Экранирует спецсимволы в строке</p>
+
+   </div>
+   <div class="refsect1 unknown">
+    <h3 class="title">Описание</h3>
+     <div class="methodsynopsis dc-description">
+      <span class="type">string</span> <span class="methodname"><b><b>addslashes</b></b></span>
+       ( <span class="methodparam"><span class="type">string</span> <tt class="parameter">$str</tt></span>
+      )</div>
+
+    <p class="para rdfs-comment">
+     Возвращает сроку <i><tt class="parameter">str</tt></i>
+, в которой перед каждым 
+     спецсимволом  добавлен обратный слэш (<i>\</i>), например 
+     для последующего использования этой строки в запросе к базе данных. 
+     Экранируются одиночная кавычка (<i>&#039;</i>), дойная кавычка
+     (<i>&quot;</i>), обратный слэш (<i>\</i>) и NUL 
+     (байт <b><tt>NULL</tt></b>).
+    </p>
+    <p class="para">
+     Функция <b>addslashes()</b> часто применяется при записи 
+     в базу данных.  Предположим, если нужно внести в базу данных имя 
+     <i>O&#039;reilly</i>, то символ <i>&#039;</i> должен 
+     быть экранирован. В большинстве баз данных для этого используется
+     <i>\</i>, строка будет выглядеть как 
+     <i>O\&#039;reilly</i>. Заметьте, что сам символ 
+     <i>\</i> в базу данных записан не будет.   Если директива
+     конфигурации <a href="sybase.configuration.html#ini.magic-quotes-sybase" class="link">magic_quotes_sybase</a>
+     имеет значение <i>on</i>, то символ <i>&#039;</i> 
+     будет экранироваться добавлением еще одного <i>&#039;</i> 
+     вместо <i>\</i>.
+    </p>
+    <p class="para">
+     Директива конфигурации 
+     <a href="info.configuration.html#ini.magic-quotes-gpc" class="link">magic_quotes_gpc</a> 
+     по умолчанию имеет значение <i>on</i>, при этом функция
+     <b>addslashes()</b> автоматически применяется ко всем данным GET, POST,
+     и COOKIE.  Не используйте <b>addslashes()</b> для данных, 
+     обработанных <a href="info.configuration.html#ini.magic-quotes-gpc" class="link">magic_quotes_gpc</a>,
+     чтобы избежать двойного экранирования.  Для проверки состояния этой 
+     директивы используется <a href="function.get-magic-quotes-gpc.html" class="function">get_magic_quotes_gpc()</a>.
+    </p>
+    <p class="para">
+     <div class="example">
+      <p><b>Пример #1 Пример использования <b>addslashes()</b></b></p>
+      <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$str&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">"Is&nbsp;your&nbsp;name&nbsp;O'reilly?"</span><span style="color: #007700">;<br /><br /></span><span style="color: #FF8000">//&nbsp;выводит:&nbsp;Is&nbsp;your&nbsp;name&nbsp;O\'reilly?<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">addslashes</span><span style="color: #007700">(</span><span style="color: #0000BB">$str</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+      </div>
+
+     </div>
+    </p>
+    <p class="para">
+     См. также описание функций <a href="function.stripslashes.html" class="function">stripslashes()</a>, 
+     <a href="function.htmlspecialchars.html" class="function">htmlspecialchars()</a>,
+     <a href="function.quotemeta.html" class="function">quotemeta()</a> и
+     <a href="function.get-magic-quotes-gpc.html" class="function">get_magic_quotes_gpc()</a>.
+    </p>
+   </div>
+
+  </div><hr /><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="function.addcslashes.html">addcslashes</a></div>
+ <div class="next" style="float: right;"><a href="function.bin2hex.html">bin2hex</a></div>
+ <div class="up"><a href="ref.strings.html">Функции обработки строк</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

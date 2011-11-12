@@ -1,0 +1,72 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <title>Сжимает данные с использованием bzip2</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+ </head>
+ <body><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="function.bzclose.html">bzclose</a></div>
+ <div class="next" style="float: right;"><a href="function.bzdecompress.html">bzdecompress</a></div>
+ <div class="up"><a href="ref.bzip2.html">Bzip2</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="function.bzcompress" class="refentry">
+   <div class="refnamediv">
+    <h1 class="refname">bzcompress</h1>
+    <p class="verinfo">(PHP 4 &gt;= 4.3.3, PHP 5, PECL bz2:1.0)</p><p class="refpurpose dc-title">bzcompress — Сжимает данные с использованием bzip2</p>
+
+   </div>
+   <div class="refsect1 unknown">
+    <h3 class="title">Описание</h3>
+     <div class="methodsynopsis dc-description">
+      <span class="type">string</span> <span class="methodname"><b><b>bzcompress</b></b></span>
+       ( <span class="methodparam"><span class="type">string</span> <tt class="parameter">$source</tt></span>
+      [, <span class="methodparam"><span class="type">integer</span> <tt class="parameter">$blocksize</tt></span>
+      [, <span class="methodparam"><span class="type">integer</span> <tt class="parameter">$workfactor</tt></span>
+     ]] )</div>
+
+    <p class="para rdfs-comment">
+     <b>bzcompress()</b> возвращает строку
+     <i><tt class="parameter">source</tt></i>
+, сжатую с использованием bzip2.
+    </p>
+    <p class="para">
+     Опциональный параметр <i><tt class="parameter">blocksize</tt></i>
+ указывает
+     размер  блока используемого во время сжатия и должен быть числом от
+     1 до 9, где 9 даёт наилучшее качество сжатия, но использует больше
+     ресурсов. По умолчанию <i><tt class="parameter">blocksize</tt></i>
+ равен
+     4.
+    </p>
+    <p class="para">
+     Опциональный параметр <i><tt class="parameter">workfactor</tt></i>
+ указывает
+     как поведёт себя процесс сжатия в худшем случае, при частоповторяющихся
+     блоках. Параметр может принимать значения от 0 до 250, с 0 в 
+     специальном случае и с 30 по умолчанию. Независимо от параметра
+     <i><tt class="parameter">workfactor</tt></i>
+, результат сжатия всегда один.
+    </p>
+    <p class="para">
+     <div class="example">
+      <p><b>Пример #1 Пример использования <b>bzcompress()</b></b></p>
+      <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$str&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">"sample&nbsp;data"</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$bzstr&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">bzcompress</span><span style="color: #007700">(</span><span style="color: #0000BB">$str</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">9</span><span style="color: #007700">);<br />print(&nbsp;</span><span style="color: #0000BB">$bzstr&nbsp;</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+      </div>
+
+     </div>
+    </p>
+    <p class="para">
+     См. также <a href="function.bzdecompress.html" class="function">bzdecompress()</a>.
+    </p>
+   </div>
+
+  </div><hr /><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="function.bzclose.html">bzclose</a></div>
+ <div class="next" style="float: right;"><a href="function.bzdecompress.html">bzdecompress</a></div>
+ <div class="up"><a href="ref.bzip2.html">Bzip2</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

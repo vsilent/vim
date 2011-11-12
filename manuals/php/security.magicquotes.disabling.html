@@ -1,0 +1,81 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <title>Отключение волшебных кавычек</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+ </head>
+ <body><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="security.magicquotes.html">Волшебные кавычки</a></div>
+ <div class="next" style="float: right;"><a href="security.hiding.html">Сокрытие PHP</a></div>
+ <div class="up"><a href="security.magicquotes.html">Волшебные кавычки</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="security.magicquotes.disabling" class="sect1">
+    <h2 class="title">Отключение волшебных кавычек</h2>
+    <p class="para">
+     Директиву <a href="info.configuration.html#ini.magic-quotes-gpc" class="link">magic_quotes_gpc</a>
+     можно отключить только на системном уровне и нельзя во время выполениня.
+     В других случаях, использование <a href="function.ini-set.html" class="function">ini_set()</a> не
+     дает эффекта.
+    </p>
+    <p class="para">
+     <div class="example">
+      <p><b>Пример #1 Отключение волшебных кавычек на сервере</b></p>
+      <div class="example-contents"><p>
+       Пример, где показана установка значения <i>Off</i> в
+       <var class="filename">php.ini</var> для этих директив. Для дополнительной информации читайте
+       раздел руководства под названием <a href="configuration.changes.html" class="link">
+       Как изменять параметры конфигурации</a>.
+      </p></div>
+      <div class="example-contents"><pre>
+<div class="cdata"><pre>
+; Волшебные кавычки
+;
+
+; Волшебные кавычки для входных данных GET/POST/Cookie.
+magic_quotes_gpc = Off
+
+; Волшебные кавычки для данных, поступающих во время выполнения (например, данные из SQL, из exec() и т.д).
+magic_quotes_runtime = Off
+
+; Использование волшебных кавычек в стиле Sybase (экранирование &#039; путем &#039;&#039; вместо \&#039;).
+magic_quotes_sybase = Off
+</pre></div>
+      </pre></div>
+      <div class="example-contents"><p>
+       Если доступ к конфигурации на сервере невозможен, используйте
+       <var class="filename">.htaccess</var> в качестве альтернативы.
+       Например:
+      </p></div>
+      <div class="example-contents"><pre>
+<div class="cdata"><pre>
+php_flag magic_quotes_gpc Off
+</pre></div>
+      </pre></div>
+     </div>
+    </p>
+    <p class="para">
+     В целях написания переносимого кода (код, который будет работать
+     на любой платформе), и в случае невозможности изменения конфигурации
+     на сервере, показан пример отключения <a href="info.configuration.html#ini.magic-quotes-gpc" class="link">
+     magic_quotes_gpc</a> в скрипте. Этот метод неэффективен, так как
+     предпочтительно устанавливать соответствующие директивы в другом
+     месте.
+    </p>
+    <p class="para">
+     <div class="example">
+      <p><b>Пример #2 Отключение волшебных кавычек в скрипте</b></p>
+      <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">if&nbsp;(</span><span style="color: #0000BB">get_magic_quotes_gpc</span><span style="color: #007700">())&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;function&nbsp;</span><span style="color: #0000BB">stripslashes_deep</span><span style="color: #007700">(</span><span style="color: #0000BB">$value</span><span style="color: #007700">)<br />&nbsp;&nbsp;&nbsp;&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$value&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">is_array</span><span style="color: #007700">(</span><span style="color: #0000BB">$value</span><span style="color: #007700">)&nbsp;?<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">array_map</span><span style="color: #007700">(</span><span style="color: #DD0000">'stripslashes_deep'</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$value</span><span style="color: #007700">)&nbsp;:<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">stripslashes</span><span style="color: #007700">(</span><span style="color: #0000BB">$value</span><span style="color: #007700">);<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">$value</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$_POST&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">array_map</span><span style="color: #007700">(</span><span style="color: #DD0000">'stripslashes_deep'</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$_POST</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$_GET&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">array_map</span><span style="color: #007700">(</span><span style="color: #DD0000">'stripslashes_deep'</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$_GET</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$_COOKIE&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">array_map</span><span style="color: #007700">(</span><span style="color: #DD0000">'stripslashes_deep'</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$_COOKIE</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$_REQUEST&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">array_map</span><span style="color: #007700">(</span><span style="color: #DD0000">'stripslashes_deep'</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$_REQUEST</span><span style="color: #007700">);<br />}<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+      </div>
+
+     </div>
+    </p>
+   </div><hr /><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="security.magicquotes.html">Волшебные кавычки</a></div>
+ <div class="next" style="float: right;"><a href="security.hiding.html">Сокрытие PHP</a></div>
+ <div class="up"><a href="security.magicquotes.html">Волшебные кавычки</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

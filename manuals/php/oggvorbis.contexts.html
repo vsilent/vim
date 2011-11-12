@@ -1,0 +1,96 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <title>Context options</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+ </head>
+ <body><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="oggvorbis.constants.html">Предопределенные константы</a></div>
+ <div class="next" style="float: right;"><a href="oggvorbis.examples.html">Примеры</a></div>
+ <div class="up"><a href="book.oggvorbis.html">oggvorbis</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div>  
+ <h1>Context options</h1>
+
+ <table border="5">
+  <caption><b>OGG/Vorbis tuning options</b></caption>
+  <colgroup>
+
+   <thead valign="middle">
+    <tr valign="middle">
+     <th colspan="1">Option</th>
+     <th colspan="1">Definition</th>
+     <th colspan="1">Relevance</th>
+     <th colspan="1">Default</th>
+    </tr>
+
+   </thead>
+
+   <tbody valign="middle" class="tbody">
+    <tr valign="middle">
+     <td colspan="1" rowspan="1" align="left">pcm_mode</td>
+     <td colspan="1" rowspan="1" align="left">PCM byte encoding used.  See constants below.</td>
+     <td colspan="1" rowspan="1" align="left">Read / Write</td>
+     <td colspan="1" rowspan="1" align="left"><b><tt>OGGVORBIS_PCM_S16_LE</tt></b></td>
+    </tr>
+
+    <tr valign="middle">
+     <td colspan="1" rowspan="1" align="left">rate</td>
+     <td colspan="1" rowspan="1" align="left">PCM Sampling rate.  Measured in Hz.</td>
+     <td colspan="1" rowspan="1" align="left">Write only</td>
+     <td colspan="1" rowspan="1" align="left"><b><tt>44100</tt></b></td>
+    </tr>
+
+    <tr valign="middle">
+     <td colspan="1" rowspan="1" align="left">bitrate</td>
+     <td colspan="1" rowspan="1" align="left">
+      Vorbis Average Bitrate Encoding / Variable Bitrate Encoding.  
+      Measured in bps (ABR) or Quality level (VBR: 0.0 to 1.0).  
+      128000 ABR is rough equal to 0.4 VBR.
+     </td>
+     <td colspan="1" rowspan="1" align="left">Write only</td>
+     <td colspan="1" rowspan="1" align="left"><b><tt>128000</tt></b></td>
+    </tr>
+
+    <tr valign="middle">
+     <td colspan="1" rowspan="1" align="left">channels</td>
+     <td colspan="1" rowspan="1" align="left">Number of PCM channels.  1 == Mono, 2 == Stereo.</td>
+     <td colspan="1" rowspan="1" align="left">Write only</td>
+     <td colspan="1" rowspan="1" align="left"><b><tt>2</tt></b></td>
+    </tr>
+
+    <tr valign="middle">
+     <td colspan="1" rowspan="1" align="left">serialno</td>
+     <td colspan="1" rowspan="1" align="left">
+      Serial Number of stream within file.  Must be unique within file.
+      Because of the potential to select a duplicate serial number within
+      a chained file, make efforts to manually assign unique numbers when
+      encoding.
+     </td>
+     <td colspan="1" rowspan="1" align="left">Write only</td>
+     <td colspan="1" rowspan="1" align="left"><em class="emphasis">Random</em></td>
+    </tr>
+
+    <tr valign="middle">
+     <td colspan="1" rowspan="1" align="left">comments</td>
+     <td colspan="1" rowspan="1" align="left">
+      Associative array of file comments.  
+      Will be translated to <i>strtoupper($name) . &quot;=$value&quot;</i>.
+      Note: This context option is not available in oggvorbis-0.1
+     </td>
+     <td colspan="1" rowspan="1" align="left">Write only</td>
+     <td colspan="1" rowspan="1" align="left"><b><tt>array(&#039;ENCODER&#039; =&gt; &#039;PHP/OggVorbis, http://pear.php.net/oggvorbis&#039;)</tt></b></td>
+    </tr>
+
+   </tbody>
+  </colgroup>
+
+ </table>
+
+</div>
+<hr /><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="oggvorbis.constants.html">Предопределенные константы</a></div>
+ <div class="next" style="float: right;"><a href="oggvorbis.examples.html">Примеры</a></div>
+ <div class="up"><a href="book.oggvorbis.html">oggvorbis</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

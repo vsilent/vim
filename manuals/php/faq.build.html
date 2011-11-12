@@ -1,0 +1,684 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <title>Проблемы Сборки</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+ </head>
+ <body><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="faq.installation.html">Установка</a></div>
+ <div class="next" style="float: right;"><a href="faq.using.html">Использование PHP</a></div>
+ <div class="up"><a href="faq.html">ЧАВО</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div>
+  <h1>Проблемы Сборки</h1>
+
+  
+
+   <p class="para">
+    В этом разделе собраны наиболее общие ошибки, возникающие на этапе сборки.
+   </p>
+
+  <div class="qandaset"><ol class="qandaset_questions"><li><a href="#faq.build.configure">
+     
+      Я получил последнюю версию PHP, используя анонимный CVS,
+      но в нём нет конфигурационного скрипта!
+     
+    </a></li><li><a href="#faq.build.configuring">
+     
+      У меня возникают проблемы при конфигурировании PHP для работы с Apache.
+      Он говорит, что не может найти httpd.h,
+      хотя файл находится точно там, где я сказал!
+     
+    </a></li><li><a href="#faq.build.lex">
+     
+      Во время конфигурации PHP (./configure)
+      вы наталкиваетесь на ошибку, схожую со следующим:
+     
+     
+      
+       checking lex output file root... ./configure: lex: command not found
+       configure: error: cannot find output from lex; giving up
+      
+     
+    </a></li><li><a href="#faq.build.apache-sharedcore">
+     
+      Когда я пытаюсь запустить Apache, я получаю следующее сообщение:
+     
+     
+      
+       fatal: relocation error: file /path/to/libphp4.so:
+       symbol ap_block_alarms: referenced symbol not found
+      
+     
+    </a></li><li><a href="#faq.build.not-found">
+     
+      Когда я запускаю configure, он говорит, что не может найти файлы
+      include или библиотеку для GD, gdbm или какого-либо другого пакета!
+     
+    </a></li><li><a href="#faq.build.yytname">
+     
+      При компиляции файла language-parser.tab.c
+      мне выдаются ошибки, говорящие yytname undeclared.
+     
+    </a></li><li><a href="#faq.build.link">
+     
+      Когда я запускаю make, похоже, он выполняется нормально,
+      но на конечной линковке жалуется, что не может найти некоторые файлы.
+     
+    </a></li><li><a href="#faq.build.undefined">
+     
+      При компиляции PHP, он жалуется на некоторые неопределённые ссылки.
+     
+    </a></li><li><a href="#faq.build.Apache">
+     
+      Я не могу понять как собрать PHP c Apache 1.3.
+     
+    </a></li><li><a href="#faq.build.not-running">
+     
+      Я следовал всем шагам по установке модульной версии для Apache на Unix,
+      но мои PHP скрипты выводятся в моём браузере или я получаю запрос сохранить
+      файл.
+      
+    </a></li><li><a href="#faq.build.activate-module">
+     
+      Говорится использовать:
+      --activate-module=src/modules/php4/libphp4.a,
+      но такой файл не существует, поэтому я заменил это на
+      --activate-module=src/modules/php4/libmodphp4.a
+      и оно не работает!? Что происходит?
+     
+    </a></li><li><a href="#faq.build.ansi">
+     
+      Когда я пытаюсь собрать Apache c PHP, в виде статического модуля, используя
+      --activate-module=src/modules/php4/libphp4.a
+      он говорит, что мой компилятор не ANSI-совместимый.
+     
+    </a></li><li><a href="#faq.build.apxs">
+     
+      Когда я пытаюсь собрать PHP используя
+      --with-apxs,
+      я получаю странное сообщение об ошибке.
+     
+    </a></li><li><a href="#faq.build.microtime">
+     
+      Во время выполнения make я получаю ошибки в microtime
+      и множество всяких RUSAGE_.
+    
+    </a></li><li><a href="#faq.build.mysql.tempnam">
+     
+      При компиляции PHP с MySQL, configure выполняется нормально, 
+      но во время make я получаю ошибку типа следующего:
+      ext/mysql/libmysql/my_tempnam.o(.text+0x46): In function 
+      my_tempnam&#039;: /php4/ext/mysql/libmysql/my_tempnam.c:103: the 
+      use of tempnam&#039; is dangerous, better use mkstemp&#039;, 
+      в чём дело?
+     
+    </a></li><li><a href="#faq.build.upgrade">
+     
+      Я хочу обновить мой PHP. Где я могу найти строку 
+      ./configure, которая была использована для моей
+      текущей PHP установки?
+     
+    </a></li><li><a href="#faq.build.gdlibs">
+     
+      При сборке PHP с библиотекой GD, либо выдаются странные ошибки компиляции,
+      либо segfault при выполнении.
+     
+    </a></li><li><a href="#faq.installation.needgnu">
+     
+      При компиляции PHP я, кажется, получаю случайные ошибки, например она зависает.  
+      Я использую Solaris, если это имеет значение.
+     
+    </a></li></ol>
+   <dl>
+    <dt><strong>
+     <p class="para">
+      Я получил последнюю версию PHP, используя анонимный CVS,
+      но в нём нет конфигурационного скрипта!
+     </p>
+    </strong></dt>
+    <dd><a name="faq.build.configure"></a>
+     <p class="para">
+      Вам нужен установленный пакет GNU autoconf для того, чтобы сгенерировать
+      конфигурационный скрипт из <var class="filename">configure.in</var>.
+      После получения исходников с CVS сервера просто запустите
+      <strong class="command">./buildconf</strong> в директории верхнего уровня.
+      (Также, если вы запускаете configure без опции
+      <i>--enable-maintainer-mode</i>, то конфигурационный 
+      скрипт не будет перестроен автоматически при изменении файла
+      <var class="filename">configure.in</var>, поэтому вам необходимо делать это
+      вручную, когда вы заметите, что configure.in изменился.
+      Один из симптомов - появление таких вещей как @VARIABLE@ в вашем Makefile
+      после выполнения configure или <var class="filename">config.status</var>)
+     </p>
+    </dd>
+   </dl>
+
+   <dl>
+    <dt><strong>
+     <p class="para">
+      У меня возникают проблемы при конфигурировании PHP для работы с Apache.
+      Он говорит, что не может найти <var class="filename">httpd.h</var>,
+      хотя файл находится точно там, где я сказал!
+     </p>
+    </strong></dt>
+    <dd><a name="faq.build.configuring"></a>
+     <p class="para">
+      Для configure/setup скрипта вам необходимо указать
+      директорию верхнего уровня, в которой находятся исходники Apache.
+      Это означает, что вам надо задать <span class="option">--with-apache=/path/to/apache</span>,
+      а <em class="emphasis">не</em> <span class="option">--with-apache=/path/to/apache/src</span>.
+     </p>
+    </dd>
+   </dl>
+
+   <dl>
+    <dt><strong>
+     <p class="para">
+      Во время конфигурации PHP (<i>./configure</i>)
+      вы наталкиваетесь на ошибку, схожую со следующим:
+     </p>
+     <p class="para">
+      <div class="example-contents"><pre>
+       checking lex output file root... ./configure: lex: command not found
+       configure: error: cannot find output from lex; giving up
+      </pre></div>
+     </p>
+    </strong></dt>
+    <dd><a name="faq.build.lex"></a>
+     <p class="para">
+      Не забудьте внимательно прочитать инструкции по 
+      <a href="install.unix.html" class="link">установке</a> и заметьте, что для 
+      компиляции PHP вам нужны оба flex и bison установленные.
+      В зависимости от ваших настроек, установите bison и flex либо из 
+      исходников, либо из RPM пакетов.
+     </p>
+    </dd>
+   </dl>
+
+   <dl>
+    <dt><strong>
+     <p class="para">
+      Когда я пытаюсь запустить Apache, я получаю следующее сообщение:
+     </p>
+     <p class="para">
+      <div class="example-contents"><pre>
+       fatal: relocation error: file /path/to/libphp4.so:
+       symbol ap_block_alarms: referenced symbol not found
+      </pre></div>
+     </p>
+    </strong></dt>
+    <dd><a name="faq.build.apache-sharedcore"></a>
+     <p class="para">
+      Эта ошибка обычно появляется, если ядро Apache было скомпилировано как
+      разделяемая библиотека DSO. Попробуйте переконфигурировать Apache,
+      используя, по крайней мере, следующие флаги:
+     </p>
+     <p class="para">
+      <div class="example-contents"><pre>
+      --enable-shared=max --enable-rule=SHARED_CORE
+      </pre></div>
+     </p>
+     <p class="para">
+      Для более подробной информации читайте файл <var class="filename">INSTALL</var>
+      верхнего уровня или 
+      <a href="http://httpd.apache.org/docs/1.3/dso.html" class="link external">&raquo; страницу руководства Apache по DSO</a>.
+     </p>
+    </dd>
+   </dl>
+
+   <dl>
+    <dt><strong>
+     <p class="para">
+      Когда я запускаю configure, он говорит, что не может найти файлы
+      include или библиотеку для GD, gdbm или какого-либо другого пакета!
+     </p>
+    </strong></dt>
+    <dd><a name="faq.build.not-found"></a>
+     <p class="para">
+      Вы можете сделать так, что скрипт configure будет искать файлы заголовков
+      или библиотеки в нестандартных местах, задав дополнительные флаги для 
+      С препроцессора и компоновщика, такие как:
+      <div class="example-contents">
+<div class="cdata"><pre>
+    CPPFLAGS=-I/path/to/include LDFLAGS=-L/path/to/library ./configure
+</pre></div>
+      </div>
+
+      Если вы используете csh-подобную оболочку (почему?), то это будет:
+      <div class="example-contents">
+<div class="cdata"><pre>
+    env CPPFLAGS=-I/path/to/include LDFLAGS=-L/path/to/library ./configure
+</pre></div>
+      </div>
+
+     </p>
+    </dd>
+   </dl>
+
+   <dl>
+    <dt><strong>
+     <p class="para">
+      При компиляции файла <var class="filename">language-parser.tab.c</var>
+      мне выдаются ошибки, говорящие <i>yytname undeclared</i>.
+     </p>
+    </strong></dt>
+    <dd><a name="faq.build.yytname"></a>
+     <p class="para">
+      Вам необходимо обновить вашу версию Bison. Последнюю версию можно найти на
+      <a href="http://www.gnu.org/software/bison/bison.html" class="link external">&raquo; http://www.gnu.org/software/bison/bison.html</a>.
+     </p>
+    </dd>
+   </dl>
+
+   <dl>
+    <dt><strong>
+     <p class="para">
+      Когда я запускаю <strong class="command">make</strong>, похоже, он выполняется нормально,
+      но на конечной линковке жалуется, что не может найти некоторые файлы.
+     </p>
+    </strong></dt>
+    <dd><a name="faq.build.link"></a>
+     <p class="para">
+      Некоторые старые версии make ошибочно не помещают скомпилированые файлы в
+      поддиректорию functions в той же директории.
+      Попробуйте выполнить <strong class="command">cp *.o functions</strong> и затем
+      перезапустить <strong class="command">make</strong>. Если это помогло, то вам действительно
+      надо установить свежую версию GNU make.
+     </p>
+    </dd>
+   </dl>
+
+   <dl>
+    <dt><strong>
+     <p class="para">
+      При компиляции PHP, он жалуется на некоторые неопределённые ссылки.
+     </p>
+    </strong></dt>
+    <dd><a name="faq.build.undefined"></a>
+     <p class="para">
+      Посмотрите на строку для компоновки и убедитесь, что все нужные библиотеки
+      добавлены в конце. Часто забывают &#039;-ldl&#039; и библиотеки, необходимые для
+      поддержки подключенных баз данных.
+     </p>
+     <p class="para">
+      Если вы компонуете с Apache 1.2.x, не забыли ли вы добавить
+      соответствующую информацию в строку EXTRA_LIBS в файле Configuration
+      и перезапустить Configure скрипт для Apache? Смотрите
+      <a href="install.html" class="link">инструкции по установке</a>
+      для дополнительной информации.
+     </p>
+     <p class="para">
+      Некоторые люди также сообщают, что при компоновке с Apache
+      им пришлось добавить &#039;-ldl&#039; сразу после <var class="filename">libphp4.a</var>.
+     </p>
+    </dd>
+   </dl>
+
+   <dl>
+    <dt><strong>
+     <p class="para">
+      Я не могу понять как собрать PHP c Apache 1.3.
+     </p>
+    </strong></dt>
+    <dd><a name="faq.build.Apache"></a>
+     <p class="para">
+      На самом деле это очень легко. Аккуратно выполните следующие шаги:
+      <ul class="itemizedlist">
+       <li class="listitem">
+        <span class="simpara">
+         Получите последний дистрибутив Apache 1.3 с 
+         <a href="http://www.apache.org/dist/httpd/" class="link external">&raquo; http://www.apache.org/dist/httpd/</a>.
+        </span>
+       </li>
+       <li class="listitem">
+        <span class="simpara">
+         Раскомпрессуйте и разархивируйте (ungzip/untar) его где-нибудь,
+         для примера в
+         <var class="filename">/usr/local/src/apache-1.3</var>.
+        </span>
+       </li>
+       <li class="listitem">
+        <span class="simpara">
+         Скомпилируйте PHP, сперва запустив
+         <strong class="command">./configure --with-apache=/&lt;path&gt;/apache-1.3</strong>
+         (замените &lt;path&gt; на ваш настоящий путь к директории apache-1.3.)
+        </span>
+       </li>
+       <li class="listitem">
+        <span class="simpara">
+         Введите <strong class="command">make</strong> с последующим
+         <strong class="command">make install</strong> для того, чтобы построить PHP
+         и скопировать все необходимые файлы в дерево дистрибутива Apache.
+        </span>
+       </li>
+       <li class="listitem">
+        <span class="simpara">
+         Перейдите в вашу директорию
+         <var class="filename">/&lt;path&gt;/apache-1.3/src</var>
+         и отредактируйте файл <var class="filename">Configuration</var>. 
+         Добавьте в файл: 
+         <i>AddModule modules/php4/libphp4.a</i>.
+        </span>
+       </li>
+       <li class="listitem">
+        <span class="simpara">
+         Введите: <strong class="command">./configure</strong> и затем <i>make</i>.
+        </span>
+       </li>
+       <li class="listitem">
+        <span class="simpara">
+         Теперь у вас должен быть бинарник httpd, поддерживающий PHP!
+        </span>
+       </li>
+      </ul>
+     </p>
+     <p class="para">
+      <em class="emphasis">Замечание:</em> Вы также можете использовать новый скрипт
+      <i>./configure</i> в Apache. Смотрите инструкции в файле
+      <i>README.configure</i>, входящем в ваш дистрибутив Apache.
+      Также загляните в файл <var class="filename">INSTALL</var> из дистрибутива PHP.
+     </p>
+    </dd>
+   </dl>
+
+   <dl>
+    <dt><strong>
+     <p class="para">
+      Я следовал всем шагам по установке модульной версии для Apache на Unix,
+      но мои PHP скрипты выводятся в моём браузере или я получаю запрос сохранить
+      файл.
+      </p>
+    </strong></dt>
+    <dd><a name="faq.build.not-running"></a>
+     <p class="para">
+      Это означает, что по какой-то причине модуль PHP не вызывается.
+      Перед тем как обращаться за помощью, проверьте три вещи:
+      <ul class="itemizedlist">
+       <li class="listitem">
+        <span class="simpara">
+         Убедитесь, что запускаемый вами бинарник httpd действительно новый,
+         только что построенный httpd. Для этого попробуйте запустить:
+         <i>/path/to/binary/httpd -l</i>
+        </span>
+        <span class="simpara">
+         Если вы не видете <var class="filename">mod_php4.c</var> в списке,
+         то вы запускаете не тот бинарник.
+         Найдите и установите правильный бинарник.
+        </span>
+       </li>
+       <li class="listitem">
+        <span class="simpara">
+         Убедитесь, что вы добавили правильный Mime Type в один из ваших
+         <i>Apache .conf</i> файлов.  Это должно быть:
+         <i>AddType application/x-httpd-php3 .php3</i> (for PHP 3)
+        </span>
+        <span class="simpara">
+         или <i>AddType application/x-httpd-php .php</i> (for PHP 4)
+        </span>
+        <span class="simpara">
+         Также убедитесь, что эта строка AddType не попала внутрь  
+         &lt;Virtualhost&gt; или &lt;Directory&gt; блока, так что она
+         не будет применина к местонахождению вашего тестового скрипта.
+        </span>
+       </li>
+       <li class="listitem">
+        <span class="simpara">
+         Наконец, между Apache 1.2 и Apache 1.3 расположение конфигурационных 
+         файлов Apache по умолчанию изменилось. Вам надо проверить, что
+         действительно читается тот конфигурационный файл, в который вы добавили
+         строку AddType. Вы можете внести очевидную синтаксическую ошибку 
+         в ваш <var class="filename">httpd.conf</var> файл или какое-либо другое заметное изменение,
+         которое покажет вам, что читается правильный файл. 
+        </span>
+       </li>
+      </ul>
+     </p>
+    </dd>
+   </dl>
+
+   <dl>
+    <dt><strong>
+     <p class="para">
+      Говорится использовать:
+      <i>--activate-module=src/modules/php4/libphp4.a</i>,
+      но такой файл не существует, поэтому я заменил это на
+      <i>--activate-module=src/modules/php4/libmodphp4.a</i>
+      и оно не работает!? Что происходит?
+     </p>
+    </strong></dt>
+    <dd><a name="faq.build.activate-module"></a>
+     <p class="para">
+      Заметьте, что файл <var class="filename">libphp4.a</var> не должен существовать.
+      Он будет создан в процессе!
+     </p>
+    </dd>
+   </dl>
+
+   <dl>
+    <dt><strong>
+     <p class="para">
+      Когда я пытаюсь собрать Apache c PHP, в виде статического модуля, используя
+      <i>--activate-module=src/modules/php4/libphp4.a</i>
+      он говорит, что мой компилятор не ANSI-совместимый.
+     </p>
+    </strong></dt>
+    <dd><a name="faq.build.ansi"></a>
+     <p class="para">
+      Сообщение об ошибке вводит в заблуждение; это исправлено в более свежих
+      версиях Apache.
+     </p>
+    </dd>
+   </dl>
+
+   <dl>
+    <dt><strong>
+     <p class="para">
+      Когда я пытаюсь собрать PHP используя
+      <span class="option">--with-apxs</span>,
+      я получаю странное сообщение об ошибке.
+     </p>
+    </strong></dt>
+    <dd><a name="faq.build.apxs"></a>
+     <p class="para">
+      Проверьте три вещи. Во-первых, по какой-то причине, когда Apache создает
+      Perl скрипт apxs, он получается без правильного компилятора и 
+      переменных, задающих флаги.
+      Найдите ваш apxs скрипт (попробуйте команду <strong class="command">which apxs</strong>), 
+      иногда он установлен как <var class="filename">/usr/local/apache/bin/apxs</var>
+      или <var class="filename">/usr/sbin/apxs</var>.
+      Откройте его и найдите строки, схожие с этими:
+      <div class="example-contents">
+<div class="cdata"><pre>
+my $CFG_CFLAGS_SHLIB  = &#039; &#039;;          # substituted via Makefile.tmpl
+my $CFG_LD_SHLIB      = &#039; &#039;;          # substituted via Makefile.tmpl
+my $CFG_LDFLAGS_SHLIB = &#039; &#039;;          # substituted via Makefile.tmpl
+</pre></div>
+      </div>
+
+      Если они так и выглядят, то вы нашли вашу проблему. Они могут содержать
+      только пробелы или другие неправильные значения, такие как &#039;q()&#039;.
+      Измените эти строки на:
+      <div class="example-contents">
+<div class="cdata"><pre>
+my $CFG_CFLAGS_SHLIB  = &#039;-fpic -DSHARED_MODULE&#039;; # substituted via Makefile.tmpl
+my $CFG_LD_SHLIB      = &#039;gcc&#039;;                   # substituted via Makefile.tmpl
+my $CFG_LDFLAGS_SHLIB = q(-shared);              # substituted via Makefile.tmpl 
+</pre></div>
+      </div>
+
+      Вторая возможная проблема возникает только на Red Hat 6.1 и 6.2.
+      Скрипт apxs, приходящий с Red Hat, сломан. Ищите эту строку:
+      <div class="example-contents">
+<div class="cdata"><pre>
+my $CFG_LIBEXECDIR    = &#039;modules&#039;;         # substituted via APACI install
+</pre></div>
+      </div>
+
+      Если вы нашли вышеприведенную строку, измените её на следующее:
+      <div class="example-contents">
+<div class="cdata"><pre>
+my $CFG_LIBEXECDIR    = &#039;/usr/lib/apache&#039;; # substituted via APACI install
+</pre></div>
+      </div>
+
+       И последнее, если вы переконфигурируете/переустанавливаете Apache,
+       запустите <strong class="command">make clean</strong> 
+       после <strong class="command">./configure</strong> и перед <strong class="command">make</strong>.
+     </p>
+    </dd>
+   </dl>
+
+   <dl>
+    <dt><strong>
+     <p class="para">
+      Во время выполнения <strong class="command">make</strong> я получаю ошибки в microtime
+      и множество всяких <i>RUSAGE_</i>.
+    </p>
+    </strong></dt>
+    <dd><a name="faq.build.microtime"></a>
+     <p class="para">
+      Во время инсталяции, выполняя <strong class="command">make</strong>,
+      если вы сталкиваетесь с проблемами, похожими на следующее:
+      <div class="example-contents">
+<div class="cdata"><pre>
+microtime.c: In function `php_if_getrusage&#039;:
+microtime.c:94: storage size of `usg&#039; isn&#039;t known
+microtime.c:97: `RUSAGE_SELF&#039; undeclared (first use in this function)
+microtime.c:97: (Each undeclared identifier is reported only once
+microtime.c:97: for each function it appears in.)
+microtime.c:103: `RUSAGE_CHILDREN&#039; undeclared (first use in this function)
+make[3]: *** [microtime.lo] Error 1
+make[3]: Leaving directory `/home/master/php-4.0.1/ext/standard&#039;
+make[2]: *** [all-recursive] Error 1
+make[2]: Leaving directory `/home/master/php-4.0.1/ext/standard&#039;
+make[1]: *** [all-recursive] Error 1
+make[1]: Leaving directory `/home/master/php-4.0.1/ext&#039;
+make: *** [all-recursive] Error 1
+</pre></div>
+      </div>
+
+     </p>
+     <p class="para">
+      Ваша система сломана. Вы должны поправить ваши файлы 
+      <var class="filename">/usr/include</var>, установив пакет glibc-devel,
+      который соответствует вашей glibc. Это абсолютно не зависит от PHP.
+      Для доказательства попробуйте следующий простой тест:
+     <div class="example-contents">
+<div class="cdata"><pre>
+$ cat &gt;test.c &lt;&lt;X
+#include &lt;sys/resource.h&gt;
+X
+$ gcc -E test.c &gt;/dev/null
+</pre></div>
+      </div>
+
+      Если выдаются ошибки, вы знаете, что у вас беспорядок с include файлами.
+     </p>
+    </dd>
+   </dl>
+   
+   <dl>
+    <dt><strong>
+     <p class="para">
+      При компиляции PHP с MySQL, configure выполняется нормально, 
+      но во время <i>make</i> я получаю ошибку типа следующего:
+      <em class="emphasis">ext/mysql/libmysql/my_tempnam.o(.text+0x46): In function 
+      my_tempnam&#039;: /php4/ext/mysql/libmysql/my_tempnam.c:103: the 
+      use of tempnam&#039; is dangerous, better use mkstemp&#039;</em>, 
+      в чём дело?
+     </p>
+    </strong></dt>
+    <dd><a name="faq.build.mysql.tempnam"></a>
+     <p class="para">
+      Во-первых, важно понимать, что это <i>Предупреждение</i>,
+      а не фатальная ошибка. Так как это последнее, что выводится во время
+      <i>make</i>, оно может выглядеть как фатальная ошибка,
+      но это не так. Конечно, если ваш компилятор умирает на Предупреждениях
+      (Warnings), то тогда да. Также имейте ввиду, что поддержка MySQL
+      включена по умолчанию.
+     </p>
+     <blockquote><p><b class="note">Замечание</b>: 
+      
+       Начиная с PHP 4.3.2 вы также будете видеть следующуий текст после
+       того как сборка (make) завершится:
+      <br />
+      
+       <div class="example-contents"><pre>
+        Build complete.
+        (It is safe to ignore warnings about tempnam and tmpnam).
+       </pre></div>
+      <br />
+     </p></blockquote>
+    </dd>
+   </dl>
+   
+   <dl>
+    <dt><strong>
+     <p class="para">
+      Я хочу обновить мой PHP. Где я могу найти строку 
+      <strong class="command">./configure</strong>, которая была использована для моей
+      текущей PHP установки?
+     </p>
+    </strong></dt>
+    <dd><a name="faq.build.upgrade"></a>
+     <p class="para">
+      Либо смотрите файл config.nice в дереве исходников вашей текущей PHP
+      установки, либо, если это недоступно, просто выполните скрипт:
+      <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php&nbsp;phpinfo</span><span style="color: #007700">();&nbsp;</span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+      </div>
+
+      В начале вывода будет находиться строка <strong class="command">./configure</strong>,
+      которая была использована для сборки текущего PHP.
+     </p>
+    </dd>
+   </dl>
+   
+   <dl>
+    <dt><strong>
+     <p class="para">
+      При сборке PHP с библиотекой GD, либо выдаются странные ошибки компиляции,
+      либо segfault при выполнении.
+     </p>
+    </strong></dt>
+    <dd><a name="faq.build.gdlibs"></a>
+     <p class="para">
+      Убедитесь, что ваша библиотека GD и PHP линкуются с одними и теми же 
+      зависимыми библиотеками (например libpng).
+     </p>
+    </dd>
+   </dl>   
+   
+   <dl>
+    <dt><strong>
+     <p class="para">
+      При компиляции PHP я, кажется, получаю случайные ошибки, например она зависает.  
+      Я использую Solaris, если это имеет значение.
+     </p>
+    </strong></dt>
+    <dd><a name="faq.installation.needgnu"></a>
+     <p class="para">
+      Использование не GNU утилит во время компиляции PHP может вызвать проблемы.
+      Чтобы быть уверенным, что компиляция PHP будет работать,
+      используйте GNU утилиты. Например, в Solaris, использование  
+      SunOS BSD-совместимой или Solaris версии <i>sed</i>
+      не будет работать, а GNU или Sun POSIX (xpg4) версии
+      <i>sed</i> будет. 
+      Ссылки: <a href="http://www.gnu.org/software/sed/sed.html" class="link external">&raquo; GNU sed</a>,
+      <a href="http://www.gnu.org/software/flex/flex.html" class="link external">&raquo; GNU flex</a>, and
+      <a href="http://www.gnu.org/software/bison/bison.html" class="link external">&raquo; GNU bison</a>.
+     </p>
+    </dd>
+   </dl>
+  </div>
+ </div>
+<hr /><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="faq.installation.html">Установка</a></div>
+ <div class="next" style="float: right;"><a href="faq.using.html">Использование PHP</a></div>
+ <div class="up"><a href="faq.html">ЧАВО</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

@@ -1,0 +1,299 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <title>Область видимости переменной</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+ </head>
+ <body><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="language.variables.predefined.html">Предопределенные переменные</a></div>
+ <div class="next" style="float: right;"><a href="language.variables.variable.html">Переменные переменные</a></div>
+ <div class="up"><a href="language.variables.html">Переменные</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="language.variables.scope" class="sect1">
+   <h2 class="title">Область видимости переменной</h2>
+
+   <p class="simpara">
+    Область видимости переменной - это среда, в которой она определена.
+    В большинстве случаев все переменные PHP имеют единую область
+    видимости. Эта единая область видимости охватывает также
+    включаемые (include) и требуемые (require) файлы. Например:
+   </p>
+   <div class="informalexample">
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$a&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">1</span><span style="color: #007700">;<br />include&nbsp;</span><span style="color: #DD0000">"b.inc"</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+   <p class="simpara">
+    Здесь переменная <var class="varname">$a</var> будет доступна внутри
+    включенного скрипта <var class="filename">b.inc</var>. Однако, внутри
+    определенных пользователем функций вводится локальная область
+    видимости функции. Любая, используемая внутри функции переменная,
+    по умолчанию ограничена локальной областью видимости функции.
+    Например:
+   </p>
+    
+   <div class="informalexample">
+    <div class="example-contents"> 
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$a&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">1</span><span style="color: #007700">;&nbsp;</span><span style="color: #FF8000">/*&nbsp;глобальная&nbsp;область&nbsp;видимости&nbsp;*/&nbsp;<br /><br /></span><span style="color: #007700">function&nbsp;</span><span style="color: #0000BB">Test</span><span style="color: #007700">()<br />{&nbsp;<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #0000BB">$a</span><span style="color: #007700">;&nbsp;</span><span style="color: #FF8000">/*&nbsp;ссылка&nbsp;на&nbsp;переменную&nbsp;локальной&nbsp;области&nbsp;видимости&nbsp;*/&nbsp;<br /></span><span style="color: #007700">}&nbsp;<br /><br /></span><span style="color: #0000BB">Test</span><span style="color: #007700">();<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+
+   <p class="simpara">
+    Этот скрипт не сгенерирует никакого вывода, поскольку выражение
+    echo указывает на локальную версию переменной
+    <var class="varname">$a</var>, а в пределах этой области видимости ей не
+    не было присвоено значение. Возможно вы заметили, что это немного
+    отличается от языка C в том, что глобальные переменные в C
+    автоматически доступны функциям, если только они не были
+    перезаписаны локальным определением. Это может вызвать некоторые
+    проблемы, поскольку люди могут нечаянно изменить глобальную
+    переменную. В PHP, если глобальная переменная будет использоваться
+    внутри функции, она должна быть объявлена глобальной внутри нее.
+   </p>
+       
+   <div id="language.variables.scope.global" class="sect2">
+    <h3 class="title">Ключевое слово global</h3>
+    <p class="simpara">
+     Сначала пример использования <i>global</i>:
+    </p>
+    <p class="para">
+     <div class="example">
+      <p><b>Пример #1 Использование global</b></p>
+      <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$a&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">1</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$b&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">2</span><span style="color: #007700">;<br /><br />function&nbsp;</span><span style="color: #0000BB">Sum</span><span style="color: #007700">()<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;global&nbsp;</span><span style="color: #0000BB">$a</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$b</span><span style="color: #007700">;<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$b&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$a&nbsp;</span><span style="color: #007700">+&nbsp;</span><span style="color: #0000BB">$b</span><span style="color: #007700">;<br />}&nbsp;<br /><br /></span><span style="color: #0000BB">Sum</span><span style="color: #007700">();<br />echo&nbsp;</span><span style="color: #0000BB">$b</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+      </div>
+
+     </div>
+    </p>
+
+   <p class="simpara">
+    Вышеприведенный скрипт выведет &quot;3&quot;. После определения
+    <var class="varname">$a</var> и <var class="varname">$b</var> внутри функции как
+    global все ссылки на любую из этих переменных будут указывать на
+    их глобальную версию. Не существует никаких ограничений на
+    количество глобальных переменных, которые могут обрабатываться
+    функцией.
+   </p>
+
+   <p class="simpara">
+    Второй способ доступа к переменным глобальной области видимости -
+    использование специального, определяемого PHP массива
+    <var class="varname">$GLOBALS</var>. Предыдущий пример может быть переписан
+    так:
+   </p>
+   <p class="para">
+    <div class="example">
+     <p><b>Пример #2 Использование <var class="varname">$GLOBALS</var> вместо global</b></p>
+     <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$a&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">1</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$b&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">2</span><span style="color: #007700">;<br /><br />function&nbsp;</span><span style="color: #0000BB">Sum</span><span style="color: #007700">()<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$GLOBALS</span><span style="color: #007700">[</span><span style="color: #DD0000">"b"</span><span style="color: #007700">]&nbsp;=&nbsp;</span><span style="color: #0000BB">$GLOBALS</span><span style="color: #007700">[</span><span style="color: #DD0000">"a"</span><span style="color: #007700">]&nbsp;+&nbsp;</span><span style="color: #0000BB">$GLOBALS</span><span style="color: #007700">[</span><span style="color: #DD0000">"b"</span><span style="color: #007700">];<br />}&nbsp;<br /><br /></span><span style="color: #0000BB">Sum</span><span style="color: #007700">();<br />echo&nbsp;</span><span style="color: #0000BB">$b</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+     </div>
+
+    </div>
+   </p>
+
+   <p class="simpara">
+    <var class="varname">$GLOBALS</var> - это ассоциативный массив, ключом
+    которого является имя, а значением - содержимое глобальной
+    переменной. Обратите внимание, что <var class="varname">$GLOBALS</var>
+    существует в любой области видимости, это объясняется тем, что
+    этот массив является <a href="language.variables.superglobals.html" class="link">суперглобальным</a>.
+    Ниже приведен пример, демонстрирующий возможности
+    суперглобальных переменных:
+   </p>
+   <p class="para">
+    <div class="example">
+     <p><b>Пример #3 Суперглобальные переменные и область видимости</b></p>
+     <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">function&nbsp;</span><span style="color: #0000BB">test_global</span><span style="color: #007700">()<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;Большинство&nbsp;предопределенных&nbsp;переменных&nbsp;не&nbsp;являются<br />&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;"супер"&nbsp;и&nbsp;чтобы&nbsp;быть&nbsp;доступными&nbsp;в&nbsp;локальной&nbsp;области<br />&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;видимости&nbsp;функции&nbsp;требуют&nbsp;указания&nbsp;'global'.<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">global&nbsp;</span><span style="color: #0000BB">$HTTP_POST_VARS</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #0000BB">$HTTP_POST_VARS</span><span style="color: #007700">[</span><span style="color: #DD0000">'name'</span><span style="color: #007700">];<br />&nbsp;&nbsp;&nbsp;&nbsp;<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;Суперглобальные&nbsp;переменные&nbsp;доступны&nbsp;в&nbsp;любой&nbsp;области<br />&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;видимости&nbsp;и&nbsp;не&nbsp;требуют&nbsp;указания&nbsp;'global'.<br />&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;Суперглобальные&nbsp;переменные&nbsp;доступны,&nbsp;начиная&nbsp;с&nbsp;PHP&nbsp;4.1.0<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">$_POST</span><span style="color: #007700">[</span><span style="color: #DD0000">'name'</span><span style="color: #007700">];<br />}<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+     </div>
+
+    </div>
+   </p>
+  </div>
+ 
+  <div id="language.variables.scope.static" class="sect2">
+   <h3 class="title">Использование статических переменных</h3>
+   <p class="simpara">
+    Другой важной возможностью области видимости переменной является
+    <em class="emphasis">статическая</em> переменная. Статическая
+    переменная существует только в локальной области видимости
+    функции, но не теряет своего значения, когда выполнение программы
+    выходит из этой области видимости. Рассмотрим следующий пример:
+   </p>
+   <p class="para">
+    <div class="example">
+     <p><b>Пример #4 Демонстрация необходимости статических переменных</b></p>
+     <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">function&nbsp;</span><span style="color: #0000BB">Test&nbsp;</span><span style="color: #007700">()<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$a&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">0</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #0000BB">$a</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$a</span><span style="color: #007700">++;<br />}<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+     </div>
+
+    </div>
+   </p>
+   <p class="simpara">
+    Эта функция абсолютно бесполезна поскольку при каждом вызове она
+    устанавливает <var class="varname">$a</var> в <i>0</i> и
+    выводит &quot;0&quot;. Инкремент переменной <var class="varname">$a</var>++
+    здесь не играет роли, так как при выходе из функции переменная
+    <var class="varname">$a</var> исчезает. Чтобы написать полезную считающую
+    функцию, которая не будет терять текущего значения счетчика,
+    переменная <var class="varname">$a</var> объявляется как static:
+   </p>
+   <p class="para">
+    <div class="example">
+     <p><b>Пример #5 Пример использования статических переменных</b></p>
+     <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">function&nbsp;</span><span style="color: #0000BB">Test</span><span style="color: #007700">()<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;static&nbsp;</span><span style="color: #0000BB">$a&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">0</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #0000BB">$a</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$a</span><span style="color: #007700">++;<br />}<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+     </div>
+
+    </div>
+   </p>
+   <p class="simpara">
+    Теперь при каждом вызове функция Test() будет выводить значение
+    <var class="varname">$a</var> и инкрементировать его.
+   </p>
+
+   <p class="simpara">
+    Статические переменные также дают возможность работать с
+    рекурсивными функциями. Рекурсивной является функция, вызывающая
+    саму себя. При написании рекурсивной функции нужно быть
+    внимательным, поскольку есть вероятность сделать рекурсию
+    бесконечной. Вы должны убедиться, что существует адекватный
+    способ завершения рекурсии. Следующая простая функция рекурсивно
+    считает до 10, используя для определения момента остановки
+    статическую переменную <var class="varname">$count</var>:
+   </p>
+   <p class="para">
+    <div class="example">
+     <p><b>Пример #6 Статические переменные и рекурсивные функции</b></p>
+     <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">function&nbsp;</span><span style="color: #0000BB">Test</span><span style="color: #007700">()<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;static&nbsp;</span><span style="color: #0000BB">$count&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">0</span><span style="color: #007700">;<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$count</span><span style="color: #007700">++;<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #0000BB">$count</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(</span><span style="color: #0000BB">$count&nbsp;</span><span style="color: #007700">&lt;&nbsp;</span><span style="color: #0000BB">10</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">Test&nbsp;</span><span style="color: #007700">();<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$count</span><span style="color: #007700">--;<br />}<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+     </div>
+
+    </div>
+   </p>
+
+    <blockquote><p><b class="note">Замечание</b>:   
+     
+       Статические переменные могут быть объявлены так, как показано
+       в предыдущем примере. Попытка присвоить этим переменным
+       значения, являющиеся результатом выражений, вызовет ошибку
+       обработки.
+     <br /> 
+       
+      <div class="example">
+       <p><b>Пример #7 Объявление статических переменных</b></p>
+       <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">function&nbsp;</span><span style="color: #0000BB">foo</span><span style="color: #007700">(){<br />&nbsp;&nbsp;&nbsp;&nbsp;static&nbsp;</span><span style="color: #0000BB">$int&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">0</span><span style="color: #007700">;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;верно<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">static&nbsp;</span><span style="color: #0000BB">$int&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">1</span><span style="color: #007700">+</span><span style="color: #0000BB">2</span><span style="color: #007700">;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;неверно&nbsp;&nbsp;(поскольку&nbsp;это&nbsp;выражение)<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">static&nbsp;</span><span style="color: #0000BB">$int&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">sqrt</span><span style="color: #007700">(</span><span style="color: #0000BB">121</span><span style="color: #007700">);&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;неверно&nbsp;&nbsp;(поскольку&nbsp;это&nbsp;тоже&nbsp;выражение)<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$int</span><span style="color: #007700">++;<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #0000BB">$int</span><span style="color: #007700">;<br />}<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+      </div>
+
+     </div>
+    <br />
+   </p></blockquote>
+  </div>
+
+  <div id="language.variables.scope.references" class="sect2">
+   <h3 class="title">Ссылки с глобальными и статическими переменными</h3>
+   <p class="simpara">
+    Движок Zend 1, лежащий в основе <i>PHP 4</i>, оперирует
+    модификаторами переменных
+    <a href="language.variables.scope.html#language.variables.scope.static" class="link">static</a> и
+    <a href="language.variables.scope.html#language.variables.scope.global" class="link">global</a> как
+    <a href="language.references.html" class="link">ссылками</a>. Например, реальная
+    глобальная переменная, внедренная в область видимости функции указанием
+    ключевого слова <i>global</i>, в действительности создает
+    ссылку на глобальную переменную. Это может привести к неожиданному
+    поведению, как это показано в следующем примере:
+   </p>
+
+   <div class="informalexample">
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">function&nbsp;</span><span style="color: #0000BB">test_global_ref</span><span style="color: #007700">()&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;global&nbsp;</span><span style="color: #0000BB">$obj</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$obj&nbsp;</span><span style="color: #007700">=&nbsp;&amp;new&nbsp;</span><span style="color: #0000BB">stdclass</span><span style="color: #007700">;<br />}<br /><br />function&nbsp;</span><span style="color: #0000BB">test_global_noref</span><span style="color: #007700">()&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;global&nbsp;</span><span style="color: #0000BB">$obj</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$obj&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">stdclass</span><span style="color: #007700">;<br />}<br /><br /></span><span style="color: #0000BB">test_global_ref</span><span style="color: #007700">();<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$obj</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">test_global_noref</span><span style="color: #007700">();<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$obj</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+
+   <p class="simpara">
+    Выполнение этого примера сгенерирует следующий вывод:
+   </p>
+
+   <div class="example-contents"><pre>
+NULL
+object(stdClass)(0) {
+}
+   </pre></div>
+
+   <p class="simpara">
+    Аналогично ведет себя и выражение <i>static</i>. Ссылки не
+    хранятся статично:
+   </p>
+   
+   <div class="informalexample">
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">function&nbsp;&amp;</span><span style="color: #0000BB">get_instance_ref</span><span style="color: #007700">()&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;static&nbsp;</span><span style="color: #0000BB">$obj</span><span style="color: #007700">;<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"Static&nbsp;object:&nbsp;"</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$obj</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(!isset(</span><span style="color: #0000BB">$obj</span><span style="color: #007700">))&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;Присвоить&nbsp;ссылку&nbsp;статической&nbsp;переменной<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$obj&nbsp;</span><span style="color: #007700">=&nbsp;&amp;new&nbsp;</span><span style="color: #0000BB">stdclass</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$obj</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">property</span><span style="color: #007700">++;<br />&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">$obj</span><span style="color: #007700">;<br />}<br /><br />function&nbsp;&amp;</span><span style="color: #0000BB">get_instance_noref</span><span style="color: #007700">()&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;static&nbsp;</span><span style="color: #0000BB">$obj</span><span style="color: #007700">;<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"Static&nbsp;object:&nbsp;"</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$obj</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(!isset(</span><span style="color: #0000BB">$obj</span><span style="color: #007700">))&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;Присвоить&nbsp;объект&nbsp;статической&nbsp;переменной<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$obj&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">stdclass</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$obj</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">property</span><span style="color: #007700">++;<br />&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">$obj</span><span style="color: #007700">;<br />}<br /><br /></span><span style="color: #0000BB">$obj1&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">get_instance_ref</span><span style="color: #007700">();<br /></span><span style="color: #0000BB">$still_obj1&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">get_instance_ref</span><span style="color: #007700">();<br />echo&nbsp;</span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$obj2&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">get_instance_noref</span><span style="color: #007700">();<br /></span><span style="color: #0000BB">$still_obj2&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">get_instance_noref</span><span style="color: #007700">();<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+
+   <p class="simpara">
+    Выполнение этого примера сгенерирует следующий вывод:
+   </p>
+
+   <div class="example-contents"><pre>
+Static object: NULL
+Static object: NULL
+
+Static object: NULL
+Static object: object(stdClass)(1) {
+  [&quot;property&quot;]=&gt;
+  int(1)
+}
+   </pre></div>
+
+   <p class="simpara">
+    Этот пример демонстрирует, что при присвоении ссылки статической
+    переменной она не <em class="emphasis">запоминается</em>, когда вы
+    вызываете функцию <i>&amp;get_instance_ref()</i> во
+    второй раз.
+   </p>
+   </div>
+  </div><hr /><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="language.variables.predefined.html">Предопределенные переменные</a></div>
+ <div class="next" style="float: right;"><a href="language.variables.variable.html">Переменные переменные</a></div>
+ <div class="up"><a href="language.variables.html">Переменные</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

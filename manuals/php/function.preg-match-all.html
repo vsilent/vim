@@ -1,0 +1,229 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <title>Выполняет глобальный поиск шаблона в строке</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+ </head>
+ <body><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="function.preg-last-error.html">preg_last_error</a></div>
+ <div class="next" style="float: right;"><a href="function.preg-match.html">preg_match</a></div>
+ <div class="up"><a href="ref.pcre.html">PCRE</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="function.preg-match-all" class="refentry">
+   <div class="refnamediv">
+    <h1 class="refname">preg_match_all</h1>
+    <p class="verinfo">(PHP 4, PHP 5)</p><p class="refpurpose dc-title">preg_match_all — Выполняет глобальный поиск шаблона в строке</p>
+
+   </div>
+   <div class="refsect1 unknown">
+    <h3 class="title">Описание</h3>
+     <div class="methodsynopsis dc-description">
+      <span class="type">int</span> <span class="methodname"><b><b>preg_match_all</b></b></span>
+       ( <span class="methodparam"><span class="type">string</span> <tt class="parameter">$pattern</tt></span>
+      , <span class="methodparam"><span class="type">string</span> <tt class="parameter">$subject</tt></span>
+      , <span class="methodparam"><span class="type">array</span> <tt class="parameter">$&amp;matches</tt></span>       [, <span class="methodparam"><span class="type">int</span> <tt class="parameter">$flags</tt></span>
+      [, <span class="methodparam"><span class="type">int</span> <tt class="parameter">$offset</tt></span>
+     ]] )</div>
+
+    <p class="para rdfs-comment">
+    Ищет в строке <i><tt class="parameter">subject</tt></i>
+ все совпадения с шаблоном
+    <i><tt class="parameter">pattern</tt></i>
+ и помещает результат в массив
+	<i><tt class="parameter">matches</tt></i>
+ в порядке, определяемом комбинацией флагов
+     <i><tt class="parameter">flags</tt></i>
+.
+    </p>
+    <p class="para">
+     После нахождения первого соответствия последующие поиски будут осуществляться
+     не с начала строки, а от конца последнего найденного вхождения.
+    </p>
+    <p class="para">
+     Дополнительный параметр <i><tt class="parameter">flags</tt></i>
+ может комбинировать следующие значения
+     (необходимо понимать, что использование <b><tt>PREG_PATTERN_ORDER</tt></b> одновременно с <b><tt>PREG_SET_ORDER</tt></b> бессмысленно):
+     <dl>
+
+      <dt>
+
+       <span class="term">PREG_PATTERN_ORDER</span>
+
+       <dd>
+
+        <p class="para">
+         Если этот флаг установлен, результат будет упорядочен следующим образом:
+         элемент $matches[0]  содержит массив полных вхождений шаблона,
+         элемент $matches[1] содержит массив вхождений первой подмаски, и так далее.
+        </p>
+        <p class="para">
+         <div class="informalexample">
+          <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />preg_match_all</span><span style="color: #007700">(</span><span style="color: #DD0000">"|&lt;[^&gt;]+&gt;(.*)&lt;/[^&gt;]+&gt;|U"</span><span style="color: #007700">,&nbsp;<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">"&lt;b&gt;example:&nbsp;&lt;/b&gt;&lt;div&nbsp;align=left&gt;this&nbsp;is&nbsp;a&nbsp;test&lt;/div&gt;"</span><span style="color: #007700">,&nbsp;<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$out</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">PREG_PATTERN_ORDER</span><span style="color: #007700">);<br />echo&nbsp;</span><span style="color: #0000BB">$out</span><span style="color: #007700">[</span><span style="color: #0000BB">0</span><span style="color: #007700">][</span><span style="color: #0000BB">0</span><span style="color: #007700">]&nbsp;.&nbsp;</span><span style="color: #DD0000">",&nbsp;"&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #0000BB">$out</span><span style="color: #007700">[</span><span style="color: #0000BB">0</span><span style="color: #007700">][</span><span style="color: #0000BB">1</span><span style="color: #007700">]&nbsp;.&nbsp;</span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br />echo&nbsp;</span><span style="color: #0000BB">$out</span><span style="color: #007700">[</span><span style="color: #0000BB">1</span><span style="color: #007700">][</span><span style="color: #0000BB">0</span><span style="color: #007700">]&nbsp;.&nbsp;</span><span style="color: #DD0000">",&nbsp;"&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #0000BB">$out</span><span style="color: #007700">[</span><span style="color: #0000BB">1</span><span style="color: #007700">][</span><span style="color: #0000BB">1</span><span style="color: #007700">]&nbsp;.&nbsp;</span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+          </div>
+
+          <p class="para">
+           Результат работы примера:
+          </p>
+          <div class="example-contents"><pre>
+<div class="cdata"><pre>
+&lt;b&gt;example: &lt;/b&gt;, &lt;div align=left&gt;this is a test&lt;/div&gt;
+example: , this is a test
+</pre></div>
+          </pre></div>
+          <p class="para">
+          Как мы видим, $out[0] содержит массив полных вхождений шаблона,
+          а элемент $out[1] содержит массив подстрок, содержащихся в тегах.
+          </p>
+         </div>
+        </p>
+       </dd>
+
+      </dt>
+
+      <dt>
+
+       <span class="term">PREG_SET_ORDER</span>
+
+       <dd>
+
+        <p class="para">
+         Если этот флаг установлен, результат будет упорядочен следующим образом:
+         элемент $matches[0] содержит первый набор вхождений, 
+         элемент $matches[1] содержит второй набор вхождений, и так далее.
+         <div class="informalexample">
+          <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />preg_match_all</span><span style="color: #007700">(</span><span style="color: #DD0000">"|&lt;[^&gt;]+&gt;(.*)&lt;/[^&gt;]+&gt;|U"</span><span style="color: #007700">,&nbsp;<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">"&lt;b&gt;example:&nbsp;&lt;/b&gt;&lt;div&nbsp;align=\"left\"&gt;this&nbsp;is&nbsp;a&nbsp;test&lt;/div&gt;"</span><span style="color: #007700">,&nbsp;<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$out</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">PREG_SET_ORDER</span><span style="color: #007700">);<br />echo&nbsp;</span><span style="color: #0000BB">$out</span><span style="color: #007700">[</span><span style="color: #0000BB">0</span><span style="color: #007700">][</span><span style="color: #0000BB">0</span><span style="color: #007700">]&nbsp;.&nbsp;</span><span style="color: #DD0000">",&nbsp;"&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #0000BB">$out</span><span style="color: #007700">[</span><span style="color: #0000BB">0</span><span style="color: #007700">][</span><span style="color: #0000BB">1</span><span style="color: #007700">]&nbsp;.&nbsp;</span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br />echo&nbsp;</span><span style="color: #0000BB">$out</span><span style="color: #007700">[</span><span style="color: #0000BB">1</span><span style="color: #007700">][</span><span style="color: #0000BB">0</span><span style="color: #007700">]&nbsp;.&nbsp;</span><span style="color: #DD0000">",&nbsp;"&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #0000BB">$out</span><span style="color: #007700">[</span><span style="color: #0000BB">1</span><span style="color: #007700">][</span><span style="color: #0000BB">1</span><span style="color: #007700">]&nbsp;.&nbsp;</span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+          </div>
+
+          <p class="para">
+           Результат работы примера:
+          </p>
+          <div class="example-contents"><pre>
+<div class="cdata"><pre>
+&lt;b&gt;example: &lt;/b&gt;, example: 
+&lt;div align=&quot;left&quot;&gt;this is a test&lt;/div&gt;, this is a test
+</pre></div>
+          </pre></div>
+         </div>
+        </p>
+        <p class="para">
+         В таком случае массив $matches[0] содержит первый набор вхождений, а именно:
+         элемент $matches[0][0]  содержит первое вхождение всего шаблона,
+         элемент $matches[0][1] содержит первое вхождение первой подмаски, и так далее.
+         Аналогично массив $matches[1]  содержит второй набор вхождений, и так для каждого найденного набора. 
+        </p>
+       </dd>
+
+      </dt>
+
+      <dt>
+
+       <span class="term">PREG_OFFSET_CAPTURE</span>
+
+       <dd>
+
+        <p class="para">
+		  В случае, если этот флаг указан, для каждой найденной подстроки будет указана
+		  ее позиция в исходной строке. Необходимо помнить, что этот флаг меняет 
+		  формат возвращаемых данных: каждое вхождение возвращается в виде массива,
+		  в нулевом элементе которого содержится найденная подстрока, а в первом - смещение.
+		  Данный флаг доступен в PHP 4.3.0 и выше.
+        </p>
+       </dd>
+
+      </dt>
+
+     </dl>
+
+    </p>
+    <p class="para">
+     В случае, если никакой флаг не используется, по умолчанию используется
+     <b><tt>PREG_PATTERN_ORDER</tt></b>.
+    </p>
+
+    <p class="para">
+     Поиск осуществляется слева направо, с начала строки. Дополнительный параметр
+     <i><tt class="parameter">offset</tt></i>
+ может быть использован для указания альтернативной 
+     начальной позиции для поиска. Дополнительный параметр
+     <i><tt class="parameter">offset</tt></i>
+ доступен, начиная с PHP 4.3.3.
+    </p>
+  <blockquote><p><b class="note">Замечание</b>:  
+    
+      Использование параметра <i><tt class="parameter">offset</tt></i>
+ не эквивалентно 
+	  замене сопоставляемой строки выражением <i>substr($subject, $offset)</i>
+	  при вызове функции <b>preg_match_all()</b>, поскольку
+	  шаблон <i><tt class="parameter">pattern</tt></i>
+ может содержать такие условия как
+      <em class="emphasis">^</em>, <em class="emphasis">$</em> или <em class="emphasis">(?&lt;=x)</em>. 
+	  Вы можете найти соответствующие примеры в описании функции <a href="function.preg-match.html" class="function">preg_match()</a>. 
+       <br /> 
+      </p></blockquote> 
+    
+
+    <p class="para">
+    Возвращает количество найденных вхождений шаблона (может быть нулем) либо 
+    <b><tt>FALSE</tt></b>, если во время выполнения возникли какие-либо ошибки.
+    </p>
+    <p class="para">
+     <div class="example">
+      <p><b>Пример #1 Получение всех телефонных номеров из текста.</b></p>
+      <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />preg_match_all</span><span style="color: #007700">(</span><span style="color: #DD0000">"/\(?&nbsp;&nbsp;(\d{3})?&nbsp;&nbsp;\)?&nbsp;&nbsp;(?(1)&nbsp;&nbsp;[\-\s]&nbsp;)&nbsp;\d{3}-\d{4}/x"</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">"Call&nbsp;555-1212&nbsp;or&nbsp;1-800-555-1212"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$phones</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+      </div>
+
+     </div>
+    </p>
+    <p class="para">
+     <div class="example">
+      <p><b>Пример #2 Жадный поиск совпадений с HTML-тэгами</b></p>
+      <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">//&nbsp;Запись&nbsp;\\2&nbsp;является&nbsp;примером&nbsp;использования&nbsp;ссылок&nbsp;на&nbsp;подмаски.<br />//&nbsp;Она&nbsp;означает&nbsp;необходимость&nbsp;соответствия&nbsp;подстроки&nbsp;строке,&nbsp;зафиксированной<br />//&nbsp;второй&nbsp;подмаской,&nbsp;в&nbsp;нашем&nbsp;примере&nbsp;это&nbsp;([\w]+).<br />//&nbsp;Дополнительный&nbsp;слеш&nbsp;необходим,&nbsp;так&nbsp;как&nbsp;используются&nbsp;двойные&nbsp;кавычки.<br /><br /></span><span style="color: #0000BB">$html&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">"&lt;b&gt;bold&nbsp;text&lt;/b&gt;&lt;a&nbsp;href=howdy.html&gt;click&nbsp;me&lt;/a&gt;"</span><span style="color: #007700">;<br /><br /></span><span style="color: #0000BB">preg_match_all</span><span style="color: #007700">(</span><span style="color: #DD0000">"/(&lt;([\w]+)[^&gt;]*&gt;)(.*)(&lt;\/\\2&gt;)/"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$html</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$matches</span><span style="color: #007700">);<br /><br />for&nbsp;(</span><span style="color: #0000BB">$i</span><span style="color: #007700">=</span><span style="color: #0000BB">0</span><span style="color: #007700">;&nbsp;</span><span style="color: #0000BB">$i</span><span style="color: #007700">&lt;&nbsp;</span><span style="color: #0000BB">count</span><span style="color: #007700">(</span><span style="color: #0000BB">$matches</span><span style="color: #007700">[</span><span style="color: #0000BB">0</span><span style="color: #007700">]);&nbsp;</span><span style="color: #0000BB">$i</span><span style="color: #007700">++)&nbsp;{<br />&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"matched:&nbsp;"&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #0000BB">$matches</span><span style="color: #007700">[</span><span style="color: #0000BB">0</span><span style="color: #007700">][</span><span style="color: #0000BB">$i</span><span style="color: #007700">]&nbsp;.&nbsp;</span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br />&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"part&nbsp;1:&nbsp;"&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #0000BB">$matches</span><span style="color: #007700">[</span><span style="color: #0000BB">1</span><span style="color: #007700">][</span><span style="color: #0000BB">$i</span><span style="color: #007700">]&nbsp;.&nbsp;</span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br />&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"part&nbsp;2:&nbsp;"&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #0000BB">$matches</span><span style="color: #007700">[</span><span style="color: #0000BB">3</span><span style="color: #007700">][</span><span style="color: #0000BB">$i</span><span style="color: #007700">]&nbsp;.&nbsp;</span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br />&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"part&nbsp;3:&nbsp;"&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #0000BB">$matches</span><span style="color: #007700">[</span><span style="color: #0000BB">4</span><span style="color: #007700">][</span><span style="color: #0000BB">$i</span><span style="color: #007700">]&nbsp;.&nbsp;</span><span style="color: #DD0000">"\n\n"</span><span style="color: #007700">;<br />}<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+      </div>
+
+      <div class="example-contents"><p>
+           Результат работы примера:
+      </p></div>
+      <div class="example-contents"><pre>
+<div class="cdata"><pre>
+matched: &lt;b&gt;bold text&lt;/b&gt;
+part 1: &lt;b&gt;
+part 2: bold text
+part 3: &lt;/b&gt;
+
+matched: &lt;a href=howdy.html&gt;click me&lt;/a&gt;
+part 1: &lt;a href=howdy.html&gt;
+part 2: click me
+part 3: &lt;/a&gt;
+</pre></div>
+      </pre></div>
+     </div>
+    </p>
+    <p class="simpara">
+     Смотрите также <a href="function.preg-match.html" class="function">preg_match()</a>,
+     <a href="function.preg-replace.html" class="function">preg_replace()</a>,
+     и <a href="function.preg-split.html" class="function">preg_split()</a>.
+    </p>
+   </div>
+
+  </div><hr /><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="function.preg-last-error.html">preg_last_error</a></div>
+ <div class="next" style="float: right;"><a href="function.preg-match.html">preg_match</a></div>
+ <div class="up"><a href="ref.pcre.html">PCRE</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

@@ -1,0 +1,98 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <title>Возвращает позицию последнего вхождения подстроки без учета регистра</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+ </head>
+ <body><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="function.strrev.html">strrev</a></div>
+ <div class="next" style="float: right;"><a href="function.strrpos.html">strrpos</a></div>
+ <div class="up"><a href="ref.strings.html">Функции обработки строк</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="function.strripos" class="refentry">
+   <div class="refnamediv">
+    <h1 class="refname">strripos</h1>
+    <p class="verinfo">(PHP 5)</p><p class="refpurpose dc-title">strripos — 
+     Возвращает позицию последнего вхождения подстроки без учета регистра
+    </p>
+
+   </div>
+   <div class="refsect1 unknown">
+    <h3 class="title">Описание</h3>
+    <div class="methodsynopsis dc-description">
+     <span class="type">int</span> <span class="methodname"><b><b>strripos</b></b></span>
+      ( <span class="methodparam"><span class="type">string</span> <tt class="parameter">$haystack</tt></span>
+     , <span class="methodparam"><span class="type">string</span> <tt class="parameter">$needle</tt></span>
+     [, <span class="methodparam"><span class="type">int</span> <tt class="parameter">$offset</tt></span>
+    ] )</div>
+
+    <p class="para rdfs-comment">
+     Возвращает позицию последнего вхождения подстроки 
+     <i><tt class="parameter">needle</tt></i>
+ в строку 
+     <i><tt class="parameter">haystack</tt></i>
+. В отличие от 
+     <a href="function.strrpos.html" class="function">strrpos()</a>, эта функция не учитывает регистр 
+     символов.
+    </p>
+    <p class="para">
+     <i><tt class="parameter">needle</tt></i>
+ должен содержать не менее одного 
+     символа.
+    </p>
+    <p class="para">
+     Если подстрока <i><tt class="parameter">needle</tt></i>
+ не найдена,
+     возвращает  <b><tt>FALSE</tt></b>.
+    </p>
+    
+    <div class="warning"><b class="warning">Внимание</b><p class="simpara">Эта функция
+может возвращать как логическое значение <b><tt>FALSE</tt></b>, так и не относящееся к логическому типу
+значение, которое приводится к <b><tt>FALSE</tt></b>, например, <i>0</i> или
+&quot;&quot;. За более подробной информации обратитесь к разделу <a href="language.types.boolean.html" class="link">Булев тип</a>. Используйте <a href="language.operators.comparison.html" class="link">оператор ===</a> для проверки значения,
+возвращаемого этой функцией.</p></div>    
+    
+    <p class="para">
+     <div class="example">
+      <p><b>Пример #1 Пример использования <b>strripos()</b></b></p>
+      <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$haystack&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">'ababcd'</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$needle&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">'aB'</span><span style="color: #007700">;<br /><br /></span><span style="color: #0000BB">$pos&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">strripos</span><span style="color: #007700">(</span><span style="color: #0000BB">$haystack</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$needle</span><span style="color: #007700">);<br /><br />if&nbsp;(</span><span style="color: #0000BB">$pos&nbsp;</span><span style="color: #007700">===&nbsp;</span><span style="color: #0000BB">false</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"К&nbsp;сожалению,&nbsp;($needle)&nbsp;не&nbsp;найдено&nbsp;в&nbsp;($haystack)"</span><span style="color: #007700">;<br />}&nbsp;else&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"Поздравляем!\n"</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"Последнее&nbsp;($needle)&nbsp;найдено&nbsp;в&nbsp;($haystack)&nbsp;в&nbsp;позиции&nbsp;($pos)"</span><span style="color: #007700">;<br />}<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+      </div>
+
+      <div class="example-contents"><p>
+       Вывод:
+      </p></div>
+      <div class="example-contents"><pre>
+<div class="cdata"><pre>
+   Поздравляем!
+   Последнее (aB) найдено в (ababcd) в позиции (2)
+</pre></div>
+      </pre></div>
+     </div>
+    </p>
+    <p class="simpara">
+     Необязательный аргумент <i><tt class="parameter">offset</tt></i>
+ позволяет 
+     указать, с какого по счету символа строки 
+     <i><tt class="parameter">haystack</tt></i>
+ начинать поиск. Отрицательное 
+     значение предписывает прекратить поиск при достижении определенной 
+     позиции до конца строки.
+    </p>
+    <p class="para">
+     См. также описание функций <a href="function.strrpos.html" class="function">strrpos()</a>,
+     <a href="function.strrchr.html" class="function">strrchr()</a>, 
+     <a href="function.substr.html" class="function">substr()</a>, <a href="function.stripos.html" class="function">stripos()</a> и
+     <a href="function.stristr.html" class="function">stristr()</a>.
+    </p>
+   </div>
+
+  </div><hr /><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="function.strrev.html">strrev</a></div>
+ <div class="next" style="float: right;"><a href="function.strrpos.html">strrpos</a></div>
+ <div class="up"><a href="ref.strings.html">Функции обработки строк</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

@@ -1,0 +1,43 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <title>Новая Объектная Модель</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+ </head>
+ <body><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="migration5.databases.html">Базы данных</a></div>
+ <div class="next" style="float: right;"><a href="migrating5.errorrep.html">Сообщения об ошибках</a></div>
+ <div class="up"><a href="migration5.html">Миграция с PHP 4 на PHP 5</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="migration5.oop" class="section">
+   <h2 class="title">Новая Объектная Модель</h2>
+   <p class="para">
+    В PHP 5 появилась новая Объектная Модель. Работа с объектами в PHP
+    была полностью переписана, позволяя достигнуть лучшей производительности
+    и предоставляя новые возможности.
+    В предыдущих версиях PHP работа с объектами производилась аналогично 
+    примитивным типам (к примеру, integer и string). Недостатком этого метода
+    являлось то, что семантически весь объект копировался при присвоении 
+    переменной или передачи ее в качестве параметра функции. При новом подходе 
+    на объекты ссылаются по дескриптору, а не по значению (дескриптор можно 
+    представить себе как идентификатор объекта).
+   </p>
+   <p class="para">
+    Многие PHP-программисты даже не в курсе хитростей механизма копирования 
+    в старой объектной модели, что означает, что большинство из PHP-приложений 
+    будут работать либо вовсе безо всяких изменений, либо с совсем небольшими 
+    изменениями.
+   </p>
+   <p class="para">
+    Новая Объектная модель задокументирована в <a href="language.oop5.html" class="link">Справочнике по языку</a>.
+   </p>
+   <p class="para">
+    Обратите внимание также на директиву <a href="ini.core.html#ini.zend.ze1-compatibility-mode" class="link">
+    zend.ze1_compatibility_mode</a> для совместимости с PHP 4. 
+   </p>
+  </div><hr /><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="migration5.databases.html">Базы данных</a></div>
+ <div class="next" style="float: right;"><a href="migrating5.errorrep.html">Сообщения об ошибках</a></div>
+ <div class="up"><a href="migration5.html">Миграция с PHP 4 на PHP 5</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

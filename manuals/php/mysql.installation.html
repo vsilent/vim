@@ -1,0 +1,62 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <title>Установка</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+ </head>
+ <body><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="mysql.setup.html">Установка и настройка</a></div>
+ <div class="next" style="float: right;"><a href="mysql.configuration.html">Настройка во время выполнения</a></div>
+ <div class="up"><a href="mysql.setup.html">Установка и настройка</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="mysql.installation" class="section">
+ <h2 class="title">Установка</h2>
+ <p class="para" id="mysql.configure" name="mysql.configure">
+  Используя директиву <span class="option">--with-mysql[=DIR]</span>
+  вы можете включить в <i>PHP</i> поддержку СУБД MySQL.
+ </p>
+ <p class="para">
+  В PHP 4, директива <span class="option">--with-mysql</span>
+  включена по умолчанию. Чтобы отключить её, используйте директиву
+  конфигурации  <span class="option">--without-mysql</span>.  
+  Кроме того, в PHP 4, при включении директивы без указания пути к папке установки
+  MySQL, <i>PHP</i> будет использовать встроенную библиотеку
+  MySQL-клиента. В Windows специальные DLL отсутствуют, клиент всегда встроен
+  в PHP4.
+  При использовании приложений использующих MySQL (к примеру, auth-mysql) не
+  стоит использовать встроенную библиотеку -- укажите путь к папке установки
+  MySQL, что будет выглядеть примерно так: <span class="option">--with-mysql=/path/to/mysql</span>.
+  Это заставит <i>PHP</i> использовать библиотеку, установленную MySQL,
+  что позволит избежать любых конфликтов.
+ </p>
+ <p class="para">
+  В PHP 5 поддержка MySQL больше не включена по умолчанию, кроме того в нём
+  отсутствует встроенная библиотека-клиент. Подробнее о причине можно
+  прочитать в <a href="faq.databases.html#faq.databases.mysql.php5" class="link">
+  FAQ</a>.
+ </p>
+ <p class="para">
+  Расширение работает с MySQL версий &gt;= 4.1.0, но не эксплуатирует
+  всю возможную функциональность этих версий.
+  Для этого используйте <a href="ref.mysqli.html" class="link">MySQLi</a>.
+ </p>
+ <div class="warning"><b class="warning">Внимание</b>
+  <p class="para">
+   Сбои в работе <i>PHP</i> могут иметь место при загрузке
+   совместно этого расширения и расширения для работы с библиотекой GNU Recode.
+   За дополнительной информацией обращайтесь к разделу о расширении для <a href="ref.recode.html" class="link">recode</a>.
+  </p>
+ </div>
+ <blockquote><p><b class="note">Замечание</b>: 
+  
+   Если вам требуется поддержка кодировок (отличных от <em class="emphasis">latin</em>, установленной по умолчанию), 
+   вам придётся установить внешнюю библиотеку, скомпилированную с их
+   поддержкой.
+  <br />
+ </p></blockquote>
+</div><hr /><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="mysql.setup.html">Установка и настройка</a></div>
+ <div class="next" style="float: right;"><a href="mysql.configuration.html">Настройка во время выполнения</a></div>
+ <div class="up"><a href="mysql.setup.html">Установка и настройка</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

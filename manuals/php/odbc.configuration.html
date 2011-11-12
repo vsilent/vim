@@ -1,0 +1,290 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <title>Настройка во время выполнения</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+ </head>
+ <body><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="odbc.installation.html">Установка</a></div>
+ <div class="next" style="float: right;"><a href="uodbc.resources.html">Типы ресурсов</a></div>
+ <div class="up"><a href="uodbc.setup.html">Установка и настройка</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="odbc.configuration" class="section">
+ <h2 class="title">Настройка во время выполнения</h2>
+ <p class="simpara">
+Поведение этих функций зависит от установок в <var class="filename">php.ini</var>.
+</p>
+ <p class="para">
+  <table border="5">
+   <caption><b>Unified ODBC Configuration Options</b></caption>
+   <colgroup>
+
+    <thead valign="middle">
+     <tr valign="middle">
+      <th colspan="1">Name</th>
+      <th colspan="1">Default</th>
+      <th colspan="1">Changeable</th>
+      <th colspan="1">Changelog</th>
+     </tr>
+
+    </thead>
+
+    <tbody valign="middle" class="tbody">
+     <tr valign="middle">
+      <td colspan="1" rowspan="1" align="left">odbc.default_db *</td>
+      <td colspan="1" rowspan="1" align="left">NULL</td>
+      <td colspan="1" rowspan="1" align="left">PHP_INI_ALL</td>
+      <td class="empty">&nbsp;</td>
+     </tr>
+
+     <tr valign="middle">
+      <td colspan="1" rowspan="1" align="left">odbc.default_user *</td>
+      <td colspan="1" rowspan="1" align="left">NULL</td>
+      <td colspan="1" rowspan="1" align="left">PHP_INI_ALL</td>
+      <td class="empty">&nbsp;</td>
+     </tr>
+
+     <tr valign="middle">
+      <td colspan="1" rowspan="1" align="left">odbc.default_pw *</td>
+      <td colspan="1" rowspan="1" align="left">NULL</td>
+      <td colspan="1" rowspan="1" align="left">PHP_INI_ALL</td>
+      <td class="empty">&nbsp;</td>
+     </tr>
+
+     <tr valign="middle">
+      <td colspan="1" rowspan="1" align="left">odbc.allow_persistent</td>
+      <td colspan="1" rowspan="1" align="left">&quot;1&quot;</td>
+      <td colspan="1" rowspan="1" align="left">PHP_INI_SYSTEM</td>
+      <td class="empty">&nbsp;</td>
+     </tr>
+
+     <tr valign="middle">
+      <td colspan="1" rowspan="1" align="left">odbc.check_persistent</td>
+      <td colspan="1" rowspan="1" align="left">&quot;1&quot;</td>
+      <td colspan="1" rowspan="1" align="left">PHP_INI_SYSTEM</td>
+      <td class="empty">&nbsp;</td>
+     </tr>
+
+     <tr valign="middle">
+      <td colspan="1" rowspan="1" align="left">odbc.max_persistent</td>
+      <td colspan="1" rowspan="1" align="left">&quot;-1&quot;</td>
+      <td colspan="1" rowspan="1" align="left">PHP_INI_SYSTEM</td>
+      <td class="empty">&nbsp;</td>
+     </tr>
+
+     <tr valign="middle">
+      <td colspan="1" rowspan="1" align="left">odbc.max_links</td>
+      <td colspan="1" rowspan="1" align="left">&quot;-1&quot;</td>
+      <td colspan="1" rowspan="1" align="left">PHP_INI_SYSTEM</td>
+      <td class="empty">&nbsp;</td>
+     </tr>
+
+     <tr valign="middle">
+      <td colspan="1" rowspan="1" align="left">odbc.defaultlrl</td>
+      <td colspan="1" rowspan="1" align="left">&quot;4096&quot;</td>
+      <td colspan="1" rowspan="1" align="left">PHP_INI_ALL</td>
+      <td class="empty">&nbsp;</td>
+     </tr>
+
+     <tr valign="middle">
+      <td colspan="1" rowspan="1" align="left">odbc.defaultbinmode</td>
+      <td colspan="1" rowspan="1" align="left">&quot;1&quot;</td>
+      <td colspan="1" rowspan="1" align="left">PHP_INI_ALL</td>
+      <td class="empty">&nbsp;</td>
+     </tr>
+
+    </tbody>
+   </colgroup>
+
+  </table>
+
+  <blockquote><p><b class="note">Замечание</b>: 
+   <span class="simpara">
+    Entries marked with * are not implemented yet.
+   </span>
+  </p></blockquote>
+  Для подробного описания констант
+PHP_INI_*, обратитесь к документации функции <a href="function.ini-set.html" class="function">ini_set()</a>.
+ </p>
+ 
+ <p class="para">Краткое разъяснение конфигурационных
+директив.</p>
+ 
+ <p class="para">
+ <dl>
+
+   <dt id="ini.uodbc.default-db">
+   <span class="term">
+    <i><tt class="parameter">odbc.default_db</tt></i>
+
+    <a href="language.types.string.html" class="type string">string</a>
+   </span>
+
+   <dd>
+
+    <p class="para">
+     ODBC data source to use if none is specified in
+     <a href="function.odbc-connect.html" class="function">odbc_connect()</a> or
+     <a href="function.odbc-pconnect.html" class="function">odbc_pconnect()</a>.
+    </p>
+   </dd>
+
+  </dt>
+
+  
+  <dt id="ini.uodbc.default-user">
+   <span class="term">
+    <i><tt class="parameter">odbc.default_user</tt></i>
+
+    <a href="language.types.string.html" class="type string">string</a>
+   </span>
+
+   <dd>
+
+    <p class="para">
+     User name to use if none is specified in
+     <a href="function.odbc-connect.html" class="function">odbc_connect()</a> or
+     <a href="function.odbc-pconnect.html" class="function">odbc_pconnect()</a>.
+    </p>
+   </dd>
+
+  </dt>
+
+  
+  <dt id="ini.uodbc.default-pw">
+   <span class="term">
+    <i><tt class="parameter">odbc.default_pw</tt></i>
+
+    <a href="language.types.string.html" class="type string">string</a>
+   </span>
+
+   <dd>
+
+    <p class="para">
+     Password to use if none is specified in
+     <a href="function.odbc-connect.html" class="function">odbc_connect()</a> or
+     <a href="function.odbc-pconnect.html" class="function">odbc_pconnect()</a>.
+    </p>
+   </dd>
+
+  </dt>
+
+  
+  <dt id="ini.uodbc.allow-persistent">
+   <span class="term">
+    <i><tt class="parameter">odbc.allow_persistent</tt></i>
+
+    <a href="language.types.boolean.html" class="type boolean">boolean</a>
+   </span>
+
+   <dd>
+
+    <p class="para">
+     Whether to allow persistent ODBC connections.
+    </p>
+   </dd>
+
+  </dt>
+
+  
+  <dt id="ini.uodbc.check-persistent">
+   <span class="term">
+    <i><tt class="parameter">odbc.check_persistent</tt></i>
+
+    <a href="language.types.boolean.html" class="type boolean">boolean</a>
+   </span>
+
+   <dd>
+
+    <p class="para">
+     Check that a connection is still valid before reuse.
+    </p>
+   </dd>
+
+  </dt>
+
+  
+  <dt id="ini.uodbc.max-persistent">
+   <span class="term">
+    <i><tt class="parameter">odbc.max_persistent</tt></i>
+
+    <a href="language.types.integer.html" class="type integer">integer</a>
+   </span>
+
+   <dd>
+
+    <p class="para">
+     The maximum number of persistent ODBC connections per process.
+    </p>
+   </dd>
+
+  </dt>
+
+  
+  <dt id="ini.uodbc.max-links">
+   <span class="term">
+    <i><tt class="parameter">odbc.max_links</tt></i>
+
+    <a href="language.types.integer.html" class="type integer">integer</a>
+   </span>
+
+   <dd>
+
+    <p class="para">
+     The maximum number of ODBC connections per process, including
+     persistent connections.
+    </p>
+   </dd>
+
+  </dt>
+
+   <dt id="ini.uodbc.defaultlrl">
+   <span class="term">
+    <i><tt class="parameter">odbc.defaultlrl</tt></i>
+
+    <a href="language.types.integer.html" class="type integer">integer</a>
+   </span>
+
+   <dd>
+
+    <p class="para">
+     Handling of LONG fields. Specifies the number of bytes returned to
+     variables.
+    </p>
+
+    <span class="simpara">Если используется <a href="language.types.integer.html" class="type integer">integer</a>,
+значение измеряется байтами. Вы также можете использовать сокращённую запись,
+которая описана в
+<a href="faq.using.html#faq.using.shorthandbytes" class="link">этом разделе FAQ</a>.</span>
+
+   </dd>
+
+  </dt>
+
+  
+  <dt id="ini.uodbc.defaultbinmode">
+   <span class="term">
+    <i><tt class="parameter">odbc.defaultbinmode</tt></i>
+
+    <a href="language.types.integer.html" class="type integer">integer</a>
+   </span>
+
+   <dd>
+
+    <p class="para">
+     Handling of binary data.
+    </p>
+   </dd>
+
+  </dt>
+
+  
+ </dl>
+
+ </p>
+</div><hr /><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="odbc.installation.html">Установка</a></div>
+ <div class="next" style="float: right;"><a href="uodbc.resources.html">Типы ресурсов</a></div>
+ <div class="up"><a href="uodbc.setup.html">Установка и настройка</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

@@ -1,0 +1,92 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <title>Применяет фильтр к массиву, используя функцию обратного вызова</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+ </head>
+ <body><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="function.array-fill.html">array_fill</a></div>
+ <div class="next" style="float: right;"><a href="function.array-flip.html">array_flip</a></div>
+ <div class="up"><a href="ref.array.html">Функции для работы с массивами</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="function.array-filter" class="refentry">
+   <div class="refnamediv">
+    <h1 class="refname">array_filter</h1>
+    <p class="verinfo">(PHP 4 &gt;= 4.0.6, PHP 5)</p><p class="refpurpose dc-title">array_filter — 
+     Применяет фильтр к массиву, используя функцию обратного вызова
+    </p>
+
+   </div>
+   <div class="refsect1 unknown">
+    <h3 class="title">Описание</h3>
+     <div class="methodsynopsis dc-description">
+      <span class="type">array</span> <span class="methodname"><b><b>array_filter</b></b></span>
+       ( <span class="methodparam"><span class="type">array</span> <tt class="parameter">$input</tt></span>
+      [, <span class="methodparam"><span class="type"><a href="language.pseudo-types.html#language.types.mixed" class="type mixed">mixed</a></span> <tt class="parameter">$callback</tt></span>
+     ] )</div>
+
+    <p class="para rdfs-comment">
+     Функция <b>array_filter()</b> возвращает массив,
+     содержащий значения массива <i><tt class="parameter">input</tt></i>
+,
+     отфильтрованные в соответствии с результатом функции обратного вызова.
+     Если <i><tt class="parameter">input</tt></i>
+ является ассоциативным
+     массивом, его ключи сохраняются.
+    </p>
+    <p class="para">
+     <div class="example">
+      <p><b>Пример #1 Пример использования <b>array_filter()</b></b></p>
+      <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+function&nbsp;odd($var)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;($var&nbsp;%&nbsp;2&nbsp;==&nbsp;1);<br />}<br /><br />function&nbsp;even($var)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;($var&nbsp;%&nbsp;2&nbsp;==&nbsp;0);<br />}<br /><br />$array1&nbsp;=&nbsp;array&nbsp;("a"=&gt;1,&nbsp;"b"=&gt;2,&nbsp;"c"=&gt;3,&nbsp;"d"=&gt;4,&nbsp;"e"=&gt;5);<br />$array2&nbsp;=&nbsp;array&nbsp;(6,&nbsp;7,&nbsp;8,&nbsp;9,&nbsp;10,&nbsp;11,&nbsp;12);<br /><br />echo&nbsp;"Нечетные&nbsp;:\n";<br />print_r(array_filter($array1,&nbsp;"odd"));<br />echo&nbsp;"Четные&nbsp;&nbsp;&nbsp;:\n";<br />print_r(array_filter($array2,&nbsp;"even"));</span>
+</code></div>
+      </div>
+
+      <div class="example-contents"><p>
+       Результатом выполнения вышеприведенной программы будет:
+       <div class="example-contents"><pre>
+<div class="cdata"><pre>
+Нечетные :
+Array
+(
+    [a] =&gt; 1
+    [c] =&gt; 3
+    [e] =&gt; 5
+)
+Четные   :
+Array
+(
+    [0] =&gt; 6
+    [2] =&gt; 8
+    [4] =&gt; 10
+    [6] =&gt; 12
+)
+</pre></div>
+       </pre></div>
+      </p></div>
+     </div>
+    </p>
+    <blockquote><p><b class="note">Замечание</b>: <span class="simpara">В качестве аргумента вместо имени
+функции может быть передан массив, содержащий ссылку на объект
+и имя метода.</span></p></blockquote>
+    <p class="para">
+     Пользователи не должны изменять массив в результате
+     его обработки функцией обратного вызова, например,
+     добавлять или удалять элемент или обнулять массив,
+     обрабатываемый функцией <b>array_filter()</b>. Если
+     массив подвергается изменениям, поведение этой функции
+     становится неопределенным.
+    </p>
+    <p class="para">
+     См.также <a href="function.array-map.html" class="function">array_map()</a> и
+     <a href="function.array-reduce.html" class="function">array_reduce()</a>.
+    </p>
+   </div>
+
+  </div><hr /><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="function.array-fill.html">array_fill</a></div>
+ <div class="next" style="float: right;"><a href="function.array-flip.html">array_flip</a></div>
+ <div class="up"><a href="ref.array.html">Функции для работы с массивами</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

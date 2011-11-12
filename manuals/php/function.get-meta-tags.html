@@ -1,0 +1,177 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <title>Извлекает из файла содержание атрибута content всех мета-тегов и возвращает как ассоциативный массив</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+ </head>
+ <body><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="function.get-headers.html">get_headers</a></div>
+ <div class="next" style="float: right;"><a href="function.http-build-query.html">http_build_query</a></div>
+ <div class="up"><a href="ref.url.html">URL Функции</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="function.get-meta-tags" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">get_meta_tags</h1>
+  <p class="verinfo">(PHP 4, PHP 5)</p><p class="refpurpose dc-title">get_meta_tags — Извлекает из файла содержание атрибута content всех мета-тегов и возвращает как ассоциативный массив</p>
+
+ </div>
+
+ <div class="refsect1 description">
+  <h3 class="title">Описание</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type">array</span> <span class="methodname"><b><b>get_meta_tags</b></b></span>
+    ( <span class="methodparam"><span class="type">string</span> <tt class="parameter">$filename</tt></span>
+   [, <span class="methodparam"><span class="type">bool</span> <tt class="parameter">$use_include_path</tt></span>
+  ] )</div>
+
+  <p class="para rdfs-comment">
+   Открывает <i><tt class="parameter">filename</tt></i>
+ и разбирает его строка за строкой
+   в поисках тегов &lt;meta&gt;. Разбор файла останавливается на теге 
+   <i>&lt;/head&gt;</i>.
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters">
+  <h3 class="title">Список параметров</h3>
+  <p class="para">
+   <dl>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">filename</tt></i>
+</span>
+
+     <dd>
+
+      <p class="para">
+       Путь к HTML файлу. Может быть как локальным файлом, так и
+       <acronym title="Uniform Resource Locator">URL</acronym>.
+      </p>
+      <p class="para">
+       <div class="example">
+        <p><b>Пример #1 Что обрабатывает функция <b>get_meta_tags()</b></b></p>
+        <div class="example-contents">
+<div class="cdata"><pre>
+&lt;meta name=&quot;author&quot; content=&quot;name&quot;&gt;
+&lt;meta name=&quot;keywords&quot; content=&quot;php documentation&quot;&gt;
+&lt;meta name=&quot;DESCRIPTION&quot; content=&quot;a php manual&quot;&gt;
+&lt;meta name=&quot;geo.position&quot; content=&quot;49.33;-86.59&quot;&gt;
+&lt;/head&gt; &lt;!-- разбор файла будет остановлен здесь --&gt;
+</pre></div>
+        </div>
+
+       </div>
+       (обратите внимание на символы конца строки - PHP использует для разбора
+       строк функции, встроенные в операционную систему, поэтому  файлы,
+       созданные в MacOS не будут правильно обрабатываться на Unix).
+      </p>
+     </dd>
+
+    </dt>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">use_include_path</tt></i>
+</span>
+
+     <dd>
+
+      <p class="para">
+       Если <i><tt class="parameter">use_include_path</tt></i>
+ равен <b><tt>TRUE</tt></b>, PHP 
+       будет искать файл используя стандартные пути поиска из директивы 
+       <var class="filename">php.ini</var> <a href="ini.core.html#ini.include-path" class="link">include_path</a>.
+       Это актуально только для локальных файлов, но не для URL.
+      </p>
+     </dd>
+
+    </dt>
+
+   </dl>
+
+  </p>
+ </div>
+
+
+ <div class="refsect1 returnvalues">
+  <h3 class="title">Возвращаемые значения</h3>
+  <p class="para">
+   Возвращает ассоциативный массив со значениями разобранных мета-тегов.
+  </p>
+  <p class="para">
+   Значение атрибута name становится ключом массива, а значение атрибута 
+   content - значением этого элемента. Вы можете использовать стандартные
+   функции работы с массивам для доступа к конкретным значениям.
+   Специальные символы в именах (ключах массива) заменяются на &#039;_&#039;,
+   и ключи приводятся к нижнему регистру. Если два мета-тега имеют одинаковые
+   имена, будет возвращен только последний.
+  </p>
+ </div>
+
+
+ <div class="refsect1 changelog">
+  <h3 class="title">Список изменений</h3>
+  <p class="para">
+   <table class="informaltable">
+    <colgroup>
+
+     <thead valign="middle">
+      <tr valign="middle">
+       <th colspan="1">Версия</th>
+       <th colspan="1">Описание</th>
+      </tr>
+
+     </thead>
+
+     <tbody valign="middle" class="tbody">
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left">4.0.5</td>
+       <td colspan="1" rowspan="1" align="left">
+        Добавлена поддержка HTML-атрибутов не заключенных в кавычки.
+       </td>
+      </tr>
+
+     </tbody>
+    </colgroup>
+
+   </table>
+  </p>
+ </div>
+
+
+ <div class="refsect1 examples">
+  <h3 class="title">Примеры</h3>
+  <p class="para">
+   <div class="example">
+    <p><b>Пример #2 Что возвращает функция <b>get_meta_tags()</b></b></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">//&nbsp;Предположим,&nbsp;что&nbsp;указанные&nbsp;выше&nbsp;мета-теги&nbsp;расположены&nbsp;на&nbsp;www.example.com<br /></span><span style="color: #0000BB">$tags&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">get_meta_tags</span><span style="color: #007700">(</span><span style="color: #DD0000">'http://www.example.com/'</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">//&nbsp;Заметьте,&nbsp;что&nbsp;ключи&nbsp;приведены&nbsp;к&nbsp;нижнему&nbsp;регистру,&nbsp;а<br />//&nbsp;&nbsp;точки&nbsp;('.')&nbsp;в&nbsp;ключах&nbsp;&nbsp;заменены&nbsp;на&nbsp;'_'<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">$tags</span><span style="color: #007700">[</span><span style="color: #DD0000">'author'</span><span style="color: #007700">];&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;name<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">$tags</span><span style="color: #007700">[</span><span style="color: #DD0000">'keywords'</span><span style="color: #007700">];&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;php&nbsp;documentation<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">$tags</span><span style="color: #007700">[</span><span style="color: #DD0000">'description'</span><span style="color: #007700">];&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;a&nbsp;php&nbsp;manual<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">$tags</span><span style="color: #007700">[</span><span style="color: #DD0000">'geo_position'</span><span style="color: #007700">];&nbsp;</span><span style="color: #FF8000">//&nbsp;49.33;-86.59<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+  </p>
+ </div>
+
+
+ <div class="refsect1 seealso">
+  <h3 class="title">Смотрите также</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"><a href="function.htmlentities.html" class="function" rel="rdfs-seeAlso">htmlentities()</a></li>
+    <li class="member"><a href="function.urlencode.html" class="function" rel="rdfs-seeAlso">urlencode()</a></li>
+   </ul>
+  </p>
+ </div>
+
+
+</div><hr /><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="function.get-headers.html">get_headers</a></div>
+ <div class="next" style="float: right;"><a href="function.http-build-query.html">http_build_query</a></div>
+ <div class="up"><a href="ref.url.html">URL Функции</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

@@ -1,0 +1,92 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <title>Считывает весь gz-файл в массив</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+ </head>
+ <body><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="function.gzeof.html">gzeof</a></div>
+ <div class="next" style="float: right;"><a href="function.gzgetc.html">gzgetc</a></div>
+ <div class="up"><a href="ref.zlib.html">Zlib</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="function.gzfile" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">gzfile</h1> 
+  <p class="verinfo">(PHP 4, PHP 5)</p><p class="refpurpose dc-title">gzfile — Считывает весь gz-файл в массив</p>
+
+ </div>
+ <div class="refsect1 description">
+  <h3 class="title">Описание</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type">array</span> <span class="methodname"><b><b>gzfile</b></b></span>
+    ( <span class="methodparam"><span class="type">string</span> <tt class="parameter">$filename</tt></span>
+   [, <span class="methodparam"><span class="type">int</span> <tt class="parameter">$use_include_path</tt></span>
+  ] )</div>
+
+  <p class="para rdfs-comment"> 
+   Аналогична <a href="function.readgzfile.html" class="function">readgzfile()</a>, но возвращает файл, разбитый построчно на массив.
+  </p>
+ </div>
+
+ <div class="refsect1 parameters">
+  <h3 class="title">Список параметров</h3>
+  <p class="para">
+   <dl>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">filename</tt></i>
+</span>
+
+     <dd>
+
+      <p class="para">
+       Имя файла.
+      </p>
+     </dd>
+
+    </dt>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">use_include_path</tt></i>
+</span>
+
+     <dd>
+
+      <p class="para">
+       Если вы хотите, чтобы файл также искался в директориях <a href="ini.core.html#ini.include-path" class="link">include_path</a>, установите 
+       значение этого аргумента в <i>1</i>.
+      </p>
+     </dd>
+
+    </dt>
+
+   </dl>
+
+  </p>
+ </div>
+
+ <div class="refsect1 returnvalues">
+  <h3 class="title">Возвращаемые значения</h3>
+  <p class="para">
+   Массив строк файла.
+  </p>
+ </div>
+
+ <div class="refsect1 seealso">
+  <h3 class="title">Смотрите также</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"><a href="function.readgzfile.html" class="function" rel="rdfs-seeAlso">readgzfile()</a></li>
+    <li class="member"><a href="function.gzopen.html" class="function" rel="rdfs-seeAlso">gzopen()</a></li>
+   </ul>
+  </p>
+ </div>
+
+</div><hr /><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="function.gzeof.html">gzeof</a></div>
+ <div class="next" style="float: right;"><a href="function.gzgetc.html">gzgetc</a></div>
+ <div class="up"><a href="ref.zlib.html">Zlib</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

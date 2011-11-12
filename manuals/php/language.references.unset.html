@@ -1,0 +1,38 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <title>Сброс переменных-ссылок</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+ </head>
+ <body><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="language.references.return.html">Возвращение по ссылке</a></div>
+ <div class="next" style="float: right;"><a href="language.references.spot.html">Неявное использование механизма ссылок</a></div>
+ <div class="up"><a href="language.references.html">Ссылки. Разъяснения</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="language.references.unset" class="sect1">
+   <h2 class="title">Сброс переменных-ссылок</h2>
+   <p class="para">
+    При сбросе ссылки, просто разрывается связь имени и содержимого
+    переменной. Это не означает, что содержимое переменной будет разрушено.
+    Например:
+    <div class="informalexample">
+     <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$a&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">1</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$b&nbsp;</span><span style="color: #007700">=&amp;&nbsp;</span><span style="color: #0000BB">$a</span><span style="color: #007700">;<br />unset(</span><span style="color: #0000BB">$a</span><span style="color: #007700">);&nbsp;<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+     </div>
+
+    </div>
+    Этот код не сбросит <var class="varname">$b</var>, а только  <var class="varname">$a</var>. 
+   </p>
+   <p class="simpara">
+    Опять же, можно провести аналогию с вызовом
+    <strong class="command">unlink</strong> (в Unix).
+   </p>
+  </div><hr /><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="language.references.return.html">Возвращение по ссылке</a></div>
+ <div class="next" style="float: right;"><a href="language.references.spot.html">Неявное использование механизма ссылок</a></div>
+ <div class="up"><a href="language.references.html">Ссылки. Разъяснения</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

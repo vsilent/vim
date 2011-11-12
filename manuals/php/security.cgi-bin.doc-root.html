@@ -1,0 +1,77 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <title>Вариант 3: использование опций doc_root и user_dir</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+ </head>
+ <body><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="security.cgi-bin.force-redirect.html">Вариант 2: использование --enable-force-cgi-redirect</a></div>
+ <div class="next" style="float: right;"><a href="security.cgi-bin.shell.html">Вариант 4: PHP вне дерева веб-документов</a></div>
+ <div class="up"><a href="security.cgi-bin.html">Если PHP установлен как CGI</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="security.cgi-bin.doc-root" class="sect1">
+    <h2 class="title">Вариант 3: использование опций doc_root и user_dir</h2>
+    <p class="simpara">
+     Размещение динамического контента, такого как скрипты либо любые 
+     другие исполняемые файлы, в директории веб-сервера делает его 
+     потенциально опасным. В случае, если в конфигурации сервера допущена
+     ошибка, возможна ситуация, когда скрипты не выполняются, а отображаются
+     в браузере, как обычные HTML-документы, что может привести к утечке конфиденциальной
+     информации (например, паролей), либо информации, являющейся 
+     интеллектуальной собственностью. Исходя из таких соображений, многие
+     системные администраторы предпочитают использовать для хранения скриптов
+     отдельную директорию, работая со всеми размещенными в ней файлами 
+     по CGI-интерфейсу.
+    </p>
+    <p class="simpara">
+     В случае, если невозможно гарантировать, что запросы не перенаправляются,
+     как было показано в предыдущем разделе, необходимо указывать
+     переменную doc_root, которая отличается от корневой директории веб-документов.
+    </p>
+    <p class="simpara">
+     Вы можете установить корневую директорию для PHP-скриптов, настроив
+     параметр <a href="ini.core.html#ini.doc-root" class="link">doc_root</a> в 
+     <a href="configuration.html#configuration.file" class="link">конфигурационном файле</a>, 
+     либо установив переменную окружения <span class="envar">PHP_DOCUMENT_ROOT</span>.  
+     В случае, если PHP используется посредством CGI, полный путь к открываемому
+     файлу будет построен на основании значения переменной <i><tt class="parameter">doc_root</tt></i>
+
+     и указанного в запросе пути. Таким образом, вы можете быть уверены,
+     что скрипты будут выполняться только внутри указанной вами директории
+     (кроме директории <i><tt class="parameter">user_dir</tt></i>
+, которая описана ниже).
+    </p>
+   <p class="simpara">
+     Еще одна используемая при настройке безопасности опция - 
+     <a href="ini.core.html#ini.user-dir" class="link">user_dir</a>. В случае, если
+     переменная user_dir не установлена, путь к открываемому файлу
+     строится относительно <i><tt class="parameter">doc_root</tt></i>
+. Запрос 
+     вида <var class="filename">http://my.host/~user/doc.php</var>
+     приводит к выполнению скрипта, находящегося не в домашнем каталоге 
+     соответствующего пользователя, а находящегося в подкаталоге doc_root
+     скрипта <var class="filename">~user/doc.php</var> (да, имя 
+     директории начинается с символа <i>~</i>).
+    </p>
+    <p class="simpara">
+     Но если переменной <var class="filename">public_php</var>
+     присвоено значение, например,  <var class="filename">http://my.host/~user/doc.php</var>,
+     тогда в приведенном выше примере будет выполнен скрипт <var class="filename">doc.php</var>,
+     находящийся в домашнем каталоге пользователя, в директории <var class="filename">public_php</var>.
+     Например, если домашний каталог пользователя <var class="filename">/home/user</var>,
+     будет выполнен файл <var class="filename">/home/user/public_php/doc.php</var>.
+    </p>
+    <p class="simpara">
+     Установка опции <i><tt class="parameter">user_dir</tt></i>
+ происходит
+     независимо от установки  <i><tt class="parameter">doc_root</tt></i>
+,
+     таким образом вы можете контролировать корневую директорию веб-сервера
+     и пользовательские директории независимо друг от друга.
+    </p>
+   </div><hr /><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="security.cgi-bin.force-redirect.html">Вариант 2: использование --enable-force-cgi-redirect</a></div>
+ <div class="next" style="float: right;"><a href="security.cgi-bin.shell.html">Вариант 4: PHP вне дерева веб-документов</a></div>
+ <div class="up"><a href="security.cgi-bin.html">Если PHP установлен как CGI</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

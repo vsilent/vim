@@ -1,0 +1,163 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <title>Настройка во время выполнения</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+ </head>
+ <body><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="outcontrol.installation.html">Установка</a></div>
+ <div class="next" style="float: right;"><a href="outcontrol.resources.html">Типы ресурсов</a></div>
+ <div class="up"><a href="outcontrol.setup.html">Установка и настройка</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="outcontrol.configuration" class="section">
+ <h2 class="title">Настройка во время выполнения</h2>
+ <p class="simpara">
+Поведение этих функций зависит от установок в <var class="filename">php.ini</var>.
+</p>
+ <p class="para">
+  <table border="5">
+   <caption><b>Output Control configuration options</b></caption>
+   <colgroup>
+
+    <thead valign="middle">
+     <tr valign="middle">
+      <th colspan="1">Name</th>
+      <th colspan="1">Default</th>
+      <th colspan="1">Changeable</th>
+      <th colspan="1">Changelog</th>
+     </tr>
+
+    </thead>
+
+    <tbody valign="middle" class="tbody">
+    <tr valign="middle">
+     <td colspan="1" rowspan="1" align="left">output_buffering</td>
+     <td colspan="1" rowspan="1" align="left">&quot;0&quot;</td>
+     <td colspan="1" rowspan="1" align="left">PHP_INI_PERDIR</td>
+     <td class="empty">&nbsp;</td>
+    </tr>
+
+    <tr valign="middle">
+     <td colspan="1" rowspan="1" align="left">output_handler</td>
+     <td colspan="1" rowspan="1" align="left">NULL</td>
+     <td colspan="1" rowspan="1" align="left">PHP_INI_PERDIR</td>
+     <td colspan="1" rowspan="1" align="left">Available since PHP 4.0.4.</td>
+    </tr>
+
+    <tr valign="middle">
+     <td colspan="1" rowspan="1" align="left">implicit_flush</td>
+     <td colspan="1" rowspan="1" align="left">&quot;0&quot;</td>
+     <td colspan="1" rowspan="1" align="left">PHP_INI_ALL</td>
+     <td colspan="1" rowspan="1" align="left">PHP_INI_PERDIR in PHP &lt;= 4.2.3.</td>
+    </tr>
+
+    </tbody>
+   </colgroup>
+
+  </table>
+
+   Для подробного описания констант
+PHP_INI_*, обратитесь к документации функции <a href="function.ini-set.html" class="function">ini_set()</a>.
+ </p>
+ 
+ <p class="para">Краткое разъяснение конфигурационных
+директив.</p>
+ 
+ <p class="para">
+ <dl>
+
+  <dt id="ini.output-buffering">
+   <span class="term">
+    <i><tt class="parameter">output_buffering</tt></i>
+
+    <a href="language.types.boolean.html" class="type boolean">boolean</a>/<a href="language.types.integer.html" class="type integer">integer</a>
+   </span>
+
+   <dd>
+
+    <p class="para">
+     You can enable output buffering for all files by setting this directive
+     to &#039;On&#039;. If you wish to limit the size of the buffer to a certain size -
+     you can use a maximum number of bytes instead of &#039;On&#039;, as a value for
+     this directive (e.g., output_buffering=4096).
+     As of PHP 4.3.5, this directive is always Off in PHP-CLI.
+    </p>
+   </dd>
+
+  </dt>
+
+
+  <dt id="ini.output-handler">
+   <span class="term">
+    <i><tt class="parameter">output_handler</tt></i>
+
+    <a href="language.types.string.html" class="type string">string</a>
+   </span>
+
+   <dd>
+
+    <p class="para">
+     You can redirect all of the output of your scripts to a function. For
+     example, if you set output_handler to
+     <a href="function.mb-output-handler.html" class="function">mb_output_handler()</a>, character encoding will be
+     transparently converted to the specified encoding. Setting any output
+     handler automatically turns on output buffering.
+    </p>
+    <blockquote><p><b class="note">Замечание</b>: 
+     
+      You cannot use both <a href="function.mb-output-handler.html" class="function">mb_output_handler()</a> with
+      <a href="function.ob-iconv-handler.html" class="function">ob_iconv_handler()</a> and you cannot use both
+      <a href="function.ob-gzhandler.html" class="function">ob_gzhandler()</a> and
+      <a href="zlib.configuration.html#ini.zlib.output-compression" class="link">zlib.output_compression</a>.
+     <br />
+    </p></blockquote>
+    <blockquote><p><b class="note">Замечание</b>: 
+     
+      Only built-in functions can be used with this directive. For user
+      defined functions, use <a href="function.ob-start.html" class="function">ob_start()</a>.
+     <br />
+    </p></blockquote>
+   </dd>
+
+  </dt>
+
+
+  <dt id="ini.implicit-flush">
+   <span class="term">
+    <i><tt class="parameter">implicit_flush</tt></i>
+
+    <a href="language.types.boolean.html" class="type boolean">boolean</a>
+   </span>
+
+   <dd>
+
+    <p class="para">
+     <b><tt>FALSE</tt></b> by default. Changing this to <b><tt>TRUE</tt></b> tells PHP to tell the
+     output layer to flush itself automatically after every output block.
+     This is equivalent to calling the PHP function
+     <a href="function.flush.html" class="function">flush()</a> after each and every call to
+     <a href="function.print.html" class="function">print()</a> or <a href="function.echo.html" class="function">echo()</a> and each and
+     every <i>HTML</i> block.
+    </p>
+    <p class="para">
+     When using PHP within an web environment, turning
+     this option on has serious performance implications and is generally
+     recommended for debugging purposes only. This value defaults to
+     <b><tt>TRUE</tt></b> when operating under the <i>CLI SAPI</i>.
+    </p>
+    <p class="para">
+     See also <a href="function.ob-implicit-flush.html" class="function">ob_implicit_flush()</a>.
+    </p>
+   </dd>
+
+  </dt>
+
+ </dl>
+
+ </p>
+</div><hr /><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="outcontrol.installation.html">Установка</a></div>
+ <div class="next" style="float: right;"><a href="outcontrol.resources.html">Типы ресурсов</a></div>
+ <div class="up"><a href="outcontrol.setup.html">Установка и настройка</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

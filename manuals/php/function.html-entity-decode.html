@@ -1,0 +1,257 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <title>Преобразует HTML сущности в соответствующие символы</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+ </head>
+ <body><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="function.hebrevc.html">hebrevc</a></div>
+ <div class="next" style="float: right;"><a href="function.htmlentities.html">htmlentities</a></div>
+ <div class="up"><a href="ref.strings.html">Функции обработки строк</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="function.html-entity-decode" class="refentry">
+   <div class="refnamediv">
+    <h1 class="refname">html_entity_decode</h1>
+    <p class="verinfo">(PHP 4 &gt;= 4.3.0, PHP 5)</p><p class="refpurpose dc-title">html_entity_decode — 
+     Преобразует HTML сущности в соответствующие символы
+    </p>
+
+   </div>
+   <div class="refsect1 unknown">
+    <h3 class="title">Описание</h3>
+     <div class="methodsynopsis dc-description">
+      <span class="type">string</span> <span class="methodname"><b><b>html_entity_decode</b></b></span>
+       ( <span class="methodparam"><span class="type">string</span> <tt class="parameter">$string</tt></span>
+      [, <span class="methodparam"><span class="type">int</span> <tt class="parameter">$quote_style</tt></span>
+      [, <span class="methodparam"><span class="type">string</span> <tt class="parameter">$charset</tt></span>
+     ]] )</div>
+
+    <p class="para rdfs-comment">
+     <b>html_entity_decode()</b>, в противоположность функции
+     <a href="function.htmlentities.html" class="function">htmlentities()</a>, Преобразует HTML сущности в строке 
+     <i><tt class="parameter">string</tt></i>
+ в соответствующие символы.
+    </p>
+    <p class="para">
+     Необязательный аргумент <i><tt class="parameter">quote_style</tt></i>
+ позволяет 
+     указать способ обработки &#039;одиночных&#039; и &quot;двойных&quot; кавычек. Значением 
+     этого аргумента может быть одна из трех следующих констант (по 
+     умолчанию <b><tt>ENT_COMPAT</tt></b>):
+     <table border="5">
+      <caption><b>Константы <i><tt class="parameter">quote_style</tt></i>
+</b></caption>
+      <colgroup>
+
+       <thead valign="middle">
+        <tr valign="middle">
+         <th colspan="1">Имя константы</th>
+         <th colspan="1">Описание</th>
+        </tr>
+
+       </thead>
+
+       <tbody valign="middle" class="tbody">
+        <tr valign="middle">
+         <td colspan="1" rowspan="1" align="left"><b><tt>ENT_COMPAT</tt></b></td>
+         <td colspan="1" rowspan="1" align="left">
+          Преобразуются двойные кавычки, одиночные остаются без изменений.
+         </td>
+        </tr>
+
+        <tr valign="middle">
+         <td colspan="1" rowspan="1" align="left"><b><tt>ENT_QUOTES</tt></b></td>
+         <td colspan="1" rowspan="1" align="left">
+          Преобразуются и двойные, и одиночные кавычки.
+         </td>
+        </tr>
+
+        <tr valign="middle">
+         <td colspan="1" rowspan="1" align="left"><b><tt>ENT_NOQUOTES</tt></b></td>
+         <td colspan="1" rowspan="1" align="left">
+          И двойные, и одиночные кавычки остаются без изменений.
+         </td>
+        </tr>
+
+       </tbody>
+      </colgroup>
+
+     </table>
+
+    </p>
+    <p class="para">
+     Необязательный третий аргумент <i><tt class="parameter">charset</tt></i>
+ 
+     определяет кодировку, используемую при преобразовании. По умолчанию 
+     используется кодировка ISO-8859-1.
+    </p>
+    
+
+
+<p class="para">
+ Начиная с PHP 4.3.0 поддерживаются следующие кодировки.
+ <table border="5">
+  <caption><b>Поддерживаемые кодировки</b></caption>
+  <colgroup>
+
+   <thead valign="middle">
+    <tr valign="middle">
+     <th colspan="1">Кодировка</th>
+     <th colspan="1">Псевдонимы</th>
+     <th colspan="1">Описание</th>
+    </tr>
+
+   </thead>
+
+   <tbody valign="middle" class="tbody">
+    <tr valign="middle">
+     <td colspan="1" rowspan="1" align="left">ISO-8859-1</td>
+     <td colspan="1" rowspan="1" align="left">ISO8859-1</td>
+     <td colspan="1" rowspan="1" align="left">
+      Западно-европейская Latin-1
+     </td>
+    </tr>
+
+    <tr valign="middle">
+     <td colspan="1" rowspan="1" align="left">ISO-8859-15</td>
+     <td colspan="1" rowspan="1" align="left">ISO8859-15</td>
+     <td colspan="1" rowspan="1" align="left">
+      Западно-европейская Latin-9. Добавляет знак евро, французские и 
+      финские буквы к кодировке Latin-1(ISO-8859-1).
+     </td>
+    </tr>
+
+    <tr valign="middle">
+     <td colspan="1" rowspan="1" align="left">UTF-8</td>
+     <td class="empty">&nbsp;</td>
+     <td colspan="1" rowspan="1" align="left">
+      8-битная Unicode, совместимая с ASCII.
+     </td>
+    </tr>
+
+    <tr valign="middle">
+     <td colspan="1" rowspan="1" align="left">cp866</td>
+     <td colspan="1" rowspan="1" align="left">ibm866, 866</td>
+     <td colspan="1" rowspan="1" align="left">
+      Кириллическая кодировка, применяемая в DOS.
+      Поддерживается в версии 4.3.2.
+     </td>
+    </tr>
+
+    <tr valign="middle">
+     <td colspan="1" rowspan="1" align="left">cp1251</td>
+     <td colspan="1" rowspan="1" align="left">Windows-1251, win-1251, 1251</td>
+     <td colspan="1" rowspan="1" align="left">
+      Кириллическая кодировка, применяемая в Windows.
+      Поддерживается в версии 4.3.2.
+     </td>
+    </tr>
+
+    <tr valign="middle">
+     <td colspan="1" rowspan="1" align="left">cp1252</td>
+     <td colspan="1" rowspan="1" align="left">Windows-1252, 1252</td>
+     <td colspan="1" rowspan="1" align="left">
+      Западно-европейская кодировка, применяемая в Windows.
+     </td>
+    </tr>
+
+    <tr valign="middle">
+     <td colspan="1" rowspan="1" align="left">KOI8-R</td>
+     <td colspan="1" rowspan="1" align="left">koi8-ru, koi8r</td>
+     <td colspan="1" rowspan="1" align="left">
+      Русская кодировка.
+      Поддерживается в версии 4.3.2.
+     </td>
+    </tr>
+
+    <tr valign="middle">
+     <td colspan="1" rowspan="1" align="left">BIG5</td>
+     <td colspan="1" rowspan="1" align="left">950</td>
+     <td colspan="1" rowspan="1" align="left">
+      Традиционный китайский, применяется в основном на Тайване.
+     </td>
+    </tr>
+
+    <tr valign="middle">
+     <td colspan="1" rowspan="1" align="left">GB2312</td>
+     <td colspan="1" rowspan="1" align="left">936</td>
+     <td colspan="1" rowspan="1" align="left">
+      Упрощенный китайский, стандартная национальная кодировка.
+     </td>
+    </tr>
+
+    <tr valign="middle">
+     <td colspan="1" rowspan="1" align="left">BIG5-HKSCS</td>
+     <td class="empty">&nbsp;</td>
+     <td colspan="1" rowspan="1" align="left">
+      Расширенная Big5, применяемая в Гонг-Конге.
+     </td>
+    </tr>
+
+    <tr valign="middle">
+     <td colspan="1" rowspan="1" align="left">Shift_JIS</td>
+     <td colspan="1" rowspan="1" align="left">SJIS, 932</td>
+     <td colspan="1" rowspan="1" align="left">
+      Японская кодировка.
+     </td>
+    </tr>
+
+    <tr valign="middle">
+     <td colspan="1" rowspan="1" align="left">EUC-JP</td>
+     <td colspan="1" rowspan="1" align="left">EUCJP</td>
+     <td colspan="1" rowspan="1" align="left">
+      Японская кодировка.
+     </td>
+    </tr>
+
+   </tbody>
+  </colgroup>
+
+ </table>
+
+ <blockquote><p><b class="note">Замечание</b>: 
+  <span class="simpara">
+   Не перечисленные выше кодировки не поддерживаются, и вместо них 
+   применяется ISO-8859-1.
+  </span>
+ </p></blockquote>
+</p>
+
+
+    <p class="para">
+     <div class="example">
+      <p><b>Пример #1 Декодирование HTML сущностей</b></p>
+      <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$orig&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">"I'll&nbsp;\"walk\"&nbsp;the&nbsp;&lt;b&gt;dog&lt;/b&gt;&nbsp;now"</span><span style="color: #007700">;<br /><br /></span><span style="color: #0000BB">$a&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">htmlentities</span><span style="color: #007700">(</span><span style="color: #0000BB">$orig</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">$b&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">html_entity_decode</span><span style="color: #007700">(</span><span style="color: #0000BB">$a</span><span style="color: #007700">);<br /><br />echo&nbsp;</span><span style="color: #0000BB">$a</span><span style="color: #007700">;&nbsp;</span><span style="color: #FF8000">//&nbsp;I'll&nbsp;&amp;quot;walk&amp;quot;&nbsp;the&nbsp;&amp;lt;b&amp;gt;dog&amp;lt;/b&amp;gt;&nbsp;now<br /><br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">$b</span><span style="color: #007700">;&nbsp;</span><span style="color: #FF8000">//&nbsp;I'll&nbsp;"walk"&nbsp;the&nbsp;&lt;b&gt;dog&lt;/b&gt;&nbsp;now<br /><br /><br />//&nbsp;в&nbsp;версиях&nbsp;до&nbsp;PHP&nbsp;4.3.0&nbsp;можно&nbsp;сделать&nbsp;так:<br /></span><span style="color: #007700">function&nbsp;</span><span style="color: #0000BB">unhtmlentities</span><span style="color: #007700">(</span><span style="color: #0000BB">$string</span><span style="color: #007700">)&nbsp;<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$trans_tbl&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">get_html_translation_table</span><span style="color: #007700">(</span><span style="color: #0000BB">HTML_ENTITIES</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$trans_tbl&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">array_flip</span><span style="color: #007700">(</span><span style="color: #0000BB">$trans_tbl</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">strtr</span><span style="color: #007700">(</span><span style="color: #0000BB">$string</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$trans_tbl</span><span style="color: #007700">);<br />}<br /><br /></span><span style="color: #0000BB">$c&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">unhtmlentities</span><span style="color: #007700">(</span><span style="color: #0000BB">$a</span><span style="color: #007700">);<br /><br />echo&nbsp;</span><span style="color: #0000BB">$c</span><span style="color: #007700">;&nbsp;</span><span style="color: #FF8000">//&nbsp;I'll&nbsp;"walk"&nbsp;the&nbsp;&lt;b&gt;dog&lt;/b&gt;&nbsp;now<br /><br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+      </div>
+
+     </div>
+    </p>
+    <p class="para">
+     <blockquote><p><b class="note">Замечание</b>: 
+      
+       Может показаться странным, что результатом вызова 
+       <i>trim(html_entity_decode(&#039;&amp;nbsp;&#039;));</i> не является пустая строка
+       Причина том, что &#039;&amp;nbsp;&#039; преобразуется не в символ с 
+       ASCII-кодом 32 (который удаляется функцией <a href="function.trim.html" class="function">trim()</a>),а в символ с 
+       ASCII-кодом 160 (0xa0) в принимаемой по умолчанию кодировке ISO-8859-1.
+      <br />
+     </p></blockquote>
+    </p>
+    <p class="para">
+     См. также описание функций <a href="function.htmlentities.html" class="function">htmlentities()</a>,
+     <a href="function.htmlspecialchars.html" class="function">htmlspecialchars()</a>,
+     <a href="function.get-html-translation-table.html" class="function">get_html_translation_table()</a>
+     и <a href="function.urldecode.html" class="function">urldecode()</a>.
+    </p>
+   </div>
+
+  </div><hr /><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="function.hebrevc.html">hebrevc</a></div>
+ <div class="next" style="float: right;"><a href="function.htmlentities.html">htmlentities</a></div>
+ <div class="up"><a href="ref.strings.html">Функции обработки строк</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

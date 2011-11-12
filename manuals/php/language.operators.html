@@ -1,0 +1,233 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <title>Операторы</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+ </head>
+ <body><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="language.expressions.html">Выражения</a></div>
+ <div class="next" style="float: right;"><a href="language.operators.arithmetic.html">Арифметические операторы</a></div>
+ <div class="up"><a href="langref.html">Справочник языка</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div>
+  <h1>Операторы</h1>
+<h2>Содержание</h2><ul class="chunklist chunklist_chapter"><li><a href="language.operators.arithmetic.html">Арифметические операторы</a></li><li><a href="language.operators.assignment.html">Оператор присвоения</a></li><li><a href="language.operators.bitwise.html">Побитовые операторы</a></li><li><a href="language.operators.comparison.html">Операторы сравнения</a></li><li><a href="language.operators.errorcontrol.html">Оператор управления ошибками</a></li><li><a href="language.operators.execution.html">Операторы исполнения</a></li><li><a href="language.operators.increment.html">Операторы инкремента и декремента</a></li><li><a href="language.operators.logical.html">Логические операторы</a></li><li><a href="language.operators.string.html">Строковые операторы</a></li><li><a href="language.operators.array.html">Операторы, работающие с массивами</a></li><li><a href="language.operators.type.html">Оператор проверки принадлежности к классу</a></li></ul>
+
+  <p class="simpara">
+  Оператором называется нечто, состоящее из одного или более значений (выражений, 
+  если говорить на жаргоне программирования), которое можно вычислить как новое 
+  значение (таким образом, вся конструкция может рассматриваться как выражение).   
+  Отсюда следует, что функции или любые другие конструкции, которые возвращают 
+  значение (например, <a href="function.print.html" class="function">print()</a>) являются операторами, в отличие
+  от всех остальных языковых конструкций (например, <a href="function.echo.html" class="function">echo()</a>), 
+  которые ничего не возвращают.
+  </p>
+  <p class="para">
+   Операторы бывают трех видов. Во-первых, это унарные операторы, которые работают
+   только с одним аргументом, например, <i>!</i> 
+   (оператор отрицания) или <i>++</i> (инкримент). Вторую группу 
+   составляют бинарные операторы: в нее входят большинство поддерживаемых в PHP операторов, 
+   полный список которых вы можете найти в разделе <a href="language.operators.html#language.operators.precedence" class="link">
+   Порядок выполнения операторов</a>.
+  </p>
+  <p class="para">
+   И последнюю, третью группу составляет тернарный оператор <i>?:</i>.  
+   Он используется для условного выбора между двумя операторами, в зависимости
+   от результата вычисления третьего оператора. Говоря другими словами, он позволяет 
+   определить две альтернативные ветви дальнейшего выполнения. Тернарный оператор
+   рекомендуется заключать в круглые скобки.
+  </p>
+  
+  <div id="language.operators.precedence" class="sect1">
+   <h2 class="title">Приоритет выполнения операторов</h2>
+   <p class="para">
+    Приоритет операторов определяет, насколько &quot;тесно&quot; связанны между
+	собой два выражения. Например, выражение  <i>1 +
+    5 * 3</i> вычисляется как <i>16</i>, а не
+    <i>18</i>, поскольку операция умножения (&quot;*&quot;) имеет
+	более высокий приоритет, чем операция сложения (&quot;+&quot;). В случае, если
+	операторы имеют одинаковый приоритет, они будут выполняться слева направо.
+	Круглые скобки могут использоваться для принудительного указания 
+	необходимого порядка выполнения операторов. Например, 
+	выражение <i>(1 + 5) * 3</i> вычисляется как 
+    <i>18</i>.
+   </p>
+   <p class="para">
+    В следующей таблице приведен список операторов, отсортированный по
+	убыванию их приоритетов. Операторы, размещенные в одной строке имеют
+	одинаковый приоритет и порядок их выполнения опроделяется исходя из
+	их ассоциативности.
+    <table border="5">
+     <caption><b>Порядок выполнения операторов</b></caption>
+     <colgroup>
+
+      <thead valign="middle">
+       <tr valign="middle">
+        <th colspan="1">Ассоциативность</th>
+        <th colspan="1">Оператор</th>
+       </tr>
+
+      </thead>
+
+      <tbody valign="middle" class="tbody">
+       <tr valign="middle">
+        <td colspan="1" rowspan="1" align="left">неассоциативна</td>
+        <td colspan="1" rowspan="1" align="left">new</td>
+       </tr>
+
+       <tr valign="middle">
+        <td colspan="1" rowspan="1" align="left">правая</td>
+        <td colspan="1" rowspan="1" align="left">[</td>
+       </tr>
+
+       <tr valign="middle">
+        <td colspan="1" rowspan="1" align="left">неассоциативна</td>
+        <td colspan="1" rowspan="1" align="left">++ --</td>
+       </tr>
+
+       <tr valign="middle">
+        <td colspan="1" rowspan="1" align="left">неассоциативна</td>
+        <td colspan="1" rowspan="1" align="left">! ~ - (int) (float) (string) (array) (object) @</td>
+       </tr>
+
+       <tr valign="middle">
+        <td colspan="1" rowspan="1" align="left">левая</td>
+        <td colspan="1" rowspan="1" align="left">* / %</td>
+       </tr>
+
+       <tr valign="middle">
+        <td colspan="1" rowspan="1" align="left">левая</td>
+        <td colspan="1" rowspan="1" align="left">+ - .</td>
+       </tr>
+
+       <tr valign="middle">
+        <td colspan="1" rowspan="1" align="left">левая</td>
+        <td colspan="1" rowspan="1" align="left">&lt;&lt; &gt;&gt;</td>
+       </tr>
+
+       <tr valign="middle">
+        <td colspan="1" rowspan="1" align="left">неассоциативна</td>
+        <td colspan="1" rowspan="1" align="left">&lt; &lt;= &gt; &gt;=</td>
+       </tr>
+
+       <tr valign="middle">
+        <td colspan="1" rowspan="1" align="left">неассоциативна</td>
+        <td colspan="1" rowspan="1" align="left">== != === !==</td>
+       </tr>
+
+       <tr valign="middle">
+        <td colspan="1" rowspan="1" align="left">левая</td>
+        <td colspan="1" rowspan="1" align="left">&amp;</td>
+       </tr>
+
+       <tr valign="middle">
+        <td colspan="1" rowspan="1" align="left">левая</td>
+        <td colspan="1" rowspan="1" align="left">^</td>
+       </tr>
+
+       <tr valign="middle">
+        <td colspan="1" rowspan="1" align="left">левая</td>
+        <td colspan="1" rowspan="1" align="left">|</td>
+       </tr>
+
+       <tr valign="middle">
+        <td colspan="1" rowspan="1" align="left">левая</td>
+        <td colspan="1" rowspan="1" align="left">&amp;&amp;</td>
+       </tr>
+
+       <tr valign="middle">
+        <td colspan="1" rowspan="1" align="left">левая</td>
+        <td colspan="1" rowspan="1" align="left">||</td>
+       </tr>
+
+       <tr valign="middle">
+        <td colspan="1" rowspan="1" align="left">левая</td>
+        <td colspan="1" rowspan="1" align="left">? :</td>
+       </tr>
+
+       <tr valign="middle">
+        <td colspan="1" rowspan="1" align="left">правая</td>
+        <td colspan="1" rowspan="1" align="left">
+         = += -= *= /= .= %= &amp;= |= ^= &lt;&lt;= &gt;&gt;=
+        </td>
+       </tr>
+
+       <tr valign="middle">
+        <td colspan="1" rowspan="1" align="left">левая</td>
+        <td colspan="1" rowspan="1" align="left">and</td>
+       </tr>
+
+       <tr valign="middle">
+        <td colspan="1" rowspan="1" align="left">левая</td>
+        <td colspan="1" rowspan="1" align="left">xor</td>
+       </tr>
+
+       <tr valign="middle">
+        <td colspan="1" rowspan="1" align="left">левая</td>
+        <td colspan="1" rowspan="1" align="left">or</td>
+       </tr>
+
+       <tr valign="middle">
+        <td colspan="1" rowspan="1" align="left">левая</td>
+        <td colspan="1" rowspan="1" align="left">,</td>
+       </tr>
+
+      </tbody>
+     </colgroup>
+
+    </table>
+
+   </p>
+   <p class="para">
+      Левая ассоциативность подразумевает, что выражение вычисляется слева направо,
+	  правая ассоциативность соответственно подразумевает противоположный порядок.
+      <div class="example"> 
+       <p><b>Пример #1 Ассоциативность</b></p> 
+       <div class="example-contents"> 
+  <div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php&nbsp;<br />&nbsp;&nbsp;$a&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">3&nbsp;</span><span style="color: #007700">*&nbsp;</span><span style="color: #0000BB">3&nbsp;</span><span style="color: #007700">%&nbsp;</span><span style="color: #0000BB">5</span><span style="color: #007700">;&nbsp;</span><span style="color: #FF8000">//&nbsp;(3&nbsp;*&nbsp;3)&nbsp;%&nbsp;5&nbsp;=&nbsp;4&nbsp;<br />&nbsp;&nbsp;</span><span style="color: #0000BB">$a&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">true&nbsp;</span><span style="color: #007700">?&nbsp;</span><span style="color: #0000BB">0&nbsp;</span><span style="color: #007700">:&nbsp;</span><span style="color: #0000BB">true&nbsp;</span><span style="color: #007700">?&nbsp;</span><span style="color: #0000BB">1&nbsp;</span><span style="color: #007700">:&nbsp;</span><span style="color: #0000BB">2</span><span style="color: #007700">;&nbsp;</span><span style="color: #FF8000">//&nbsp;(true&nbsp;?&nbsp;0&nbsp;:&nbsp;true)&nbsp;?&nbsp;1&nbsp;:&nbsp;2&nbsp;=&nbsp;2&nbsp;<br />&nbsp;&nbsp;&nbsp;&nbsp;<br />&nbsp;&nbsp;</span><span style="color: #0000BB">$a&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">1</span><span style="color: #007700">;&nbsp;<br />&nbsp;&nbsp;</span><span style="color: #0000BB">$b&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">2</span><span style="color: #007700">;&nbsp;<br />&nbsp;&nbsp;</span><span style="color: #0000BB">$a&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$b&nbsp;</span><span style="color: #007700">+=&nbsp;</span><span style="color: #0000BB">3</span><span style="color: #007700">;&nbsp;</span><span style="color: #FF8000">//&nbsp;$a&nbsp;=&nbsp;($b&nbsp;+=&nbsp;3)&nbsp;-&gt;&nbsp;$a&nbsp;=&nbsp;5,&nbsp;$b&nbsp;=&nbsp;5&nbsp;<br />&nbsp;&nbsp;</span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div> 
+       </div>
+ 
+      </div>
+	   Вы можете использовать круглые скобки для повышения читабельности кода. 
+     </p> 
+   <blockquote><p><b class="note">Замечание</b>: 
+    
+     Несмотря на то, что оператор <i>!</i>  имеет
+	 более высокий приоритет чем <i>=</i>, PHP позволяет
+	 использовать следующую конструкцию: <i>if (!$a = foo())</i>,
+	 которая присваивает переменной <var class="varname">$a</var> результат
+	 выполнения функции <i>foo()</i>.
+    <br />
+   </p></blockquote>
+  </div>
+
+  
+  
+  
+
+  
+
+  
+
+  
+  
+  
+
+  
+
+  
+
+  
+  
+  
+  
+ </div>
+<hr /><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="language.expressions.html">Выражения</a></div>
+ <div class="next" style="float: right;"><a href="language.operators.arithmetic.html">Арифметические операторы</a></div>
+ <div class="up"><a href="langref.html">Справочник языка</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

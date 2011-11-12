@@ -1,0 +1,96 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <title>Класс directory</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+ </head>
+ <body><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="function.chroot.html">chroot</a></div>
+ <div class="next" style="float: right;"><a href="function.closedir.html">closedir</a></div>
+ <div class="up"><a href="ref.dir.html">Каталоги</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="class.dir" class="refentry">
+   <div class="refnamediv">
+    <h1 class="refname">dir</h1>
+    <p class="verinfo">(PHP 4, PHP 5)</p><p class="refpurpose dc-title">dir — Класс directory</p>
+
+   </div>
+   <div class="refsect1 unknown">
+    <h3 class="title">Описание</h3>
+    <div class="classsynopsis">
+     <div class="ooclass"><b class="classname">dir</b></div>
+     <div class="constructorsynopsis dc-description">
+       <span class="methodname"><b><b>dir</b></b></span>
+       ( <span class="methodparam"><span class="type">string</span> <tt class="parameter">$каталог</tt></span>
+      )</div>
+
+     <div class="fieldsynopsis">
+      <span class="type">string</span><var class="varname">$path</var>
+     ;</div>
+
+     <div class="fieldsynopsis">
+      <span class="type">resource</span><var class="varname">$handle</var>
+     ;</div>
+
+     <div class="methodsynopsis dc-description"><span class="type">string</span> <span class="methodname"><b><b>read</b></b></span> ( <span class="methodparam">void</span> )</div>
+
+     <div class="methodsynopsis dc-description"><span class="type">void</span> <span class="methodname"><b><a href="function.rewind.html" class="function">rewind</a></b></span> ( <span class="methodparam">void</span> )</div>
+
+     <div class="methodsynopsis dc-description"><span class="type">void</span> <span class="methodname"><b><b>close</b></b></span> ( <span class="methodparam">void</span> )</div>
+
+    </div>
+    <p class="para">
+     Псевдо-объектно-ориентированный механизм для чтения каталога,
+     переданного в параметре <i><tt class="parameter">каталог</tt></i>
+.
+     С момента открытия каталога становятся доступными два свойства
+     класса. Свойство &quot;handle&quot; может быть использовано
+     с другими функциями для работы с каталогами, например, с
+     функциями <a href="function.readdir.html" class="function">readdir()</a>, <a href="function.rewinddir.html" class="function">rewinddir()</a> и
+     <a href="function.closedir.html" class="function">closedir()</a>. Свойство &quot;path&quot; содержит путь
+     к открытому каталогу. Доступны три метода: read, rewind and close.
+    </p>
+    <p class="para">
+     Пожалуйста, обратите внимание на способ, которым осуществляется
+     проверка значения, возвращаемого методами класса <b>dir()</b>
+     в примере, приведенном ниже. В этом примере проводится
+     проверка значения на идентичность (выражения идентичны, когда
+     они равны и являются одного типа - за более подробной информацией
+     обратитесь к главе <a href="language.operators.comparison.html" class="link">
+     Операторы сравнения</a>) значению <b><tt>FALSE</tt></b>, поскольку
+     в ином случае, любой элемент каталога, чье имя может быть
+     выражено как <b><tt>FALSE</tt></b>, остановит цикл.
+     <div class="example">
+      <p><b>Пример #1 Пример использования класса <b>dir()</b></b></p>
+      <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$d&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">dir</span><span style="color: #007700">(</span><span style="color: #DD0000">"/etc"</span><span style="color: #007700">);<br />echo&nbsp;</span><span style="color: #DD0000">"Дескриптор:&nbsp;"</span><span style="color: #007700">.</span><span style="color: #0000BB">$d</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">handle</span><span style="color: #007700">.</span><span style="color: #DD0000">"&lt;br&gt;\n"</span><span style="color: #007700">;<br />echo&nbsp;</span><span style="color: #DD0000">"Путь:&nbsp;"</span><span style="color: #007700">.</span><span style="color: #0000BB">$d</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">path</span><span style="color: #007700">.</span><span style="color: #DD0000">"&lt;br&gt;\n"</span><span style="color: #007700">;<br />while&nbsp;(</span><span style="color: #0000BB">false&nbsp;</span><span style="color: #007700">!==&nbsp;(</span><span style="color: #0000BB">$entry&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$d</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">read</span><span style="color: #007700">()))&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #0000BB">$entry</span><span style="color: #007700">.</span><span style="color: #DD0000">"&lt;br&gt;\n"</span><span style="color: #007700">;<br />}<br /></span><span style="color: #0000BB">$d</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">close</span><span style="color: #007700">();<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+      </div>
+
+     </div>
+    </p>
+    <blockquote><p><b class="note">Замечание</b>: 
+     
+      Порядок, в котором метод &quot;read&quot; возвращает элементы каталога,
+      зависит от операционной системы.
+     <br />
+    </p></blockquote>
+    <blockquote><p><b class="note">Замечание</b>: 
+     
+      Также, PHP автоматически определяет внутренний класс
+      <span class="classname">Directory</span>, что означает, что
+      вы не сможете определять собственные классы с таким же
+      именем. За полным списком предопределенных классов
+      обратитесь к главе <a href="reserved.classes.html" class="link">Предопределенные классы</a>.
+     <br />
+    </p></blockquote>
+   </div>
+
+  </div><hr /><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="function.chroot.html">chroot</a></div>
+ <div class="next" style="float: right;"><a href="function.closedir.html">closedir</a></div>
+ <div class="up"><a href="ref.dir.html">Каталоги</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

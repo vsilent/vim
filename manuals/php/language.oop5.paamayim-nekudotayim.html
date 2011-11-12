@@ -1,0 +1,88 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <title>::</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+ </head>
+ <body><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="language.oop5.visibility.html">Область видимости</a></div>
+ <div class="next" style="float: right;"><a href="language.oop5.static.html">Ключевое слово "static"</a></div>
+ <div class="up"><a href="language.oop5.html">Классы и объекты (PHP 5)</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="language.oop5.paamayim-nekudotayim" class="sect1">
+  <h2 class="title">::</h2>
+
+  <p class="para">
+   &quot;Paamayim Nekudotayim&quot; или просто &quot;двойное двоеточие&quot;.
+   Используя эту лексему, программист может обращаться к
+   <a href="language.oop5.constants.html" class="link">константам</a>,
+   <a href="language.oop5.static.html" class="link">статическим</a> или
+   перегруженным свойствам или методам класса.
+  </p>
+
+  <p class="para">
+   При обращении к этим элементам извне класса, программист должен
+   использовать имя этого класса.
+  </p>
+
+  <p class="para">
+   &quot;Paamayim Nekudotayim&quot; на первый взгляд может показаться странным
+   словосочетанием для обозначения двойного двоеточия. Однако,
+   во время создания Zend Engine версии 0.5 (который входил в PHP3),
+   Andi и Zeev выбрали именно это обозначение.
+   &quot;Paamayim Nekudotayim&quot; действительно значит &quot;двойное двоеточие&quot;. На иврите.
+   Просто это обозначение не менялось ни разу в течение всего
+   времени разработки PHP.
+  </p>
+
+  <div class="example">
+   <p><b>Пример #1 Использование :: вне объявления класса</b></p>
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">class&nbsp;</span><span style="color: #0000BB">MyClass&nbsp;</span><span style="color: #007700">{<br />&nbsp;&nbsp;const&nbsp;</span><span style="color: #0000BB">CONST_VALUE&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">'Значение&nbsp;константы'</span><span style="color: #007700">;<br />}<br />echo&nbsp;</span><span style="color: #0000BB">MyClass</span><span style="color: #007700">::</span><span style="color: #0000BB">CONST_VALUE</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+   </div>
+
+  </div>
+
+  <p class="para">
+   Для обращения к свойствам и методам в объявлении класса
+   используются ключевые слова <var class="varname">self</var> и <var class="varname">parent</var>.
+  </p>
+
+  <div class="example">
+   <p><b>Пример #2 Использование :: в объявлении класса</b></p>
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">class&nbsp;</span><span style="color: #0000BB">OtherClass&nbsp;</span><span style="color: #007700">extends&nbsp;</span><span style="color: #0000BB">MyClass&nbsp;</span><span style="color: #007700">{<br />&nbsp;&nbsp;public&nbsp;static&nbsp;</span><span style="color: #0000BB">$my_static&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">'статическая&nbsp;переменная'</span><span style="color: #007700">;<br /><br />&nbsp;&nbsp;public&nbsp;static&nbsp;function&nbsp;</span><span style="color: #0000BB">doubleColon</span><span style="color: #007700">()&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #0000BB">parent</span><span style="color: #007700">::</span><span style="color: #0000BB">CONST_VALUE&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #0000BB">self</span><span style="color: #007700">::</span><span style="color: #0000BB">$my_static&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br />&nbsp;&nbsp;}<br />}<br /><br /></span><span style="color: #0000BB">OtherClass</span><span style="color: #007700">::</span><span style="color: #0000BB">doubleColon</span><span style="color: #007700">();<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+   </div>
+
+  </div>
+
+  <p class="para">
+   Когда дочерний класс перегружает методы, объявленные в классе-родителе,
+   PHP не будет осуществлять автоматический вызов методов, принадлежащих
+   классу-родителю. Этот функционал возлагается на метод, перегружаемый
+   в дочернем классе. Данное правило распространяется на <a href="language.oop5.decon.html" class="link">конструкторы и деструкторы</a>, <a href="language.oop5.overloading.html" class="link">перегруженные</a> и <a href="language.oop5.magic.html" class="link">&quot;волшебные&quot;</a> методы.
+  </p>
+
+  <div class="example">
+   <p><b>Пример #3 Обращение к методу в родительском классе</b></p>
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">class&nbsp;</span><span style="color: #0000BB">MyClass&nbsp;</span><span style="color: #007700">{<br /><br />&nbsp;&nbsp;protected&nbsp;function&nbsp;</span><span style="color: #0000BB">myFunc</span><span style="color: #007700">()&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"MyClass::myFunc()\n"</span><span style="color: #007700">;<br />&nbsp;&nbsp;}<br />}<br /><br />class&nbsp;</span><span style="color: #0000BB">OtherClass&nbsp;</span><span style="color: #007700">extends&nbsp;</span><span style="color: #0000BB">MyClass&nbsp;</span><span style="color: #007700">{<br /><br />&nbsp;&nbsp;</span><span style="color: #FF8000">/*&nbsp;Override&nbsp;parent's&nbsp;definition&nbsp;*/<br />&nbsp;&nbsp;</span><span style="color: #007700">public&nbsp;function&nbsp;</span><span style="color: #0000BB">myFunc</span><span style="color: #007700">()&nbsp;{<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">/*&nbsp;But&nbsp;still&nbsp;call&nbsp;the&nbsp;parent&nbsp;function&nbsp;*/<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">parent</span><span style="color: #007700">::</span><span style="color: #0000BB">myFunc</span><span style="color: #007700">();<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"OtherClass::myFunc()\n"</span><span style="color: #007700">;<br />&nbsp;&nbsp;}<br />}<br /><br /></span><span style="color: #0000BB">$class&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">OtherClass</span><span style="color: #007700">();<br /></span><span style="color: #0000BB">$class</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">myFunc</span><span style="color: #007700">();<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+   </div>
+
+  </div>
+
+ </div><hr /><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="language.oop5.visibility.html">Область видимости</a></div>
+ <div class="next" style="float: right;"><a href="language.oop5.static.html">Ключевое слово "static"</a></div>
+ <div class="up"><a href="language.oop5.html">Классы и объекты (PHP 5)</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

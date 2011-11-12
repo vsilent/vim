@@ -1,0 +1,196 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <title>Применить функцию обратного вызова ко всем элементам указанных массивов</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+ </head>
+ <body><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="function.array-keys.html">array_keys</a></div>
+ <div class="next" style="float: right;"><a href="function.array-merge-recursive.html">array_merge_recursive</a></div>
+ <div class="up"><a href="ref.array.html">Функции для работы с массивами</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="function.array-map" class="refentry">
+   <div class="refnamediv">
+    <h1 class="refname">array_map</h1>
+    <p class="verinfo">(PHP 4 &gt;= 4.0.6, PHP 5)</p><p class="refpurpose dc-title">array_map — 
+     Применить функцию обратного вызова ко всем элементам указанных массивов
+    </p>
+
+   </div>
+   <div class="refsect1 unknown">
+    <h3 class="title">Описание</h3>
+     <div class="methodsynopsis dc-description">
+      <span class="type">array</span> <span class="methodname"><b><b>array_map</b></b></span>
+       ( <span class="methodparam"><span class="type"><a href="language.pseudo-types.html#language.types.mixed" class="type mixed">mixed</a></span> <tt class="parameter">$callback</tt></span>
+      , <span class="methodparam"><span class="type">array</span> <tt class="parameter">$array1</tt></span>
+      [, <span class="methodparam"><span class="type">array</span> <tt class="parameter">$array2...</tt></span>
+     ] )</div>
+
+    <p class="para rdfs-comment">
+     Функция <b>array_map()</b> возвращает массив, содержащий
+     элементы всех указанных массивов после их обработки функцией обратного
+     вызова. Количество параметров, передаваемых функции обратного
+     вызова, должно совпадать с количеством массивов, переданным
+     функции <b>array_map()</b>.
+    </p>
+    <p class="para">
+     <div class="example">
+      <p><b>Пример #1 Пример использования <b>array_map()</b></b></p>
+      <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+function&nbsp;cube($n)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;$n*$n*$n;<br />}<br /><br />$a&nbsp;=&nbsp;array(1,&nbsp;2,&nbsp;3,&nbsp;4,&nbsp;5);<br />$b&nbsp;=&nbsp;array_map("cube",&nbsp;$a);<br />print_r($b);</span>
+</code></div>
+      </div>
+
+      <div class="example-contents"><p>
+       В результате переменная <var class="varname">$b</var> будет содержать:
+       <div class="example-contents"><pre>
+<div class="cdata"><pre>
+Array
+(
+    [0] =&gt; 1
+    [1] =&gt; 8
+    [2] =&gt; 27
+    [3] =&gt; 64
+    [4] =&gt; 125
+)
+</pre></div>
+       </pre></div>
+      </p></div>
+     </div>
+    </p>
+    <p class="para">
+     <div class="example">
+      <p><b>Пример #2 Пример использования <b>array_map()</b>: обработка нескольких массивов</b></p>
+      <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+function&nbsp;show_Spanish($n,&nbsp;$m)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;"Число&nbsp;$n&nbsp;по-испански&nbsp;-&nbsp;&nbsp;$m";<br />}<br /><br />function&nbsp;map_Spanish($n,&nbsp;$m)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;array&nbsp;($n&nbsp;=&gt;&nbsp;$m);<br />}<br /><br />$a&nbsp;=&nbsp;array(1,&nbsp;2,&nbsp;3,&nbsp;4,&nbsp;5);<br />$b&nbsp;=&nbsp;array("uno",&nbsp;"dos",&nbsp;"tres",&nbsp;"cuatro",&nbsp;"cinco");<br /><br />$c&nbsp;=&nbsp;array_map("show_Spanish",&nbsp;$a,&nbsp;$b);<br />print_r($c);<br /><br />$d&nbsp;=&nbsp;array_map("map_Spanish",&nbsp;$a&nbsp;,&nbsp;$b);<br />print_r($d);</span>
+</code></div>
+      </div>
+
+      <div class="example-contents"><p>
+       Результат выполнения:
+       <div class="example-contents"><pre>
+<div class="cdata"><pre>
+// printout of $c
+Array
+(
+    [0] =&gt; Число 1 по-испански -  uno
+    [1] =&gt; Число 2 по-испански -  dos
+    [2] =&gt; Число 3 по-испански -  tres
+    [3] =&gt; Число 4 по-испански -  cuatro
+    [4] =&gt; Число 5 по-испански -  cinco
+)
+
+// printout of $d
+Array
+(
+    [0] =&gt; Array
+        (
+            [1] =&gt; uno
+        )
+
+    [1] =&gt; Array
+        (
+            [2] =&gt; dos
+        )
+
+    [2] =&gt; Array
+        (
+            [3] =&gt; tres
+        )
+
+    [3] =&gt; Array
+        (
+            [4] =&gt; cuatro
+        )
+
+    [4] =&gt; Array
+        (
+            [5] =&gt; cinco
+        )
+
+)
+</pre></div>
+       </pre></div>
+      </p></div>
+     </div>
+    </p>
+    <p class="para">
+     Обычно при обработке двух или более массивов, они имею одинаковую длину,
+     так как функция обратного вызова применяется параллельно к соответствующим
+     элементам массивов. Если массивы имеют различную длину, самый маленький
+     из них дополняется элементами с пустыми значениями.
+    </p>
+    <p class="para">
+     Интересным эффектом при использовании этой функции является создание
+     массива массивов, что может быть достигнуто путем использования
+     значения <b><tt>NULL</tt></b> в качестве имени функции обратного вызова.
+    </p>
+    <p class="para">
+     <div class="example">
+      <p><b>Пример #3 Создание массива массивов</b></p>
+      <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+$a&nbsp;=&nbsp;array(1,&nbsp;2,&nbsp;3,&nbsp;4,&nbsp;5);<br />$b&nbsp;=&nbsp;array("one",&nbsp;"two",&nbsp;"three",&nbsp;"four",&nbsp;"five");<br />$c&nbsp;=&nbsp;array("uno",&nbsp;"dos",&nbsp;"tres",&nbsp;"cuatro",&nbsp;"cinco");<br /><br />$d&nbsp;=&nbsp;array_map(null,&nbsp;$a,&nbsp;$b,&nbsp;$c);<br />print_r($d);</span>
+</code></div>
+      </div>
+
+     </div>
+    </p>
+    <p class="para">
+     Результатом выполнения вышеприведенной программы будет:
+     <div class="example-contents"><pre>
+<div class="cdata"><pre>
+Array
+(
+    [0] =&gt; Array
+        (
+            [0] =&gt; 1
+            [1] =&gt; one
+            [2] =&gt; uno
+        )
+
+    [1] =&gt; Array
+        (
+            [0] =&gt; 2
+            [1] =&gt; two
+            [2] =&gt; dos
+        )
+
+    [2] =&gt; Array
+        (
+            [0] =&gt; 3
+            [1] =&gt; three
+            [2] =&gt; tres
+        )
+
+    [3] =&gt; Array
+        (
+            [0] =&gt; 4
+            [1] =&gt; four
+            [2] =&gt; cuatro
+        )
+
+    [4] =&gt; Array
+        (
+            [0] =&gt; 5
+            [1] =&gt; five
+            [2] =&gt; cinco
+        )
+
+)
+</pre></div>
+     </pre></div>
+    </p>
+    <p class="para">
+     См.также <a href="function.array-filter.html" class="function">array_filter()</a> и <a href="function.array-reduce.html" class="function">array_reduce()</a>.
+    </p>
+   </div>
+
+  </div><hr /><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="function.array-keys.html">array_keys</a></div>
+ <div class="next" style="float: right;"><a href="function.array-merge-recursive.html">array_merge_recursive</a></div>
+ <div class="up"><a href="ref.array.html">Функции для работы с массивами</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

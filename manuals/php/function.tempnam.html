@@ -1,0 +1,85 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <title>Создаёт файл с уникальным именем</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+ </head>
+ <body><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="function.symlink.html">symlink</a></div>
+ <div class="next" style="float: right;"><a href="function.tmpfile.html">tmpfile</a></div>
+ <div class="up"><a href="ref.filesystem.html">Файловая система</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="function.tempnam" class="refentry">
+   <div class="refnamediv">
+    <h1 class="refname">tempnam</h1>
+    <p class="verinfo">(PHP 4, PHP 5)</p><p class="refpurpose dc-title">tempnam — Создаёт файл с уникальным именем</p>
+
+   </div>
+   <div class="refsect1 unknown">
+    <h3 class="title">Описание</h3>
+     <div class="methodsynopsis dc-description">
+      <span class="type">string</span> <span class="methodname"><b><b>tempnam</b></b></span>
+       ( <span class="methodparam"><span class="type">string</span> <tt class="parameter">$dir</tt></span>
+      , <span class="methodparam"><span class="type">string</span> <tt class="parameter">$prefix</tt></span>
+      )</div>
+
+    <p class="para rdfs-comment">
+     Создаёт файл с уникальным именем в определённой директории.
+     Если эта директория не существует, <b>tempnam()</b>
+     попытается создать файл во временной директории системы и
+     вернуть его имя. 
+    </p>
+    <p class="para">
+     В версиях PHP ниже 4.0.6, поведение функции
+     <b>tempnam()</b> было платформозависимым.
+     В Windows переменная окружения TMP была приоритетнее аргумента
+     <i><tt class="parameter">dir</tt></i>
+, в Linux приоритетнее была переменная
+     окружения TMPDIR, а SVR4 всегда использовал ваш аргумент
+     <i><tt class="parameter">dir</tt></i>
+, если указанная директория существовала.
+     Обратитесь к вашей документации по функции tempnam(3), если у вас
+     возникнут сомнения.
+    </p>
+    <blockquote><p><b class="note">Замечание</b>: 
+     <span class="simpara">
+      Если PHP не может создать файл в указанной директории
+      <i><tt class="parameter">dir</tt></i>
+, он возвращается к директории
+      по умолчанию вашей системы.
+     </span>
+    </p></blockquote>
+    <p class="para">
+     Возвращает имя нового временного файла или <b><tt>FALSE</tt></b> в
+     случае неудачи.
+     <div class="example">
+      <p><b>Пример #1 Пример использования функции <b>tempnam()</b></b></p>
+      <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$tmpfname&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">tempnam</span><span style="color: #007700">(</span><span style="color: #DD0000">"/tmp"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"FOO"</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">$handle&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">fopen</span><span style="color: #007700">(</span><span style="color: #0000BB">$tmpfname</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"w"</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">fwrite</span><span style="color: #007700">(</span><span style="color: #0000BB">$handle</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"записываем&nbsp;в&nbsp;во&nbsp;временный&nbsp;файх"</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">fclose</span><span style="color: #007700">(</span><span style="color: #0000BB">$handle</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">//&nbsp;здесь&nbsp;мы&nbsp;чего-нибудь&nbsp;делаем<br /><br /></span><span style="color: #0000BB">unlink</span><span style="color: #007700">(</span><span style="color: #0000BB">$tmpfname</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+      </div>
+
+     </div>
+    </p>
+    <blockquote><p><b class="note">Замечание</b>: 
+     <span class="simpara">
+      Поведение функции изменилось начиная с версии PHP 4.0.3. Временный файл
+      также создаётся чтобы избежать состояния гонки, когда файл может появится
+      в файловой системе между моментом генерации строки и моментом, когда
+      скрипт начнёт его создавать. Обратите внимание, что вы должны удалить
+      файл вручную, если он больше вам не нужен; этот процесс не автоматизирован.
+     </span>
+    </p></blockquote>
+    <p class="para">
+     См. также описание функий <a href="function.tmpfile.html" class="function">tmpfile()</a> и <a href="function.unlink.html" class="function">unlink()</a>.
+    </p>
+   </div>
+
+  </div><hr /><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="function.symlink.html">symlink</a></div>
+ <div class="next" style="float: right;"><a href="function.tmpfile.html">tmpfile</a></div>
+ <div class="up"><a href="ref.filesystem.html">Файловая система</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

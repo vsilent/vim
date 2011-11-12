@@ -1,0 +1,83 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <title>Получить элемент каталога по его дескриптору</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+ </head>
+ <body><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="function.opendir.html">opendir</a></div>
+ <div class="next" style="float: right;"><a href="function.rewinddir.html">rewinddir</a></div>
+ <div class="up"><a href="ref.dir.html">Каталоги</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="function.readdir" class="refentry">
+   <div class="refnamediv">
+    <h1 class="refname">readdir</h1>
+    <p class="verinfo">(PHP 4, PHP 5)</p><p class="refpurpose dc-title">readdir — Получить элемент каталога по его дескриптору</p>
+
+   </div>
+   <div class="refsect1 unknown">
+    <h3 class="title">Описание</h3>
+     <div class="methodsynopsis dc-description">
+      <span class="type">string</span> <span class="methodname"><b><b>readdir</b></b></span>
+       ( <span class="methodparam"><span class="type">resource</span> <tt class="parameter">$dir_handle</tt></span>
+      )</div>
+
+    <p class="para rdfs-comment">
+     Возвращает имя следующего по порядку элемента каталога. Имена
+     элементов возвращаются в порядке, зависящем от файловой
+     системы.
+    </p>
+    <p class="para">
+     Обратите внимание на способ проверки значения, возвращаемого
+     функцией <b>readdir()</b> в приведенном ниже
+     примере. В этом примере осуществляется проверка значения
+     на идентичность (выражения идентичны, когда они равны и являются
+     значениями одного типа - за более подробной информацией
+     обратитесь к главе <a href="language.operators.comparison.html" class="link">
+     Операторы сравнения</a>) значению <b><tt>FALSE</tt></b>, поскольку
+     в ином случае, любой элемент каталога, чье имя может быть
+     выражено как <b><tt>FALSE</tt></b>, остановит цикл (например, элемент с
+     именем &quot;0&quot;).
+    </p>
+    <p class="para">
+     <div class="example">
+      <p><b>Пример #1 Вывести список всех файлов в каталоге</b></p>
+      <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">//&nbsp;Обратите&nbsp;внимание,&nbsp;что&nbsp;оператор&nbsp;!==&nbsp;не&nbsp;существовал&nbsp;до&nbsp;версии&nbsp;4.0.0-RC2<br /><br /></span><span style="color: #007700">if&nbsp;(</span><span style="color: #0000BB">$handle&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">opendir</span><span style="color: #007700">(</span><span style="color: #DD0000">'/path/to/files'</span><span style="color: #007700">))&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"Дескриптор&nbsp;каталога:&nbsp;$handle\n"</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"Файлы:\n"</span><span style="color: #007700">;<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">/*&nbsp;Именно&nbsp;этот&nbsp;способ&nbsp;чтения&nbsp;элементов&nbsp;каталога&nbsp;является&nbsp;правильным.&nbsp;*/<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">while&nbsp;(</span><span style="color: #0000BB">false&nbsp;</span><span style="color: #007700">!==&nbsp;(</span><span style="color: #0000BB">$file&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">readdir</span><span style="color: #007700">(</span><span style="color: #0000BB">$handle</span><span style="color: #007700">)))&nbsp;{&nbsp;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"$file\n"</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">/*&nbsp;Этот&nbsp;способ&nbsp;НЕВЕРЕН.&nbsp;*/<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">while&nbsp;(</span><span style="color: #0000BB">$file&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">readdir</span><span style="color: #007700">(</span><span style="color: #0000BB">$handle</span><span style="color: #007700">))&nbsp;{&nbsp;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"$file\n"</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">closedir</span><span style="color: #007700">(</span><span style="color: #0000BB">$handle</span><span style="color: #007700">);&nbsp;<br />}<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+      </div>
+
+     </div>
+    </p>
+    <p class="para">
+     Обратите внимание, что функция <b>readdir()</b> также возвращает
+     элементы с именами <i>.</i> и <i>..</i>.
+     Если вы не хотите получать эти значения, просто отбрасывайте их:
+     <div class="example">
+      <p><b>Пример #2 
+       Получить список файлов в текущем каталоге и отбросить элементы
+       с именами <i>.</i> и <i>..</i>
+      </b></p>
+      <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php&nbsp;<br /></span><span style="color: #007700">if&nbsp;(</span><span style="color: #0000BB">$handle&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">opendir</span><span style="color: #007700">(</span><span style="color: #DD0000">'.'</span><span style="color: #007700">))&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;while&nbsp;(</span><span style="color: #0000BB">false&nbsp;</span><span style="color: #007700">!==&nbsp;(</span><span style="color: #0000BB">$file&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">readdir</span><span style="color: #007700">(</span><span style="color: #0000BB">$handle</span><span style="color: #007700">)))&nbsp;{&nbsp;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(</span><span style="color: #0000BB">$file&nbsp;</span><span style="color: #007700">!=&nbsp;</span><span style="color: #DD0000">"."&nbsp;</span><span style="color: #007700">&amp;&amp;&nbsp;</span><span style="color: #0000BB">$file&nbsp;</span><span style="color: #007700">!=&nbsp;</span><span style="color: #DD0000">".."</span><span style="color: #007700">)&nbsp;{&nbsp;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"$file\n"</span><span style="color: #007700">;&nbsp;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">closedir</span><span style="color: #007700">(</span><span style="color: #0000BB">$handle</span><span style="color: #007700">);&nbsp;<br />}<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+      </div>
+
+     </div>
+    </p>
+    <p class="para">
+     См.также описания функций <a href="function.is-dir.html" class="function">is_dir()</a> и
+     <a href="function.glob.html" class="function">glob()</a>.
+    </p>
+   </div>
+
+  </div><hr /><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="function.opendir.html">opendir</a></div>
+ <div class="next" style="float: right;"><a href="function.rewinddir.html">rewinddir</a></div>
+ <div class="up"><a href="ref.dir.html">Каталоги</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

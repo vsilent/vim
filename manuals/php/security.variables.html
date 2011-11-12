@@ -1,0 +1,82 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <title>Данные, введенные пользователем</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+ </head>
+ <body><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="security.globals.html">Использование глобальных переменных (Register_Globals)</a></div>
+ <div class="next" style="float: right;"><a href="security.magicquotes.html">Волшебные кавычки</a></div>
+ <div class="up"><a href="security.html">Безопасность</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div>
+   <h1>Данные, введенные пользователем</h1>
+
+   <p class="para">
+    Наиболее опасные дыры  во многих PHP-скриптах возникают не столько из-за
+    самого языка, сколько из-за кода, написанного без учета соответствующих
+    требований безопасности. Как следствие, вы всегда должны выделять время
+    на исследование разрабатываемого участка кода, чтобы оценить потенциальную
+    угрозу от ввода переменной с нестандартным значением.
+    <div class="example">
+     <p><b>Пример #1 Потенциально опасное использование переменных</b></p>
+     <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">//&nbsp;удалить&nbsp;файлы&nbsp;из&nbsp;домашней&nbsp;директории&nbsp;пользователя...<br />//&nbsp;а&nbsp;может,&nbsp;еще&nbsp;что&nbsp;нибудь?<br /></span><span style="color: #0000BB">unlink&nbsp;</span><span style="color: #007700">(</span><span style="color: #0000BB">$evil_var</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">//&nbsp;записать&nbsp;в&nbsp;лог-файл&nbsp;выполняемое&nbsp;действие...&nbsp;<br />//&nbsp;может&nbsp;быть,&nbsp;даже&nbsp;/etc/passwd?<br /></span><span style="color: #0000BB">fwrite&nbsp;</span><span style="color: #007700">(</span><span style="color: #0000BB">$fp</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$evil_var</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">//&nbsp;выполнение&nbsp;тривиальных&nbsp;действий...&nbsp;или&nbsp;rm&nbsp;-rf&nbsp;*?<br /></span><span style="color: #0000BB">system&nbsp;</span><span style="color: #007700">(</span><span style="color: #0000BB">$evil_var</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">exec&nbsp;</span><span style="color: #007700">(</span><span style="color: #0000BB">$evil_var</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+     </div>
+
+    </div>
+    Вы должны тщательно проверять ваш код и быть абсолютно уверены в том,
+    что все данные, передаваемые веб-браузером, проверяются надлежащим образом.
+    Попробуйте ответить для себя на следующие вопросы:
+    <ul class="itemizedlist">
+     <li class="listitem">
+      <span class="simpara">
+       Будет ли данный скрипт воздействовать исключительно на предполагаемые 
+       данные?
+      </span>
+     </li>
+     <li class="listitem">
+      <span class="simpara">
+       Правильно ли будут обработаны некорректные или нестандартные данные?
+      </span>
+     </li>
+     <li class="listitem">
+     <span class="simpara">
+       Возможно ли использование скрипта не предусмотренным способом?
+      </span>
+     </li>
+     <li class="listitem">
+      <span class="simpara">
+       Возможно ли его использование в сочетании с другими скриптами
+       в негативных целях?
+      </span>
+     </li>
+     <li class="listitem">
+      <span class="simpara">
+       Будет ли каждая транзакция корректно логирована?
+      </span>
+     </li>
+    </ul>
+    Ответив на эти вопросы во время написания скрипта, а не после, вы,
+    возможно, предотвратите последующую доработку скрипта в целях повышения
+    его безопасности. Начиная разработку с этих вопросов, вы не гарантируете
+    полную безопасность вашей системы, но сможете значительно повысить её.
+   </p>
+   <p class="para">
+    Вы также можете предусмотреть отключение таких конфигурационных опций, как
+    register_globals,  magic_quotes и некоторых других, которые могут приводить
+    к сомнениям относительно происхождения или значения получаемых переменных.
+    Использование при написании кода режима error_reporting(E_ALL) может
+    помочь, предупреждая вас об использовании переменных до инициализации или проверки
+    (что предотвратит работу с данными, отличныи от ожидаемых).
+   </p>
+  </div>
+<hr /><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="security.globals.html">Использование глобальных переменных (Register_Globals)</a></div>
+ <div class="next" style="float: right;"><a href="security.magicquotes.html">Волшебные кавычки</a></div>
+ <div class="up"><a href="security.html">Безопасность</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

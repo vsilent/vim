@@ -1,0 +1,77 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <title>Открывает или создает базу данных SQLite, делая подключение постоянным</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+ </head>
+ <body><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="function.sqlite-open.html">sqlite_open</a></div>
+ <div class="next" style="float: right;"><a href="function.sqlite-prev.html">sqlite_prev</a></div>
+ <div class="up"><a href="ref.sqlite.html">SQLite</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="function.sqlite-popen" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">sqlite_popen</h1>
+  <p class="verinfo">(PHP 5, PECL sqlite:1.0-1.0.3)</p><p class="refpurpose dc-title">sqlite_popen — 
+   Открывает или создает базу данных SQLite, делая подключение постоянным
+  </p>
+
+ </div>
+ <div class="refsect1 unknown">
+  <h3 class="title">Описание</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type">resource</span> <span class="methodname"><b><b>sqlite_popen</b></b></span>
+    ( <span class="methodparam"><span class="type">string</span> <tt class="parameter">$filename</tt></span>
+   [, <span class="methodparam"><span class="type">int</span> <tt class="parameter">$mode</tt></span>
+   [, <span class="methodparam"><span class="type">string</span> <tt class="parameter reference">&$error_message</tt></span>
+  ]] )</div>
+
+  <p class="simpara">
+   Эта функция идентична <a href="function.sqlite-open.html" class="function">sqlite_open()</a>, за исключением
+   того, что она использует механизм постоянных соединений PHP.
+   Описание аргументов в описании функции <a href="function.sqlite-open.html" class="function">sqlite_open()</a>.
+  </p>
+  <p class="para">
+   <b>sqlite_popen()</b> пытается найти уже открытый идентификатор
+   подключения к файлу <i><tt class="parameter">filename</tt></i>
+.  Если такой указатель
+   обнаружен, функция возвращает его, иначе открывает файл аналогично функции
+   <a href="function.sqlite-open.html" class="function">sqlite_open()</a>.
+  </p>
+  <p class="para">
+   Выгода от использования постоянного подключения заключается в том, что не
+   тратится время на открытие файла и чтение структуры данных при каждом
+   запросе. Это справедливо только в случае использования PHP как модуля
+   web-сервера (но не CGI или CLI).
+  </p>
+  <blockquote><p><b class="note">Замечание</b>: 
+   <span class="simpara">
+    При использовании постоянных подключений необходимо следить за тем, чтобы
+    файл базу данных не перезаписывался внешними процесами (например,
+    программой, запущенной с помощью crontab, которая создает новый файл базы
+    данных, а затем копирует его на место оригинального файла), так как это
+    вызовет непредсказуемые последствия. 
+   </span>
+   <span class="simpara">
+    Если необходима модификация базы
+    данных внешним процессом, то этот процесс должен работать только с
+    оригинальным файлом и использовать транзакции.
+   </span>
+  </p></blockquote>
+ </div>
+
+ <div class="refsect1 unknown">
+  <h3 class="title">Смотрите также</h3>
+  <p class="para">
+   <a href="function.sqlite-open.html" class="function">sqlite_open()</a>,
+   <a href="function.sqlite-close.html" class="function">sqlite_close()</a> и
+   <a href="function.sqlite-query.html" class="function">sqlite_query()</a>
+  </p>
+ </div>
+
+</div><hr /><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="function.sqlite-open.html">sqlite_open</a></div>
+ <div class="next" style="float: right;"><a href="function.sqlite-prev.html">sqlite_prev</a></div>
+ <div class="up"><a href="ref.sqlite.html">SQLite</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

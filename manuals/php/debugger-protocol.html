@@ -1,0 +1,261 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <title>Протокол отладчика</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+ </head>
+ <body><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="debugger.html">Отладка PHP</a></div>
+ <div class="next" style="float: right;"><a href="configure.html">Configure options</a></div>
+ <div class="up"><a href="debugger.html">Отладка PHP</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="debugger-protocol" class="sect1">
+   <h2 class="title">Протокол отладчика</h2>
+   <p class="para">
+    Протокол отладчика PHP 3 является построчным. Каждая строка
+    состоит из <em class="emphasis">типа</em> и нескольких строк, составляющих
+    <em class="emphasis">сообщение</em>. Каждое сообщение начинается строкой, имеющей тип
+    <i>start</i> и завершается строкой, имеющей тип <i>end</i>.
+    PHP 3 имеет возможность одновременной посылки строк, предназначенных для
+    разных сообщений.
+   </p>
+   <p class="para">
+    Каждая строка имеет следующий формат:
+    <div class="informalexample">
+     <pre class="literallayout">
+<span class="replaceable">дата</span> <span class="replaceable">время</span>
+<span class="replaceable">хост</span>(<span class="replaceable">pid</span>)
+<span class="replaceable">тип</span>:
+<span class="replaceable">данные сообщения</span>
+     </pre>
+    </div>
+    <dl>
+
+     <dt>
+
+      <span class="term"><span class="replaceable">дата</span></span>
+
+      <dd>
+
+       <span class="simpara">
+  Дата в формате ISO 8601
+	(<span class="replaceable">гггг</span>-<span class="replaceable">мм</span>-<span class="replaceable">чч</span>)
+       </span>
+      </dd>
+
+     </dt>
+
+     <dt>
+
+      <span class="term"><span class="replaceable">время</span></span>
+
+      <dd>
+
+       <span class="simpara">Время с указанием микросекунд:
+	<span class="replaceable">чч</span>:<span class="replaceable">мм</span>:<span class="replaceable">мсмсмс</span>
+       </span>
+      </dd>
+
+     </dt>
+
+     <dt>
+
+      <span class="term"><span class="replaceable">хост</span></span>
+
+      <dd>
+
+       <span class="simpara">
+  Имя DNS или IP адрес хоста, на котором возникла ошибка при выполнении скрипта.
+       </span>
+      </dd>
+
+     </dt>
+
+     <dt>
+
+      <span class="term"><span class="replaceable">pid</span></span>
+
+      <dd>
+
+       <span class="simpara">
+	PID (идентификатор процесса) на <span class="replaceable">хосте</span>, в процессе работы
+  которого возникла ошибка в скрипте PHP 3.
+       </span>
+      </dd>
+
+     </dt>
+
+     <dt>
+
+      <span class="term"><span class="replaceable">тип</span></span>
+
+      <dd>
+
+       <p class="para">
+  Тип строки. Сообщает принимающей программе, как та должна
+  интерпретировать последующие данные:
+	<table border="5">
+	 <caption><b>Типы строк отладчика</b></caption>
+	 <colgroup>
+
+	  <thead valign="middle">
+	   <tr valign="middle">
+	    <th colspan="1">Имя</th>
+	    <th colspan="1">Значение</th>
+	   </tr>
+
+	  </thead>
+
+	  <tbody valign="middle" class="tbody">
+	   <tr valign="middle">
+	    <td colspan="1" rowspan="1" align="left"><i>start</i></td> 
+	    <td colspan="1" rowspan="1" align="left">
+       Сообщает принимающей программе о начале отладочного сообщения.
+       Содержащиеся в <span class="replaceable">данных</span> сведения являютя одним из типов
+       ошибки, перечисленных ниже.
+	    </td>
+	   </tr>
+
+	   <tr valign="middle">
+	    <td colspan="1" rowspan="1" align="left"><i>message</i></td>
+	    <td colspan="1" rowspan="1" align="left">Сообщение PHP 3 об ошибке.</td>
+	   </tr>
+
+	   <tr valign="middle">
+	    <td colspan="1" rowspan="1" align="left"><i>location</i></td>
+	    <td colspan="1" rowspan="1" align="left">
+       Имя файла и номер строки, где возникла ошибка. Первая строка
+	     <i>location</i> всегда содержит указание на
+       верхний уровень.
+	     <span class="replaceable">данные</span> будут содержать строку вида
+	     <i><span class="replaceable">файл</span>:<span class="replaceable">строка</span></i>.
+       После каждой строки <i>message</i> и после
+       каждой строки <i>function</i> всегда будет
+       следовать строка <i>location</i>.
+	    </td>
+	   </tr>
+
+	   <tr valign="middle">
+	    <td colspan="1" rowspan="1" align="left">
+	     <i>frames</i></td> <td colspan="1" rowspan="1" align="left">Количество кадров
+       в последующем дампе стека. Если, например, передаются сведения
+       о четырех кадрах, следует ожидать, что последует информация
+       о четырех уровнях вложенности вызова функций. Если строка
+	     &quot;frames&quot; отсутствует, глубина вложенности принимается за нулевую.
+	    </td>
+	   </tr>
+
+	   <tr valign="middle">
+	    <td colspan="1" rowspan="1" align="left">
+	     <i>function</i></td> 
+	    <td colspan="1" rowspan="1" align="left">
+       Имя функции, в которой произошла ошибка. Для каждого
+       уровня вложенности в стеке вызовов функций это имя
+       будет повторяться только однажды.
+	    </td>
+	   </tr>
+
+	   <tr valign="middle">
+	    <td colspan="1" rowspan="1" align="left"><i>end</i></td> 
+	    <td colspan="1" rowspan="1" align="left">
+       Сообщает об окончании отладочного сообщения.
+	    </td>
+	   </tr>
+
+	  </tbody>
+	 </colgroup>
+
+	</table>
+
+       </p>
+      </dd>
+
+     </dt>
+
+     <dt>
+
+      <span class="term"><span class="replaceable">data</span></span>
+
+      <dd>
+
+       <span class="simpara">Данные в строке.</span>
+      </dd>
+
+     </dt>
+
+    </dl>
+
+
+    <table border="5">
+     <caption><b>Типы ошибок отладчика</b></caption>
+     <colgroup>
+
+      <thead valign="middle">
+       <tr valign="middle">
+	<th colspan="1">Отладчик</th>
+	<th colspan="1">Внутреннее представление в PHP 3</th>
+       </tr>
+
+      </thead>
+
+      <tbody valign="middle" class="tbody">
+       <tr valign="middle">
+	<td colspan="1" rowspan="1" align="left"><span class="errortype">warning</span></td>
+	<td colspan="1" rowspan="1" align="left"><span class="errortype">E_WARNING</span></td>
+       </tr>
+
+       <tr valign="middle">
+	<td colspan="1" rowspan="1" align="left"><span class="errortype">error</span></td>
+	<td colspan="1" rowspan="1" align="left"><span class="errortype">E_ERROR</span></td>
+       </tr>
+
+       <tr valign="middle">
+	<td colspan="1" rowspan="1" align="left"><span class="errortype">parse</span></td>
+	<td colspan="1" rowspan="1" align="left"><span class="errortype">E_PARSE</span></td>
+       </tr>
+
+       <tr valign="middle">
+	<td colspan="1" rowspan="1" align="left"><span class="errortype">notice</span></td>
+	<td colspan="1" rowspan="1" align="left"><span class="errortype">E_NOTICE</span></td>
+       </tr>
+
+       <tr valign="middle">
+	<td colspan="1" rowspan="1" align="left"><span class="errortype">core-error</span></td>
+	<td colspan="1" rowspan="1" align="left"><span class="errortype">E_CORE_ERROR</span></td>
+       </tr>
+
+       <tr valign="middle">
+	<td colspan="1" rowspan="1" align="left"><span class="errortype">core-warning</span></td>
+	<td colspan="1" rowspan="1" align="left"><span class="errortype">E_CORE_WARNING</span></td>
+       </tr>
+
+       <tr valign="middle">
+	<td colspan="1" rowspan="1" align="left"><span class="errortype">unknown</span></td>
+	<td colspan="1" rowspan="1" align="left">(any other)</td>
+       </tr>
+
+      </tbody>
+     </colgroup>
+
+    </table>
+
+    
+    <div class="example">
+     <p><b>Пример #1 Пример отладочного сообщения</b></p>
+     <pre class="literallayout">
+1998-04-05 23:27:400966 lucifer.guardian.no(20481) start: notice
+1998-04-05 23:27:400966 lucifer.guardian.no(20481) message: Uninitialized variable
+1998-04-05 23:27:400966 lucifer.guardian.no(20481) location: (<b><tt>NULL</tt></b>):7
+1998-04-05 23:27:400966 lucifer.guardian.no(20481) frames: 1
+1998-04-05 23:27:400966 lucifer.guardian.no(20481) function: display
+1998-04-05 23:27:400966 lucifer.guardian.no(20481) location: /home/ssb/public_html/test.php3:10
+1998-04-05 23:27:400966 lucifer.guardian.no(20481) end: notice
+     </pre>
+    </div>
+   </p>
+  </div><hr /><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="debugger.html">Отладка PHP</a></div>
+ <div class="next" style="float: right;"><a href="configure.html">Configure options</a></div>
+ <div class="up"><a href="debugger.html">Отладка PHP</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

@@ -1,0 +1,600 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <title>The HttpResponse</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+ </head>
+ <body><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="function.HttpRequestPool-socketSelect.html">HttpRequestPool::socketSelect</a></div>
+ <div class="next" style="float: right;"><a href="function.HttpResponse-capture.html">HttpResponse::capture</a></div>
+ <div class="up"><a href="book.http.html">HTTP</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div>
+ <h1 class="title">The <span class="classname">HttpResponse</span></h1>
+ <div class="partintro">
+  <div id="httpresponse.synopsis" class="section">
+   <h2 class="title">Class synopsis</h2>
+   <div class="classsynopsis">
+    <div class="ooclass"><b class="classname">HttpResponse</b></div>
+    <div class="classsynopsisinfo">
+     <span class="ooclass"> class <b class="classname">HttpResponse</b></span>
+     {</div>
+    <div class="methodsynopsis dc-description">
+   <span class="modifier">static</span>
+   <span class="type">void</span> <span class="methodname"><b><a href="function.HttpResponse-capture.html" class="function">capture</a></b></span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">static</span>
+   <span class="type">int</span> <span class="methodname"><b><a href="function.HttpResponse-getBufferSize.html" class="function">getBufferSize</a></b></span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">static</span>
+   <span class="type">bool</span> <span class="methodname"><b><a href="function.HttpResponse-getCache.html" class="function">getCache</a></b></span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">static</span>
+   <span class="type">string</span> <span class="methodname"><b><a href="function.HttpResponse-getCacheControl.html" class="function">getCacheControl</a></b></span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">static</span>
+   <span class="type">string</span> <span class="methodname"><b><a href="function.HttpResponse-getContentDisposition.html" class="function">getContentDisposition</a></b></span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">static</span>
+   <span class="type">string</span> <span class="methodname"><b><a href="function.HttpResponse-getContentType.html" class="function">getContentType</a></b></span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">static</span>
+   <span class="type">string</span> <span class="methodname"><b><a href="function.HttpResponse-getData.html" class="function">getData</a></b></span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">static</span>
+   <span class="type">string</span> <span class="methodname"><b><a href="function.HttpResponse-getETag.html" class="function">getETag</a></b></span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">static</span>
+   <span class="type">string</span> <span class="methodname"><b><a href="function.HttpResponse-getFile.html" class="function">getFile</a></b></span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">static</span>
+   <span class="type">bool</span> <span class="methodname"><b><a href="function.HttpResponse-getGzip.html" class="function">getGzip</a></b></span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">static</span>
+   <span class="type">mixed</span> <span class="methodname"><b><a href="function.HttpResponse-getHeader.html" class="function">getHeader</a></b></span>
+    ([ <span class="methodparam"><span class="type">string</span> <tt class="parameter">$name</tt></span>
+  ] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">static</span>
+   <span class="type">int</span> <span class="methodname"><b><a href="function.HttpResponse-getLastModified.html" class="function">getLastModified</a></b></span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">static</span>
+   <span class="type">string</span> <span class="methodname"><b><a href="function.HttpResponse-getRequestBody.html" class="function">getRequestBody</a></b></span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">static</span>
+   <span class="type">resource</span> <span class="methodname"><b><a href="function.HttpResponse-getRequestBodyStream.html" class="function">getRequestBodyStream</a></b></span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">static</span>
+   <span class="type">array</span> <span class="methodname"><b><a href="function.HttpResponse-getRequestHeaders.html" class="function">getRequestHeaders</a></b></span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">static</span>
+   <span class="type">resource</span> <span class="methodname"><b><a href="function.HttpResponse-getStream.html" class="function">getStream</a></b></span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">static</span>
+   <span class="type">double</span> <span class="methodname"><b><a href="function.HttpResponse-getThrottleDelay.html" class="function">getThrottleDelay</a></b></span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">static</span>
+   <span class="type">string</span> <span class="methodname"><b><a href="function.HttpResponse-guessContentType.html" class="function">guessContentType</a></b></span>
+    ( <span class="methodparam"><span class="type">string</span> <tt class="parameter">$magic_file</tt></span>
+   [, <span class="methodparam"><span class="type">int</span> <tt class="parameter">$magic_mode=MAGIC_MIME</tt></span>
+  ] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">static</span>
+   <span class="type">void</span> <span class="methodname"><b><a href="function.HttpResponse-redirect.html" class="function">redirect</a></b></span>
+    ([ <span class="methodparam"><span class="type">string</span> <tt class="parameter">$url</tt></span>
+   [, <span class="methodparam"><span class="type">array</span> <tt class="parameter">$params</tt></span>
+   [, <span class="methodparam"><span class="type">bool</span> <tt class="parameter">$session = FALSE</tt></span>
+   [, <span class="methodparam"><span class="type">int</span> <tt class="parameter">$status</tt></span>
+  ]]]] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">static</span>
+   <span class="type">bool</span> <span class="methodname"><b><a href="function.HttpResponse-send.html" class="function">send</a></b></span>
+    ([ <span class="methodparam"><span class="type">bool</span> <tt class="parameter">$clean_ob = TRUE</tt></span>
+  ] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">static</span>
+   <span class="type">bool</span> <span class="methodname"><b><a href="function.HttpResponse-setBufferSize.html" class="function">setBufferSize</a></b></span>
+    ( <span class="methodparam"><span class="type">int</span> <tt class="parameter">$bytes</tt></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">static</span>
+   <span class="type">bool</span> <span class="methodname"><b><a href="function.HttpResponse-setCache.html" class="function">setCache</a></b></span>
+    ( <span class="methodparam"><span class="type">bool</span> <tt class="parameter">$cache</tt></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">static</span>
+   <span class="type">bool</span> <span class="methodname"><b><a href="function.HttpResponse-setCacheControl.html" class="function">setCacheControl</a></b></span>
+    ( <span class="methodparam"><span class="type">string</span> <tt class="parameter">$control</tt></span>
+   [, <span class="methodparam"><span class="type">int</span> <tt class="parameter">$max_age = 0</tt></span>
+   [, <span class="methodparam"><span class="type">bool</span> <tt class="parameter">$must_revalidate = TRUE</tt></span>
+  ]] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">static</span>
+   <span class="type">bool</span> <span class="methodname"><b><a href="function.HttpResponse-setContentDisposition.html" class="function">setContentDisposition</a></b></span>
+    ( <span class="methodparam"><span class="type">string</span> <tt class="parameter">$filename</tt></span>
+   [, <span class="methodparam"><span class="type">bool</span> <tt class="parameter">$inline = FALSE</tt></span>
+  ] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">static</span>
+   <span class="type">bool</span> <span class="methodname"><b><a href="function.HttpResponse-setContentType.html" class="function">setContentType</a></b></span>
+    ( <span class="methodparam"><span class="type">string</span> <tt class="parameter">$content_type</tt></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">static</span>
+   <span class="type">bool</span> <span class="methodname"><b><a href="function.HttpResponse-setData.html" class="function">setData</a></b></span>
+    ( <span class="methodparam"><span class="type"><a href="language.pseudo-types.html#language.types.mixed" class="type mixed">mixed</a></span> <tt class="parameter">$data</tt></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">static</span>
+   <span class="type">bool</span> <span class="methodname"><b><a href="function.HttpResponse-setETag.html" class="function">setETag</a></b></span>
+    ( <span class="methodparam"><span class="type">string</span> <tt class="parameter">$etag</tt></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">static</span>
+   <span class="type">bool</span> <span class="methodname"><b><a href="function.HttpResponse-setFile.html" class="function">setFile</a></b></span>
+    ( <span class="methodparam"><span class="type">string</span> <tt class="parameter">$file</tt></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">static</span>
+   <span class="type">bool</span> <span class="methodname"><b><a href="function.HttpResponse-setGzip.html" class="function">setGzip</a></b></span>
+    ( <span class="methodparam"><span class="type">bool</span> <tt class="parameter">$gzip</tt></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">static</span>
+   <span class="type">bool</span> <span class="methodname"><b><a href="function.HttpResponse-setHeader.html" class="function">setHeader</a></b></span>
+    ( <span class="methodparam"><span class="type">string</span> <tt class="parameter">$name</tt></span>
+   [, <span class="methodparam"><span class="type"><a href="language.pseudo-types.html#language.types.mixed" class="type mixed">mixed</a></span> <tt class="parameter">$value</tt></span>
+   [, <span class="methodparam"><span class="type">bool</span> <tt class="parameter">$replace = TRUE</tt></span>
+  ]] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">static</span>
+   <span class="type">bool</span> <span class="methodname"><b><a href="function.HttpResponse-setLastModified.html" class="function">setLastModified</a></b></span>
+    ( <span class="methodparam"><span class="type">int</span> <tt class="parameter">$timestamp</tt></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">static</span>
+   <span class="type">bool</span> <span class="methodname"><b><a href="function.HttpResponse-setStream.html" class="function">setStream</a></b></span>
+    ( <span class="methodparam"><span class="type">resource</span> <tt class="parameter">$stream</tt></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">static</span>
+   <span class="type">bool</span> <span class="methodname"><b><a href="function.HttpResponse-setThrottleDelay.html" class="function">setThrottleDelay</a></b></span>
+    ( <span class="methodparam"><span class="type">float</span> <tt class="parameter">$seconds</tt></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">static</span>
+   <span class="type">bool</span> <span class="methodname"><b><a href="function.HttpResponse-status.html" class="function">status</a></b></span>
+    ( <span class="methodparam"><span class="type">int</span> <tt class="parameter">$status</tt></span>
+   )</div>
+
+   }</div>
+  </div>
+
+
+ <div id="http.HttpResponse.members" class="section">
+  <h2 class="title">Class Members</h2>
+  <div id="http.HttpResponse.properties" class="section">
+   <h2 class="title">Свойства</h2>
+   <table border="5">
+    <caption><b>Static Properties</b></caption>
+    <colgroup>
+
+     <thead valign="middle">
+      <tr valign="middle">
+       <th colspan="1">Modifiers</th>
+       <th colspan="1">Type</th>
+       <th colspan="1">Name</th>
+       <th colspan="1">Description</th>
+      </tr>
+
+     </thead>
+
+     <tbody valign="middle" class="tbody">
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left">protected</td>
+       <td colspan="1" rowspan="1" align="left">boolean</td>
+       <td colspan="1" rowspan="1" align="left">cache</td>
+       <td colspan="1" rowspan="1" align="left">whether caching the response should be attempted</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left">protected</td>
+       <td colspan="1" rowspan="1" align="left">boolean</td>
+       <td colspan="1" rowspan="1" align="left">gzip</td>
+       <td colspan="1" rowspan="1" align="left">whether the sent entity should be gzip&#039;ed on the fly</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left">protected</td>
+       <td colspan="1" rowspan="1" align="left">string</td>
+       <td colspan="1" rowspan="1" align="left">eTag</td>
+       <td colspan="1" rowspan="1" align="left">the generated or custom ETag</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left">protected</td>
+       <td colspan="1" rowspan="1" align="left">integer</td>
+       <td colspan="1" rowspan="1" align="left">lastModified</td>
+       <td colspan="1" rowspan="1" align="left">the generated or custom timestamp of last modification</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left">protected</td>
+       <td colspan="1" rowspan="1" align="left">string</td>
+       <td colspan="1" rowspan="1" align="left">cacheControl</td>
+       <td colspan="1" rowspan="1" align="left"><i>Cache-Control</i> setting</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left">protected</td>
+       <td colspan="1" rowspan="1" align="left">string</td>
+       <td colspan="1" rowspan="1" align="left">contentType</td>
+       <td colspan="1" rowspan="1" align="left">the <i>Content-Type</i> of the sent entity</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left">protected</td>
+       <td colspan="1" rowspan="1" align="left">string</td>
+       <td colspan="1" rowspan="1" align="left">contentDisposition</td>
+       <td colspan="1" rowspan="1" align="left">the <i>Content-Disposition</i> of the sent entity</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left">protected</td>
+       <td colspan="1" rowspan="1" align="left">integer</td>
+       <td colspan="1" rowspan="1" align="left">bufferSize</td>
+       <td colspan="1" rowspan="1" align="left">the chunk buffer size used for throttling</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left">protected</td>
+       <td colspan="1" rowspan="1" align="left">double</td>
+       <td colspan="1" rowspan="1" align="left">throttleDelay</td>
+       <td colspan="1" rowspan="1" align="left">the seconds to delay when throttling</td>
+      </tr>
+
+     </tbody>
+    </colgroup>
+
+   </table>
+
+  </div>
+  <div id="http.HttpResponse.constants" class="section">
+   <h2 class="title">Предопределенные константы</h2>
+   <table border="5">
+    
+    <colgroup>
+
+     <thead valign="middle">
+      <tr valign="middle">
+       <th colspan="1">Type</th>
+       <th colspan="1">Name</th>
+       <th colspan="1">Description</th>
+      </tr>
+
+     </thead>
+
+     <tbody valign="middle" class="tbody">
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left">integer</td>
+       <td colspan="1" rowspan="1" align="left">REDIRECT</td>
+       <td colspan="1" rowspan="1" align="left">guess applicable redirect method</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left">integer</td>
+       <td colspan="1" rowspan="1" align="left">REDIRECT_PERM</td>
+       <td colspan="1" rowspan="1" align="left">permanent redirect (<i>301 Moved permanently</i>)</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left">integer</td>
+       <td colspan="1" rowspan="1" align="left">REDIRECT_FOUND</td>
+       <td colspan="1" rowspan="1" align="left">standard redirect (<i>302 Found</i>)</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left">integer</td>
+       <td colspan="1" rowspan="1" align="left">REDIRECT_POST</td>
+       <td colspan="1" rowspan="1" align="left">redirect applicable to POST requests (<i>303 See other</i>)</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left">integer</td>
+       <td colspan="1" rowspan="1" align="left">REDIRECT_PROXY</td>
+       <td colspan="1" rowspan="1" align="left">proxy redirect (<i>305 Use proxy</i>)</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left">integer</td>
+       <td colspan="1" rowspan="1" align="left">REDIRECT_TEMP</td>
+       <td colspan="1" rowspan="1" align="left">temporary redirect (<i>307 Temporary Redirect</i>)</td>
+      </tr>
+
+     </tbody>
+    </colgroup>
+
+   </table>
+
+  </div>
+ </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h2>Содержание</h2><ul class="chunklist chunklist_reference"><li><a href="function.HttpResponse-capture.html">HttpResponse::capture</a> — Capture script output</li><li><a href="function.HttpResponse-getBufferSize.html">HttpResponse::getBufferSize</a> — Get buffer size</li><li><a href="function.HttpResponse-getCache.html">HttpResponse::getCache</a> — Get cache</li><li><a href="function.HttpResponse-getCacheControl.html">HttpResponse::getCacheControl</a> — Get cache control</li><li><a href="function.HttpResponse-getContentDisposition.html">HttpResponse::getContentDisposition</a> — Get content disposition</li><li><a href="function.HttpResponse-getContentType.html">HttpResponse::getContentType</a> — Get content type</li><li><a href="function.HttpResponse-getData.html">HttpResponse::getData</a> — Get data</li><li><a href="function.HttpResponse-getETag.html">HttpResponse::getETag</a> — Get ETag</li><li><a href="function.HttpResponse-getFile.html">HttpResponse::getFile</a> — Get file</li><li><a href="function.HttpResponse-getGzip.html">HttpResponse::getGzip</a> — Get gzip</li><li><a href="function.HttpResponse-getHeader.html">HttpResponse::getHeader</a> — Get header</li><li><a href="function.HttpResponse-getLastModified.html">HttpResponse::getLastModified</a> — Get last modified</li><li><a href="function.HttpResponse-getRequestBody.html">HttpResponse::getRequestBody</a> — Get request body</li><li><a href="function.HttpResponse-getRequestBodyStream.html">HttpResponse::getRequestBodyStream</a> — Get request body stream</li><li><a href="function.HttpResponse-getRequestHeaders.html">HttpResponse::getRequestHeaders</a> — Get request headers</li><li><a href="function.HttpResponse-getStream.html">HttpResponse::getStream</a> — Get Stream</li><li><a href="function.HttpResponse-getThrottleDelay.html">HttpResponse::getThrottleDelay</a> — Get throttle delay</li><li><a href="function.HttpResponse-guessContentType.html">HttpResponse::guessContentType</a> — Guess content type</li><li><a href="function.HttpResponse-redirect.html">HttpResponse::redirect</a> — Redirect</li><li><a href="function.HttpResponse-send.html">HttpResponse::send</a> — Send response</li><li><a href="function.HttpResponse-setBufferSize.html">HttpResponse::setBufferSize</a> — Set buffer size</li><li><a href="function.HttpResponse-setCache.html">HttpResponse::setCache</a> — Set cache</li><li><a href="function.HttpResponse-setCacheControl.html">HttpResponse::setCacheControl</a> — Set cache control</li><li><a href="function.HttpResponse-setContentDisposition.html">HttpResponse::setContentDisposition</a> — Set content disposition</li><li><a href="function.HttpResponse-setContentType.html">HttpResponse::setContentType</a> — Set content type</li><li><a href="function.HttpResponse-setData.html">HttpResponse::setData</a> — Set data</li><li><a href="function.HttpResponse-setETag.html">HttpResponse::setETag</a> — Set ETag</li><li><a href="function.HttpResponse-setFile.html">HttpResponse::setFile</a> — Set file</li><li><a href="function.HttpResponse-setGzip.html">HttpResponse::setGzip</a> — Set gzip</li><li><a href="function.HttpResponse-setHeader.html">HttpResponse::setHeader</a> — Set header</li><li><a href="function.HttpResponse-setLastModified.html">HttpResponse::setLastModified</a> — Set last modified</li><li><a href="function.HttpResponse-setStream.html">HttpResponse::setStream</a> — Set stream</li><li><a href="function.HttpResponse-setThrottleDelay.html">HttpResponse::setThrottleDelay</a> — Set throttle delay</li><li><a href="function.HttpResponse-status.html">HttpResponse::status</a> — Send HTTP response status</li></ul>
+</div>
+<hr /><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="function.HttpRequestPool-socketSelect.html">HttpRequestPool::socketSelect</a></div>
+ <div class="next" style="float: right;"><a href="function.HttpResponse-capture.html">HttpResponse::capture</a></div>
+ <div class="up"><a href="book.http.html">HTTP</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

@@ -1,0 +1,85 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <title>Числа с плавающей точкой</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+ </head>
+ <body><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="language.types.integer.html">Целые</a></div>
+ <div class="next" style="float: right;"><a href="language.types.string.html">Строки</a></div>
+ <div class="up"><a href="language.types.html">Типы</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="language.types.float" class="sect1">
+   <h2 class="title">Числа с плавающей точкой</h2>
+   <p class="para">
+    Числа с плавающей точкой (они же числа двойной точности или
+    действительные числа) могут быть определены при помощи любого
+    из следующих синтаксисов:
+    <div class="informalexample">
+     <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$a&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">1.234</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$b&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">1.2e3</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$c&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">7E-10</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div> 
+
+     </div>
+
+    </div>
+    Формально:
+    <div class="informalexample">
+     <div class="example-contents"><div class="phpcode"><code><span style="color: #000000">
+LNUM&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[0-9]+<br />DNUM&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;([0-9]*[\.]{LNUM})&nbsp;|&nbsp;({LNUM}[\.][0-9]*)<br />EXPONENT_DNUM&nbsp;(&nbsp;({LNUM}&nbsp;|&nbsp;{DNUM})&nbsp;[eE][+-]?&nbsp;{LNUM})</span>
+</code></div></div>
+
+    </div>
+    Размер целого зависит от платформы, хотя максимум, как правило,
+    ~1.8e308 с точностью около 14 десятичных цифр (это 64-битный
+    IEEE-формат).
+   </p>
+ 
+   <div class="warning"><b class="warning">Внимание</b>
+    <h1 class="title">Точность числа с плавающей точкой</h1>
+    <p class="para">
+     Довольно часто простые десятичные дроби вроде
+     <i>0.1</i> или <i>0.7</i> не могут быть
+     преобразованы в свои внутренние двоичные аналоги без небольшой
+     потери точности. Это может привести к неожиданным результатам:
+     например, <i>floor((0.1+0.7)*10)</i> скорее всего
+     возвратит <i>7</i> вместо ожидаемой
+     <i>8</i> как результат внутреннего представления
+     числа, являющегося в действительности чем-то вроде <i>7.9999999999...</i>.
+    </p>
+    <p class="para">
+     Это связано с невозможностью точно выразить некоторые дроби в
+     десятичной системе счисления конечным числом цифр. Например,
+     <i>1/3</i> в десятичной форме принимает вид
+     <i>0.3333333. . .</i>.
+    </p>
+    <p class="para">
+     Так что никогда не доверяйте точности последних цифр в результатах
+     с числами с плавающей точкой и никогда не проверяйте их на
+     равенство. Если вам действительно необходима высокая точность, вам
+     следует использовать <a href="ref.bc.html" class="link">математические функции произвольной точности</a>
+     или <a href="ref.gmp.html" class="link">gmp</a>-функции.
+    </p>
+   </div>
+
+   <div id="language.types.float.casting" class="sect2">
+    <h3 class="title">Преобразование в число с плавающей точкой</h3>
+    
+    <p class="para">
+     О том, когда и как строки преобразуются в числа с плавающей точкой
+     читайте в разделе <a href="language.types.string.html#language.types.string.conversion" class="link">Преобразование
+     строк в числа</a>. Для значений других типов преобразование будет
+     таким же, как если бы значение сначала было преобразовано в целое,
+     а затем в число с плавающей точкой. Дополнительную информацию
+     смотрите в разделе <a href="language.types.integer.html#language.types.integer.casting" class="link">Преобразование
+     в целое</a>.
+    </p>
+   </div>
+  </div><hr /><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="language.types.integer.html">Целые</a></div>
+ <div class="next" style="float: right;"><a href="language.types.string.html">Строки</a></div>
+ <div class="up"><a href="language.types.html">Типы</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

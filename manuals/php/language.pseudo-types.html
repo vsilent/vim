@@ -1,0 +1,89 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <title>Псевдо-типы, используемые в этой документации</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+ </head>
+ <body><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="language.types.null.html">NULL</a></div>
+ <div class="next" style="float: right;"><a href="language.types.type-juggling.html">Манипуляции с типами</a></div>
+ <div class="up"><a href="language.types.html">Типы</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="language.pseudo-types" class="sect1">
+   <h2 class="title">Псевдо-типы, используемые в этой документации</h2> 
+
+   <div id="language.types.mixed" class="sect2">
+    <h3 class="title">mixed</h3>
+    <p class="para">
+     <i>mixed</i> говорит о том, что параметр может принимать
+     множество (но не обязательно все) типов.
+    </p>
+    <p class="para">
+     <a href="function.gettype.html" class="function">gettype()</a>, например, принимает все типы PHP, тогда
+     как <a href="function.str-replace.html" class="function">str_replace()</a> принимает строки и массивы.
+    </p>
+   </div>
+  
+   <div id="language.types.number" class="sect2">
+    <h3 class="title">number</h3>
+    <p class="para">
+     <i>number</i> говорит о том, что параметр может быть либо
+     <a href="language.types.integer.html" class="type integer">integer</a>, либо <a href="language.types.float.html" class="type float">float</a>.
+    </p>
+   </div>
+
+   <div id="language.types.callback" class="sect2">
+    <h3 class="title">callback</h3>
+    <p class="para">
+     Некоторые функции, такие как <a href="function.call-user-func.html" class="function">call_user_func()</a> 
+     или <a href="function.usort.html" class="function">usort()</a> принимают в качестве параметра
+     определенные пользователем callback-функции. Callback-функции могут
+     быть не только простыми функциями, но также методами объектов,
+     включая статические методы классов.
+    </p>
+    <p class="para">
+     PHP-функция передается просто как строка ее имени. Вы можете передать
+     любую встроенную или определенную пользователем функцию за
+     исключением
+     <a href="function.array.html" class="function">array()</a>, 
+     <a href="function.echo.html" class="function">echo()</a>, 
+     <a href="function.empty.html" class="function">empty()</a>, 
+     <a href="function.eval.html" class="function">eval()</a>, 
+     <a href="function.exit.html" class="function">exit()</a>, 
+     <a href="function.isset.html" class="function">isset()</a>, 
+     <a href="function.list.html" class="function">list()</a>, 
+     <a href="function.print.html" class="function">print()</a> и
+     <a href="function.unset.html" class="function">unset()</a>.
+    </p>
+    <p class="para">
+     Метод созданного объекта передается как массив, содержащий объект в
+     элементе с индексом 0 и имя метода в элементе с индексом 1.
+    </p>
+    <p class="para">
+     Методы статических классов также могут быть переданы без создания
+     экземпляра объекта передачей имени класса вместо имени объекта в
+     элементе с индексом 0.
+    </p>
+
+    <p class="para">
+     <div class="example">
+      <p><b>Пример #1 
+       Примеры callback-функций
+      </b></p>
+      <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php&nbsp;<br /><br /></span><span style="color: #FF8000">//&nbsp;простой&nbsp;пример&nbsp;callback<br /></span><span style="color: #007700">function&nbsp;</span><span style="color: #0000BB">my_callback_function</span><span style="color: #007700">()&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">'hello&nbsp;world!'</span><span style="color: #007700">;<br />}<br /></span><span style="color: #0000BB">call_user_func</span><span style="color: #007700">(</span><span style="color: #DD0000">'my_callback_function'</span><span style="color: #007700">);&nbsp;<br /><br /></span><span style="color: #FF8000">//&nbsp;примеры&nbsp;callback-метода<br /></span><span style="color: #007700">class&nbsp;</span><span style="color: #0000BB">MyClass&nbsp;</span><span style="color: #007700">{<br />&nbsp;&nbsp;&nbsp;&nbsp;function&nbsp;</span><span style="color: #0000BB">myCallbackMethod</span><span style="color: #007700">()&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">'Hello&nbsp;World!'</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />}<br /><br /></span><span style="color: #FF8000">//&nbsp;вызов&nbsp;метода&nbsp;статического&nbsp;класса&nbsp;без&nbsp;создания&nbsp;объекта<br /></span><span style="color: #0000BB">call_user_func</span><span style="color: #007700">(array(</span><span style="color: #DD0000">'MyClass'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'myCallbackMethod'</span><span style="color: #007700">));&nbsp;<br /><br /></span><span style="color: #FF8000">//&nbsp;вызов&nbsp;метода&nbsp;объекта<br /></span><span style="color: #0000BB">$obj&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">MyClass</span><span style="color: #007700">();<br /></span><span style="color: #0000BB">call_user_func</span><span style="color: #007700">(array(&amp;</span><span style="color: #0000BB">$obj</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'myCallbackMethod'</span><span style="color: #007700">));<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+      </div>
+
+     </div>
+    </p>  
+   
+   </div>
+  </div><hr /><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="language.types.null.html">NULL</a></div>
+ <div class="next" style="float: right;"><a href="language.types.type-juggling.html">Манипуляции с типами</a></div>
+ <div class="up"><a href="language.types.html">Типы</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

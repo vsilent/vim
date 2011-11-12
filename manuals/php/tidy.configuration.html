@@ -1,0 +1,109 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <title>Настройка во время выполнения</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+ </head>
+ <body><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="tidy.installation.html">Установка</a></div>
+ <div class="next" style="float: right;"><a href="tidy.resources.html">Типы ресурсов</a></div>
+ <div class="up"><a href="tidy.setup.html">Установка и настройка</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="tidy.configuration" class="section">
+ <h2 class="title">Настройка во время выполнения</h2>
+ <p class="simpara">
+Поведение этих функций зависит от установок в <var class="filename">php.ini</var>.
+</p>
+ <p class="para">
+  <table border="5">
+   <caption><b>Tidy Configuration Options</b></caption>
+   <colgroup>
+
+    <thead valign="middle">
+     <tr valign="middle">
+      <th colspan="1">Name</th>
+      <th colspan="1">Default</th>
+      <th colspan="1">Changeable</th>
+      <th colspan="1">Changelog</th>
+     </tr>
+
+    </thead>
+
+    <tbody valign="middle" class="tbody">
+     <tr valign="middle">
+      <td colspan="1" rowspan="1" align="left">tidy.default_config</td>
+      <td colspan="1" rowspan="1" align="left">&quot;&quot;</td>
+      <td colspan="1" rowspan="1" align="left">PHP_INI_SYSTEM</td>
+      <td colspan="1" rowspan="1" align="left">Available since PHP 5.0.0.</td>
+     </tr>
+
+     <tr valign="middle">
+      <td colspan="1" rowspan="1" align="left">tidy.clean_output</td>
+      <td colspan="1" rowspan="1" align="left">&quot;0&quot;</td>
+      <td colspan="1" rowspan="1" align="left">PHP_INI_USER</td>
+      <td colspan="1" rowspan="1" align="left">PHP_INI_PERDIR in PHP 5. Available since PHP 5.0.0.</td>
+     </tr>
+
+    </tbody>
+   </colgroup>
+
+  </table>
+
+  Для подробного описания констант
+PHP_INI_*, обратитесь к документации функции <a href="function.ini-set.html" class="function">ini_set()</a>.
+ </p>
+
+ <p class="para">Краткое разъяснение конфигурационных
+директив.</p>
+
+ <p class="para">
+  <dl>
+
+   <dt id="ini.tidy.default-config">
+    <span class="term">
+     <i><tt class="parameter">tidy.default_config</tt></i>
+
+     <a href="language.types.string.html" class="type string">string</a>
+    </span>
+
+    <dd>
+
+     <p class="para">
+      Default path for tidy config file.
+     </p>
+    </dd>
+
+   </dt>
+
+   <dt id="ini.tidy.clean-output">
+    <span class="term">
+     <i><tt class="parameter">tidy.clean_output</tt></i>
+
+     <a href="language.types.boolean.html" class="type boolean">boolean</a>
+    </span>
+
+    <dd>
+
+     <p class="para">
+      Turns on/off the output repairing by Tidy.
+     </p>
+     <div class="warning"><b class="warning">Внимание</b>
+      <p class="para">
+       Do not turn on <i>tidy.clean_output</i> if you are generating
+       non-html content such as dynamic images.
+      </p>
+     </div>
+    </dd>
+
+   </dt>
+
+  </dl>
+
+ </p>
+
+</div><hr /><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="tidy.installation.html">Установка</a></div>
+ <div class="next" style="float: right;"><a href="tidy.resources.html">Типы ресурсов</a></div>
+ <div class="up"><a href="tidy.setup.html">Установка и настройка</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

@@ -1,0 +1,83 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <title>Draws a curve (relative)</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+ </head>
+ <body><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="function.swfshape.drawcubicto.html">SWFShape->drawCubicTo()</a></div>
+ <div class="next" style="float: right;"><a href="function.swfshape.drawcurveto.html">SWFShape->drawCurveTo()</a></div>
+ <div class="up"><a href="class.swfshape.html">SWFShape</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="function.swfshape.drawcurve" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">SWFShape-&gt;drawCurve()</h1>
+  <p class="verinfo">(PHP 4 &gt;= 4.0.5)</p><p class="refpurpose dc-title">SWFShape->drawCurve() — Draws a curve (relative)</p>
+
+ </div>
+ <div class="refsect1 description">
+  <h3 class="title">Описание</h3>
+  <div class="classsynopsis">
+   <div class="ooclass"><b class="classname">SWFShape</b></div>
+   <div class="methodsynopsis dc-description">
+    <span class="type">int</span> <span class="methodname"><b><b>drawCurve</b></b></span>
+     ( <span class="methodparam"><span class="type">int</span> <tt class="parameter">$controldx</tt></span>
+    , <span class="methodparam"><span class="type">int</span> <tt class="parameter">$controldy</tt></span>
+    , <span class="methodparam"><span class="type">int</span> <tt class="parameter">$anchordx</tt></span>
+    , <span class="methodparam"><span class="type">int</span> <tt class="parameter">$anchordy</tt></span>
+    [, <span class="methodparam"><span class="type">int</span> <tt class="parameter">$targetdx</tt></span>
+    ], <span class="methodparam"><span class="type">int</span> <tt class="parameter">$targetdy</tt></span>
+    )</div>
+
+  </div>
+  <div class="warning"><b class="warning">Внимание</b><p class="simpara">
+Эта функция является <em class="emphasis">ЭКСПЕРИМЕНТАЛЬНОЙ</em>.
+Поведение этой функции, ее имя и относящаяся к ней документация
+могут измениться в последующих версиях PHP без уведомления.
+Используйте эту функцию на свой страх и риск.</p></div>
+  <p class="simpara">
+   <b>swfshape->drawcurve()</b> draws a quadratic curve 
+   (using the current line style,set by <b>swfshape->setline()</b>) 
+   from the current pen position to the relative position
+   (<i><tt class="parameter">anchorx</tt></i>
+,<i><tt class="parameter">anchory</tt></i>
+) 
+   using relative control point 
+   (<i><tt class="parameter">controlx</tt></i>
+,<i><tt class="parameter">controly</tt></i>
+).
+   That is, head towards the control point, then smoothly turn to the
+   anchor point.
+  </p>
+  <p class="simpara">
+   With 6 parameters, it draws a cubic bezier to point
+   (x+<i><tt class="parameter">targetdx</tt></i>
+, x+<i><tt class="parameter">targetdy</tt></i>
+)
+   with control points (x+<i><tt class="parameter">controldx</tt></i>
+,
+   y+<i><tt class="parameter">controldy</tt></i>
+) and
+   (x+<i><tt class="parameter">anchordx</tt></i>
+, y+<i><tt class="parameter">anchordy</tt></i>
+).
+  </p>
+ </div>
+
+
+ <div class="refsect1 seealso">
+  <h3 class="title">Смотрите также</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"><a href="function.swfshape.drawcurve.html" class="xref">SWFShape->drawCurve()</a></li>
+   </ul>
+  </p>
+ </div>
+
+
+</div><hr /><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="function.swfshape.drawcubicto.html">SWFShape->drawCubicTo()</a></div>
+ <div class="next" style="float: right;"><a href="function.swfshape.drawcurveto.html">SWFShape->drawCurveTo()</a></div>
+ <div class="up"><a href="class.swfshape.html">SWFShape</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

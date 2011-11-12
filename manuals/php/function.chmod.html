@@ -1,0 +1,109 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <title>Изменяет режим доступа к файлу или каталогу</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+ </head>
+ <body><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="function.chgrp.html">chgrp</a></div>
+ <div class="next" style="float: right;"><a href="function.chown.html">chown</a></div>
+ <div class="up"><a href="ref.filesystem.html">Файловая система</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="function.chmod" class="refentry">
+   <div class="refnamediv">
+    <h1 class="refname">chmod</h1>
+    <p class="verinfo">(PHP 4, PHP 5)</p><p class="refpurpose dc-title">chmod — Изменяет режим доступа к файлу или каталогу</p>
+
+   </div>
+   <div class="refsect1 unknown">
+    <h3 class="title">Описание</h3>
+     <div class="methodsynopsis dc-description">
+      <span class="type">bool</span> <span class="methodname"><b><b>chmod</b></b></span>
+       ( <span class="methodparam"><span class="type">string</span> <tt class="parameter">$filename</tt></span>
+      , <span class="methodparam"><span class="type">int</span> <tt class="parameter">$mode</tt></span>
+      )</div>
+
+    <p class="para rdfs-comment">
+     Осуществляет попытку изменения режима доступа файла или каталога,
+     переданного в параметре <i><tt class="parameter">filename</tt></i>
+ на режим,
+     переданный в параметре <i><tt class="parameter">mode</tt></i>
+.
+    </p>
+    <p class="para">
+     Обратите внимание, что значение параметра <i><tt class="parameter">mode</tt></i>
+
+     не переводится автоматически в восьмеричную систему счисления,
+     поэтому строки (такие, как, например, &quot;g+w&quot;) не будут работать
+     должным образом. Чтобы удостовериться в том, что режим
+     был установлен верно, предваряйте значение, передаваемое
+     в параметре <i><tt class="parameter">mode</tt></i>
+, нулем (0):
+    </p>
+    <p class="para">
+     <div class="informalexample">
+      <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />chmod</span><span style="color: #007700">(</span><span style="color: #DD0000">"/somedir/somefile"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">755</span><span style="color: #007700">);&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;десятичное,&nbsp;неверный&nbsp;способ<br /></span><span style="color: #0000BB">chmod</span><span style="color: #007700">(</span><span style="color: #DD0000">"/somedir/somefile"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"u+rwx,go+rx"</span><span style="color: #007700">);&nbsp;</span><span style="color: #FF8000">//&nbsp;строка,&nbsp;неверный&nbsp;способ<br /></span><span style="color: #0000BB">chmod</span><span style="color: #007700">(</span><span style="color: #DD0000">"/somedir/somefile"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">0755</span><span style="color: #007700">);&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;восьмеричное,&nbsp;верный&nbsp;способ<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+      </div>
+
+     </div>
+    </p>
+    <p class="para">
+     Значение параметра <i><tt class="parameter">mode</tt></i>
+ состоит
+     из трех восьмеричных чисел, определяющих уровень доступа
+     для владельца файла, для группы, в которую входит владелец,
+     и для других пользователей, соответственно. Число, определяющее
+     уровень пользователя, может быть вычислено путем суммирования
+     значений, определяющих права: 1 - доступ на выполнение, 2 -
+     доступ на запись, 4 - доступ на чтение. Более подробно
+     о системе прав в системах Unix вы можете узнать с помощью
+     команд &#039;man 1 chmod&#039; and &#039;man 2 chmod&#039;.
+    </p>
+    <p class="para">
+     <div class="informalexample">
+      <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">//&nbsp;Доступ&nbsp;на&nbsp;запись&nbsp;и&nbsp;чтение&nbsp;для&nbsp;владельца,&nbsp;нет&nbsp;доступа&nbsp;для&nbsp;других<br /></span><span style="color: #0000BB">chmod</span><span style="color: #007700">(</span><span style="color: #DD0000">"/somedir/somefile"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">0600</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">//&nbsp;Доступ&nbsp;на&nbsp;запись&nbsp;и&nbsp;чтение&nbsp;для&nbsp;владельца,&nbsp;доступ&nbsp;на&nbsp;чтение&nbsp;для&nbsp;других<br /></span><span style="color: #0000BB">chmod</span><span style="color: #007700">(</span><span style="color: #DD0000">"/somedir/somefile"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">0644</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">//&nbsp;Полный&nbsp;доступ&nbsp;для&nbsp;владельца,&nbsp;доступ&nbsp;на&nbsp;чтение&nbsp;и&nbsp;выполнение&nbsp;для&nbsp;других<br /></span><span style="color: #0000BB">chmod</span><span style="color: #007700">(</span><span style="color: #DD0000">"/somedir/somefile"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">0755</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">//&nbsp;Полный&nbsp;доступ&nbsp;для&nbsp;владельца,&nbsp;доступ&nbsp;на&nbsp;чтение&nbsp;и&nbsp;выполнение&nbsp;для&nbsp;группы&nbsp;владельца<br /></span><span style="color: #0000BB">chmod</span><span style="color: #007700">(</span><span style="color: #DD0000">"/somedir/somefile"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">0750</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+      </div>
+
+     </div>
+    </p>
+    <p class="para">
+     Возвращает <b><tt>TRUE</tt></b> в случае успешного завершения или <b><tt>FALSE</tt></b> в случае возникновения ошибки.
+    </p>
+    <blockquote><p><b class="note">Замечание</b>: 
+     
+      Текущим пользователем является пользователь, от имени
+      которого выполняется PHP. Возможно, что этот пользователь
+      будет отличаться от пользователя, под именем которого
+      вы получаете доступ к командной оболочке или учетной записи FTP.
+     <br />
+    </p></blockquote>
+    <blockquote><p><b class="note">Замечание</b>: <span class="simpara">Эта функция не применима для
+работы с <a href="features.remote-files.html" class="link">удаленными файлами</a>, поскольку
+файл должен быть доступен через файловую систему сервера.</span></p></blockquote>
+    <blockquote><p><b class="note">Замечание</b>: 
+     <span class="simpara">
+      Когда <a href="features.safe-mode.html#ini.safe-mode" class="link">безопасный режим</a> включён, PHP проверяет имеет ли файл или директория, 
+      с которой вы работаете, такой же UID, как и выполняемый скрипт. 
+      Кроме того, вы не можете устанавливать SUID, SGID и &quot;липкие&quot; биты.
+     </span>
+    </p></blockquote>
+    <p class="para">
+     См.также описание функций <a href="function.chown.html" class="function">chown()</a> и
+     <a href="function.chgrp.html" class="function">chgrp()</a>.
+    </p>
+   </div>
+
+  </div><hr /><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="function.chgrp.html">chgrp</a></div>
+ <div class="next" style="float: right;"><a href="function.chown.html">chown</a></div>
+ <div class="up"><a href="ref.filesystem.html">Файловая система</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

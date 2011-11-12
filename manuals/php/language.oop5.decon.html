@@ -1,0 +1,81 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <title>Конструкторы и деструкторы</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+ </head>
+ <body><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="language.oop5.autoload.html">Автоматическая загрузка объектов</a></div>
+ <div class="next" style="float: right;"><a href="language.oop5.visibility.html">Область видимости</a></div>
+ <div class="up"><a href="language.oop5.html">Классы и объекты (PHP 5)</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="language.oop5.decon" class="sect1">
+  <h2 class="title">Конструкторы и деструкторы</h2>
+  <div id="oop5-decon-constructor" class="sect2">
+    <h3 class="title">Constructor</h3>
+    <p class="para">
+     PHP 5 позволяет объявлять методы-конструкторы. Классы, в которых
+     объявлен метод-констуктор, будут вызывать этот метод при каждом
+     создании нового объекта, так что это может оказаться полезным,
+     чтобы, например, инициализировать какое-либо состояние объекта
+     перед его использованием.
+    </p>
+    <blockquote><p><b class="note">Замечание</b>: 
+     <span class="simpara">
+      Конструкторы в классах-родителях не вызываются автоматически.
+      Чтобы вызвать конструктор, объявленный в родительском классе,
+      следует обратиться к методу <b>parent::__construct()</b>.
+     </span>
+    </p></blockquote>
+    <div class="example">
+     <p><b>Пример #1 Использование унифицированных конструкторов</b></p>
+     <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">class&nbsp;</span><span style="color: #0000BB">BaseClass&nbsp;</span><span style="color: #007700">{<br />&nbsp;&nbsp;&nbsp;&nbsp;function&nbsp;</span><span style="color: #0000BB">__construct</span><span style="color: #007700">()&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print&nbsp;</span><span style="color: #DD0000">"Конструктор&nbsp;класса&nbsp;BaseClass\n"</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />}<br /><br />class&nbsp;</span><span style="color: #0000BB">SubClass&nbsp;</span><span style="color: #007700">extends&nbsp;</span><span style="color: #0000BB">BaseClass&nbsp;</span><span style="color: #007700">{<br />&nbsp;&nbsp;&nbsp;&nbsp;function&nbsp;</span><span style="color: #0000BB">__construct</span><span style="color: #007700">()&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">parent</span><span style="color: #007700">::</span><span style="color: #0000BB">__construct</span><span style="color: #007700">();<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print&nbsp;</span><span style="color: #DD0000">"Конструктор&nbsp;класса&nbsp;SubClass\n"</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />}<br /><br /></span><span style="color: #0000BB">$obj&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">BaseClass</span><span style="color: #007700">();<br /></span><span style="color: #0000BB">$obj&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">SubClass</span><span style="color: #007700">();<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+     </div>
+
+    </div>
+    <p class="para">
+     Если PHP 5 не может обнаружить объявленный метод <b>__construct()</b>,
+     вызов конструктора произойдет по прежней схеме, через обращение к методу,
+     имя которого соответствует имени класса. Может возникнуть только
+     одна проблема совместимости старого кода, если в нём присутствуют
+     классы с методами <b>__construct()</b>.
+    </p>
+  </div>
+
+  <div id="oop5-decon-destructor" class="sect2">
+    <h3 class="title">Деструкторы</h3>
+    <p class="para">
+     PHP 5 предоставляет концепцию деструкторов, сходную с теми,
+     что применяются в других ОО языках, таких, как Java:
+     когда освобождается последняя ссылка на объект, перед высвобождением
+     памяти, занимаемой этим объектом, вызывается метод
+     <b>__destruct()</b>, не принимающий параметров.
+    </p>
+    <div class="example">
+     <p><b>Пример #2 Пример использования деструктора</b></p>
+     <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">class&nbsp;</span><span style="color: #0000BB">MyDestructableClass&nbsp;</span><span style="color: #007700">{<br />&nbsp;&nbsp;&nbsp;&nbsp;function&nbsp;</span><span style="color: #0000BB">__construct</span><span style="color: #007700">()&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print&nbsp;</span><span style="color: #DD0000">"Конструктор\n"</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">name&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">"MyDestructableClass"</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;function&nbsp;</span><span style="color: #0000BB">__destruct</span><span style="color: #007700">()&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print&nbsp;</span><span style="color: #DD0000">"Уничтожается&nbsp;"&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">name&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />}<br /><br /></span><span style="color: #0000BB">$obj&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">MyDestructableClass</span><span style="color: #007700">();<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+     </div>
+
+    </div>
+    <p class="para">
+     Как и в случае с конструкторами, деструкторы, объявленные
+     в родительском классе, не будут вызваны автоматически.
+     Для вызова деструктора, объявленном в классе-родителе,
+     следует обратиться к методу <b>parent::__destruct()</b>.
+    </p>
+  </div>
+
+ </div><hr /><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="language.oop5.autoload.html">Автоматическая загрузка объектов</a></div>
+ <div class="next" style="float: right;"><a href="language.oop5.visibility.html">Область видимости</a></div>
+ <div class="up"><a href="language.oop5.html">Классы и объекты (PHP 5)</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

@@ -1,0 +1,57 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <title>Версия gettext для множественного числа</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+ </head>
+ <body><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="function.gettext.html">gettext</a></div>
+ <div class="next" style="float: right;"><a href="function.textdomain.html">textdomain</a></div>
+ <div class="up"><a href="ref.gettext.html">Функции gettext</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="function.ngettext" class="refentry">
+   <div class="refnamediv">
+    <h1 class="refname">ngettext</h1>
+    <p class="verinfo">(PHP 4 &gt;= 4.2.0, PHP 5)</p><p class="refpurpose dc-title">ngettext — Версия gettext для множественного числа</p>
+
+   </div>
+   <div class="refsect1 unknown">
+    <h3 class="title">Описание</h3>
+     <div class="methodsynopsis dc-description">
+      <span class="type">string</span> <span class="methodname"><b><b>ngettext</b></b></span>
+       ( <span class="methodparam"><span class="type">string</span> <tt class="parameter">$msgid1</tt></span>
+      , <span class="methodparam"><span class="type">string</span> <tt class="parameter">$msgid2</tt></span>
+      , <span class="methodparam"><span class="type">int</span> <tt class="parameter">$n</tt></span>
+      )</div>
+
+    <p class="para rdfs-comment">
+     Возвращает сообщение в соответствующей числу форме. В английском языке 
+     есть только два варианта -  <i><tt class="parameter">msgid1</tt></i>
+ и 
+     <i><tt class="parameter">msgid2</tt></i>
+: первый только когда 
+     <i><tt class="parameter">n</tt></i>
+=1. В русском языке множественых форм 
+     три (1, 21, 31, ...; 2, 3, 4, ...; 5, 6, 8, ...), 
+     следовательно в каталоге сообщений будет три строчки.
+    </p>
+    <p class="para">
+     <div class="example">
+      <p><b>Пример #1 Пример</b></p>
+      <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /><br />setlocale</span><span style="color: #007700">(</span><span style="color: #0000BB">LC_ALL</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'ru_RU'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">printf</span><span style="color: #007700">(</span><span style="color: #0000BB">ngettext</span><span style="color: #007700">(</span><span style="color: #DD0000">"%d&nbsp;window"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"%d&nbsp;windows"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">21</span><span style="color: #007700">),&nbsp;</span><span style="color: #0000BB">21</span><span style="color: #007700">);&nbsp;</span><span style="color: #FF8000">//&nbsp;21&nbsp;окно<br /></span><span style="color: #0000BB">printf</span><span style="color: #007700">(</span><span style="color: #0000BB">ngettext</span><span style="color: #007700">(</span><span style="color: #DD0000">"%d&nbsp;window"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"%d&nbsp;windows"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">22</span><span style="color: #007700">),&nbsp;</span><span style="color: #0000BB">22</span><span style="color: #007700">);&nbsp;</span><span style="color: #FF8000">//&nbsp;22&nbsp;окна<br /></span><span style="color: #0000BB">printf</span><span style="color: #007700">(</span><span style="color: #0000BB">ngettext</span><span style="color: #007700">(</span><span style="color: #DD0000">"%d&nbsp;window"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"%d&nbsp;windows"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">25</span><span style="color: #007700">),&nbsp;</span><span style="color: #0000BB">25</span><span style="color: #007700">);&nbsp;</span><span style="color: #FF8000">//&nbsp;25&nbsp;окон<br /><br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+      </div>
+
+     </div>
+    </p>
+   </div>
+
+  </div><hr /><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="function.gettext.html">gettext</a></div>
+ <div class="next" style="float: right;"><a href="function.textdomain.html">textdomain</a></div>
+ <div class="up"><a href="ref.gettext.html">Функции gettext</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

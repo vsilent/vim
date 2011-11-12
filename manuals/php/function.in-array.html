@@ -1,0 +1,127 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <title>Проверить, присутствует ли в массиве значение</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+ </head>
+ <body><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="function.extract.html">extract</a></div>
+ <div class="next" style="float: right;"><a href="function.key.html">key</a></div>
+ <div class="up"><a href="ref.array.html">Функции для работы с массивами</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="function.in-array" class="refentry">
+   <div class="refnamediv">
+    <h1 class="refname">in_array</h1>
+    <p class="verinfo">(PHP 4, PHP 5)</p><p class="refpurpose dc-title">in_array — Проверить, присутствует ли в массиве значение</p>
+
+   </div>
+   <div class="refsect1 unknown">
+    <h3 class="title">Описание</h3>
+     <div class="methodsynopsis dc-description">
+      <span class="type">bool</span> <span class="methodname"><b><b>in_array</b></b></span>
+       ( <span class="methodparam"><span class="type"><a href="language.pseudo-types.html#language.types.mixed" class="type mixed">mixed</a></span> <tt class="parameter">$needle</tt></span>
+      , <span class="methodparam"><span class="type">array</span> <tt class="parameter">$haystack</tt></span>
+      [, <span class="methodparam"><span class="type">bool</span> <tt class="parameter">$strict</tt></span>
+     ] )</div>
+
+    <p class="para rdfs-comment">
+     Ищет в <i><tt class="parameter">haystack</tt></i>
+ значение
+     <i><tt class="parameter">needle</tt></i>
+ и возвращает <b><tt>TRUE</tt></b>
+     в случае удачи, <b><tt>FALSE</tt></b> в противном случае.
+    </p>
+    <p class="para">
+     Если третий параметр <i><tt class="parameter">strict</tt></i>
+ установлен в
+     <b><tt>TRUE</tt></b> тогда функция <b>in_array()</b>
+     также проверит соответствие <a href="language.types.html" class="link">types</a>
+     параметра <i><tt class="parameter">needle</tt></i>
+ и соответствующего значения массива
+     <i><tt class="parameter">haystack</tt></i>
+.
+    </p>
+    <blockquote><p><b class="note">Замечание</b>: 
+     
+      Если <i><tt class="parameter">needle</tt></i>
+ - строка, сравнение будет регистрозависмым.
+     <br />
+    </p></blockquote>
+    <blockquote><p><b class="note">Замечание</b>: 
+     
+      В PHP версий, более ранних, чем 4.2.0 параметр <i><tt class="parameter">needle</tt></i>
+ 
+      не может быть массивом.
+     <br />
+    </p></blockquote>
+    <p class="para">
+     <div class="example">
+      <p><b>Пример #1 Пример использования <b>in_array()</b></b></p>
+      <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$os&nbsp;</span><span style="color: #007700">=&nbsp;array(</span><span style="color: #DD0000">"Mac"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"NT"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"Irix"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"Linux"</span><span style="color: #007700">);<br />if&nbsp;(</span><span style="color: #0000BB">in_array</span><span style="color: #007700">(</span><span style="color: #DD0000">"Irix"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$os</span><span style="color: #007700">))&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"Got&nbsp;Irix"</span><span style="color: #007700">;<br />}<br />if&nbsp;(</span><span style="color: #0000BB">in_array</span><span style="color: #007700">(</span><span style="color: #DD0000">"mac"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$os</span><span style="color: #007700">))&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"Got&nbsp;mac"</span><span style="color: #007700">;<br />}<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+      </div>
+
+      <div class="example-contents"><p>
+       Второго совпадения не будет, потому что <b>in_array()</b>
+       регистрозависима, таким образом, программа выведет:
+      </p></div>
+      <div class="example-contents"><pre>
+<div class="cdata"><pre>
+Got Irix
+</pre></div>
+      </pre></div>
+     </div>
+    </p>
+    <p class="para">
+     <div class="example">
+      <p><b>Пример #2 Пример использования <b>in_array()</b> с параметром strict</b></p>
+      <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$a&nbsp;</span><span style="color: #007700">=&nbsp;array(</span><span style="color: #DD0000">'1.10'</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">12.4</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">1.13</span><span style="color: #007700">);<br /><br />if&nbsp;(</span><span style="color: #0000BB">in_array</span><span style="color: #007700">(</span><span style="color: #DD0000">'12.4'</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$a</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">true</span><span style="color: #007700">))&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"'12.4'&nbsp;found&nbsp;with&nbsp;strict&nbsp;check<br />"</span><span style="color: #007700">;<br />}<br /><br />if&nbsp;(</span><span style="color: #0000BB">in_array</span><span style="color: #007700">(</span><span style="color: #0000BB">1.13</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$a</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">true</span><span style="color: #007700">))&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"1.13&nbsp;found&nbsp;with&nbsp;strict&nbsp;check<br />"</span><span style="color: #007700">;<br />}<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+      </div>
+
+      <div class="example-contents"><p>Результат выполнения данного примера:</p></div>
+      <div class="example-contents"><pre>
+<div class="cdata"><pre>
+1.13 found with strict check
+</pre></div>
+      </pre></div>
+     </div>
+    </p>
+    <p class="para">
+     <div class="example">
+      <p><b>Пример #3 Пример использования <b>in_array()</b> с массивом в качестве параметра needle</b></p>
+      <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$a&nbsp;</span><span style="color: #007700">=&nbsp;array(array(</span><span style="color: #DD0000">'p'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'h'</span><span style="color: #007700">),&nbsp;array(</span><span style="color: #DD0000">'p'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'r'</span><span style="color: #007700">),&nbsp;</span><span style="color: #DD0000">'o'</span><span style="color: #007700">);<br /><br />if&nbsp;(</span><span style="color: #0000BB">in_array</span><span style="color: #007700">(array(</span><span style="color: #DD0000">'p'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'h'</span><span style="color: #007700">),&nbsp;</span><span style="color: #0000BB">$a</span><span style="color: #007700">))&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"'ph'&nbsp;найдено<br />"</span><span style="color: #007700">;<br />}<br /><br />if&nbsp;(</span><span style="color: #0000BB">in_array</span><span style="color: #007700">(array(</span><span style="color: #DD0000">'f'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'i'</span><span style="color: #007700">),&nbsp;</span><span style="color: #0000BB">$a</span><span style="color: #007700">))&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"'fi'&nbsp;найдено<br />"</span><span style="color: #007700">;<br />}<br /><br />if&nbsp;(</span><span style="color: #0000BB">in_array</span><span style="color: #007700">(</span><span style="color: #DD0000">'o'</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$a</span><span style="color: #007700">))&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"'o'&nbsp;найдено<br />"</span><span style="color: #007700">;<br />}<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+      </div>
+
+      <div class="example-contents"><p>Результат выполнения данного примера:</p></div>
+      <div class="example-contents"><pre>
+<div class="cdata"><pre>
+  &#039;ph&#039; найдено
+  &#039;o&#039; найдено
+</pre></div>
+      </pre></div>
+     </div>
+    </p>
+    <p class="para">
+     См. также <a href="function.array-search.html" class="function">array_search()</a>,
+     <a href="function.array-key-exists.html" class="function">array_key_exists()</a> и
+     <a href="function.isset.html" class="function">isset()</a>.
+    </p>
+   </div>
+
+  </div><hr /><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="function.extract.html">extract</a></div>
+ <div class="next" style="float: right;"><a href="function.key.html">key</a></div>
+ <div class="up"><a href="ref.array.html">Функции для работы с массивами</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

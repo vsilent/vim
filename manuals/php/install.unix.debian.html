@@ -1,0 +1,198 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <title>Debian GNU/Linux installation notes</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+ </head>
+ <body><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="install.unix.html">Установка на Unix системы</a></div>
+ <div class="next" style="float: right;"><a href="install.macosx.html">Installation on Mac OS X</a></div>
+ <div class="up"><a href="install.unix.html">Установка на Unix системы</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="install.unix.debian" class="sect1">
+ <h2 class="title">Debian GNU/Linux installation notes</h2>
+ <p class="para">
+  This section contains notes and hints specific to installing
+  PHP on <a href="http://www.debian.org/" class="link external">&raquo; Debian GNU/Linux</a>.
+ </p>
+ <div id="install.unix.debian.apt" class="sect2">
+  <h3 class="title">Using APT</h3>
+   <p class="simpara">
+    While you can just download the PHP source and compile it yourself,
+    using Debian&#039;s packaging system is the simplest and cleanest
+    method of installing PHP. If you are not familiar with building
+    software on Linux, this is the way to go.
+   </p>
+   <p class="simpara">
+    The first decision you need to make is whether you want to install
+    Apache 1.3.x or Apache 2.x. The corresponding PHP packages are
+    respectively named libapache-mod-php* and libapache2-mod-php*.
+    The steps given below will use Apache 1.3.x.
+    Please note that, as of this writing, there is no official
+    Debian packages of PHP 5. Then the steps given below will install PHP 4.
+   </p>
+   <p class="simpara">
+    PHP is available in Debian as CGI or CLI flavour too, named respectively
+    php4-cgi and php4-cli. If you need them, you&#039;ll just have to reproduce the
+    following steps with the good package names.
+    Another special package you&#039;d want to install is php4-pear. It contains a
+    minimal PEAR installation and the <strong class="command">pear</strong> commandline
+    utility.
+   </p>
+   <p class="simpara">
+    If you need more recent packages of PHP than the Debian&#039;s stable ones
+    or if some PHP modules lacks the Debian official repository, perhaps
+    you should take a look at <a href="http://www.apt-get.org/" class="link external">&raquo; http://www.apt-get.org/</a>.
+    One of the results found should be
+    <a href="http://www.dotdeb.org/" class="link external">&raquo; Dotdeb</a>. This unofficial repository
+    is maintained by <a href="mailto:gui@php.net" class="link external">&raquo; Guillaume Plessis</a>
+    and contains Debian packages of the most recent versions of PHP 4 and PHP 5.
+    To use it, just add the to following two lines to your
+    <var class="filename">/etc/apt/sources.lists</var> and run <strong class="command">apt-get
+    update</strong> :
+   </p>
+   <div class="example">
+    <p><b>Пример #1 The two Dotdeb related lines</b></p>
+    <div class="example-contents">
+<div class="cdata"><pre>
+deb http://packages.dotdeb.org stable all
+deb-src http://packages.dotdeb.org stable all
+</pre></div>
+    </div>
+
+   </div>
+   <p class="simpara">
+    The last thing to consider is whether your list of packages is up to date.
+    If you have not updated it recently, you need to run <strong class="command">apt-get update</strong>
+    before anything else. This way, you will be using the most recent
+    stable version of the Apache and PHP packages.
+   </p>
+   <p class="simpara">
+    Now that everything is in place, you can use the following example
+    to install Apache and PHP:
+   </p>
+   <div class="example" id="install.unix.debian.apt.example" name="install.unix.debian.apt.example">
+    <p><b>Пример #2 Debian Install Example with Apache 1.3</b></p>
+    <div class="example-contents">
+<div class="cdata"><pre>
+# apt-get install libapache-mod-php4
+</pre></div>
+    </div>
+
+   </div>
+   <p class="simpara">
+    APT will automatically install the PHP 4 module for Apache 1.3, and all its
+    dependencies and then activate it.  If you&#039;re not asked to restart Apache
+    during the install process, you&#039;ll have to do it manually :
+   </p>
+   <div class="example" id="install.unix.debian.apt.example2" name="install.unix.debian.apt.example2">
+    <p><b>Пример #3 Stopping and starting Apache once PHP 4 is installed</b></p>
+    <div class="example-contents">
+<div class="cdata"><pre>
+# /etc/init.d/apache stop
+# /etc/init.d/apache start
+</pre></div>
+    </div>
+
+   </div>
+ </div>
+ <div id="install.unix.debian.config" class="sect2">
+  <h3 class="title">Better control on configuration</h3>
+   <p class="simpara">
+    In the last section, PHP was installed with only core modules.
+    This may not be what you want and you will soon discover that you need
+    more activated modules, like MySQL, cURL, GD, etc.
+   </p>
+   <p class="simpara">
+    When you compile PHP from source yourself, you need to activate modules
+    via the <strong class="command">configure</strong> command. With APT, you just have
+    to install additional packages. They&#039;re all named &#039;php4-*&#039; (or &#039;php5-*&#039; if
+    you installed PHP 5 from a third party repository).
+   </p>
+   <div class="example" id="install.unix.debian.config.example" name="install.unix.debian.config.example">
+    <p><b>Пример #4 Getting the list of PHP additional packages</b></p>
+    <div class="example-contents">
+<div class="cdata"><pre>
+# dpkg -l &#039;php4-*&#039;
+</pre></div>
+    </div>
+
+   </div>
+   <p class="simpara">
+    As you can see from the last output, there&#039;s a lot of PHP modules that
+    you can install (excluding the php4-cgi, php4-cli or php4-pear special
+    packages).
+    Look at them closely and choose what you need. If you choose a module and
+    you do not have the proper libraries, APT will automatically install all
+    the dependencies for you.
+   </p>
+   <p class="simpara">
+    If you choose to add the MySQL, cURL and GD support to PHP the command
+    will look something like this:
+   </p>
+   <div class="example" id="install.unix.debian.config.example2" name="install.unix.debian.config.example2">
+    <p><b>Пример #5 Install PHP with MySQL, cURL and GD</b></p>
+    <div class="example-contents">
+<div class="cdata"><pre>
+# apt-get install php4-mysql php4-curl php4-gd
+</pre></div>
+    </div>
+
+   </div>
+   <p class="simpara">
+    APT will automatically add the appropriate lines to your
+    different <var class="filename">php.ini</var> (<var class="filename">/etc/php4/apache/php.ini</var>,
+    <var class="filename">/etc/php4/cgi/php.ini</var>, etc).
+   </p>
+   <div class="example" id="install.unix.debian.config.example3" name="install.unix.debian.config.example3">
+    <p><b>Пример #6 These lines activate MySQL, cURL and GD into PHP</b></p>
+    <div class="example-contents">
+<div class="cdata"><pre>
+extension=mysql.so
+extension=curl.so
+extension=gd.so
+</pre></div>
+    </div>
+
+   </div>
+   <p class="simpara">
+    You&#039;ll only have to stop/start Apache as previously to activate the modules.
+   </p>
+ </div>
+ <div id="install.unix.debian.faq" class="sect2">
+  <h3 class="title">Common Problems</h3>
+  <ul class="itemizedlist">
+   <li class="listitem">
+    <span class="simpara">
+     If you see the PHP source instead of the result the script should
+     produce, APT has probably not included
+     <var class="filename">/etc/apache/conf.d/php4</var> in your Apache 1.3
+     configuration. Please ensure that the following line is present in your
+     <var class="filename">/etc/apache/httpd.conf</var> file then stop/start Apache:
+    </span>
+   <div class="example" id="install.unix.debian.faq.example" name="install.unix.debian.faq.example">
+    <p><b>Пример #7 This line activates PHP 4 into Apache</b></p>
+    <div class="example-contents">
+<div class="cdata"><pre>
+# Include /etc/apache/conf.d/
+</pre></div>
+    </div>
+
+   </div>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     If you installed an additional module and if its functions are not
+     available in your scripts, please ensure that the appropriate line is present in your
+     <var class="filename">php.ini</var>, as seen before. APT may fail during the installation
+     of the additional module, due to a confusing debconf configuration.
+    </span>
+   </li>
+  </ul>
+ </div>
+</div><hr /><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="install.unix.html">Установка на Unix системы</a></div>
+ <div class="next" style="float: right;"><a href="install.macosx.html">Installation on Mac OS X</a></div>
+ <div class="up"><a href="install.unix.html">Установка на Unix системы</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

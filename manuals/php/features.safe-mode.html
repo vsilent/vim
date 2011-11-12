@@ -1,0 +1,461 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <title>Защищенный режим</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+ </head>
+ <body><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="features.persistent-connections.html">Постоянные соединения с базами данных</a></div>
+ <div class="next" style="float: right;"><a href="features.safe-mode.functions.html">Ограниченные или недоступные в защищенном режиме функции</a></div>
+ <div class="up"><a href="features.html">Отличительные особенности</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div>
+  <h1>Защищенный режим</h1>
+<h2>Содержание</h2><ul class="chunklist chunklist_chapter"><li><a href="features.safe-mode.functions.html">Ограниченные или недоступные в защищенном режиме функции</a></li></ul>
+
+
+  <p class="para">
+   Защищенный режим в PHP - это попытка решить проблему безопасности на совместно 
+   используемых серверах. Несмотря на то, что концептуально неверно решать 
+   эту проблему на уровне PHP, но поскольку альтернативы уровня веб-сервера или
+   операционной системы на сегодняшний день отсутствуют, многие пользователи,
+   особенно провайдеры, используют именно защищенный режим.
+  </p>
+
+  <div id="ini.sect.safe-mode" class="sect1">
+   <h2 class="title">Безопасность и защищенный режим</h2>
+   <p class="para">
+    <table border="5">
+     <caption><b>Конфигурационные опции, управляющие защищенным режимом и вопросами безопасности</b></caption>
+     <colgroup>
+
+      <thead valign="middle">
+       <tr valign="middle">
+        <th colspan="1">Имя</th>
+        <th colspan="1">Значение по умолчанию</th>
+        <th colspan="1">Изменяемость</th>
+       </tr>
+
+      </thead>
+
+      <tbody valign="middle" class="tbody">
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left">safe_mode</td>
+       <td colspan="1" rowspan="1" align="left">&quot;0&quot;</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_SYSTEM</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left">safe_mode_gid</td>
+       <td colspan="1" rowspan="1" align="left">&quot;0&quot;</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_SYSTEM</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left">safe_mode_include_dir</td>
+       <td colspan="1" rowspan="1" align="left">NULL</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_SYSTEM</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left">safe_mode_exec_dir</td>
+       <td colspan="1" rowspan="1" align="left">&quot;&quot;</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_SYSTEM</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left">safe_mode_allowed_env_vars</td>
+       <td colspan="1" rowspan="1" align="left">PHP_</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_SYSTEM</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left">safe_mode_protected_env_vars</td>
+       <td colspan="1" rowspan="1" align="left">LD_LIBRARY_PATH</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_SYSTEM</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left">open_basedir</td>
+       <td colspan="1" rowspan="1" align="left">NULL</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_SYSTEM</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left">disable_functions</td>
+       <td colspan="1" rowspan="1" align="left">&quot;&quot;</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_SYSTEM</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left">disable_classes</td>
+       <td colspan="1" rowspan="1" align="left">&quot;&quot;</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_SYSTEM</td>
+      </tr>
+
+      </tbody>
+     </colgroup>
+
+    </table>
+ 
+    Для получения более детальной информации о константах вида  PHP_INI_* 
+    ознакомьтесь с функцией <a href="function.ini-set.html" class="function">ini_set()</a>.
+   </p>
+   
+   <p class="para">Краткое разъяснение конфигурационных
+директив.</p>
+   
+   <p class="para">
+    <dl>
+
+     <dt id="ini.safe-mode">
+      <span class="term">
+       <i><tt class="parameter">safe_mode</tt></i>
+
+       <a href="language.types.boolean.html" class="type boolean">boolean</a>
+      </span>
+
+      <dd>
+
+       <p class="para">
+        Включает/отключает защищенный режим в PHP. Для получения более
+        детальной информации ознакомьтесь с разделом <a href="security.html" class="link">Безопасность</a>.
+       </p>
+      </dd>
+
+     </dt>
+
+     <dt id="ini.safe-mode-gid">
+      <span class="term">
+       <i><tt class="parameter">safe_mode_gid</tt></i>
+
+       <a href="language.types.boolean.html" class="type boolean">boolean</a>
+      </span>
+
+      <dd>
+
+       <p class="para">
+        По умолчанию в защищенном режиме при открытии файла выполняется
+        проверка значения UID. Для того, чтобы немного смягчить это условие и
+        выполнять проверку GID, необходимо установить значение on для флага safe_mode_gid.
+        Определяет, использовать или нет проверку <i>UID</i> (<b><tt>FALSE</tt></b>) или
+        <i>GID</i> (<b><tt>TRUE</tt></b>) проверку при обращении к файлу.
+       </p>
+      </dd>
+
+     </dt>
+
+     <dt id="ini.safe-mode-include-dir">
+      <span class="term">
+       <i><tt class="parameter">safe_mode_include_dir</tt></i>
+
+       <a href="language.types.string.html" class="type string">string</a>
+      </span>
+
+      <dd>
+
+       <p class="para">
+        При подключении файлов, расположенных в указанной директории и всех ее подкаталогах,
+        проверка на соответствие значений <i>UID</i>/<i>GID</i> 
+        не выполняется (В случае, если установленная директория не указана в <a href="ini.core.html#ini.include-path" class="link">include_path</a>,
+        необходимо указывать полный путь при включении).
+       </p>
+       <span class="simpara">
+        Начиная с PHP 4.2.0 значением этой директивы может быть список каталогов,
+        разделенных двоеточием (точкой с запятой на windows-системах), что аналогично
+        синтаксису <a href="ini.core.html#ini.include-path" class="link">include_path</a>. 
+       </span>
+       <span class="simpara">
+        Указанное значение в действительности является префиксом, а не названием
+        директории. Это означает, что запись
+        &quot;safe_mode_include_dir = /dir/incl&quot; позволяет подключать файлы, находящиеся
+        в директориях &quot;/dir/include&quot; и &quot;/dir/incls&quot;, в случае, если они существуют. 
+        Если вы хотите указать доступ к конкретной директории, используйте завершающий слеш, например:
+	 &quot;safe_mode_include_dir = /dir/incl/&quot;.
+       </span>
+      </dd>
+
+     </dt>
+
+     <dt id="ini.safe-mode-exec-dir">
+      <span class="term">
+       <i><tt class="parameter">safe_mode_exec_dir</tt></i>
+
+       <a href="language.types.string.html" class="type string">string</a>
+      </span>
+
+      <dd>
+
+       <p class="para">
+        В случае, когда PHP работает в защищенном режиме,
+        <a href="function.system.html" class="function">system()</a> и другие <a href="ref.exec.html" class="link">функции
+        для выполнения системных команд и программ</a>
+        отклоняют выполнение программ, находящихся вне данной директории.
+       </p>
+      </dd>
+
+     </dt>
+
+     <dt id="ini.safe-mode-allowed-env-vars">
+      <span class="term">
+       <i><tt class="parameter">safe_mode_allowed_env_vars</tt></i>
+
+       <a href="language.types.string.html" class="type string">string</a>
+      </span>
+
+      <dd>
+
+       <p class="para">
+        Возможность устанавливать переменные окружения - потенциальная 
+        брешь в безопасности. Значением этой директивы является
+        список префиксов, разделенных двоеточиями. В защищенном режиме
+        пользователь может модифицировать только те переменные окружения,
+        имена которых начинаются с одного из указанных префиксов. По умолчанию,
+        пользователю доступны переменные, которые начинаются с префикса PHP_ 
+        (например, PHP_FOO=BAR).
+       </p>
+       <blockquote><p><b class="note">Замечание</b>: 
+        
+         В случае, если этой директиве указать пустое значение, пользователь получит
+         возможность модифицировать любую переменную окружения!
+        <br />
+       </p></blockquote>
+      </dd>
+
+     </dt>
+
+     <dt id="ini.safe-mode-protected-env-vars">
+      <span class="term">
+       <i><tt class="parameter">safe_mode_protected_env_vars</tt></i>
+
+       <a href="language.types.string.html" class="type string">string</a>
+      </span>
+
+      <dd>
+
+       <p class="para">
+        Эта директива содержит список переменных окружения, разделенных двоеточием,
+        значение которых пользователь не сможет изменить, используя
+        функцию <a href="function.putenv.html" class="function">putenv()</a>. Значения этих переменных
+        остаются защищенными, даже если их модификация разрешена
+        директивой safe_mode_allowed_env_vars.
+       </p>
+      </dd>
+
+     </dt>
+
+      <dt id="ini.open-basedir">
+      <span class="term">
+       <i><tt class="parameter">open_basedir</tt></i>
+
+       <a href="language.types.string.html" class="type string">string</a>
+      </span>
+
+      <dd>
+
+       <p class="para">
+        Ограничивает список файлов, которые могут быть открыты в PHP,
+        указанным деревом директорий <em class="emphasis">независимо</em> от
+        того, используется защищенный режим или нет.
+       </p>
+       <p class="para">
+        Каждый раз, когда скрипт пытается открыть файл, например, при помощи
+        функции <a href="function.fopen.html" class="function">fopen()</a> или <a href="function.gzopen.html" class="function">gzopen()</a>,
+        проверяется месторасположение файла. В случае, если он находится
+        вне указанного дерева директорий, PHP отказывает в открытия файла.
+        Все символические ссылки распознаются и преобразуются, поэтому обойти
+        это ограничение при помощи символических ссылок невозможно.
+       </p>
+       <p class="para">
+        Специальное значение <b><tt>.</tt></b>
+        указывает, что базовой следует считать директорию, в которой расположен
+        сам скрипт. В этом случае следует быть осторожным, так как рабочую
+		директорию скрипта можно легко изменить при помощи функции <a href="function.chdir.html" class="function">chdir()</a>.  
+         </p>  
+         <p class="para">  
+         Опция open_basedir может быть отключена в конфигурационном файле
+		  <var class="filename">httpd.conf</var> (например, для некоторых виртуальных хостов)
+          <a href="configuration.changes.html#configuration.changes.apache" class="link">точно таким же образом</a> 
+		  как и любая другая директива: &quot;php_admin_value open_basedir none&quot;.  
+       </p>
+       <p class="para">
+        Для Windows-систем разделителем списка директорий служит точка с 
+        запятой. Для всех других операционных систем в качестве разделителя
+        используется двоеточие. В случае, если PHP работает как модуль веб-сервера
+        Apache, все указания open_basedir для родительских директорий наследуются.
+       </p>
+       <p class="para">
+        Указанное значение в действительности является префиксом, а не названием
+        директории. Это означает, что запись
+        &quot;safe_mode_include_dir = /dir/incl&quot; позволяет открывать файлы, находящиеся
+        в директориях &quot;/dir/include&quot; и &quot;/dir/incls&quot;, в случае, если они существуют. 
+        Если вы хотите указать доступ к конкретной директории, используйте завершающий слеш, например:
+	 &quot;safe_mode_include_dir = /dir/incl/&quot;.
+       </p>
+       <blockquote><p><b class="note">Замечание</b>: 
+        
+         Возможность работы с несколькими директориями добавлена в версии  3.0.7.
+        <br />
+       </p></blockquote>
+       <p class="para">
+        По умолчанию разрешен доступ ко всем файлам.
+       </p>
+      </dd>
+
+     </dt>
+
+     <dt id="ini.disable-functions">
+      <span class="term">
+       <i><tt class="parameter">disable_functions</tt></i>
+
+       <a href="language.types.string.html" class="type string">string</a>
+      </span>
+
+      <dd>
+
+       <span class="simpara">
+        Эта директива позволяет вам запретить некоторые функции из
+        соображений  <a href="security.html" class="link">безопасности</a>.
+        В качестве значения она принимает список функций, разделенных двоеточием.
+	disable_functions не зависит от того, используется <a href="features.safe-mode.html#ini.safe-mode" class="link">Защищенный режим</a> или нет.
+       </span>
+       <span class="simpara">
+        Эта директива должна быть указана в <var class="filename">php.ini</var>. Вы не можете использовать
+        ее, например, в <var class="filename">httpd.conf</var>.
+       </span>
+      </dd>
+
+     </dt>
+
+     <dt id="ini.disable-classes">
+      <span class="term">
+       <i><tt class="parameter">disable_classes</tt></i>
+
+       <a href="language.types.string.html" class="type string">string</a>
+      </span>
+
+      <dd>
+
+       <span class="simpara">
+        Эта директива позволяет вам запретить некоторые классы из
+        соображений  <a href="security.html" class="link">безопасности</a>. 
+        В качестве значения она принимает список класов, разделенных двоеточием.
+	disable_classes не зависит от того, используется <a href="features.safe-mode.html#ini.safe-mode" class="link">Защищенный режим</a> или нет.
+       </span>
+       <span class="simpara">
+        Эта директива должна быть указана в <var class="filename">php.ini</var>. Вы не можете использовать
+        ее, например, в <var class="filename">httpd.conf</var>.
+       </span>
+       <blockquote><p><b class="note">Замечание</b>: 
+        
+        Эта директива доступна, начиная с PHP 4.3.2
+        <br />
+       </p></blockquote>
+      </dd>
+
+     </dt>
+
+    </dl>
+
+   </p>
+   <p class="para">
+    Ознакомьтесь также со следующими конфигурационными директивами: 
+    <a href="ini.core.html#ini.register-globals" class="link">register_globals</a>,
+    <a href="errorfunc.configuration.html#ini.display-errors" class="link">display_errors</a>, и
+    <a href="errorfunc.configuration.html#ini.log-errors" class="link">log_errors</a>
+   </p>
+
+  <p class="para">
+   В случае, если директива <a href="features.safe-mode.html#ini.safe-mode" class="link">safe_mode</a> 
+   установлена значением on, PHP проверит, совпадает ли владелец скрипта и 
+   владелец файла или директории, которыми оперирует скрипт. Например:
+   <div class="example-contents">
+<div class="cdata"><pre>
+-rw-rw-r--    1 rasmus   rasmus       33 Jul  1 19:20 script.php 
+-rw-r--r--    1 root     root       1116 May 26 18:01 /etc/passwd 
+</pre></div>
+   </div>
+
+   выполние срипта script.php 
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />&nbsp;readfile</span><span style="color: #007700">(</span><span style="color: #DD0000">'/etc/passwd'</span><span style="color: #007700">);&nbsp;<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+   </div>
+
+   в случае использования защищенного режима приводит к следующей ошибке:
+   <div class="example-contents"><pre>
+<div class="cdata"><pre>
+Warning: SAFE MODE Restriction in effect. The script whose uid is 500 is not 
+allowed to access /etc/passwd owned by uid 0 in /docroot/script.php on line 2
+</pre></div>
+   </pre></div>
+  </p>
+  <p class="para">
+   Тем не менее, предусмотрена возможность вместо проверки на соответствие
+   <i>UID</i> использовать более мягкую проверку на соответствие
+   <i>GID</i>. Для этого необходимо использовать директиву
+   <a href="features.safe-mode.html#ini.safe-mode-gid" class="link">safe_mode_gid</a>. В случае, если она
+   установлена значением  <i>On</i>, используется более мягкая 
+   проверка <i>GID</i>. В противном случае, если установлено значение 
+   <i>Off</i> (значение по умолчанию), выполняется более строгая проверка
+   на соответствие <i>UID</i>.
+  </p>
+  <p class="para">
+   В качестве альтернативы директиве <a href="features.safe-mode.html#ini.safe-mode" class="link">safe_mode</a> 
+   вы можете ограничить все выполняемые скрипты жестко заданным
+   деревом директорий при помощи опции <a href="features.safe-mode.html#ini.open-basedir" class="link">open_basedir</a>.
+   Например (фрагмент конфигурационного файла <var class="filename">httpd.conf</var>): 
+   <div class="example-contents">
+<div class="cdata"><pre>
+&lt;Directory /docroot&gt;
+  php_admin_value open_basedir /docroot 
+&lt;/Directory&gt;
+</pre></div>
+   </div>
+
+   При попытке выполнить тот же самый скрипт script.php с 
+   указанной опцией 
+   <a href="features.safe-mode.html#ini.open-basedir" class="link">open_basedir</a>
+   вы получите следующий результат:
+   <div class="example-contents"><pre>
+<div class="cdata"><pre>
+Warning: open_basedir restriction in effect. File is in wrong directory in 
+/docroot/script.php on line 2 
+</pre></div>
+   </pre></div>
+  </p>
+  <p class="para">
+   Вы также можете запретить отдельные функции. Следует заметить, что 
+   директива 
+   <a href="features.safe-mode.html#ini.disable-functions" class="link">disable_functions</a>
+   может быть указана исключительно в конфигурационном файле <var class="filename">php.ini</var>,
+   это означает, что вы не можете, отредактировав <var class="filename">httpd.conf</var>, установить 
+   индивидуальные значения для конкретного виртуального хоста или каталога.
+   Если добавить в <var class="filename">php.ini</var> следующую строку: 
+   <div class="example-contents">
+<div class="cdata"><pre>
+disable_functions readfile,system  
+</pre></div>
+   </div>
+
+  Результатом работы скрипта будет следующий вывод: 
+   <div class="example-contents"><pre>
+<div class="cdata"><pre>
+Warning: readfile() has been disabled for security reasons in 
+/docroot/script.php on line 2 
+</pre></div>
+   </pre></div>
+  </p>
+ </div>
+
+  
+
+ </div>
+<hr /><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="features.persistent-connections.html">Постоянные соединения с базами данных</a></div>
+ <div class="next" style="float: right;"><a href="features.safe-mode.functions.html">Ограниченные или недоступные в защищенном режиме функции</a></div>
+ <div class="up"><a href="features.html">Отличительные особенности</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

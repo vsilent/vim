@@ -1,0 +1,97 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <title>Выбирает следующую строку из результата запроса в массив</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+ </head>
+ <body><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="function.ocifetch.html">ocifetch</a></div>
+ <div class="next" style="float: right;"><a href="function.ocifetchstatement.html">ocifetchstatement</a></div>
+ <div class="up"><a href="ref.oci8.html">OCI8</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="function.ocifetchinto" class="refentry">
+   <div class="refnamediv">
+    <h1 class="refname">ocifetchinto</h1>
+    <p class="verinfo">(PHP 4, PHP 5, PECL oci8:1.0-1.2.4)</p><p class="refpurpose dc-title">ocifetchinto — Выбирает следующую строку из результата запроса в массив</p>
+
+   </div>
+   <div class="refsect1 unknown">
+    <h3 class="title">Описание</h3>
+     <div class="methodsynopsis dc-description">
+      <span class="type">int</span> <span class="methodname"><b><b>ocifetchinto</b></b></span>
+       ( <span class="methodparam"><span class="type">resource</span> <tt class="parameter">$statement</tt></span>
+      , <span class="methodparam"><span class="type">array</span> <tt class="parameter">$&amp;result</tt></span>
+      [, <span class="methodparam"><span class="type">int</span> <tt class="parameter">$mode</tt></span>
+     ] )</div>
+
+    <blockquote><p><b class="note">Замечание</b>: 
+     
+      Эта функция устарела и не рекомендуется к использованию. Вместо неё вы
+      можете использовать функции <a href="function.oci-fetch-array.html" class="function">oci_fetch_array()</a>,
+      <a href="function.oci-fetch-object.html" class="function">oci_fetch_object()</a>, <a href="function.oci-fetch-assoc.html" class="function">oci_fetch_assoc()</a>,
+      <a href="function.oci-fetch-row.html" class="function">oci_fetch_row()</a>.
+     <br />
+    </p></blockquote>
+    <p class="para">
+     <b>ocifetchinto()</b> выбирает следующую строку из результат
+     запроса в массив <i><tt class="parameter">result</tt></i>
+.
+     <b>ocifetchinto()</b> перезапишет сверху содержимое
+     переменной <i><tt class="parameter">result</tt></i>
+. По умолчанию
+     <i><tt class="parameter">result</tt></i>
+ будет содержать массив с числовыми
+     индексами и значениями полей, которые не равны <b><tt>NULL</tt></b>.
+    </p>
+    <p class="para">
+     Параметр <i><tt class="parameter">mode</tt></i>
+ позволяет менять поведение по
+     умолчанию. Вы можете указывать несколько флагов одновременно, просто
+     суммируя их (например, OCI_ASSOC+OCI_RETURN_NULLS). Возможные флаги:
+     <ul class="simplelist">
+      <li class="member">
+       <b><tt>OCI_ASSOC</tt></b> - возврашать ассоциативный массив.
+      </li>
+      <li class="member">
+       <b><tt>OCI_NUM</tt></b> - возвращать массив с числовыми индексами
+       (поведение по умолчанию).
+      </li>
+      <li class="member">
+       <b><tt>OCI_RETURN_NULLS</tt></b> - возвращать поля, которые равны
+       <b><tt>NULL</tt></b>.
+      </li>
+      <li class="member">
+       <b><tt>OCI_RETURN_LOBS</tt></b> - возвращать значение LOB вместо
+       дескриптора.
+      </li>
+     </ul>
+    </p>
+    <p class="para">
+     <div class="example">
+      <p><b>Пример #1 Пример использования <b>ocifetchinto()</b></b></p>
+      <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$conn&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">ocilogon</span><span style="color: #007700">(</span><span style="color: #DD0000">"username"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"password"</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">$query&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">"SELECT&nbsp;apples&nbsp;FROM&nbsp;oranges"</span><span style="color: #007700">;<br /><br /></span><span style="color: #0000BB">$statement&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">OCIParse&nbsp;</span><span style="color: #007700">(</span><span style="color: #0000BB">$conn</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$query</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">OCIExecute&nbsp;</span><span style="color: #007700">(</span><span style="color: #0000BB">$statement</span><span style="color: #007700">);<br /><br />while&nbsp;(</span><span style="color: #0000BB">OCIFetchInto&nbsp;</span><span style="color: #007700">(</span><span style="color: #0000BB">$statement</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$row</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">OCI_ASSOC</span><span style="color: #007700">))&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #0000BB">$row</span><span style="color: #007700">[</span><span style="color: #DD0000">'apples'</span><span style="color: #007700">];<br />}<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+      </div>
+
+     </div>
+    </p>
+    <p class="para">
+     См. также 
+     <a href="function.oci-fetch-array.html" class="function">oci_fetch_array()</a>,
+     <a href="function.oci-fetch-object.html" class="function">oci_fetch_object()</a>,
+     <a href="function.oci-fetch-assoc.html" class="function">oci_fetch_assoc()</a>,
+     <a href="function.oci-fetch-row.html" class="function">oci_fetch_row()</a>,
+     <a href="function.oci-fetch.html" class="function">oci_fetch()</a> и
+     <a href="function.oci-execute.html" class="function">oci_execute()</a>. 
+    </p>
+   </div>
+
+  </div><hr /><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="function.ocifetch.html">ocifetch</a></div>
+ <div class="next" style="float: right;"><a href="function.ocifetchstatement.html">ocifetchstatement</a></div>
+ <div class="up"><a href="ref.oci8.html">OCI8</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

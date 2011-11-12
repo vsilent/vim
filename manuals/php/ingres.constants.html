@@ -1,0 +1,457 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <title>Предопределенные константы</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+ </head>
+ <body><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="ingres.resources.html">Типы ресурсов</a></div>
+ <div class="next" style="float: right;"><a href="ingres.examples.html">Примеры</a></div>
+ <div class="up"><a href="book.ingres.html">Ingres II</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div>
+ <h1>Предопределенные константы</h1>
+
+ <p class="simpara">
+Перечисленные ниже константы определены данным расширением и могут быть
+доступны только в том случае, если PHP был собран с
+поддержкой этого расширения или же в том случае, если
+данное расширение подгружается во время выполнения.
+</p>
+ <dl>
+
+  <dt>
+
+   <span class="term">
+    <b><tt>INGRES_ASSOC</tt></b> 
+    (<a href="language.types.integer.html" class="type integer">integer</a>)
+   </span>
+
+   <dd>
+
+    <span class="simpara">
+      Columns are returned into the array having the fieldname as the array index.
+    </span>
+   </dd>
+
+  </dt>
+
+  <dt>
+
+   <span class="term">
+    <b><tt>INGRES_NUM</tt></b> 
+    (<a href="language.types.integer.html" class="type integer">integer</a>)
+   </span>
+
+   <dd>
+
+    <span class="simpara">
+      Columns are returned into the array having a numerical index to the fields. This index starts with 1, the first field in the result.
+    </span>
+   </dd>
+
+  </dt>
+
+  <dt>
+
+   <span class="term">
+    <b><tt>INGRES_BOTH</tt></b> 
+    (<a href="language.types.integer.html" class="type integer">integer</a>)
+   </span>
+
+   <dd>
+
+    <span class="simpara">
+      Columns are returned into the array having both a numerical index and the fieldname as the array index. 
+    </span>
+   </dd>
+
+  </dt>
+
+    <dt>
+
+   <span class="term">
+    <b><tt>INGRES_EXT_VERSION</tt></b> 
+    (<a href="language.types.string.html" class="type string">string</a>)
+   </span>
+
+   <dd>
+
+    <span class="simpara">
+     Specifies the version of the Ingres Extension. Available since version 1.2.0 of the PECL extension.
+    </span>
+   </dd>
+
+  </dt>
+
+  <dt>
+
+   <span class="term">
+    <b><tt>INGRES_API_VERSION</tt></b> 
+    (<a href="language.types.integer.html" class="type integer">integer</a>)
+   </span>
+
+   <dd>
+
+    <span class="simpara">
+     Specifies the version of Ingres OpenAPI the extension was built against. Available since version 1.2.0 of the PECL extension.
+    </span>
+   </dd>
+
+  </dt>
+
+  <dt>
+
+   <span class="term">
+    <b><tt>INGRES_CURSOR_READONLY</tt></b> 
+    (<a href="language.types.integer.html" class="type integer">integer</a>)
+   </span>
+
+   <dd>
+
+    <span class="simpara">
+      Specifies that Ingres cursors should be opened in &#039;readonly&#039; mode. Available since version 1.2.0 of the PECL extension.
+    </span>
+   </dd>
+
+  </dt>
+
+  <dt>
+
+   <span class="term">
+    <b><tt>INGRES_CURSOR_UPDATE</tt></b> 
+    (<a href="language.types.integer.html" class="type integer">integer</a>)
+   </span>
+
+   <dd>
+
+    <span class="simpara">
+      Specifies that Ingres cursors should be opened &#039;for update&#039;. Available since version 1.2.0 of the PECL extension.
+    </span>
+   </dd>
+
+  </dt>
+
+  <dt>
+
+   <span class="term">
+    <b><tt>INGRES_DATE_MULTINATIONAL</tt></b> 
+    (<a href="language.types.integer.html" class="type integer">integer</a>)
+   </span>
+
+   <dd>
+
+    <span class="simpara">
+     Equivalent to the II_DATE_FORMAT setting of MULTINATIONAL. Available since version 1.2.0 of the PECL extension.
+    </span>
+   </dd>
+
+  </dt>
+
+  <dt>
+
+   <span class="term">
+    <b><tt>INGRES_DATE_MULTINATIONAL4</tt></b> 
+    (<a href="language.types.integer.html" class="type integer">integer</a>)
+   </span>
+
+   <dd>
+
+    <span class="simpara">
+     Equivalent to the II_DATE_FORMAT setting of MULTINATIONAL4. Available since version 1.2.0 of the PECL extension.
+    </span>
+   </dd>
+
+  </dt>
+
+  <dt>
+
+   <span class="term">
+    <b><tt>INGRES_DATE_FINNISH</tt></b> 
+    (<a href="language.types.integer.html" class="type integer">integer</a>)
+   </span>
+
+   <dd>
+
+    <span class="simpara">
+     Equivalent to the II_DATE_FORMAT setting of FINNISH. Available since version 1.2.0 of the PECL extension.
+    </span>
+   </dd>
+
+  </dt>
+
+  <dt>
+
+   <span class="term">
+    <b><tt>INGRES_DATE_ISO</tt></b> 
+    (<a href="language.types.integer.html" class="type integer">integer</a>)
+   </span>
+
+   <dd>
+
+    <span class="simpara">
+     Equivalent to the II_DATE_FORMAT setting of ISO. Available since version 1.2.0 of the PECL extension.
+    </span>
+   </dd>
+
+  </dt>
+
+  <dt>
+
+   <span class="term">
+    <b><tt>INGRES_DATE_ISO4</tt></b> 
+    (<a href="language.types.integer.html" class="type integer">integer</a>)
+   </span>
+
+   <dd>
+
+    <span class="simpara">
+     Equivalent to the II_DATE_FORMAT setting of ISO4. Available since version 1.2.0 of the PECL extension.
+    </span>
+   </dd>
+
+  </dt>
+
+  <dt>
+
+   <span class="term">
+    <b><tt>INGRES_DATE_GERMAN</tt></b> 
+    (<a href="language.types.integer.html" class="type integer">integer</a>)
+   </span>
+
+   <dd>
+
+    <span class="simpara">
+     Equivalent to the II_DATE_FORMAT setting of GERMAN. Available since version 1.2.0 of the PECL extension.
+    </span>
+   </dd>
+
+  </dt>
+
+  <dt>
+
+   <span class="term">
+    <b><tt>INGRES_DATE_MDY</tt></b> 
+    (<a href="language.types.integer.html" class="type integer">integer</a>)
+   </span>
+
+   <dd>
+
+    <span class="simpara">
+     Equivalent to the II_DATE_FORMAT setting of MDY. Available since version 1.2.0 of the PECL extension.
+    </span>
+   </dd>
+
+  </dt>
+
+  <dt>
+
+   <span class="term">
+    <b><tt>INGRES_DATE_DMY</tt></b> 
+    (<a href="language.types.integer.html" class="type integer">integer</a>)
+   </span>
+
+   <dd>
+
+    <span class="simpara">
+     Equivalent to the II_DATE_FORMAT setting of DMY. Available since version 1.2.0 of the PECL extension.
+    </span>
+   </dd>
+
+  </dt>
+
+  <dt>
+
+   <span class="term">
+    <b><tt>INGRES_DATE_YMD</tt></b> 
+    (<a href="language.types.integer.html" class="type integer">integer</a>)
+   </span>
+
+   <dd>
+
+    <span class="simpara">
+     Equivalent to the II_DATE_FORMAT setting of YMD. Available since version 1.2.0 of the PECL extension.
+    </span>
+   </dd>
+
+  </dt>
+
+  <dt>
+
+   <span class="term">
+    <b><tt>INGRES_MONEY_LEADING</tt></b> 
+    (<a href="language.types.integer.html" class="type integer">integer</a>)
+   </span>
+
+   <dd>
+
+    <span class="simpara">
+     Specifies the currency character that should be placed at the start of a money
+     value. Equivalent to setting II_MONEY_FORMAT to &#039;L:&#039;. Available since version 1.2.0 of the PECL extension.
+    </span>
+   </dd>
+
+  </dt>
+
+  <dt>
+
+   <span class="term">
+    <b><tt>INGRES_MONEY_TRAILING</tt></b> 
+    (<a href="language.types.integer.html" class="type integer">integer</a>)
+   </span>
+
+   <dd>
+
+    <span class="simpara">
+     Specifies the currency character that should be placed at the end of a money
+     value. Equivalent to setting II_MONEY_FORMAT to &#039;T:&#039;. Available since version 1.2.0 of the PECL extension.
+    </span>
+   </dd>
+
+  </dt>
+
+  <dt>
+
+   <span class="term">
+    <b><tt>INGRES_STRUCTURE_BTREE</tt></b> 
+    (<a href="language.types.integer.html" class="type integer">integer</a>)
+   </span>
+
+   <dd>
+
+    <span class="simpara">
+     Specifies the default table or index structure to BTREE when used in combination with the
+     table_structure or index_structure option when connecting. Available since version 1.4.0 of the PECL extension.
+    </span>
+   </dd>
+
+  </dt>
+
+  <dt>
+
+   <span class="term">
+    <b><tt>INGRES_STRUCTURE_CBTREE</tt></b> 
+    (<a href="language.types.integer.html" class="type integer">integer</a>)
+   </span>
+
+   <dd>
+
+    <span class="simpara">
+     Specifies the default table or index structure to COMPRESSED BTREE when used in combination with the
+     table_structure or index_structure option when connecting. Available since version 1.4.0 of the PECL extension.
+    </span>
+   </dd>
+
+  </dt>
+
+  <dt>
+
+   <span class="term">
+    <b><tt>INGRES_STRUCTURE_HASH</tt></b> 
+    (<a href="language.types.integer.html" class="type integer">integer</a>)
+   </span>
+
+   <dd>
+
+    <span class="simpara">
+     Specifies the default table or index structure to HASH when used in combination with the
+     table_structure or index_structure option when connecting. Available since version 1.4.0 of the PECL extension.
+    </span>
+   </dd>
+
+  </dt>
+
+  <dt>
+
+   <span class="term">
+    <b><tt>INGRES_STRUCTURE_CHASH</tt></b> 
+    (<a href="language.types.integer.html" class="type integer">integer</a>)
+   </span>
+
+   <dd>
+
+    <span class="simpara">
+     Specifies the default table or index structure to COMPRESSED HASH when used in combination with the
+     table_structure or index_structure option when connecting. Available since version 1.4.0 of the PECL extension.
+    </span>
+   </dd>
+
+  </dt>
+
+  <dt>
+
+   <span class="term">
+    <b><tt>INGRES_STRUCTURE_HEAP</tt></b> 
+    (<a href="language.types.integer.html" class="type integer">integer</a>)
+   </span>
+
+   <dd>
+
+    <span class="simpara">
+     Specifies the default table structure to HEAP when used in combination with the
+     table_structure option when connecting. Available since version 1.4.0 of the PECL extension.
+    </span>
+   </dd>
+
+  </dt>
+
+  <dt>
+
+   <span class="term">
+    <b><tt>INGRES_STRUCTURE_CHEAP</tt></b> 
+    (<a href="language.types.integer.html" class="type integer">integer</a>)
+   </span>
+
+   <dd>
+
+    <span class="simpara">
+     Specifies the default table structure to COMPRESSED HEAP when used in combination with the
+     table_structure option when connecting. Available since version 1.4.0 of the PECL extension.
+    </span>
+   </dd>
+
+  </dt>
+
+  <dt>
+
+   <span class="term">
+    <b><tt>INGRES_STRUCTURE_ISAM</tt></b> 
+    (<a href="language.types.integer.html" class="type integer">integer</a>)
+   </span>
+
+   <dd>
+
+    <span class="simpara">
+     Specifies the default table or index structure to ISAM when used in combination with the
+     table_structure or index_structure option when connecting. Available since version 1.4.0 of the PECL extension.
+    </span>
+   </dd>
+
+  </dt>
+
+  <dt>
+
+   <span class="term">
+    <b><tt>INGRES_STRUCTURE_CISAM</tt></b> 
+    (<a href="language.types.integer.html" class="type integer">integer</a>)
+   </span>
+
+   <dd>
+
+    <span class="simpara">
+     Specifies the default table or index structure to COMPRESSED ISAM when used in combination with the
+     table_structure or index_structure option when connecting. Available since version 1.4.0 of the PECL extension.
+    </span>
+   </dd>
+
+  </dt>
+
+ </dl>
+
+</div>
+<hr /><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="ingres.resources.html">Типы ресурсов</a></div>
+ <div class="next" style="float: right;"><a href="ingres.examples.html">Примеры</a></div>
+ <div class="up"><a href="book.ingres.html">Ingres II</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

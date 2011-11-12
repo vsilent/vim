@@ -1,0 +1,77 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <title>Совпадает ли имя файла с шаблоном</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+ </head>
+ <body><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="function.flock.html">flock</a></div>
+ <div class="next" style="float: right;"><a href="function.fopen.html">fopen</a></div>
+ <div class="up"><a href="ref.filesystem.html">Файловая система</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="function.fnmatch" class="refentry">
+   <div class="refnamediv">
+    <h1 class="refname">fnmatch</h1> 
+    <p class="verinfo">(PHP 4 &gt;= 4.3.0, PHP 5)</p><p class="refpurpose dc-title">fnmatch — Совпадает ли имя файла с шаблоном</p>
+
+   </div>
+   <div class="refsect1 unknown">
+    <h3 class="title">Описание</h3>
+    <div class="methodsynopsis dc-description">
+     <span class="type">bool</span> <span class="methodname"><b><b>fnmatch</b></b></span>
+      ( <span class="methodparam"><span class="type">string</span> <tt class="parameter">$pattern</tt></span>
+     , <span class="methodparam"><span class="type">string</span> <tt class="parameter">$string</tt></span>
+     [, <span class="methodparam"><span class="type">int</span> <tt class="parameter">$flags</tt></span>
+    ] )</div>
+
+    <p class="para rdfs-comment">
+     <b>fnmatch()</b> проверяет, совпадает ли переданный параметр
+     <i><tt class="parameter">string</tt></i>
+ с указанным шаблоном подстановок оболочки
+     (shell wildcard) <i><tt class="parameter">pattern</tt></i>
+.
+    </p>
+    <p class="para">
+     Эта функция полезна при рабоде с именами файлов, хотя может быть
+     использована и на обычной строке. Среднестатистический пользователь
+     знаком с подстановками оболочки, как минимум в их простейшей форме из
+     подстановок <i>&#039;?&#039;</i> и <i>&#039;*&#039;</i>, так что
+     использование <b>fnmatch()</b> вместо
+     <a href="function.ereg.html" class="function">ereg()</a> или <a href="function.preg-match.html" class="function">preg_match()</a> для поиска
+     в пользовательской части сайта может быть намного удобнее для пользователей,
+     не знакомых с регулярными выражениями.
+    </p>
+    <div class="example">
+     <p><b>Пример #1 
+      Проверяет, соответствует ли цвет шаблону подстановок оболочки.
+     </b></p>
+     <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">if&nbsp;(</span><span style="color: #0000BB">fnmatch</span><span style="color: #007700">(</span><span style="color: #DD0000">"*gr[ae]y"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$color</span><span style="color: #007700">))&nbsp;{<br />&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"some&nbsp;form&nbsp;of&nbsp;gray&nbsp;..."</span><span style="color: #007700">;<br />}<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+     </div>
+
+    </div>
+    <div class="warning"><b class="warning">Внимание</b>
+     <p class="para">
+      На данный момент эта функция недоступна в Windows и других
+      POSIX-несовместимых системах.
+     </p>
+    </div>
+    <p class="para">
+     См. также описание функций <a href="function.glob.html" class="function">glob()</a>,
+     <a href="function.ereg.html" class="function">ereg()</a>,
+     <a href="function.preg-match.html" class="function">preg_match()</a> 
+     и Unix manpage по теме <i>fnmatch(3)</i> для получения
+     информации относительно названий флагов
+     (до тех пор, пока они не задокументированы здесь ).
+    </p>
+   </div>
+
+  </div><hr /><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="function.flock.html">flock</a></div>
+ <div class="next" style="float: right;"><a href="function.fopen.html">fopen</a></div>
+ <div class="up"><a href="ref.filesystem.html">Файловая система</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

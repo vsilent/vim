@@ -1,0 +1,113 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <title>Импортирует определения методов нового класса из файла</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+ </head>
+ <body><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="ref.classkit.html">Функции classkit</a></div>
+ <div class="next" style="float: right;"><a href="function.classkit-method-add.html">classkit_method_add</a></div>
+ <div class="up"><a href="ref.classkit.html">Функции classkit</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="function.classkit-import" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">classkit_import</h1>
+  <p class="verinfo">(PECL classkit:0.3-0.4 runkit:0.7-0.9)</p><p class="refpurpose dc-title">classkit_import — Импортирует определения методов нового класса из файла</p>
+
+ </div>
+ <div class="refsect1 description">
+  <h3 class="title">Описание</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type">array</span> <span class="methodname"><b><b>classkit_import</b></b></span>
+    ( <span class="methodparam"><span class="type">string</span> <tt class="parameter">$filename</tt></span>
+   )</div>
+
+  <blockquote><p><b class="note">Замечание</b>: <span class="simpara">Эта функция не может быть
+использована для влияния на работающие в данный момент (или цепные) методы.</span>
+</p></blockquote>
+  <div class="warning"><b class="warning">Внимание</b><p class="simpara">
+Эта функция является <em class="emphasis">ЭКСПЕРИМЕНТАЛЬНОЙ</em>.
+Поведение этой функции, ее имя и относящаяся к ней документация
+могут измениться в последующих версиях PHP без уведомления.
+Используйте эту функцию на свой страх и риск.</p></div>
+ </div>
+
+ <div class="refsect1 parameters">
+  <h3 class="title">Список параметров</h3>
+  <p class="para">
+   <dl>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">filename</tt></i>
+</span>
+
+     <dd>
+
+      <p class="para">
+       Имя файла с определениями методов класса
+      </p>
+     </dd>
+
+    </dt>
+
+   </dl>
+
+  </p>
+ </div>
+
+ <div class="refsect1 returnvalues">
+  <h3 class="title">Возвращаемые значения</h3>
+  <p class="para">
+   Ассоциативный массив импортированных методов
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 examples">
+  <h3 class="title">Примеры</h3>
+  <p class="para">
+   <div class="example">
+    <p><b>Пример #1 Пример использования <b>classkit_import()</b></b></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">//&nbsp;file:&nbsp;newclass.php<br /></span><span style="color: #007700">class&nbsp;</span><span style="color: #0000BB">Example&nbsp;</span><span style="color: #007700">{<br />&nbsp;&nbsp;&nbsp;&nbsp;function&nbsp;</span><span style="color: #0000BB">foo</span><span style="color: #007700">()&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #DD0000">"bar!\n"</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />}<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">//&nbsp;требуется&nbsp;newclass.php&nbsp;(см.&nbsp;выше)<br /></span><span style="color: #007700">class&nbsp;</span><span style="color: #0000BB">Example&nbsp;</span><span style="color: #007700">{<br />&nbsp;&nbsp;&nbsp;&nbsp;function&nbsp;</span><span style="color: #0000BB">foo</span><span style="color: #007700">()&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #DD0000">"foo!\n"</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />}<br /><br /></span><span style="color: #0000BB">$e&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">Example</span><span style="color: #007700">();<br /><br /></span><span style="color: #FF8000">//&nbsp;вывод&nbsp;оригинала<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">$e</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">foo</span><span style="color: #007700">();<br /><br /></span><span style="color: #FF8000">//&nbsp;импорт&nbsp;замещающего&nbsp;метода<br /></span><span style="color: #0000BB">classkit_import</span><span style="color: #007700">(</span><span style="color: #DD0000">'newclass.php'</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">//&nbsp;вывод&nbsp;импортированного&nbsp;метода<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">$e</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">foo</span><span style="color: #007700">();<br /><br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+    <div class="example-contents"><p>Результат выполнения данного примера:</p></div>
+    <div class="example-contents"><pre>
+<div class="cdata"><pre>
+foo!
+bar!
+</pre></div>
+    </pre></div>
+   </div>
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 seealso">
+  <h3 class="title">Смотрите также</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"><a href="function.classkit-method-add.html" class="function" rel="rdfs-seeAlso">classkit_method_add()</a></li>
+    <li class="member"><a href="function.classkit-method-copy.html" class="function" rel="rdfs-seeAlso">classkit_method_copy()</a></li>
+   </ul>
+  </p>
+ </div>
+
+</div><hr /><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="ref.classkit.html">Функции classkit</a></div>
+ <div class="next" style="float: right;"><a href="function.classkit-method-add.html">classkit_method_add</a></div>
+ <div class="up"><a href="ref.classkit.html">Функции classkit</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

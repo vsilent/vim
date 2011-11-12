@@ -1,0 +1,733 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <title>Options usable with the HttpRequest class and request functions</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+ </head>
+ <body><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="http.constants.html">Предопределенные константы</a></div>
+ <div class="next" style="float: right;"><a href="class.httpdeflatestream.html">The HttpDeflateStream class</a></div>
+ <div class="up"><a href="book.http.html">HTTP</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div>
+ <h1>Options usable with the HttpRequest class and request functions</h1>
+
+ 
+  <dl>
+
+   <strong class="title">Options related to time outs</strong>
+   <dt id="http.request.option.timeout">
+    <span class="term">
+     timeout (<a href="language.types.integer.html" class="type integer">integer</a>)
+    </span>
+
+    <dd>
+
+     <span class="simpara">
+      seconds the whole request may take to complete
+     </span>
+    </dd>
+
+   </dt>
+
+   <dt id="http.request.option.connecttimeout">
+    <span class="term">
+     connecttimeout (<a href="language.types.integer.html" class="type integer">integer</a>)
+    </span>
+
+    <dd>
+
+     <span class="simpara">
+      seconds the connect, including name resolving, may take
+     </span>
+    </dd>
+
+   </dt>
+
+   <dt id="http.request.option.dns_cache_timeout">
+    <span class="term">
+     dns_cache_timeout (<a href="language.types.integer.html" class="type integer">integer</a>)
+    </span>
+
+    <dd>
+
+     <span class="simpara">
+      seconds after an dns cache entry times out
+     </span>
+    </dd>
+
+   </dt>
+
+  </dl>
+
+  <dl>
+
+   <strong class="title">Options related to urls</strong>
+   <dt id="http.request.option.url">
+    <span class="term">
+     url (<a href="language.types.string.html" class="type string">string</a>)
+    </span>
+
+    <dd>
+
+     <span class="simpara">
+      the request url
+     </span>
+    </dd>
+
+   </dt>
+
+   <dt id="http.request.option.port">
+    <span class="term">
+     port (<a href="language.types.integer.html" class="type integer">integer</a>)
+    </span>
+
+    <dd>
+
+     <span class="simpara">
+      use another port as specified in the url
+     </span>
+    </dd>
+
+   </dt>
+
+   <dt id="http.request.option.redirect">
+    <span class="term">
+     redirect (<a href="language.types.integer.html" class="type integer">integer</a>)
+    </span>
+
+    <dd>
+
+     <span class="simpara">
+      whether and how many redirects to follow; defaults to 0
+     </span>
+    </dd>
+
+   </dt>
+
+   <dt id="http.request.option.unrestrictedauth">
+    <span class="term">
+     unrestrictedauth (<a href="language.types.boolean.html" class="type bool">bool</a>)
+    </span>
+
+    <dd>
+
+     <span class="simpara">
+      whether to continue sending credentials on redirects to a different host
+     </span>
+    </dd>
+
+   </dt>
+
+   <dt>
+
+    <span class="term">
+     referer (<a href="language.types.string.html" class="type string">string</a>)
+    </span>
+
+    <dd>
+
+     <span class="simpara">
+      the refererring url to send
+     </span>
+    </dd>
+
+   </dt>
+
+  </dl>
+
+  <dl>
+
+   <strong class="title">Options related to cookies</strong>
+   <dt>
+
+    <span class="term">
+     encodecookies (<a href="language.types.boolean.html" class="type bool">bool</a>)
+    </span>
+
+    <dd>
+
+     <span class="simpara">
+      whether custom cookies should be <a href="function.urlencode.html" class="function">urlencode()</a>d prior sending
+     </span>
+    </dd>
+
+   </dt>
+
+   <dt>
+
+    <span class="term">
+     cookies (<a href="language.types.array.html" class="type array">array</a>)
+    </span>
+
+    <dd>
+
+     <span class="simpara">
+      list of cookies as associative array like <i>array(&quot;cookie&quot; =&gt; &quot;value&quot;)</i>
+     </span>
+    </dd>
+
+   </dt>
+
+   <dt>
+
+    <span class="term">
+     cookiestore (<a href="language.types.string.html" class="type string">string</a>)
+    </span>
+
+    <dd>
+
+     <span class="simpara">
+      path to a file where cookies are/will be stored
+     </span>
+    </dd>
+
+   </dt>
+
+   <dt>
+
+    <span class="term">
+     cookiesession (<a href="language.types.boolean.html" class="type bool">bool</a>)
+    </span>
+
+    <dd>
+
+     <span class="simpara">
+      don&#039;t load session cookies from cookiestore if <b><tt>TRUE</tt></b>
+     </span>
+    </dd>
+
+   </dt>
+
+  </dl>
+
+  <dl>
+
+   <strong class="title">Options related to headers</strong>
+   <dt>
+
+    <span class="term">
+     useragent (<a href="language.types.string.html" class="type string">string</a>)
+    </span>
+
+    <dd>
+
+     <span class="simpara">
+      the user agent to send; defaults to <i>PECL::HTTP/x.y.z (PHP/x.y.z)</i>; omitted if explicitly set to an empty string
+     </span>
+    </dd>
+
+   </dt>
+
+   <dt>
+
+    <span class="term">
+     lastmodified (<a href="language.types.integer.html" class="type int">int</a>)
+    </span>
+
+    <dd>
+
+     <span class="simpara">
+      timestamp for If-(Un)Modified-Since header
+     </span>
+    </dd>
+
+   </dt>
+
+   <dt>
+
+    <span class="term">
+     etag (<a href="language.types.string.html" class="type string">string</a>)
+    </span>
+
+    <dd>
+
+     <span class="simpara">
+      quoted etag for If-(None-)Match header
+     </span>
+    </dd>
+
+   </dt>
+
+   <dt>
+
+    <span class="term">
+     headers (<a href="language.types.array.html" class="type array">array</a>)
+    </span>
+
+    <dd>
+
+     <span class="simpara">
+      list of custom headers as associative array like <i>array(&quot;header&quot; =&gt; &quot;value&quot;)</i>
+     </span>
+    </dd>
+
+   </dt>
+
+  </dl>
+
+  <dl>
+
+   <strong class="title">Options related to authentication</strong>
+   <dt>
+
+    <span class="term">
+     httpauth (<a href="language.types.string.html" class="type string">string</a>)
+    </span>
+
+    <dd>
+
+     <span class="simpara">
+      http credentials in &quot;user:pass&quot; format
+     </span>
+    </dd>
+
+   </dt>
+
+   <dt>
+
+    <span class="term">
+     httpauthtype (<a href="language.types.integer.html" class="type int">int</a>)
+    </span>
+
+    <dd>
+
+     <span class="simpara">
+      <a href="http.constants.html#http.constants.request.httpauth" class="link">HTTP authentication type constant</a>
+     </span>
+    </dd>
+
+   </dt>
+
+   <dt>
+
+    <span class="term">
+     (<a href="language.types.array.html" class="type array">array</a>)
+    </span>
+
+    <dd>
+
+     <span class="simpara">
+     </span>
+    </dd>
+
+   </dt>
+
+  </dl>
+
+  <dl>
+
+   <strong class="title">Options related to proxies</strong>
+   <dt>
+
+    <span class="term">
+     proxyhost (<a href="language.types.string.html" class="type string">string</a>)
+    </span>
+
+    <dd>
+
+     <span class="simpara">
+      proxy host in &quot;host[:port]&quot; format
+     </span>
+    </dd>
+
+   </dt>
+
+   <dt>
+
+    <span class="term">
+     proxyport (<a href="language.types.integer.html" class="type int">int</a>)
+    </span>
+
+    <dd>
+
+     <span class="simpara">
+      use another proxy port as specified in proxyhost
+     </span>
+    </dd>
+
+   </dt>
+
+   <dt>
+
+    <span class="term">
+     proxytype (<a href="language.types.integer.html" class="type int">int</a>)
+    </span>
+
+    <dd>
+
+     <span class="simpara">
+      <a href="http.constants.html#http.constants.request.proxy" class="link">HTTP proxy type constant</a>
+     </span>
+    </dd>
+
+   </dt>
+
+   <dt>
+
+    <span class="term">
+     proxyauth (<a href="language.types.string.html" class="type string">string</a>)
+    </span>
+
+    <dd>
+
+     <span class="simpara">
+      proxy credentials in &quot;user:pass&quot; format
+     </span>
+    </dd>
+
+   </dt>
+
+   <dt>
+
+    <span class="term">
+     proxyauthtype (<a href="language.types.integer.html" class="type int">int</a>)
+    </span>
+
+    <dd>
+
+     <span class="simpara">
+      <a href="http.constants.html#http.constants.request.httpauth" class="link">HTTP authentication type constant</a>
+     </span>
+    </dd>
+
+   </dt>
+
+  </dl>
+
+  <dl>
+
+   <strong class="title">Options related to the transfer</strong>
+   <dt>
+
+    <span class="term">
+     compress (<a href="language.types.boolean.html" class="type bool">bool</a>)
+    </span>
+
+    <dd>
+
+     <span class="simpara">
+      whether to request and accept a gzip/deflate content encoded response
+     </span>
+    </dd>
+
+   </dt>
+
+   <dt>
+
+    <span class="term">
+     resume (<a href="language.types.integer.html" class="type int">int</a>)
+    </span>
+
+    <dd>
+
+     <span class="simpara">
+      start the download at the specified byte offset if server support is given (indicated by a 206 response code)
+     </span>
+    </dd>
+
+   </dt>
+
+   <dt>
+
+    <span class="term">
+     range (<a href="language.types.array.html" class="type array">array</a>)
+    </span>
+
+    <dd>
+
+     <span class="simpara">
+      array of arrays, each containing two <a href="language.types.integer.html" class="type integer">integer</a>s, specifying the ranges to download if server support is given (indicated by a 206 response code);
+      only recognized if the resume option is empty
+     </span>
+    </dd>
+
+   </dt>
+
+  </dl>
+
+  <dl>
+
+   <strong class="title">Options imposing limits</strong>
+   <dt>
+
+    <span class="term">
+     maxfilesize (<a href="language.types.integer.html" class="type integer">integer</a>)
+    </span>
+
+    <dd>
+
+     <span class="simpara">
+      maximum file size that should be downloaded;
+      has no effect, if the size of the requested entity is unknown
+      (eg. dynamic pages with chunked transfer encoding etc.)
+     </span>
+    </dd>
+
+   </dt>
+
+   <dt>
+
+    <span class="term">
+     low_speed_limit (<a href="language.types.integer.html" class="type int">int</a>)
+    </span>
+
+    <dd>
+
+     <span class="simpara">
+      the lowest transfer speed a successful request may have
+     </span>
+    </dd>
+
+   </dt>
+
+   <dt>
+
+    <span class="term">
+     low_speed_time (<a href="language.types.integer.html" class="type int">int</a>)
+    </span>
+
+    <dd>
+
+     <span class="simpara">
+      the time in which <i>low_speed_limit</i> must be transferred for a successful request
+     </span>
+    </dd>
+
+   </dt>
+
+   <dt>
+
+    <span class="term">
+     max_send_speed (<a href="language.types.integer.html" class="type int">int</a>)
+    </span>
+
+    <dd>
+
+     <span class="simpara">
+      maximum send speed in bytes per second
+     </span>
+    </dd>
+
+   </dt>
+
+   <dt>
+
+    <span class="term">
+     max_recv_speed (<a href="language.types.integer.html" class="type int">int</a>)
+    </span>
+
+    <dd>
+
+     <span class="simpara">
+      maximum receive speed in bytes per second
+     </span>
+    </dd>
+
+   </dt>
+
+  </dl>
+
+  <dl>
+
+   <strong class="title">Callback options</strong>
+   <dt>
+
+    <span class="term">onprogress (<a href="language.pseudo-types.html#language.types.callback" class="type callback">callback</a>)</span>
+
+    <dd>
+<span class="simpara">progress callback</span></dd>
+
+   </dt>
+
+  </dl>
+
+  <dl>
+
+   <strong class="title">Network options</strong>
+   <dt>
+
+    <span class="term">interface (<a href="language.types.string.html" class="type string">string</a>)</span>
+
+    <dd>
+<span class="simpara">outgoing network interface (ifname, ip or hostname)</span></dd>
+
+   </dt>
+
+   <dt>
+
+    <span class="term">portrange (<a href="language.types.array.html" class="type array">array</a>)</span>
+
+    <dd>
+<span class="simpara">2 integers specifying outgoing portrange to try</span></dd>
+
+   </dt>
+
+  </dl>
+
+  <dl>
+
+   <strong class="title">SSL options</strong>
+   <dt>
+
+    <span class="term">
+     ssl (<a href="language.types.array.html" class="type array">array</a>)
+    </span>
+
+    <dd>
+
+     <blockquote><p><b class="note">Замечание</b>: 
+      <span class="simpara">SSL options are set through an array with the single &quot;ssl&quot; request option name.</span>
+     </p></blockquote>
+     <dl>
+
+      <dt>
+
+       <span class="term">cert (<a href="language.types.string.html" class="type string">string</a>)</span>
+
+       <dd>
+<span class="simpara">path to certificate</span></dd>
+
+      </dt>
+
+      <dt>
+
+       <span class="term">certtype (<a href="language.types.string.html" class="type string">string</a>)</span>
+
+       <dd>
+<span class="simpara">type of certificate</span></dd>
+
+      </dt>
+
+      <dt>
+
+       <span class="term">certpasswd (<a href="language.types.string.html" class="type string">string</a>)</span>
+
+       <dd>
+<span class="simpara">password for certificate</span></dd>
+
+      </dt>
+
+      <dt>
+
+       <span class="term">key (<a href="language.types.string.html" class="type string">string</a>)</span>
+
+       <dd>
+<span class="simpara">path to key</span></dd>
+
+      </dt>
+
+      <dt>
+
+       <span class="term">keytype (<a href="language.types.string.html" class="type string">string</a>)</span>
+
+       <dd>
+<span class="simpara">type of key</span></dd>
+
+      </dt>
+
+      <dt>
+
+       <span class="term">keypasswd (<a href="language.types.string.html" class="type string">string</a>)</span>
+
+       <dd>
+<span class="simpara">pasword for key</span></dd>
+
+      </dt>
+
+      <dt>
+
+       <span class="term">engine (<a href="language.types.string.html" class="type string">string</a>)</span>
+
+       <dd>
+<span class="simpara">ssl engine to use</span></dd>
+
+      </dt>
+
+      <dt>
+
+       <span class="term">version (<a href="language.types.integer.html" class="type int">int</a>)</span>
+
+       <dd>
+<span class="simpara">ssl version to use</span></dd>
+
+      </dt>
+
+      <dt>
+
+       <span class="term">verifypeer (<a href="language.types.boolean.html" class="type bool">bool</a>)</span>
+
+       <dd>
+<span class="simpara">whether to verify the peer</span></dd>
+
+      </dt>
+
+      <dt>
+
+       <span class="term">verifyhost (<a href="language.types.boolean.html" class="type bool">bool</a>)</span>
+
+       <dd>
+<span class="simpara">whether to verify the host</span></dd>
+
+      </dt>
+
+      <dt>
+
+       <span class="term">cipher_list (<a href="language.types.string.html" class="type string">string</a>)</span>
+
+       <dd>
+<span class="simpara">list of allowed ciphers</span></dd>
+
+      </dt>
+
+      <dt>
+
+       <span class="term">cainfo (<a href="language.types.string.html" class="type string">string</a>)</span>
+
+       <dd>
+<span class="simpara"/></dd>
+
+      </dt>
+
+      <dt>
+
+       <span class="term">capath (<a href="language.types.string.html" class="type string">string</a>)</span>
+
+       <dd>
+<span class="simpara"/></dd>
+
+      </dt>
+
+      <dt>
+
+       <span class="term">random_file (<a href="language.types.string.html" class="type string">string</a>)</span>
+
+       <dd>
+<span class="simpara"/></dd>
+
+      </dt>
+
+      <dt>
+
+       <span class="term">egdsocket (<a href="language.types.string.html" class="type string">string</a>)</span>
+
+       <dd>
+<span class="simpara"/></dd>
+
+      </dt>
+
+     </dl>
+
+    </dd>
+
+   </dt>
+
+  </dl>
+
+</div>
+<hr /><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="http.constants.html">Предопределенные константы</a></div>
+ <div class="next" style="float: right;"><a href="class.httpdeflatestream.html">The HttpDeflateStream class</a></div>
+ <div class="up"><a href="book.http.html">HTTP</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

@@ -1,0 +1,44 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <title>Установка</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+ </head>
+ <body><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="ingres.setup.html">Установка и настройка</a></div>
+ <div class="next" style="float: right;"><a href="ingres.configuration.html">Настройка во время выполнения</a></div>
+ <div class="up"><a href="ingres.setup.html">Установка и настройка</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="ingres.installation" class="section">
+ <h2 class="title">Установка</h2>
+ <p class="para">
+  Это расширение <a href="http://pecl.php.net/" class="link external">&raquo; PECL</a>
+не поставляется вместе с PHP.
+  Дополнительная информация, такая как новый версии,
+скачивание, исходные файлы, информация о разработчике и CHANGELOG, могут
+быть найдены здесь: 
+  <a href="http://pecl.php.net/package/ingres" class="link external">&raquo; http://pecl.php.net/package/ingres</a>.
+ </p>
+ <p class="para">
+  In order to have these functions available, you must compile PHP with
+  Ingres support by using the
+  <span class="option">--with-ingres[=DIR]</span> option, where DIR is
+  the Ingres base directory, which defaults to <var class="filename">/II/ingres</var>.
+  If the II_SYSTEM environment variable isn&#039;t correctly set you may have to
+  use <span class="option">--with-ingres=DIR</span>
+  to specify your Ingres installation directory.
+ </p>
+ <p class="para">
+  When using this extension with Apache, if Apache does not start
+  and complains with &quot;PHP Fatal error: Unable to start ingres_ii
+  module in Unknown on line 0&quot; then make sure the environment
+  variable II_SYSTEM is correctly set. Adding &quot;export
+  II_SYSTEM=&quot;/home/ingres/II&quot; in the script that starts Apache, just
+  before launching httpd, should be fine.
+ </p>
+</div><hr /><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="ingres.setup.html">Установка и настройка</a></div>
+ <div class="next" style="float: right;"><a href="ingres.configuration.html">Настройка во время выполнения</a></div>
+ <div class="up"><a href="ingres.setup.html">Установка и настройка</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

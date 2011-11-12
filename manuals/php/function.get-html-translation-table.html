@@ -1,0 +1,96 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <title>Возвращает таблицу преобразований, используемую функциями
+     htmlspecialchars и
+     htmlentities</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+ </head>
+ <body><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="function.fprintf.html">fprintf</a></div>
+ <div class="next" style="float: right;"><a href="function.hebrev.html">hebrev</a></div>
+ <div class="up"><a href="ref.strings.html">Функции обработки строк</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="function.get-html-translation-table" class="refentry">
+   <div class="refnamediv">
+    <h1 class="refname">get_html_translation_table</h1>
+    <p class="verinfo">(PHP 4, PHP 5)</p><p class="refpurpose dc-title">get_html_translation_table — 
+     Возвращает таблицу преобразований, используемую функциями
+     <a href="function.htmlspecialchars.html" class="function">htmlspecialchars()</a> и
+     <a href="function.htmlentities.html" class="function">htmlentities()</a>
+    </p>
+
+   </div>
+   <div class="refsect1 unknown">
+    <h3 class="title">Описание</h3>
+     <div class="methodsynopsis dc-description">
+      <span class="type">array</span> <span class="methodname"><b><b>get_html_translation_table</b></b></span>
+       ( <span class="methodparam"><span class="type">int</span> <tt class="parameter">$table</tt></span>
+      [, <span class="methodparam"><span class="type">int</span> <tt class="parameter">$quote_style</tt></span>
+     ] )</div>
+
+    <p class="para rdfs-comment">
+     <b>get_html_translation_table()</b> возвращает таблицу 
+     преобразований, используемую функциями 
+     <a href="function.htmlspecialchars.html" class="function">htmlspecialchars()</a> и
+     <a href="function.htmlentities.html" class="function">htmlentities()</a>.
+    </p>
+    <p class="para">
+     Константы <b><tt>HTML_ENTITIES</tt></b> и 
+     <b><tt>HTML_SPECIALCHARS</tt></b> позволяют указать нужную 
+     таблицу преобразований. Аналогично функциям 
+     <a href="function.htmlspecialchars.html" class="function">htmlspecialchars()</a> и 
+     <a href="function.htmlentities.html" class="function">htmlentities()</a> можно задать необязательный 
+     аргумент <i><tt class="parameter">quote_style</tt></i>
+, равный по умолчанию 
+     <b><tt>ENT_COMPAT</tt></b>. Описание 
+     <i><tt class="parameter">quote_style</tt></i>
+ см. в описании функции
+     <a href="function.htmlspecialchars.html" class="function">htmlspecialchars()</a>.
+    </p>
+    <p class="para">
+     <div class="example">
+      <p><b>Пример #1 Пример таблицы преобразований</b></p>
+      <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$trans&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">get_html_translation_table</span><span style="color: #007700">(</span><span style="color: #0000BB">HTML_ENTITIES</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$str&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">"Hallo&nbsp;&amp;&nbsp;&lt;Frau&gt;&nbsp;&amp;&nbsp;Krдmer"</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$encoded&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">strtr</span><span style="color: #007700">(</span><span style="color: #0000BB">$str</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$trans</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+      </div>
+
+     </div>
+     Переменная <i>$encoded</i> будет содержать: 
+     <i>&quot;Hallo &amp;amp; &amp;lt;Frau&amp;gt; &amp;amp;
+     Kr&amp;auml;mer&quot;.</i>
+    </p>
+    <p class="para">
+     Другим интересным применением этой функции является измененин 
+     направления преобразования с помощью функции  
+     <a href="function.array-flip.html" class="function">array_flip()</a>.
+     <div class="informalexample">
+      <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$trans&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">array_flip</span><span style="color: #007700">(</span><span style="color: #0000BB">$trans</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$original&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">strtr</span><span style="color: #007700">(</span><span style="color: #0000BB">$encoded</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$trans</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+      </div>
+
+     </div>
+      Переменная <i>$original</i> будет содержать: &quot;Hallo &amp;
+      &lt;Frau&gt; &amp; Krämer&quot;.
+    </p>
+    <p class="para">
+     См. также описание функций 
+     <a href="function.htmlspecialchars.html" class="function">htmlspecialchars()</a>,
+     <a href="function.htmlentities.html" class="function">htmlentities()</a>,
+     <a href="function.strtr.html" class="function">strtr()</a> и 
+     <a href="function.array-flip.html" class="function">array_flip()</a>.
+    </p>
+   </div>
+
+  </div><hr /><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="function.fprintf.html">fprintf</a></div>
+ <div class="next" style="float: right;"><a href="function.hebrev.html">hebrev</a></div>
+ <div class="up"><a href="ref.strings.html">Функции обработки строк</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

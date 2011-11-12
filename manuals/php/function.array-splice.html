@@ -1,0 +1,181 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <title>Удалить последовательность элементов массива и заменить её другой последовательностью</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+ </head>
+ <body><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="function.array-slice.html">array_slice</a></div>
+ <div class="next" style="float: right;"><a href="function.array-sum.html">array_sum</a></div>
+ <div class="up"><a href="ref.array.html">Функции для работы с массивами</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="function.array-splice" class="refentry">
+   <div class="refnamediv">
+    <h1 class="refname">array_splice</h1>
+    <p class="verinfo">(PHP 4, PHP 5)</p><p class="refpurpose dc-title">array_splice — 
+     Удалить последовательность элементов массива и заменить её другой последовательностью
+    </p>
+
+   </div>
+   <div class="refsect1 unknown">
+    <h3 class="title">Оисание</h3>
+     <div class="methodsynopsis dc-description">
+      <span class="type">array</span> <span class="methodname"><b><b>array_splice</b></b></span>
+       ( <span class="methodparam"><span class="type">array</span> <tt class="parameter">$&amp;input</tt></span>
+      , <span class="methodparam"><span class="type">int</span> <tt class="parameter">$offset</tt></span>
+      [, <span class="methodparam"><span class="type">int</span> <tt class="parameter">$length</tt></span>
+      [, <span class="methodparam"><span class="type">array</span> <tt class="parameter">$
+        replacement
+       </tt></span>
+     ]] )</div>
+
+    <p class="para rdfs-comment">
+     <b>array_splice()</b> удаляет <i><tt class="parameter">length</tt></i>
+ элементов,
+     расположенных на растоянии <i><tt class="parameter">offset</tt></i>
+ от начала 
+     массива <i><tt class="parameter">input</tt></i>
+, и заменяет их элементами
+     массива <i><tt class="parameter">replacement</tt></i>
+, если он передан в качестве параметра.
+     Возвращает массив выбранных элементов.
+    </p>
+    <p class="para">
+     Если параметр <i><tt class="parameter">offset</tt></i>
+ положителен, будут удалены элементы,
+     находящиеся на расстоянии offset от начала <i><tt class="parameter">array</tt></i>
+.  Если
+     <i><tt class="parameter">offset</tt></i>
+ отрицателен, будут удалены элементы,
+     находящиеся на расстоянии offset от конца <i><tt class="parameter">array</tt></i>
+.
+    </p>
+    <p class="para">
+     Если параметр <i><tt class="parameter">length</tt></i>
+ опущен, будут удалены все элементы
+     начиная с позиции <i><tt class="parameter">offset</tt></i>
+ и до конца массива.
+     Если передан положительный параметр <i><tt class="parameter">length</tt></i>
+,
+     будет удалено length элементов.
+     Если передан отрицательный параметр <i><tt class="parameter">length</tt></i>
+,
+     будут удалены элементы исходного массива, начиная с позиции <i><tt class="parameter">offset</tt></i>
+
+     и заканчивая позицией, отстоящей на <i><tt class="parameter">length</tt></i>
+ элементов от конца <i><tt class="parameter">array</tt></i>
+.
+     Совет: для того, чтобы удалить все элементы массива, начиная с позиции
+     <i><tt class="parameter">offset</tt></i>
+ в то время как указан параметр
+     <i><tt class="parameter">replacement</tt></i>
+, используйте
+     <i>count($input)</i> в качестве параметра
+     <i><tt class="parameter">length</tt></i>
+.
+    </p>
+    <p class="para">
+     Если передан массив <i><tt class="parameter">replacement</tt></i>
+ в качестве аргумента, тогда
+     удалённые элементы будут заменены элементами этого массива.
+     Если параметры <i><tt class="parameter">offset</tt></i>
+ и
+     <i><tt class="parameter">length</tt></i>
+ таковы, что из исходного массива не будет ничего удалено,
+     тогда элементы массива <i><tt class="parameter">replacement</tt></i>
+
+     будут вставлены на позицию <i><tt class="parameter">offset</tt></i>
+.
+     Обратите внимание, что ключи массива <i><tt class="parameter">replacement</tt></i>
+ не сохраняются.
+     Совет: если вам нужно вставить
+     один элемент в массив, нет необходимости заключать его в вызов функции <i>array()</i>,
+     если только этот элемент не является массивом.
+    </p>
+    <p class="para">
+     Последующие выражения произведут одинаковые
+     изменения в массиве <var class="varname">$input</var>:
+   <table border="5">
+    <caption><b>Эквиваленты <b>array_splice()</b></b></caption>
+    <colgroup>
+
+     <tbody valign="middle" class="tbody">
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left">
+        array_push($input, $x, $y) 
+       </td>
+       <td colspan="1" rowspan="1" align="left">
+        array_splice($input, count($input), 0, array($x, $y))
+       </td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left">
+        array_pop($input) 
+       </td>
+       <td colspan="1" rowspan="1" align="left">
+        array_splice($input, -1)
+       </td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left">
+        array_shift($input)
+       </td>
+       <td colspan="1" rowspan="1" align="left">
+        array_splice($input, 0, 1)
+       </td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left">
+        array_unshift($input, $x, $y)
+       </td>
+       <td colspan="1" rowspan="1" align="left">
+        array_splice($input, 0, 0, array($x, $y))
+       </td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left">
+        $input[$x] = $y // в случае, если key равен offset
+       </td>
+       <td colspan="1" rowspan="1" align="left">
+        array_splice($input, $x, 1, $y)
+       </td>
+      </tr>
+
+     </tbody>      
+    </colgroup>
+
+   </table>
+
+    </p>
+    <p class="para">
+     Возвращает массив, содержащий удалённые элементы.
+    </p>
+    <p class="para">
+     <div class="example">
+      <p><b>Пример #1 Примеры использования <b>array_splice()</b></b></p>
+      <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$input&nbsp;</span><span style="color: #007700">=&nbsp;array(</span><span style="color: #DD0000">"red"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"green"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"blue"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"yellow"</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">array_splice</span><span style="color: #007700">(</span><span style="color: #0000BB">$input</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">2</span><span style="color: #007700">);<br /></span><span style="color: #FF8000">//&nbsp;$input&nbsp;is&nbsp;now&nbsp;array("red",&nbsp;"green")<br /><br /></span><span style="color: #0000BB">$input&nbsp;</span><span style="color: #007700">=&nbsp;array(</span><span style="color: #DD0000">"red"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"green"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"blue"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"yellow"</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">array_splice</span><span style="color: #007700">(</span><span style="color: #0000BB">$input</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">1</span><span style="color: #007700">,&nbsp;-</span><span style="color: #0000BB">1</span><span style="color: #007700">);<br /></span><span style="color: #FF8000">//&nbsp;$input&nbsp;is&nbsp;now&nbsp;array("red",&nbsp;"yellow")<br /><br /></span><span style="color: #0000BB">$input&nbsp;</span><span style="color: #007700">=&nbsp;array(</span><span style="color: #DD0000">"red"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"green"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"blue"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"yellow"</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">array_splice</span><span style="color: #007700">(</span><span style="color: #0000BB">$input</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">1</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">count</span><span style="color: #007700">(</span><span style="color: #0000BB">$input</span><span style="color: #007700">),&nbsp;</span><span style="color: #DD0000">"orange"</span><span style="color: #007700">);<br /></span><span style="color: #FF8000">//&nbsp;$input&nbsp;is&nbsp;now&nbsp;array("red",&nbsp;"orange")<br /><br /></span><span style="color: #0000BB">$input&nbsp;</span><span style="color: #007700">=&nbsp;array(</span><span style="color: #DD0000">"red"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"green"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"blue"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"yellow"</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">array_splice</span><span style="color: #007700">(</span><span style="color: #0000BB">$input</span><span style="color: #007700">,&nbsp;-</span><span style="color: #0000BB">1</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">1</span><span style="color: #007700">,&nbsp;array(</span><span style="color: #DD0000">"black"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"maroon"</span><span style="color: #007700">));<br /></span><span style="color: #FF8000">//&nbsp;$input&nbsp;is&nbsp;now&nbsp;array("red",&nbsp;"green",<br />//&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"blue",&nbsp;"black",&nbsp;"maroon")<br /><br /></span><span style="color: #0000BB">$input&nbsp;</span><span style="color: #007700">=&nbsp;array(</span><span style="color: #DD0000">"red"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"green"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"blue"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"yellow"</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">array_splice</span><span style="color: #007700">(</span><span style="color: #0000BB">$input</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">3</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">0</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"purple"</span><span style="color: #007700">);<br /></span><span style="color: #FF8000">//&nbsp;$input&nbsp;is&nbsp;now&nbsp;array("red",&nbsp;"green",<br />//&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"blue",&nbsp;"purple",&nbsp;"yellow");<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+      </div>
+
+     </div>
+    </p>
+    <p class="para">
+     См. также <a href="function.array-slice.html" class="function">array_slice()</a>, 
+     <a href="function.unset.html" class="function">unset()</a> и
+     <a href="function.array-merge.html" class="function">array_merge()</a>.
+    </p>
+   </div>
+
+  </div><hr /><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="function.array-slice.html">array_slice</a></div>
+ <div class="next" style="float: right;"><a href="function.array-sum.html">array_sum</a></div>
+ <div class="up"><a href="ref.array.html">Функции для работы с массивами</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

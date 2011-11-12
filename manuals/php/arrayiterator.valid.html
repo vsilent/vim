@@ -1,0 +1,67 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <title>Check whether array contains more entries</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+ </head>
+ <body><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="class.arrayiterator.html">ArrayIterator</a></div>
+ <div class="next" style="float: right;"><a href="class.arrayobject.html">ArrayObject</a></div>
+ <div class="up"><a href="class.arrayiterator.html">ArrayIterator</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="arrayiterator.valid" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">ArrayIterator::valid</h1>
+  <p class="verinfo">(PHP 5)</p><p class="refpurpose dc-title">ArrayIterator::valid — Check whether array contains more entries</p>
+
+ </div>
+
+ <div class="refsect1 description">
+  <h3 class="title">Описание</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type">bool</span> <span class="methodname"><b><b>ArrayIterator::valid</b></b></span>
+    ( <span class="methodparam">void</span>
+   )</div>
+
+  <p class="para rdfs-comment">
+   Checks if the <a href="language.types.array.html" class="type array">array</a> contains any more entries.
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters">
+  <h3 class="title">Список параметров</h3>
+  <p class="para">This function has no parameters.</p>
+ </div>
+
+
+ <div class="refsect1 returnvalues">
+  <h3 class="title">Возвращаемые значения</h3>
+  <p class="para">
+   Эта функция не возвращает значения после выполнения.
+  </p>
+ </div>
+
+
+ <div class="refsect1 examples">
+  <h3 class="title">Примеры</h3>
+  <p class="para">
+   <div class="example">
+    <p><b>Пример #1 <b>ArrayIterator::valid()</b> example</b></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$array&nbsp;</span><span style="color: #007700">=&nbsp;array(</span><span style="color: #DD0000">'1'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'one'</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">$arrayobject&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">ArrayObject</span><span style="color: #007700">(</span><span style="color: #0000BB">$array</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$iterator&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$arrayobject</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getIterator</span><span style="color: #007700">();<br /><br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$iterator</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">valid</span><span style="color: #007700">());&nbsp;</span><span style="color: #FF8000">//bool(true)<br /><br /></span><span style="color: #0000BB">$iterator</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">next</span><span style="color: #007700">();&nbsp;</span><span style="color: #FF8000">//&nbsp;advance&nbsp;to&nbsp;the&nbsp;next&nbsp;item<br /><br />//bool(false)&nbsp;because&nbsp;there&nbsp;is&nbsp;only&nbsp;one&nbsp;array&nbsp;element<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$iterator</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">valid</span><span style="color: #007700">());<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+  </p>
+ </div>
+
+</div><hr /><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="class.arrayiterator.html">ArrayIterator</a></div>
+ <div class="next" style="float: right;"><a href="class.arrayobject.html">ArrayObject</a></div>
+ <div class="up"><a href="class.arrayiterator.html">ArrayIterator</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

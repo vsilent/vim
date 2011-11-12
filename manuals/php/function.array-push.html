@@ -1,0 +1,97 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <title>Добавить один или несколько элеметов в конец массива</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+ </head>
+ <body><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="function.array-product.html">array_product</a></div>
+ <div class="next" style="float: right;"><a href="function.array-rand.html">array_rand</a></div>
+ <div class="up"><a href="ref.array.html">Функции для работы с массивами</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="function.array-push" class="refentry">
+   <div class="refnamediv">
+    <h1 class="refname">array_push</h1>
+    <p class="verinfo">(PHP 4, PHP 5)</p><p class="refpurpose dc-title">array_push — 
+     Добавить один или несколько элеметов в конец массива
+    </p>
+
+   </div>
+   <div class="refsect1 unknown">
+    <h3 class="title">Описание</h3>
+     <div class="methodsynopsis dc-description">
+      <span class="type">int</span> <span class="methodname"><b><b>array_push</b></b></span>
+       ( <span class="methodparam"><span class="type">array</span> <tt class="parameter">$&amp;array</tt></span>
+      , <span class="methodparam"><span class="type"><a href="language.pseudo-types.html#language.types.mixed" class="type mixed">mixed</a></span> <tt class="parameter">$var</tt></span>
+      [, <span class="methodparam"><span class="type"><a href="language.pseudo-types.html#language.types.mixed" class="type mixed">mixed</a></span> <tt class="parameter">$...</tt></span>
+     ] )</div>
+
+    <p class="para rdfs-comment">
+     <b>array_push()</b> использует
+     <i><tt class="parameter">array</tt></i>
+ как стэк, и добавляет переданные
+     значения в конец массива <i><tt class="parameter">array</tt></i>
+.
+     Длина <i><tt class="parameter">array</tt></i>
+ увеличивается на количество
+     переданных значений. Имеет тот же эффект, что и выражение:
+     <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$array</span><span style="color: #007700">[]&nbsp;=&nbsp;</span><span style="color: #0000BB">$var</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+     </div>
+
+     повторенное для каждой <i><tt class="parameter">var</tt></i>
+.
+    </p>
+    <p class="para">
+     Возвращает новое количество элементов в массиве.
+    </p>
+    <p class="para">
+     <div class="example">
+      <p><b>Пример #1 Пример использования <b>array_push()</b></b></p>
+      <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$stack&nbsp;</span><span style="color: #007700">=&nbsp;array(</span><span style="color: #DD0000">"orange"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"banana"</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">array_push</span><span style="color: #007700">(</span><span style="color: #0000BB">$stack</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"apple"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"raspberry"</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">print_r</span><span style="color: #007700">(</span><span style="color: #0000BB">$stack</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+      </div>
+
+      <div class="example-contents"><p>
+       В результате выполнения этого примера, <var class="varname">$stack</var>
+       содержит следующие элементы:
+      </p></div>
+      <div class="example-contents"><pre>
+<div class="cdata"><pre>
+Array
+(
+    [0] =&gt; orange
+    [1] =&gt; banana
+    [2] =&gt; apple
+    [3] =&gt; raspberry
+)
+</pre></div>
+      </pre></div>
+     </div>
+    </p>
+    <blockquote><p><b class="note">Замечание</b>: 
+     <span class="simpara">
+      Вместо использования <b>array_push()</b> для добавления в массив одного элемента,
+      лучше использовать <i>$array[] = </i>, потому что в этом случае
+      не происходит вызова функции.
+     </span>
+    </p></blockquote>
+    <p class="para">
+     См. также <a href="function.array-pop.html" class="function">array_pop()</a>,
+     <a href="function.array-shift.html" class="function">array_shift()</a>, и
+     <a href="function.array-unshift.html" class="function">array_unshift()</a>.
+    </p>
+   </div>
+
+  </div><hr /><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="function.array-product.html">array_product</a></div>
+ <div class="next" style="float: right;"><a href="function.array-rand.html">array_rand</a></div>
+ <div class="up"><a href="ref.array.html">Функции для работы с массивами</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

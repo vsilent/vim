@@ -1,0 +1,82 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <title>Дополняет строку другой строкой до заданной длины</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+ </head>
+ <body><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="function.str-ireplace.html">str_ireplace</a></div>
+ <div class="next" style="float: right;"><a href="function.str-repeat.html">str_repeat</a></div>
+ <div class="up"><a href="ref.strings.html">Функции обработки строк</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="function.str-pad" class="refentry">
+   <div class="refnamediv">
+    <h1 class="refname">str_pad</h1>
+    <p class="verinfo">(PHP 4 &gt;= 4.0.1, PHP 5)</p><p class="refpurpose dc-title">str_pad — 
+     Дополняет строку другой строкой до заданной длины
+    </p>
+
+   </div>
+   <div class="refsect1 unknown">
+    <h3 class="title">Описание</h3>
+     <div class="methodsynopsis dc-description">
+      <span class="type">string</span> <span class="methodname"><b><b>str_pad</b></b></span>
+       ( <span class="methodparam"><span class="type">string</span> <tt class="parameter">$input</tt></span>
+      , <span class="methodparam"><span class="type">int</span> <tt class="parameter">$pad_length</tt></span>
+      [, <span class="methodparam"><span class="type">string</span> <tt class="parameter">$pad_string</tt></span>
+      [, <span class="methodparam"><span class="type">int</span> <tt class="parameter">$pad_type</tt></span>
+     ]] )</div>
+
+    <p class="para rdfs-comment">
+     Эта функция возвращает строку <i><tt class="parameter">input</tt></i>
+,
+     дополненную слева, справа или с обоих сторон до заданной аргументом
+     <i><tt class="parameter">pad_length</tt></i>
+ длины строкой 
+     <i><tt class="parameter">pad_string</tt></i>
+. По умолчанию 
+     <i><tt class="parameter">pad_string</tt></i>
+ содержит пробел.
+    </p>
+    <p class="para">
+     Необязательный аргумент <i><tt class="parameter">pad_type</tt></i>
+ может иметь 
+     значение <b><tt>STR_PAD_RIGHT</tt></b>, <b><tt>STR_PAD_LEFT</tt></b>
+     или <b><tt>STR_PAD_BOTH</tt></b>, по умолчанию 
+     <b><tt>STR_PAD_RIGHT</tt></b>.
+    </p>
+    <p class="para">
+     Если <i><tt class="parameter">pad_length</tt></i>
+ меньше длины строки 
+     <i><tt class="parameter">input</tt></i>
+, строка возвращается без изменений.
+    </p>
+    <p class="para">
+     <div class="example">
+      <p><b>Пример #1 Пример использования <b>str_pad()</b></b></p>
+      <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$input&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">"Alien"</span><span style="color: #007700">;<br />echo&nbsp;</span><span style="color: #0000BB">str_pad</span><span style="color: #007700">(</span><span style="color: #0000BB">$input</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">10</span><span style="color: #007700">);&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;выводит&nbsp;"Alien&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">str_pad</span><span style="color: #007700">(</span><span style="color: #0000BB">$input</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">10</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"-="</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">STR_PAD_LEFT</span><span style="color: #007700">);&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;выводит&nbsp;"-=-=-Alien"<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">str_pad</span><span style="color: #007700">(</span><span style="color: #0000BB">$input</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">10</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"_"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">STR_PAD_BOTH</span><span style="color: #007700">);&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;выводит&nbsp;"__Alien___"<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">str_pad</span><span style="color: #007700">(</span><span style="color: #0000BB">$input</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">6&nbsp;</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"___"</span><span style="color: #007700">);&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;выводит&nbsp;"Alien_"<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+      </div>
+
+     </div>
+    </p>
+    <blockquote><p><b class="note">Замечание</b>: 
+     
+      <i><tt class="parameter">pad_string</tt></i>
+ может быть обрезан, если 
+      необходимое количество дополнительных символов не делится нацело на 
+      длину строки <i><tt class="parameter">pad_string</tt></i>
+.
+     <br />
+    </p></blockquote>
+   </div>
+
+  </div><hr /><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="function.str-ireplace.html">str_ireplace</a></div>
+ <div class="next" style="float: right;"><a href="function.str-repeat.html">str_repeat</a></div>
+ <div class="up"><a href="ref.strings.html">Функции обработки строк</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

@@ -1,0 +1,211 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <title>mapPhar for web-based phars. front controller for web applications</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+ </head>
+ <body><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="class.Phar.html">Phar</a></div>
+ <div class="next" style="float: right;"><a href="class.PharData.html">PharData</a></div>
+ <div class="up"><a href="class.Phar.html">Phar</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="phar.webphar" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">Phar::webPhar</h1>
+  <p class="verinfo">(No version information available, might be only in CVS)</p><p class="refpurpose dc-title">Phar::webPhar — mapPhar for web-based phars. front controller for web applications</p>
+
+ </div>
+
+ <div class="refsect1 description">
+  <h3 class="title">Описание</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type"><span class="type void">void</span></span> <span class="methodname"><b><b>Phar::webPhar</b></b></span>
+    ( <span class="methodparam"><span class="type">string</span> <tt class="parameter">$alias</tt></span>
+   , <span class="methodparam"><span class="type">string</span> <tt class="parameter">$index</tt></span>
+   , <span class="methodparam"><span class="type">string</span> <tt class="parameter">$f404</tt></span>
+   , <span class="methodparam"><span class="type">array</span> <tt class="parameter">$mimetypes</tt></span>
+   , <span class="methodparam"><span class="type">array</span> <tt class="parameter">$rewrites</tt></span>
+   )</div>
+
+  <p class="para rdfs-comment">
+   <a href="phar.mapphar.html" class="function">Phar::mapPhar()</a> for web-based phars.  This method parses
+   <i>$_SERVER[&#039;REQUEST_URI&#039;]</i> and routes a request from a web
+   browser to an internal file within the phar archive.  In essence, it simulates
+   a web server, routing requests to the correct file, echoing the correct headers
+   and parsing PHP files as needed.  This powerful method is part of what makes it easy
+   to convert an existing PHP application into a phar archive.  Combined with
+   <a href="phar.mungserver.html" class="function">Phar::mungServer()</a> and <a href="phar.interceptfilefuncs.html" class="function">Phar::interceptFileFuncs()</a>,
+   any web application can be used unmodified from a phar archive.
+  </p>
+  <p class="para">
+   <b>Phar::webPhar()</b> should only be
+   called from the stub of a phar archive (see <a href="phar.fileformat.stub.html" class="link">here</a>
+   for more information on what a stub is).
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters">
+  <h3 class="title">Список параметров</h3>
+  <p class="para">
+   <dl>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">alias</tt></i>
+</span>
+
+     <dd>
+
+      <p class="para">
+       The alias that can be used in <i>phar://</i> URLs to
+       refer to this archive, rather than its full path.
+      </p>
+     </dd>
+
+    </dt>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">index</tt></i>
+</span>
+
+     <dd>
+
+      <p class="para">
+       The location within the phar of the directory index, defaults to
+       <i>index.php</i>.
+      </p>
+     </dd>
+
+    </dt>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">f404</tt></i>
+</span>
+
+     <dd>
+
+      <p class="para">
+       The location of the script to run when a file is not found.  This
+       script should output the proper HTTP 404 headers.
+      </p>
+     </dd>
+
+    </dt>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">mimetypes</tt></i>
+</span>
+
+     <dd>
+
+      <p class="para">
+       An array mapping additional file extensions to MIME type.  By default,
+       these extensions are mapped to these mime types:
+       <div class="example-contents">
+        <div class="phpcode"><code><span style="color: #000000">
+$mimes&nbsp;=&nbsp;array(<br />&nbsp;&nbsp;&nbsp;&nbsp;'phps'&nbsp;=&gt;&nbsp;2,&nbsp;//&nbsp;pass&nbsp;to&nbsp;highlight_file()<br />&nbsp;&nbsp;&nbsp;&nbsp;'c'&nbsp;=&gt;&nbsp;'text/plain',<br />&nbsp;&nbsp;&nbsp;&nbsp;'cc'&nbsp;=&gt;&nbsp;'text/plain',<br />&nbsp;&nbsp;&nbsp;&nbsp;'cpp'&nbsp;=&gt;&nbsp;'text/plain',<br />&nbsp;&nbsp;&nbsp;&nbsp;'c++'&nbsp;=&gt;&nbsp;'text/plain',<br />&nbsp;&nbsp;&nbsp;&nbsp;'dtd'&nbsp;=&gt;&nbsp;'text/plain',<br />&nbsp;&nbsp;&nbsp;&nbsp;'h'&nbsp;=&gt;&nbsp;'text/plain',<br />&nbsp;&nbsp;&nbsp;&nbsp;'log'&nbsp;=&gt;&nbsp;'text/plain',<br />&nbsp;&nbsp;&nbsp;&nbsp;'rng'&nbsp;=&gt;&nbsp;'text/plain',<br />&nbsp;&nbsp;&nbsp;&nbsp;'txt'&nbsp;=&gt;&nbsp;'text/plain',<br />&nbsp;&nbsp;&nbsp;&nbsp;'xsd'&nbsp;=&gt;&nbsp;'text/plain',<br />&nbsp;&nbsp;&nbsp;&nbsp;'php'&nbsp;=&gt;&nbsp;1,&nbsp;//&nbsp;parse&nbsp;as&nbsp;PHP<br />&nbsp;&nbsp;&nbsp;&nbsp;'inc'&nbsp;=&gt;&nbsp;1,&nbsp;//&nbsp;parse&nbsp;as&nbsp;PHP<br />&nbsp;&nbsp;&nbsp;&nbsp;'avi'&nbsp;=&gt;&nbsp;'video/avi',<br />&nbsp;&nbsp;&nbsp;&nbsp;'bmp'&nbsp;=&gt;&nbsp;'image/bmp',<br />&nbsp;&nbsp;&nbsp;&nbsp;'css'&nbsp;=&gt;&nbsp;'text/css',<br />&nbsp;&nbsp;&nbsp;&nbsp;'gif'&nbsp;=&gt;&nbsp;'image/gif',<br />&nbsp;&nbsp;&nbsp;&nbsp;'htm'&nbsp;=&gt;&nbsp;'text/html',<br />&nbsp;&nbsp;&nbsp;&nbsp;'html'&nbsp;=&gt;&nbsp;'text/html',<br />&nbsp;&nbsp;&nbsp;&nbsp;'htmls'&nbsp;=&gt;&nbsp;'text/html',<br />&nbsp;&nbsp;&nbsp;&nbsp;'ico'&nbsp;=&gt;&nbsp;'image/x-ico',<br />&nbsp;&nbsp;&nbsp;&nbsp;'jpe'&nbsp;=&gt;&nbsp;'image/jpeg',<br />&nbsp;&nbsp;&nbsp;&nbsp;'jpg'&nbsp;=&gt;&nbsp;'image/jpeg',<br />&nbsp;&nbsp;&nbsp;&nbsp;'jpeg'&nbsp;=&gt;&nbsp;'image/jpeg',<br />&nbsp;&nbsp;&nbsp;&nbsp;'js'&nbsp;=&gt;&nbsp;'application/x-javascript',<br />&nbsp;&nbsp;&nbsp;&nbsp;'midi'&nbsp;=&gt;&nbsp;'audio/midi',<br />&nbsp;&nbsp;&nbsp;&nbsp;'mid'&nbsp;=&gt;&nbsp;'audio/midi',<br />&nbsp;&nbsp;&nbsp;&nbsp;'mod'&nbsp;=&gt;&nbsp;'audio/mod',<br />&nbsp;&nbsp;&nbsp;&nbsp;'mov'&nbsp;=&gt;&nbsp;'movie/quicktime',<br />&nbsp;&nbsp;&nbsp;&nbsp;'mp3'&nbsp;=&gt;&nbsp;'audio/mp3',<br />&nbsp;&nbsp;&nbsp;&nbsp;'mpg'&nbsp;=&gt;&nbsp;'video/mpeg',<br />&nbsp;&nbsp;&nbsp;&nbsp;'mpeg'&nbsp;=&gt;&nbsp;'video/mpeg',<br />&nbsp;&nbsp;&nbsp;&nbsp;'pdf'&nbsp;=&gt;&nbsp;'application/pdf',<br />&nbsp;&nbsp;&nbsp;&nbsp;'png'&nbsp;=&gt;&nbsp;'image/png',<br />&nbsp;&nbsp;&nbsp;&nbsp;'swf'&nbsp;=&gt;&nbsp;'application/shockwave-flash',<br />&nbsp;&nbsp;&nbsp;&nbsp;'tif'&nbsp;=&gt;&nbsp;'image/tiff',<br />&nbsp;&nbsp;&nbsp;&nbsp;'tiff'&nbsp;=&gt;&nbsp;'image/tiff',<br />&nbsp;&nbsp;&nbsp;&nbsp;'wav'&nbsp;=&gt;&nbsp;'audio/wav',<br />&nbsp;&nbsp;&nbsp;&nbsp;'xbm'&nbsp;=&gt;&nbsp;'image/xbm',<br />&nbsp;&nbsp;&nbsp;&nbsp;'xml'&nbsp;=&gt;&nbsp;'text/xml',<br />);</span>
+</code></div>
+       </div>
+
+      </p>
+     </dd>
+
+    </dt>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">rewrites</tt></i>
+</span>
+
+     <dd>
+
+      <p class="para">
+       An array mapping URI to internal file, simulating mod_rewrite of apache.
+       For example:
+       <div class="example-contents">
+        <div class="phpcode"><code><span style="color: #000000">
+array(<br />&nbsp;&nbsp;&nbsp;&nbsp;'myinfo'&nbsp;=&gt;&nbsp;'myinfo.php'<br />);</span>
+</code></div>
+       </div>
+
+       would route calls to <i>http://&lt;host&gt;/myphar.phar/myinfo</i>
+       to the file <i>phar:///path/to/myphar.phar/myinfo.php</i>, preserving
+       GET/POST.  This does not quite work like mod_rewrite in that it would not
+       match <i>http://&lt;host&gt;/myphar.phar/myinfo/another</i>.
+      </p>
+     </dd>
+
+    </dt>
+
+   </dl>
+
+  </p>
+
+ </div>
+
+ <div class="refsect1 returnvalues">
+  <h3 class="title">Возвращаемые значения</h3>
+  <p class="para">
+   No return values
+  </p>
+ </div>
+
+
+ <div class="refsect1 errors">
+  <h3 class="title">Errors/Exceptions</h3>
+  <p class="para">
+   Throws <span class="classname">PharException</span> when unable to open the internal
+   file to output, or if
+   called from a non-stub.  If an invalid array value is passed into
+   <i><tt class="parameter">mimetypes</tt></i>
+ or to <i><tt class="parameter">rewrites</tt></i>
+, then
+   <span class="classname">UnexpectedValueException</span> is thrown.
+  </p>
+ </div>
+
+
+ <div class="refsect1 examples">
+  <h3 class="title">Примеры</h3>
+  <p class="para">
+   <div class="example">
+    <p><b>Пример #1 A <b>Phar::webPhar()</b> example</b></p>
+    <div class="example-contents"><p>
+     With the example below, the created phar will display <i>Hello World</i>
+     if one browses to <i>/myphar.phar/index.php</i> or to
+     <i>/myphar.phar</i>, and will display the source of
+     <i>index.phps</i> if one browses to <i>/myphar.phar/index.phps</i>.
+    </p></div>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">//&nbsp;creating&nbsp;the&nbsp;phar&nbsp;archive:<br /></span><span style="color: #007700">try&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$phar&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">Phar</span><span style="color: #007700">(</span><span style="color: #DD0000">'myphar.phar'</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$phar</span><span style="color: #007700">[</span><span style="color: #DD0000">'index.php'</span><span style="color: #007700">]&nbsp;=&nbsp;</span><span style="color: #DD0000">'&lt;?php&nbsp;echo&nbsp;"Hello&nbsp;World";&nbsp;?&gt;'</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$phar</span><span style="color: #007700">[</span><span style="color: #DD0000">'index.phps'</span><span style="color: #007700">]&nbsp;=&nbsp;</span><span style="color: #DD0000">'&lt;?php&nbsp;echo&nbsp;"Hello&nbsp;World";&nbsp;?&gt;'</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$phar</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setStub</span><span style="color: #007700">(</span><span style="color: #DD0000">'&lt;?php<br />Phar::webPhar();<br />__HALT_COMPILER();&nbsp;?&gt;'</span><span style="color: #007700">);<br />}&nbsp;catch&nbsp;(</span><span style="color: #0000BB">Exception&nbsp;$e</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;handle&nbsp;error&nbsp;here<br /></span><span style="color: #007700">}<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+  </p>
+ </div>
+
+
+ <div class="refsect1 seealso">
+  <h3 class="title">Смотрите также</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"><a href="phar.mungserver.html" class="function" rel="rdfs-seeAlso">Phar::mungServer()</a></li>
+    <li class="member"><a href="phar.interceptfilefuncs.html" class="function" rel="rdfs-seeAlso">Phar::interceptFileFuncs()</a></li>
+   </ul>
+  </p>
+ </div>
+
+
+</div><hr /><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="class.Phar.html">Phar</a></div>
+ <div class="next" style="float: right;"><a href="class.PharData.html">PharData</a></div>
+ <div class="up"><a href="class.Phar.html">Phar</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

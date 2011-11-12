@@ -1,0 +1,61 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <title>Вычисляет CRC32 для строки</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+ </head>
+ <body><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="function.count-chars.html">count_chars</a></div>
+ <div class="next" style="float: right;"><a href="function.crypt.html">crypt</a></div>
+ <div class="up"><a href="ref.strings.html">Функции обработки строк</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="function.crc32" class="refentry">
+   <div class="refnamediv">
+    <h1 class="refname">crc32</h1>
+    <p class="verinfo">(PHP 4 &gt;= 4.0.1, PHP 5)</p><p class="refpurpose dc-title">crc32 — Вычисляет CRC32 для строки</p>
+
+   </div>
+   <div class="refsect1 unknown">
+    <h3 class="title">Описание</h3>
+     <div class="methodsynopsis dc-description">
+      <span class="type">int</span> <span class="methodname"><b><b>crc32</b></b></span>
+       ( <span class="methodparam"><span class="type">string</span> <tt class="parameter">$str</tt></span>
+      )</div>
+
+    <p class="para rdfs-comment">
+     Функция вычисляет контрольную сумму по алгоритму CRC32 для строки
+     <i><tt class="parameter">str</tt></i>
+. Это обычно используется для контроля 
+     правильности передачи данных.
+    </p>
+    <p class="para">
+     В PHP целые числа имеют знак, и эта функция может возвращать 
+     отрицательные числа. Для получения строкового представления CRC32 без 
+     знака используйте формат &quot;%u&quot; в функциях <a href="function.sprintf.html" class="function">sprintf()</a>
+     или <a href="function.printf.html" class="function">printf()</a>.
+    </p>
+    <p class="para">
+     Этот пример иллюстрирует вывод  вычисленной CRC32 с помощью функции
+     <a href="function.printf.html" class="function">printf()</a>:
+     <div class="example">
+      <p><b>Пример #1 Вывод контрольной суммы CRC32</b></p>
+      <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$checksum&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">crc32</span><span style="color: #007700">(</span><span style="color: #DD0000">"The&nbsp;quick&nbsp;brown&nbsp;fox&nbsp;jumped&nbsp;over&nbsp;the&nbsp;lazy&nbsp;dog."</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">printf</span><span style="color: #007700">(</span><span style="color: #DD0000">"%u\n"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$checksum</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+      </div>
+
+     </div>
+    </p>
+    <p class="para">
+     См. также описание функций <a href="function.md5.html" class="function">md5()</a> и <a href="function.sha1.html" class="function">sha1()</a>.
+    </p>
+   </div>
+
+  </div><hr /><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="function.count-chars.html">count_chars</a></div>
+ <div class="next" style="float: right;"><a href="function.crypt.html">crypt</a></div>
+ <div class="up"><a href="ref.strings.html">Функции обработки строк</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

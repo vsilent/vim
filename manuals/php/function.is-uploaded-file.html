@@ -1,0 +1,88 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <title>Определяет, был ли файл загружен при помощи HTTP POST</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+ </head>
+ <body><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="function.is-readable.html">is_readable</a></div>
+ <div class="next" style="float: right;"><a href="function.is-writable.html">is_writable</a></div>
+ <div class="up"><a href="ref.filesystem.html">Файловая система</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="function.is-uploaded-file" class="refentry">
+   <div class="refnamediv">
+    <h1 class="refname">is_uploaded_file</h1>
+    <p class="verinfo">(PHP 4 &gt;= 4.0.3, PHP 5)</p><p class="refpurpose dc-title">is_uploaded_file — Определяет, был ли файл загружен при помощи HTTP POST</p>
+
+   </div>
+   <div class="refsect1 unknown">
+    <h3 class="title">Описание</h3>
+    <div class="methodsynopsis dc-description">
+     <span class="type">bool</span> <span class="methodname"><b><b>is_uploaded_file</b></b></span>
+      ( <span class="methodparam"><span class="type">string</span> <tt class="parameter">$filename</tt></span>
+     )</div>
+
+    <p class="para rdfs-comment">
+     Возвращает <b><tt>TRUE</tt></b>, если файл <i><tt class="parameter">filename</tt></i>
+ был
+     загружен при помощи HTTP POST. Это полезно, чтобы убедиться в том,
+     что злонамеренный пользователь не пытается обмануть скрипт так, чтобы
+     он работал с файлами, с которыми работать не должен -- к примеру,
+     <var class="filename">/etc/passwd</var>.
+    </p>
+    <p class="para">
+     Такие проверки особенно полезны, если существует вероятность того,
+     что операции над файлом могут показать его содержимое пользователю
+     или даже другим пользователям той же системы.
+    </p>
+    <p class="para">
+     Для правильной работы, функции <b>is_uploaded_file()</b>
+     нужен аргумент вида $_FILES[&#039;userfile&#039;][&#039;tmp_name&#039;], - имя закачиваемого
+     файла на клиентской машине $_FILES[&#039;userfile&#039;][&#039;name&#039;] не подходит.
+    </p>
+    <div class="example">
+     <p><b>Пример #1 Пример использования функции <b>is_uploaded_file()</b></b></p>
+     <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /><br /></span><span style="color: #007700">if&nbsp;(</span><span style="color: #0000BB">is_uploaded_file</span><span style="color: #007700">(</span><span style="color: #0000BB">$_FILES</span><span style="color: #007700">[</span><span style="color: #DD0000">'userfile'</span><span style="color: #007700">][</span><span style="color: #DD0000">'tmp_name'</span><span style="color: #007700">]))&nbsp;{<br />&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"File&nbsp;"</span><span style="color: #007700">.&nbsp;</span><span style="color: #0000BB">$_FILES</span><span style="color: #007700">[</span><span style="color: #DD0000">'userfile'</span><span style="color: #007700">][</span><span style="color: #DD0000">'name'</span><span style="color: #007700">]&nbsp;.</span><span style="color: #DD0000">"&nbsp;uploaded&nbsp;successfully.\n"</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"Displaying&nbsp;contents\n"</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">readfile</span><span style="color: #007700">(</span><span style="color: #0000BB">$_FILES</span><span style="color: #007700">[</span><span style="color: #DD0000">'userfile'</span><span style="color: #007700">][</span><span style="color: #DD0000">'tmp_name'</span><span style="color: #007700">]);<br />}&nbsp;else&nbsp;{<br />&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"Possible&nbsp;file&nbsp;upload&nbsp;attack:&nbsp;"</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"filename&nbsp;'"</span><span style="color: #007700">.&nbsp;</span><span style="color: #0000BB">$_FILES</span><span style="color: #007700">[</span><span style="color: #DD0000">'userfile'</span><span style="color: #007700">][</span><span style="color: #DD0000">'tmp_name'</span><span style="color: #007700">]&nbsp;.&nbsp;</span><span style="color: #DD0000">"'."</span><span style="color: #007700">;<br />}<br /><br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+     </div>
+
+    </div>
+    <p class="para">
+     Функция <b>is_uploaded_file()</b> доступна только начиная
+     с версии PHP 3.0.16 и PHP 4.0.2 для третьей и четвёртой линеек
+     соответственно. Если вам необходимо использовать более ранние версии,
+     вы можете использовать такую функцию, чтобы обезопасить себя:
+     <blockquote><p><b class="note">Замечание</b>: 
+      
+       Следующий пример <em class="emphasis">не</em> работает
+       в версиях PHP выше 4.0.2. Он полагается на внутреннюю
+       функциональность PHP, которая изменилась после этой версии.
+      <br />
+     </p></blockquote>
+    </p>
+     <div class="example">
+      <p><b>Пример #2 Пример использования функции <b>is_uploaded_file()</b></b></p>
+     <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">/*&nbsp;Самодельная&nbsp;проверка&nbsp;на&nbsp;то,&nbsp;является&nbsp;ли&nbsp;файл&nbsp;загруженным.&nbsp;*/<br /></span><span style="color: #007700">function&nbsp;</span><span style="color: #0000BB">is_uploaded_file</span><span style="color: #007700">(</span><span style="color: #0000BB">$filename</span><span style="color: #007700">)&nbsp;<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(!</span><span style="color: #0000BB">$tmp_file&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">get_cfg_var</span><span style="color: #007700">(</span><span style="color: #DD0000">'upload_tmp_dir'</span><span style="color: #007700">))&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$tmp_file&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">dirname</span><span style="color: #007700">(</span><span style="color: #0000BB">tempnam</span><span style="color: #007700">(</span><span style="color: #DD0000">''</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">''</span><span style="color: #007700">));<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$tmp_file&nbsp;</span><span style="color: #007700">.=&nbsp;</span><span style="color: #DD0000">'/'&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #0000BB">basename</span><span style="color: #007700">(</span><span style="color: #0000BB">$filename</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">/*&nbsp;У&nbsp;пользователя&nbsp;может&nbsp;быть&nbsp;завершающий&nbsp;слеш&nbsp;в&nbsp;php.ini...&nbsp;*/<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">return&nbsp;(</span><span style="color: #0000BB">ereg_replace</span><span style="color: #007700">(</span><span style="color: #DD0000">'/+'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'/'</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$tmp_file</span><span style="color: #007700">)&nbsp;==&nbsp;</span><span style="color: #0000BB">$filename</span><span style="color: #007700">);<br />}<br /><br /></span><span style="color: #FF8000">/*&nbsp;Вот&nbsp;пример&nbsp;использования,&nbsp;так&nbsp;как&nbsp;функция&nbsp;move_uploaded_file()<br />&nbsp;*&nbsp;также&nbsp;отсутствует&nbsp;в&nbsp;ранних&nbsp;версиях:&nbsp;*/<br /></span><span style="color: #007700">if&nbsp;(</span><span style="color: #0000BB">is_uploaded_file</span><span style="color: #007700">(</span><span style="color: #0000BB">$HTTP_POST_FILES</span><span style="color: #007700">[</span><span style="color: #DD0000">'userfile'</span><span style="color: #007700">]))&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">copy</span><span style="color: #007700">(</span><span style="color: #0000BB">$HTTP_POST_FILES</span><span style="color: #007700">[</span><span style="color: #DD0000">'userfile'</span><span style="color: #007700">],&nbsp;</span><span style="color: #DD0000">"/place/to/put/uploaded/file"</span><span style="color: #007700">);<br />}&nbsp;else&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"Возможна&nbsp;атака&nbsp;загрузки&nbsp;файла:&nbsp;имя&nbsp;файла&nbsp;-&nbsp;'$HTTP_POST_FILES[userfile]'."</span><span style="color: #007700">;<br />}<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+     </div>
+
+    </div>
+    <p class="para">
+     См. также описание функции <a href="function.move-uploaded-file.html" class="function">move_uploaded_file()</a> и раздел
+     <a href="features.file-upload.html" class="link">Загрузка файлов на сервер</a>
+     для получения простых примеров использования.
+    </p>
+   </div>
+
+  </div><hr /><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="function.is-readable.html">is_readable</a></div>
+ <div class="next" style="float: right;"><a href="function.is-writable.html">is_writable</a></div>
+ <div class="up"><a href="ref.filesystem.html">Файловая система</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

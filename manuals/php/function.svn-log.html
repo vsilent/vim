@@ -1,0 +1,275 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <title>Returns the commit log messages of a repository URL</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+ </head>
+ <body><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="function.svn-import.html">svn_import</a></div>
+ <div class="next" style="float: right;"><a href="function.svn-ls.html">svn_ls</a></div>
+ <div class="up"><a href="ref.svn.html">SVN</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="function.svn-log" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">svn_log</h1>
+  <p class="verinfo">(PECL svn:0.1-0.2)</p><p class="refpurpose dc-title">svn_log — Returns the commit log messages of a repository URL</p>
+
+ </div>
+
+ <div class="refsect1 description">
+  <h3 class="title">Описание</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type">array</span> <span class="methodname"><b><b>svn_log</b></b></span>
+    ( <span class="methodparam"><span class="type">string</span> <tt class="parameter">$repos_url</tt></span>
+   [, <span class="methodparam"><span class="type">int</span> <tt class="parameter">$revision_no</tt></span>
+  ] )</div>
+
+  <p class="para rdfs-comment">
+   <b>svn_log()</b> returns the complete history of the item at the repository URL
+   <i><tt class="parameter">repos_url</tt></i>
+, or the history of a specific revision
+   if <i><tt class="parameter">revision_no</tt></i>
+ is set. This function is equivalent
+   to <strong class="userinput"><code>svn log --verbose -r $revision_no $repos_url</code></strong>
+.
+  </p>
+  <div class="warning"><b class="warning">Внимание</b>
+   <p class="para">
+    For repositories with large histories, the output may
+    be quite large (one array item for every revision of the item).
+    This function does not support the
+    <strong class="userinput"><code>--limit NUM</code></strong>
+ flag, nor does it support revision
+    ranges (<strong class="userinput"><code>revision_no</code></strong>
+ must be an integer).
+   </p>
+  </div>
+ </div>
+
+
+ <div class="refsect1 parameters">
+  <h3 class="title">Список параметров</h3>
+  <p class="para">
+   <dl>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">repos_url</tt></i>
+</span>
+
+     <dd>
+
+      <p class="para">
+       Repository URL of the item to retrieve log history from.
+      </p>
+     </dd>
+
+    </dt>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">revision_no</tt></i>
+</span>
+
+     <dd>
+
+      <p class="para">
+       Revision number of the log to retrieve. Use
+       <b><tt>SVN_REVISON_HEAD</tt></b> to retrieve the log for
+       the most recent revision.
+      </p>
+     </dd>
+
+    </dt>
+
+   </dl>
+
+  </p>
+
+ </div>
+
+ <div class="refsect1 returnvalues">
+  <h3 class="title">Возвращаемые значения</h3>
+  <p class="para">
+   On success, this function returns an array file listing in the format
+   of:
+   <div class="example-contents"><pre>
+<div class="cdata"><pre>
+[0] =&gt; Array, ordered most recent (highest) revision first
+(
+    [rev] =&gt; integer revision number
+    [author] =&gt; string author name
+    [msg] =&gt; string log message
+    [date] =&gt; string date formatted per ISO 8601, i.e. date(&#039;c&#039;)
+    [paths] =&gt; Array, describing changed files
+        (
+            [0] =&gt; Array
+                (
+                    [action] =&gt; string letter signifying change
+                    [path] =&gt;  absolute repository path of changed file
+                )
+            [1] =&gt; ...
+        )
+)
+[1] =&gt; ...
+</pre></div>
+    </pre></div>
+  </p>
+  <blockquote><p><b class="note">Замечание</b>: 
+   
+    The output will always be a numerically indexed array of arrays,
+    even when there are none or only one log message(s).
+   <br />
+  </p></blockquote>
+  <p class="para">
+   The value of <var class="varname">action</var> is a subset of the
+   <a href="http://svnbook.red-bean.com/en/1.2/svn.ref.svn.c.status.html" class="link external">&raquo; status output
+   in the first column</a>, where possible values are:
+  </p>
+  <table border="5">
+   <caption><b>Actions</b></caption>
+   <colgroup>
+
+     <thead valign="middle">
+      <tr valign="middle">
+       <th colspan="1">Letter</th>
+       <th colspan="1">Description</th>
+      </tr>
+
+     </thead>
+
+     <tbody valign="middle" class="tbody">
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left">M</td>
+       <td colspan="1" rowspan="1" align="left">Item/props was modified</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left">A</td>
+       <td colspan="1" rowspan="1" align="left">Item was added</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left">D</td>
+       <td colspan="1" rowspan="1" align="left">Item was deleted</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left">R</td>
+       <td colspan="1" rowspan="1" align="left">Item was replaced</td>
+      </tr>
+
+     </tbody>
+    </colgroup>
+
+  </table>
+
+  <p class="para">
+   If no changes were made to the item, an empty array is returned.
+  </p>
+ </div>
+
+
+ <div class="refsect1 notes">
+  <h3 class="title">Примечания</h3>
+  <div class="warning"><b class="warning">Внимание</b><p class="simpara">
+Эта функция является <em class="emphasis">ЭКСПЕРИМЕНТАЛЬНОЙ</em>.
+Поведение этой функции, ее имя и относящаяся к ней документация
+могут измениться в последующих версиях PHP без уведомления.
+Используйте эту функцию на свой страх и риск.</p></div>
+ </div>
+
+
+ 
+
+ 
+
+ <div class="refsect1 examples">
+  <h3 class="title">Примеры</h3>
+  <p class="para">
+   <div class="example">
+    <p><b>Пример #1 <b>svn_log()</b> example</b></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />print_r</span><span style="color: #007700">(&nbsp;</span><span style="color: #0000BB">svn_log</span><span style="color: #007700">(</span><span style="color: #DD0000">'http://www.example.com/'</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">23</span><span style="color: #007700">)&nbsp;);<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+    <div class="example-contents"><p>Результатом выполнения данного примера
+будет что-то подобное:</p></div>
+    <div class="example-contents"><pre>
+<div class="cdata"><pre>
+Array
+(
+    [0] =&gt; Array
+    (
+        [rev] =&gt; 23
+        [author] =&gt; &#039;joe&#039;
+        [msg] =&gt; &#039;Add cheese and salami to our sandwich.&#039;
+        [date] =&gt; &#039;2007-04-06T16:00:27-04:00&#039;
+        [paths] =&gt; Array
+            (
+                [0] =&gt; Array
+                    (
+                        [action] =&gt; &#039;M&#039;
+                        [path] =&gt;  &#039;/sandwich.txt&#039;
+                    )
+            )
+    )
+)
+</pre></div>
+    </pre></div>
+   </div>
+  </p>
+  <p class="para">
+   <div class="example">
+    <p><b>Пример #2 Simulating <strong class="userinput"><code>--limit</code></strong>
+ with <strong class="userinput"><code>svn</code></strong>
+ and <b>svn_log()</b></b></p>
+    <div class="example-contents"><p>
+     This sample function simulates the <strong class="userinput"><code>--limit</code></strong>
+ switch
+     by using the SVN executable to return a list of revisions, which
+     are then losslessly accessed using <b>svn_log()</b>.
+    </p></div>
+    <blockquote><p><b class="note">Замечание</b>: 
+     
+      This function will perform a total of <i><tt class="parameter">limit</tt></i>
+ + 1
+      requests: the first request to pull the required revisions, and
+      each one after to retrieve the log item for that request.
+     <br />
+    </p></blockquote>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">/**<br />&nbsp;*&nbsp;Retrieves&nbsp;the&nbsp;last&nbsp;$limit&nbsp;log&nbsp;entries.<br />&nbsp;*&nbsp;@param&nbsp;$repos_url&nbsp;Repository&nbsp;URL&nbsp;of&nbsp;item&nbsp;to&nbsp;get&nbsp;logs&nbsp;for<br />&nbsp;*&nbsp;@param&nbsp;$limit&nbsp;Integer&nbsp;limit&nbsp;of&nbsp;items<br />&nbsp;*/<br /></span><span style="color: #007700">function&nbsp;</span><span style="color: #0000BB">svn_log_limit</span><span style="color: #007700">(</span><span style="color: #0000BB">$repos_url</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$limit</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$limit&nbsp;</span><span style="color: #007700">=&nbsp;(int)&nbsp;</span><span style="color: #0000BB">$limit</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(</span><span style="color: #0000BB">$limit&nbsp;</span><span style="color: #007700">&lt;=&nbsp;</span><span style="color: #0000BB">0</span><span style="color: #007700">)&nbsp;return&nbsp;array();<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;-q&nbsp;flag&nbsp;used&nbsp;to&nbsp;prevent&nbsp;server&nbsp;from&nbsp;sending&nbsp;log&nbsp;messages<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$output&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">shell_exec</span><span style="color: #007700">(</span><span style="color: #DD0000">"svn&nbsp;log&nbsp;-q&nbsp;--limit&nbsp;$limit&nbsp;$repos_url"</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">preg_match_all</span><span style="color: #007700">(</span><span style="color: #DD0000">'/^r(\d+)&nbsp;/m'</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$output</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$matches</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$ret&nbsp;</span><span style="color: #007700">=&nbsp;array();<br />&nbsp;&nbsp;&nbsp;&nbsp;foreach&nbsp;(</span><span style="color: #0000BB">$matches</span><span style="color: #007700">[</span><span style="color: #0000BB">1</span><span style="color: #007700">]&nbsp;as&nbsp;</span><span style="color: #0000BB">$rev</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$log&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">svn_log</span><span style="color: #007700">(</span><span style="color: #0000BB">$repos_url</span><span style="color: #007700">,&nbsp;(int)&nbsp;</span><span style="color: #0000BB">$rev</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$ret</span><span style="color: #007700">[]&nbsp;=&nbsp;</span><span style="color: #0000BB">$log</span><span style="color: #007700">[</span><span style="color: #0000BB">0</span><span style="color: #007700">];&nbsp;</span><span style="color: #FF8000">//&nbsp;log&nbsp;is&nbsp;only&nbsp;one&nbsp;item&nbsp;long<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">}<br />&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">$ret</span><span style="color: #007700">;<br />}<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+  </p>
+ </div>
+
+
+ <div class="refsect1 seealso">
+  <h3 class="title">Смотрите также</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member">
+     <a href="http://svnbook.red-bean.com/en/1.2/svn.ref.svn.c.log.html" class="link external">&raquo; 
+      SVN documentation on svn log
+     </a>
+    </li>
+   </ul>
+  </p>
+ </div>
+
+
+</div><hr /><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="function.svn-import.html">svn_import</a></div>
+ <div class="next" style="float: right;"><a href="function.svn-ls.html">svn_ls</a></div>
+ <div class="up"><a href="ref.svn.html">SVN</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

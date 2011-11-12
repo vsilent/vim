@@ -1,0 +1,80 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <title>Добавить один или несколько элементов в начало массива</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+ </head>
+ <body><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="function.array-unique.html">array_unique</a></div>
+ <div class="next" style="float: right;"><a href="function.array-values.html">array_values</a></div>
+ <div class="up"><a href="ref.array.html">Функции для работы с массивами</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="function.array-unshift" class="refentry">
+   <div class="refnamediv">
+    <h1 class="refname">array_unshift</h1>
+    <p class="verinfo">(PHP 4, PHP 5)</p><p class="refpurpose dc-title">array_unshift — 
+     Добавить один или несколько элементов в начало массива
+    </p>
+
+   </div>
+   <div class="refsect1 unknown">
+    <h3 class="title">Описание</h3>
+     <div class="methodsynopsis dc-description">
+      <span class="type">int</span> <span class="methodname"><b><b>array_unshift</b></b></span>
+       ( <span class="methodparam"><span class="type">array</span> <tt class="parameter">$&amp;array</tt></span>
+      , <span class="methodparam"><span class="type"><a href="language.pseudo-types.html#language.types.mixed" class="type mixed">mixed</a></span> <tt class="parameter">$var</tt></span>
+      [, <span class="methodparam"><span class="type"><a href="language.pseudo-types.html#language.types.mixed" class="type mixed">mixed</a></span> <tt class="parameter">$...</tt></span>
+     ] )</div>
+
+    <p class="para rdfs-comment">
+     <b>array_unshift()</b> добавляет переданные в качестве аргументов
+     элементы в начало массива <i><tt class="parameter">array</tt></i>
+. Обратите внимание, что
+     список элементов добавляется целиком, то есть порядок элементов сохраняется.
+     Все числовые ключи будут изменены таким образом, что нумерация массива будет начинаться с нуля,
+     в то время как строковые ключи останутся прежними.
+    </p>
+    <p class="para">
+     Возвращает новое количество элементов в
+     <i><tt class="parameter">array</tt></i>
+.
+    </p>
+    <p class="para">
+     <div class="example">
+      <p><b>Пример #1 Пример использования <b>array_unshift()</b></b></p>
+      <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$queue&nbsp;</span><span style="color: #007700">=&nbsp;array(</span><span style="color: #DD0000">"orange"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"banana"</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">array_unshift</span><span style="color: #007700">(</span><span style="color: #0000BB">$queue</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"apple"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"raspberry"</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+      </div>
+
+      <div class="example-contents"><p>
+       В результате массив <var class="varname">$queue</var> будет содержать следующие элементы:
+      </p></div>
+      <div class="example-contents"><pre>
+<div class="cdata"><pre>
+Array
+(
+    [0] =&gt; apple
+    [1] =&gt; raspberry
+    [2] =&gt; orange
+    [3] =&gt; banana
+)
+</pre></div>
+      </pre></div>
+     </div>
+    </p>
+    <p class="para">
+     См. также <a href="function.array-shift.html" class="function">array_shift()</a>,
+     <a href="function.array-push.html" class="function">array_push()</a> и
+     <a href="function.array-pop.html" class="function">array_pop()</a>.
+    </p>
+   </div>
+
+  </div><hr /><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="function.array-unique.html">array_unique</a></div>
+ <div class="next" style="float: right;"><a href="function.array-values.html">array_values</a></div>
+ <div class="up"><a href="ref.array.html">Функции для работы с массивами</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

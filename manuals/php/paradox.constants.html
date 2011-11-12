@@ -1,0 +1,207 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <title>Предопределенные константы</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+ </head>
+ <body><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="paradox.resources.html">Типы ресурсов</a></div>
+ <div class="next" style="float: right;"><a href="ref.paradox.html">Paradox File Access</a></div>
+ <div class="up"><a href="book.paradox.html">Paradox</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div>
+ <h1>Предопределенные константы</h1>
+
+ <p class="simpara">
+Перечисленные ниже константы определены данным расширением и могут быть
+доступны только в том случае, если PHP был собран с
+поддержкой этого расширения или же в том случае, если
+данное расширение подгружается во время выполнения.
+</p>
+ <p class="para">
+  The following two tables lists all constants defined by the paradox
+  extension.
+  <table border="5">
+   <caption><b>Contants for field types</b></caption>
+   <colgroup>
+
+    <thead valign="middle">
+     <tr valign="middle">
+      <th colspan="1">Name</th>
+      <th colspan="1">Meaning</th>
+     </tr>
+
+    </thead>
+
+    <tbody valign="middle" class="tbody">
+     <tr valign="middle">
+      <td colspan="1" rowspan="1" align="left">PX_FIELD_ALPHA</td>
+      <td colspan="1" rowspan="1" align="left">Character data with fixed length</td>
+     </tr>
+
+     <tr valign="middle">
+      <td colspan="1" rowspan="1" align="left">PX_FIELD_DATE</td>
+      <td colspan="1" rowspan="1" align="left">Date, number of days since 1.1.0000</td>
+     </tr>
+
+     <tr valign="middle">
+      <td colspan="1" rowspan="1" align="left">PX_FIELD_SHORT</td>
+      <td colspan="1" rowspan="1" align="left">Short integer (2 Bytes)</td>
+     </tr>
+
+     <tr valign="middle">
+      <td colspan="1" rowspan="1" align="left">PX_FIELD_LONG</td>
+      <td colspan="1" rowspan="1" align="left">Long integer (4 Bytes)</td>
+     </tr>
+
+     <tr valign="middle">
+      <td colspan="1" rowspan="1" align="left">PX_FIELD_CURRENCY</td>
+      <td colspan="1" rowspan="1" align="left">same as PX_FIELD_NUMBER</td>
+     </tr>
+
+     <tr valign="middle">
+      <td colspan="1" rowspan="1" align="left">PX_FIELD_NUMBER</td>
+      <td colspan="1" rowspan="1" align="left">Double</td>
+     </tr>
+
+     <tr valign="middle">
+      <td colspan="1" rowspan="1" align="left">PX_FIELD_LOGICAL</td>
+      <td colspan="1" rowspan="1" align="left">Boolean</td>
+     </tr>
+
+     <tr valign="middle">
+      <td colspan="1" rowspan="1" align="left">PX_FIELD_MEMOBLOB</td>
+      <td colspan="1" rowspan="1" align="left">Binary large object</td>
+     </tr>
+
+     <tr valign="middle">
+      <td colspan="1" rowspan="1" align="left">PX_FIELD_BLOB</td>
+      <td colspan="1" rowspan="1" align="left">Binary large object (not supported)</td>
+     </tr>
+
+     <tr valign="middle">
+      <td colspan="1" rowspan="1" align="left">PX_FIELD_FMTMEMOBLOB</td>
+      <td colspan="1" rowspan="1" align="left">Binary large object</td>
+     </tr>
+
+     <tr valign="middle">
+      <td colspan="1" rowspan="1" align="left">PX_FIELD_OLE</td>
+      <td colspan="1" rowspan="1" align="left">OLE object (basically a blob, not supported)</td>
+     </tr>
+
+     <tr valign="middle">
+      <td colspan="1" rowspan="1" align="left">PX_FIELD_GRAPHIC</td>
+      <td colspan="1" rowspan="1" align="left">Graphic (basically a blob, not supported)</td>
+     </tr>
+
+     <tr valign="middle">
+      <td colspan="1" rowspan="1" align="left">PX_FIELD_TIME</td>
+      <td colspan="1" rowspan="1" align="left">time, number of milli seconds since midnight</td>
+     </tr>
+
+     <tr valign="middle">
+      <td colspan="1" rowspan="1" align="left">PX_FIELD_TIMESTAMP</td>
+      <td colspan="1" rowspan="1" align="left">timestamp, number of milli seconds since 1.1.0000 </td>
+     </tr>
+
+     <tr valign="middle">
+      <td colspan="1" rowspan="1" align="left">PX_FIELD_AUTOINC</td>
+      <td colspan="1" rowspan="1" align="left">Auto incrementing interger (like PX_FIELD_LONG)</td>
+     </tr>
+
+     <tr valign="middle">
+      <td colspan="1" rowspan="1" align="left">PX_FIELD_BCD</td>
+      <td colspan="1" rowspan="1" align="left">Decimal number stored in bcd format (not supported)</td>
+     </tr>
+
+     <tr valign="middle">
+      <td colspan="1" rowspan="1" align="left">PX_FIELD_BYTES</td>
+      <td colspan="1" rowspan="1" align="left">Array of Bytes with not more than 255 bytes (not supported)</td>
+     </tr>
+
+     <tr valign="middle">
+      <td colspan="1" rowspan="1" align="left">PX_KEYTOLOWER</td>
+      <td colspan="1" rowspan="1" align="left">Turn all field names into lower case</td>
+     </tr>
+
+     <tr valign="middle">
+      <td colspan="1" rowspan="1" align="left">PX_KEYTOUPPER</td>
+      <td colspan="1" rowspan="1" align="left">Turn all field names into upper case</td>
+     </tr>
+
+    </tbody>
+   </colgroup>
+
+  </table>
+
+  <table border="5">
+   <caption><b>Contants for file types</b></caption>
+   <colgroup>
+
+    <thead valign="middle">
+     <tr valign="middle">
+      <th colspan="1">Name</th>
+      <th colspan="1">Meaning</th>
+     </tr>
+
+    </thead>
+
+    <tbody valign="middle" class="tbody">
+     <tr valign="middle">
+      <td colspan="1" rowspan="1" align="left">PX_FILE_INDEX_DB</td>
+      <td colspan="1" rowspan="1" align="left">Indexed database</td>
+     </tr>
+
+     <tr valign="middle">
+      <td colspan="1" rowspan="1" align="left">PX_FILE_PRIM_INDEX</td>
+      <td colspan="1" rowspan="1" align="left">Primary index</td>
+     </tr>
+
+     <tr valign="middle">
+      <td colspan="1" rowspan="1" align="left">PX_FILE_NON_INDEX_DB</td>
+      <td colspan="1" rowspan="1" align="left">None indexed database</td>
+     </tr>
+
+     <tr valign="middle">
+      <td colspan="1" rowspan="1" align="left">PX_FILE_NON_INC_SEC_INDEX</td>
+      <td colspan="1" rowspan="1" align="left">None incremental secondary index</td>
+     </tr>
+
+     <tr valign="middle">
+      <td colspan="1" rowspan="1" align="left">PX_FILE_SEC_INDEX</td>
+      <td colspan="1" rowspan="1" align="left">Secondary index</td>
+     </tr>
+
+     <tr valign="middle">
+      <td colspan="1" rowspan="1" align="left">PX_FILE_INC_SEC_INDEX</td>
+      <td colspan="1" rowspan="1" align="left">Incremental secondary index</td>
+     </tr>
+
+     <tr valign="middle">
+      <td colspan="1" rowspan="1" align="left">PX_FILE_NON_INC_SEC_INDEX_G</td>
+      <td colspan="1" rowspan="1" align="left">Non incremental secondary index</td>
+     </tr>
+
+     <tr valign="middle">
+      <td colspan="1" rowspan="1" align="left">PX_FILE_SEC_INDEX_G</td>
+      <td colspan="1" rowspan="1" align="left">Secondary index</td>
+     </tr>
+
+     <tr valign="middle">
+      <td colspan="1" rowspan="1" align="left">PX_FILE_INC_SEC_INDEX_G</td>
+      <td colspan="1" rowspan="1" align="left">Non incremental secondary index</td>
+     </tr>
+
+    </tbody>
+   </colgroup>
+
+  </table>
+
+ </p>
+</div>
+<hr /><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="paradox.resources.html">Типы ресурсов</a></div>
+ <div class="next" style="float: right;"><a href="ref.paradox.html">Paradox File Access</a></div>
+ <div class="up"><a href="book.paradox.html">Paradox</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

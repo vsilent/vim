@@ -1,0 +1,128 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <title>Connecting to SQLite databases</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+ </head>
+ <body><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="ref.pdo-sqlite.html">SQLite (PDO)</a></div>
+ <div class="next" style="float: right;"><a href="function.PDO-sqliteCreateAggregate.html">PDO->sqliteCreateAggregate()</a></div>
+ <div class="up"><a href="ref.pdo-sqlite.html">SQLite (PDO)</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="ref.pdo-sqlite.connection" class="refentry">
+   <div class="refnamediv">
+    <h1 class="refname">PDO_SQLITE DSN</h1>
+    <p class="verinfo">(No version information available, might be only in CVS)</p><p class="refpurpose dc-title">PDO_SQLITE DSN — Connecting to SQLite databases</p>
+
+   </div>
+
+   <div class="refsect1 description">
+    <h3 class="title">Описание</h3>
+    <p class="para">
+     The PDO_SQLITE Data Source Name (DSN) is composed of the following elements:
+     <dl>
+
+      <dt>
+
+       <span class="term">DSN prefix (SQLite 3)</span>
+
+       <dd>
+
+        <p class="para">
+         The DSN prefix is <strong class="userinput"><code>sqlite:</code></strong>
+.
+         <ul class="itemizedlist">
+          <li class="listitem">
+           <p class="para">
+            To access a database on disk, append the absolute path to the
+            DSN prefix.
+           </p>
+          </li>
+          <li class="listitem">
+           <p class="para">
+            To create a database in memory, append <i>:memory:</i>
+            to the DSN prefix.
+           </p>
+          </li>
+         </ul>
+        </p>
+       </dd>
+
+      </dt>
+
+      <dt>
+
+       <span class="term">DSN prefix (SQLite 2)</span>
+
+       <dd>
+
+        <p class="para">
+         The <a href="ref.sqlite.html" class="link">SQLite</a> extension in
+         PHP 5.1 provides a PDO driver that supports accessing and creating SQLite 2
+         databases.  This enables you to access databases you may have created
+         with the <a href="ref.sqlite.html" class="link">SQLite</a> extension in
+         previous versions of PHP.
+        </p>
+        <blockquote><p><b class="note">Замечание</b>: 
+         
+          The sqlite2 driver is only available in PHP 5.1.x if you have enabled
+          both PDO and ext/sqlite.  It is not currently available via PECL.
+         <br />
+        </p></blockquote>
+        <p class="para">
+         The DSN prefix for connecting to SQLite 2 databases is
+         <strong class="userinput"><code>sqlite2:</code></strong>
+.
+         <ul class="itemizedlist">
+          <li class="listitem">
+           <p class="para">
+            To access a database on disk, append the absolute path to the
+            DSN prefix.
+           </p>
+          </li>
+          <li class="listitem">
+           <p class="para">
+            To create a database in memory, append <i>:memory:</i>
+            to the DSN prefix.
+           </p>
+          </li>
+         </ul>
+        </p>
+       </dd>
+
+      </dt>
+
+
+     </dl>
+
+    </p>
+   </div>
+
+   <div class="refsect1 examples">
+    <h3 class="title">Примеры</h3>
+    <p class="para">
+     <div class="example">
+      <p><b>Пример #1 PDO_SQLITE DSN examples</b></p>
+      <div class="example-contents"><p>
+       The following examples show PDO_SQLITE DSN for connecting to
+       SQLite databases:
+       <div class="example-contents">
+<div class="cdata"><pre>
+sqlite:/opt/databases/mydb.sq3
+sqlite::memory:
+sqlite2:/opt/databases/mydb.sq2
+sqlite2::memory:
+</pre></div>
+       </div>
+
+      </p></div>
+     </div>
+    </p>
+   </div>
+
+  </div><hr /><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="ref.pdo-sqlite.html">SQLite (PDO)</a></div>
+ <div class="next" style="float: right;"><a href="function.PDO-sqliteCreateAggregate.html">PDO->sqliteCreateAggregate()</a></div>
+ <div class="up"><a href="ref.pdo-sqlite.html">SQLite (PDO)</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

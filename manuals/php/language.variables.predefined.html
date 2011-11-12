@@ -1,0 +1,97 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <title>Предопределенные переменные</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+ </head>
+ <body><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="language.variables.html">Переменные</a></div>
+ <div class="next" style="float: right;"><a href="language.variables.scope.html">Область видимости переменной</a></div>
+ <div class="up"><a href="language.variables.html">Переменные</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="language.variables.predefined" class="sect1">
+   <h2 class="title">Предопределенные переменные</h2>
+   
+   <p class="simpara">
+    Любому запускаемому скрипту PHP предоставляет большое количество
+    предопределенных переменных. Однако, многие из этих переменных не
+    могут быть полностью задокументированы, поскольку они зависят от
+    запущенного сервера, его версии и настроек, а также других факторов.
+    Некоторые из этих переменных не доступны, когда PHP запущен из
+еменные     <a href="features.commandline.html" class="link">командной строки</a>.
+    Перечень этих переменных смотрите в разделе
+    <a href="reserved.variables.html" class="link">Зарезервированные
+    предопределенные переменные</a>.
+   </p>
+
+   <div class="warning"><b class="warning">Внимание</b>
+    <p class="simpara">
+     Начиная с PHP 4.2.0, значение директивы <a href="ini.core.html#ini.register-globals" class="link">register_globals</a> по умолчанию
+     установлено в <em class="emphasis">off</em> (отключено). Это большое изменение
+     в PHP. Положение register_globals в <em class="emphasis">off</em> делает
+     предопределенные переменные доступными в глобальной области видимости.
+     Например, чтобы получить <var class="varname">DOCUMENT_ROOT</var>, вам необходимо
+     будет использовать <var class="varname">$_SERVER[&#039;DOCUMENT_ROOT&#039;]</var> вместо
+     <var class="varname">$DOCUMENT_ROOT</var>, или <var class="varname">$_GET[&#039;id&#039;]</var> из
+     URL <i>http://www.example.com/test.php?id=3</i> вместо
+     <var class="varname">$id</var>, или <var class="varname">$_ENV[&#039;HOME&#039;]</var> вместо
+     <var class="varname">$HOME</var>.
+    </p>
+    <p class="simpara">
+     Дополнительную информацию, связанную с этим изменением, вы можете
+     получить, прочитав описание
+     <a href="ini.core.html#ini.register-globals" class="link">register_globals</a> в разделе о
+     настройках, главу о безопасности
+     <a href="security.globals.html" class="link">Использование Register Globals
+     </a>, а также сообщения о выпусках PHP <a href="http://www.php.net/releases/4_1_0.php" class="link external">&raquo; 4.1.0
+     </a> и <a href="http://www.php.net/releases/4_2_0.php" class="link external">&raquo; 4.2.0</a>.
+    </p>
+    <p class="simpara">
+     Использование доступных зарезервированных предопределенных переменных
+     PHP, таких как
+     <a href="language.variables.superglobals.html" class="link">суперглобальные массивы</a>, 
+     является предпочтительным.
+    </p>
+   </div>
+
+   <p class="simpara">
+    Начиная с версии 4.1.0, PHP предоставляет дополнительный набор
+    предопределенных массивов, содержащих переменные web-сервера (если
+    они доступны), окружения и пользовательского ввода. Эти новые
+    массивы являются особыми, поскольку они автоматически глобальны--то
+    есть, автоматически доступны в любой области видимости. По этой
+    причине они также известны как &#039;автоглобальные&#039; или &#039;суперглобальные&#039;
+    переменные. (В PHP нет механизма определяемых пользователем
+    суперглобальных переменных.) Суперглобальные переменные перечислены
+    ниже; однако, перечисление их содержимого и дальнейшее обсуждение
+    предопределенных переменных PHP и их сути смотрите в разделе
+    <a href="reserved.variables.html" class="link">Зарезервированные
+    предопределенные переменные</a>. Также вы заметите, что старые 
+    предопределенные переменные (<var class="varname">$HTTP_*_VARS</var>) всё
+    еще существуют.
+
+    Начиная с PHP 5.0.0, длинные
+<a href="language.variables.predefined.html" class="link">предопределенные переменные</a>
+массивов PHP могут быть отключены директивой
+<a href="ini.core.html#ini.register-long-arrays" class="link">register_long_arrays</a>.
+   </p>
+   
+   <blockquote><p><b class="note">Замечание</b>: 
+    <b>Переменные переменных</b>
+    
+     Суперглобальные переменные не могут быть
+     <a href="language.variables.variable.html" class="link">переменными переменных</a>.
+    <br />
+   </p></blockquote>
+
+   <p class="para">
+    Если некоторые из переменных в <a href="ini.core.html#ini.variables-order" class="link">variables_order</a> не установлены,
+    соответствующие им предопределенные массивы также останутся пустыми.
+   </p>
+
+  </div><hr /><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="language.variables.html">Переменные</a></div>
+ <div class="next" style="float: right;"><a href="language.variables.scope.html">Область видимости переменной</a></div>
+ <div class="up"><a href="language.variables.html">Переменные</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

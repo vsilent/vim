@@ -1,0 +1,121 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <title>Переменные</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+ </head>
+ <body><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="language.types.type-juggling.html">Манипуляции с типами</a></div>
+ <div class="next" style="float: right;"><a href="language.variables.predefined.html">Предопределенные переменные</a></div>
+ <div class="up"><a href="langref.html">Справочник языка</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div>
+  <h1>Переменные</h1>
+<h2>Содержание</h2><ul class="chunklist chunklist_chapter"><li><a href="language.variables.predefined.html">Предопределенные переменные</a></li><li><a href="language.variables.scope.html">Область видимости переменной</a></li><li><a href="language.variables.variable.html">Переменные переменные</a></li><li><a href="language.variables.external.html">Переменные извне PHP</a></li></ul>
+
+  
+  <div id="language.variables.basics" class="sect1">
+   <h2 class="title">Основы</h2>
+
+   <p class="simpara">
+    Переменные в PHP представлены знаком доллара с последующим
+    именем переменной. Имя переменной чувствительно к регистру.
+   </p>
+
+   <p class="para">
+    Имена переменных соответствуют тем же правилам, что и
+    остальные наименования в PHP. Правильное имя переменной должно
+    начинаться с буквы или символа подчеркивания с последующими в
+    любом количестве буквами, цифрами или символами подчеркивания
+    Это можно отобразить регулярным выражением:
+    &#039;[a-zA-Z_\x7f-\xff][a-zA-Z0-9_\x7f-\xff]*&#039;
+   </p>
+   
+   <blockquote><p><b class="note">Замечание</b>: 
+    <span class="simpara">
+     Для наших целей буквы здесь - это a-z, A-Z, и ASCII-символы
+     со 127 по 255 (0x7f-0xff).
+    </span>
+   </p></blockquote>
+
+   <p class="para">
+    <div class="informalexample">
+     <div class="example-contents"> 
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$var&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">"Bob"</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$Var&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">"Joe"</span><span style="color: #007700">;<br />echo&nbsp;</span><span style="color: #DD0000">"$var,&nbsp;$Var"</span><span style="color: #007700">;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;выведет&nbsp;"Bob,&nbsp;Joe"<br /><br /></span><span style="color: #007700">$</span><span style="color: #0000BB">4site&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">'not&nbsp;yet'</span><span style="color: #007700">;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;неверно;&nbsp;начинается&nbsp;с&nbsp;цифры<br /></span><span style="color: #0000BB">$_4site&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">'not&nbsp;yet'</span><span style="color: #007700">;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;верно;&nbsp;начинается&nbsp;с&nbsp;символа&nbsp;подчеркивания<br /></span><span style="color: #0000BB">$tдyte&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">'mansikka'</span><span style="color: #007700">;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;верно;&nbsp;'д'&nbsp;это&nbsp;(Дополнительный)&nbsp;ASCII&nbsp;228.<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+     </div>
+
+    </div>
+   </p>
+
+   <p class="para">
+    В PHP 3 переменные всегда присваивались по значению. То есть,
+    когда вы присваиваете выражение переменной, все значение
+    оригинального выражения копируется в эту переменную. Это
+    означает, к примеру, что после присвоения одной переменной
+    значения другой, изменение одной из них не влияет на значение
+    другой. Дополнительную информацию об этом способе присвоения
+    смотрите в разделе <a href="language.expressions.html" class="link">Выражения</a>.
+   </p>
+   <p class="para">
+    PHP 4 предлагает иной способ присвоения значений переменным:
+    <a href="language.references.html" class="link">присвоение по ссылке</a>. 
+    Это означает, что новая переменная просто ссылается (иначе говоря,
+    &quot;становится псевдонимом&quot; или &quot;указывает&quot;) на оригинальную
+    переменную. Изменения в одной переменной отражаются на оригинале,
+    и наоборот. Это также означает, что копирования не происходит;
+    таким образом, присвоение осуществляется быстрее. Однако,
+    любое увеличение скорости будет хорошо заметно только в сжатых
+    циклах или при присвоении больших
+    <a href="language.types.array.html" class="link">массивов</a> или
+    <a href="language.types.object.html" class="link">объектов</a>.
+   </p>
+   <p class="para">
+    Для присвоения по ссылке, просто добавьте амперсанд (&amp;) к
+    началу имени присваиваемой (исходной) переменной. Например,
+    следующий фрагмент кода дважды выводит &#039;My name is Bob&#039;:
+
+    <div class="informalexample">
+     <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$foo&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">'Bob'</span><span style="color: #007700">;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;Присваивает&nbsp;$foo&nbsp;значение&nbsp;'Bob'<br /></span><span style="color: #0000BB">$bar&nbsp;</span><span style="color: #007700">=&nbsp;&amp;</span><span style="color: #0000BB">$foo</span><span style="color: #007700">;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;Ссылка&nbsp;на&nbsp;$foo&nbsp;через&nbsp;$bar.<br /></span><span style="color: #0000BB">$bar&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">"My&nbsp;name&nbsp;is&nbsp;$bar"</span><span style="color: #007700">;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;Изменение&nbsp;$bar...<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">$bar</span><span style="color: #007700">;<br />echo&nbsp;</span><span style="color: #0000BB">$foo</span><span style="color: #007700">;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;меняет&nbsp;и&nbsp;$foo.<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+     </div>
+
+    </div>
+   </p>
+
+   <p class="para">
+    Важно отметить, что по ссылке могут быть присвоены только
+    именованные переменные.
+    <div class="informalexample">
+     <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$foo&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">25</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$bar&nbsp;</span><span style="color: #007700">=&nbsp;&amp;</span><span style="color: #0000BB">$foo</span><span style="color: #007700">;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;Это&nbsp;верное&nbsp;присвоение.<br /></span><span style="color: #0000BB">$bar&nbsp;</span><span style="color: #007700">=&nbsp;&amp;(</span><span style="color: #0000BB">24&nbsp;</span><span style="color: #007700">*&nbsp;</span><span style="color: #0000BB">7</span><span style="color: #007700">);&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;Неверно;&nbsp;ссылка&nbsp;на&nbsp;неименованное&nbsp;выражение.<br /><br /></span><span style="color: #007700">function&nbsp;</span><span style="color: #0000BB">test</span><span style="color: #007700">()<br />{<br />&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">25</span><span style="color: #007700">;<br />}<br /><br /></span><span style="color: #0000BB">$bar&nbsp;</span><span style="color: #007700">=&nbsp;&amp;</span><span style="color: #0000BB">test</span><span style="color: #007700">();&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;Неверно.<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+     </div>
+
+    </div>
+   </p>
+  </div>
+
+  
+
+
+  
+
+  
+
+  
+     
+ </div>
+<hr /><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="language.types.type-juggling.html">Манипуляции с типами</a></div>
+ <div class="next" style="float: right;"><a href="language.variables.predefined.html">Предопределенные переменные</a></div>
+ <div class="up"><a href="langref.html">Справочник языка</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

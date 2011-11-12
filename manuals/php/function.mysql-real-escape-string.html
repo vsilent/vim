@@ -1,0 +1,220 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <title>Экранирует специальные символы в строках для 
+   использования в выражениях SQL</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+ </head>
+ <body><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="function.mysql-query.html">mysql_query</a></div>
+ <div class="next" style="float: right;"><a href="function.mysql-result.html">mysql_result</a></div>
+ <div class="up"><a href="ref.mysql.html">MySQL</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="function.mysql-real-escape-string" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">mysql_real_escape_string</h1>
+  <p class="verinfo">(PHP 4 &gt;= 4.3.0, PHP 5, PECL mysql:1.0)</p><p class="refpurpose dc-title">mysql_real_escape_string — 
+   Экранирует специальные символы в строках для 
+   использования в выражениях SQL
+  </p>
+
+ </div>
+
+ <div class="refsect1 description">
+  <h3 class="title">Описание</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type">string</span> <span class="methodname"><b><b>mysql_real_escape_string</b></b></span>
+    ( <span class="methodparam"><span class="type">string</span> <tt class="parameter">$unescaped_string</tt></span>
+   [, <span class="methodparam"><span class="type">resource</span> <tt class="parameter">$link_identifier</tt></span>
+  ] )</div>
+
+  <p class="para rdfs-comment">
+   Экранирует специальные символы в <i><tt class="parameter">unescaped_string</tt></i>
+, 
+   принимая во внимание кодировку соединения, таким образом, что результат 
+   можно безопасно использовать в SQL-запросе в функци <a href="function.mysql-query.html" class="function">mysql_query()</a>. 
+   Если вставляются бинарные данные, то к ним так же необходимо применять эту функцию.
+  </p>
+  <p class="para">
+   <b>mysql_real_escape_string()</b> вызывает библиотечную функцмю MySQL
+   mysql_real_escape_string, которая добавляет обратную косую черту к следующим символам:
+   <i>\x00</i>, <i>\n</i>,
+   <i>\r</i>, <i>\</i>, <i>&#039;</i>,
+   <i>&quot;</i> and <i>\x1a</i>.
+  </p>
+  <p class="para">
+   Эта функция должна всегда (за несколькими исключениями) использоваться для того, 
+   чтобы обезопасить данные, вставляемые в запрос перед отправкой его в MySQL.
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters">
+  <h3 class="title">Список параметров</h3>
+  <p class="para">
+   <dl>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">unescaped_string</tt></i>
+</span>
+
+     <dd>
+
+      <p class="para">
+       Строка, которая должна быть экранирована.
+      </p>
+     </dd>
+
+    </dt>
+
+    <dt>
+<span class="term"><i><tt class="parameter">
+link_identifier</tt></i>
+</span>
+<dd>
+<p class="para">The MySQL connection. If the 
+link identifier is not specified, the last link opened by 
+<a href="function.mysql-connect.html" class="function">mysql_connect()</a> is assumed. If no such link is found, it
+will try to create one as if <a href="function.mysql-connect.html" class="function">mysql_connect()</a> was called
+with no arguments. If by chance no connection is found or established, an
+<b><tt>E_WARNING</tt></b> level error is generated.</p></dd>
+
+</dt>
+
+   </dl>
+
+  </p>
+ </div>
+
+
+ <div class="refsect1 returnvalues">
+  <h3 class="title">Возвращаемые значения</h3>
+  <p class="para">
+   Возвращает строку, в которой экранированы все необходимые символы, 
+   или <b><tt>FALSE</tt></b> в случае ошибки.
+  </p>
+ </div>
+
+
+ <div class="refsect1 examples">
+  <h3 class="title">Примеры</h3>
+  <p class="para">
+   <div class="example">
+    <p><b>Пример #1 
+     Простой пример использования
+     <b>mysql_real_escape_string()</b>
+    </b></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">//&nbsp;Connect<br /></span><span style="color: #0000BB">$link&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">mysql_connect</span><span style="color: #007700">(</span><span style="color: #DD0000">'mysql_host'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'mysql_user'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'mysql_password'</span><span style="color: #007700">)<br />&nbsp;&nbsp;&nbsp;&nbsp;OR&nbsp;die(</span><span style="color: #0000BB">mysql_error</span><span style="color: #007700">());<br /><br /></span><span style="color: #FF8000">//&nbsp;Query<br /></span><span style="color: #0000BB">$query&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">sprintf</span><span style="color: #007700">(</span><span style="color: #DD0000">"SELECT&nbsp;*&nbsp;FROM&nbsp;users&nbsp;WHERE&nbsp;user='%s'&nbsp;AND&nbsp;password='%s'"</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">mysql_real_escape_string</span><span style="color: #007700">(</span><span style="color: #0000BB">$user</span><span style="color: #007700">),<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">mysql_real_escape_string</span><span style="color: #007700">(</span><span style="color: #0000BB">$password</span><span style="color: #007700">));<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+  </p>
+  <p class="para">
+   <div class="example">
+    <p><b>Пример #2 Пример взлома с использованием SQL Injection</b></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">//&nbsp;посылаем&nbsp;запрос,&nbsp;чтобы&nbsp;проверить&nbsp;имя&nbsp;и&nbsp;пароль&nbsp;пользователя<br /></span><span style="color: #0000BB">$query&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">"SELECT&nbsp;*&nbsp;FROM&nbsp;users&nbsp;WHERE&nbsp;user='{$_POST['username']}'&nbsp;AND&nbsp;password='{$_POST['password']}'"</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">mysql_query</span><span style="color: #007700">(</span><span style="color: #0000BB">$query</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">//&nbsp;Мы&nbsp;не&nbsp;никак&nbsp;проверили&nbsp;переменную&nbsp;$_POST['password'],&nbsp;<br />//&nbsp;а&nbsp;она&nbsp;может&nbsp;содержать&nbsp;совсем&nbsp;не&nbsp;то,&nbsp;что&nbsp;мы&nbsp;ожидали.&nbsp;Например:<br /></span><span style="color: #0000BB">$_POST</span><span style="color: #007700">[</span><span style="color: #DD0000">'username'</span><span style="color: #007700">]&nbsp;=&nbsp;</span><span style="color: #DD0000">'aidan'</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$_POST</span><span style="color: #007700">[</span><span style="color: #DD0000">'password'</span><span style="color: #007700">]&nbsp;=&nbsp;</span><span style="color: #DD0000">"'&nbsp;OR&nbsp;''='"</span><span style="color: #007700">;<br /><br /></span><span style="color: #FF8000">//&nbsp;посмотрим,&nbsp;какой&nbsp;запрос&nbsp;будет&nbsp;отправлен&nbsp;в&nbsp;MySQL:<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">$query</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+     <div class="example-contents"><p>
+      Запрос, который будет отправлен в MySQL:
+     </p></div>
+    <div class="example-contents"><pre>
+<div class="cdata"><pre>
+SELECT * FROM users WHERE name=&#039;aidan&#039; AND password=&#039;&#039; OR &#039;&#039;=&#039;&#039;
+</pre></div>
+    </pre></div>
+    <div class="example-contents"><p>
+     Это позволит кому угодно войти в систему без пароля.
+    </p></div>
+   </div>
+  </p>
+  <p class="para">
+   <div class="example">
+    <p><b>Пример #3 Лучший вариант составления запроса</b></p>
+    <div class="example-contents"><p>
+     Применение <b>mysql_real_escape_string()</b> к каждой переменной, 
+     вставляемой в запрос, предотвращает SQL Injection. Нижеследующий код является 
+     наилучшим вариантом составления запросов и не зависит от установки 
+     <a href="security.magicquotes.html" class="link">Magic Quotes</a>.
+    </p></div>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">//&nbsp;Функция&nbsp;экранирования&nbsp;переменных<br /></span><span style="color: #007700">function&nbsp;</span><span style="color: #0000BB">quote_smart</span><span style="color: #007700">(</span><span style="color: #0000BB">$value</span><span style="color: #007700">)<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;если&nbsp;magic_quotes_gpc&nbsp;включена&nbsp;-&nbsp;используем&nbsp;stripslashes<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">if&nbsp;(</span><span style="color: #0000BB">get_magic_quotes_gpc</span><span style="color: #007700">())&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$value&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">stripslashes</span><span style="color: #007700">(</span><span style="color: #0000BB">$value</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;Если&nbsp;переменная&nbsp;-&nbsp;число,&nbsp;то&nbsp;экранировать&nbsp;её&nbsp;не&nbsp;нужно<br />&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;если&nbsp;нет&nbsp;-&nbsp;то&nbsp;окружем&nbsp;её&nbsp;кавычками,&nbsp;и&nbsp;экранируем<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">if&nbsp;(!</span><span style="color: #0000BB">is_numeric</span><span style="color: #007700">(</span><span style="color: #0000BB">$value</span><span style="color: #007700">))&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$value&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">"'"&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #0000BB">mysql_real_escape_string</span><span style="color: #007700">(</span><span style="color: #0000BB">$value</span><span style="color: #007700">)&nbsp;.&nbsp;</span><span style="color: #DD0000">"'"</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">$value</span><span style="color: #007700">;<br />}<br /><br /></span><span style="color: #FF8000">//&nbsp;Соединяемся<br /></span><span style="color: #0000BB">$link&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">mysql_connect</span><span style="color: #007700">(</span><span style="color: #DD0000">'mysql_host'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'mysql_user'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'mysql_password'</span><span style="color: #007700">)<br />&nbsp;&nbsp;&nbsp;&nbsp;OR&nbsp;die(</span><span style="color: #0000BB">mysql_error</span><span style="color: #007700">());<br /><br /></span><span style="color: #FF8000">//&nbsp;Составляем&nbsp;безопасный&nbsp;запрос<br /></span><span style="color: #0000BB">$query&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">sprintf</span><span style="color: #007700">(</span><span style="color: #DD0000">"SELECT&nbsp;*&nbsp;FROM&nbsp;users&nbsp;WHERE&nbsp;user=%s&nbsp;AND&nbsp;password=%s"</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">quote_smart</span><span style="color: #007700">(</span><span style="color: #0000BB">$_POST</span><span style="color: #007700">[</span><span style="color: #DD0000">'username'</span><span style="color: #007700">]),<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">quote_smart</span><span style="color: #007700">(</span><span style="color: #0000BB">$_POST</span><span style="color: #007700">[</span><span style="color: #DD0000">'password'</span><span style="color: #007700">]));<br /><br /></span><span style="color: #0000BB">mysql_query</span><span style="color: #007700">(</span><span style="color: #0000BB">$query</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+    <div class="example-contents"><p>
+     Запрос, составленный таким образом, будет выполнен без ошибок, 
+     и взлом с помощью SQL Injection окажется невозможен.
+    </p></div>
+   </div>
+  </p>
+ </div>
+
+
+ <div class="refsect1 notes">
+  <h3 class="title">Примечания</h3>
+  <blockquote><p><b class="note">Замечание</b>: 
+   
+    Функцию <b>mysql_real_escape_string()</b> можно использовать 
+    только после того, как установлено соединение с MySQL. В противном 
+    случае возникнет ошибка уровня <i>E_WARNING</i>, а функция 
+    возвратит <b><tt>FALSE</tt></b>. Если  <i><tt class="parameter">link_identifier</tt></i>
+ не указан, 
+    используется последнее открытое соединение.
+   <br />
+  </p></blockquote>
+  <blockquote><p><b class="note">Замечание</b>: 
+   
+    Если <a href="info.configuration.html#ini.magic-quotes-gpc" class="link">magic_quotes_gpc</a> включены, 
+    то сначала данные следует обработать функцией <a href="function.stripslashes.html" class="function">stripslashes()</a>. 
+    Если <b>mysql_real_escape_string()</b> применяется к данным, 
+    которые уже были прослешены, то в результате слеши в данных будут удваиваться.
+   <br />
+  </p></blockquote>
+  <blockquote><p><b class="note">Замечание</b>: 
+   
+    Если не пользоваться этой функцией, то запрос становится уязвимым для
+    <a href="security.database.sql-injection.html" class="link">взлома с помощью SQL Injection</a>.
+   <br />
+  </p></blockquote>
+  <blockquote><p><b class="note">Замечание</b>: 
+   <span class="simpara">
+    <b>mysql_real_escape_string()</b> не экранирует символы
+    <i>%</i> и <i>_</i>. Эти знаки являются масками
+    групп символов в операторах MySQL <i>LIKE</i>, 
+    <i>GRANT</i> или <i>REVOKE</i>.
+   </span>
+  </p></blockquote>
+ </div>
+
+
+ <div class="refsect1 seealso">
+  <h3 class="title">Смотрите также</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"><a href="function.mysql-client-encoding.html" class="function" rel="rdfs-seeAlso">mysql_client_encoding()</a></li>
+    <li class="member"><a href="function.addslashes.html" class="function" rel="rdfs-seeAlso">addslashes()</a></li>
+    <li class="member"><a href="function.stripslashes.html" class="function" rel="rdfs-seeAlso">stripslashes()</a></li>
+    <li class="member">Директива <a href="info.configuration.html#ini.magic-quotes-gpc" class="link">magic_quotes_gpc</a></li>
+    <li class="member">Директива <a href="info.configuration.html#ini.magic-quotes-runtime" class="link">magic_quotes_runtime</a></li>
+   </ul>
+  </p>
+ </div>
+
+</div><hr /><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="function.mysql-query.html">mysql_query</a></div>
+ <div class="next" style="float: right;"><a href="function.mysql-result.html">mysql_result</a></div>
+ <div class="up"><a href="ref.mysql.html">MySQL</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

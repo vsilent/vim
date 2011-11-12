@@ -1,0 +1,133 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <title>Send MS SQL query</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+ </head>
+ <body><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="function.mssql-pconnect.html">mssql_pconnect</a></div>
+ <div class="next" style="float: right;"><a href="function.mssql-result.html">mssql_result</a></div>
+ <div class="up"><a href="ref.mssql.html">Microsoft SQL Server Functions</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="function.mssql-query" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">mssql_query</h1>
+  <p class="verinfo">(PHP 4, PHP 5, PECL odbtp:1.1.1-1.1.4)</p><p class="refpurpose dc-title">mssql_query — Send MS SQL query</p>
+
+ </div>
+ 
+ <div class="refsect1 description">
+  <h3 class="title">Описание</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type"><a href="language.pseudo-types.html#language.types.mixed" class="type mixed">mixed</a></span> <span class="methodname"><b><b>mssql_query</b></b></span>
+    ( <span class="methodparam"><span class="type">string</span> <tt class="parameter">$query</tt></span>
+   [, <span class="methodparam"><span class="type">resource</span> <tt class="parameter">$link_identifier</tt></span>
+   [, <span class="methodparam"><span class="type">int</span> <tt class="parameter">$batch_size</tt></span>
+  ]] )</div>
+
+  <p class="para rdfs-comment">
+   <b>mssql_query()</b> sends a query to the currently active
+   database on the server that&#039;s associated with the specified link
+   identifier. 
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters">
+  <h3 class="title">Список параметров</h3>
+  <p class="para">
+   <dl>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">query</tt></i>
+</span>
+
+     <dd>
+
+      <p class="para">
+       A SQL query.
+      </p>
+     </dd>
+
+    </dt>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">link_identifier</tt></i>
+</span>
+
+     <dd>
+
+      <p class="para">
+       A MS SQL link identifier, returned by 
+       <a href="function.mssql-connect.html" class="function">mssql_connect()</a> or 
+       <a href="function.mssql-pconnect.html" class="function">mssql_pconnect()</a>.
+      </p>
+      <p class="para">
+       If the link identifier isn&#039;t specified, the last opened link is
+       assumed.  If no link is open, the function tries to establish a link
+       as if <a href="function.mssql-connect.html" class="function">mssql_connect()</a> was called, and use it.
+      </p>
+     </dd>
+
+    </dt>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">batch_size</tt></i>
+</span>
+
+     <dd>
+
+      <p class="para">
+       The number of records to batch in the buffer.
+      </p>
+     </dd>
+
+    </dt>
+
+   </dl>
+
+  </p>
+ </div>
+
+
+ <div class="refsect1 returnvalues">
+  <h3 class="title">Возвращаемые значения</h3>
+  <p class="para">
+   Returns a MS SQL result resource on success, <b><tt>TRUE</tt></b> if no rows were
+   returned, or <b><tt>FALSE</tt></b> on error.
+  </p>
+ </div>
+
+
+ <div class="refsect1 notes">
+  <h3 class="title">Примечания</h3>
+  <blockquote><p><b class="note">Замечание</b>: 
+   
+    If the query returns multiple results then it is necessary to fetch all
+    results by <a href="function.mssql-next-result.html" class="function">mssql_next_result()</a> or free the results by
+    <a href="function.mssql-free-result.html" class="function">mssql_free_result()</a> before executing next query.
+   <br />
+  </p></blockquote>
+ </div>
+
+
+ <div class="refsect1 seealso">
+  <h3 class="title">Смотрите также</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"><a href="function.mssql-select-db.html" class="function" rel="rdfs-seeAlso">mssql_select_db()</a></li>
+    <li class="member"><a href="function.mssql-connect.html" class="function" rel="rdfs-seeAlso">mssql_connect()</a></li>
+   </ul>
+  </p>
+ </div>
+
+
+</div><hr /><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="function.mssql-pconnect.html">mssql_pconnect</a></div>
+ <div class="next" style="float: right;"><a href="function.mssql-result.html">mssql_result</a></div>
+ <div class="up"><a href="ref.mssql.html">Microsoft SQL Server Functions</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

@@ -1,0 +1,79 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <title>Ключевое слово "static"</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+ </head>
+ <body><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="language.oop5.paamayim-nekudotayim.html">::</a></div>
+ <div class="next" style="float: right;"><a href="language.oop5.constants.html">Константы в объектах</a></div>
+ <div class="up"><a href="language.oop5.html">Классы и объекты (PHP 5)</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="language.oop5.static" class="sect1">
+  <h2 class="title">Ключевое слово &quot;static&quot;</h2>
+
+  <p class="para">
+   Объявление свойств и методов класса статическими позволяет обращаться к ним 
+   без создания экземпляра класса. Атрибут класса, объявленный статическим, 
+   не можеть быть доступен посредством экземпляра класса (но статический метод
+   может быть вызван).
+  </p>
+
+  <p class="para">
+   В целях совместимости с PHP 4, сделано так, что если не использовалось
+   определение <a href="language.oop5.visibility.html" class="link">области
+   видимости</a>, то член или метод будет рассматриваться,
+   как если бы он был объявлен как <i>public</i>.
+  </p>
+
+  <p class="para">
+   Так как статические методы вызываются без создания экземпляра класса,
+   то псевдо-переменная <var class="varname">$this</var> не доступна внутри метода,
+   объявленного статическим.
+  </p>
+  
+  <p class="para">
+   Доступ к статическим свойствам класса не может быть получен через оператор
+   -&gt;. 
+  </p>
+
+  <p class="para">
+   При попытке вызова нестатических методов статически выводится предупреждение
+   уровня E_STRICT.
+  </p>
+
+  <p class="para">
+   Начиная с версии PHP 5.3.0 существует возможность ссылаться на класс используя
+   переменную. Поэтому значение переменной в таком случае не может быть ключевым
+   словом (например, <i>self</i>, <i>parent</i> и
+   <i>static</i>).
+  </p>
+
+  <div class="example">
+   <p><b>Пример #1 Пример статического свойства</b></p>
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">class&nbsp;</span><span style="color: #0000BB">Foo<br /></span><span style="color: #007700">{<br />&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;static&nbsp;</span><span style="color: #0000BB">$my_static&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">'foo'</span><span style="color: #007700">;<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;function&nbsp;</span><span style="color: #0000BB">staticValue</span><span style="color: #007700">()&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">self</span><span style="color: #007700">::</span><span style="color: #0000BB">$my_static</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />}<br /><br />class&nbsp;</span><span style="color: #0000BB">Bar&nbsp;</span><span style="color: #007700">extends&nbsp;</span><span style="color: #0000BB">Foo<br /></span><span style="color: #007700">{<br />&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;function&nbsp;</span><span style="color: #0000BB">fooStatic</span><span style="color: #007700">()&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">parent</span><span style="color: #007700">::</span><span style="color: #0000BB">$my_static</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />}<br /><br /><br />print&nbsp;</span><span style="color: #0000BB">Foo</span><span style="color: #007700">::</span><span style="color: #0000BB">$my_static&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br /><br /></span><span style="color: #0000BB">$foo&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">Foo</span><span style="color: #007700">();<br />print&nbsp;</span><span style="color: #0000BB">$foo</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">staticValue</span><span style="color: #007700">()&nbsp;.&nbsp;</span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br />print&nbsp;</span><span style="color: #0000BB">$foo</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">my_static&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;Не&nbsp;определено&nbsp;свойство&nbsp;my_static&nbsp;<br /><br /></span><span style="color: #007700">print&nbsp;</span><span style="color: #0000BB">$foo</span><span style="color: #007700">::</span><span style="color: #0000BB">$my_static&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$classname&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">'Foo'</span><span style="color: #007700">;<br />print&nbsp;</span><span style="color: #0000BB">$classname</span><span style="color: #007700">::</span><span style="color: #0000BB">$my_static&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;&nbsp;</span><span style="color: #FF8000">//&nbsp;Начиная&nbsp;только&nbsp;с&nbsp;PHP&nbsp;5.3.0<br /><br /></span><span style="color: #007700">print&nbsp;</span><span style="color: #0000BB">Bar</span><span style="color: #007700">::</span><span style="color: #0000BB">$my_static&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$bar&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">Bar</span><span style="color: #007700">();<br />print&nbsp;</span><span style="color: #0000BB">$bar</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">fooStatic</span><span style="color: #007700">()&nbsp;.&nbsp;</span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+   </div>
+
+  </div>
+
+  <div class="example">
+   <p><b>Пример #2 Пример статического метода</b></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">class&nbsp;</span><span style="color: #0000BB">Foo&nbsp;</span><span style="color: #007700">{<br />&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;static&nbsp;function&nbsp;</span><span style="color: #0000BB">aStaticMethod</span><span style="color: #007700">()&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;...<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">}<br />}<br /><br /></span><span style="color: #0000BB">Foo</span><span style="color: #007700">::</span><span style="color: #0000BB">aStaticMethod</span><span style="color: #007700">();<br /></span><span style="color: #0000BB">$classname&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">'Foo'</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$classname</span><span style="color: #007700">::</span><span style="color: #0000BB">aStaticMethod</span><span style="color: #007700">();&nbsp;</span><span style="color: #FF8000">//&nbsp;Начиная&nbsp;только&nbsp;с&nbsp;PHP&nbsp;5.3.0<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+  </div>
+
+ </div><hr /><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="language.oop5.paamayim-nekudotayim.html">::</a></div>
+ <div class="next" style="float: right;"><a href="language.oop5.constants.html">Константы в объектах</a></div>
+ <div class="up"><a href="language.oop5.html">Классы и объекты (PHP 5)</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

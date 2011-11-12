@@ -1,0 +1,141 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <title>Decompresses the entire Phar archive</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+ </head>
+ <body><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="phar.createdefaultstub.html">Phar::createDefaultStub</a></div>
+ <div class="next" style="float: right;"><a href="phar.decompressfiles.html">Phar::decompressFiles</a></div>
+ <div class="up"><a href="class.Phar.html">Phar</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="phar.decompress" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">Phar::decompress</h1>
+  <p class="verinfo">(No version information available, might be only in CVS)</p><p class="refpurpose dc-title">Phar::decompress — Decompresses the entire Phar archive</p>
+
+ </div>
+
+ <div class="refsect1 description">
+  <h3 class="title">Описание</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type">object</span> <span class="methodname"><b><b>Phar::decompress</b></b></span>
+    ([ <span class="methodparam"><span class="type">string</span> <tt class="parameter">$extension</tt></span>
+  ] )</div>
+
+ <blockquote><p><b class="note">Замечание</b>: This
+method requires the <var class="filename">php.ini</var> setting <i>phar.readonly</i> to be
+set to <i>0</i> in order to work for <span class="classname">Phar</span>
+objects.  Otherwise, a <span class="classname">PharException</span> will be thrown.<br /></p></blockquote>
+
+  <p class="para">
+   For tar-based and phar-based phar archives, this method decompresses the entire archive.
+  </p>
+  <p class="para">
+   For Zip-based phar archives, this method fails with an exception.
+   The <a href="ref.zlib.html" class="link">zlib</a> extension must be enabled to decompress
+   an archive compressed with with gzip compression, and the
+   <a href="ref.bzip2.html" class="link">bzip2</a> extension must be
+   enabled in order to decompress an archive compressed with bzip2 compression.
+   As with all functionality that modifies the contents of a phar, the
+   <a href="phar.configuration.html#ini.phar.readonly" class="link">phar.readonly</a> INI variable must be off
+   in order to succeed.
+  </p>
+  <p class="para">
+   In addition, this method automatically changes the file extension of the archive,
+   <i>.phar</i>
+   by default for phar archives, or <i>.phar.tar</i> for tar-based phar archives.
+   Alternatively, a file extension may be specified with the second
+   parameter.
+  </p>
+  <p class="para">
+   A <span class="classname">Phar</span> object is returned.
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters">
+  <h3 class="title">Список параметров</h3>
+  <p class="para">
+   <dl>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">extension</tt></i>
+</span>
+
+     <dd>
+
+      <p class="para">
+       For decompressing, the default file extensions
+       are <i>.phar</i> and <i>.phar.tar</i>.
+       Use this parameter to specify another file extension.  Be aware
+       that all executable phar archives must contain <i>.phar</i>
+       in their filename.
+      </p>
+     </dd>
+
+    </dt>
+
+   </dl>
+
+  </p>
+
+ </div>
+
+
+ <div class="refsect1 errors">
+  <h3 class="title">Errors/Exceptions</h3>
+  <p class="para">
+   Throws <span class="classname">BadMethodCallException</span> if
+   the <a href="phar.configuration.html#ini.phar.readonly" class="link">phar.readonly</a>
+   INI variable is on, the <a href="ref.zlib.html" class="link">zlib</a>
+   extension is not available, or the <a href="ref.bzip2.html" class="link">bzip2</a> extension
+   is not enabled.
+  </p>
+ </div>
+
+
+ <div class="refsect1 examples">
+  <h3 class="title">Примеры</h3>
+  <p class="para">
+   <div class="example">
+    <p><b>Пример #1 A <b>Phar::decompress()</b> example</b></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$p&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">Phar</span><span style="color: #007700">(</span><span style="color: #DD0000">'/path/to/my.phar'</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">0</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'my.phar.gz'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$p</span><span style="color: #007700">[</span><span style="color: #DD0000">'myfile.txt'</span><span style="color: #007700">]&nbsp;=&nbsp;</span><span style="color: #DD0000">'hi'</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$p</span><span style="color: #007700">[</span><span style="color: #DD0000">'myfile2.txt'</span><span style="color: #007700">]&nbsp;=&nbsp;</span><span style="color: #DD0000">'hi'</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$p3&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$p2</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">decompress</span><span style="color: #007700">();&nbsp;</span><span style="color: #FF8000">//&nbsp;creates&nbsp;/path/to/my.phar<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+  </p>
+ </div>
+
+
+ <div class="refsect1 seealso">
+  <h3 class="title">Смотрите также</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"><a href="pharfileinfo.getcompressedsize.html" class="function" rel="rdfs-seeAlso">PharFileInfo::getCompressedSize()</a></li>
+    <li class="member"><a href="pharfileinfo.iscompressed.html" class="function" rel="rdfs-seeAlso">PharFileInfo::isCompressed()</a></li>
+    <li class="member"><a href="pharfileinfo.compress.html" class="function" rel="rdfs-seeAlso">PharFileInfo::compress()</a></li>
+    <li class="member"><a href="pharfileinfo.decompress.html" class="function" rel="rdfs-seeAlso">PharFileInfo::decompress()</a></li>
+    <li class="member"><a href="phardata.compress.html" class="function" rel="rdfs-seeAlso">PharData::compress()</a></li>
+    <li class="member"><a href="phar.cancompress.html" class="function" rel="rdfs-seeAlso">Phar::canCompress()</a></li>
+    <li class="member"><a href="phar.iscompressed.html" class="function" rel="rdfs-seeAlso">Phar::isCompressed()</a></li>
+    <li class="member"><a href="phar.compress.html" class="function" rel="rdfs-seeAlso">Phar::compress()</a></li>
+    <li class="member"><a href="phar.getsupportedcompression.html" class="function" rel="rdfs-seeAlso">Phar::getSupportedCompression()</a></li>
+    <li class="member"><a href="phar.compressfiles.html" class="function" rel="rdfs-seeAlso">Phar::compressFiles()</a></li>
+    <li class="member"><a href="phar.decompressfiles.html" class="function" rel="rdfs-seeAlso">Phar::decompressFiles()</a></li>
+   </ul>
+  </p>
+ </div>
+
+
+</div><hr /><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="phar.createdefaultstub.html">Phar::createDefaultStub</a></div>
+ <div class="next" style="float: right;"><a href="phar.decompressfiles.html">Phar::decompressFiles</a></div>
+ <div class="up"><a href="class.Phar.html">Phar</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

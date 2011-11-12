@@ -1,0 +1,84 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <title>Установка</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+ </head>
+ <body><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="openssl.setup.html">Установка и настройка</a></div>
+ <div class="next" style="float: right;"><a href="openssl.configuration.html">Настройка во время выполнения</a></div>
+ <div class="up"><a href="openssl.setup.html">Установка и настройка</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="openssl.installation" class="section">
+ <h2 class="title">Установка</h2>
+ <p class="para">
+  To use PHP&#039;s OpenSSL support you must also compile PHP <span class="option">--with-openssl[=DIR]</span>.
+ </p>
+ <blockquote><p><b class="note">Замечание</b>: 
+  <b>Note to Win32 Users</b>
+  
+   In order for this extension to work, there are
+<acronym title="Dynamic Link Library">DLL</acronym> files that must be available to the Windows
+system <i>PATH</i>. For information on how to do this, see the
+<acronym>FAQ</acronym> entitled &quot;<a href="faq.installation.html#faq.installation.addtopath" class="link">How do I add my PHP directory to the PATH
+on Windows</a>&quot;. Although copying DLL
+files from the PHP folder into the Windows system directory also works
+(because the system directory is by default in the system&#039;s
+<i>PATH</i>), this is not recommended. 
+<em class="emphasis">This extension requires the following files to be in the
+<i>PATH</i>:</em> 
+   <var class="filename">libeay32.dll</var>
+  <br />
+  <span class="simpara">
+   Additionally, if you are planning to use the key generation and certificate
+   signing functions, you will need to install a valid <var class="filename">openssl.cnf
+   </var> on your system. As of PHP 4.3.0, we include a sample 
+   configuration file in the <var class="filename">openssl</var>
+   folder of our win32 binary distribution. If you are using PHP 4.2.0 or
+   later and are missing the file, you can obtain it from
+   <a href="http://www.openssl.org/" class="link external">&raquo; the OpenSSL home page</a> or by
+   downloading the PHP 4.3.0 release and using the configuration file from
+   there.
+  </span>
+  
+   PHP will search for the <var class="filename">openssl.cnf</var> using the
+   following logic:
+   <ul class="itemizedlist">
+    <li class="listitem">
+     <span class="simpara">the <i>OPENSSL_CONF</i> environmental variable, if
+      set, will be used as the path (including filename) of the configuration
+      file.
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">the <i>SSLEAY_CONF</i> environmental variable, if
+      set, will be used as the path (including filename) of the configuration
+      file.
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">The file <var class="filename">openssl.cnf</var> will be assumed to be
+      found in the default certificate area, as configured at the time that
+      the openssl DLL was compiled.  This is usually means that the default
+      filename is <var class="filename">c:\usr\local\ssl\openssl.cnf</var>.
+     </span>
+    </li>
+   </ul>
+  <br />
+  <span class="simpara">
+   In your installation, you need to decide whether to install the
+   configuration file at <var class="filename">c:\usr\local\ssl\openssl.cnf</var> or
+   whether to install it someplace else and use environmental variables
+   (possibly on a per-virtual-host basis) to locate the configuration file.
+   Note that it is possible to override the default path from the script using
+   the <i><tt class="parameter">configargs</tt></i>
+ of the functions that require a
+   configuration file.
+  </span>
+ </p></blockquote>
+</div><hr /><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="openssl.setup.html">Установка и настройка</a></div>
+ <div class="next" style="float: right;"><a href="openssl.configuration.html">Настройка во время выполнения</a></div>
+ <div class="up"><a href="openssl.setup.html">Установка и настройка</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

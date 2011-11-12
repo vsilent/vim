@@ -1,0 +1,124 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <title>PKCS7 Flags/Constants</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+ </head>
+ <body><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="openssl.key-types.html">Key types</a></div>
+ <div class="next" style="float: right;"><a href="openssl.signature-algos.html">Signature Algorithms</a></div>
+ <div class="up"><a href="openssl.constants.html">Предопределенные константы</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="openssl.pkcs7.flags" class="section">
+   <h2 class="title">PKCS7 Flags/Constants</h2>
+   <p class="para">
+    The S/MIME functions make use of flags which are specified using a
+    bitfield which can include one or more of the following values:
+    <table border="5">
+     <caption><b>PKCS7 CONSTANTS</b></caption>
+      <colgroup>
+
+       <thead valign="middle">
+        <tr valign="middle">
+         <th colspan="1">Constant</th>
+         <th colspan="1">Description</th>
+        </tr>
+
+       </thead>
+
+       <tbody valign="middle" class="tbody">
+        <tr valign="middle">
+         <td colspan="1" rowspan="1" align="left">PKCS7_TEXT</td>
+         <td colspan="1" rowspan="1" align="left">Adds text/plain content type headers to encrypted/signed
+         message. If decrypting or verifying, it strips those headers from
+         the output - if the decrypted or verified message is not of MIME type
+         text/plain then an error will occur.</td>
+        </tr>
+
+        <tr valign="middle">
+         <td colspan="1" rowspan="1" align="left">PKCS7_BINARY</td>
+         <td colspan="1" rowspan="1" align="left">Normally the input message is converted to &quot;canonical&quot; format
+         which is effectively using CR and LF as end of line: as required by
+         the S/MIME specification.  When this options is present, no
+         translation occurs.  This is useful when handling binary data which
+         may not be in MIME format.</td>
+        </tr>
+
+        <tr valign="middle">
+         <td colspan="1" rowspan="1" align="left">PKCS7_NOINTERN</td>
+         <td colspan="1" rowspan="1" align="left">When verifying a message, certificates (if
+           any) included in the message are normally searched for the
+           signing certificate. With this option only the
+           certificates specified in the <i><tt class="parameter">extracerts</tt></i>
+
+           parameter of <a href="function.openssl-pkcs7-verify.html" class="function">openssl_pkcs7_verify()</a> are
+           used.  The supplied certificates can still be used as
+           untrusted CAs however.
+         </td>
+        </tr>
+
+        <tr valign="middle">
+         <td colspan="1" rowspan="1" align="left">PKCS7_NOVERIFY</td>
+         <td colspan="1" rowspan="1" align="left">Do not verify the signers certificate of a signed
+         message.</td>
+        </tr>
+
+        <tr valign="middle">
+         <td colspan="1" rowspan="1" align="left">PKCS7_NOCHAIN</td>
+         <td colspan="1" rowspan="1" align="left">Do not chain verification of signers certificates: that is
+         don&#039;t use the certificates in the signed message as untrusted CAs.
+         </td>
+        </tr>
+
+        <tr valign="middle">
+         <td colspan="1" rowspan="1" align="left">PKCS7_NOCERTS</td>
+         <td colspan="1" rowspan="1" align="left">When signing a message the signer&#039;s certificate is normally
+         included - with this option it is excluded.  This will reduce the
+         size of the signed message but the verifier must have a copy of the
+         signers certificate available locally (passed using the
+         <i><tt class="parameter">extracerts</tt></i>
+ to
+         <a href="function.openssl-pkcs7-verify.html" class="function">openssl_pkcs7_verify()</a> for example).
+         </td>
+        </tr>
+
+        <tr valign="middle">
+         <td colspan="1" rowspan="1" align="left">PKCS7_NOATTR</td>
+         <td colspan="1" rowspan="1" align="left">Normally when a message is signed, a set of attributes are
+         included which include the signing time and the supported symmetric
+         algorithms.  With this option they are not included.
+         </td>
+        </tr>
+
+        <tr valign="middle">
+         <td colspan="1" rowspan="1" align="left">PKCS7_DETACHED</td>
+         <td colspan="1" rowspan="1" align="left">When signing a message, use cleartext signing with the MIME
+         type multipart/signed.  This is the default
+         if you do not specify any <i><tt class="parameter">flags</tt></i>
+ to
+         <a href="function.openssl-pkcs7-sign.html" class="function">openssl_pkcs7_sign()</a>.
+         If you turn this option off, the message will be signed using
+         opaque signing, which is more resistant to translation by mail relays
+         but cannot be read by mail agents that do not support S/MIME.</td>
+        </tr>
+
+        <tr valign="middle">
+         <td colspan="1" rowspan="1" align="left">PKCS7_NOSIGS</td>
+         <td colspan="1" rowspan="1" align="left">Don&#039;t try and verify the signatures on a message</td>
+        </tr>
+
+       </tbody>
+      </colgroup>
+
+     </table>
+
+   </p>
+   <blockquote><p><b class="note">Замечание</b>: 
+     These constants were added in 4.0.6.<br />
+   </p></blockquote>
+  </div><hr /><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="openssl.key-types.html">Key types</a></div>
+ <div class="next" style="float: right;"><a href="openssl.signature-algos.html">Signature Algorithms</a></div>
+ <div class="up"><a href="openssl.constants.html">Предопределенные константы</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

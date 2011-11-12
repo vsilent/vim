@@ -1,0 +1,108 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <title>Completely remove a phar archive from disk and from memory</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+ </head>
+ <body><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="phar.uncompressallfiles.html">Phar::uncompressAllFiles</a></div>
+ <div class="next" style="float: right;"><a href="phar.webphar.html">Phar::webPhar</a></div>
+ <div class="up"><a href="class.Phar.html">Phar</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="phar.unlinkarchive" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">Phar::unlinkArchive</h1>
+  <p class="verinfo">(No version information available, might be only in CVS)</p><p class="refpurpose dc-title">Phar::unlinkArchive — Completely remove a phar archive from disk and from memory</p>
+
+ </div>
+
+ <div class="refsect1 description">
+  <h3 class="title">Описание</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type">bool</span> <span class="methodname"><b><b>Phar::unlinkArchive</b></b></span>
+    ( <span class="methodparam"><span class="type">string</span> <tt class="parameter">$archive</tt></span>
+   )</div>
+
+  <p class="para rdfs-comment">
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters">
+  <h3 class="title">Список параметров</h3>
+  <p class="para">
+   <dl>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">archive</tt></i>
+</span>
+
+     <dd>
+
+      <p class="para">
+       The path on disk to the phar archive.
+      </p>
+     </dd>
+
+    </dt>
+
+   </dl>
+
+  </p>
+
+ </div>
+
+
+ <div class="refsect1 returnvalues">
+  <h3 class="title">Возвращаемые значения</h3>
+  <p class="para">
+   Returns <b><tt>TRUE</tt></b> if the archive is successfully removed from disk.
+  </p>
+ </div>
+
+
+ <div class="refsect1 errors">
+  <h3 class="title">Errors/Exceptions</h3>
+  <p class="para">
+   <span class="classname">PharException</span> is thrown if there are any open file pointers to
+   the phar archive, or any existing <span class="classname">Phar</span>, <span class="classname">PharData</span>,
+   or <span class="classname">PharFileInfo</span> objects referring to the phar archive.
+  </p>
+ </div>
+
+
+ <div class="refsect1 examples">
+  <h3 class="title">Примеры</h3>
+  <p class="para">
+   <div class="example">
+    <p><b>Пример #1 A <b>Phar::unlinkArchive()</b> example</b></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">//&nbsp;simple&nbsp;usage<br /></span><span style="color: #0000BB">Phar</span><span style="color: #007700">::</span><span style="color: #0000BB">unlinkArchive</span><span style="color: #007700">(</span><span style="color: #DD0000">'/path/to/my.phar'</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">//&nbsp;more&nbsp;common&nbsp;example:<br /></span><span style="color: #0000BB">$p&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">Phar</span><span style="color: #007700">(</span><span style="color: #DD0000">'my.phar'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$fp&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">fopen</span><span style="color: #007700">(</span><span style="color: #DD0000">'phar://my.phar/file.txt'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'r'</span><span style="color: #007700">);<br /></span><span style="color: #FF8000">//&nbsp;this&nbsp;creates&nbsp;'my.phar.gz'<br /></span><span style="color: #0000BB">$gp&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$p</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">compress</span><span style="color: #007700">(</span><span style="color: #0000BB">Phar</span><span style="color: #007700">::</span><span style="color: #0000BB">GZ</span><span style="color: #007700">);<br /></span><span style="color: #FF8000">//&nbsp;remove&nbsp;all&nbsp;references&nbsp;to&nbsp;the&nbsp;archive<br /></span><span style="color: #007700">unset(</span><span style="color: #0000BB">$p</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">fclose</span><span style="color: #007700">(</span><span style="color: #0000BB">$fp</span><span style="color: #007700">);<br /></span><span style="color: #FF8000">//&nbsp;now&nbsp;remove&nbsp;all&nbsp;traces&nbsp;of&nbsp;the&nbsp;archive<br /></span><span style="color: #0000BB">Phar</span><span style="color: #007700">::</span><span style="color: #0000BB">unlinkArchive</span><span style="color: #007700">(</span><span style="color: #DD0000">'my.phar'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+  </p>
+ </div>
+
+
+ <div class="refsect1 seealso">
+  <h3 class="title">Смотрите также</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"><a href="phar.delete.html" class="function" rel="rdfs-seeAlso">Phar::delete()</a></li>
+    <li class="member"><a href="phar.offsetunset.html" class="function" rel="rdfs-seeAlso">Phar::offsetUnset()</a></li>
+   </ul>
+  </p>
+ </div>
+
+
+</div><hr /><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="phar.uncompressallfiles.html">Phar::uncompressAllFiles</a></div>
+ <div class="next" style="float: right;"><a href="phar.webphar.html">Phar::webPhar</a></div>
+ <div class="up"><a href="class.Phar.html">Phar</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

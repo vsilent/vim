@@ -1,0 +1,103 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <title>Устанавливает смещение в файловом указателе</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+ </head>
+ <body><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="function.fscanf.html">fscanf</a></div>
+ <div class="next" style="float: right;"><a href="function.fstat.html">fstat</a></div>
+ <div class="up"><a href="ref.filesystem.html">Файловая система</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="function.fseek" class="refentry">
+   <div class="refnamediv">
+    <h1 class="refname">fseek</h1>
+    <p class="verinfo">(PHP 4, PHP 5)</p><p class="refpurpose dc-title">fseek — Устанавливает смещение в файловом указателе</p>
+
+   </div>
+   <div class="refsect1 unknown">
+    <h3 class="title">Описание</h3>
+     <div class="methodsynopsis dc-description">
+      <span class="type">int</span> <span class="methodname"><b><b>fseek</b></b></span>
+       ( <span class="methodparam"><span class="type">resource</span> <tt class="parameter">$handle</tt></span>
+      , <span class="methodparam"><span class="type">int</span> <tt class="parameter">$offset</tt></span>
+      [, <span class="methodparam"><span class="type">int</span> <tt class="parameter">$whence</tt></span>
+     ] )</div>
+
+    <p class="para rdfs-comment">
+     Устанавливает смещение в файле, на который ссылается
+     <i><tt class="parameter">handle</tt></i>
+. Новое смещение, измеряемое в байтах от
+     начала файла, получается путём прибавления параметра
+     <i><tt class="parameter">offset</tt></i>
+ к позиции, указанной в параметре
+     <i><tt class="parameter">whence</tt></i>
+, значения которого определяются следующим
+     образом:
+     <ul class="simplelist">
+      <li class="member">
+       <b><tt>SEEK_SET</tt></b> - Устанавливает смещение в
+       <i><tt class="parameter">offset</tt></i>
+ байт.
+      </li>
+      <li class="member">
+       <b><tt>SEEK_CUR</tt></b> - Устанавливает смещение в
+       текущее плюс <i><tt class="parameter">offset</tt></i>
+.
+      </li>
+      <li class="member">
+       <b><tt>SEEK_END</tt></b> - Устанавливает смещение в
+       размер файла плюс <i><tt class="parameter">offset</tt></i>
+. 
+       (Чтобы перейти к смещению перед концом файла, вы должны передать
+       отрицательное значение в параметр <i><tt class="parameter">offset</tt></i>
+.)
+      </li>
+     </ul>
+    </p>
+    <p class="para">
+     Если <i><tt class="parameter">whence</tt></i>
+ не указан, по умолчанию он
+     устанавливается в <b><tt>SEEK_SET</tt></b>.
+    </p>
+    <p class="para">
+     В случае успеха возвращает 0; в противном сучае возвращает -1.
+     Обратите внимание, что переход к смещению за концом файла не
+     считается ошибкой.
+    </p>
+    <p class="para">
+     <div class="example">
+      <p><b>Пример #1 Пример использования функции <b>fseek()</b></b></p>
+      <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /><br />$fp&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">fopen</span><span style="color: #007700">(</span><span style="color: #DD0000">'somefile.txt'</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">//&nbsp;читаем&nbsp;немного&nbsp;данных<br /></span><span style="color: #0000BB">$data&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">fgets</span><span style="color: #007700">(</span><span style="color: #0000BB">$fp</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">4096</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">//&nbsp;перемещаемся&nbsp;назад&nbsp;к&nbsp;началу&nbsp;файла<br />//&nbsp;то&nbsp;же&nbsp;самое,&nbsp;что&nbsp;и&nbsp;rewind($fp);<br /></span><span style="color: #0000BB">fseek</span><span style="color: #007700">(</span><span style="color: #0000BB">$fp</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">0</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+      </div>
+
+     </div>
+    </p>
+    <p class="para">
+     Не может использоваться на файловых указателях, возвращённых функцией
+     <a href="function.fopen.html" class="function">fopen()</a>, если они используют форматы &quot;http://&quot; 
+     или &quot;ftp://&quot;. <b>fseek()</b> также возвращает неопределённый
+     результат для потоков &quot;дописать в конец&quot; (открытых с флагом &quot;a&quot;).
+    </p>
+    <blockquote><p><b class="note">Замечание</b>: 
+     
+      Параметр <i><tt class="parameter">whence</tt></i>
+ был добавлен в версии PHP 4.0.0.
+     <br />
+    </p></blockquote>
+    <p class="para">
+     См. также описание функций <a href="function.ftell.html" class="function">ftell()</a> и
+     <a href="function.rewind.html" class="function">rewind()</a>.
+    </p>
+   </div>
+
+  </div><hr /><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="function.fscanf.html">fscanf</a></div>
+ <div class="next" style="float: right;"><a href="function.fstat.html">fstat</a></div>
+ <div class="up"><a href="ref.filesystem.html">Файловая система</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

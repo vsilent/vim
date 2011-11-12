@@ -1,0 +1,73 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <title>Создаёт базу данных MySQL</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+ </head>
+ <body><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="function.mysql-connect.html">mysql_connect</a></div>
+ <div class="next" style="float: right;"><a href="function.mysql-data-seek.html">mysql_data_seek</a></div>
+ <div class="up"><a href="ref.mysql.html">MySQL</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="function.mysql-create-db" class="refentry">
+   <div class="refnamediv">
+    <h1 class="refname">mysql_create_db</h1>
+    <p class="verinfo">(PHP 4, PHP 5, PECL mysql:1.0)</p><p class="refpurpose dc-title">mysql_create_db — Создаёт базу данных MySQL</p>
+
+   </div>
+   <div class="refsect1 unknown">
+    <h3 class="title">Описание</h3>
+     <div class="methodsynopsis dc-description">
+      <span class="type">bool</span> <span class="methodname"><b><b>mysql_create_db</b></b></span>
+       ( <span class="methodparam"><span class="type">string</span> <tt class="parameter">$database_name</tt></span>
+      [, <span class="methodparam"><span class="type">resource</span> <tt class="parameter">$link_identifier</tt></span>
+     ] )</div>
+
+    <p class="para rdfs-comment">
+     <b>mysql_create_db()</b> пытается создать базу данных на
+     сервере, на который ссылается переданный указатель.
+    </p>
+    <p class="para">
+     Возвращает <b><tt>TRUE</tt></b> в случае успешного завершения или <b><tt>FALSE</tt></b> в случае возникновения ошибки.
+    </p>
+    <p class="para">
+     <div class="example">
+      <p><b>Пример #1 Пример создания базы данных MySQL</b></p>
+      <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />&nbsp;&nbsp;&nbsp;&nbsp;$link&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">mysql_pconnect</span><span style="color: #007700">(</span><span style="color: #DD0000">"localhost"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"mysql_user"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"mysql_password"</span><span style="color: #007700">)<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;or&nbsp;die(</span><span style="color: #DD0000">"Could&nbsp;not&nbsp;connect:&nbsp;"&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #0000BB">mysql_error</span><span style="color: #007700">());<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(</span><span style="color: #0000BB">mysql_create_db</span><span style="color: #007700">(</span><span style="color: #DD0000">"my_db"</span><span style="color: #007700">))&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print&nbsp;(</span><span style="color: #DD0000">"Database&nbsp;created&nbsp;successfully\n"</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;else&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">printf&nbsp;</span><span style="color: #007700">(</span><span style="color: #DD0000">"Error&nbsp;creating&nbsp;database:&nbsp;%s\n"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">mysql_error</span><span style="color: #007700">());<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+      </div>
+
+     </div>
+    </p>
+    <p class="para">
+     Для совместимости, как алиас, доступна устаревшая функция <b>mysql_createdb()</b>
+     Однако, использовать её крайне не рекомандуется.
+    </p>
+    <blockquote><p><b class="note">Замечание</b>: 
+     
+      Функция <b>mysql_create_db()</b> не рекомендуется к
+      использованию. Предпочтительнее использовать <a href="function.mysql-query.html" class="function">mysql_query()</a> с 
+      SQL-запросов создания базы данных <i>SQL CREATE DATABASE</i>.
+     <br />
+    </p></blockquote>
+    <div class="warning"><b class="warning">Внимание</b>
+     <p class="para">
+      Эта функция недоступна в библиотеке для MySQL версий 4.x.
+     </p> 
+    </div>
+    <p class="para">
+     См. также 
+     <a href="function.mysql-drop-db.html" class="function">mysql_drop_db()</a> и
+     <a href="function.mysql-query.html" class="function">mysql_query()</a>.
+    </p>
+   </div>
+
+  </div><hr /><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="function.mysql-connect.html">mysql_connect</a></div>
+ <div class="next" style="float: right;"><a href="function.mysql-data-seek.html">mysql_data_seek</a></div>
+ <div class="up"><a href="ref.mysql.html">MySQL</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

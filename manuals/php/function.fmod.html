@@ -1,0 +1,53 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <title>Возвращает дробный остаток от деления</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+ </head>
+ <body><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="function.floor.html">floor</a></div>
+ <div class="next" style="float: right;"><a href="function.getrandmax.html">getrandmax</a></div>
+ <div class="up"><a href="ref.math.html">Математические функции</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="function.fmod" class="refentry">
+   <div class="refnamediv">
+    <h1 class="refname">fmod</h1>
+    <p class="verinfo">(PHP 4 &gt;= 4.2.0, PHP 5)</p><p class="refpurpose dc-title">fmod — Возвращает дробный остаток от деления</p>
+
+   </div>
+   <div class="refsect1 unknown">
+    <h3 class="title">Описание</h3>
+     <div class="methodsynopsis dc-description">
+      <span class="type">float</span> <span class="methodname"><b><b>fmod</b></b></span>
+       ( <span class="methodparam"><span class="type">float</span> <tt class="parameter">$x</tt></span>
+      , <span class="methodparam"><span class="type">float</span> <tt class="parameter">$y</tt></span>
+      )</div>
+
+    <p class="para rdfs-comment">
+     Возвращает дробный остаток от деления десятичных дробей <i><tt class="parameter">x</tt></i>
+ и <i><tt class="parameter">y</tt></i>
+).
+     Остаток (<var class="varname">r</var>) определяется так: x = i * y + r, где <var class="varname">i</var> - некоторое целое. <var class="varname">r</var> всегда имеет такоей же знак, как и <i><tt class="parameter">x</tt></i>
+ и модуль, меньший или равный модулю <i><tt class="parameter">y</tt></i>
+.
+    </p>
+    <p class="para">
+     <div class="example">
+      <p><b>Пример #1 Пример использования <b>fmod()</b></b></p>
+      <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$x&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">5.7</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$y&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">1.3</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$r&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">fmod</span><span style="color: #007700">(</span><span style="color: #0000BB">$x</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$y</span><span style="color: #007700">);<br /></span><span style="color: #FF8000">//&nbsp;$r&nbsp;ранво&nbsp;0.5,&nbsp;т.к.&nbsp;4&nbsp;*&nbsp;1.3&nbsp;+&nbsp;0.5&nbsp;=&nbsp;5.7<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+      </div>
+
+     </div>
+    </p>
+   </div>
+
+  </div><hr /><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="function.floor.html">floor</a></div>
+ <div class="next" style="float: right;"><a href="function.getrandmax.html">getrandmax</a></div>
+ <div class="up"><a href="ref.math.html">Математические функции</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

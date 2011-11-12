@@ -1,0 +1,472 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <title>Установка на Unix системы</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+ </head>
+ <body><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="install.general.html">Общие инструкции по установке</a></div>
+ <div class="next" style="float: right;"><a href="install.unix.apache2.html">Apache 2.0 на Unix системах</a></div>
+ <div class="up"><a href="install.html">Установка и настройка</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div>
+   <h1>Установка на Unix системы</h1>
+<h2>Содержание</h2><ul class="chunklist chunklist_chapter"><li><a href="install.unix.apache2.html">Apache 2.0 на Unix системах</a></li><li><a href="install.unix.caudium.html">Caudium</a></li><li><a href="install.unix.fhttpd.html">fhttpd related notes</a></li><li><a href="install.unix.sun.html">Sun, iPlanet and Netscape servers on Sun Solaris</a></li><li><a href="install.unix.commandline.html">Установка с интерфейсами CGI и командной строки</a></li><li><a href="install.unix.hpux.html">HP-UX specific installation notes</a></li><li><a href="install.unix.openbsd.html">OpenBSD installation notes</a></li><li><a href="install.unix.solaris.html">Solaris specific installation tips</a></li><li><a href="install.unix.debian.html">Debian GNU/Linux installation notes</a></li></ul>
+
+   <p class="para">
+    Этот раздел описывает установку и настройку PHP  на Unix-системах.
+    Пожалуйста прочитайте все разделы касающиеся вашей платформы
+    или веб-сервера, прежде чем вы приступите к установке.
+   </p>
+   <p class="para">
+    Как сказано в разделе <a href="install.general.html" class="link">Общие указания по
+    установке</a>, в этом разделе в основном мы описываем 
+    установку PHP ориентированную на веб, однако мы так же затрагиваем
+    установку PHP для использования в командной строке.
+   </p>
+   <p class="para"> 
+    Есть несколько способов установки PHP на Unix платформы. 
+    Один из них - процесс конфигурирования и компиляции исходников, другой - 
+    установка из пакетов. Этот документ сфокусирован на установке из 
+    исходных кодов. При установке из пакетов, PHP устанавливается в 
+    стандартной конфигурации. Если вам нужны особые параметры, то 
+    лучше скомпилировать PHP вручную с необходимой конфигурацией.   
+   </p>
+   <p class="para">
+    Для компиляции PHP из исходных кодов вам потребуется следующее:
+    <ul class="itemizedlist">
+     <li class="listitem">
+      <span class="simpara">
+       Базовые знания Unix (способность обращаться с &quot;make&quot; и компилятором C)
+      </span>
+     </li> 
+     <li class="listitem">
+      <span class="simpara">
+       Компилятор ANSI C 
+      </span>
+     </li> 
+     <li class="listitem">
+      <span class="simpara">
+       flex: Version 2.5.4
+      </span>
+     </li>
+     <li class="listitem">
+      <span class="simpara">
+       bison: Version 1.28 (предпочтительно), 1.35, или 1.75
+      </span>
+     </li>
+     <li class="listitem">
+      <span class="simpara">
+       Веб-сервер
+      </span>
+     </li>
+     <li class="listitem">
+      <span class="simpara">
+       А так же библиотеки, требуемые для некоторых модулей PHP (gd, pdf libs и т.д.)
+      </span>
+     </li>
+    </ul>
+   </p>
+   
+   <p class="para">
+    Общая (или начальная) конфигурация PHP задается параметрами скрипта 
+    <strong class="command">configure</strong>. Вы можете просмотреть список допустимых
+    параметров при помощи команды <strong class="command">./configure --help</strong>.
+    Так же список основных параметров можно просмотреть в приложении
+    <a href="configure.html" class="link">Основные параметры конфигурации</a>,
+    а параметры специфичные для различных расширений описаны на страницах документации,
+    посвященных этим расширениям.
+   </p>
+    
+   <p class="para">
+    Когда PHP сконфигурирован, все готово к сборке модулей и/или 
+    исполняемых файлов. Об этом должна позаботится команда
+    <strong class="command">make</strong>. Если это что-то не получилось, и вы не можете
+    понять почему, смотрите раздел <a href="install.problems.html" class="link">Проблемы
+    установки</a>.
+   </p>
+
+   
+   
+
+
+   <div id="install.unix.apache" class="sect1">
+    <h2 class="title">Apache 1.3.x на системах Unix</h2>
+    <p class="para">
+     Этот раздел включает иструкции по установке Apache
+     и PHP на платформах Unix. Установка PHP с Apache2 описана в <a href="install.unix.apache2.html" class="link">другом разделе</a>.
+    </p>   
+    <p class="para">
+     Вы можете менять аргументы <strong class="command">configure</strong> на шаге 10 ниже. 
+     Полный список аргументов доступен на странице <a href="configure.html" class="link">список основных параметров конфигурации</a>. 
+     А параметры специфичные для различных расширений описаны в разделах
+     посвященных соответсвующим расширениям. В инструкции ниже опущены номера
+     версий - вы должны заменить &#039;xxx&#039; на номер версии присутствующий в именах 
+     скачанных вами файлов.
+    </p>
+
+    <div class="example" id="install.unix.apache.example" name="install.unix.apache.example">
+     <p><b>Пример #1 
+      Инструкция по установке PHP, как подгружаемого модуля Apache
+     </b></p>
+     <div class="example-contents"><pre>
+<div class="cdata"><pre>
+1.  gunzip apache_xxx.tar.gz
+2.  tar -xvf apache_xxx.tar
+3.  gunzip php-xxx.tar.gz
+4.  tar -xvf php-xxx.tar
+5.  cd apache_xxx
+6.  ./configure --prefix=/www --enable-module=so
+7.  make
+8.  make install
+9.  cd ../php-xxx
+
+10. Теперь мы сконфигурируем PHP. Здесь вы можете настроить установку
+     PHP при помощи параметров скрипта configure.
+     Вы можете включить или выключить некоторые расширения. Просмотрите вывод
+     команды ./configure --help для получения полного списка параметров
+     конфигурации. В нашем примере мы сконфигурируем PHP очень просто -
+     с поддержкой Apache и MySQL. В вашей системе путь до apxs может
+     отличаться от указанного в примере.
+
+      ./configure --with-mysql --with-apxs=/www/bin/apxs
+
+11. make
+12. make install
+
+    Если вы решите изменить параметры конфигурации после установки, три
+    последних шага надо будет повторить. Так же вам надо будет
+    рестартовать Apache, чтобы новые модули подгрузились и начали работать.
+    Перекомпиляция Apache для этого не потребуется.
+
+    Заметьте, что &#039;make install&#039; установит так же PEAR,
+    различные инструменты PHP - такие как phpize, версию PHP для командной
+    строки (PHP CLI) и т.д.
+
+
+13. Настройка вашего php.ini
+
+    cp php.ini-dist /usr/local/lib/php.ini
+
+    Вероятно, вы захотите изменить некоторые настройки в php.ini.
+    Если вы предпочитаете держать файл php.ini в другом месте, используйте
+    параметр --with-config-file-path=/some/path в шаге 10. Если вы используете
+    php.ini-recomended, прочитайте его, чтобы знать какие изменения в
+    поведении PHP это повлечет.
+
+14. Отредактируйте ваш httpd.conf, чтобы Apache подгружал модуль PHP. Путь в
+    инструкции LoadModule должен указывать на модуль PHP. Команда make
+    install может добавить эту иструкцию автоматически, но этого может и не
+    произойти, поэтому проверьте, чтобы убедиться.
+
+    Для PHP 4:
+
+      LoadModule php4_module modules/libphp4.so
+
+    Для PHP 5:
+
+      LoadModule php5_module modules/libphp5.so
+
+15. Так же в секции AddModule файла httpd.conf, несколько ниже
+    ClearModuleList, добавьте следующее:
+    
+    Для PHP 4:
+    
+      AddModule mod_php4.c
+      
+    Для PHP 5:
+    
+      AddModule mod_php5.c
+
+16.  Теперь следует сконфигурировать Apache, чтобы он передавал файлы с
+    некоторыми расширениями на обработку модулю PHP. В нашем примере сделаем
+    это для файлов с расширениями .php и .phtml. Вы можете добавить также
+    другие расширения в конец строки, разделяя их символом пробела.
+
+      AddType application/x-httpd-php .php .phtml
+
+    Сделаем то же самое для расширения .phps - модуль PHP покажет его как
+    исходный код с подсветкой синтаксиса, вместо того чтобы исполнять.
+
+      AddType application/x-httpd-php-source .phps
+
+
+17. Используйте стандартную процедуру запуска сервера. (Нужно остановить
+    и заново запустить сервер, процедура перезапуска с использованием сигналов
+    HUP или USR1 в данном случае не подходит.)
+</pre></div>
+     </pre></div>
+    </div>
+
+    <p class="para">
+     В качестве альтернативы, можно установить PHP, как статический
+     модуль Apache:
+    </p>
+
+    <div class="example" id="install.unix.apache.example-static" name="install.unix.apache.example-static">
+     <p><b>Пример #2 
+      Инструкция по статической сборке PHP и Apache
+     </b></p>
+     <div class="example-contents"><pre>
+<div class="cdata"><pre>
+1.  gunzip -c apache_1.3.x.tar.gz | tar xf -
+2.  cd apache_1.3.x
+3.  ./configure
+4.  cd ..
+
+5.  gunzip -c php-5.x.y.tar.gz | tar xf -
+6.  cd php-5.x.y
+7.  ./configure --with-mysql --with-apache=../apache_1.3.x
+8.  make
+9.  make install
+
+10. cd ../apache_1.3.x
+
+11. ./configure --prefix=/www --activate-module=src/modules/php5/libphp5.a
+    (Строка выше корректна. Да, мы знаем, что libphp5.a не существует на
+    данном этапе. Этот файл будет создан.)
+
+12. make
+    (Теперь вы должны получить бинарный файл httpd, который вы можете скопировать
+    в каталог bin сервера Apache. Затем вам надо выполнить &quot;make install&quot;, 
+    если это ваша первая установка)
+
+13. cd ../php-5.x.y
+14. cp php.ini-dist /usr/local/lib/php.ini
+
+15. Для изменения конфигурации PHP можно отредактировать файл /usr/local/lib/php.ini.
+    Отредактируйте httpd.conf или srm.conf, добавив туда:
+    AddType application/x-httpd-php .php
+</pre></div>
+      </pre></div>
+     </div>
+     <blockquote><p><b class="note">Замечание</b>: 
+      
+       Замените <i>php-5</i> на <i>php-4</i> и
+       <i>php5</i> на <i>php4</i>, если вы
+       устанавливаете 4-ю версию PHP.
+      <br />
+     </p></blockquote>
+
+     <p class="para">
+      В зависимости от варианта вашей установки Apache и версии Unix,       
+      возможно множество путей остановки и запуска сервера. Ниже приведены
+      несколько распространенных команд перезапуска сервера для различных
+      установок Apache и Unix-систем. Замените <i>/path/to/</i> 
+      на реальный путь до приложений в вашей системе.
+     </p>
+     <p class="para">
+      <div class="example">
+       <p><b>Пример #3 Примеры команд перезапуска Apache</b></p>
+       <div class="example-contents">
+<div class="cdata"><pre>
+1. Некоторые дистрибутивы Linux и системы SysV:
+/etc/rc.d/init.d/httpd restart
+
+2. Использование скрипта apachectl:
+/path/to/apachectl stop
+/path/to/apachectl start
+
+3. httpdctl и httpsdctl (Использующий OpenSSL), аналогично apachectl:
+/path/to/httpsdctl stop
+/path/to/httpsdctl start
+
+4. Использующий mod_ssl или другие варианты SSL сервер:
+/path/to/apachectl stop
+/path/to/apachectl startssl
+</pre></div>
+       </div>
+
+      </div>
+     </p>
+     <p class="para">
+      Пути к apachectl и http(s)dctl часто различаются. Если в вашей системе
+      есть команды <i>locate</i> 
+      или <i>whereis</i>, или <i>which</i>,
+      они помогут вам найти программы, контролирующие сервер.
+     </p>
+
+     <p class="para">
+      Другие варианты компиляции PHP для Apache:
+      <div class="informalexample">
+       <div class="example-contents">
+<div class="cdata"><pre>
+./configure --with-apxs --with-pgsql
+</pre></div>
+       </div>
+
+      </div>
+     </p>
+     <p class="para">
+      Будет создан файл подгружаемой библиотеки <var class="filename">libphp5.so</var> 
+      (или <var class="filename">libphp4.so</var> для PHP 4).
+      Эта библиотека должна быть подгружена в Apache с использованием
+      директивы LoadModule конфигурационного файла <var class="filename">httpd.conf</var>. В данном
+      случае поддержка PostgreSQL будет встроена в эту библиотеку.
+     </p>
+     <p class="para">
+      <div class="informalexample">
+       <div class="example-contents">
+<div class="cdata"><pre>
+./configure --with-apxs --with-pgsql=shared
+</pre></div>
+       </div>
+
+      </div>
+     </p>
+     <p class="para">
+      Будет создан файл подгружаемой библиотеки <var class="filename">libphp5.so</var> 
+      для Apache, но так же будет создана подгружаемая библиотека
+      <var class="filename">pgsql.so</var>, которая должна быть подгружена в PHP
+      одним из двух способов: директивой extension  в <var class="filename">php.ini</var> или в скрипте,
+      использованием функции <a href="function.dl.html" class="function">dl()</a>.
+     </p>
+     <p class="para">
+      <div class="informalexample">
+       <div class="example-contents">
+<div class="cdata"><pre>
+./configure --with-apache=/path/to/apache_source --with-pgsql
+</pre></div>
+       </div>
+
+      </div>
+     </p>
+     <p class="para">
+      Будет создана библиотека <var class="filename">libmodphp5.a</var>. Файл
+      <var class="filename">mod_php5.c</var> и несколько сопровождающих файлов будут
+      скопированы в каталог <i>src/modules/php5</i> дерева
+      исходных кодов Apache. Затем следует cкомпилировать Apache, используя
+      <i>--activate-module=src/modules/php5/libphp5.a</i>, система
+      сборки Apache создаст <var class="filename">libphp5.a</var> и статически свяжет
+      с исполняемым <var class="filename">httpd</var>.
+      (замените <i>php5</i> на <i>php4</i> для PHP
+      4). Поддержка PostgreSQL будет включена непосредственно в 
+      <var class="filename">httpd</var> и конечным результатом будет единственный
+      исполняемый файл <var class="filename">httpd</var>, включающий все от Apache и
+      все от PHP.
+     </p>
+     <p class="para">
+      <div class="informalexample">
+       <div class="example-contents">
+<div class="cdata"><pre>
+./configure --with-apache=/path/to/apache_source --with-pgsql=shared
+</pre></div>
+       </div>
+
+      </div>
+     </p>
+     <p class="para">
+      Так же как и прежде, взамен поддержки PostgreSQL, встроенной
+      непосредственно в финальный исполняемый файл <var class="filename">httpd</var>
+      вы получите подгружаемую библиотеку <var class="filename">pgsql.so</var>,
+      которую вы должны будете подгрузить в PHP одним из двух
+      способов: <var class="filename">php.ini</var> или используя функцию <a href="function.dl.html" class="function">dl()</a>.
+     </p>
+     <p class="para">
+      Выбирая способ установки PHP, следует учитывать преимущества и
+      недостатки каждого из методов. Если вы собираете PHP, как подгружаемый
+      модуль Apache - вы сможете компилировать PHP и Apache отдельно друг от
+      друга и вам не нужно будет перекомпилировать Apache, если вы захотите
+      изменить конфигурацю PHP. Если вы собираете PHP статически - PHP будет 
+      работать чуть быстрее. Для получения более подробной информаци посетите 
+      страницу посвященную поддержке  
+      <a href="http://httpd.apache.org/docs/1.3/dso.html" class="link external">&raquo; DSO (Dynamic Shared Object)</a>
+      в Apache.
+     </p>
+    <blockquote><p><b class="note">Замечание</b>: 
+     
+      В настоящее время файл конфигурации Apache <var class="filename">httpd.conf</var> обычно
+      поставляется со следующими настройками:
+      <div class="informalexample">
+       <div class="example-contents">
+<div class="cdata"><pre>
+User nobody
+Group &quot;#-1&quot;
+</pre></div>
+       </div>
+
+      </div>
+      Пока вы не измените группу на &quot;Group nogroup&quot; или что-нибудь вроде
+      &quot;Group daemon&quot; (такая настройка довольно распространена), PHP не сможет
+      открывать файлы.
+     <br />
+    </p></blockquote>  
+    <blockquote><p><b class="note">Замечание</b>: 
+     
+      Убедитесь, что вы указываете установленную версию apxs, когда
+      используете <span class="option">--with-apxs=/path/to/apxs</span>.
+      Вы НЕ ДОЛЖНЫ указывать версию apxs, поставляемую с исходными кодами
+      Apache - только действительно установленную в вашу систему вместе с
+      сервером.
+     <br />
+    </p></blockquote>   
+   </div>
+
+
+
+   
+
+
+   
+
+
+
+   
+
+  
+
+
+
+   
+
+  
+
+
+
+   
+
+   
+
+
+
+   
+
+
+  
+
+
+
+   
+   
+
+
+
+
+
+   
+
+
+
+
+
+   
+
+
+
+
+
+   
+   
+
+
+
+
+
+   
+  </div>
+<hr /><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="install.general.html">Общие инструкции по установке</a></div>
+ <div class="next" style="float: right;"><a href="install.unix.apache2.html">Apache 2.0 на Unix системах</a></div>
+ <div class="up"><a href="install.html">Установка и настройка</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

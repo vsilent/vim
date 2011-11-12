@@ -1,0 +1,117 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <title>Предопределенные константы</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+ </head>
+ <body><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="fam.resources.html">Типы ресурсов</a></div>
+ <div class="next" style="float: right;"><a href="ref.fam.html">fam</a></div>
+ <div class="up"><a href="book.fam.html">File Alteration Monitor</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div>
+ <h1>Предопределенные константы</h1>
+
+ <p class="simpara">
+Перечисленные ниже константы определены данным расширением и могут быть
+доступны только в том случае, если PHP был собран с
+поддержкой этого расширения или же в том случае, если
+данное расширение подгружается во время выполнения.
+</p>
+ <table border="5">
+  <caption><b>FAM event constants</b></caption>
+   <colgroup>
+
+    <thead valign="middle">
+     <tr valign="middle">
+      <th colspan="1">Constant</th>
+      <th colspan="1">Description</th>
+     </tr>
+
+    </thead>
+
+    <tbody valign="middle" class="tbody">
+     <tr valign="middle">
+      <td colspan="1" rowspan="1" align="left">
+       <b><tt>FAMChanged</tt></b> (<a href="language.types.integer.html" class="type integer">integer</a>)
+      </td>
+      <td colspan="1" rowspan="1" align="left">
+       Some value which can be obtained with fstat(1) changed for a
+       file or directory.
+      </td>
+     </tr>
+
+     <tr valign="middle">
+      <td colspan="1" rowspan="1" align="left">
+       <b><tt>FAMDeleted</tt></b> (<a href="language.types.integer.html" class="type integer">integer</a>)
+      </td>
+      <td colspan="1" rowspan="1" align="left">A file or directory was deleted or renamed.</td>
+     </tr>
+
+     <tr valign="middle">
+      <td colspan="1" rowspan="1" align="left">
+       <b><tt>FAMStartExecuting</tt></b> (<a href="language.types.integer.html" class="type integer">integer</a>)
+      </td>
+      <td colspan="1" rowspan="1" align="left">An executable file started executing.</td>
+     </tr>
+
+     <tr valign="middle">
+      <td colspan="1" rowspan="1" align="left">
+       <b><tt>FAMStopExecuting</tt></b> (<a href="language.types.integer.html" class="type integer">integer</a>)
+      </td>
+      <td colspan="1" rowspan="1" align="left">An executable file that was running finished.</td>
+     </tr>
+
+     <tr valign="middle">
+      <td colspan="1" rowspan="1" align="left">
+       <b><tt>FAMCreated</tt></b> (<a href="language.types.integer.html" class="type integer">integer</a>)
+      </td>
+      <td colspan="1" rowspan="1" align="left">A file was created in a directory.</td>
+     </tr>
+
+     <tr valign="middle">
+      <td colspan="1" rowspan="1" align="left">
+       <b><tt>FAMMoved</tt></b> (<a href="language.types.integer.html" class="type integer">integer</a>)
+      </td>
+      <td colspan="1" rowspan="1" align="left">This event never occurs.</td>
+     </tr>
+
+     <tr valign="middle">
+      <td colspan="1" rowspan="1" align="left">
+       <b><tt>FAMAcknowledge</tt></b> (<a href="language.types.integer.html" class="type integer">integer</a>)
+      </td>
+      <td colspan="1" rowspan="1" align="left">
+       An event in response to <a href="function.fam-cancel-monitor.html" class="function">fam_cancel_monitor()</a>.
+      </td>
+     </tr>
+
+     <tr valign="middle">
+      <td colspan="1" rowspan="1" align="left">
+       <b><tt>FAMExists</tt></b> (<a href="language.types.integer.html" class="type integer">integer</a>)
+      </td>
+      <td colspan="1" rowspan="1" align="left">
+       An event upon request to monitor a file or directory. When a
+       directory is monitored, an event for that directory and every file
+       contained in that directory is issued.
+      </td>
+     </tr>
+
+     <tr valign="middle">
+      <td colspan="1" rowspan="1" align="left">
+       <b><tt>FAMEndExist</tt></b> (<a href="language.types.integer.html" class="type integer">integer</a>)
+      </td>
+      <td colspan="1" rowspan="1" align="left">Event after the last FAMEExists event.</td>
+     </tr>
+
+    </tbody>
+   </colgroup>
+
+  </table>
+
+ </div>
+<hr /><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="fam.resources.html">Типы ресурсов</a></div>
+ <div class="next" style="float: right;"><a href="ref.fam.html">fam</a></div>
+ <div class="up"><a href="book.fam.html">File Alteration Monitor</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

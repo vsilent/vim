@@ -1,0 +1,98 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <title>Настройка во время выполнения</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+ </head>
+ <body><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="sqlite.installation.html">Установка</a></div>
+ <div class="next" style="float: right;"><a href="sqlite.resources.html">Типы ресурсов</a></div>
+ <div class="up"><a href="sqlite.setup.html">Установка и настройка</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="sqlite.configuration" class="section">
+ <h2 class="title">Настройка во время выполнения</h2>
+ <p class="simpara">
+Поведение этих функций зависит от установок в <var class="filename">php.ini</var>.
+</p>
+ <p class="para">
+  <table border="5">
+   <caption><b>SQLite Опции настройки</b></caption>
+   <colgroup>
+
+    <thead valign="middle">
+     <tr valign="middle">
+      <th colspan="1">Имя</th>
+      <th colspan="1">По умолчанию</th>
+      <th colspan="1">Меняемо</th>
+      <th colspan="1">Changelog</th>
+     </tr>
+
+    </thead>
+
+    <tbody valign="middle" class="tbody">
+     <tr valign="middle">
+      <td colspan="1" rowspan="1" align="left">sqlite.assoc_case</td>
+      <td colspan="1" rowspan="1" align="left">&quot;0&quot;</td>
+      <td colspan="1" rowspan="1" align="left">PHP_INI_ALL</td>
+      <td colspan="1" rowspan="1" align="left">Available since PHP 5.0.0.</td>
+     </tr>
+
+    </tbody>
+   </colgroup>
+
+  </table>
+
+  Для подробного описания констант
+PHP_INI_*, обратитесь к документации функции <a href="function.ini-set.html" class="function">ini_set()</a>.
+ </p>
+ <p class="para">Краткое разъяснение конфигурационных
+директив.</p>
+ <p class="para">
+  <dl>
+
+   <dt id="ini.sqlite.assoc-case">
+    <span class="term">
+     <i><tt class="parameter">sqlite.assoc_case</tt></i>
+
+     <a href="language.types.integer.html" class="type int">int</a>
+    </span>
+
+    <dd>
+
+     <p class="para">
+      Whether to use mixed case (<i>0</i>), upper case
+      (<i>1</i>) or lower case (<i>2</i>) hash
+      indexes. 
+     </p>
+     <p class="para">
+      This option is primarily useful when you need compatibility with other
+      database systems, where the names of the columns are always returned as
+      uppercase or lowercase, regardless of the case of the actual field names
+      in the database schema.
+     </p>
+     <p class="para">
+      The SQLite library returns the column names in their natural case (that
+      matches the case you used in your schema).  When
+      <i><tt class="parameter">sqlite.assoc_case</tt></i>
+ is set to <i>0</i>
+      the natural case will be preserved.  When it is set to
+      <i>1</i> or <i>2</i>, PHP will apply case
+      folding on the hash keys to upper- or lower-case the keys, respectively.
+     </p>
+     <p class="para">
+      Use of this option incurs a slight performance penalty, but is MUCH
+      faster than performing the case folding yourself using PHP script.
+     </p>
+    </dd>
+
+   </dt>
+      
+  </dl>
+
+ </p>
+</div><hr /><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="sqlite.installation.html">Установка</a></div>
+ <div class="next" style="float: right;"><a href="sqlite.resources.html">Типы ресурсов</a></div>
+ <div class="up"><a href="sqlite.setup.html">Установка и настройка</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

@@ -1,0 +1,184 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <title>Загружает предварительно открытый файл на FTP сервер</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+ </head>
+ <body><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="function.ftp-fget.html">ftp_fget</a></div>
+ <div class="next" style="float: right;"><a href="function.ftp-get-option.html">ftp_get_option</a></div>
+ <div class="up"><a href="ref.ftp.html">FTP</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="function.ftp-fput" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">ftp_fput</h1>
+  <p class="verinfo">(PHP 4, PHP 5)</p><p class="refpurpose dc-title">ftp_fput — Загружает предварительно открытый файл на FTP сервер</p>
+
+ </div>
+ <div class="refsect1 description">
+  <h3 class="title">Описание</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type">bool</span> <span class="methodname"><b><b>ftp_fput</b></b></span>
+    ( <span class="methodparam"><span class="type">resource</span> <tt class="parameter">$ftp_stream</tt></span>
+   , <span class="methodparam"><span class="type">string</span> <tt class="parameter">$remote_file</tt></span>
+   , <span class="methodparam"><span class="type">resource</span> <tt class="parameter">$handle</tt></span>
+   , <span class="methodparam"><span class="type">int</span> <tt class="parameter">$mode</tt></span>
+   [, <span class="methodparam"><span class="type">int</span> <tt class="parameter">$startpos</tt></span>
+  ] )</div>
+
+  <p class="para rdfs-comment">
+   <a href="function.ftp-fget.html" class="function">ftp_fget()</a> отгружает данные из файлового дескриптора в
+   удалённый файл на FTP сервере.
+  </p>
+ </div>
+
+ <div class="refsect1 parameters">
+  <h3 class="title">Список параметров</h3>
+  <p class="para">
+   <dl>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">ftp_stream</tt></i>
+</span>
+
+     <dd>
+
+      <p class="para">
+       Идентификатор соединения с FTP сервером
+      </p>
+     </dd>
+
+    </dt>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">remote_file</tt></i>
+</span>
+
+     <dd>
+
+      <p class="para">
+       Путь к удалённому файлу.
+      </p>
+     </dd>
+
+    </dt>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">handle</tt></i>
+</span>
+
+     <dd>
+
+      <p class="para">
+       Открытый файловый дескриптор локального файла. Чтение прекращается при
+       достижении конца файла.
+      </p>
+     </dd>
+
+    </dt>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">mode</tt></i>
+</span>
+
+     <dd>
+
+      <p class="para">
+       Режим передачи. Должен быть либо <b><tt>FTP_ASCII</tt></b>, либо
+       <b><tt>FTP_BINARY</tt></b>.
+      </p>
+     </dd>
+
+    </dt>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">startpos</tt></i>
+</span>
+
+     <dd>
+
+      <p class="para"/>
+     </dd>
+
+    </dt>
+
+   </dl>
+
+  </p>
+ </div>
+
+ <div class="refsect1 returnvalues">
+  <h3 class="title">Возвращаемые значения</h3>
+  <p class="para">
+   Возвращает <b><tt>TRUE</tt></b> в случае успешного завершения или <b><tt>FALSE</tt></b> в случае возникновения ошибки.
+  </p>
+ </div>
+
+ <div class="refsect1 examples">
+  <h3 class="title">Примеры</h3>
+  <p class="para">
+   <div class="example">
+    <p><b>Пример #1 Пример использования <b>ftp_fput()</b></b></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /><br /></span><span style="color: #FF8000">//&nbsp;открыть&nbsp;файл&nbsp;для&nbsp;чтения<br /></span><span style="color: #0000BB">$file&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">'somefile.txt'</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$fp&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">fopen</span><span style="color: #007700">(</span><span style="color: #0000BB">$file</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'r'</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">//&nbsp;установка&nbsp;соединения<br /></span><span style="color: #0000BB">$conn_id&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">ftp_connect</span><span style="color: #007700">(</span><span style="color: #0000BB">$ftp_server</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">//&nbsp;вход&nbsp;с&nbsp;именем&nbsp;пользователя&nbsp;и&nbsp;паролем<br /></span><span style="color: #0000BB">$login_result&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">ftp_login</span><span style="color: #007700">(</span><span style="color: #0000BB">$conn_id</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$ftp_user_name</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$ftp_user_pass</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">//&nbsp;попытка&nbsp;закачивания&nbsp;файла<br /></span><span style="color: #007700">if&nbsp;(</span><span style="color: #0000BB">ftp_fput</span><span style="color: #007700">(</span><span style="color: #0000BB">$conn_id</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$file</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$fp</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">FTP_ASCII</span><span style="color: #007700">))&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"Загружен&nbsp;файл&nbsp;$file\n"</span><span style="color: #007700">;<br />}&nbsp;else&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"Проблема&nbsp;закачивания&nbsp;$file\n"</span><span style="color: #007700">;<br />}<br /><br /></span><span style="color: #FF8000">//&nbsp;close&nbsp;the&nbsp;connection&nbsp;and&nbsp;the&nbsp;file&nbsp;handler<br /></span><span style="color: #0000BB">ftp_close</span><span style="color: #007700">(</span><span style="color: #0000BB">$conn_id</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">fclose</span><span style="color: #007700">(</span><span style="color: #0000BB">$fp</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+  </p>
+ </div>
+
+ <div class="refsect1 changelog">
+  <h3 class="title">Список изменений</h3>
+  <p class="para">
+   <table class="informaltable">
+    <colgroup>
+
+     <thead valign="middle">
+      <tr valign="middle">
+       <th colspan="1">Версия</th>
+       <th colspan="1">Описание</th>
+      </tr>
+
+     </thead>
+
+     <tbody valign="middle" class="tbody">
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left">4.3.0</td>
+       <td colspan="1" rowspan="1" align="left">
+        добавлен аргумент <i><tt class="parameter">startpos</tt></i>
+.
+       </td>
+      </tr>
+
+     </tbody>
+    </colgroup>
+
+   </table>
+  </p>
+ </div>
+
+ <div class="refsect1 seealso">
+  <h3 class="title">Смотрите также</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"><a href="function.ftp-put.html" class="function" rel="rdfs-seeAlso">ftp_put()</a></li>
+    <li class="member"><a href="function.ftp-nb-fput.html" class="function" rel="rdfs-seeAlso">ftp_nb_fput()</a></li>
+    <li class="member"><a href="function.ftp-nb-put.html" class="function" rel="rdfs-seeAlso">ftp_nb_put()</a></li>
+   </ul>
+  </p>
+ </div>
+
+</div><hr /><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="function.ftp-fget.html">ftp_fget</a></div>
+ <div class="next" style="float: right;"><a href="function.ftp-get-option.html">ftp_get_option</a></div>
+ <div class="up"><a href="ref.ftp.html">FTP</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

@@ -1,0 +1,172 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <title>Возвращает информацию о дате/времени</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+ </head>
+ <body><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="function.date.html">date</a></div>
+ <div class="next" style="float: right;"><a href="function.gettimeofday.html">gettimeofday</a></div>
+ <div class="up"><a href="ref.datetime.html">Date/Time</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="function.getdate" class="refentry">
+   <div class="refnamediv">
+    <h1 class="refname">getdate</h1>
+    <p class="verinfo">(PHP 4, PHP 5)</p><p class="refpurpose dc-title">getdate — Возвращает информацию о дате/времени</p>
+
+   </div>
+   <div class="refsect1 unknown">
+    <h3 class="title">Описание</h3>
+     <div class="methodsynopsis dc-description">
+      <span class="type">array</span> <span class="methodname"><b><b>getdate</b></b></span>
+       ([ <span class="methodparam"><span class="type">int</span> <tt class="parameter">$timestamp</tt></span>
+     ] )</div>
+
+    <p class="para rdfs-comment">
+     Возвращает ассоциативный массив, содержащий информацию о дате, 
+     представленной меткой времени <i><tt class="parameter">timestamp</tt></i>
+ или 
+     текущем системном времени, если <i><tt class="parameter">timestamp</tt></i>
+ не 
+     передан.
+     Массив содержит следующие элементы:
+    </p>
+    <p class="para">
+     <table border="5">
+      <caption><b>Индексы возвращаемого ассоциативного массива</b></caption>
+      <colgroup>
+
+       <thead valign="middle">
+        <tr valign="middle">
+         <th colspan="1">Индекс</th>
+         <th colspan="1">Описание</th>
+         <th colspan="1">Пример значения</th>
+        </tr>
+
+       </thead>
+
+       <tbody valign="middle" class="tbody">
+        <tr valign="middle">
+         <td colspan="1" rowspan="1" align="left"><i>&quot;seconds&quot;</i></td>
+         <td colspan="1" rowspan="1" align="left">Секунды</td>
+         <td colspan="1" rowspan="1" align="left">От <i>0</i> до <i>59</i></td>
+        </tr>
+
+        <tr valign="middle">
+         <td colspan="1" rowspan="1" align="left"><i>&quot;minutes&quot;</i></td>
+         <td colspan="1" rowspan="1" align="left">Минуты</td>
+         <td colspan="1" rowspan="1" align="left">От <i>0</i> до <i>59</i></td>
+        </tr>
+
+        <tr valign="middle">
+         <td colspan="1" rowspan="1" align="left"><i>&quot;hours&quot;</i></td>
+         <td colspan="1" rowspan="1" align="left">Часы</td>
+         <td colspan="1" rowspan="1" align="left">От <i>0</i> до <i>23</i></td>
+        </tr>
+
+        <tr valign="middle">
+         <td colspan="1" rowspan="1" align="left"><i>&quot;mday&quot;</i></td>
+         <td colspan="1" rowspan="1" align="left">Порядковый номер дня месяца</td>
+         <td colspan="1" rowspan="1" align="left">От <i>1</i> до <i>31</i></td>
+        </tr>
+
+        <tr valign="middle">
+         <td colspan="1" rowspan="1" align="left"><i>&quot;wday&quot;</i></td>
+         <td colspan="1" rowspan="1" align="left">Порядковый номер дня </td>
+         <td colspan="1" rowspan="1" align="left">От <i>0</i> (воскресенье) до <i>6</i> (суббота)</td>
+        </tr>
+
+        <tr valign="middle">
+         <td colspan="1" rowspan="1" align="left"><i>&quot;mon&quot;</i></td>
+         <td colspan="1" rowspan="1" align="left">Порядковый номер месяца</td>
+         <td colspan="1" rowspan="1" align="left">От <i>1</i> до <i>12</i></td>
+        </tr>
+
+        <tr valign="middle">
+         <td colspan="1" rowspan="1" align="left"><i>&quot;year&quot;</i></td>
+         <td colspan="1" rowspan="1" align="left">Порядковый номер года, 4 цифры</td>
+         <td colspan="1" rowspan="1" align="left">Примеры: <i>1999</i>, <i>2003</i></td>
+        </tr>
+
+        <tr valign="middle">
+         <td colspan="1" rowspan="1" align="left"><i>&quot;yday&quot;</i></td>
+         <td colspan="1" rowspan="1" align="left">Порядковый номер дня в году (нумерация с 0)</td>
+         <td colspan="1" rowspan="1" align="left">От <i>0</i> до <i>365</i></td>
+        </tr>
+
+        <tr valign="middle">
+         <td colspan="1" rowspan="1" align="left"><i>&quot;weekday&quot;</i></td>
+         <td colspan="1" rowspan="1" align="left">Полное наименование дня недели</td>
+         <td colspan="1" rowspan="1" align="left">От <i>Sunday</i> до <i>Saturday</i></td>
+        </tr>
+
+        <tr valign="middle">
+         <td colspan="1" rowspan="1" align="left"><i>&quot;month&quot;</i></td>
+         <td colspan="1" rowspan="1" align="left">Полное наименование месяца, например January или March</td>
+         <td colspan="1" rowspan="1" align="left">от <i>January</i> до <i>December</i></td>
+        </tr>
+
+        <tr valign="middle">
+         <td colspan="1" rowspan="1" align="left"><i>0</i></td>
+         <td colspan="1" rowspan="1" align="left">Колическтво секунд, прошедших с начала Эпохи Unix (The Unix
+          Epoch), подобно значению, возвращаемому функцией <a href="function.time.html" class="function">time()</a> и 
+         используемому функцией <a href="function.date.html" class="function">date()</a>.</td>
+         <td colspan="1" rowspan="1" align="left">Платформо-зависимое, в большинстве случаев от 
+            <i>-2147483648</i> до <i>2147483647</i>.
+         </td>
+        </tr>
+
+       </tbody>
+      </colgroup>
+
+     </table>
+
+    </p>
+    <p class="para">
+     <div class="example">
+      <p><b>Пример #1 
+       Пример использования функции <b>getdate()</b>
+      </b></p>
+      <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$today&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">getdate</span><span style="color: #007700">();&nbsp;<br /></span><span style="color: #0000BB">print_r</span><span style="color: #007700">(</span><span style="color: #0000BB">$today</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+      </div>
+
+      <div class="example-contents"><p>
+       Вывод будет выглядеть так:
+      </p></div>
+      <div class="example-contents"><pre>
+<div class="cdata"><pre>
+Array
+(
+    [seconds] =&gt; 40
+    [minutes] =&gt; 58
+    [hours]   =&gt; 21
+    [mday]    =&gt; 17
+    [wday]    =&gt; 2
+    [mon]     =&gt; 6
+    [year]    =&gt; 2003
+    [yday]    =&gt; 167
+    [weekday] =&gt; Tuesday
+    [month]   =&gt; June
+    [0]       =&gt; 1055901520
+)
+</pre></div>
+      </pre></div>
+     </div>
+    </p>
+    <p class="para">
+     See also <a href="function.date.html" class="function">date()</a>,
+     <a href="function.time.html" class="function">time()</a>, and
+     <a href="function.setlocale.html" class="function">setlocale()</a>.
+    </p>
+   </div>
+
+  </div><hr /><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="function.date.html">date</a></div>
+ <div class="next" style="float: right;"><a href="function.gettimeofday.html">gettimeofday</a></div>
+ <div class="up"><a href="ref.datetime.html">Date/Time</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

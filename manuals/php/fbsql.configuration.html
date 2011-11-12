@@ -1,0 +1,137 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <title>Настройка во время выполнения</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+ </head>
+ <body><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="fbsql.installation.html">Установка</a></div>
+ <div class="next" style="float: right;"><a href="fbsql.resources.html">Типы ресурсов</a></div>
+ <div class="up"><a href="fbsql.setup.html">Установка и настройка</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="fbsql.configuration" class="section">
+ <h2 class="title">Настройка во время выполнения</h2>
+ <p class="simpara">
+Поведение этих функций зависит от установок в <var class="filename">php.ini</var>.
+</p>
+ <p class="para">
+ <table border="5">
+  <caption><b>FrontBase configuration options</b></caption>
+  <colgroup>
+
+   <thead valign="middle">
+    <tr valign="middle">
+     <th colspan="1">Name</th>
+     <th colspan="1">Default</th>
+     <th colspan="1">Changeable</th>
+     <th colspan="1">Changelog</th>
+    </tr>
+
+   </thead>
+
+   <tbody valign="middle" class="tbody">
+    <tr valign="middle">
+     <td colspan="1" rowspan="1" align="left">fbsql.allow_persistent</td>
+     <td colspan="1" rowspan="1" align="left">&quot;1&quot;</td>
+     <td colspan="1" rowspan="1" align="left">PHP_INI_SYSTEM</td>
+     <td colspan="1" rowspan="1" align="left">Available since PHP 4.2.0.</td>
+    </tr>
+
+    <tr valign="middle">
+     <td colspan="1" rowspan="1" align="left">fbsql.generate_warnings</td>
+     <td colspan="1" rowspan="1" align="left">&quot;0&quot;</td>
+     <td colspan="1" rowspan="1" align="left">PHP_INI_SYSTEM</td>
+     <td colspan="1" rowspan="1" align="left">Available since PHP 4.0.6.</td>
+    </tr>
+
+    <tr valign="middle">
+     <td colspan="1" rowspan="1" align="left">fbsql.autocommit</td>
+     <td colspan="1" rowspan="1" align="left">&quot;1&quot;</td>
+     <td colspan="1" rowspan="1" align="left">PHP_INI_SYSTEM</td>
+     <td colspan="1" rowspan="1" align="left">Available since PHP 4.0.6.</td>
+    </tr>
+
+    <tr valign="middle">
+     <td colspan="1" rowspan="1" align="left">fbsql.max_persistent</td>
+     <td colspan="1" rowspan="1" align="left">&quot;-1&quot;</td>
+     <td colspan="1" rowspan="1" align="left">PHP_INI_SYSTEM</td>
+     <td colspan="1" rowspan="1" align="left">Available since PHP 4.0.6.</td>
+    </tr>
+
+    <tr valign="middle">
+     <td colspan="1" rowspan="1" align="left">fbsql.max_links</td>
+     <td colspan="1" rowspan="1" align="left">&quot;128&quot;</td>
+     <td colspan="1" rowspan="1" align="left">PHP_INI_SYSTEM</td>
+     <td colspan="1" rowspan="1" align="left">Available since PHP 4.0.6.</td>
+    </tr>
+
+    <tr valign="middle">
+     <td colspan="1" rowspan="1" align="left">fbsql.max_connections</td>
+     <td colspan="1" rowspan="1" align="left">&quot;128&quot;</td>
+     <td colspan="1" rowspan="1" align="left">PHP_INI_SYSTEM</td>
+     <td colspan="1" rowspan="1" align="left">Available since PHP 4.0.6.</td>
+    </tr>
+
+    <tr valign="middle">
+     <td colspan="1" rowspan="1" align="left">fbsql.max_results</td>
+     <td colspan="1" rowspan="1" align="left">&quot;128&quot;</td>
+     <td colspan="1" rowspan="1" align="left">PHP_INI_SYSTEM</td>
+     <td colspan="1" rowspan="1" align="left">Available since PHP 4.0.6.</td>
+    </tr>
+
+    <tr valign="middle">
+     <td colspan="1" rowspan="1" align="left">fbsql.batchSize</td>
+     <td colspan="1" rowspan="1" align="left">&quot;1000&quot;</td>
+     <td colspan="1" rowspan="1" align="left">PHP_INI_SYSTEM</td>
+     <td colspan="1" rowspan="1" align="left">Available since PHP 4.2.0. Removed in PHP 5.1.0.</td>
+    </tr>
+
+    <tr valign="middle">
+     <td colspan="1" rowspan="1" align="left">fbsql.default_host</td>
+     <td colspan="1" rowspan="1" align="left">NULL</td>
+     <td colspan="1" rowspan="1" align="left">PHP_INI_SYSTEM</td>
+     <td colspan="1" rowspan="1" align="left">Available since PHP 4.0.6.</td>
+    </tr>
+
+    <tr valign="middle">
+     <td colspan="1" rowspan="1" align="left">fbsql.default_user</td>
+     <td colspan="1" rowspan="1" align="left">&quot;_SYSTEM&quot;</td>
+     <td colspan="1" rowspan="1" align="left">PHP_INI_SYSTEM</td>
+     <td colspan="1" rowspan="1" align="left">Available since PHP 4.0.6.</td>
+    </tr>
+
+    <tr valign="middle">
+     <td colspan="1" rowspan="1" align="left">fbsql.default_password</td>
+     <td colspan="1" rowspan="1" align="left">&quot;&quot;</td>
+     <td colspan="1" rowspan="1" align="left">PHP_INI_SYSTEM</td>
+     <td colspan="1" rowspan="1" align="left">Available since PHP 4.0.6.</td>
+    </tr>
+
+    <tr valign="middle">
+     <td colspan="1" rowspan="1" align="left">fbsql.default_database</td>
+     <td colspan="1" rowspan="1" align="left">&quot;&quot;</td>
+     <td colspan="1" rowspan="1" align="left">PHP_INI_SYSTEM</td>
+     <td colspan="1" rowspan="1" align="left">Available since PHP 4.0.6.</td>
+    </tr>
+
+    <tr valign="middle">
+     <td colspan="1" rowspan="1" align="left">fbsql.default_database_password</td>
+     <td colspan="1" rowspan="1" align="left">&quot;&quot;</td>
+     <td colspan="1" rowspan="1" align="left">PHP_INI_SYSTEM</td>
+     <td colspan="1" rowspan="1" align="left">Available since PHP 4.0.6.</td>
+    </tr>
+
+   </tbody>
+  </colgroup>
+
+ </table>
+
+ Для подробного описания констант
+PHP_INI_*, обратитесь к документации функции <a href="function.ini-set.html" class="function">ini_set()</a>.
+ </p>
+</div><hr /><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="fbsql.installation.html">Установка</a></div>
+ <div class="next" style="float: right;"><a href="fbsql.resources.html">Типы ресурсов</a></div>
+ <div class="up"><a href="fbsql.setup.html">Установка и настройка</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

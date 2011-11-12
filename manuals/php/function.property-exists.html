@@ -1,0 +1,118 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <title>Проверяет, содержит ли объект или класс указанный атрибут</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+ </head>
+ <body><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="ref.classobj.html">Функции работы с Классами/Объектами</a></div>
+ <div class="next" style="float: right;"><a href="book.classkit.html">Classkit</a></div>
+ <div class="up"><a href="ref.classobj.html">Функции работы с Классами/Объектами</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="function.property-exists" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">property_exists</h1>
+  <p class="verinfo">(PHP 5 &gt;= 5.1.0)</p><p class="refpurpose dc-title">property_exists — 
+   Проверяет, содержит ли объект или класс указанный атрибут
+  </p>
+
+ </div>
+ <div class="refsect1 description">
+  <h3 class="title">Описание</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type">bool</span> <span class="methodname"><b><b>property_exists</b></b></span>
+    ( <span class="methodparam"><span class="type"><a href="language.pseudo-types.html#language.types.mixed" class="type mixed">mixed</a></span> <tt class="parameter">$class</tt></span>
+   , <span class="methodparam"><span class="type">string</span> <tt class="parameter">$property</tt></span>
+   )</div>
+
+  <p class="para rdfs-comment">
+   Функция проверяет, существует ли атрибут <i><tt class="parameter">property</tt></i>
+
+   в определенном классе (и доступно ли оно из текущей области видимости).
+  </p>
+  <blockquote><p><b class="note">Замечание</b>: 
+   
+    В противоположность <a href="function.isset.html" class="function">isset()</a>,
+    <b>property_exists()</b> возвращает <b><tt>TRUE</tt></b> даже если свойство
+    имеет значение <b><tt>NULL</tt></b>.
+   <br />
+  </p></blockquote>
+ </div>
+
+ <div class="refsect1 parameters">
+  <h3 class="title">Список параметров</h3>
+  <p class="para">
+   <dl>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">class</tt></i>
+</span>
+
+      <dd>
+
+       <p class="para">
+        Имя класса или объекта класса для проверки
+       </p>
+      </dd>
+
+     </dt>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">property</tt></i>
+</span>
+
+      <dd>
+
+       <p class="para">
+        Имя свойства
+       </p>
+      </dd>
+
+     </dt>
+
+   </dl>
+
+  </p>
+ </div>
+
+ <div class="refsect1 returnvalues">
+  <h3 class="title">Возвращаемые значения</h3>
+  <p class="para">
+   Возвращает <b><tt>TRUE</tt></b>, если свойство существует, <b><tt>FALSE</tt></b> - если оно не существует или
+   <b><tt>NULL</tt></b> в случае ошибки.
+  </p>
+ </div>
+
+ <div class="refsect1 examples">
+  <h3 class="title">Примеры</h3>
+  <p class="para">
+   <div class="example">
+    <p><b>Пример #1 Пример использования <b>property_exists()</b></b></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /><br /></span><span style="color: #007700">class&nbsp;</span><span style="color: #0000BB">myClass&nbsp;</span><span style="color: #007700">{<br />&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;</span><span style="color: #0000BB">$mine</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;private&nbsp;</span><span style="color: #0000BB">$xpto</span><span style="color: #007700">;<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;static&nbsp;function&nbsp;</span><span style="color: #0000BB">test</span><span style="color: #007700">()&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">property_exists</span><span style="color: #007700">(</span><span style="color: #DD0000">'myClass'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'xpto'</span><span style="color: #007700">));&nbsp;</span><span style="color: #FF8000">//&nbsp;true,&nbsp;отсюда&nbsp;есть&nbsp;доступ&nbsp;к&nbsp;свойству<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">}<br />}<br /><br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">property_exists</span><span style="color: #007700">(</span><span style="color: #DD0000">'myClass'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'mine'</span><span style="color: #007700">));&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//true<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">property_exists</span><span style="color: #007700">(new&nbsp;</span><span style="color: #0000BB">myClass</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'mine'</span><span style="color: #007700">));&nbsp;</span><span style="color: #FF8000">//true<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">property_exists</span><span style="color: #007700">(</span><span style="color: #DD0000">'myClass'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'xpto'</span><span style="color: #007700">));&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//false,&nbsp;свойство&nbsp;не&nbsp;public<br /></span><span style="color: #0000BB">myClass</span><span style="color: #007700">::</span><span style="color: #0000BB">test</span><span style="color: #007700">();<br /><br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+  </p>
+ </div>
+
+ <div class="refsect1 seealso">
+  <h3 class="title">Смотрите также</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"><a href="function.method-exists.html" class="function" rel="rdfs-seeAlso">method_exists()</a></li>
+   </ul>
+  </p>
+ </div>
+
+</div><hr /><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="ref.classobj.html">Функции работы с Классами/Объектами</a></div>
+ <div class="next" style="float: right;"><a href="book.classkit.html">Classkit</a></div>
+ <div class="up"><a href="ref.classobj.html">Функции работы с Классами/Объектами</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

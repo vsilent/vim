@@ -1,0 +1,133 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <title>Create document tag</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+ </head>
+ <body><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="function.xmlwriter-start-comment.html">XMLWriter::startComment</a></div>
+ <div class="next" style="float: right;"><a href="function.xmlwriter-start-dtd-attlist.html">XMLWriter::startDTDAttlist</a></div>
+ <div class="up"><a href="ref.xmlwriter.html">XMLWriter Функции</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="function.xmlwriter-start-document" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">XMLWriter::startDocument</h1>
+  <p class="verinfo">(No version information available, might be only in CVS)</p><p class="refpurpose dc-title">XMLWriter::startDocument — Create document tag</p>
+
+ </div>
+ <div class="refsect1 description">
+  <h3 class="title">Описание</h3>
+  <p class="para">Object oriented style:</p>
+  <div class="classsynopsis">
+   <div class="ooclass"><b class="classname">XMLWriter</b></div>
+   <div class="methodsynopsis dc-description">
+    <span class="type">bool</span> <span class="methodname"><b><b>startDocument</b></b></span>
+     ([ <span class="methodparam"><span class="type">string</span> <tt class="parameter">$version</tt></span>
+    [, <span class="methodparam"><span class="type">string</span> <tt class="parameter">$encoding</tt></span>
+    [, <span class="methodparam"><span class="type">string</span> <tt class="parameter">$standalone</tt></span>
+   ]]] )</div>
+
+  </div>
+  <p class="para">Procedural style:</p>
+  <div class="methodsynopsis dc-description">
+   <span class="type">bool</span> <span class="methodname"><b><b>xmlwriter_start_document</b></b></span>
+    ( <span class="methodparam"><span class="type">resource</span> <tt class="parameter">$xmlwriter</tt></span>
+   [, <span class="methodparam"><span class="type">string</span> <tt class="parameter">$version</tt></span>
+   [, <span class="methodparam"><span class="type">string</span> <tt class="parameter">$encoding</tt></span>
+   [, <span class="methodparam"><span class="type">string</span> <tt class="parameter">$standalone</tt></span>
+  ]]] )</div>
+
+  <p class="para rdfs-comment">
+   Starts a document.
+  </p>
+ </div>
+
+ <div class="refsect1 parameters">
+  <h3 class="title">Список параметров</h3>
+  <p class="para">
+   <dl>
+
+    <dt>
+<span class="term"><i><tt class="parameter">
+xmlwriter</tt></i>
+</span>
+<dd>
+<p class="para">Only for procedural calls. 
+The XMLWriter <a href="language.types.resource.html" class="type resource">resource</a> that is being modified. This resource comes from a call to <b>xmlwriter_open_uri()</b> or <b>xmlwriter_open_memory()</b>.</p></dd>
+</dt>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">version</tt></i>
+</span>
+
+     <dd>
+
+      <p class="para">
+       The version number of the document as part of the XML declaration. 
+       Defaults to <i>1.0</i>.
+      </p>
+     </dd>
+
+    </dt>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">encoding</tt></i>
+</span>
+
+     <dd>
+
+      <p class="para">
+       The encoding of the document as part of the XML declaration.
+       <b><tt>NULL</tt></b> by default.
+      </p>
+     </dd>
+
+    </dt>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">standalone</tt></i>
+</span>
+
+     <dd>
+
+      <p class="para">
+       <i>yes</i> or <i>no</i>.
+       <b><tt>NULL</tt></b> by default.
+      </p>
+     </dd>
+
+    </dt>
+
+   </dl>
+
+  </p>
+ </div>
+
+
+ <div class="refsect1 returnvalues">
+  <h3 class="title">Возвращаемые значения</h3>
+  <p class="para">
+   Возвращает <b><tt>TRUE</tt></b> в случае успешного завершения или <b><tt>FALSE</tt></b> в случае возникновения ошибки.
+  </p>
+ </div>
+
+
+ <div class="refsect1 seealso">
+  <h3 class="title">Смотрите также</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"><a href="function.xmlwriter-end-document.html" class="xref">XMLWriter::endDocument</a></li>
+   </ul>
+  </p>
+ </div>
+
+
+</div><hr /><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="function.xmlwriter-start-comment.html">XMLWriter::startComment</a></div>
+ <div class="next" style="float: right;"><a href="function.xmlwriter-start-dtd-attlist.html">XMLWriter::startDTDAttlist</a></div>
+ <div class="up"><a href="ref.xmlwriter.html">XMLWriter Функции</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

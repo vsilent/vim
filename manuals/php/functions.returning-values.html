@@ -1,0 +1,78 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <title>Возврат значений</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+ </head>
+ <body><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="functions.arguments.html">Аргументы функции</a></div>
+ <div class="next" style="float: right;"><a href="functions.variable-functions.html">Обращение к функциям через переменные</a></div>
+ <div class="up"><a href="language.functions.html">Функции</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="functions.returning-values" class="sect1">
+   <h2 class="title">Возврат значений</h2>
+ 
+   <p class="para">
+    Значения возвращаются при помощи необязательного оператора возврата.
+    Возвращаемые значения могут быть любого типа, в том числе это могут
+    быть списки и объекты. Возврат приводит к завершению выполнения функции и передаче 
+    управления обратно к той строке кода, в которой данная функция была
+    вызвана. Для получения более детальной информации ознакомьтесь с описанием
+    функции <b>return()</b>.
+   </p>
+   <p class="para">
+    <div class="example">
+     <p><b>Пример #1 Использование функции <b>return()</b></b></p>
+     <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">function&nbsp;</span><span style="color: #0000BB">square</span><span style="color: #007700">(</span><span style="color: #0000BB">$num</span><span style="color: #007700">)<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">$num&nbsp;</span><span style="color: #007700">*&nbsp;</span><span style="color: #0000BB">$num</span><span style="color: #007700">;<br />}<br />echo&nbsp;</span><span style="color: #0000BB">square</span><span style="color: #007700">(</span><span style="color: #0000BB">4</span><span style="color: #007700">);&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;выводит&nbsp;'16'.<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+     </div>
+
+    </div>
+   </p>
+      
+   <p class="para">
+    Функция не может возвращать несколько значений, но аналогичного
+    результата можно добиться, возвращая массив.
+   </p>
+   <p class="para">
+    <div class="example">
+     <p><b>Пример #2 Возврат нескольких значений в виде массива</b></p>
+     <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">function&nbsp;</span><span style="color: #0000BB">small_numbers</span><span style="color: #007700">()<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;array&nbsp;(</span><span style="color: #0000BB">0</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">1</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">2</span><span style="color: #007700">);<br />}<br />list&nbsp;(</span><span style="color: #0000BB">$zero</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$one</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$two</span><span style="color: #007700">)&nbsp;=&nbsp;</span><span style="color: #0000BB">small_numbers</span><span style="color: #007700">();<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+     </div>
+
+    </div>
+   </p>
+   <p class="para">
+    Для того, чтобы функция возвращала результат по ссылке, вам 
+    необходимо использовать оператор &amp; и при описании функции, 
+    и при присвоении переменной возвращаемого значения:
+   </p>
+   <p class="para">
+    <div class="example">
+     <p><b>Пример #3 Возврат результата по ссылке</b></p>
+     <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">function&nbsp;&amp;</span><span style="color: #0000BB">returns_reference</span><span style="color: #007700">()<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">$someref</span><span style="color: #007700">;<br />}<br /><br /></span><span style="color: #0000BB">$newref&nbsp;</span><span style="color: #007700">=&amp;&nbsp;</span><span style="color: #0000BB">returns_reference</span><span style="color: #007700">();<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+     </div>
+
+    </div>
+   </p>
+   <p class="simpara">
+    Для получения более детальной информации о ссылках обратитесь
+    к разделу документации <a href="language.references.html" class="link">Подробно об указателях</a>.
+   </p>
+  </div><hr /><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="functions.arguments.html">Аргументы функции</a></div>
+ <div class="next" style="float: right;"><a href="functions.variable-functions.html">Обращение к функциям через переменные</a></div>
+ <div class="up"><a href="language.functions.html">Функции</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

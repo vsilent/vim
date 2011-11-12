@@ -1,0 +1,145 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <title>Итераторы объектов</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+ </head>
+ <body><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="language.oop5.overloading.html">Перегрузка</a></div>
+ <div class="next" style="float: right;"><a href="language.oop5.patterns.html">Шаблоны проектирования</a></div>
+ <div class="up"><a href="language.oop5.html">Классы и объекты (PHP 5)</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="language.oop5.iterations" class="sect1">
+  <h2 class="title">Итераторы объектов</h2>
+  <p class="para">
+   PHP 5 предоставляет механизм итераторов для получения
+   списка всех свойств какого-либо объекта, например, для
+   использования совместно с оператором <a href="control-structures.foreach.html" class="xref">foreach</a>. По умолчанию,
+   в итерации будут участвовать все свойства, объявленные
+   как public.
+  </p>
+
+  <div class="example">
+   <p><b>Пример #1 Итерация простого объекта</b></p>
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /><br /></span><span style="color: #007700">class&nbsp;</span><span style="color: #0000BB">MyClass&nbsp;</span><span style="color: #007700">{<br />&nbsp;&nbsp;public&nbsp;</span><span style="color: #0000BB">$var1&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">'value&nbsp;1'</span><span style="color: #007700">;<br />&nbsp;&nbsp;public&nbsp;</span><span style="color: #0000BB">$var2&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">'value&nbsp;2'</span><span style="color: #007700">;<br />&nbsp;&nbsp;public&nbsp;</span><span style="color: #0000BB">$var3&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">'value&nbsp;3'</span><span style="color: #007700">;<br /><br />&nbsp;&nbsp;protected&nbsp;</span><span style="color: #0000BB">$protected&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">'protected'</span><span style="color: #007700">;<br />&nbsp;&nbsp;private&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$private&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">'private'</span><span style="color: #007700">;<br /><br />}<br /><br /></span><span style="color: #0000BB">$class&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">MyClass</span><span style="color: #007700">();<br /><br />foreach(</span><span style="color: #0000BB">$class&nbsp;</span><span style="color: #007700">as&nbsp;</span><span style="color: #0000BB">$key&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">$value</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;print&nbsp;</span><span style="color: #DD0000">"$key&nbsp;=&gt;&nbsp;$value\n"</span><span style="color: #007700">;<br />}</span>
+</span>
+</code></div>
+   </div>
+
+   <div class="example-contents"><p>
+     Результат:
+   </p></div>
+   <div class="example-contents"><pre>
+<div class="cdata"><pre>
+var1 =&gt; value 1
+var2 =&gt; value 2
+var3 =&gt; value 3
+</pre></div>
+   </pre></div>
+
+  </div>
+
+ <p class="para">
+  Как показывает результат, <a href="control-structures.foreach.html" class="xref">foreach</a>
+  проитерировал все принадлежащие объекту public-свойства.
+  Кроме того, программист может <var class="varname">включить (implement)</var>
+  в свой класс один из внутренних <a href="language.oop5.interfaces.html" class="xref">Интерфейсы объектов</a> PHP 5,
+  именуемый <var class="varname">Iterator</var>. Это позволит программисту самому определить,
+  каким именно образом будет осуществляться итерация объекта.
+ </p>
+
+  <div class="example">
+   <p><b>Пример #2 Объект Iteration, включающий интерфейс Iterator</b></p>
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">class&nbsp;</span><span style="color: #0000BB">MyIterator&nbsp;</span><span style="color: #007700">implements&nbsp;</span><span style="color: #0000BB">Iterator&nbsp;</span><span style="color: #007700">{<br /><br />&nbsp;&nbsp;private&nbsp;</span><span style="color: #0000BB">$var&nbsp;</span><span style="color: #007700">=&nbsp;array();<br /><br />&nbsp;&nbsp;public&nbsp;function&nbsp;</span><span style="color: #0000BB">__construct</span><span style="color: #007700">(</span><span style="color: #0000BB">$array</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(</span><span style="color: #0000BB">is_array</span><span style="color: #007700">(</span><span style="color: #0000BB">$array</span><span style="color: #007700">)&nbsp;)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">var&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$array</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />&nbsp;&nbsp;}<br /><br />&nbsp;&nbsp;public&nbsp;function&nbsp;</span><span style="color: #0000BB">rewind</span><span style="color: #007700">()&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"перемотка&nbsp;в&nbsp;начало\n"</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">reset</span><span style="color: #007700">(</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">var</span><span style="color: #007700">);<br />&nbsp;&nbsp;}<br /><br />&nbsp;&nbsp;public&nbsp;function&nbsp;</span><span style="color: #0000BB">current</span><span style="color: #007700">()&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$var&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">current</span><span style="color: #007700">(</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">var</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"текущий:&nbsp;$var\n"</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">$var</span><span style="color: #007700">;<br />&nbsp;&nbsp;}<br /><br />&nbsp;&nbsp;public&nbsp;function&nbsp;</span><span style="color: #0000BB">key</span><span style="color: #007700">()&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$var&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">key</span><span style="color: #007700">(</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">var</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"ключ:&nbsp;$var\n"</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">$var</span><span style="color: #007700">;<br />&nbsp;&nbsp;}<br /><br />&nbsp;&nbsp;public&nbsp;function&nbsp;</span><span style="color: #0000BB">next</span><span style="color: #007700">()&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$var&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">next</span><span style="color: #007700">(</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">var</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"следующий:&nbsp;$var\n"</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">$var</span><span style="color: #007700">;<br />&nbsp;&nbsp;}<br /><br />&nbsp;&nbsp;public&nbsp;function&nbsp;</span><span style="color: #0000BB">valid</span><span style="color: #007700">()&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$var&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">current</span><span style="color: #007700">()&nbsp;!==&nbsp;</span><span style="color: #0000BB">false</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"верный:&nbsp;{$var}\n"</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">$var</span><span style="color: #007700">;<br />&nbsp;&nbsp;}<br /><br />}<br /><br /></span><span style="color: #0000BB">$values&nbsp;</span><span style="color: #007700">=&nbsp;array(</span><span style="color: #0000BB">1</span><span style="color: #007700">,</span><span style="color: #0000BB">2</span><span style="color: #007700">,</span><span style="color: #0000BB">3</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$it&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">MyIterator</span><span style="color: #007700">(</span><span style="color: #0000BB">$values</span><span style="color: #007700">);<br /><br />foreach&nbsp;(</span><span style="color: #0000BB">$it&nbsp;</span><span style="color: #007700">as&nbsp;</span><span style="color: #0000BB">$a&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">$b</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;print&nbsp;</span><span style="color: #DD0000">"$a:&nbsp;$b\n"</span><span style="color: #007700">;<br />}</span>
+</span>
+</code></div>
+   </div>
+
+   <div class="example-contents"><p>
+     Результатом выполнения этого кода станет:
+   </p></div>
+   <div class="example-contents"><pre>
+<div class="cdata"><pre>
+перемотка в начало
+текущий: 1
+верный: 1
+текущий: 1
+ключ: 0
+0: 1
+следующий: 2
+текущий: 2
+верный: 1
+текущий: 2
+ключ: 1
+1: 2
+следующий: 3
+текущий: 3
+верный: 1
+текущий: 3
+ключ: 2
+2: 3
+следующий:
+текущий:
+верный:
+</pre></div>
+   </pre></div>
+
+  </div>
+
+  <p class="para">
+   Программист также может объявить класс так, чтобы ему
+   не пришлось описывать все методы, перечисленные в интерфейсе
+   <var class="varname">Iterator</var>, включая интерфейс PHP 5 <var class="varname">IteratorAggregate</var>.
+  </p>
+
+  <div class="example">
+   <p><b>Пример #3 Объект Iteration, включающий интерфейс IteratorAggregate</b></p>
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">class&nbsp;</span><span style="color: #0000BB">MyCollection&nbsp;</span><span style="color: #007700">implements&nbsp;</span><span style="color: #0000BB">IteratorAggregate&nbsp;</span><span style="color: #007700">{<br />&nbsp;&nbsp;private&nbsp;</span><span style="color: #0000BB">$items&nbsp;</span><span style="color: #007700">=&nbsp;array();<br />&nbsp;&nbsp;private&nbsp;</span><span style="color: #0000BB">$count&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">0</span><span style="color: #007700">;<br /><br />&nbsp;&nbsp;</span><span style="color: #FF8000">/*&nbsp;Required&nbsp;definition&nbsp;of&nbsp;interface&nbsp;IteratorAggregate&nbsp;*/<br />&nbsp;&nbsp;</span><span style="color: #007700">public&nbsp;function&nbsp;</span><span style="color: #0000BB">getIterator</span><span style="color: #007700">()&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;new&nbsp;</span><span style="color: #0000BB">MyIterator</span><span style="color: #007700">(</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">items</span><span style="color: #007700">);<br />&nbsp;&nbsp;}<br /><br />&nbsp;&nbsp;public&nbsp;function&nbsp;</span><span style="color: #0000BB">add</span><span style="color: #007700">(</span><span style="color: #0000BB">$value</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">items</span><span style="color: #007700">[</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">count</span><span style="color: #007700">++]&nbsp;=&nbsp;</span><span style="color: #0000BB">$value</span><span style="color: #007700">;<br />&nbsp;&nbsp;}<br /><br />}<br /><br /></span><span style="color: #0000BB">$coll&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">MyCollection</span><span style="color: #007700">();<br /></span><span style="color: #0000BB">$coll</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">add</span><span style="color: #007700">(</span><span style="color: #DD0000">'value&nbsp;1'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$coll</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">add</span><span style="color: #007700">(</span><span style="color: #DD0000">'value&nbsp;2'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$coll</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">add</span><span style="color: #007700">(</span><span style="color: #DD0000">'value&nbsp;3'</span><span style="color: #007700">);<br /><br />foreach&nbsp;(</span><span style="color: #0000BB">$coll&nbsp;</span><span style="color: #007700">as&nbsp;</span><span style="color: #0000BB">$key&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">$val</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"key/value:&nbsp;[$key&nbsp;-&gt;&nbsp;$val]\n\n"</span><span style="color: #007700">;<br />}<br /><br /></span><span style="color: #0000BB">?&gt;<br /></span>&lt;/pre&gt;</span>
+</code></div>
+   </div>
+
+   <div class="example-contents"><p>
+     Результат:
+   </p></div>
+   <div class="example-contents"><pre>
+<div class="cdata"><pre>
+rewinding
+current: value 1
+valid: 1
+current: value 1
+key: 0
+key/value: [0 -&gt; value 1]
+
+next: value 2
+current: value 2
+valid: 1
+current: value 2
+key: 1
+key/value: [1 -&gt; value 2]
+
+next: value 3
+current: value 3
+valid: 1
+current: value 3
+key: 2
+key/value: [2 -&gt; value 3]
+
+next:
+current:
+valid:
+</pre></div>
+   </pre></div>
+
+  </div>
+ </div><hr /><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="language.oop5.overloading.html">Перегрузка</a></div>
+ <div class="next" style="float: right;"><a href="language.oop5.patterns.html">Шаблоны проектирования</a></div>
+ <div class="up"><a href="language.oop5.html">Классы и объекты (PHP 5)</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

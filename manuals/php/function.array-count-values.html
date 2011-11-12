@@ -1,0 +1,62 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <title>Подсчитать количество всех значений массива</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+ </head>
+ <body><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="function.array-combine.html">array_combine</a></div>
+ <div class="next" style="float: right;"><a href="function.array-diff-assoc.html">array_diff_assoc</a></div>
+ <div class="up"><a href="ref.array.html">Функции для работы с массивами</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="function.array-count-values" class="refentry">
+   <div class="refnamediv">
+    <h1 class="refname">array_count_values</h1>
+    <p class="verinfo">(PHP 4, PHP 5)</p><p class="refpurpose dc-title">array_count_values — Подсчитать количество всех значений массива</p>
+
+   </div>
+   <div class="refsect1 unknown">
+    <h3 class="title">Описание</h3>
+     <div class="methodsynopsis dc-description">
+      <span class="type">array</span> <span class="methodname"><b><b>array_count_values</b></b></span>
+       ( <span class="methodparam"><span class="type">array</span> <tt class="parameter">$input</tt></span>
+      )</div>
+
+    <p class="para rdfs-comment">
+     Функция <b>array_count_values()</b> возвращает массив,
+     ключами которого являются значения массива <i><tt class="parameter">исходный_массив</tt></i>
+,
+     а значениями - частота повторения этих значений.
+    </p>
+    <p class="para">
+     <div class="example">
+      <p><b>Пример #1 Пример использования <b>array_count_values()</b></b></p>
+      <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+$array&nbsp;=&nbsp;array&nbsp;(1,&nbsp;"hello",&nbsp;1,&nbsp;"world",&nbsp;"hello");<br />print_r(array_count_values&nbsp;($array));</span>
+</code></div>
+      </div>
+
+      <div class="example-contents"><p>
+       Результатом вышеприведенной программы будет:
+       <div class="example-contents"><pre>
+<div class="cdata"><pre>
+Array
+(
+    [1] =&gt; 2
+    [hello] =&gt; 2
+    [world] =&gt; 1
+)
+</pre></div>
+       </pre></div>
+      </p></div>
+     </div>
+    </p>
+   </div>
+
+  </div><hr /><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="function.array-combine.html">array_combine</a></div>
+ <div class="next" style="float: right;"><a href="function.array-diff-assoc.html">array_diff_assoc</a></div>
+ <div class="up"><a href="ref.array.html">Функции для работы с массивами</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

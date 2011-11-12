@@ -1,0 +1,71 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <title>Получить список всех заголовков HTTP запроса</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+ </head>
+ <body><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="function.apache-note.html">apache_note</a></div>
+ <div class="next" style="float: right;"><a href="function.apache-reset-timeout.html">apache_reset_timeout</a></div>
+ <div class="up"><a href="ref.apache.html">Функции для работы с сервером Apache</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="function.apache-request-headers" class="refentry">
+   <div class="refnamediv">
+    <h1 class="refname">apache_request_headers</h1>
+    <p class="verinfo">(PHP 4 &gt;= 4.3.0, PHP 5)</p><p class="refpurpose dc-title">apache_request_headers — Получить список всех заголовков HTTP запроса</p>
+
+   </div>
+   <div class="refsect1 unknown">
+    <h3 class="title">Описание</h3>
+     <div class="methodsynopsis dc-description">
+      <span class="type">array</span> <span class="methodname"><b><b>apache_request_headers</b></b></span>
+       ( <span class="methodparam">void</span>
+      )</div>
+
+    <p class="para rdfs-comment">
+     Функция <b>apache_request_headers()</b> возвращает
+     ассоциативный массив, содержащий все заголовки текущего HTTP
+     запроса. Эта функция доступна только в том случае, если PHP работает
+     в качестве модуля <span class="productname">Apache</span>.
+    </p>
+    <blockquote><p><b class="note">Замечание</b>: 
+     
+      В версиях PHP до 4.3.0, функция
+      <b>apache_request_headers()</b> имела наименование
+      <a href="function.getallheaders.html" class="function">getallheaders()</a>.  В PHP версии 4.3.0 и последующих
+      версиях, имя <a href="function.getallheaders.html" class="function">getallheaders()</a> является псевдонимом
+      функции <b>apache_request_headers()</b>.
+     <br />
+    </p></blockquote>
+    <p class="para">
+     <div class="example">
+      <p><b>Пример #1 Пример использования <b>apache_request_headers()</b></b></p>
+      <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$headers&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">apache_request_headers</span><span style="color: #007700">();<br /><br />foreach&nbsp;(</span><span style="color: #0000BB">$headers&nbsp;</span><span style="color: #007700">as&nbsp;</span><span style="color: #0000BB">$header&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">$value</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"$header:&nbsp;$value&nbsp;&lt;br&nbsp;/&gt;\n"</span><span style="color: #007700">;<br />}<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+      </div>
+
+     </div>
+    </p>
+    <p class="para">
+     <blockquote><p><b class="note">Замечание</b>: 
+      
+       Также вы можете получить значения наиболее широко используемых
+       CGI переменных, читая их из окружения сервера; это работает независимо
+       от того, установлен PHP в качестве модуля <span class="productname">Apache</span> или нет.
+       Для того, чтобы получить список всех доступных
+       <a href="language.variables.predefined.html" class="link">переменных окружения</a>,
+       используйте функцию <a href="function.phpinfo.html" class="function">phpinfo()</a>.
+      <br />
+     </p></blockquote>
+    </p>
+   </div>
+
+  </div><hr /><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="function.apache-note.html">apache_note</a></div>
+ <div class="next" style="float: right;"><a href="function.apache-reset-timeout.html">apache_reset_timeout</a></div>
+ <div class="up"><a href="ref.apache.html">Функции для работы с сервером Apache</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

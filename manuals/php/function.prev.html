@@ -1,0 +1,66 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <title>Передвинуть внутренний указатель массива на одну позицию назад</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+ </head>
+ <body><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="function.pos.html">pos</a></div>
+ <div class="next" style="float: right;"><a href="function.range.html">range</a></div>
+ <div class="up"><a href="ref.array.html">Функции для работы с массивами</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="function.prev" class="refentry">
+   <div class="refnamediv">
+    <h1 class="refname">prev</h1>
+    <p class="verinfo">(PHP 4, PHP 5)</p><p class="refpurpose dc-title">prev — Передвинуть внутренний указатель массива на одну позицию назад</p>
+
+   </div>
+   <div class="refsect1 unknown">
+    <h3 class="title">Описание</h3>
+     <div class="methodsynopsis dc-description">
+      <span class="type"><a href="language.pseudo-types.html#language.types.mixed" class="type mixed">mixed</a></span> <span class="methodname"><b><b>prev</b></b></span>
+       ( <span class="methodparam"><span class="type">array</span> <tt class="parameter reference">&$array</tt></span>
+      )</div>
+
+    <p class="para rdfs-comment">
+     Возвращает значение элемента массива, находящегося на позиции, предыдущей 
+     по отношению к позиции, в которой находится его внутренний указатель или <b><tt>FALSE</tt></b>,
+     если достигнут конец массива.
+     <div class="warning"><b class="warning">Внимание</b>
+      <p class="para">
+       Если массив содержит пустые или равные 0 элементы,
+       функция возвратит <b><tt>FALSE</tt></b> для этих элементов.
+       Для того, чтобы правильно просматривать массивы, содержащие пустые элементы, 
+       используйте функцию <a href="function.each.html" class="function">each()</a>.
+      </p>
+     </div>
+    </p>
+    <p class="para">
+     <b>prev()</b> ведёт себя подобно
+     <a href="function.next.html" class="function">next()</a>, за исключением того, что она передвигает
+     внутренний указатель массива на одну позицию назад, а не вперёд.
+    </p>
+    <p class="para">
+     <div class="example">
+      <p><b>Пример #1 Пример использования <b>prev()</b> и друзей</b></p>
+      <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$transport&nbsp;</span><span style="color: #007700">=&nbsp;array(</span><span style="color: #DD0000">'foot'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'bike'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'car'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'plane'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$mode&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">current</span><span style="color: #007700">(</span><span style="color: #0000BB">$transport</span><span style="color: #007700">);&nbsp;</span><span style="color: #FF8000">//&nbsp;$mode&nbsp;=&nbsp;'foot';<br /></span><span style="color: #0000BB">$mode&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">next</span><span style="color: #007700">(</span><span style="color: #0000BB">$transport</span><span style="color: #007700">);&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;$mode&nbsp;=&nbsp;'bike';<br /></span><span style="color: #0000BB">$mode&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">next</span><span style="color: #007700">(</span><span style="color: #0000BB">$transport</span><span style="color: #007700">);&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;$mode&nbsp;=&nbsp;'car';<br /></span><span style="color: #0000BB">$mode&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">prev</span><span style="color: #007700">(</span><span style="color: #0000BB">$transport</span><span style="color: #007700">);&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;$mode&nbsp;=&nbsp;'bike';<br /></span><span style="color: #0000BB">$mode&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">end</span><span style="color: #007700">(</span><span style="color: #0000BB">$transport</span><span style="color: #007700">);&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;$mode&nbsp;=&nbsp;'plane';<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+      </div>
+
+     </div>
+    </p>
+    <p class="para">
+     См. также <a href="function.current.html" class="function">current()</a>, <a href="function.end.html" class="function">end()</a>,
+     <a href="function.next.html" class="function">next()</a> и <a href="function.reset.html" class="function">reset()</a>.
+    </p>
+   </div>
+
+  </div><hr /><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="function.pos.html">pos</a></div>
+ <div class="next" style="float: right;"><a href="function.range.html">range</a></div>
+ <div class="up"><a href="ref.array.html">Функции для работы с массивами</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

@@ -1,0 +1,791 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <title>Установка</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+ </head>
+ <body><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="faq.databases.html">Вопросы по Базам Данных</a></div>
+ <div class="next" style="float: right;"><a href="faq.build.html">Проблемы Сборки</a></div>
+ <div class="up"><a href="faq.html">ЧАВО</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div>
+  <h1>Установка</h1>
+
+  
+
+  <p class="para">
+   Этот раздел содержит общие вопросы по установке PHP.
+   PHP доступен практически для любой ОС (за исключением, может быть,
+   MacOS предшествующей OSX) и любого web сервера.
+  </p>
+  <p class="para">
+   Для установки PHP следуйте инструкциям в <a href="install.html" class="xref">Установка и настройка</a>.
+  </p>
+
+  <div class="qandaset"><ol class="qandaset_questions"><li><a href="#faq.installation.apache2">
+     
+      Почему я не должен использовать Apache2 с потоковым MPM в эксплуатации?
+     
+    </a></li><li><a href="#faq.installation.phpini">
+     
+      Unix/Windows: Где должен находиться файл php.ini?
+     
+    </a></li><li><a href="#faq.installation.nodata">
+     
+      Unix: Я установил PHP, но каждый раз при загрузке документа я получаю 
+      сообщение &#039;Document Contains No Data&#039; (Документ Не Содержит Данных)!
+      Что происходит?
+     
+    </a></li><li><a href="#faq.installation.processing">
+     
+      Unix: Я установил PHP, используя RPMS, но Apache не обрабатывает PHP страницы! 
+      Что происходит?
+     
+    </a></li><li><a href="#faq.installation.compile">
+     
+      Unix: Я установил PHP 3 используя RPMS, но он не компилируется с поддержкой
+      нужной мне базы данных! Что происходит?
+     
+    </a></li><li><a href="#faq.installation.frontpage">
+     
+      Unix: Я установил заплатку в Apache для расширений FrontPage и
+      неожиданно PHP перестал работать.
+      Неужели PHP не совместим с FrontPage расширениями для Apache?
+     
+    </a></li><li><a href="#faq.installation.blankscreen">
+     
+      Unix/Windows: Я установил PHP, но когда я пытаюсь вызвать PHP скрипт из моего
+      браузера, я получаю пустой экран.
+     
+    </a></li><li><a href="#faq.installation.500error">
+     
+      Unix/Windows: Я установил PHP, но когда я пытаюсь вызвать PHP скрипт из моего
+      браузера, я получаю ошибку сервера 500.
+     
+    </a></li><li><a href="#faq.installation.undefinedsyms">
+      
+      Некоторые операционные системы: Я установил PHP без ошибок,
+      но когда я пытаюсь запустить Apache, я получаю ошибки &quot;undefined symbol&quot;
+      (неопределённый символ):
+      
+[mybox:user /src/php4] root# apachectl configtest
+ apachectl: /usr/local/apache/bin/httpd Undefined symbols:
+  _compress
+  _uncompress
+      
+
+     
+    </a></li><li><a href="#faq.installation.cgierror">
+     
+      Windows: Я установил PHP, но когда я пытаюсь вызвать PHP скрипт из моего
+      браузера, я получаю ошибку:
+      
+cgi error:
+ The specified CGI application misbehaved by not
+ returning a complete set of HTTP headers.
+ The headers it did return are:
+      
+     
+    </a></li><li><a href="#faq.installation.phpandiis">
+     
+      Windows: Я следовал всем инструкциям, но так и не смог заставить PHP и IIS
+      работать вместе!
+     
+    </a></li><li><a href="#faq.installation.forceredirect">
+     
+       Когда PHP запускается как CGI в IIS, PWS, OmniHTTPD или Xitami,
+       я получаю следующую ошибку: Security Alert! PHP CGI 
+       cannot be accessed directly..
+     
+    </a></li><li><a href="#faq.installation.findphpini">
+     
+      Как узнать, что мой php.ini был найден и прочтён?
+      Похоже, что мои изменения не были восприняты?
+     
+    </a></li><li><a href="#faq.installation.addtopath">
+     
+      Как на Windows добавить мою PHP директорию в PATH?
+     
+    </a></li><li><a href="#faq.installation.phprc">
+     
+      Как в Windows сделать файл php.ini доступным для PHP?
+     
+    </a></li><li><a href="#faq.installation.apache.multiviews">
+     
+      Возможно ли использовать согласование содержания в Apache
+      (опция MultiViews) c PHP?
+     
+    </a></li></ol>
+   <dl>
+    <dt><strong>
+     <p class="para">
+      Почему я не должен использовать Apache2 с потоковым MPM в эксплуатации?
+     </p>
+    </strong></dt>
+    <dd><a name="faq.installation.apache2"></a>
+     <p class="para">
+      PHP - это клей. Клей, используемый для построения классных web приложений,
+      склеивая дюжины сторонних библиотек и создавая впечатление одного согласованного
+      целого, с помощью интуитивного и легко изучаемого языка.
+      Гибкость и мощь PHP полагается на стабильность и устойчивость используемой
+      платформы. Для склейки вместе ему необходимы работающая ОС, работающий web
+      сервер и работающие сторонние библиотеки. Когда что-либо из этого перестаёт
+      работать PHP нужны способы определения проблем и их быстрого исправления.
+      Если вы усложняете низлежащую систему, не разделяя полностью потоки выполнения,
+      не выделяя раздельные сегменты памяти и не предоставляя &quot;песочницу&quot; для
+      игры для каждого запроса, то ваша PHP система увязнет в глине.
+     </p>
+     <p class="para">
+      Если вы всё-таки чувствуете, что должны использовать потоковый MPM,
+      взгляните на конфигурацию с FastCGI, где вы можете запускать PHP
+      в своём собственном пространстве памяти.
+     </p>
+     <p class="para">
+      И наконец, это предупреждение против потокового MPM не настолько остро для
+      пользователей Windows, так как большинство библиотек на этой платформе
+      потокобезопасны.
+     </p>
+    </dd>
+   </dl>
+
+   <dl>
+    <dt><strong>
+     <p class="para">
+      Unix/Windows: Где должен находиться файл <var class="filename">php.ini</var>?
+     </p>
+    </strong></dt>
+    <dd><a name="faq.installation.phpini"></a>
+     <p class="para">
+      На Unix по умолчанию он должен находиться в директории 
+      <var class="filename">/usr/local/lib</var>, определяемой как
+      <var class="filename">&lt;install-path&gt;/lib</var>.
+      Большинство людей изменяют это во время компиляции с помощью опции
+      <a href="configure.html#configure.with-config-file-path" class="link">--with-config-file-path</a>
+      Для примера, вы можете задать что-то типа:
+      <div class="example-contents"><div class="cdata"><pre>
+--with-config-file-path=/etc
+      </pre></div></div>
+
+      Затем скопировать файл <var class="filename">php.ini-dist</var> из
+      дистрибутива в <var class="filename">/etc/php.ini</var> и отредактировать
+      его для ваших локальных потребностей.
+     </p>
+      <div class="example-contents"><div class="cdata"><pre>
+--with-config-file-scan-dir=PATH 
+      </pre></div></div>
+
+     <p class="para">
+      На Windows по умолчанию <var class="filename">php.ini</var> находится в Windows директории.
+      Если вы используете Apache web сервер, <var class="filename">php.ini</var> сначала ищется в
+      директории, где был установлен Apache, например <var class="filename">c:\program
+      files\apache group\apache</var>. В этом случае на одной машине
+      у вас могут быть разные файлы <var class="filename">php.ini</var> для разных версий Apache.
+     </p>
+     <p class="para">
+     Смотрите также главу о <a href="configuration.html#configuration.file" class="link">конфигурационном файле</a>.
+     </p>
+    </dd>
+   </dl>
+
+   <dl>
+    <dt><strong>
+     <p class="para">
+      Unix: Я установил PHP, но каждый раз при загрузке документа я получаю 
+      сообщение &#039;Document Contains No Data&#039; (Документ Не Содержит Данных)!
+      Что происходит?
+     </p>
+    </strong></dt>
+    <dd><a name="faq.installation.nodata"></a>
+     <p class="para">
+      Вероятно, PHP падает по какой-то причине. Для того, чтобы убедиться в этом,
+      просмотрите лог ошибок вашего сервера и затем попытайтесь воспроизвести
+      проблему с помощью небольшого тестового примера. Если вы умеете пользоваться
+      &#039;gdb&#039;, то добавьте трассировку к вашему сообщению об ошибке, это поможет
+      разработчикам точно определить проблему. 
+      Если вы используете PHP как модуль Apache попробуйте что-то типа: 
+      <ul class="itemizedlist">
+       <li class="listitem">
+        <p class="para">
+         Остановите ваши httpd процессы
+        </p>
+       </li>
+       <li class="listitem">
+        <p class="para">
+         gdb httpd
+        </p>
+       </li>
+       <li class="listitem">
+        <p class="para">
+         Остановите ваши httpd процессы
+        </p>
+       </li>
+       <li class="listitem">
+        <p class="para">
+         &gt; run -X -f /path/to/httpd.conf
+        </p>
+       </li>
+       <li class="listitem">
+        <p class="para">
+         Затем вызовите URL, на котором возникает проблема, из вашего браузера
+        </p>
+       </li>      
+       <li class="listitem">
+        <p class="para">
+         &gt; run -X -f /path/to/httpd.conf
+        </p>
+       </li>      
+       <li class="listitem">
+        <p class="para">
+         Если вы получаете дамп, gdb должен сейчас сообщить вам об этом
+        </p>
+       </li>      
+       <li class="listitem">
+        <p class="para">
+         введите: bt
+        </p>
+       </li>
+       <li class="listitem">
+        <p class="para">
+         Вам необходимо включить трассировку в ваше сообщение об ошибке, которое 
+         должно быть отправлено с 
+         <a href="http://bugs.php.net/" class="link external">&raquo; http://bugs.php.net/</a> 
+        </p>
+       </li>
+      </ul>
+     </p>
+     <p class="para">
+      Если ваш скрипт использует функции регулярных выражений
+      (<a href="function.ereg.html" class="function">ereg()</a> и компания), то вам необходимо убедиться, 
+      что вы скомпилировали PHP и Apache с одним и тем же пакетом регулярных
+      выражений. Это должно происходить автоматически для PHP и Apache 1.3.x
+     </p>
+    </dd>
+   </dl>
+
+   <dl>
+    <dt><strong>
+     <p class="para">
+      Unix: Я установил PHP, используя RPMS, но Apache не обрабатывает PHP страницы! 
+      Что происходит?
+     </p>
+    </strong></dt>
+    <dd><a name="faq.installation.processing"></a>
+     <p class="para">
+      Полагая, что Apache и PHP оба были установлены из пакетов RPM,
+      вам требуется в вашем файле <var class="filename">httpd.conf</var> раскомментировать или добавить
+      все или некоторые из следующих строк: 
+      <div class="example-contents">
+<div class="cdata"><pre>
+# Extra Modules
+AddModule mod_php.c
+AddModule mod_php3.c
+AddModule mod_perl.c
+
+# Extra Modules
+LoadModule php_module         modules/mod_php.so
+LoadModule php3_module        modules/libphp3.so     # for PHP 3
+LoadModule php4_module        modules/libphp4.so     # for PHP 4
+LoadModule perl_module        modules/libperl.so
+</pre></div>
+      </div>
+
+      И добавить:
+      <div class="example-contents">
+<div class="cdata"><pre>
+AddType application/x-httpd-php3 .php3    # for PHP 3
+AddType application/x-httpd-php .php      # for PHP 4
+</pre></div>
+      </div>
+
+      ... в глобальные свойства или в свойства VirtualDomain, для которого
+      вы хотите иметь поддержку PHP.
+     </p>
+    </dd>
+   </dl>
+
+   <dl>
+    <dt><strong>
+     <p class="para">
+      Unix: Я установил PHP 3 используя RPMS, но он не компилируется с поддержкой
+      нужной мне базы данных! Что происходит?
+     </p>
+    </strong></dt>
+    <dd><a name="faq.installation.compile"></a>
+     <p class="para">
+      Из-за того, как построен PHP 3, собрать полный и гибкий RPM для PHP не легко.  
+      Эта проблема решена в PHP 4. Для PHP 3 мы рекомендуем способ, описанный в
+      файле INSTALL.REDHAT из дистрибутива PHP. Если вы всё-таки настаиваете
+      на использовании варианта с RPM для PHP 3, читайте далее...
+     </p>
+     <p class="para">
+      Те, кто собирает RPM пакеты, настраивают RPMS для установки без поддержки
+      баз данных для упрощения установок <em class="emphasis">и</em>
+      потому что RPMS использует /usr/ вместо стандартной /usr/local/ директории
+      для файлов. Вам необходимо указать в спек файле RPM какие базы данных 
+      поддерживать и где находится ваш сервер баз данных.
+     </p>
+     <p class="para">
+      Следующий пример объясняет процесс добавления поддержки для популярного
+      сервера баз данных MySQL, используя mod установку для Apache.
+     </p>
+     <p class="para">
+      Конечно, всё это может быть применено для любого сервера баз данных, который
+      PHP поддерживает. Для этого примера, мы будем полагать, что вы установили
+      MySQL и Apache полностью с RPMS. 
+      <ul class="itemizedlist">
+       <li class="listitem">
+        <p class="para">
+         Во-первых, удалите mod_php3 : 
+         <div class="example-contents"><div class="cdata"><pre>
+rpm -e mod_php3
+         </pre></div></div>
+
+        </p>
+       </li>
+       <li class="listitem">
+        <p class="para">
+         Затем получите rpm с исходниками и УСТАНОВИТЕ его, НЕ --rebuild
+         <div class="example-contents"><div class="cdata"><pre>
+rpm -Uvh mod_php3-3.0.5-2.src.rpm
+         </pre></div></div>
+
+        </p>
+       </li>
+       <li class="listitem">
+        <p class="para">
+         Затем отредактируйте файл 
+         <var class="filename">/usr/src/redhat/SPECS/mod_php3.spec</var>
+        </p>
+        <p class="para">
+         В секции %build добавьте поддержку нужной вам базы данныз и укажите путь
+        </p>
+        <p class="para">
+         Для MySQL вы добавите
+         <span class="option">--with-mysql=/usr</span>
+         Секция %build будет выглядеть как что-то типа следующего:
+         <div class="example-contents"><div class="cdata"><pre>
+./configure --prefix=/usr \
+--with-apxs=/usr/sbin/apxs \
+--with-config-file-path=/usr/lib \
+--enable-debug=no \
+--enable-safe-mode \
+--with-exec-dir=/usr/bin \
+--with-mysql=/usr \
+--with-system-regex
+         </pre></div></div>
+
+        </p>
+       </li>
+       <li class="listitem">
+        <p class="para">
+         После того, как вы сделали эти изменения, постройте бинарный rpm как:
+         <div class="example-contents"><div class="cdata"><pre>
+rpm -bb /usr/src/redhat/SPECS/mod_php3.spec
+         </pre></div></div>
+
+        </p>
+       </li>
+       <li class="listitem">
+        <p class="para">
+         Затем установите этот rpm
+         <div class="example-contents"><div class="cdata"><pre>
+rpm -ivh /usr/src/redhat/RPMS/i386/mod_php3-3.0.5-2.i386.rpm
+         </pre></div></div>
+
+        </p>
+       </li>
+      </ul>
+      Перезапустите Apache и теперь у вас есть PHP 3 с поддержкой MySQL,
+      установленный из RPM. Заметьте, что на много проще просто собрать
+      PHP 3 из дистрибутива и следовать инструкциям в файле 
+      <var class="filename">INSTALL.REDHAT</var> дистрибутива.
+     </p>
+    </dd>
+   </dl>
+
+   <dl>
+    <dt><strong>
+     <p class="para">
+      Unix: Я установил заплатку в Apache для расширений FrontPage и
+      неожиданно PHP перестал работать.
+      Неужели PHP не совместим с FrontPage расширениями для Apache?
+     </p>
+    </strong></dt>
+    <dd><a name="faq.installation.frontpage"></a>
+     <p class="para">
+      Нет, PHP прекрасно работает с FrontPage расширениями.
+      Проблема в том, что FrontPage заплатка изменяет некоторые важные для
+      PHP структуры. Перекомпиляция PHP (выполняя &#039;make clean ; make&#039;)
+      после установки FP заплатки должна решить эту проблему.
+     </p>
+    </dd>
+   </dl>
+
+   <dl>
+    <dt><strong>
+     <p class="para">
+      Unix/Windows: Я установил PHP, но когда я пытаюсь вызвать PHP скрипт из моего
+      браузера, я получаю пустой экран.
+     </p>
+    </strong></dt>
+    <dd><a name="faq.installation.blankscreen"></a>
+     <p class="para">
+      Сделайте просмотр исходника (&#039;view source&#039;) в web браузере
+      и, вероятно, вы увидите исходный код вашего PHP скрипта.
+      Это означает, что web сервер не послал скрипт PHP для интерпретации.
+      Что-то не так с конфигурацией сервера, проверьте конфигурацию сервера 
+      согласно установочным инструкциям PHP.
+     </p>
+    </dd>
+   </dl>
+
+   <dl>
+    <dt><strong>
+     <p class="para">
+      Unix/Windows: Я установил PHP, но когда я пытаюсь вызвать PHP скрипт из моего
+      браузера, я получаю ошибку сервера 500.
+     </p>
+    </strong></dt>
+    <dd><a name="faq.installation.500error"></a>
+     <p class="para">
+      Что-то произошло когда сервер пытался выполнить PHP. 
+      Чтобы увидеть более вразумительное сообщение об ошибке, 
+      используя командную строку, перейдите в директорию где находится
+      исполняемый файл PHP (<var class="filename">php.exe</var> на Windows)
+      и запустите <strong class="command">php -i</strong>. Если при запуске PHP
+      возникли какие-либо проблемы, то появится соответствующее сообщение
+      об ошибке, которое может дать вам понять что делать дальше.
+      Если вы получаете экран, заполненый HTML кодом (вывод функции
+      <a href="function.phpinfo.html" class="function">phpinfo()</a>), то PHP работает и ваша
+      проблема возможно связана с конфигурацией вашего сервера, которую
+      вам необходимо проверить.
+     </p>
+    </dd>
+   </dl>
+
+   <dl>
+    <dt><strong>
+     <p class="para"> 
+      Некоторые операционные системы: Я установил PHP без ошибок,
+      но когда я пытаюсь запустить Apache, я получаю ошибки &quot;undefined symbol&quot;
+      (неопределённый символ):
+      <div class="example-contents"><div class="cdata"><pre>
+[mybox:user /src/php4] root# apachectl configtest
+ apachectl: /usr/local/apache/bin/httpd Undefined symbols:
+  _compress
+  _uncompress
+      </pre></div></div>
+
+     </p>
+    </strong></dt>
+    <dd><a name="faq.installation.undefinedsyms"></a>
+     <p class="para">
+      На самом деле это связано с клиентскими библиотеками MySQL и не имеет
+      никакого отношения к PHP. Одним нужна опция <span class="option">--with-zlib</span>, другим - нет. Это также 
+      описано в MySQL FAQ.
+     </p>
+    </dd>
+   </dl>
+
+   <dl>
+    <dt><strong>
+     <p class="para">
+      Windows: Я установил PHP, но когда я пытаюсь вызвать PHP скрипт из моего
+      браузера, я получаю ошибку:
+      <div class="example-contents"><pre>
+cgi error:
+ The specified CGI application misbehaved by not
+ returning a complete set of HTTP headers.
+ The headers it did return are:
+      </pre></div>
+     </p>
+    </strong></dt>
+    <dd><a name="faq.installation.cgierror"></a>
+     <p class="para">
+      Это сообщение об ошибке означает, что PHP не смог вывести 
+      абсолютно ничего. Чтобы увидеть более вразумительное сообщение об ошибке,
+      используя командную строку, перейдите в директорию, где находиться
+      испольняемый файл PHP (<var class="filename">php.exe</var> на Windows) и
+      запустите <strong class="command">php -i</strong>. Если при запуске PHP 
+      возникли какие-либо проблемы, то появится соответствующее сообщение
+      об ошибке, которое может дать вам понять что делать дальше. 
+      Если вы получаете экран, заполненый HTML кодом (вывод фиункци
+      <a href="function.phpinfo.html" class="function">phpinfo()</a> функции), то PHP работает.
+     </p>
+     <p class="para">
+      Как только PHP работает из командной строки, попытайтесь опять вызвать
+      скрипт из браузера. Если он все также не работает, то причина может быть 
+      одна из следующих:
+     </p>
+     <ul class="itemizedlist">
+      <li class="listitem">
+       <span class="simpara">
+        Анонимный пользователь Internet не имеет доступ к вашему PHP скрипту,
+        <var class="filename">php.exe</var>, <var class="filename">php4ts.dll</var>,
+        <var class="filename">php.ini</var> или любому загружаемому PHP расширению из за прав доступа,
+        установленных на эти файлы.
+       </span>
+      </li>
+      <li class="listitem">
+       <span class="simpara">
+        Файл скрипта не существует (или, вероятно, не там где вы думаете он
+        должен быть, относительно вашей корневой web директории).
+        Заметьте, что для IIS вы можете поймать эту ошибку пометив &#039;check file
+        exists&#039; при настройке ассоциирования скриптов (script mappings) в
+        Администраторе Internet Сервисов (Internet Services Manager).
+        Если файл скрипта не существует, то сервер выдаст ошибку 404.
+        Также допольнительная польза в том, что IIS будет выполнять
+        необходимую вам аутентификацию, основываясь на NTLanMan правах
+        доступа на ваш скрипт.
+       </span>
+      </li>
+     </ul>
+    </dd>
+   </dl>
+
+   <dl>
+    <dt><strong>
+     <p class="para">
+      Windows: Я следовал всем инструкциям, но так и не смог заставить PHP и IIS
+      работать вместе!
+     </p>
+    </strong></dt>
+    <dd><a name="faq.installation.phpandiis"></a>
+     <p class="para">
+      Убедитесь что все пользователи, кому необходимо запускать PHP скрипты,
+      имеют право выполнять <var class="filename">php.exe</var>! 
+      IIS использует анонимного пользователя, который добавлен во время 
+      установки IIS. Этот пользователь должен иметь права на 
+      <var class="filename">php.exe</var>. Также любому аутентифицированному пользователю
+      будут нужны права на выполнение <var class="filename">php.exe</var>.
+      И для IIS4 вам необходимо сказать ему, что PHP является скриптовой системой.
+      Также вам захочется прочитать 
+      <a href="faq.installation.html#faq.installation.forceredirect" class="link">это</a>.
+     </p>
+    </dd>
+   </dl>
+
+   <dl>
+    <dt><strong>
+     <p class="para">
+       Когда PHP запускается как CGI в IIS, PWS, OmniHTTPD или Xitami,
+       я получаю следующую ошибку: <i>Security Alert! PHP CGI 
+       cannot be accessed directly.</i>.
+     </p>
+    </strong></dt>
+    <dd><a name="faq.installation.forceredirect"></a>
+     <p class="para">
+      Вы должны установить директиву <a href="ini.core.html#ini.cgi.force-redirect" class="link">
+      cgi.force_redirect</a> в <i>0</i>.
+      По умолчанию она установлена в <i>1</i>, поэтому убедитесь, что
+      директива не закоментирована (с <i>;</i>). Как все директивы,
+      она задается в <var class="filename">php.ini</var>
+     </p>
+     <p class="para">
+      Так как значение по умолчанию <i>1</i>, то очень важно
+      быть уверенным на 100%, что был прочитан верный <var class="filename">php.ini</var> файл.
+      Для подробностей читайте <a href="faq.installation.html#faq.installation.findphpini" class="link">
+      здесь</a>.
+     </p>
+    </dd>
+   </dl>
+
+   <dl>
+    <dt><strong>
+     <p class="para">
+      Как узнать, что мой <var class="filename">php.ini</var> был найден и прочтён?
+      Похоже, что мои изменения не были восприняты?
+     </p>
+    </strong></dt>
+    <dd><a name="faq.installation.findphpini"></a>
+     <p class="para">
+      Чтобы убедиться, что PHP прочитал ваш <var class="filename">php.ini</var>, вызовите
+      <a href="function.phpinfo.html" class="function">phpinfo()</a> и недалеко от начала будет находиться
+      строка, озаглавленная <i>Configuration File (php.ini)</i>.
+      Она скажет вам где PHP ищет <var class="filename">php.ini</var> и был ли файл прочитан.
+      Если указана только директория, то файл не был прочитан и вы должны поместить
+      ваш <var class="filename">php.ini</var> в эту директорию. Если <var class="filename">php.ini</var> включён в PATH, то он
+      был прочитан.
+     </p>
+     <p class="para">
+      Если <var class="filename">php.ini</var> был прочитан и вы запускаете PHP как модуль, то 
+      не забудьте перезапустить ваш web сервер после внесения изменений в
+      <var class="filename">php.ini</var>. 
+     </p>
+    </dd>
+   </dl>
+
+   <dl>
+    <dt><strong>
+     <p class="para">
+      Как на Windows добавить мою PHP директорию в <var class="varname">PATH</var>?
+     </p>
+    </strong></dt>
+    <dd><a name="faq.installation.addtopath"></a>
+     <p class="para">
+      На Windows NT, 2000, XP и 2003:
+      <ul class="itemizedlist">
+       <li class="listitem"><p class="para">
+        Идите в Control Panel и откройте системную иконку (Start -&gt; Settings
+        -&gt; Control Panel -&gt; System, или просто Start -&gt; Control Panel
+        -&gt; System for Windows XP/2003)
+       </p></li>
+       <li class="listitem"><p class="para">
+        Перейдите в закладку Advanced
+       </p></li>
+       <li class="listitem"><p class="para">
+        Нажмите кнопку &#039;Environment Variables&#039;
+       </p></li>
+       <li class="listitem"><p class="para">
+        Смотрите в окошко &#039;System Variables&#039;
+       </p></li>
+       <li class="listitem"><p class="para">
+        Найдите Path (возможно, вам придется сделать прокрутку, чтобы найти его)
+       </p></li>
+       <li class="listitem"><p class="para">
+        Двойной щелчок на Path
+       </p></li>
+       <li class="listitem"><p class="para">
+        Добавьте в конец вашу PHP директорию через &#039;;&#039; (например
+        <i>;C:\php</i>)
+       </p></li>
+       <li class="listitem"><p class="para">
+        Нажмите OK и перезапустите ваш компьютер
+       </p></li>
+      </ul>
+     </p>
+     <p class="para">
+      На Windows 98/Me вам необходимо отредактировать файл
+      <var class="filename">autoexec.bat</var>:
+      <ul class="itemizedlist">
+       <li class="listitem"><p class="para">
+        Откройте Notepad (Start -&gt; Run и введите notepad)
+       </p></li>
+       <li class="listitem"><p class="para">
+        Откройте файл <var class="filename">C:\autoexec.bat</var>
+       </p></li>
+       <li class="listitem"><p class="para">
+        Найдите строку с PATH=C:\WINDOWS;C:\WINDOWS\COMMAND;..... и добавьте
+        в конец строки:
+        <i>;C:\php</i>
+       </p></li>
+       <li class="listitem"><p class="para">
+        Сохраните файл и перезапустите ваш компьютер
+       </p></li>
+      </ul>
+     </p> 
+     <p class="para">
+      Прежде в руководстве по PHP рекомендовалось копировать файлы в системную
+      директорию Windows, так как эта директория  
+      (<var class="filename">C:\Windows</var>, <var class="filename">C:\WINNT</var>, и т.п.)
+      входит в системный PATH по умолчанию. Копирование файлов в системную директорию
+      Windows давно уже противопоказывается и может вызвать проблемы.
+     </p>
+    </dd>
+   </dl>
+
+   <dl>
+    <dt><strong>
+     <p class="para">
+      Как в Windows сделать файл <var class="filename">php.ini</var> доступным для PHP?
+     </p>
+    </strong></dt>
+    <dd><a name="faq.installation.phprc"></a>
+     <p class="para">
+      Для этого есть несколько путей. Если вы используете Apache, то читайте
+      инструкции по его установке (<a href="install.windows.apache1.html" class="link">Apache 1</a>, <a href="install.windows.apache2.html" class="link">Apache 2</a>), 
+      в ином случае, вы должны установить переменную окружения
+      <var class="varname">PHPRC</var>:
+     </p>
+     <p class="para">
+      На Windows NT, 2000, XP и 2003:
+      <ul class="itemizedlist">
+       <li class="listitem"><p class="para">
+        Идите в Control Panel и откройте системную иконку (Start -&gt; Settings
+        -&gt; Control Panel -&gt; System, или просто Start -&gt; Control Panel
+        -&gt; System for Windows XP/2003)
+       </p></li>
+       <li class="listitem"><p class="para">
+        Перейдите в закладку Advanced
+       </p></li>
+       <li class="listitem"><p class="para">
+        Нажмите кнопку &#039;Environment Variables&#039;
+       </p></li>
+       <li class="listitem"><p class="para">
+        Посмотрите в окошко &#039;System variables&#039;
+       </p></li>
+       <li class="listitem"><p class="para">
+         Щёлкните на &#039;New&#039; и введите &#039;PHPRC&#039; как имя переменной и директорию, 
+         где находится <var class="filename">php.ini</var>, как значение переменной (например
+         <i>C:\php</i>)
+       </p></li>
+       <li class="listitem"><p class="para">
+        Нажмите OK и перезапустите ваш компьютер
+       </p></li>
+      </ul>
+     </p>
+     <p class="para">
+      На Windows 98/Me вам необходимо отредактировать файл
+      <var class="filename">autoexec.bat</var>:
+      <ul class="itemizedlist">
+       <li class="listitem"><p class="para">
+        Откройте Notepad (Start -&gt; Run и введите notepad)
+       </p></li>
+       <li class="listitem"><p class="para">
+        Откройте файл <var class="filename">C:\autoexec.bat</var>
+       </p></li>
+       <li class="listitem"><p class="para">
+        Добавьте новую строку в конец файла: <i>set PHPRC
+         C:\php</i> (замените <i>C:\php</i> на директорию,
+        где находится <var class="filename">php.ini</var>)
+       </p></li>
+       <li class="listitem"><p class="para">
+        Сохраните файл и перезапустите ваш компьютер
+       </p></li>
+      </ul>
+     </p>      
+    </dd>
+   </dl>
+
+   <dl>
+    <dt><strong>
+     <p class="para">
+      Возможно ли использовать согласование содержания в Apache
+      (опция MultiViews) c PHP?
+     </p>
+    </strong></dt>
+    <dd><a name="faq.installation.apache.multiviews"></a>
+     <p class="para">
+      Всё работает замечательно, если линки к PHP файлам имеют расширение.
+      Этот FAQ рассматривает только случай, когда линки к PHP файлам не имеют расширения
+      и вы хотите использовать согласование содержания для отбора PHP файлов из
+      URL без расширений.
+      В этом случае, замените строку <i>AddType application/x-httpd-php
+      .php</i> на:
+      <div class="example-contents">
+<div class="cdata"><pre>
+# PHP 4
+AddHandler php-script php
+AddType text/html php
+
+# PHP 5
+AddHandler php5-script php
+AddType text/html php
+</pre></div>
+     </div>
+
+     Это решение не работает в Apache 1, так как в нём PHP модуль не ловит
+     <i>php-script</i>.
+     </p>
+    </dd>
+   </dl>
+
+  </div>
+ </div>
+<hr /><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="faq.databases.html">Вопросы по Базам Данных</a></div>
+ <div class="next" style="float: right;"><a href="faq.build.html">Проблемы Сборки</a></div>
+ <div class="up"><a href="faq.html">ЧАВО</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

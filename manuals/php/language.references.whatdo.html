@@ -1,0 +1,170 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <title>Что делают ссылки</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+ </head>
+ <body><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="language.references.html">Ссылки. Разъяснения</a></div>
+ <div class="next" style="float: right;"><a href="language.references.arent.html">Чем ссылки не являются</a></div>
+ <div class="up"><a href="language.references.html">Ссылки. Разъяснения</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="language.references.whatdo" class="sect1">
+   <h2 class="title">Что делают ссылки</h2>
+   <p class="para">
+    Ссылки в PHP дают возможность двум переменным ссылаться на одно 
+    содержимое. Например:
+    <div class="informalexample">
+     <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$a&nbsp;</span><span style="color: #007700">=&amp;&nbsp;</span><span style="color: #0000BB">$b</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+     </div>
+
+    </div>
+    означает, что <var class="varname">$a</var> указывает на то же содержание, 
+    что и <var class="varname">$b</var>.
+    <blockquote><p><b class="note">Замечание</b>: 
+     
+      <var class="varname">$a</var> и <var class="varname">$b</var> здесь абсолютно эквивалентны, 
+      но это не означает, что $a указывает на $b или наоборот. Это означает, что 
+      $a и $b указывают на одно место.
+     <br />
+    </p></blockquote>
+   </p>
+   <blockquote><p><b class="note">Замечание</b>: 
+    
+     При копировании массива ссылок, они не разыменовываются.
+     Это также касается массивов, передаваемых функциям по значению.
+    <br />
+   </p></blockquote>
+   <blockquote><p><b class="note">Замечание</b>: 
+    
+     Если вы возвращаете из функции ссылку на неинициализированную
+     переменную - она будет создана.
+     <div class="example">
+      <p><b>Пример #1 Использование ссылок с неинициализированными переменными</b></p>
+      <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">function&nbsp;</span><span style="color: #0000BB">foo</span><span style="color: #007700">(&amp;</span><span style="color: #0000BB">$var</span><span style="color: #007700">)&nbsp;{&nbsp;}<br /><br /></span><span style="color: #0000BB">foo</span><span style="color: #007700">(</span><span style="color: #0000BB">$a</span><span style="color: #007700">);&nbsp;</span><span style="color: #FF8000">//&nbsp;$a&nbsp;создана&nbsp;и&nbsp;равна&nbsp;null<br /><br /></span><span style="color: #0000BB">$b&nbsp;</span><span style="color: #007700">=&nbsp;array();<br /></span><span style="color: #0000BB">foo</span><span style="color: #007700">(</span><span style="color: #0000BB">$b</span><span style="color: #007700">[</span><span style="color: #DD0000">'b'</span><span style="color: #007700">]);<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">array_key_exists</span><span style="color: #007700">(</span><span style="color: #DD0000">'b'</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$b</span><span style="color: #007700">));&nbsp;</span><span style="color: #FF8000">//&nbsp;bool(true)<br /><br /></span><span style="color: #0000BB">$c&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">StdClass</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">foo</span><span style="color: #007700">(</span><span style="color: #0000BB">$c</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">d</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">property_exists</span><span style="color: #007700">(</span><span style="color: #0000BB">$c</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'d'</span><span style="color: #007700">));&nbsp;</span><span style="color: #FF8000">//&nbsp;bool(true)<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+      </div>
+
+     </div>
+    <br />
+   </p></blockquote>
+
+   <p class="para">
+    Такой же синтаксис можно использовать и в функциях, возвращая ссылки, 
+    а так же в операторе <i>new</i> (начиная с PHP 4.0.4):
+    <div class="informalexample">
+     <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$bar&nbsp;</span><span style="color: #007700">=&amp;&nbsp;new&nbsp;</span><span style="color: #0000BB">fooclass</span><span style="color: #007700">();<br /></span><span style="color: #0000BB">$foo&nbsp;</span><span style="color: #007700">=&amp;&nbsp;</span><span style="color: #0000BB">find_var</span><span style="color: #007700">(</span><span style="color: #0000BB">$bar</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+    </div>
+    </p>
+    <blockquote><p><b class="note">Замечание</b>: 
+     
+      Если опустить <i>&amp;</i>, это приведёт к копированию объекта.
+      Если вы используете <i>$this</i> в классе, операция
+      проводится над текущим экземпляром этого класса. Присвоение без
+      <i>&amp;</i> приведёт к копированию экземпляра, и
+      <i>$this</i> будет работать с копией, что не всегда
+      желательно. Обычно, вам нужно иметь один экземпляр, из соображений
+      производительности и использования памяти.
+     <br />
+     
+      Операция <i>@</i>, которая <em class="emphasis">скрывает</em>
+      сообщения об ошибках, например в конструкторе <i>@new</i>,
+      не может быть использована совместно с операцией
+      <i>&amp;</i> (<i>&amp;new</i>).
+      Это ограничение Zend Engine.
+     <br />
+   </p></blockquote>
+   <div class="warning"><b class="warning">Внимание</b>
+    <p class="para">
+     Если переменной, объявленной внутри функции как
+     <i>global</i>, будет присвоена ссылка, она будет видна только
+     в функции. Чтобы избежать этого, используйте массив <var class="varname">$GLOBALS</var>.
+     <div class="example">
+      <p><b>Пример #2 Присвоение ссылок глобальным переменным внутри функции</b></p>
+      <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$var1&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">"Example&nbsp;variable"</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$var2&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">""</span><span style="color: #007700">;<br /><br />function&nbsp;</span><span style="color: #0000BB">global_references</span><span style="color: #007700">(</span><span style="color: #0000BB">$use_globals</span><span style="color: #007700">)<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;global&nbsp;</span><span style="color: #0000BB">$var1</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$var2</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(!</span><span style="color: #0000BB">$use_globals</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$var2&nbsp;</span><span style="color: #007700">=&amp;&nbsp;</span><span style="color: #0000BB">$var1</span><span style="color: #007700">;&nbsp;</span><span style="color: #FF8000">//&nbsp;только&nbsp;локально<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">}&nbsp;else&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$GLOBALS</span><span style="color: #007700">[</span><span style="color: #DD0000">"var2"</span><span style="color: #007700">]&nbsp;=&amp;&nbsp;</span><span style="color: #0000BB">$var1</span><span style="color: #007700">;&nbsp;</span><span style="color: #FF8000">//&nbsp;глобально<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">}<br />}<br /><br /></span><span style="color: #0000BB">global_references</span><span style="color: #007700">(</span><span style="color: #0000BB">false</span><span style="color: #007700">);<br />echo&nbsp;</span><span style="color: #DD0000">"значение&nbsp;var2:&nbsp;'$var2'\n"</span><span style="color: #007700">;&nbsp;</span><span style="color: #FF8000">//&nbsp;значение&nbsp;var2:&nbsp;''<br /></span><span style="color: #0000BB">global_references</span><span style="color: #007700">(</span><span style="color: #0000BB">true</span><span style="color: #007700">);<br />echo&nbsp;</span><span style="color: #DD0000">"значение&nbsp;var2:&nbsp;'$var2'\n"</span><span style="color: #007700">;&nbsp;</span><span style="color: #FF8000">//&nbsp;значение&nbsp;var2:&nbsp;'Example&nbsp;variable'<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+      </div>
+
+     </div>
+     Думайте о <i>global $var;</i> как о сокращении от
+     <i>$var =&amp; $GLOBALS[&#039;var&#039;];</i>. Таким образом,
+     присвоение <i>$var</i> другой ссылки влияет лишь на локальную
+     переменную.
+    </p>
+   </div>
+   <blockquote><p><b class="note">Замечание</b>: 
+    
+     При использовании переменной-ссылки в <a href="control-structures.foreach.html" class="link">foreach</a>,
+     изменяется содержание, на которое она ссылается.
+     <div class="example">
+      <p><b>Пример #3 Ссылки и foreach</b></p>
+      <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$ref&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">0</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$row&nbsp;</span><span style="color: #007700">=&amp;&nbsp;</span><span style="color: #0000BB">$ref</span><span style="color: #007700">;<br />foreach&nbsp;(array(</span><span style="color: #0000BB">1</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">2</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">3</span><span style="color: #007700">)&nbsp;as&nbsp;</span><span style="color: #0000BB">$row</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;do&nbsp;something<br /></span><span style="color: #007700">}<br />echo&nbsp;</span><span style="color: #0000BB">$ref</span><span style="color: #007700">;&nbsp;</span><span style="color: #FF8000">//&nbsp;3&nbsp;-&nbsp;последнее&nbsp;значение,&nbsp;используемое&nbsp;в&nbsp;цикле<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+      </div>
+
+     </div>
+    <br />
+   </p></blockquote>
+   <div class="warning"><b class="warning">Внимание</b>
+    <p class="para">
+     Сложные массивы в некоторых случаях могут копироваться вместо создания
+     ссылок. например, следующий пример не будет работать как ожидалось.
+     <div class="example">
+      <p><b>Пример #4 Ссылки и сложные массивы</b></p>
+      <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$top&nbsp;</span><span style="color: #007700">=&nbsp;array(<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'A'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;array(),<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'B'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;array(<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'B_b'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;array(),<br />&nbsp;&nbsp;&nbsp;&nbsp;),<br />);<br /><br /></span><span style="color: #0000BB">$top</span><span style="color: #007700">[</span><span style="color: #DD0000">'A'</span><span style="color: #007700">][</span><span style="color: #DD0000">'parent'</span><span style="color: #007700">]&nbsp;=&nbsp;&amp;</span><span style="color: #0000BB">$top</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$top</span><span style="color: #007700">[</span><span style="color: #DD0000">'B'</span><span style="color: #007700">][</span><span style="color: #DD0000">'parent'</span><span style="color: #007700">]&nbsp;=&nbsp;&amp;</span><span style="color: #0000BB">$top</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$top</span><span style="color: #007700">[</span><span style="color: #DD0000">'B'</span><span style="color: #007700">][</span><span style="color: #DD0000">'B_b'</span><span style="color: #007700">][</span><span style="color: #DD0000">'data'</span><span style="color: #007700">]&nbsp;=&nbsp;</span><span style="color: #DD0000">'test'</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">print_r</span><span style="color: #007700">(</span><span style="color: #0000BB">$top</span><span style="color: #007700">[</span><span style="color: #DD0000">'A'</span><span style="color: #007700">][</span><span style="color: #DD0000">'parent'</span><span style="color: #007700">][</span><span style="color: #DD0000">'B'</span><span style="color: #007700">][</span><span style="color: #DD0000">'B_b'</span><span style="color: #007700">]);&nbsp;</span><span style="color: #FF8000">//&nbsp;array()<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+      </div>
+
+     </div>
+    </p>
+   </div>
+   <p class="para">
+    Второе, что делают ссылки - передача параметров по ссылке. При этом
+    локальная переменная в функции и переменная в области видимости вызывателя
+    ссылаются на одно и то же содержимое. Пример:
+    <div class="informalexample">
+     <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">function&nbsp;</span><span style="color: #0000BB">foo</span><span style="color: #007700">(&amp;</span><span style="color: #0000BB">$var</span><span style="color: #007700">)<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$var</span><span style="color: #007700">++;<br />}<br /><br /></span><span style="color: #0000BB">$a</span><span style="color: #007700">=</span><span style="color: #0000BB">5</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">foo</span><span style="color: #007700">(</span><span style="color: #0000BB">$a</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+     </div>
+
+    </div>
+    Этот код присвоит <var class="varname">$a</var> значение 6. Это происходит, потому
+    что в функции <var class="varname">foo</var> переменная <var class="varname">$var</var>
+    ссылается на то же содержимое, что и переменная <var class="varname">$a</var>. См.
+    также детальное объяснение 
+    <a href="language.references.pass.html" class="link">передачи по ссылке</a>.
+   </p>
+   <p class="simpara">
+    Третье, что могут ссылки - <a href="language.references.return.html" class="link">возвращение значение по ссылке</a>.
+   </p>
+  </div><hr /><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="language.references.html">Ссылки. Разъяснения</a></div>
+ <div class="next" style="float: right;"><a href="language.references.arent.html">Чем ссылки не являются</a></div>
+ <div class="up"><a href="language.references.html">Ссылки. Разъяснения</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

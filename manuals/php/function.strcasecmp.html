@@ -1,0 +1,65 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <title>Сравнение строк без учета регистра, безопасное для данных в двоичной 
+     форме</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+ </head>
+ <body><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="function.str-word-count.html">str_word_count</a></div>
+ <div class="next" style="float: right;"><a href="function.strchr.html">strchr</a></div>
+ <div class="up"><a href="ref.strings.html">Функции обработки строк</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="function.strcasecmp" class="refentry">
+   <div class="refnamediv">
+    <h1 class="refname">strcasecmp</h1>
+    <p class="verinfo">(PHP 4, PHP 5)</p><p class="refpurpose dc-title">strcasecmp — 
+     Сравнение строк без учета регистра, безопасное для данных в двоичной 
+     форме
+    </p>
+
+   </div>
+   <div class="refsect1 unknown">
+    <h3 class="title">Описание</h3>
+     <div class="methodsynopsis dc-description">
+      <span class="type">int</span> <span class="methodname"><b><b>strcasecmp</b></b></span>
+       ( <span class="methodparam"><span class="type">string</span> <tt class="parameter">$str1</tt></span>
+      , <span class="methodparam"><span class="type">string</span> <tt class="parameter">$str2</tt></span>
+      )</div>
+
+    <p class="para rdfs-comment">
+     Возвращает отрицательное число, если <i><tt class="parameter">str1</tt></i>
+ меньше, чем
+     <i><tt class="parameter">str2</tt></i>
+; положительное число, если <i><tt class="parameter">str1</tt></i>
+
+     больше, чем <i><tt class="parameter">str2</tt></i>
+, и 0 если строки равны.
+     <div class="example">
+      <p><b>Пример #1 Пример использования <b>strcasecmp()</b></b></p>
+      <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$var1&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">"Hello"</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$var2&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">"hello"</span><span style="color: #007700">;<br />if&nbsp;(</span><span style="color: #0000BB">strcasecmp</span><span style="color: #007700">(</span><span style="color: #0000BB">$var1</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$var2</span><span style="color: #007700">)&nbsp;==&nbsp;</span><span style="color: #0000BB">0</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">'$var1&nbsp;равно&nbsp;$var2&nbsp;при&nbsp;сравнении&nbsp;без&nbsp;учета&nbsp;регистра'</span><span style="color: #007700">;<br />}<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+      </div>
+
+     </div>
+    </p>
+    <p class="simpara">
+     См. также описание функций 
+     <a href="function.ereg.html" class="function">ereg()</a>,
+     <a href="function.strcmp.html" class="function">strcmp()</a>,
+     <a href="function.substr.html" class="function">substr()</a>,
+     <a href="function.stristr.html" class="function">stristr()</a>,
+     <a href="function.strncasecmp.html" class="function">strncasecmp()</a> и
+     <a href="function.strstr.html" class="function">strstr()</a>.
+    </p>
+   </div>
+
+  </div><hr /><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="function.str-word-count.html">str_word_count</a></div>
+ <div class="next" style="float: right;"><a href="function.strchr.html">strchr</a></div>
+ <div class="up"><a href="ref.strings.html">Функции обработки строк</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

@@ -1,0 +1,171 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <title>Устанавливает локаль</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+ </head>
+ <body><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="function.rtrim.html">rtrim</a></div>
+ <div class="next" style="float: right;"><a href="function.sha1-file.html">sha1_file</a></div>
+ <div class="up"><a href="ref.strings.html">Функции обработки строк</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="function.setlocale" class="refentry">
+   <div class="refnamediv">
+    <h1 class="refname">setlocale</h1>
+    <p class="verinfo">(PHP 4, PHP 5)</p><p class="refpurpose dc-title">setlocale — Устанавливает локаль</p>
+
+   </div>
+   <div class="refsect1 unknown">
+    <h3 class="title">Описание</h3>
+     <div class="methodsynopsis dc-description">
+      <span class="type">string</span> <span class="methodname"><b><b>setlocale</b></b></span>
+       ( <span class="methodparam"><span class="type"><a href="language.pseudo-types.html#language.types.mixed" class="type mixed">mixed</a></span> <tt class="parameter">$category</tt></span>
+      , <span class="methodparam"><span class="type">string</span> <tt class="parameter">$locale</tt></span>
+      [, <span class="methodparam"><span class="type">string</span> <tt class="parameter">$...</tt></span>
+     ] )</div>
+
+     <div class="methodsynopsis dc-description">
+      <span class="type">string</span> <span class="methodname"><b><b>setlocale</b></b></span>
+       ( <span class="methodparam"><span class="type"><a href="language.pseudo-types.html#language.types.mixed" class="type mixed">mixed</a></span> <tt class="parameter">$category</tt></span>
+      , <span class="methodparam"><span class="type">array</span> <tt class="parameter">$locale</tt></span>
+      )</div>
+
+    <p class="para rdfs-comment">
+     <i><tt class="parameter">category</tt></i>
+ - строка или константа, задающая 
+     категорию функций, на которые будет влиять установка локали:
+     <ul class="itemizedlist">
+      <li class="listitem">
+       <span class="simpara">
+        LC_ALL - все функции
+       </span>
+      </li>
+      <li class="listitem">
+       <span class="simpara">
+        LC_COLLATE - функции сравнения строк, см. 
+        <a href="function.strcoll.html" class="function">strcoll()</a>
+       </span>
+      </li>
+      <li class="listitem">
+       <span class="simpara">
+        LC_CTYPE - функции преобразования строк, например 
+        <a href="function.strtoupper.html" class="function">strtoupper()</a>
+       </span>
+      </li>
+      <li class="listitem">
+       <span class="simpara">
+        LC_MONETARY - функция <a href="function.localeconv.html" class="function">localeconv()</a>
+       </span>
+      </li>
+      <li class="listitem">
+       <span class="simpara"> LC_NUMERIC - задает символ десятичной точки (см. также
+       <a href="function.localeconv.html" class="function">localeconv()</a>)
+       </span>
+      </li>
+      <li class="listitem">
+       <span class="simpara">
+        LC_TIME - форматирование дат функцией 
+        <a href="function.strftime.html" class="function">strftime()</a>
+       </span>
+      </li>
+     </ul>
+    </p>
+    <blockquote><p><b class="note">Замечание</b>: 
+     <span class="simpara">
+      Начиная с 4.2.0, передача <i><tt class="parameter">category</tt></i>
+ в виде 
+      строки не поддерживается, рекомендуется использовать перечисленные 
+      константы. Передача этих констант как строк (в кавычках) вызовет 
+      вывод предупреждения.
+     </span>
+    </p></blockquote>
+    <p class="para">
+     Если в качестве <i><tt class="parameter">locale</tt></i>
+ передана пустая строка
+     <i>&quot;&quot;</i>, имена локалей будут взяты из  соответствующих 
+     переменных окружения или переменной с именем &quot;LANG&quot;.
+    </p>
+    <p class="para">
+     Если в качестве <i><tt class="parameter">locale</tt></i>
+ передан <b><tt>NULL</tt></b> или 
+     <i>&quot;0&quot;</i>, локаль изменена не будет, а будет возвращено 
+     текущее значение.
+    </p>
+    <p class="para">
+     Если в качестве <i><tt class="parameter">locale</tt></i>
+ передан массив, или 
+     после этого аргумента следуют дополнительные аргументы, функция будет 
+     использовать элементы массива или аргументы по порядку в качестве 
+     имен локали до тех пор, пока установка локали не будет успешной.
+     Это удобно, если одна и та же локаль имеет разное имя в различных 
+     системах, или необходимая локаль может отсутствовать в системе.
+    </p>
+    <blockquote><p><b class="note">Замечание</b>: 
+     <span class="simpara">
+      Передача нескольких локалей доступна начиная с PHP 4.3.0
+     </span>
+    </p></blockquote>
+    <p class="para">
+     Setlocale возвращает имя вновь установленной локали или <b><tt>FALSE</tt></b> если 
+     системе не поддерживает установку локали, указанная локаль не 
+     существует или передано недопустимое имя категории.
+     Недопустимое имя категории также вызывает предупредение. Имена 
+     локалей и категорий описаны в <a href="http://www.faqs.org/rfcs/rfc1766" class="link external">&raquo; RFC 
+     1766</a> и <a href="http://www.w3.org/WAI/ER/IG/ert/iso639.htm" class="link external">&raquo; ISO 639</a>.
+    </p>
+    <blockquote><p><b class="note">Замечание</b>: 
+     
+      Возвращаемое функцией <b>setlocale()</b> значение 
+      зависит от системы - это значение, возвращаемое системной функцией 
+      setlocale.
+     <br />
+    </p></blockquote>
+    <div class="tip"><b class="tip">Подсказка</b>
+     <p class="para">
+      Полезная информация о значениях аргумента 
+      <i><tt class="parameter">locale</tt></i>
+ в Windows содержится на сайте 
+      <acronym title="Microsoft Developer Network">MSDN</acronym>.
+      Поддерживаемые языки перечислены здесь:
+      <a href="http://msdn.microsoft.com/library/default.asp?url=/library/en-us/vclib/html/_crt_language_strings.asp" class="link external">&raquo; http://msdn.microsoft.com/library/default.asp?url=/library/en-us/vclib/html/_crt_language_strings.asp</a>, 
+      поддерживаемые коды стран/регионов - здесь: <a href="http://msdn.microsoft.com/library/default.asp?url=/library/en-us/vclib/html/_crt_country_strings.asp" class="link external">&raquo; http://msdn.microsoft.com/library/default.asp?url=/library/en-us/vclib/html/_crt_country_strings.asp</a>.
+      Windows поддерживает трехбуквенные коды стран/регионов, определенные 
+      в стандарте <i>ISO 3166-Alpha-3</i>, который можно найти 
+      на этом <a href="http://www.unicode.org/onlinedat/countries.html" class="link external">&raquo; сайте Unicode</a>.
+     </p>
+    </div>
+    <p class="para">
+     <div class="example">
+      <p><b>Пример #1 Примеры использования <b>setlocale()</b></b></p>
+      <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">/*&nbsp;Установка&nbsp;голландской&nbsp;локали&nbsp;*/<br /></span><span style="color: #0000BB">setlocale</span><span style="color: #007700">(</span><span style="color: #0000BB">LC_ALL</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'nl_NL'</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">/*&nbsp;выводит:&nbsp;vrijdag&nbsp;22&nbsp;december&nbsp;1978&nbsp;*/<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">strftime</span><span style="color: #007700">(</span><span style="color: #DD0000">"%A&nbsp;%e&nbsp;%B&nbsp;%Y"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">mktime</span><span style="color: #007700">(</span><span style="color: #0000BB">0</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">0</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">0</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">12</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">22</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">1978</span><span style="color: #007700">));<br /><br /></span><span style="color: #FF8000">/*&nbsp;попытка&nbsp;использовать&nbsp;различные&nbsp;локали&nbsp;для&nbsp;&nbsp;немецкого&nbsp;языка&nbsp;(с&nbsp;PHP&nbsp;4.3.0)&nbsp;*/<br /></span><span style="color: #0000BB">$loc_de&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">setlocale</span><span style="color: #007700">(</span><span style="color: #0000BB">LC_ALL</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'de_DE@euro'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'de_DE'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'de'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'ge'</span><span style="color: #007700">);<br />echo&nbsp;</span><span style="color: #DD0000">"На&nbsp;этой&nbsp;системе&nbsp;немецкая&nbsp;локаль&nbsp;имеет&nbsp;имя&nbsp;'$loc_de'"</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+      </div>
+
+     </div>
+    </p>
+    <p class="para">
+     <div class="example">
+      <p><b>Пример #2 
+       Примеры использования <b>setlocale()</b> в
+       Windows
+      </b></p>
+      <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">/*&nbsp;Установка&nbsp;голландской&nbsp;локали&nbsp;*/<br /></span><span style="color: #0000BB">setlocale</span><span style="color: #007700">(</span><span style="color: #0000BB">LC_ALL</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'nl_NL'</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">/*&nbsp;выводит:&nbsp;vrijdag&nbsp;22&nbsp;december&nbsp;1978&nbsp;*/<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">strftime</span><span style="color: #007700">(</span><span style="color: #DD0000">"%A&nbsp;%d&nbsp;%B&nbsp;%Y"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">mktime</span><span style="color: #007700">(</span><span style="color: #0000BB">0</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">0</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">0</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">12</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">22</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">1978</span><span style="color: #007700">));<br /><br /></span><span style="color: #FF8000">/*&nbsp;попытка&nbsp;использовать&nbsp;различные&nbsp;локали&nbsp;для&nbsp;&nbsp;немецкого&nbsp;языка&nbsp;(с&nbsp;PHP&nbsp;4.3.0)&nbsp;*/<br /></span><span style="color: #0000BB">$loc_de&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">setlocale</span><span style="color: #007700">(</span><span style="color: #0000BB">LC_ALL</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'de_DE@euro'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'de_DE'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'deu_deu'</span><span style="color: #007700">);<br />echo&nbsp;</span><span style="color: #DD0000">"На&nbsp;этой&nbsp;системе&nbsp;немецкая&nbsp;локаль&nbsp;имеет&nbsp;имя&nbsp;'$loc_de'"</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+      </div>
+
+     </div>
+    </p>
+   </div>
+
+  </div><hr /><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="function.rtrim.html">rtrim</a></div>
+ <div class="next" style="float: right;"><a href="function.sha1-file.html">sha1_file</a></div>
+ <div class="up"><a href="ref.strings.html">Функции обработки строк</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

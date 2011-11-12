@@ -1,0 +1,53 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <title>Получить идентификатор владельца файла</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+ </head>
+ <body><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="function.filemtime.html">filemtime</a></div>
+ <div class="next" style="float: right;"><a href="function.fileperms.html">fileperms</a></div>
+ <div class="up"><a href="ref.filesystem.html">Файловая система</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="function.fileowner" class="refentry">
+   <div class="refnamediv">
+    <h1 class="refname">fileowner</h1>
+    <p class="verinfo">(PHP 4, PHP 5)</p><p class="refpurpose dc-title">fileowner — Получить идентификатор владельца файла</p>
+
+   </div>
+   <div class="refsect1 unknown">
+    <h3 class="title">Описание</h3>
+     <div class="methodsynopsis dc-description">
+      <span class="type">int</span> <span class="methodname"><b><b>fileowner</b></b></span>
+       ( <span class="methodparam"><span class="type">string</span> <tt class="parameter">$filename</tt></span>
+      )</div>
+
+    <p class="para rdfs-comment">
+     Функция возвращает числовой идентификатор владельца указанного
+     файла или <b><tt>FALSE</tt></b> в случае возникновения ошибки.
+     Чтобы получить имя владельца в виде строки, используйте функцию
+     <a href="function.posix-getpwuid.html" class="function">posix_getpwuid()</a>.
+    </p>
+    
+    <blockquote><p><b class="note">Замечание</b>: <span class="simpara">Результаты этой функции
+кэшируются. Более подробную информацию смотрите в разделе
+<a href="function.clearstatcache.html" class="function">clearstatcache()</a>.</span></p></blockquote>
+    
+    <div class="tip"><b class="tip">Подсказка</b><p class="simpara">Начиная с 
+<i>PHP 5.0.0</i>, эта функция также может быть
+использована с <em class="emphasis">некоторыми</em> упаковщиками url.
+Список упаковщиков, поддерживаемых семейством функций
+<a href="function.stat.html" class="function">stat()</a>, смотрите в <a href="wrappers.html" class="xref">List of Supported Protocols/Wrappers</a>.</p></div>
+    
+    <p class="simpara">
+     См.также описание функции <a href="function.stat.html" class="function">stat()</a>.
+    </p>
+
+   </div>
+
+  </div><hr /><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="function.filemtime.html">filemtime</a></div>
+ <div class="next" style="float: right;"><a href="function.fileperms.html">fileperms</a></div>
+ <div class="up"><a href="ref.filesystem.html">Файловая система</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

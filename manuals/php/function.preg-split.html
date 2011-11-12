@@ -1,0 +1,186 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <title>Разбивает строку по регулярному выражению</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+ </head>
+ <body><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="ref.pcre.html">PCRE</a></div>
+ <div class="next" style="float: right;"><a href="book.regex.html">POSIX Regex</a></div>
+ <div class="up"><a href="ref.pcre.html">PCRE</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="function.preg-split" class="refentry">
+   <div class="refnamediv">
+    <h1 class="refname">preg_split</h1>
+    <p class="verinfo">(PHP 4, PHP 5)</p><p class="refpurpose dc-title">preg_split — Разбивает строку по регулярному выражению</p>
+
+   </div>
+   <div class="refsect1 unknown">
+    <h3 class="title">Описание</h3>
+     <div class="methodsynopsis dc-description">
+      <span class="type">array</span> <span class="methodname"><b><b>preg_split</b></b></span>
+       ( <span class="methodparam"><span class="type">string</span> <tt class="parameter">$pattern</tt></span>
+      , <span class="methodparam"><span class="type">string</span> <tt class="parameter">$subject</tt></span>
+      [, <span class="methodparam"><span class="type">int</span> <tt class="parameter">$limit</tt></span>
+      [, <span class="methodparam"><span class="type">int</span> <tt class="parameter">$flags</tt></span>
+     ]] )</div>
+
+
+    <p class="para rdfs-comment">
+     Возвращает массив, состоящий из подстрок заданной строки 
+     <i><tt class="parameter">subject</tt></i>
+,  которая разбита по границам, соответствующим шаблону
+     <i><tt class="parameter">pattern</tt></i>
+.
+    </p>
+
+    <p class="para">
+     В случае, если параметр <i><tt class="parameter">limit</tt></i>
+ указан, функция возвращает
+     не более, чем <i><tt class="parameter">limit</tt></i>
+ подстрок. Специальное значение
+     <i><tt class="parameter">limit</tt></i>
+, равное  -1, подразумевает отсутствие ограничения,
+	 это весьма полезно для указания еще одного опционального параметра
+     <i><tt class="parameter">flags</tt></i>
+.
+    </p>
+
+    <p class="para">
+     <i><tt class="parameter">flags</tt></i>
+ может быть произвольной комбинацией следующих флагов
+	 (соединение происходит при помощи оператора &#039;|&#039;):
+      <dl>
+
+       <dt>
+
+        <span class="term"><b><tt>PREG_SPLIT_NO_EMPTY</tt></b></span>
+
+        <dd>
+
+         <span class="simpara">
+		В случае, если этот флаг указан, функция <b>preg_split()</b>
+		вернет только непустые подстроки.
+         </span>
+        </dd>
+
+       </dt>
+
+       <dt>
+
+        <span class="term"><b><tt>PREG_SPLIT_DELIM_CAPTURE</tt></b></span>
+
+        <dd>
+
+         <span class="simpara">
+		 В случае, если этот флаг указан, выражение, заключенное в круглые скобки в 
+		 разделяющем шаблоне, также извлекается из заданной строки и возвращается
+		 функцией. Этот флаг был добавлен в PHP 4.0.5.
+         </span>
+        </dd>
+
+       </dt>
+
+       <dt>
+
+        <span class="term"><b><tt>PREG_SPLIT_OFFSET_CAPTURE</tt></b></span>
+
+        <dd>
+
+         <p class="para">
+		  В случае, если этот флаг указан, для каждой найденной подстроки, будет указана
+		  ее позиция в исходной строке. Необходимо помнить, что этот флаг меняет 
+		  формат возвращаемых данных: каждое вхождение возвращается в виде массива,
+		  в нулевом элементе которого содержится найденная подстрока, а в первом - смещение.
+         </p>
+        </dd>
+
+       </dt>
+
+      </dl>
+
+    </p>
+     <p class="para">
+     <div class="example">
+      <p><b>Пример #1 <b>preg_split()</b> пример: Получение подстрок из заданного текста</b></p>
+      <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">//&nbsp;разбиваем&nbsp;строку&nbsp;по&nbsp;произвольному&nbsp;числу&nbsp;запятых&nbsp;и&nbsp;пробельных&nbsp;символов,&nbsp;<br />//&nbsp;которые&nbsp;включают&nbsp;в&nbsp;себя&nbsp;&nbsp;"&nbsp;",&nbsp;\r,&nbsp;\t,&nbsp;\n&nbsp;и&nbsp;\f<br /></span><span style="color: #0000BB">$keywords&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">preg_split</span><span style="color: #007700">(</span><span style="color: #DD0000">"/[\s,]+/"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"hypertext&nbsp;language,&nbsp;programming"</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+      </div>
+
+     </div>
+    </p>
+    <p class="para">
+     <div class="example">
+      <p><b>Пример #2 Разбиваем строку на составляющие символы</b></p>
+      <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$str&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">'string'</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$chars&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">preg_split</span><span style="color: #007700">(</span><span style="color: #DD0000">'//'</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$str</span><span style="color: #007700">,&nbsp;-</span><span style="color: #0000BB">1</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">PREG_SPLIT_NO_EMPTY</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">print_r</span><span style="color: #007700">(</span><span style="color: #0000BB">$chars</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+      </div>
+
+     </div>
+    </p>
+    <p class="para">
+     <div class="example">
+      <p><b>Пример #3 Разбиваем строку с указанием смещения для каждой из найденных подстрок</b></p>
+      <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$str&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">'hypertext&nbsp;language&nbsp;programming'</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$chars&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">preg_split</span><span style="color: #007700">(</span><span style="color: #DD0000">'/&nbsp;/'</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$str</span><span style="color: #007700">,&nbsp;-</span><span style="color: #0000BB">1</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">PREG_SPLIT_OFFSET_CAPTURE</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">print_r</span><span style="color: #007700">(</span><span style="color: #0000BB">$chars</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+      </div>
+
+      <div class="example-contents"><p>
+      На выходе получаем:
+      </p></div>
+      <div class="example-contents"><pre>
+<div class="cdata"><pre>
+Array
+(
+    [0] =&gt; Array
+        (
+            [0] =&gt; hypertext
+            [1] =&gt; 0
+        )
+
+    [1] =&gt; Array
+        (
+            [0] =&gt; language
+            [1] =&gt; 10
+        )
+
+    [2] =&gt; Array
+        (
+            [0] =&gt; programming
+            [1] =&gt; 19
+        )
+
+)
+</pre></div>
+      </pre></div>
+     </div>
+    </p>
+    <blockquote><p><b class="note">Замечание</b>: 
+     
+      Параметр <i><tt class="parameter">flags</tt></i>
+ был добавлен в PHP 4 Beta 3.
+     <br />
+    </p></blockquote>
+    <p class="para">
+     Смотрите также <a href="function.spliti.html" class="function">spliti()</a>, <a href="function.split.html" class="function">split()</a>,
+     <a href="function.implode.html" class="function">implode()</a>, <a href="function.preg-match.html" class="function">preg_match()</a>,
+     <a href="function.preg-match-all.html" class="function">preg_match_all()</a>, и
+     <a href="function.preg-replace.html" class="function">preg_replace()</a>.
+    </p>
+   </div>
+
+  </div><hr /><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="ref.pcre.html">PCRE</a></div>
+ <div class="next" style="float: right;"><a href="book.regex.html">POSIX Regex</a></div>
+ <div class="up"><a href="ref.pcre.html">PCRE</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

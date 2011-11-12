@@ -1,0 +1,62 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <title>Посылает MySQL SQL-запрос без авто-обработки результата и её
+     буфферизации.</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+ </head>
+ <body><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="ref.mysql.html">MySQL</a></div>
+ <div class="next" style="float: right;"><a href="book.mysqli.html">mysqli</a></div>
+ <div class="up"><a href="ref.mysql.html">MySQL</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="function.mysql-unbuffered-query" class="refentry">
+   <div class="refnamediv">
+    <h1 class="refname">mysql_unbuffered_query</h1>
+    <p class="verinfo">(PHP 4 &gt;= 4.0.6, PHP 5, PECL mysql:1.0)</p><p class="refpurpose dc-title">mysql_unbuffered_query — 
+     Посылает MySQL SQL-запрос без авто-обработки результата и её
+     буфферизации.
+    </p>
+
+   </div>
+   <div class="refsect1 unknown">
+    <h3 class="title">Описание</h3>
+     <div class="methodsynopsis dc-description">
+      <span class="type">resource</span> <span class="methodname"><b><b>mysql_unbuffered_query</b></b></span>
+       ( <span class="methodparam"><span class="type">string</span> <tt class="parameter">$query</tt></span>
+      [, <span class="methodparam"><span class="type">resource</span> <tt class="parameter">$link_identifier</tt></span>
+     ] )</div>
+
+    <p class="para rdfs-comment">
+     <b>mysql_unbuffered_query()</b> посылает MySQL SQL-запрос
+     <i><tt class="parameter">query</tt></i>
+ без автоматической обработки и буфферизации
+     её результата, в отличе от функции <a href="function.mysql-query.html" class="function">mysql_query()</a>.  
+     Это позволяет сохранить достаточно большое количество памяти для
+     SQL-запросов, возвращающих большое количество данных. Кроме того, вы
+     можете начать работу с полученными данными сразу после того, как первый
+     ряд был получен: вам не приходится ждать до конца SQL-запроса. При
+     использовании нескольких соединений с MySQL, вы можете указать
+     опциональный параметр  <i><tt class="parameter">link_identifier</tt></i>
+.
+    </p>
+    <blockquote><p><b class="note">Замечание</b>: 
+     
+      Однако, плюсы использования <b>mysql_unbuffered_query()</b> имеют
+      свою цену: вы не можете использовать функции <a href="function.mysql-num-rows.html" class="function">mysql_num_rows()</a> и
+      <a href="function.mysql-data-seek.html" class="function">mysql_data_seek()</a> с результатом запроса, возвращённым
+      этой функцией. Кроме того, вы должны будете обработать все ряды запроса
+      до отправки нового запроса.
+     <br />
+    </p></blockquote>
+    <p class="para">
+     См. также <a href="function.mysql-query.html" class="function">mysql_query()</a>.
+    </p>
+   </div>
+
+  </div><hr /><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="ref.mysql.html">MySQL</a></div>
+ <div class="next" style="float: right;"><a href="book.mysqli.html">mysqli</a></div>
+ <div class="up"><a href="ref.mysql.html">MySQL</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

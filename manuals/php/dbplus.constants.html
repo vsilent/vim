@@ -1,0 +1,411 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <title>Предопределенные константы</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+ </head>
+ <body><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="dbplus.resources.html">Типы ресурсов</a></div>
+ <div class="next" style="float: right;"><a href="ref.dbplus.html">DB++ Функции</a></div>
+ <div class="up"><a href="book.dbplus.html">DB++</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div>
+ <h1>Предопределенные константы</h1>
+
+ <p class="simpara">
+Перечисленные ниже константы определены данным расширением и могут быть
+доступны только в том случае, если PHP был собран с
+поддержкой этого расширения или же в том случае, если
+данное расширение подгружается во время выполнения.
+</p>
+  <div id="dbplus.errorcodes" class="section">
+   <h2 class="title">db++ error codes</h2>
+   <p class="para">
+    <table border="5">
+     <caption><b>DB++ Error Codes</b></caption>
+     <colgroup>
+
+      <thead valign="middle">
+       <tr valign="middle">
+        <th colspan="1">PHP Constant</th>
+        <th colspan="1">db++ constant</th>
+        <th colspan="1">meaning</th>
+       </tr>
+
+      </thead>
+
+      <tbody valign="middle" class="tbody">
+       <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left">
+        <b><tt>DBPLUS_ERR_NOERR</tt></b>
+        (<a href="language.types.integer.html" class="type integer">integer</a>)
+       </td>
+        <td colspan="1" rowspan="1" align="left">ERR_NOERR</td>
+        <td colspan="1" rowspan="1" align="left">Null error condition</td>
+       </tr>
+
+       <tr valign="middle">
+        <td colspan="1" rowspan="1" align="left">
+         <b><tt>DBPLUS_ERR_DUPLICATE</tt></b>
+         (<a href="language.types.integer.html" class="type integer">integer</a>)
+        </td>
+        <td colspan="1" rowspan="1" align="left">ERR_DUPLICATE</td>
+        <td colspan="1" rowspan="1" align="left">Tried to insert a duplicate tuple</td>
+       </tr>
+
+       <tr valign="middle">
+        <td colspan="1" rowspan="1" align="left">
+         <b><tt>DBPLUS_ERR_EOSCAN</tt></b>
+         (<a href="language.types.integer.html" class="type integer">integer</a>)
+        </td>
+        <td colspan="1" rowspan="1" align="left">ERR_EOSCAN</td>
+        <td colspan="1" rowspan="1" align="left">End of scan from rget()</td>
+       </tr>
+
+       <tr valign="middle">
+        <td colspan="1" rowspan="1" align="left">
+         <b><tt>DBPLUS_ERR_EMPTY</tt></b>
+         (<a href="language.types.integer.html" class="type integer">integer</a>)
+        </td>
+        <td colspan="1" rowspan="1" align="left">ERR_EMPTY</td>
+        <td colspan="1" rowspan="1" align="left">Relation is empty (server)</td>
+       </tr>
+
+       <tr valign="middle">
+        <td colspan="1" rowspan="1" align="left">
+         <b><tt>DBPLUS_ERR_CLOSE</tt></b>
+         (<a href="language.types.integer.html" class="type integer">integer</a>)
+        </td>
+        <td colspan="1" rowspan="1" align="left">ERR_CLOSE</td>
+        <td colspan="1" rowspan="1" align="left">The server can&#039;t close</td>
+       </tr>
+
+       <tr valign="middle">
+        <td colspan="1" rowspan="1" align="left">
+         <b><tt>DBPLUS_ERR_WLOCKED</tt></b>
+         (<a href="language.types.integer.html" class="type integer">integer</a>)
+        </td>
+        <td colspan="1" rowspan="1" align="left">ERR_WLOCKED</td>
+        <td colspan="1" rowspan="1" align="left">The record is write locked</td>
+       </tr>
+
+       <tr valign="middle">
+        <td colspan="1" rowspan="1" align="left">
+         <b><tt>DBPLUS_ERR_LOCKED</tt></b>
+         (<a href="language.types.integer.html" class="type integer">integer</a>)
+        </td>
+        <td colspan="1" rowspan="1" align="left">ERR_LOCKED</td>
+        <td colspan="1" rowspan="1" align="left">Relation was already locked</td>
+       </tr>
+
+       <tr valign="middle">
+        <td colspan="1" rowspan="1" align="left">
+         <b><tt>DBPLUS_ERR_NOLOCK</tt></b>
+         (<a href="language.types.integer.html" class="type integer">integer</a>)
+        </td>
+        <td colspan="1" rowspan="1" align="left">ERR_NOLOCK</td>
+        <td colspan="1" rowspan="1" align="left">Relation cannot be locked</td>
+       </tr>
+
+       <tr valign="middle">
+        <td colspan="1" rowspan="1" align="left">
+         <b><tt>DBPLUS_ERR_READ</tt></b>
+         (<a href="language.types.integer.html" class="type integer">integer</a>)
+        </td>
+        <td colspan="1" rowspan="1" align="left">ERR_READ</td>
+        <td colspan="1" rowspan="1" align="left">Read error on relation</td>
+       </tr>
+
+       <tr valign="middle">
+        <td colspan="1" rowspan="1" align="left">
+         <b><tt>DBPLUS_ERR_WRITE</tt></b>
+         (<a href="language.types.integer.html" class="type integer">integer</a>)
+        </td>
+        <td colspan="1" rowspan="1" align="left">ERR_WRITE</td>
+        <td colspan="1" rowspan="1" align="left">Write error on relation</td>
+       </tr>
+
+       <tr valign="middle">
+        <td colspan="1" rowspan="1" align="left">
+         <b><tt>DBPLUS_ERR_CREATE</tt></b>
+         (<a href="language.types.integer.html" class="type integer">integer</a>)
+        </td>
+        <td colspan="1" rowspan="1" align="left">ERR_CREATE</td>
+        <td colspan="1" rowspan="1" align="left">Create() system call failed</td>
+       </tr>
+
+       <tr valign="middle">
+        <td colspan="1" rowspan="1" align="left">
+         <b><tt>DBPLUS_ERR_LSEEK</tt></b>
+         (<a href="language.types.integer.html" class="type integer">integer</a>)
+        </td>
+        <td colspan="1" rowspan="1" align="left">ERR_LSEEK</td>
+        <td colspan="1" rowspan="1" align="left">Lseek() system call failed</td>
+       </tr>
+
+       <tr valign="middle">
+        <td colspan="1" rowspan="1" align="left">
+         <b><tt>DBPLUS_ERR_LENGTH</tt></b>
+         (<a href="language.types.integer.html" class="type integer">integer</a>)
+        </td>
+        <td colspan="1" rowspan="1" align="left">ERR_LENGTH</td>
+        <td colspan="1" rowspan="1" align="left">Tuple exceeds maximum length</td>
+       </tr>
+
+       <tr valign="middle">
+        <td colspan="1" rowspan="1" align="left">
+         <b><tt>DBPLUS_ERR_OPEN</tt></b>
+         (<a href="language.types.integer.html" class="type integer">integer</a>)
+        </td>
+        <td colspan="1" rowspan="1" align="left">ERR_OPEN</td>
+        <td colspan="1" rowspan="1" align="left">Open() system call failed</td>
+       </tr>
+
+       <tr valign="middle">
+        <td colspan="1" rowspan="1" align="left">
+         <b><tt>DBPLUS_ERR_WOPEN</tt></b>
+         (<a href="language.types.integer.html" class="type integer">integer</a>)
+        </td>
+        <td colspan="1" rowspan="1" align="left">ERR_WOPEN</td>
+        <td colspan="1" rowspan="1" align="left">Relation already opened for writing</td>
+       </tr>
+
+       <tr valign="middle">
+        <td colspan="1" rowspan="1" align="left">
+         <b><tt>DBPLUS_ERR_MAGIC</tt></b>
+         (<a href="language.types.integer.html" class="type integer">integer</a>)
+        </td>
+        <td colspan="1" rowspan="1" align="left">ERR_MAGIC</td>
+        <td colspan="1" rowspan="1" align="left">File is not a relation</td>
+       </tr>
+
+       <tr valign="middle">
+        <td colspan="1" rowspan="1" align="left">
+         <b><tt>DBPLUS_ERR_VERSION</tt></b>
+         (<a href="language.types.integer.html" class="type integer">integer</a>)
+        </td>
+        <td colspan="1" rowspan="1" align="left">ERR_VERSION</td>
+        <td colspan="1" rowspan="1" align="left">File is a very old relation</td>
+       </tr>
+
+       <tr valign="middle">
+        <td colspan="1" rowspan="1" align="left">
+         <b><tt>DBPLUS_ERR_PGSIZE</tt></b>
+         (<a href="language.types.integer.html" class="type integer">integer</a>)
+        </td>
+        <td colspan="1" rowspan="1" align="left">ERR_PGSIZE</td>
+        <td colspan="1" rowspan="1" align="left">Relation uses a different page size</td>
+       </tr>
+
+       <tr valign="middle">
+        <td colspan="1" rowspan="1" align="left">
+         <b><tt>DBPLUS_ERR_CRC</tt></b>
+         (<a href="language.types.integer.html" class="type integer">integer</a>)
+        </td>
+        <td colspan="1" rowspan="1" align="left">ERR_CRC</td>
+        <td colspan="1" rowspan="1" align="left">Invalid crc in the superpage</td>
+       </tr>
+
+       <tr valign="middle">
+        <td colspan="1" rowspan="1" align="left">
+         <b><tt>DBPLUS_ERR_PIPE</tt></b>
+         (<a href="language.types.integer.html" class="type integer">integer</a>)
+        </td>
+        <td colspan="1" rowspan="1" align="left">ERR_PIPE</td>
+        <td colspan="1" rowspan="1" align="left">Piped relation requires lseek()</td>
+       </tr>
+
+       <tr valign="middle">
+        <td colspan="1" rowspan="1" align="left">
+         <b><tt>DBPLUS_ERR_NIDX</tt></b>
+         (<a href="language.types.integer.html" class="type integer">integer</a>)
+        </td>
+        <td colspan="1" rowspan="1" align="left">ERR_NIDX</td>
+        <td colspan="1" rowspan="1" align="left">Too many secondary indices</td>
+       </tr>
+
+       <tr valign="middle">
+        <td colspan="1" rowspan="1" align="left">
+         <b><tt>DBPLUS_ERR_MALLOC</tt></b>
+         (<a href="language.types.integer.html" class="type integer">integer</a>)
+        </td>
+        <td colspan="1" rowspan="1" align="left">ERR_MALLOC</td>
+        <td colspan="1" rowspan="1" align="left">Malloc() call failed</td>
+       </tr>
+
+       <tr valign="middle">
+        <td colspan="1" rowspan="1" align="left">
+         <b><tt>DBPLUS_ERR_NUSERS</tt></b>
+         (<a href="language.types.integer.html" class="type integer">integer</a>)
+        </td>
+        <td colspan="1" rowspan="1" align="left">ERR_NUSERS</td>
+        <td colspan="1" rowspan="1" align="left">Error use of max users</td>
+       </tr>
+
+       <tr valign="middle">
+        <td colspan="1" rowspan="1" align="left">
+         <b><tt>DBPLUS_ERR_PREEXIT</tt></b>
+         (<a href="language.types.integer.html" class="type integer">integer</a>)
+        </td>
+        <td colspan="1" rowspan="1" align="left">ERR_PREEXIT</td>
+        <td colspan="1" rowspan="1" align="left">Caused by invalid usage</td>
+       </tr>
+
+       <tr valign="middle">
+        <td colspan="1" rowspan="1" align="left">
+         <b><tt>DBPLUS_ERR_ONTRAP</tt></b>
+         (<a href="language.types.integer.html" class="type integer">integer</a>)
+        </td>
+        <td colspan="1" rowspan="1" align="left">ERR_ONTRAP</td>
+        <td colspan="1" rowspan="1" align="left">Caused by a signal</td>
+       </tr>
+
+       <tr valign="middle">
+        <td colspan="1" rowspan="1" align="left">
+         <b><tt>DBPLUS_ERR_PREPROC</tt></b>
+         (<a href="language.types.integer.html" class="type integer">integer</a>)
+        </td>
+        <td colspan="1" rowspan="1" align="left">ERR_PREPROC</td>
+        <td colspan="1" rowspan="1" align="left">Error in the preprocessor</td>
+       </tr>
+
+       <tr valign="middle">
+        <td colspan="1" rowspan="1" align="left">
+         <b><tt>DBPLUS_ERR_DBPARSE</tt></b>
+         (<a href="language.types.integer.html" class="type integer">integer</a>)
+        </td>
+        <td colspan="1" rowspan="1" align="left">ERR_DBPARSE</td>
+        <td colspan="1" rowspan="1" align="left">Error in the parser</td>
+       </tr>
+
+       <tr valign="middle">
+        <td colspan="1" rowspan="1" align="left">
+         <b><tt>DBPLUS_ERR_DBRUNERR</tt></b>
+         (<a href="language.types.integer.html" class="type integer">integer</a>)
+        </td>
+        <td colspan="1" rowspan="1" align="left">ERR_DBRUNERR</td>
+        <td colspan="1" rowspan="1" align="left">Run error in db</td>
+       </tr>
+
+       <tr valign="middle">
+        <td colspan="1" rowspan="1" align="left">
+         <b><tt>DBPLUS_ERR_DBPREEXIT</tt></b>
+         (<a href="language.types.integer.html" class="type integer">integer</a>)
+        </td>
+        <td colspan="1" rowspan="1" align="left">ERR_DBPREEXIT</td>
+        <td colspan="1" rowspan="1" align="left">Exit condition caused by prexit() * procedure</td>
+       </tr>
+
+       <tr valign="middle">
+        <td colspan="1" rowspan="1" align="left">
+         <b><tt>DBPLUS_ERR_WAIT</tt></b>
+          (<a href="language.types.integer.html" class="type integer">integer</a>)
+        </td>
+        <td colspan="1" rowspan="1" align="left">ERR_WAIT</td>
+        <td colspan="1" rowspan="1" align="left">Wait a little (Simple only)</td>
+       </tr>
+
+       <tr valign="middle">
+        <td colspan="1" rowspan="1" align="left">
+         <b><tt>DBPLUS_ERR_CORRUPT_TUPLE</tt></b>
+         (<a href="language.types.integer.html" class="type integer">integer</a>)
+        </td>
+        <td colspan="1" rowspan="1" align="left">ERR_CORRUPT_TUPLE</td>
+        <td colspan="1" rowspan="1" align="left">A client sent a corrupt tuple</td>
+       </tr>
+
+       <tr valign="middle">
+        <td colspan="1" rowspan="1" align="left">
+         <b><tt>DBPLUS_ERR_WARNING0</tt></b>
+         (<a href="language.types.integer.html" class="type integer">integer</a>)
+        </td>
+        <td colspan="1" rowspan="1" align="left">ERR_WARNING0</td> 
+        <td colspan="1" rowspan="1" align="left">
+         The Simple routines encountered a non fatal error which was
+         corrected
+        </td>
+       </tr>
+
+       <tr valign="middle">
+        <td colspan="1" rowspan="1" align="left">
+         <b><tt>DBPLUS_ERR_PANIC</tt></b>
+         (<a href="language.types.integer.html" class="type integer">integer</a>)
+        </td>
+        <td colspan="1" rowspan="1" align="left">ERR_PANIC</td>
+        <td colspan="1" rowspan="1" align="left">
+         The server should not really die but after a disaster
+         send ERR_PANIC to all its clients
+        </td>
+       </tr>
+
+       <tr valign="middle">
+        <td colspan="1" rowspan="1" align="left">
+         <b><tt>DBPLUS_ERR_FIFO</tt></b>
+         (<a href="language.types.integer.html" class="type integer">integer</a>)
+        </td>
+        <td colspan="1" rowspan="1" align="left">ERR_FIFO</td>
+        <td colspan="1" rowspan="1" align="left">Can&#039;t create a fifo</td>
+       </tr>
+
+       <tr valign="middle">
+        <td colspan="1" rowspan="1" align="left">
+         <b><tt>DBPLUS_ERR_PERM</tt></b>
+         (<a href="language.types.integer.html" class="type integer">integer</a>)
+        </td>
+        <td colspan="1" rowspan="1" align="left">ERR_PERM</td>
+        <td colspan="1" rowspan="1" align="left">Permission denied</td>
+       </tr>
+
+       <tr valign="middle">
+        <td colspan="1" rowspan="1" align="left">
+         <b><tt>DBPLUS_ERR_TCL</tt></b>
+         (<a href="language.types.integer.html" class="type integer">integer</a>)
+        </td>
+        <td colspan="1" rowspan="1" align="left">ERR_TCL</td>
+        <td colspan="1" rowspan="1" align="left">TCL_error</td>
+       </tr>
+
+       <tr valign="middle">
+        <td colspan="1" rowspan="1" align="left">
+         <b><tt>DBPLUS_ERR_RESTRICTED</tt></b>
+         (<a href="language.types.integer.html" class="type integer">integer</a>)
+        </td>
+        <td colspan="1" rowspan="1" align="left">ERR_RESTRICTED</td>
+        <td colspan="1" rowspan="1" align="left">Only two users</td>
+       </tr>
+
+       <tr valign="middle">
+        <td colspan="1" rowspan="1" align="left">
+         <b><tt>DBPLUS_ERR_USER</tt></b>
+         (<a href="language.types.integer.html" class="type integer">integer</a>)
+        </td> 
+        <td colspan="1" rowspan="1" align="left">ERR_USER</td>
+        <td colspan="1" rowspan="1" align="left">
+         An error in the use of the library by an application
+         programmer
+        </td>
+       </tr>
+
+       <tr valign="middle">
+        <td colspan="1" rowspan="1" align="left">
+         <b><tt>DBPLUS_ERR_UNKNOWN</tt></b>
+         (<a href="language.types.integer.html" class="type integer">integer</a>)
+        </td>
+        <td colspan="1" rowspan="1" align="left">ERR_UNKNOWN</td>
+        <td class="empty">&nbsp;</td>
+       </tr>
+
+      </tbody>
+     </colgroup>
+
+    </table>
+
+   </p>
+  </div>
+ </div>
+<hr /><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="dbplus.resources.html">Типы ресурсов</a></div>
+ <div class="next" style="float: right;"><a href="ref.dbplus.html">DB++ Функции</a></div>
+ <div class="up"><a href="book.dbplus.html">DB++</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

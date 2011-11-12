@@ -1,0 +1,138 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <title>Construct a phar archive from the files within a directory.</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+ </head>
+ <body><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="phar.apiversion.html">Phar::apiVersion</a></div>
+ <div class="next" style="float: right;"><a href="phar.buildfromiterator.html">Phar::buildFromIterator</a></div>
+ <div class="up"><a href="class.Phar.html">Phar</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="phar.buildfromdirectory" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">Phar::buildFromDirectory</h1>
+  <p class="verinfo">(No version information available, might be only in CVS)</p><p class="refpurpose dc-title">Phar::buildFromDirectory — Construct a phar archive from the files within a directory.</p>
+
+ </div>
+
+ <div class="refsect1 description">
+  <h3 class="title">Описание</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type">array</span> <span class="methodname"><b><b>Phar::buildFromDirectory</b></b></span>
+    ( <span class="methodparam"><span class="type">string</span> <tt class="parameter">$base_dir</tt></span>
+   [, <span class="methodparam"><span class="type">string</span> <tt class="parameter">$regex</tt></span>
+  ] )</div>
+
+  <blockquote><p><b class="note">Замечание</b>: This
+method requires the <var class="filename">php.ini</var> setting <i>phar.readonly</i> to be
+set to <i>0</i> in order to work for <span class="classname">Phar</span>
+objects.  Otherwise, a <span class="classname">PharException</span> will be thrown.<br /></p></blockquote>
+  <p class="para">
+   Populate a phar archive from directory contents.  The optional second
+   parameter is a regular expression (pcre) that is used to exclude files.
+   Any filename that matches the regular expression will be included, all others will be
+   excluded.  For more fine-grained control, use <a href="phar.buildfromiterator.html" class="function">Phar::buildFromIterator()</a>.
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters">
+  <h3 class="title">Список параметров</h3>
+  <p class="para">
+   <dl>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">base_dir</tt></i>
+</span>
+
+     <dd>
+
+      <p class="para">
+       The full or relative path to the directory that contains all files
+       to add to the archive.
+      </p>
+     </dd>
+
+    </dt>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">regex</tt></i>
+</span>
+
+     <dd>
+
+      <p class="para">
+       An optional pcre regular expression that is used to filter the
+       list of files.  Only file paths matching the regular expression
+       will be included in the archive.
+      </p>
+     </dd>
+
+    </dt>
+
+   </dl>
+
+  </p>
+
+ </div>
+
+ <div class="refsect1 returnvalues">
+  <h3 class="title">Возвращаемые значения</h3>
+  <p class="para">
+   <b>Phar::buildFromDirectory()</b> returns an associative array
+   mapping internal path of file to the full path of the file on the
+   filesystem.
+  </p>
+ </div>
+
+
+ <div class="refsect1 errors">
+  <h3 class="title">Errors/Exceptions</h3>
+  <p class="para">
+   This method throws <span class="classname">BadMethodCallException</span> when unable
+   to instantiate the internal directory iterators,
+   or a <span class="classname">PharException</span> if there were errors
+   saving the phar archive.
+  </p>
+ </div>
+
+
+ <div class="refsect1 examples">
+  <h3 class="title">Примеры</h3>
+  <div class="example">
+    <p><b>Пример #1 A <b>Phar::buildFromDirectory()</b> example</b></p>
+  <div class="example-contents"><p>
+   
+  </p></div>
+  <div class="example-contents"><p>
+   <div class="example-contents">
+    <div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">//&nbsp;create&nbsp;with&nbsp;alias&nbsp;"project.phar"<br /></span><span style="color: #0000BB">$phar&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">Phar</span><span style="color: #007700">(</span><span style="color: #DD0000">'project.phar'</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">0</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'project.phar'</span><span style="color: #007700">);<br /></span><span style="color: #FF8000">//&nbsp;add&nbsp;all&nbsp;files&nbsp;in&nbsp;the&nbsp;project<br /></span><span style="color: #0000BB">$phar</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">buildFromDirectory</span><span style="color: #007700">(</span><span style="color: #0000BB">dirname</span><span style="color: #007700">(</span><span style="color: #0000BB">__FILE__</span><span style="color: #007700">)&nbsp;.&nbsp;</span><span style="color: #DD0000">'/project'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$phar</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setStub</span><span style="color: #007700">(</span><span style="color: #0000BB">$phar</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">createDefaultWebStub</span><span style="color: #007700">(</span><span style="color: #DD0000">'cli/index.php'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'www/index.php'</span><span style="color: #007700">));<br /><br /></span><span style="color: #0000BB">$phar2&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">Phar</span><span style="color: #007700">(</span><span style="color: #DD0000">'project2.phar'</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">0</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'project2.phar'</span><span style="color: #007700">);<br /></span><span style="color: #FF8000">//&nbsp;add&nbsp;all&nbsp;files&nbsp;in&nbsp;the&nbsp;project,&nbsp;only&nbsp;include&nbsp;php&nbsp;files<br /></span><span style="color: #0000BB">$phar</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">buildFromDirectory</span><span style="color: #007700">(</span><span style="color: #0000BB">dirname</span><span style="color: #007700">(</span><span style="color: #0000BB">__FILE__</span><span style="color: #007700">)&nbsp;.&nbsp;</span><span style="color: #DD0000">'/project'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'/\.php$/'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$phar</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setStub</span><span style="color: #007700">(</span><span style="color: #0000BB">$phar</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">createDefaultWebStub</span><span style="color: #007700">(</span><span style="color: #DD0000">'cli/index.php'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'www/index.php'</span><span style="color: #007700">));<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+   </div>
+
+  </p></div>
+  </div>
+ </div>
+
+
+ <div class="refsect1 seealso">
+  <h3 class="title">Смотрите также</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"><a href="phar.buildfromiterator.html" class="function" rel="rdfs-seeAlso">Phar::buildFromIterator()</a></li>
+   </ul>
+  </p>
+ </div>
+
+
+</div><hr /><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="phar.apiversion.html">Phar::apiVersion</a></div>
+ <div class="next" style="float: right;"><a href="phar.buildfromiterator.html">Phar::buildFromIterator</a></div>
+ <div class="up"><a href="class.Phar.html">Phar</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

@@ -1,0 +1,153 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <title>Declares the attribute specified by local name and namespace URI to be of type ID</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+ </head>
+ <body><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="class.domelement.html">DOMElement</a></div>
+ <div class="next" style="float: right;"><a href="class.domentity.html">DOMEntity</a></div>
+ <div class="up"><a href="class.domelement.html">DOMElement</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="domelement.setidattributens" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">DOMElement::setIdAttributeNS</h1>
+  <p class="verinfo">(No version information available, might be only in CVS)</p><p class="refpurpose dc-title">DOMElement::setIdAttributeNS — Declares the attribute specified by local name and namespace URI to be of type ID</p>
+
+ </div>
+ <div class="refsect1 description">
+  <h3 class="title">Описание</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type"><span class="type void">void</span></span> <span class="methodname"><b><b>DOMElement::setIdAttributeNS</b></b></span>
+    ( <span class="methodparam"><span class="type">string</span> <tt class="parameter">$namespaceURI</tt></span>
+   , <span class="methodparam"><span class="type">string</span> <tt class="parameter">$localName</tt></span>
+   , <span class="methodparam"><span class="type">bool</span> <tt class="parameter">$isId</tt></span>
+   )</div>
+
+  <p class="para rdfs-comment">
+   Declares the attribute specified by <i><tt class="parameter">localName</tt></i>
+ and 
+   <i><tt class="parameter">namespaceURI</tt></i>
+ to be of type ID.
+  </p>
+ </div>
+
+ <div class="refsect1 parameters">
+  <h3 class="title">Список параметров</h3>
+  <p class="para">
+   <dl>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">namespaceURI</tt></i>
+</span>
+
+     <dd>
+
+      <p class="para">
+       The namespace URI of the attribute.
+      </p>
+     </dd>
+
+    </dt>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">localName</tt></i>
+</span>
+
+     <dd>
+
+      <p class="para">
+       The local name of the attribute, as <i>prefix:tagname</i>.
+      </p>
+     </dd>
+
+    </dt>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">isId</tt></i>
+</span>
+
+     <dd>
+
+      <p class="para">
+       Set it to <b><tt>TRUE</tt></b> if you want <i><tt class="parameter">name</tt></i>
+ to be of type
+       ID, <b><tt>FALSE</tt></b> otherwise.
+      </p>
+     </dd>
+
+    </dt>
+
+   </dl>
+
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 returnvalues">
+  <h3 class="title">Возвращаемые значения</h3>
+  <p class="para">
+   Эта функция не возвращает значения после выполнения.
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 errors">
+  <h3 class="title">Errors/Exceptions</h3>
+  <p class="para">
+   <dl>
+
+    <dt>
+
+     <span class="term"><b><tt>DOM_NO_MODIFICATION_ALLOWED_ERR</tt></b></span>
+
+     <dd>
+
+      <p class="para">
+       Raised if the node is readonly.
+      </p>
+     </dd>
+
+    </dt>
+
+    <dt>
+
+     <span class="term"><b><tt>DOM_NOT_FOUND</tt></b></span>
+
+     <dd>
+
+      <p class="para">
+       Raised if <i><tt class="parameter">name</tt></i>
+ is not an attribute of this element.
+      </p>
+     </dd>
+
+    </dt>
+
+   </dl>
+
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 seealso">
+  <h3 class="title">Смотрите также</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"><a href="domdocument.getelementbyid.html" class="xref">DOMDocument::getElementById</a></li>
+    <li class="member"><a href="domelement.setidattribute.html" class="xref">DOMElement::setIdAttribute</a></li>
+    <li class="member"><a href="domelement.setidattributenode.html" class="xref">DOMElement::setIdAttributeNode</a></li>
+   </ul>
+  </p>
+ </div>
+
+
+</div><hr /><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="class.domelement.html">DOMElement</a></div>
+ <div class="next" style="float: right;"><a href="class.domentity.html">DOMEntity</a></div>
+ <div class="up"><a href="class.domelement.html">DOMElement</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

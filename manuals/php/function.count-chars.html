@@ -1,0 +1,108 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <title>Возвращает информацию о символах, входящих в строку</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+ </head>
+ <body><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="function.convert-uuencode.html">convert_uuencode</a></div>
+ <div class="next" style="float: right;"><a href="function.crc32.html">crc32</a></div>
+ <div class="up"><a href="ref.strings.html">Функции обработки строк</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="function.count-chars" class="refentry">
+   <div class="refnamediv">
+    <h1 class="refname">count_chars</h1>
+    <p class="verinfo">(PHP 4, PHP 5)</p><p class="refpurpose dc-title">count_chars — 
+     Возвращает информацию о символах, входящих в строку
+    </p>
+
+   </div>
+   <div class="refsect1 unknown">
+    <h3 class="title">Описание</h3>
+     <div class="methodsynopsis dc-description">
+      <span class="type"><a href="language.pseudo-types.html#language.types.mixed" class="type mixed">mixed</a></span> <span class="methodname"><b><b>count_chars</b></b></span>
+       ( <span class="methodparam"><span class="type">string</span> <tt class="parameter">$string</tt></span>
+      [, <span class="methodparam"><span class="type">int</span> <tt class="parameter">$mode</tt></span>
+     ] )</div>
+
+    <p class="para rdfs-comment">
+     Подсчитывает количество вхождений каждого из символов с ASII кодами в 
+     диапазоне (0..255) в строку <i><tt class="parameter">string</tt></i>
+ и 
+     возвращает эту информацию в различных формата. Необязательный 
+     аргумент <i><tt class="parameter">mode</tt></i>
+ по умолчанию равен 0. В 
+     зависимости от его значения возвращается:
+     <ul class="itemizedlist">
+      <li class="listitem">
+       <span class="simpara">
+        0 - массив, индексами которого являются ASCII коды, а значениями - 
+        число вхождений соответствующего символа.
+       </span>
+      </li>
+      <li class="listitem">
+       <span class="simpara">
+        1 - то же, что и для 0, но информация о символах с нулевым числом 
+        вхождений не включается в массив.
+       </span>
+      </li>
+      <li class="listitem">
+       <span class="simpara">
+        2 - то же, что и для 0, но в массив включается информация только о 
+        символах с нулевым числом вхождений.
+       </span>
+      </li> 
+      <li class="listitem">
+       <span class="simpara"> 
+        3 - строка, состоящая из символов, которые входят в исходую строку 
+        хотя бы раз.
+       </span>
+      </li> 
+      <li class="listitem">
+       <span class="simpara"> 
+        4 - строка, состоящая из символов, которые не входят в исходую строку 
+       </span>
+      </li> 
+     </ul>
+    </p>
+    <p class="para">
+     <div class="example">
+      <p><b>Пример #1 Пример использования <b>count_chars()</b></b></p>
+      <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /><br />$data&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">"Две&nbsp;в&nbsp;и&nbsp;одна&nbsp;с"</span><span style="color: #007700">;<br /><br /></span><span style="color: #0000BB">$result&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">count_chars</span><span style="color: #007700">(</span><span style="color: #0000BB">$data</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">0</span><span style="color: #007700">);<br /><br />for&nbsp;(</span><span style="color: #0000BB">$i</span><span style="color: #007700">=</span><span style="color: #0000BB">0</span><span style="color: #007700">;&nbsp;</span><span style="color: #0000BB">$i&nbsp;</span><span style="color: #007700">&lt;&nbsp;</span><span style="color: #0000BB">count</span><span style="color: #007700">(</span><span style="color: #0000BB">$result</span><span style="color: #007700">);&nbsp;</span><span style="color: #0000BB">$i</span><span style="color: #007700">++)&nbsp;{<br />&nbsp;&nbsp;&nbsp;if&nbsp;(</span><span style="color: #0000BB">$result</span><span style="color: #007700">[</span><span style="color: #0000BB">$i</span><span style="color: #007700">]&nbsp;!=&nbsp;</span><span style="color: #0000BB">0</span><span style="color: #007700">)<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"\""&nbsp;</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">chr</span><span style="color: #007700">(</span><span style="color: #0000BB">$i</span><span style="color: #007700">)&nbsp;,&nbsp;</span><span style="color: #DD0000">"\"&nbsp;встречается&nbsp;в&nbsp;строке&nbsp;$result[$i]&nbsp;раз(а).\n"</span><span style="color: #007700">;<br />}<br /><br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+      </div>
+
+      <div class="example-contents"><p>
+       Этот код выведет :
+      </p></div>
+      <div class="example-contents"><pre>
+<div class="cdata"><pre>
+&quot; &quot; встречается в строке 4 раз(а).
+&quot;Д&quot; встречается в строке 1 раз(а).
+&quot;а&quot; встречается в строке 1 раз(а).
+&quot;в&quot; встречается в строке 2 раз(а).
+&quot;д&quot; встречается в строке 1 раз(а).
+&quot;е&quot; встречается в строке 1 раз(а).
+&quot;и&quot; встречается в строке 1 раз(а).
+&quot;н&quot; встречается в строке 1 раз(а).
+&quot;о&quot; встречается в строке 1 раз(а).
+&quot;с&quot; встречается в строке 1 раз(а).
+</pre></div>
+      </pre></div>
+     </div> 
+    </p>
+    <p class="simpara">
+     См. также описание функций <a href="function.strpos.html" class="function">strpos()</a> и
+     <a href="function.substr-count.html" class="function">substr_count()</a>.
+    </p>
+   </div>
+
+  </div><hr /><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="function.convert-uuencode.html">convert_uuencode</a></div>
+ <div class="next" style="float: right;"><a href="function.crc32.html">crc32</a></div>
+ <div class="up"><a href="ref.strings.html">Функции обработки строк</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

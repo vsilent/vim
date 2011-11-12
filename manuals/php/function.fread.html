@@ -1,0 +1,110 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <title>Бинарно-безопасное чтение файла</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+ </head>
+ <body><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="function.fputs.html">fputs</a></div>
+ <div class="next" style="float: right;"><a href="function.fscanf.html">fscanf</a></div>
+ <div class="up"><a href="ref.filesystem.html">Файловая система</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="function.fread" class="refentry">
+   <div class="refnamediv">
+    <h1 class="refname">fread</h1>
+    <p class="verinfo">(PHP 4, PHP 5)</p><p class="refpurpose dc-title">fread — Бинарно-безопасное чтение файла</p>
+
+   </div>
+   <div class="refsect1 unknown">
+    <h3 class="title">Описание</h3>
+     <div class="methodsynopsis dc-description">
+      <span class="type">string</span> <span class="methodname"><b><b>fread</b></b></span>
+       ( <span class="methodparam"><span class="type">resource</span> <tt class="parameter">$handle</tt></span>
+      , <span class="methodparam"><span class="type">int</span> <tt class="parameter">$length</tt></span>
+      )</div>
+
+    <p class="simpara">
+     <b>fread()</b> читает до
+     <i><tt class="parameter">length</tt></i>
+ байтов из файлового указателя
+     <i><tt class="parameter">handle</tt></i>
+. Чтение останавливается при достижении
+     <i><tt class="parameter">length</tt></i>
+ байтов, EOF 
+     (конца файла) или (для сетевых потоков) когда
+     пакет становится доступным, что бы не произошло первым.
+    </p> 
+    <p class="para">
+     <div class="informalexample">
+      <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">//&nbsp;получает&nbsp;содержимое&nbsp;файла&nbsp;в&nbsp;строку<br /></span><span style="color: #0000BB">$filename&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">"/usr/local/something.txt"</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$handle&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">fopen</span><span style="color: #007700">(</span><span style="color: #0000BB">$filename</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"r"</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$contents&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">fread</span><span style="color: #007700">(</span><span style="color: #0000BB">$handle</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">filesize</span><span style="color: #007700">(</span><span style="color: #0000BB">$filename</span><span style="color: #007700">));<br /></span><span style="color: #0000BB">fclose</span><span style="color: #007700">(</span><span style="color: #0000BB">$handle</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+      </div>
+
+     </div>
+    </p>
+    <div class="warning"><b class="warning">Внимание</b>
+     <p class="para">
+      На системах, которые различают бинарные и текстовые файлы
+      (к примеру Windows), файл должен быть открыт с использованием
+      буквы &#039;b&#039; в параметре mode функции <a href="function.fopen.html" class="function">fopen()</a>.
+     </p>
+    </div>
+    <p class="para">
+     <div class="informalexample">
+      <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$filename&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">"c:\\files\\somepic.gif"</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$handle&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">fopen</span><span style="color: #007700">(</span><span style="color: #0000BB">$filename</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"rb"</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$contents&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">fread</span><span style="color: #007700">(</span><span style="color: #0000BB">$handle</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">filesize</span><span style="color: #007700">(</span><span style="color: #0000BB">$filename</span><span style="color: #007700">));<br /></span><span style="color: #0000BB">fclose</span><span style="color: #007700">(</span><span style="color: #0000BB">$handle</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+      </div>
+
+     </div>
+    </p>
+
+    <div class="warning"><b class="warning">Внимание</b>
+     <p class="para">
+      При чтении из сетевых потоков или конвееров, таких как те, что
+      возвращаются при чтении
+      <a href="features.remote-files.html" class="link">удаленных файлов</a> или из
+      <a href="function.popen.html" class="function">popen()</a> и <a href="function.fsockopen.html" class="function">fsockopen()</a>, чтение
+      остановится после того, как пакет станет доступным. Это означает, что
+      вы должны собирать данные вместе по кусочкам, как показано на примере
+      ниже.
+     </p>
+    </div>
+    <p class="para">
+     <div class="informalexample">
+      <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$handle&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">fopen</span><span style="color: #007700">(</span><span style="color: #DD0000">"http://www.example.com/"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"rb"</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$contents&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">''</span><span style="color: #007700">;<br />while&nbsp;(!</span><span style="color: #0000BB">feof</span><span style="color: #007700">(</span><span style="color: #0000BB">$handle</span><span style="color: #007700">))&nbsp;{<br />&nbsp;&nbsp;</span><span style="color: #0000BB">$contents&nbsp;</span><span style="color: #007700">.=&nbsp;</span><span style="color: #0000BB">fread</span><span style="color: #007700">(</span><span style="color: #0000BB">$handle</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">8192</span><span style="color: #007700">);<br />}<br /></span><span style="color: #0000BB">fclose</span><span style="color: #007700">(</span><span style="color: #0000BB">$handle</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+      </div>
+
+     </div>
+    </p>
+    <blockquote><p><b class="note">Замечание</b>: 
+     
+      Если вы просто хотите получить содержимое файла в виде строки,
+      используйте  <a href="function.file-get-contents.html" class="function">file_get_contents()</a> в качестве
+      более предпочтительного метода, чем описанный выше.
+     <br />
+    </p></blockquote>
+    <p class="simpara">
+     См. также описания функций <a href="function.fwrite.html" class="function">fwrite()</a>, <a href="function.fopen.html" class="function">fopen()</a>,
+     <a href="function.fsockopen.html" class="function">fsockopen()</a>, <a href="function.popen.html" class="function">popen()</a>,
+     <a href="function.fgets.html" class="function">fgets()</a>, <a href="function.fgetss.html" class="function">fgetss()</a>,
+     <a href="function.fscanf.html" class="function">fscanf()</a>, <a href="function.file.html" class="function">file()</a> и
+     <a href="function.fpassthru.html" class="function">fpassthru()</a>.
+    </p>
+   </div>
+
+  </div><hr /><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="function.fputs.html">fputs</a></div>
+ <div class="next" style="float: right;"><a href="function.fscanf.html">fscanf</a></div>
+ <div class="up"><a href="ref.filesystem.html">Файловая система</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

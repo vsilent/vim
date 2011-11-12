@@ -1,0 +1,92 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <title>Возвращает имя каталога из указанного пути</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+ </head>
+ <body><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="function.delete.html">delete</a></div>
+ <div class="next" style="float: right;"><a href="function.disk-free-space.html">disk_free_space</a></div>
+ <div class="up"><a href="ref.filesystem.html">Файловая система</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="function.dirname" class="refentry">
+   <div class="refnamediv">
+    <h1 class="refname">dirname</h1>
+    <p class="verinfo">(PHP 4, PHP 5)</p><p class="refpurpose dc-title">dirname — Возвращает имя каталога из указанного пути</p>
+
+   </div>
+   <div class="refsect1 unknown">
+    <h3 class="title">Описание</h3>
+     <div class="methodsynopsis dc-description">
+      <span class="type">string</span> <span class="methodname"><b><b>dirname</b></b></span>
+       ( <span class="methodparam"><span class="type">string</span> <tt class="parameter">$path</tt></span>
+      )</div>
+
+    <p class="para rdfs-comment">
+     Данная функция возвращает имя каталога, содержащегося
+     в параметре <i><tt class="parameter">path</tt></i>
+.
+    </p>
+    <p class="para">
+     На платформах Windows в качестве разделителей имен директорий
+     используются оба слэша (прямой <i>/</i> и обратный
+     <i>\</i>). В других операционных системах разделителем
+     служит прямой слэш (<i>/</i>).
+    </p>
+    <p class="para">
+     <div class="example">
+      <p><b>Пример #1 Пример использования функции <b>dirname()</b></b></p>
+      <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$path&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">"/etc/passwd"</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$file&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">dirname</span><span style="color: #007700">(</span><span style="color: #0000BB">$path</span><span style="color: #007700">);&nbsp;</span><span style="color: #FF8000">//&nbsp;$file&nbsp;содержит&nbsp;"/etc"<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+      </div>
+
+     </div>
+    </p>
+    <blockquote><p><b class="note">Замечание</b>: 
+     
+      Начиная с PHP версии 4.0.3, функция <b>dirname()</b> стала
+      совместима со стандартом POSIX. Это, по существу, означает, что, если
+      в <i><tt class="parameter">path</tt></i>
+ отсутствуют слэши, функция вернет
+      точку (&#039;<i>.</i>&#039;), обозначающую текущий каталог.
+      Иначе результатом выполнения функции будет являться значение
+      параметра <i><tt class="parameter">path</tt></i>
+ с отброшенным завершающим
+      <i>/компонентом</i>. Обратите внимание, что вы
+      будете часто получать точку или слэш в ситуациях, в которых
+      прежняя фунциональность <b>dirname()</b> возвращала бы
+      пустую строку.
+     <br />
+    </p></blockquote>
+    <p class="para">
+     <b>dirname()</b> изменила своё поведение в PHP 4.3.0.
+     Примеры:
+     <div class="informalexample">
+      <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /><br /></span><span style="color: #FF8000">//до&nbsp;PHP&nbsp;4.3.0<br /></span><span style="color: #0000BB">dirname</span><span style="color: #007700">(</span><span style="color: #DD0000">'c:/'</span><span style="color: #007700">);&nbsp;</span><span style="color: #FF8000">//&nbsp;returned&nbsp;'.'<br /><br />//после&nbsp;PHP&nbsp;4.3.0<br /></span><span style="color: #0000BB">dirname</span><span style="color: #007700">(</span><span style="color: #DD0000">'c:/'</span><span style="color: #007700">);&nbsp;</span><span style="color: #FF8000">//&nbsp;returns&nbsp;'c:'<br /><br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+      </div>
+
+     </div>
+    </p>
+    <p class="para">
+     <b>dirname()</b> стала правильно обрабатывать двоичные
+     данные начиная с версии PHP 5.0.0
+    </p>
+    <p class="para">
+     См.также описание функций <a href="function.basename.html" class="function">basename()</a>, <a href="function.pathinfo.html" class="function">pathinfo()</a>
+     и <a href="function.realpath.html" class="function">realpath()</a>.
+    </p>
+   </div>
+
+  </div><hr /><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="function.delete.html">delete</a></div>
+ <div class="next" style="float: right;"><a href="function.disk-free-space.html">disk_free_space</a></div>
+ <div class="up"><a href="ref.filesystem.html">Файловая система</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

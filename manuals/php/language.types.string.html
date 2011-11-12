@@ -1,0 +1,525 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <title>Строки</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+ </head>
+ <body><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="language.types.float.html">Числа с плавающей точкой</a></div>
+ <div class="next" style="float: right;"><a href="language.types.array.html">Массивы</a></div>
+ <div class="up"><a href="language.types.html">Типы</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="language.types.string" class="sect1">
+   <h2 class="title">Строки</h2>
+   <p class="para">
+    Строка - это набор символов. В PHP символ это то же самое, что
+    и байт, это значит, что возможно ровно 256 различных символов.
+    Это также означает, что PHP не имеет встроенной поддержки
+    Unicode&#039;а. Некоторую поддержку Unicode&#039;а обеспечивают функции
+    <a href="function.utf8-encode.html" class="function">utf8_encode()</a> и
+    <a href="function.utf8-decode.html" class="function">utf8_decode()</a>.
+   </p>
+   <blockquote><p><b class="note">Замечание</b>: 
+    <span class="simpara">
+     Нет никаких проблем, если строка очень велика. Практически
+     не существует ограничений на размер строк, налагаемых PHP,
+     так что нет абсолютно никаких причин беспокоиться об их
+     длине.
+    </span>
+   </p></blockquote>
+   <div id="language.types.string.syntax" class="sect2">
+    <h3 class="title">Синтаксис</h3>
+    <p class="para">
+     Строка может быть определена тремя различными способами.
+     <ul class="itemizedlist">
+
+      <li class="listitem">
+       <span class="simpara">
+        <a href="language.types.string.html#language.types.string.syntax.single" class="link">одинарными кавычками</a>
+       </span>
+      </li>
+      <li class="listitem">
+       <span class="simpara">
+        <a href="language.types.string.html#language.types.string.syntax.double" class="link">двойными кавычками</a>
+       </span>
+      </li>
+      <li class="listitem">
+       <span class="simpara">
+        <a href="language.types.string.html#language.types.string.syntax.heredoc" class="link">heredoc-синтаксисом</a>
+       </span>
+      </li>
+
+     </ul>
+    </p>
+    <div id="language.types.string.syntax.single" class="sect3">
+     <h4 class="title">Одинарные кавычки</h4>
+     <p class="para">
+      Простейший способ определить строку - это заключить ее в
+      одинарные кавычки (символ <i>&#039;</i>). 
+     </p>
+     <p class="para">
+      Чтобы использовать одинарную кавычку внутри строки,
+      как и во многих других языках, ее необходимо предварить
+      символом обратной косой черты (<i>\</i>),
+      т. е. экранировать ее. Если обратная косая черта
+      должна идти перед одинарной кавычкой либо быть в конце
+      строки, вам необходимо продублировать ее. Обратите
+      внимание, что если вы попытаетесь экранировать любой
+      другой символ, обратная косая черта также будет напечатана!
+      Так что, как правило, нет необходимости экранировать
+      саму обратную косую черту.
+      <blockquote><p><b class="note">Замечание</b>: 
+       <span class="simpara">
+        В PHP 3 в данном случае будет выдано сообщение уровня
+        <i>E_NOTICE</i>.
+       </span>
+      </p></blockquote>
+      <blockquote><p><b class="note">Замечание</b>: 
+       <span class="simpara">
+        В отличие от двух других синтаксисов,
+        <a href="language.variables.html" class="link">переменные</a> и
+        экранирующие последовательности для специальных
+        символов, встречающиеся в строках, заключенных в
+        одинарные кавычки, <em class="emphasis">не</em>
+        обрабатываются.
+       </span>
+      </p></blockquote>
+      <div class="informalexample">
+       <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #DD0000">'это&nbsp;простая&nbsp;строка'</span><span style="color: #007700">;<br /><br />echo&nbsp;</span><span style="color: #DD0000">'Также&nbsp;вы&nbsp;можете&nbsp;вставлять&nbsp;в&nbsp;строки<br />символ&nbsp;новой&nbsp;строки&nbsp;таким&nbsp;образом,<br />поскольку&nbsp;это&nbsp;нормально'</span><span style="color: #007700">;<br /><br /></span><span style="color: #FF8000">//&nbsp;Выведет:&nbsp;Однажды&nbsp;Арнольд&nbsp;сказал:&nbsp;"I'll&nbsp;be&nbsp;back"<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #DD0000">'Однажды&nbsp;Арнольд&nbsp;сказал:&nbsp;"I\'ll&nbsp;be&nbsp;back"'</span><span style="color: #007700">;<br /><br /></span><span style="color: #FF8000">//&nbsp;Выведет:&nbsp;Вы&nbsp;удалили&nbsp;C:\*.*?<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #DD0000">'Вы&nbsp;удалили&nbsp;C:\\*.*?'</span><span style="color: #007700">;<br /><br /></span><span style="color: #FF8000">//&nbsp;Выведет:&nbsp;Вы&nbsp;удалили&nbsp;C:\*.*?<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #DD0000">'Вы&nbsp;удалили&nbsp;C:\*.*?'</span><span style="color: #007700">;<br /><br /></span><span style="color: #FF8000">//&nbsp;Выведет:&nbsp;Это&nbsp;не&nbsp;вставит:&nbsp;\n&nbsp;новую&nbsp;строку<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #DD0000">'Это&nbsp;не&nbsp;вставит:&nbsp;\n&nbsp;новую&nbsp;строку'</span><span style="color: #007700">;<br /><br /></span><span style="color: #FF8000">//&nbsp;Выведет:&nbsp;Переменные&nbsp;$expand&nbsp;также&nbsp;$either&nbsp;не&nbsp;подставляются<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #DD0000">'Переменные&nbsp;$expand&nbsp;также&nbsp;$either&nbsp;не&nbsp;подставляются'</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+       </div>
+
+      </div>
+     </p>
+    </div>
+    <div id="language.types.string.syntax.double" class="sect3">
+     <h4 class="title">Двойные кавычки</h4>
+     <p class="para">
+      Если строка заключена в двойные кавычки (&quot;), PHP распознает
+      большее количество управляющих последовательностей для
+      специальных символов:
+     </p>
+     <table border="5">
+      <caption><b>Управляющие последовательности</b></caption>
+      <colgroup>
+
+       <thead valign="middle">
+        <tr valign="middle">
+         <th colspan="1">последовательность</th>
+         <th colspan="1">значение</th>
+        </tr>
+
+       </thead>
+
+       <tbody valign="middle" class="tbody">
+        <tr valign="middle">
+         <td colspan="1" rowspan="1" align="left"><i>\n</i></td>
+         <td colspan="1" rowspan="1" align="left">новая строка (LF или 0x0A (10) в ASCII)</td>
+        </tr>
+
+        <tr valign="middle">
+         <td colspan="1" rowspan="1" align="left"><i>\r</i></td>
+         <td colspan="1" rowspan="1" align="left">возврат каретки (CR или 0x0D (13) в ASCII)</td>
+        </tr>
+
+        <tr valign="middle">
+         <td colspan="1" rowspan="1" align="left"><i>\t</i></td>
+         <td colspan="1" rowspan="1" align="left">горизонтальная табуляция (HT или 0x09 (9) в ASCII)</td>
+        </tr>
+
+        <tr valign="middle">
+         <td colspan="1" rowspan="1" align="left"><i>\\</i></td>
+         <td colspan="1" rowspan="1" align="left">обратная косая черта</td>
+        </tr>
+
+        <tr valign="middle">
+         <td colspan="1" rowspan="1" align="left"><i>\$</i></td>
+         <td colspan="1" rowspan="1" align="left">знак доллара</td>
+        </tr>
+
+        <tr valign="middle">
+         <td colspan="1" rowspan="1" align="left"><i>\&quot;</i></td>
+         <td colspan="1" rowspan="1" align="left">двойная кавычка</td>
+        </tr>
+
+        <tr valign="middle">
+         <td colspan="1" rowspan="1" align="left"><i>\[0-7]{1,3}</i></td>
+         <td colspan="1" rowspan="1" align="left">
+          последовательность символов, соответствующая
+          регулярному выражению, символ в восьмеричной
+          системе счисления
+         </td>
+        </tr>
+
+        <tr valign="middle">
+         <td colspan="1" rowspan="1" align="left"><i>\x[0-9A-Fa-f]{1,2}</i></td>
+         <td colspan="1" rowspan="1" align="left">
+          последовательность символов, соответствующая
+          регулярному выражению, символ в шестнадцатеричной
+          системе счисления
+         </td>
+        </tr>
+
+       </tbody>
+      </colgroup>
+
+     </table>
+
+     <p class="para">
+      Повторяем, если вы захотите мнемнонизировать любой другой
+      символ, обратная косая черта также будет напечатана!
+     </p>
+     <p class="para">
+      Но самым важным свойством строк в двойных кавычках является
+      обработка переменных.
+      Смотрите более подробно: <a href="language.types.string.html#language.types.string.parsing" class="link">обработка 
+      строк</a>.
+     </p>
+    </div>
+    
+    <div id="language.types.string.syntax.heredoc" class="sect3">
+     <h4 class="title">Heredoc</h4>
+     <p class="simpara">
+      Другой способ определения строк - это использование
+      heredoc-синтаксиса (&quot;&lt;&lt;&lt;&quot;). После
+      <i>&lt;&lt;&lt;</i> необходимо указать идентификатор,
+      затем идет строка, а потом этот же идентификатор, закрывающий вставку. 
+     </p>
+     <p class="simpara">
+      Закрывающий идентификатор <em class="emphasis">должен</em> начинаться в
+      первом столбце строки. Кроме того, идентификатор должен
+      соответствовать тем же правилам именования, что и все остальные
+      метки в PHP: содержать только буквенно-цифровые символы и знак
+      подчеркивания, и должен начинаться с нецифры или знака подчеркивания.
+     </p>
+     
+     <div class="warning"><b class="warning">Внимание</b>
+      <p class="simpara">
+       Очень важно отметить, что строка с закрывающим идентификатором
+       не содержит других символов, за исключением,
+       <em class="emphasis">возможно</em>, точки с запятой
+       (<i>;</i>). Это означает, что идентификатор
+       <em class="emphasis">не должен вводиться с отступом</em> и что не
+       может быть никаких пробелов или знаков табуляции до или после
+       точки с запятой. Важно также понимать, что первым символом перед
+       закрывающим идентификатором должен быть символ новой строки,
+       определенный в вашей операционной системе. Например, на Macintosh
+       это <i>\r</i>.
+      </p>
+      <p class="simpara">
+       Если это правило нарушено и закрывающий идентификатор не является
+       &quot;чистым&quot;, считается, что закрывающий идентификатор отсутствует и
+       PHP продолжит его поиск дальше. Если в этом случае верный
+       закрывающий идентификатор так и не будет найден, то это вызовет
+       ошибку в обработке с номером строки в конце скрипта.
+      </p>
+     </div>
+
+     <p class="para">
+      Heredoc-текст ведет себя так же, как и строка в двойных кавычках,
+      при этом их не имея. Это означает, что вам нет необходимости
+      экранировать кавычки в heredoc, но вы по-прежнему можете
+      использовать вышеперечисленные управляющие последовательности.
+      Переменные обрабатываются, но с применением сложных переменных
+      внутри heredoc нужно быть также внимательным, как и при работе
+      со строками.
+      <div class="example"> 
+       <p><b>Пример #1 Пример определения heredoc-строки</b></p>
+       <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$str&nbsp;</span><span style="color: #007700">=&nbsp;&lt;&lt;&lt;EOD<br /></span><span style="color: #0000BB">Пример&nbsp;строки,<br />охватывающей&nbsp;несколько&nbsp;строчек,<br />с&nbsp;использованием&nbsp;heredoc-синтаксиса.<br /></span><span style="color: #007700">EOD;<br /><br /></span><span style="color: #FF8000">/*&nbsp;Более&nbsp;сложный&nbsp;пример&nbsp;с&nbsp;переменными.&nbsp;*/<br /></span><span style="color: #007700">class&nbsp;</span><span style="color: #0000BB">foo<br /></span><span style="color: #007700">{<br />&nbsp;&nbsp;&nbsp;&nbsp;var&nbsp;</span><span style="color: #0000BB">$foo</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;var&nbsp;</span><span style="color: #0000BB">$bar</span><span style="color: #007700">;<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;function&nbsp;</span><span style="color: #0000BB">foo</span><span style="color: #007700">()<br />&nbsp;&nbsp;&nbsp;&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">foo&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">'Foo'</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">bar&nbsp;</span><span style="color: #007700">=&nbsp;array(</span><span style="color: #DD0000">'Bar1'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'Bar2'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'Bar3'</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />}<br /><br /></span><span style="color: #0000BB">$foo&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">foo</span><span style="color: #007700">();<br /></span><span style="color: #0000BB">$name&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">'МоеИмя'</span><span style="color: #007700">;<br /><br />echo&nbsp;&lt;&lt;&lt;EOT<br /></span><span style="color: #0000BB">Меня&nbsp;зовут&nbsp;"$name".&nbsp;Я&nbsp;печатаю&nbsp;$foo</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">foo.<br />Теперь&nbsp;я&nbsp;вывожу&nbsp;</span><span style="color: #007700">{</span><span style="color: #0000BB">$foo</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">bar</span><span style="color: #007700">[</span><span style="color: #0000BB">1</span><span style="color: #007700">]}</span><span style="color: #0000BB">.<br />Это&nbsp;должно&nbsp;вывести&nbsp;заглавную&nbsp;букву&nbsp;'A':&nbsp;\x41<br /></span><span style="color: #007700">EOT;<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+       </div>
+
+      </div>
+     </p>
+  
+     <blockquote><p><b class="note">Замечание</b>: 
+      
+       Поддержка heredoc была добавлена в PHP 4.
+      <br />
+     </p></blockquote>
+    </div>
+
+    <div id="language.types.string.parsing" class="sect3">
+     <h4 class="title">Обработка переменных</h4>
+     <p class="simpara">
+      Если строка определяется в двойных кавычках, либо при помощи
+      heredoc, <a href="language.variables.html" class="link">переменные</a> внутри
+      нее обрабатываются.
+     </p>
+     <p class="simpara">
+      Существует два типа синтаксиса:
+      <a href="language.types.string.html#language.types.string.parsing.simple" class="link">простой</a> и
+      <a href="language.types.string.html#language.types.string.parsing.complex" class="link">сложный</a>.
+      Простой синтаксис более легок и удобен. Он дает возможность
+      обработки переменной, значения массива (<a href="language.types.array.html" class="type array">array</a>) или
+      свойства объекта (<a href="language.types.object.html" class="type object">object</a>).
+     </p>
+     <p class="simpara">
+      Сложный синтаксис был введен в PHP 4 и может быть распознан
+      по фигурным скобкам, окружающих выражение.
+     </p>
+
+     <div id="language.types.string.parsing.simple" class="sect4">
+      <h5 class="title">Простой синтаксис</h5>
+      <p class="simpara">
+       Если интерпретатор встречает знак доллара (<i>$</i>), он
+       захватывает так много символов, сколько возможно, чтобы сформировать
+       правильное имя переменной. Если вы хотите точно определить конец имени,
+       заключайте имя переменной в фигурные скобки.
+      </p>
+      <div class="informalexample">
+       <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$beer&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">'Heineken'</span><span style="color: #007700">;<br />echo&nbsp;</span><span style="color: #DD0000">"$beer's&nbsp;taste&nbsp;is&nbsp;great"</span><span style="color: #007700">;&nbsp;</span><span style="color: #FF8000">//&nbsp;работает,&nbsp;"'"&nbsp;это&nbsp;неверный&nbsp;символ&nbsp;для&nbsp;имени&nbsp;переменной<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #DD0000">"He&nbsp;drank&nbsp;some&nbsp;$beers"</span><span style="color: #007700">;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;не&nbsp;работает,&nbsp;'s'&nbsp;это&nbsp;верный&nbsp;символ&nbsp;для&nbsp;имени&nbsp;переменной<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #DD0000">"He&nbsp;drank&nbsp;some&nbsp;${beer}s"</span><span style="color: #007700">;&nbsp;</span><span style="color: #FF8000">//&nbsp;работает<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #DD0000">"He&nbsp;drank&nbsp;some&nbsp;{$beer}s"</span><span style="color: #007700">;&nbsp;</span><span style="color: #FF8000">//&nbsp;работает<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+       </div>
+
+      </div>
+      <p class="simpara">
+       Точно также могут быть обработаны элемент массива
+       (<a href="language.types.array.html" class="type array">array</a>) или свойство объекта (<a href="language.types.object.html" class="type object">object</a>).
+       В индексах массива закрывающая квадратная скобка
+       (<i>]</i>) обозначает конец определения индекса.
+       Для свойств объекта применяются те же правила, что и для простых
+       переменных, хотя с ними невозможен трюк, как с переменными.
+       
+       
+      
+      </p>
+      <div class="informalexample">
+       <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">//&nbsp;Эти&nbsp;примеры&nbsp;специфически&nbsp;об&nbsp;использовании&nbsp;массивов&nbsp;внутри<br />//&nbsp;строк.&nbsp;Вне&nbsp;строк&nbsp;всегда&nbsp;заключайте&nbsp;строковые&nbsp;ключи&nbsp;вашего<br />//&nbsp;массива&nbsp;в&nbsp;кавычки&nbsp;и&nbsp;не&nbsp;используйте&nbsp;вне&nbsp;строк&nbsp;{скобки}.<br /><br />//&nbsp;Давайте&nbsp;покажем&nbsp;все&nbsp;ошибки<br /></span><span style="color: #0000BB">error_reporting</span><span style="color: #007700">(</span><span style="color: #0000BB">E_ALL</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">$fruits&nbsp;</span><span style="color: #007700">=&nbsp;array(</span><span style="color: #DD0000">'strawberry'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'red'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'banana'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'yellow'</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">//&nbsp;Работает,&nbsp;но&nbsp;заметьте,&nbsp;что&nbsp;вне&nbsp;кавычек&nbsp;строки&nbsp;это&nbsp;работает&nbsp;по-другому<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #DD0000">"A&nbsp;banana&nbsp;is&nbsp;$fruits[banana]."</span><span style="color: #007700">;<br /><br /></span><span style="color: #FF8000">//Работает<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #DD0000">"A&nbsp;banana&nbsp;is&nbsp;{$fruits['banana']}."</span><span style="color: #007700">;<br /><br /></span><span style="color: #FF8000">//&nbsp;Работает,&nbsp;но&nbsp;PHP,&nbsp;как&nbsp;описано&nbsp;ниже,&nbsp;сначала&nbsp;ищет<br />//&nbsp;константу&nbsp;banana.<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #DD0000">"A&nbsp;banana&nbsp;is&nbsp;{$fruits[banana]}."</span><span style="color: #007700">;<br /><br /></span><span style="color: #FF8000">//&nbsp;Не&nbsp;работает,&nbsp;используйте&nbsp;фигурные&nbsp;скобки.&nbsp;Это&nbsp;вызовет&nbsp;ошибку&nbsp;обработки.<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #DD0000">"A&nbsp;banana&nbsp;is&nbsp;$fruits['banana']."</span><span style="color: #007700">;<br /><br /></span><span style="color: #FF8000">//&nbsp;Работает<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #DD0000">"A&nbsp;banana&nbsp;is&nbsp;"&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #0000BB">$fruits</span><span style="color: #007700">[</span><span style="color: #DD0000">'banana'</span><span style="color: #007700">]&nbsp;.&nbsp;</span><span style="color: #DD0000">"."</span><span style="color: #007700">;<br /><br /></span><span style="color: #FF8000">//&nbsp;Работает<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #DD0000">"This&nbsp;square&nbsp;is&nbsp;$square-&gt;width&nbsp;meters&nbsp;broad."</span><span style="color: #007700">;<br /><br /></span><span style="color: #FF8000">//&nbsp;Не&nbsp;работает.&nbsp;Для&nbsp;решения&nbsp;см.&nbsp;сложный&nbsp;синтаксис.<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #DD0000">"This&nbsp;square&nbsp;is&nbsp;$square-&gt;width00&nbsp;centimeters&nbsp;broad."</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+
+       </div>
+
+      </div>
+      <p class="simpara">
+       Для чего-либо более сложного вы должны использовать сложный синтаксис.
+      </p>
+     </div>
+
+     <div id="language.types.string.parsing.complex" class="sect4">
+      <h5 class="title">Сложный (фигурный) синтаксис</h5>
+      <p class="simpara">
+       Он называется сложным не потому, что труден в понимании,
+       а потому что позволяет использовать сложные выражения.
+     </p>
+     <p class="simpara">
+      Фактически, вы можете включить любое значение, находящееся в
+      пространстве имени в строке с этим синтаксисом. Вы просто
+      записываете выражение таким же образом, как и вне строки, а
+      затем заключаете его в { и }. Поскольку вы не можете экранировать
+      &#039;{&#039;, этот синтаксис будет распознаваться только когда $ следует
+      непосредственно за {. (Используйте &quot;{\$&quot; или &quot;\{$&quot; чтобы
+      отобразить &quot;{$&quot;). Несколько поясняющих примеров:
+     </p>
+     <div class="informalexample">
+      <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">//&nbsp;Давайте&nbsp;покажем&nbsp;все&nbsp;ошибки<br /></span><span style="color: #0000BB">error_reporting</span><span style="color: #007700">(</span><span style="color: #0000BB">E_ALL</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">$great&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">'fantastic'</span><span style="color: #007700">;<br /><br /></span><span style="color: #FF8000">//&nbsp;Не&nbsp;работает,&nbsp;выведет:&nbsp;This&nbsp;is&nbsp;{&nbsp;fantastic}<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #DD0000">"This&nbsp;is&nbsp;{&nbsp;$great}"</span><span style="color: #007700">;<br /><br /></span><span style="color: #FF8000">//&nbsp;Работает,&nbsp;выведет:&nbsp;This&nbsp;is&nbsp;fantastic<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #DD0000">"This&nbsp;is&nbsp;{$great}"</span><span style="color: #007700">;<br />echo&nbsp;</span><span style="color: #DD0000">"This&nbsp;is&nbsp;${great}"</span><span style="color: #007700">;<br /><br /></span><span style="color: #FF8000">//&nbsp;Работает<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #DD0000">"Этот&nbsp;квадрат&nbsp;шириной&nbsp;{$square-&gt;width}00&nbsp;сантиметров."</span><span style="color: #007700">;<br /><br /></span><span style="color: #FF8000">//&nbsp;Работает<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #DD0000">"Это&nbsp;работает:&nbsp;{$arr[4][3]}"</span><span style="color: #007700">;<br /><br /></span><span style="color: #FF8000">//&nbsp;Это&nbsp;неверно&nbsp;по&nbsp;той&nbsp;же&nbsp;причине,&nbsp;что&nbsp;и&nbsp;$foo[bar]&nbsp;неверно&nbsp;вне<br />//&nbsp;строки.&nbsp;Другими&nbsp;словами,&nbsp;это&nbsp;по-прежнему&nbsp;будет&nbsp;работать,<br />//&nbsp;но&nbsp;поскольку&nbsp;PHP&nbsp;сначала&nbsp;ищет&nbsp;константу&nbsp;foo,&nbsp;это&nbsp;вызовет<br />//&nbsp;ошибку&nbsp;уровня&nbsp;E_NOTICE&nbsp;(неопределенная&nbsp;константа).<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #DD0000">"Это&nbsp;неправильно:&nbsp;{$arr[foo][3]}"</span><span style="color: #007700">;<br /><br /></span><span style="color: #FF8000">//&nbsp;Работает.&nbsp;При&nbsp;использовании&nbsp;многомерных&nbsp;массивов,&nbsp;внутри<br />//&nbsp;строк&nbsp;всегда&nbsp;используйте&nbsp;фигурные&nbsp;скобки<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #DD0000">"Это&nbsp;работает:&nbsp;{$arr['foo'][3]}"</span><span style="color: #007700">;<br /><br /></span><span style="color: #FF8000">//&nbsp;Работает.<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #DD0000">"Это&nbsp;работает:&nbsp;"&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #0000BB">$arr</span><span style="color: #007700">[</span><span style="color: #DD0000">'foo'</span><span style="color: #007700">][</span><span style="color: #0000BB">3</span><span style="color: #007700">];<br /><br />echo&nbsp;</span><span style="color: #DD0000">"Вы&nbsp;даже&nbsp;можете&nbsp;записать&nbsp;{$obj-&gt;values[3]-&gt;name}"</span><span style="color: #007700">;<br /><br />echo&nbsp;</span><span style="color: #DD0000">"Это&nbsp;значение&nbsp;переменной&nbsp;по&nbsp;имени&nbsp;$name:&nbsp;{${$name}}"</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+
+       </div>
+
+      </div>
+     </div>
+    </div>
+    
+    <div id="language.types.string.substr" class="sect3">
+     <h4 class="title">Доступ к символу в строке и его изменение</h4>
+     <p class="para">
+      Символы в строках можно использовать и модифицировать,
+      определив их смещение относительно начала строки, начиная с
+      нуля, в фигурных скобках после строки.
+     </p>
+     <blockquote><p><b class="note">Замечание</b>: 
+      <span class="simpara">
+       Для обеспечения обратной совместимости, вы по-прежнему имеете
+       возможность использовать в тех же целях скобки массива.
+       Однако, начиная с PHP 4, этот синтаксис нежелателен к
+       использованию.
+      </span>
+     </p></blockquote>
+     <p class="para">
+      <div class="example">
+       <p><b>Пример #2 Несколько примеров строк</b></p>
+       <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">//&nbsp;Получение&nbsp;первого&nbsp;символа&nbsp;строки<br /></span><span style="color: #0000BB">$str&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">'Это&nbsp;тест.'</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$first&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$str</span><span style="color: #007700">{</span><span style="color: #0000BB">0</span><span style="color: #007700">};<br /><br /></span><span style="color: #FF8000">//&nbsp;Получение&nbsp;третьего&nbsp;символа&nbsp;строки<br /></span><span style="color: #0000BB">$third&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$str</span><span style="color: #007700">{</span><span style="color: #0000BB">2</span><span style="color: #007700">};<br /><br /></span><span style="color: #FF8000">//&nbsp;Получение&nbsp;последнего&nbsp;символа&nbsp;строки<br /></span><span style="color: #0000BB">$str&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">'Это&nbsp;все&nbsp;еще&nbsp;тест.'</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$last&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$str</span><span style="color: #007700">{</span><span style="color: #0000BB">strlen</span><span style="color: #007700">(</span><span style="color: #0000BB">$str</span><span style="color: #007700">)-</span><span style="color: #0000BB">1</span><span style="color: #007700">};<br /><br /></span><span style="color: #FF8000">//&nbsp;Изменение&nbsp;последнего&nbsp;символа&nbsp;строки<br /></span><span style="color: #0000BB">$str&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">'Посмотри&nbsp;на&nbsp;море'</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$str</span><span style="color: #007700">{</span><span style="color: #0000BB">strlen</span><span style="color: #007700">(</span><span style="color: #0000BB">$str</span><span style="color: #007700">)-</span><span style="color: #0000BB">1</span><span style="color: #007700">}&nbsp;=&nbsp;</span><span style="color: #DD0000">'я'</span><span style="color: #007700">;<br /><br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+       </div>
+
+      </div>
+     </p>
+    </div>
+
+   </div>
+
+   <div id="language.types.string.useful-funcs" class="sect2">
+    <h3 class="title">Полезные функции и операторы</h3>
+    <p class="para">
+     Строки могут быть объединены при помощи оператора &#039;.&#039; (точка).
+     Обратите внимание, оператор сложения &#039;+&#039; здесь не работает.
+     Дополнительную информацию смотрите в разделе <a href="language.operators.string.html" class="link">Строковые операторы</a>.
+    </p>
+    <p class="para">
+     Для модификации строк существует множество полезных функций.
+    </p>
+    <p class="simpara">
+     Основные функции описаны в разделе
+     <a href="ref.strings.html" class="link">строковых функций</a>, функции
+     регулярных выражений для расширенного поиска и замены (в двух частях: 
+     <a href="ref.pcre.html" class="link">Perl</a> и <a href="ref.regex.html" class="link">POSIX расширенный</a>).
+    </p>
+    <p class="simpara">
+     Также существуют <a href="ref.url.html" class="link">функции для URL-строк</a>,
+     и функции для шифрования/дешифрования строк (<a href="ref.mcrypt.html" class="link">mcrypt</a> и <a href="ref.mhash.html" class="link">mhash</a>).
+    </p>
+    <p class="simpara">
+     Наконец, если вы все еще не нашли, что искали, смотрите также
+     <a href="ref.ctype.html" class="link">функции для символьного типа</a>.
+    </p>
+   </div>
+
+   <div id="language.types.string.casting" class="sect2">
+    <h3 class="title">Преобразование в строку</h3>
+    
+    <p class="para">
+     Вы можете преобразовать значение в строку, используя приведение
+     <i>(string)</i>, либо функцию <a href="function.strval.html" class="function">strval()</a>.
+     В выражениях, где необходима строка, преобразование происходит автоматически.
+     Это происходит, когда вы используете функции <a href="function.echo.html" class="function">echo()</a>
+     или <a href="function.print.html" class="function">print()</a>, либо когда вы сравниваете значение
+     переменной со строкой. Прочтение разделов руководства <a href="language.types.html" class="link">Типы</a> и <a href="language.types.type-juggling.html" class="link">Манипуляции с типами</a> сделает
+     следующее более понятным. Смотрите также <a href="function.settype.html" class="function">settype()</a>.
+    </p>
+    
+    <p class="para">
+     Булево (<a href="language.types.boolean.html" class="type boolean">boolean</a>) значение <b><tt>TRUE</tt></b> преобразуется в строку
+     <i>&quot;1&quot;</i>, а значение <b><tt>FALSE</tt></b> представляется как
+     <i>&quot;&quot;</i> (пустая строка). Этим способом вы можете
+     преобразовывать значения в обе стороны - из булева типа в строковый
+     и наоборот.
+    </p>
+    <p class="para"> 
+     Целое (<a href="language.types.integer.html" class="type integer">integer</a>) или число с плавающей точкой
+     (<a href="language.types.float.html" class="type float">float</a>) преобразуется в строку, представленную числом,
+     состоящим из его цифр (включая показатель степени для чисел с плавающей
+     точкой).
+    </p>
+    <p class="para">
+     Массивы всегда преобразуются в строку <i>&quot;Array&quot;</i>,
+     так что вы не можете отобразить содержимое массива (<a href="language.types.array.html" class="type array">array</a>),
+     используя <a href="function.echo.html" class="function">echo()</a> или <a href="function.print.html" class="function">print()</a>,
+     чтобы узнать, что он содержит. Чтобы просмотреть один элемент, вам
+     нужно сделать что-то вроде <i>echo $arr[&#039;foo&#039;]</i>. Смотрите
+     ниже советы о том, как отобразить/просмотреть все содержимое.
+    </p>
+    <p class="para">
+     Объекты всегда преобразуются в строку <i>&quot;Object&quot;</i>.
+     Если вы хотите вывести значение переменной-члена объекта
+     (<a href="language.types.object.html" class="type object">object</a>) с целью отладки, прочтите следующие абзацы. Если
+     вы хотите получить имя класса требуемого объекта, используйте
+     <a href="function.get-class.html" class="function">get_class()</a>.  
+    </p>
+    <p class="para">
+     Ресурсы всегда преобразуются в строки со структурой
+     <i>&quot;Resource id #1&quot;</i>, где <i>1</i> - это
+     уникальный номер ресурса (<a href="language.types.resource.html" class="type resource">resource</a>), присвоенный ему PHP
+     во время выполнения. Если вы хотите получить тип ресурса, используйте
+     <a href="function.get-resource-type.html" class="function">get_resource_type()</a>.
+    </p>
+    <p class="para">
+     <b><tt>NULL</tt></b> всегда преобразуется в пустую строку.
+    </p>
+    
+    <p class="para">
+     Как вы могли видеть выше, вывод массивов, объектов или ресурсов не
+     предоставляет вам никакой полезной информации о самих значениях. Более
+     подходящий способ вывода значений для отладки - использовать функции
+     <a href="function.print-r.html" class="function">print_r()</a> и <a href="function.var-dump.html" class="function">var_dump()</a>.
+    </p>
+    
+    <p class="para">
+     Вы также можете преобразовать значения PHP в строки для постоянного
+     хранения. Этот метод называется сериализацией и может быть выполнен
+     при помощи функции <a href="function.serialize.html" class="function">serialize()</a>. Кроме того, если в
+     вашей установке PHP есть поддержка <a href="ref.wddx.html" class="link">WDDX</a>,
+     вы можете сериализовать значения PHP в структуры XML.
+    </p>
+   </div>
+
+   <div id="language.types.string.conversion" class="sect2">
+    <h3 class="title">Преобразование строк в числа</h3>
+
+    <p class="simpara">
+     Если строка распознается как числовое значение, результирующее значение
+     и тип определяется так как показано далее.
+    </p>
+    <p class="simpara">
+     Строка будет распознана как <a href="language.types.float.html" class="type float">float</a>, если она содержит
+     любой из символов &#039;.&#039;, &#039;e&#039;, или &#039;E&#039;. Иначе она будет определена как
+     целое.
+    </p>
+    <p class="para">
+     Значение определяется по начальной части строки. Если строка
+     начинается с верного числового значения, будет использовано это
+     значение. Иначе значением будет 0 (ноль). Верное числовое значение
+     - это одна или более цифр (могущих содержать десятичную точку),
+     по желанию предваренных знаком, с последующим необязательным
+     показателем степени. Показатель степени - это &#039;e&#039; или &#039;E&#039; с
+     последующими одной или более цифрами.
+    </p>
+    <div class="informalexample">
+     <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$foo&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">1&nbsp;</span><span style="color: #007700">+&nbsp;</span><span style="color: #DD0000">"10.5"</span><span style="color: #007700">;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;$foo&nbsp;это&nbsp;float&nbsp;(11.5)<br /></span><span style="color: #0000BB">$foo&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">1&nbsp;</span><span style="color: #007700">+&nbsp;</span><span style="color: #DD0000">"-1.3e3"</span><span style="color: #007700">;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;$foo&nbsp;это&nbsp;float&nbsp;(-1299)<br /></span><span style="color: #0000BB">$foo&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">1&nbsp;</span><span style="color: #007700">+&nbsp;</span><span style="color: #DD0000">"bob-1.3e3"</span><span style="color: #007700">;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;$foo&nbsp;это&nbsp;integer&nbsp;(1)<br /></span><span style="color: #0000BB">$foo&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">1&nbsp;</span><span style="color: #007700">+&nbsp;</span><span style="color: #DD0000">"bob3"</span><span style="color: #007700">;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;$foo&nbsp;это&nbsp;integer&nbsp;(1)<br /></span><span style="color: #0000BB">$foo&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">1&nbsp;</span><span style="color: #007700">+&nbsp;</span><span style="color: #DD0000">"10&nbsp;Small&nbsp;Pigs"</span><span style="color: #007700">;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;$foo&nbsp;это&nbsp;integer&nbsp;(11)<br /></span><span style="color: #0000BB">$foo&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">4&nbsp;</span><span style="color: #007700">+&nbsp;</span><span style="color: #DD0000">"10.2&nbsp;Little&nbsp;Piggies"</span><span style="color: #007700">;&nbsp;</span><span style="color: #FF8000">//&nbsp;$foo&nbsp;это&nbsp;float&nbsp;(14.2)<br /></span><span style="color: #0000BB">$foo&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">"10.0&nbsp;pigs&nbsp;"&nbsp;</span><span style="color: #007700">+&nbsp;</span><span style="color: #0000BB">1</span><span style="color: #007700">;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;$foo&nbsp;это&nbsp;float&nbsp;(11)<br /></span><span style="color: #0000BB">$foo&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">"10.0&nbsp;pigs&nbsp;"&nbsp;</span><span style="color: #007700">+&nbsp;</span><span style="color: #0000BB">1.0</span><span style="color: #007700">;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;$foo&nbsp;это&nbsp;float&nbsp;(11)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+     </div>
+
+    </div>
+    <p class="simpara">
+     Более подробную информацию об этом преобразовании смотрите в разделе
+     о strtod(3) документации Unix.
+    </p>
+    <p class="para">
+     Если вы хотите протестировать любой из примеров этого раздела,
+     вы можете скопировать и вставить его и следующую строку, чтобы
+     увидеть, что происходит:
+     <div class="informalexample">
+      <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #DD0000">"\$foo==$foo;&nbsp;тип:&nbsp;"&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #0000BB">gettype&nbsp;</span><span style="color: #007700">(</span><span style="color: #0000BB">$foo</span><span style="color: #007700">)&nbsp;.&nbsp;</span><span style="color: #DD0000">"&lt;br&nbsp;/&gt;\n"</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+      </div>
+
+     </div>
+    </p>
+    <p class="para">
+     Не ожидайте получить код символа, преобразовав его в целое (как
+     вы могли бы сделать, например, в C). Для преобразования символов в
+     их коды и обратно используйте функции <a href="function.ord.html" class="function">ord()</a>
+     и <a href="function.chr.html" class="function">chr()</a>.
+    </p>
+
+   </div>
+  </div><hr /><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="language.types.float.html">Числа с плавающей точкой</a></div>
+ <div class="next" style="float: right;"><a href="language.types.array.html">Массивы</a></div>
+ <div class="up"><a href="language.types.html">Типы</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

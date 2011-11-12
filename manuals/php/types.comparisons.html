@@ -1,0 +1,630 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <title>Таблица сравнения типов в PHP</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+ </head>
+ <body><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="transports.unix.html">Unix-сокеты: UNIX и UDG</a></div>
+ <div class="next" style="float: right;"><a href="tokens.html">List of Parser Tokens</a></div>
+ <div class="up"><a href="appendices.html">Appendices</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div>
+ <h1>Таблица сравнения типов в PHP</h1>
+
+ <p class="para">
+  Следующие таблицы демонстрируют работу PHP с
+  <a href="language.types.html" class="link">типами переменных</a> и
+  <a href="language.operators.comparison.html" class="link">операторами 
+  сравнения</a>, как в случае свободного, так и в случае строгого
+  сравнения. Также эта информация относится к разделу документации
+  по <a href="language.types.type-juggling.html" class="link">приведению типов</a>.
+  Вдохновением на создание этого раздела мы обязаны различным комментариям
+  пользователей и работе над
+  <a href="http://www.blueshoes.org/en/developer/php_cheat_sheet/" class="link external">&raquo; BlueShoes</a>.
+ </p>
+ <p class="para">
+  До осмотра таблиц, важно знать и понимать типы переменных и их значения.
+  К примеру, <i>&quot;42&quot;</i> -- <span class="type строка">строка</span>,
+  в то время как <i>42</i> -- <span class="type целое">целое</span>.  <b><tt>FALSE</tt></b> --
+  <span class="type логическое">логическое</span>, а <i>&quot;false&quot;</i> --
+  <span class="type строка">строка</span>.
+ </p>
+ <blockquote><p><b class="note">Замечание</b>: 
+  
+   HTML-формы не передают тип переменной: они всегда передают строки. Для
+   проверки является ли строка числом, используйте функцию
+   <a href="function.is-numeric.html" class="function">is_numeric()</a>.
+  <br />
+ </p></blockquote>
+ <blockquote><p><b class="note">Замечание</b>: 
+  
+   Использование <i>if ($x)</i> пока <var class="varname">$x</var> не
+   определена сгенерирует ошибку <b><tt>E_NOTICE</tt></b>.
+   Вместо этого используйте функцию <a href="function.empty.html" class="function">empty()</a> или
+   <a href="function.isset.html" class="function">isset()</a> и/или инициализируйте переменную.
+  <br />
+ </p></blockquote>
+ <p class="para">
+  <table border="5">
+   <caption><b>Сравнение типов <var class="varname">$x</var> и результатов функций PHP, связанных с типами</b></caption>
+   <colgroup>
+
+    <thead valign="middle">
+     <tr valign="middle">
+      <th colspan="1">Выражение</th>
+      <th colspan="1"><a href="function.gettype.html" class="function">gettype()</a></th>
+      <th colspan="1"><a href="function.empty.html" class="function">empty()</a></th>
+      <th colspan="1"><a href="function.is-null.html" class="function">is_null()</a></th>
+      <th colspan="1"><a href="function.isset.html" class="function">isset()</a></th>
+      <th colspan="1"><span class="type логическое">логическое</span> : <i>if($x)</i></th>
+     </tr>
+
+    </thead>
+
+    <tbody valign="middle" class="tbody">
+     <tr valign="middle">
+      <td colspan="1" rowspan="1" align="left"><i>$x = &quot;&quot;;</i></td>
+      <td colspan="1" rowspan="1" align="left"><span class="type строка">строка</span></td>
+      <td colspan="1" rowspan="1" align="left"><b><tt>TRUE</tt></b></td>
+      <td colspan="1" rowspan="1" align="left"><b><tt>FALSE</tt></b></td>
+      <td colspan="1" rowspan="1" align="left"><b><tt>TRUE</tt></b></td>
+      <td colspan="1" rowspan="1" align="left"><b><tt>FALSE</tt></b></td>
+     </tr>
+
+     <tr valign="middle">
+      <td colspan="1" rowspan="1" align="left"><i>$x = </i><b><tt>NULL</tt></b></td>
+      <td colspan="1" rowspan="1" align="left"><a href="language.types.null.html" class="type NULL">NULL</a></td>
+      <td colspan="1" rowspan="1" align="left"><b><tt>TRUE</tt></b></td>
+      <td colspan="1" rowspan="1" align="left"><b><tt>TRUE</tt></b></td>
+      <td colspan="1" rowspan="1" align="left"><b><tt>FALSE</tt></b></td>
+      <td colspan="1" rowspan="1" align="left"><b><tt>FALSE</tt></b></td>
+     </tr>
+
+     <tr valign="middle">
+      <td colspan="1" rowspan="1" align="left"><i>var $x;</i></td>
+      <td colspan="1" rowspan="1" align="left"><a href="language.types.null.html" class="type NULL">NULL</a></td>
+      <td colspan="1" rowspan="1" align="left"><b><tt>TRUE</tt></b></td>
+      <td colspan="1" rowspan="1" align="left"><b><tt>TRUE</tt></b></td>
+      <td colspan="1" rowspan="1" align="left"><b><tt>FALSE</tt></b></td>
+      <td colspan="1" rowspan="1" align="left"><b><tt>FALSE</tt></b></td>
+     </tr>
+
+     <tr valign="middle">
+      <td colspan="1" rowspan="1" align="left"><var class="varname">$x</var> неопределена</td>
+      <td colspan="1" rowspan="1" align="left"><a href="language.types.null.html" class="type NULL">NULL</a></td>
+      <td colspan="1" rowspan="1" align="left"><b><tt>TRUE</tt></b></td>
+      <td colspan="1" rowspan="1" align="left"><b><tt>TRUE</tt></b></td>
+      <td colspan="1" rowspan="1" align="left"><b><tt>FALSE</tt></b></td>
+      <td colspan="1" rowspan="1" align="left"><b><tt>FALSE</tt></b></td>
+     </tr>
+
+     <tr valign="middle">
+      <td colspan="1" rowspan="1" align="left"><i>$x = array();</i></td>
+      <td colspan="1" rowspan="1" align="left"><span class="type массив">массив</span></td>
+      <td colspan="1" rowspan="1" align="left"><b><tt>TRUE</tt></b></td>
+      <td colspan="1" rowspan="1" align="left"><b><tt>FALSE</tt></b></td>
+      <td colspan="1" rowspan="1" align="left"><b><tt>TRUE</tt></b></td>
+      <td colspan="1" rowspan="1" align="left"><b><tt>FALSE</tt></b></td>
+     </tr>
+
+     <tr valign="middle">
+      <td colspan="1" rowspan="1" align="left"><i>$x = false;</i></td>
+      <td colspan="1" rowspan="1" align="left"><span class="type логическое">логическое</span></td>
+      <td colspan="1" rowspan="1" align="left"><b><tt>TRUE</tt></b></td>
+      <td colspan="1" rowspan="1" align="left"><b><tt>FALSE</tt></b></td>
+      <td colspan="1" rowspan="1" align="left"><b><tt>TRUE</tt></b></td>
+      <td colspan="1" rowspan="1" align="left"><b><tt>FALSE</tt></b></td>
+     </tr>
+
+     <tr valign="middle">
+      <td colspan="1" rowspan="1" align="left"><i>$x = true;</i></td>
+      <td colspan="1" rowspan="1" align="left"><span class="type логическое">логическое</span></td>
+      <td colspan="1" rowspan="1" align="left"><b><tt>FALSE</tt></b></td>
+      <td colspan="1" rowspan="1" align="left"><b><tt>FALSE</tt></b></td>
+      <td colspan="1" rowspan="1" align="left"><b><tt>TRUE</tt></b></td>
+      <td colspan="1" rowspan="1" align="left"><b><tt>TRUE</tt></b></td>
+     </tr>
+
+     <tr valign="middle">
+      <td colspan="1" rowspan="1" align="left"><i>$x = 1;</i></td>
+      <td colspan="1" rowspan="1" align="left"><span class="type целое">целое</span></td>
+      <td colspan="1" rowspan="1" align="left"><b><tt>FALSE</tt></b></td>
+      <td colspan="1" rowspan="1" align="left"><b><tt>FALSE</tt></b></td>
+      <td colspan="1" rowspan="1" align="left"><b><tt>TRUE</tt></b></td>
+      <td colspan="1" rowspan="1" align="left"><b><tt>TRUE</tt></b></td>
+     </tr>
+
+     <tr valign="middle">
+      <td colspan="1" rowspan="1" align="left"><i>$x = 42;</i></td>
+      <td colspan="1" rowspan="1" align="left"><span class="type целое">целое</span></td>
+      <td colspan="1" rowspan="1" align="left"><b><tt>FALSE</tt></b></td>
+      <td colspan="1" rowspan="1" align="left"><b><tt>FALSE</tt></b></td>
+      <td colspan="1" rowspan="1" align="left"><b><tt>TRUE</tt></b></td>
+      <td colspan="1" rowspan="1" align="left"><b><tt>TRUE</tt></b></td>
+     </tr>
+
+     <tr valign="middle">
+      <td colspan="1" rowspan="1" align="left"><i>$x = 0;</i></td>
+      <td colspan="1" rowspan="1" align="left"><span class="type целое">целое</span></td>
+      <td colspan="1" rowspan="1" align="left"><b><tt>TRUE</tt></b></td>
+      <td colspan="1" rowspan="1" align="left"><b><tt>FALSE</tt></b></td>
+      <td colspan="1" rowspan="1" align="left"><b><tt>TRUE</tt></b></td>
+      <td colspan="1" rowspan="1" align="left"><b><tt>FALSE</tt></b></td>
+     </tr>
+
+     <tr valign="middle">
+      <td colspan="1" rowspan="1" align="left"><i>$x = -1;</i></td>
+      <td colspan="1" rowspan="1" align="left"><span class="type целое">целое</span></td>
+      <td colspan="1" rowspan="1" align="left"><b><tt>FALSE</tt></b></td>
+      <td colspan="1" rowspan="1" align="left"><b><tt>FALSE</tt></b></td>
+      <td colspan="1" rowspan="1" align="left"><b><tt>TRUE</tt></b></td>
+      <td colspan="1" rowspan="1" align="left"><b><tt>TRUE</tt></b></td>
+     </tr>
+
+     <tr valign="middle">
+      <td colspan="1" rowspan="1" align="left"><i>$x = &quot;1&quot;;</i></td>
+      <td colspan="1" rowspan="1" align="left"><span class="type строка">строка</span></td>
+      <td colspan="1" rowspan="1" align="left"><b><tt>FALSE</tt></b></td>
+      <td colspan="1" rowspan="1" align="left"><b><tt>FALSE</tt></b></td>
+      <td colspan="1" rowspan="1" align="left"><b><tt>TRUE</tt></b></td>
+      <td colspan="1" rowspan="1" align="left"><b><tt>TRUE</tt></b></td>
+     </tr>
+
+     <tr valign="middle">
+      <td colspan="1" rowspan="1" align="left"><i>$x = &quot;0&quot;;</i></td>
+      <td colspan="1" rowspan="1" align="left"><span class="type строка">строка</span></td>
+      <td colspan="1" rowspan="1" align="left"><b><tt>TRUE</tt></b></td>
+      <td colspan="1" rowspan="1" align="left"><b><tt>FALSE</tt></b></td>
+      <td colspan="1" rowspan="1" align="left"><b><tt>TRUE</tt></b></td>
+      <td colspan="1" rowspan="1" align="left"><b><tt>FALSE</tt></b></td>
+     </tr>
+
+     <tr valign="middle">
+      <td colspan="1" rowspan="1" align="left"><i>$x = &quot;-1&quot;;</i></td>
+      <td colspan="1" rowspan="1" align="left"><span class="type строка">строка</span></td>
+      <td colspan="1" rowspan="1" align="left"><b><tt>FALSE</tt></b></td>
+      <td colspan="1" rowspan="1" align="left"><b><tt>FALSE</tt></b></td>
+      <td colspan="1" rowspan="1" align="left"><b><tt>TRUE</tt></b></td>
+      <td colspan="1" rowspan="1" align="left"><b><tt>TRUE</tt></b></td>
+     </tr>
+
+     <tr valign="middle">
+      <td colspan="1" rowspan="1" align="left"><i>$x = &quot;php&quot;;</i></td>
+      <td colspan="1" rowspan="1" align="left"><span class="type строка">строка</span></td>
+      <td colspan="1" rowspan="1" align="left"><b><tt>FALSE</tt></b></td>
+      <td colspan="1" rowspan="1" align="left"><b><tt>FALSE</tt></b></td>
+      <td colspan="1" rowspan="1" align="left"><b><tt>TRUE</tt></b></td>
+      <td colspan="1" rowspan="1" align="left"><b><tt>TRUE</tt></b></td>
+     </tr>
+
+     <tr valign="middle">
+      <td colspan="1" rowspan="1" align="left"><i>$x = &quot;true&quot;;</i></td>
+      <td colspan="1" rowspan="1" align="left"><span class="type строка">строка</span></td>
+      <td colspan="1" rowspan="1" align="left"><b><tt>FALSE</tt></b></td>
+      <td colspan="1" rowspan="1" align="left"><b><tt>FALSE</tt></b></td>
+      <td colspan="1" rowspan="1" align="left"><b><tt>TRUE</tt></b></td>
+      <td colspan="1" rowspan="1" align="left"><b><tt>TRUE</tt></b></td>
+     </tr>
+
+     <tr valign="middle">
+      <td colspan="1" rowspan="1" align="left"><i>$x = &quot;false&quot;;</i></td>
+      <td colspan="1" rowspan="1" align="left"><span class="type строка">строка</span></td>
+      <td colspan="1" rowspan="1" align="left"><b><tt>FALSE</tt></b></td>
+      <td colspan="1" rowspan="1" align="left"><b><tt>FALSE</tt></b></td>
+      <td colspan="1" rowspan="1" align="left"><b><tt>TRUE</tt></b></td>
+      <td colspan="1" rowspan="1" align="left"><b><tt>TRUE</tt></b></td>
+     </tr>
+
+    </tbody>
+   </colgroup>
+
+  </table>
+
+ </p>
+
+ <p class="para">
+  <table border="5">
+   <caption><b>Гибкое сравнение с помощью <i>==</i></b></caption>
+   <colgroup>
+
+    <thead valign="middle">
+     <tr valign="middle">
+      <th colspan="1"> </th>
+      <th colspan="1"><b><tt>TRUE</tt></b></th>
+      <th colspan="1"><b><tt>FALSE</tt></b></th>
+      <th colspan="1"><i>1</i></th>
+      <th colspan="1"><i>0</i></th>
+      <th colspan="1"><i>-1</i></th>
+      <th colspan="1"><i>&quot;1&quot;</i></th>
+      <th colspan="1"><i>&quot;0&quot;</i></th>
+      <th colspan="1"><i>&quot;-1&quot;</i></th>
+      <th colspan="1"><b><tt>NULL</tt></b></th>
+      <th colspan="1"><i>array()</i></th>
+      <th colspan="1"><i>&quot;php&quot;</i></th>
+     </tr>
+
+    </thead>
+
+    <tbody valign="middle" class="tbody">
+     <tr valign="middle">
+      <td colspan="1" rowspan="1" align="left"><b><tt>TRUE</tt></b></td>
+      <td colspan="1" rowspan="1" align="left"><b><tt>TRUE</tt></b></td>
+      <td colspan="1" rowspan="1" align="left"><b><tt>FALSE</tt></b></td>
+      <td colspan="1" rowspan="1" align="left"><b><tt>TRUE</tt></b></td>
+      <td colspan="1" rowspan="1" align="left"><b><tt>FALSE</tt></b></td>
+      <td colspan="1" rowspan="1" align="left"><b><tt>TRUE</tt></b></td>
+      <td colspan="1" rowspan="1" align="left"><b><tt>TRUE</tt></b></td>
+      <td colspan="1" rowspan="1" align="left"><b><tt>FALSE</tt></b></td>
+      <td colspan="1" rowspan="1" align="left"><b><tt>TRUE</tt></b></td>
+      <td colspan="1" rowspan="1" align="left"><b><tt>FALSE</tt></b></td>
+      <td colspan="1" rowspan="1" align="left"><b><tt>FALSE</tt></b></td>
+      <td colspan="1" rowspan="1" align="left"><b><tt>TRUE</tt></b></td>
+     </tr>
+
+     <tr valign="middle">
+      <td colspan="1" rowspan="1" align="left"><b><tt>FALSE</tt></b></td>
+      <td colspan="1" rowspan="1" align="left"><b><tt>FALSE</tt></b></td>
+      <td colspan="1" rowspan="1" align="left"><b><tt>TRUE</tt></b></td>
+      <td colspan="1" rowspan="1" align="left"><b><tt>FALSE</tt></b></td>
+      <td colspan="1" rowspan="1" align="left"><b><tt>TRUE</tt></b></td>
+      <td colspan="1" rowspan="1" align="left"><b><tt>FALSE</tt></b></td>
+      <td colspan="1" rowspan="1" align="left"><b><tt>FALSE</tt></b></td>
+      <td colspan="1" rowspan="1" align="left"><b><tt>TRUE</tt></b></td>
+      <td colspan="1" rowspan="1" align="left"><b><tt>FALSE</tt></b></td>
+      <td colspan="1" rowspan="1" align="left"><b><tt>TRUE</tt></b></td>
+      <td colspan="1" rowspan="1" align="left"><b><tt>TRUE</tt></b></td>
+      <td colspan="1" rowspan="1" align="left"><b><tt>FALSE</tt></b></td>
+     </tr>
+
+     <tr valign="middle">
+      <td colspan="1" rowspan="1" align="left"><i>1</i></td>
+      <td colspan="1" rowspan="1" align="left"><b><tt>TRUE</tt></b></td>
+      <td colspan="1" rowspan="1" align="left"><b><tt>FALSE</tt></b></td>
+      <td colspan="1" rowspan="1" align="left"><b><tt>TRUE</tt></b></td>
+      <td colspan="1" rowspan="1" align="left"><b><tt>FALSE</tt></b></td>
+      <td colspan="1" rowspan="1" align="left"><b><tt>FALSE</tt></b></td>
+      <td colspan="1" rowspan="1" align="left"><b><tt>TRUE</tt></b></td>
+      <td colspan="1" rowspan="1" align="left"><b><tt>FALSE</tt></b></td>
+      <td colspan="1" rowspan="1" align="left"><b><tt>FALSE</tt></b></td>
+      <td colspan="1" rowspan="1" align="left"><b><tt>FALSE</tt></b></td>
+      <td colspan="1" rowspan="1" align="left"><b><tt>FALSE</tt></b></td>
+      <td colspan="1" rowspan="1" align="left"><b><tt>FALSE</tt></b></td>
+     </tr>
+
+     <tr valign="middle">
+      <td colspan="1" rowspan="1" align="left"><i>0</i></td>
+      <td colspan="1" rowspan="1" align="left"><b><tt>FALSE</tt></b></td>
+      <td colspan="1" rowspan="1" align="left"><b><tt>TRUE</tt></b></td>
+      <td colspan="1" rowspan="1" align="left"><b><tt>FALSE</tt></b></td>
+      <td colspan="1" rowspan="1" align="left"><b><tt>TRUE</tt></b></td>
+      <td colspan="1" rowspan="1" align="left"><b><tt>FALSE</tt></b></td>
+      <td colspan="1" rowspan="1" align="left"><b><tt>FALSE</tt></b></td>
+      <td colspan="1" rowspan="1" align="left"><b><tt>TRUE</tt></b></td>
+      <td colspan="1" rowspan="1" align="left"><b><tt>FALSE</tt></b></td>
+      <td colspan="1" rowspan="1" align="left"><b><tt>TRUE</tt></b></td>
+      <td colspan="1" rowspan="1" align="left"><b><tt>FALSE</tt></b></td>
+      <td colspan="1" rowspan="1" align="left"><b><tt>TRUE</tt></b></td>
+     </tr>
+
+     <tr valign="middle">
+      <td colspan="1" rowspan="1" align="left"><i>-1</i></td>
+      <td colspan="1" rowspan="1" align="left"><b><tt>TRUE</tt></b></td>
+      <td colspan="1" rowspan="1" align="left"><b><tt>FALSE</tt></b></td>
+      <td colspan="1" rowspan="1" align="left"><b><tt>FALSE</tt></b></td>
+      <td colspan="1" rowspan="1" align="left"><b><tt>FALSE</tt></b></td>
+      <td colspan="1" rowspan="1" align="left"><b><tt>TRUE</tt></b></td>
+      <td colspan="1" rowspan="1" align="left"><b><tt>FALSE</tt></b></td>
+      <td colspan="1" rowspan="1" align="left"><b><tt>FALSE</tt></b></td>
+      <td colspan="1" rowspan="1" align="left"><b><tt>TRUE</tt></b></td>
+      <td colspan="1" rowspan="1" align="left"><b><tt>FALSE</tt></b></td>
+      <td colspan="1" rowspan="1" align="left"><b><tt>FALSE</tt></b></td>
+      <td colspan="1" rowspan="1" align="left"><b><tt>FALSE</tt></b></td>
+     </tr>
+
+     <tr valign="middle">
+      <td colspan="1" rowspan="1" align="left"><i>&quot;1&quot;</i></td>
+      <td colspan="1" rowspan="1" align="left"><b><tt>TRUE</tt></b></td>
+      <td colspan="1" rowspan="1" align="left"><b><tt>FALSE</tt></b></td>
+      <td colspan="1" rowspan="1" align="left"><b><tt>TRUE</tt></b></td>
+      <td colspan="1" rowspan="1" align="left"><b><tt>FALSE</tt></b></td>
+      <td colspan="1" rowspan="1" align="left"><b><tt>FALSE</tt></b></td>
+      <td colspan="1" rowspan="1" align="left"><b><tt>TRUE</tt></b></td>
+      <td colspan="1" rowspan="1" align="left"><b><tt>FALSE</tt></b></td>
+      <td colspan="1" rowspan="1" align="left"><b><tt>FALSE</tt></b></td>
+      <td colspan="1" rowspan="1" align="left"><b><tt>FALSE</tt></b></td>
+      <td colspan="1" rowspan="1" align="left"><b><tt>FALSE</tt></b></td>
+      <td colspan="1" rowspan="1" align="left"><b><tt>FALSE</tt></b></td>
+     </tr>
+
+     <tr valign="middle">
+      <td colspan="1" rowspan="1" align="left"><i>&quot;0&quot;</i></td>
+      <td colspan="1" rowspan="1" align="left"><b><tt>FALSE</tt></b></td>
+      <td colspan="1" rowspan="1" align="left"><b><tt>TRUE</tt></b></td>
+      <td colspan="1" rowspan="1" align="left"><b><tt>FALSE</tt></b></td>
+      <td colspan="1" rowspan="1" align="left"><b><tt>TRUE</tt></b></td>
+      <td colspan="1" rowspan="1" align="left"><b><tt>FALSE</tt></b></td>
+      <td colspan="1" rowspan="1" align="left"><b><tt>FALSE</tt></b></td>
+      <td colspan="1" rowspan="1" align="left"><b><tt>TRUE</tt></b></td>
+      <td colspan="1" rowspan="1" align="left"><b><tt>FALSE</tt></b></td>
+      <td colspan="1" rowspan="1" align="left"><b><tt>FALSE</tt></b></td>
+      <td colspan="1" rowspan="1" align="left"><b><tt>FALSE</tt></b></td>
+      <td colspan="1" rowspan="1" align="left"><b><tt>FALSE</tt></b></td>
+     </tr>
+
+     <tr valign="middle">
+      <td colspan="1" rowspan="1" align="left"><i>&quot;-1&quot;</i></td>
+      <td colspan="1" rowspan="1" align="left"><b><tt>TRUE</tt></b></td>
+      <td colspan="1" rowspan="1" align="left"><b><tt>FALSE</tt></b></td>
+      <td colspan="1" rowspan="1" align="left"><b><tt>FALSE</tt></b></td>
+      <td colspan="1" rowspan="1" align="left"><b><tt>FALSE</tt></b></td>
+      <td colspan="1" rowspan="1" align="left"><b><tt>TRUE</tt></b></td>
+      <td colspan="1" rowspan="1" align="left"><b><tt>FALSE</tt></b></td>
+      <td colspan="1" rowspan="1" align="left"><b><tt>FALSE</tt></b></td>
+      <td colspan="1" rowspan="1" align="left"><b><tt>TRUE</tt></b></td>
+      <td colspan="1" rowspan="1" align="left"><b><tt>FALSE</tt></b></td>
+      <td colspan="1" rowspan="1" align="left"><b><tt>FALSE</tt></b></td>
+      <td colspan="1" rowspan="1" align="left"><b><tt>FALSE</tt></b></td>
+     </tr>
+
+     <tr valign="middle">
+      <td colspan="1" rowspan="1" align="left"><i>NULL</i></td>
+      <td colspan="1" rowspan="1" align="left"><b><tt>FALSE</tt></b></td>
+      <td colspan="1" rowspan="1" align="left"><b><tt>TRUE</tt></b></td>
+      <td colspan="1" rowspan="1" align="left"><b><tt>FALSE</tt></b></td>
+      <td colspan="1" rowspan="1" align="left"><b><tt>TRUE</tt></b></td>
+      <td colspan="1" rowspan="1" align="left"><b><tt>FALSE</tt></b></td>
+      <td colspan="1" rowspan="1" align="left"><b><tt>FALSE</tt></b></td>
+      <td colspan="1" rowspan="1" align="left"><b><tt>FALSE</tt></b></td>
+      <td colspan="1" rowspan="1" align="left"><b><tt>FALSE</tt></b></td>
+      <td colspan="1" rowspan="1" align="left"><b><tt>TRUE</tt></b></td>
+      <td colspan="1" rowspan="1" align="left"><b><tt>TRUE</tt></b></td>
+      <td colspan="1" rowspan="1" align="left"><b><tt>FALSE</tt></b></td>
+     </tr>
+
+     <tr valign="middle">
+      <td colspan="1" rowspan="1" align="left"><i>array()</i></td>
+      <td colspan="1" rowspan="1" align="left"><b><tt>FALSE</tt></b></td>
+      <td colspan="1" rowspan="1" align="left"><b><tt>TRUE</tt></b></td>
+      <td colspan="1" rowspan="1" align="left"><b><tt>FALSE</tt></b></td>
+      <td colspan="1" rowspan="1" align="left"><b><tt>FALSE</tt></b></td>
+      <td colspan="1" rowspan="1" align="left"><b><tt>FALSE</tt></b></td>
+      <td colspan="1" rowspan="1" align="left"><b><tt>FALSE</tt></b></td>
+      <td colspan="1" rowspan="1" align="left"><b><tt>FALSE</tt></b></td>
+      <td colspan="1" rowspan="1" align="left"><b><tt>FALSE</tt></b></td>
+      <td colspan="1" rowspan="1" align="left"><b><tt>FALSE</tt></b></td>
+      <td colspan="1" rowspan="1" align="left"><b><tt>TRUE</tt></b></td>
+      <td colspan="1" rowspan="1" align="left"><b><tt>FALSE</tt></b></td>
+     </tr>
+
+     <tr valign="middle">
+      <td colspan="1" rowspan="1" align="left"><i>&quot;php&quot;</i></td>
+      <td colspan="1" rowspan="1" align="left"><b><tt>TRUE</tt></b></td>
+      <td colspan="1" rowspan="1" align="left"><b><tt>FALSE</tt></b></td>
+      <td colspan="1" rowspan="1" align="left"><b><tt>FALSE</tt></b></td>
+      <td colspan="1" rowspan="1" align="left"><b><tt>TRUE</tt></b></td>
+      <td colspan="1" rowspan="1" align="left"><b><tt>FALSE</tt></b></td>
+      <td colspan="1" rowspan="1" align="left"><b><tt>FALSE</tt></b></td>
+      <td colspan="1" rowspan="1" align="left"><b><tt>FALSE</tt></b></td>
+      <td colspan="1" rowspan="1" align="left"><b><tt>FALSE</tt></b></td>
+      <td colspan="1" rowspan="1" align="left"><b><tt>FALSE</tt></b></td>
+      <td colspan="1" rowspan="1" align="left"><b><tt>FALSE</tt></b></td>
+      <td colspan="1" rowspan="1" align="left"><b><tt>TRUE</tt></b></td>
+     </tr>
+
+    </tbody>
+   </colgroup>
+
+  </table>
+
+ </p>
+
+ <p class="para">
+  <table border="5">
+   <caption><b>Жёсткое сравнение с помощью <i>===</i></b></caption>
+   <colgroup>
+
+    <thead valign="middle">
+     <tr valign="middle">
+      <th colspan="1"> </th>
+      <th colspan="1"><b><tt>TRUE</tt></b></th>
+      <th colspan="1"><b><tt>FALSE</tt></b></th>
+      <th colspan="1"><i>1</i></th>
+      <th colspan="1"><i>0</i></th>
+      <th colspan="1"><i>-1</i></th>
+      <th colspan="1"><i>&quot;1&quot;</i></th>
+      <th colspan="1"><i>&quot;0&quot;</i></th>
+      <th colspan="1"><i>&quot;-1&quot;</i></th>
+      <th colspan="1"><b><tt>NULL</tt></b></th>
+      <th colspan="1"><i>array()</i></th>
+      <th colspan="1"><i>&quot;php&quot;</i></th>
+     </tr>
+
+    </thead>
+
+    <tbody valign="middle" class="tbody">
+     <tr valign="middle">
+      <td colspan="1" rowspan="1" align="left"><b><tt>TRUE</tt></b></td>
+      <td colspan="1" rowspan="1" align="left"><b><tt>TRUE</tt></b></td>
+      <td colspan="1" rowspan="1" align="left"><b><tt>FALSE</tt></b></td>
+      <td colspan="1" rowspan="1" align="left"><b><tt>FALSE</tt></b></td>
+      <td colspan="1" rowspan="1" align="left"><b><tt>FALSE</tt></b></td>
+      <td colspan="1" rowspan="1" align="left"><b><tt>FALSE</tt></b></td>
+      <td colspan="1" rowspan="1" align="left"><b><tt>FALSE</tt></b></td>
+      <td colspan="1" rowspan="1" align="left"><b><tt>FALSE</tt></b></td>
+      <td colspan="1" rowspan="1" align="left"><b><tt>FALSE</tt></b></td>
+      <td colspan="1" rowspan="1" align="left"><b><tt>FALSE</tt></b></td>
+      <td colspan="1" rowspan="1" align="left"><b><tt>FALSE</tt></b></td>
+      <td colspan="1" rowspan="1" align="left"><b><tt>FALSE</tt></b></td>
+     </tr>
+
+     <tr valign="middle">
+      <td colspan="1" rowspan="1" align="left"><b><tt>FALSE</tt></b></td>
+      <td colspan="1" rowspan="1" align="left"><b><tt>FALSE</tt></b></td>
+      <td colspan="1" rowspan="1" align="left"><b><tt>TRUE</tt></b></td>
+      <td colspan="1" rowspan="1" align="left"><b><tt>FALSE</tt></b></td>
+      <td colspan="1" rowspan="1" align="left"><b><tt>FALSE</tt></b></td>
+      <td colspan="1" rowspan="1" align="left"><b><tt>FALSE</tt></b></td>
+      <td colspan="1" rowspan="1" align="left"><b><tt>FALSE</tt></b></td>
+      <td colspan="1" rowspan="1" align="left"><b><tt>FALSE</tt></b></td>
+      <td colspan="1" rowspan="1" align="left"><b><tt>FALSE</tt></b></td>
+      <td colspan="1" rowspan="1" align="left"><b><tt>FALSE</tt></b></td>
+      <td colspan="1" rowspan="1" align="left"><b><tt>FALSE</tt></b></td>
+      <td colspan="1" rowspan="1" align="left"><b><tt>FALSE</tt></b></td>
+     </tr>
+
+     <tr valign="middle">
+      <td colspan="1" rowspan="1" align="left"><i>1</i></td>
+      <td colspan="1" rowspan="1" align="left"><b><tt>FALSE</tt></b></td>
+      <td colspan="1" rowspan="1" align="left"><b><tt>FALSE</tt></b></td>
+      <td colspan="1" rowspan="1" align="left"><b><tt>TRUE</tt></b></td>
+      <td colspan="1" rowspan="1" align="left"><b><tt>FALSE</tt></b></td>
+      <td colspan="1" rowspan="1" align="left"><b><tt>FALSE</tt></b></td>
+      <td colspan="1" rowspan="1" align="left"><b><tt>FALSE</tt></b></td>
+      <td colspan="1" rowspan="1" align="left"><b><tt>FALSE</tt></b></td>
+      <td colspan="1" rowspan="1" align="left"><b><tt>FALSE</tt></b></td>
+      <td colspan="1" rowspan="1" align="left"><b><tt>FALSE</tt></b></td>
+      <td colspan="1" rowspan="1" align="left"><b><tt>FALSE</tt></b></td>
+      <td colspan="1" rowspan="1" align="left"><b><tt>FALSE</tt></b></td>
+     </tr>
+
+     <tr valign="middle">
+      <td colspan="1" rowspan="1" align="left"><i>0</i></td>
+      <td colspan="1" rowspan="1" align="left"><b><tt>FALSE</tt></b></td>
+      <td colspan="1" rowspan="1" align="left"><b><tt>FALSE</tt></b></td>
+      <td colspan="1" rowspan="1" align="left"><b><tt>FALSE</tt></b></td>
+      <td colspan="1" rowspan="1" align="left"><b><tt>TRUE</tt></b></td>
+      <td colspan="1" rowspan="1" align="left"><b><tt>FALSE</tt></b></td>
+      <td colspan="1" rowspan="1" align="left"><b><tt>FALSE</tt></b></td>
+      <td colspan="1" rowspan="1" align="left"><b><tt>FALSE</tt></b></td>
+      <td colspan="1" rowspan="1" align="left"><b><tt>FALSE</tt></b></td>
+      <td colspan="1" rowspan="1" align="left"><b><tt>FALSE</tt></b></td>
+      <td colspan="1" rowspan="1" align="left"><b><tt>FALSE</tt></b></td>
+      <td colspan="1" rowspan="1" align="left"><b><tt>FALSE</tt></b></td>
+     </tr>
+
+     <tr valign="middle">
+      <td colspan="1" rowspan="1" align="left"><i>-1</i></td>
+      <td colspan="1" rowspan="1" align="left"><b><tt>FALSE</tt></b></td>
+      <td colspan="1" rowspan="1" align="left"><b><tt>FALSE</tt></b></td>
+      <td colspan="1" rowspan="1" align="left"><b><tt>FALSE</tt></b></td>
+      <td colspan="1" rowspan="1" align="left"><b><tt>FALSE</tt></b></td>
+      <td colspan="1" rowspan="1" align="left"><b><tt>TRUE</tt></b></td>
+      <td colspan="1" rowspan="1" align="left"><b><tt>FALSE</tt></b></td>
+      <td colspan="1" rowspan="1" align="left"><b><tt>FALSE</tt></b></td>
+      <td colspan="1" rowspan="1" align="left"><b><tt>FALSE</tt></b></td>
+      <td colspan="1" rowspan="1" align="left"><b><tt>FALSE</tt></b></td>
+      <td colspan="1" rowspan="1" align="left"><b><tt>FALSE</tt></b></td>
+      <td colspan="1" rowspan="1" align="left"><b><tt>FALSE</tt></b></td>
+     </tr>
+
+     <tr valign="middle">
+      <td colspan="1" rowspan="1" align="left"><i>&quot;1&quot;</i></td>
+      <td colspan="1" rowspan="1" align="left"><b><tt>FALSE</tt></b></td>
+      <td colspan="1" rowspan="1" align="left"><b><tt>FALSE</tt></b></td>
+      <td colspan="1" rowspan="1" align="left"><b><tt>FALSE</tt></b></td>
+      <td colspan="1" rowspan="1" align="left"><b><tt>FALSE</tt></b></td>
+      <td colspan="1" rowspan="1" align="left"><b><tt>FALSE</tt></b></td>
+      <td colspan="1" rowspan="1" align="left"><b><tt>TRUE</tt></b></td>
+      <td colspan="1" rowspan="1" align="left"><b><tt>FALSE</tt></b></td>
+      <td colspan="1" rowspan="1" align="left"><b><tt>FALSE</tt></b></td>
+      <td colspan="1" rowspan="1" align="left"><b><tt>FALSE</tt></b></td>
+      <td colspan="1" rowspan="1" align="left"><b><tt>FALSE</tt></b></td>
+      <td colspan="1" rowspan="1" align="left"><b><tt>FALSE</tt></b></td>
+     </tr>
+
+     <tr valign="middle">
+      <td colspan="1" rowspan="1" align="left"><i>&quot;0&quot;</i></td>
+      <td colspan="1" rowspan="1" align="left"><b><tt>FALSE</tt></b></td>
+      <td colspan="1" rowspan="1" align="left"><b><tt>FALSE</tt></b></td>
+      <td colspan="1" rowspan="1" align="left"><b><tt>FALSE</tt></b></td>
+      <td colspan="1" rowspan="1" align="left"><b><tt>FALSE</tt></b></td>
+      <td colspan="1" rowspan="1" align="left"><b><tt>FALSE</tt></b></td>
+      <td colspan="1" rowspan="1" align="left"><b><tt>FALSE</tt></b></td>
+      <td colspan="1" rowspan="1" align="left"><b><tt>TRUE</tt></b></td>
+      <td colspan="1" rowspan="1" align="left"><b><tt>FALSE</tt></b></td>
+      <td colspan="1" rowspan="1" align="left"><b><tt>FALSE</tt></b></td>
+      <td colspan="1" rowspan="1" align="left"><b><tt>FALSE</tt></b></td>
+      <td colspan="1" rowspan="1" align="left"><b><tt>FALSE</tt></b></td>
+     </tr>
+
+     <tr valign="middle">
+      <td colspan="1" rowspan="1" align="left"><i>&quot;-1&quot;</i></td>
+      <td colspan="1" rowspan="1" align="left"><b><tt>FALSE</tt></b></td>
+      <td colspan="1" rowspan="1" align="left"><b><tt>FALSE</tt></b></td>
+      <td colspan="1" rowspan="1" align="left"><b><tt>FALSE</tt></b></td>
+      <td colspan="1" rowspan="1" align="left"><b><tt>FALSE</tt></b></td>
+      <td colspan="1" rowspan="1" align="left"><b><tt>FALSE</tt></b></td>
+      <td colspan="1" rowspan="1" align="left"><b><tt>FALSE</tt></b></td>
+      <td colspan="1" rowspan="1" align="left"><b><tt>FALSE</tt></b></td>
+      <td colspan="1" rowspan="1" align="left"><b><tt>TRUE</tt></b></td>
+      <td colspan="1" rowspan="1" align="left"><b><tt>FALSE</tt></b></td>
+      <td colspan="1" rowspan="1" align="left"><b><tt>FALSE</tt></b></td>
+      <td colspan="1" rowspan="1" align="left"><b><tt>FALSE</tt></b></td>
+     </tr>
+
+     <tr valign="middle">
+      <td colspan="1" rowspan="1" align="left"><b><tt>NULL</tt></b></td>
+      <td colspan="1" rowspan="1" align="left"><b><tt>FALSE</tt></b></td>
+      <td colspan="1" rowspan="1" align="left"><b><tt>FALSE</tt></b></td>
+      <td colspan="1" rowspan="1" align="left"><b><tt>FALSE</tt></b></td>
+      <td colspan="1" rowspan="1" align="left"><b><tt>FALSE</tt></b></td>
+      <td colspan="1" rowspan="1" align="left"><b><tt>FALSE</tt></b></td>
+      <td colspan="1" rowspan="1" align="left"><b><tt>FALSE</tt></b></td>
+      <td colspan="1" rowspan="1" align="left"><b><tt>FALSE</tt></b></td>
+      <td colspan="1" rowspan="1" align="left"><b><tt>FALSE</tt></b></td>
+      <td colspan="1" rowspan="1" align="left"><b><tt>TRUE</tt></b></td>
+      <td colspan="1" rowspan="1" align="left"><b><tt>FALSE</tt></b></td>
+      <td colspan="1" rowspan="1" align="left"><b><tt>FALSE</tt></b></td>
+     </tr>
+
+     <tr valign="middle">
+      <td colspan="1" rowspan="1" align="left"><i>array()</i></td>
+      <td colspan="1" rowspan="1" align="left"><b><tt>FALSE</tt></b></td>
+      <td colspan="1" rowspan="1" align="left"><b><tt>FALSE</tt></b></td>
+      <td colspan="1" rowspan="1" align="left"><b><tt>FALSE</tt></b></td>
+      <td colspan="1" rowspan="1" align="left"><b><tt>FALSE</tt></b></td>
+      <td colspan="1" rowspan="1" align="left"><b><tt>FALSE</tt></b></td>
+      <td colspan="1" rowspan="1" align="left"><b><tt>FALSE</tt></b></td>
+      <td colspan="1" rowspan="1" align="left"><b><tt>FALSE</tt></b></td>
+      <td colspan="1" rowspan="1" align="left"><b><tt>FALSE</tt></b></td>
+      <td colspan="1" rowspan="1" align="left"><b><tt>FALSE</tt></b></td>
+      <td colspan="1" rowspan="1" align="left"><b><tt>TRUE</tt></b></td>
+      <td colspan="1" rowspan="1" align="left"><b><tt>FALSE</tt></b></td>
+     </tr>
+
+     <tr valign="middle">
+      <td colspan="1" rowspan="1" align="left"><i>&quot;php&quot;</i></td>
+      <td colspan="1" rowspan="1" align="left"><b><tt>FALSE</tt></b></td>
+      <td colspan="1" rowspan="1" align="left"><b><tt>FALSE</tt></b></td>
+      <td colspan="1" rowspan="1" align="left"><b><tt>FALSE</tt></b></td>
+      <td colspan="1" rowspan="1" align="left"><b><tt>FALSE</tt></b></td>
+      <td colspan="1" rowspan="1" align="left"><b><tt>FALSE</tt></b></td>
+      <td colspan="1" rowspan="1" align="left"><b><tt>FALSE</tt></b></td>
+      <td colspan="1" rowspan="1" align="left"><b><tt>FALSE</tt></b></td>
+      <td colspan="1" rowspan="1" align="left"><b><tt>FALSE</tt></b></td>
+      <td colspan="1" rowspan="1" align="left"><b><tt>FALSE</tt></b></td>
+      <td colspan="1" rowspan="1" align="left"><b><tt>FALSE</tt></b></td>
+      <td colspan="1" rowspan="1" align="left"><b><tt>TRUE</tt></b></td>
+     </tr>
+
+    </tbody>
+   </colgroup>
+
+  </table>
+
+ </p>
+ <blockquote><p><b class="note">Замечание</b>: 
+  <b>Заметка о PHP 3.0</b>
+  
+   Строка <i>&quot;0&quot;</i> считалась не пустой, в PHP4 ситуация
+   изменилась: строка трактуется как пустая.
+  <br />
+ </p></blockquote>
+</div>
+<hr /><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="transports.unix.html">Unix-сокеты: UNIX и UDG</a></div>
+ <div class="next" style="float: right;"><a href="tokens.html">List of Parser Tokens</a></div>
+ <div class="up"><a href="appendices.html">Appendices</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

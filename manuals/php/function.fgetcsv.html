@@ -1,0 +1,158 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <title>Читает строку из файла и производит разбор данных CSV</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+ </head>
+ <body><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="function.fgetc.html">fgetc</a></div>
+ <div class="next" style="float: right;"><a href="function.fgets.html">fgets</a></div>
+ <div class="up"><a href="ref.filesystem.html">Файловая система</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="function.fgetcsv" class="refentry">
+   <div class="refnamediv">
+    <h1 class="refname">fgetcsv</h1>
+    <p class="verinfo">(PHP 4, PHP 5)</p><p class="refpurpose dc-title">fgetcsv — Читает строку из файла и производит разбор данных CSV</p>
+
+   </div>
+   <div class="refsect1 unknown">
+    <h3 class="title">Описание</h3>
+     <div class="methodsynopsis dc-description">
+      <span class="type">array</span> <span class="methodname"><b><b>fgetcsv</b></b></span>
+       ( <span class="methodparam"><span class="type">resource</span> <tt class="parameter">$handle</tt></span>
+      [, <span class="methodparam"><span class="type">int</span> <tt class="parameter">$length</tt></span>
+      [, <span class="methodparam"><span class="type">string</span> <tt class="parameter">$delimiter</tt></span>
+      [, <span class="methodparam"><span class="type">string</span> <tt class="parameter">$enclosure</tt></span>
+     ]]] )</div>
+
+
+    <p class="para rdfs-comment">
+     <dl>
+
+      <dt>
+
+       <span class="term"><i><tt class="parameter">handle</tt></i>
+</span>
+
+       <dd>
+
+        <span class="simpara">
+         Корректный файловый указатель на файл, успешно открытый при помощи
+         <a href="function.fopen.html" class="function">fopen()</a>, <a href="function.popen.html" class="function">popen()</a>, или
+         <a href="function.fsockopen.html" class="function">fsockopen()</a>.
+        </span>
+       </dd>
+
+      </dt>
+
+      <dt>
+
+       <span class="term"><i><tt class="parameter">length</tt></i>
+ (Необязательный)</span>
+
+       <dd>
+
+        <span class="simpara">
+         Должен быть больше самой длинной строки (в символах), найденной в
+         CSV-файле (включая завершающий символ конца строки). Он стал
+         необязательным в PHP 5. Если этот аргумент не указан (или равен 0 в
+         версиях PHP 5.0.4 и выше), максимальная длинна строки не ограничена,
+         но функция работает немного медленнее.
+        </span>
+       </dd>
+
+      </dt>
+
+      <dt>
+
+       <span class="term"><i><tt class="parameter">delimiter</tt></i>
+ (Необязательный)</span>
+
+       <dd>
+
+        <span class="simpara">
+         Устанавливает разделитель поля (только один символ).
+         По умолчанию это запятая.
+        </span>
+       </dd>
+
+      </dt>
+
+      <dt>
+
+       <span class="term"><i><tt class="parameter">enclosure</tt></i>
+ (Необязательный)</span>
+
+       <dd>
+
+        <span class="simpara">
+         Устанавливает символ ограничителя поля (только один символ).
+         По умолчанию это двойная кавычка. Добавлен в PHP 4.3.0.
+        </span>
+       </dd>
+
+      </dt>
+
+     </dl>
+
+    </p>
+
+    <p class="simpara">
+     Данная функция похожа на функцию <a href="function.fgets.html" class="function">fgets()</a>, с той
+     разницей, что она производит анализ строки на наличие записей
+     в формате <acronym title="Comma Separated Value">CSV</acronym> и возвращает найденные поля
+     в качестве массива.
+    </p>
+    <p class="simpara">
+     Функция <b>fgetcsv()</b> возвращает <b><tt>FALSE</tt></b> в случае
+     ошибки, а также по достижению конца файла.
+    </p>
+    <blockquote><p><b class="note">Замечание</b>: 
+     <span class="simpara">
+      Пустая строка CSV-файла будет возвращена в качестве массива,
+      содержащего единственный элемент <a href="language.types.null.html" class="type null">null</a>, ошибки
+      в данном случае не возникнет.
+     </span>
+    </p></blockquote>
+    <p class="para">
+     <div class="example">
+      <p><b>Пример #1 Чтение и вывод на экран содержания CSV-файла</b></p>
+      <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$row&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">1</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$handle&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">fopen</span><span style="color: #007700">(</span><span style="color: #DD0000">"test.csv"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"r"</span><span style="color: #007700">);<br />while&nbsp;((</span><span style="color: #0000BB">$data&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">fgetcsv</span><span style="color: #007700">(</span><span style="color: #0000BB">$handle</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">1000</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">","</span><span style="color: #007700">))&nbsp;!==&nbsp;</span><span style="color: #0000BB">FALSE</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$num&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">count</span><span style="color: #007700">(</span><span style="color: #0000BB">$data</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"&lt;p&gt;&nbsp;$num&nbsp;полей&nbsp;в&nbsp;строке&nbsp;$row:&nbsp;&lt;br&nbsp;/&gt;&lt;/p&gt;\n"</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$row</span><span style="color: #007700">++;<br />&nbsp;&nbsp;&nbsp;&nbsp;for&nbsp;(</span><span style="color: #0000BB">$c</span><span style="color: #007700">=</span><span style="color: #0000BB">0</span><span style="color: #007700">;&nbsp;</span><span style="color: #0000BB">$c&nbsp;</span><span style="color: #007700">&lt;&nbsp;</span><span style="color: #0000BB">$num</span><span style="color: #007700">;&nbsp;</span><span style="color: #0000BB">$c</span><span style="color: #007700">++)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #0000BB">$data</span><span style="color: #007700">[</span><span style="color: #0000BB">$c</span><span style="color: #007700">]&nbsp;.&nbsp;</span><span style="color: #DD0000">"&lt;br&nbsp;/&gt;\n"</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />}<br /></span><span style="color: #0000BB">fclose</span><span style="color: #007700">(</span><span style="color: #0000BB">$handle</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+      </div>
+
+     </div>
+    </p>
+    <p class="para">
+     <b>fgetcsv()</b> стала правильно обрабатывать двоичные
+     данные начиная с версии PHP 4.3.5
+    </p>
+    <blockquote><p><b class="note">Замечание</b>: 
+     <span class="simpara">
+      Эта функция принимает во внимание настройки локали. К примеру,
+      если <var class="varname">LANG</var> установлен в <i>en_US.UTF-8</i>,
+      то файлы в однобайтовой кодировке будут неправильно прочитаны этой
+      функцией.
+     </span>
+    </p></blockquote>
+    <blockquote><p><b class="note">Замечание</b>: <span class="simpara">Если у вас возникают проблемы
+с распознаванием <i>PHP</i> окончания строк при чтении
+файлов на Macintosh-совместимом компьютере или при чтении файлов, созданных
+на Macintosh-совместимом компьютере, необходимо включить опцию
+<a href="filesystem.configuration.html#ini.auto-detect-line-endings" class="link">auto_detect_line_endings</a>.
+</span></p></blockquote>
+    <p class="para">
+     См.также описание функций <a href="function.explode.html" class="function">explode()</a>, <a href="function.file.html" class="function">file()</a>,
+     <a href="function.pack.html" class="function">pack()</a> и <a href="function.fputcsv.html" class="function">fputcsv()</a>.
+    </p>
+   </div>
+
+  </div><hr /><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="function.fgetc.html">fgetc</a></div>
+ <div class="next" style="float: right;"><a href="function.fgets.html">fgets</a></div>
+ <div class="up"><a href="ref.filesystem.html">Файловая система</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

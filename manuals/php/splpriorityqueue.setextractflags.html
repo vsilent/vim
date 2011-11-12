@@ -1,0 +1,77 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <title>Sets the mode of extraction</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+ </head>
+ <body><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="splpriorityqueue.rewind.html">SplPriorityQueue::rewind</a></div>
+ <div class="next" style="float: right;"><a href="splpriorityqueue.top.html">SplPriorityQueue::top</a></div>
+ <div class="up"><a href="class.splpriorityqueue.html">SplPriorityQueue</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="splpriorityqueue.setextractflags" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">SplPriorityQueue::setExtractFlags</h1>
+  <p class="verinfo">(No version information available, might be only in CVS)</p><p class="refpurpose dc-title">SplPriorityQueue::setExtractFlags — Sets the mode of extraction</p>
+
+ </div>
+
+ <div class="refsect1 description">
+  <h3 class="title">Описание</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type"><span class="type void">void</span></span> <span class="methodname"><b><b>SplPriorityQueue::setExtractFlags</b></b></span>
+    ( <span class="methodparam"><span class="type">int</span> <tt class="parameter">$flags</tt></span>
+   )</div>
+
+ </div>
+
+
+ <div class="refsect1 parameters">
+  <h3 class="title">Список параметров</h3>
+  <p class="para">
+   <dl>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">flags</tt></i>
+</span>
+
+     <dd>
+
+      <p class="para">
+       Defines what is extracted by  <span class="methodname"><b><a href="splpriorityqueue.current.html" class="function">SplPriorityQueue::current</a></b></span>,
+        <span class="methodname"><b><a href="splpriorityqueue.top.html" class="function">SplPriorityQueue::top</a></b></span> and 
+        <span class="methodname"><b><a href="splpriorityqueue.extract.html" class="function">SplPriorityQueue::extract</a></b></span>.
+      </p>
+      <ul class="itemizedlist">
+       <li class="listitem"><span class="simpara"><b><tt>SplPriorityQueue::EXTR_DATA</tt></b> (0x00000001): Extract the data</span></li>
+       <li class="listitem"><span class="simpara"><b><tt>SplPriorityQueue::EXTR_PRIORITY</tt></b> (0x00000002): Extract the priority</span></li>
+       <li class="listitem"><span class="simpara"><b><tt>SplPriorityQueue::EXTR_BOTH</tt></b> (0x00000003): Extract an array containing both</span></li>
+      </ul>
+      <p class="para">
+       The default mode is <b><tt>SplPriorityQueue::EXTR_DATA</tt></b>.
+      </p>
+     </dd>
+
+    </dt>
+
+   </dl>
+
+  </p>
+ </div>
+
+
+ <div class="refsect1 returnvalues">
+  <h3 class="title">Возвращаемые значения</h3>
+  <p class="para">
+   Эта функция не возвращает значения после выполнения.
+  </p>
+ </div>
+
+
+</div><hr /><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="splpriorityqueue.rewind.html">SplPriorityQueue::rewind</a></div>
+ <div class="next" style="float: right;"><a href="splpriorityqueue.top.html">SplPriorityQueue::top</a></div>
+ <div class="up"><a href="class.splpriorityqueue.html">SplPriorityQueue</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

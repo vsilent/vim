@@ -1,0 +1,116 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <title>Работа с XForms</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+ </head>
+ <body><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="features.sessions.html">Sessions</a></div>
+ <div class="next" style="float: right;"><a href="features.file-upload.html">Загрузка файлов на сервер</a></div>
+ <div class="up"><a href="features.html">Отличительные особенности</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div>
+ <h1>Работа с XForms</h1>
+
+ <p class="para">
+  <a href="http://www.w3.org/MarkUp/Forms/" class="link external">&raquo; XForms</a> являются альтернативой традиционным
+  веб-формам, и позволяют использовать их на множестве платформ и 
+  браузеров, а также реализовывать нестандартные представления форм, например,
+  в виде PDF-документа.
+ </p>
+ <p class="para">
+  Первое существенное отличие XForms заключается в том, как форма отсылается 
+  клиенту. Руководство <a href="http://www.w3.org/MarkUp/Forms/2003/xforms-for-html-authors.html" class="link external">&raquo; XForms для HTML-верстальщиков</a>
+  содержит детальное описание создания XForms. Для того, чтобы очертить
+  основную идею руководства, приведем несколько простых примеров.
+ </p>
+ <div class="example">
+  <p><b>Пример #1 Простая XForms для поисковой формы</b></p>
+  <div class="example-contents">
+<div class="cdata"><pre>
+&lt;h:html xmlns:h=&quot;http://www.w3.org/1999/xhtml&quot;
+        xmlns=&quot;http://www.w3.org/2002/xforms&quot;&gt;
+&lt;h:head&gt;
+ &lt;h:title&gt;Search&lt;/h:title&gt;
+ &lt;model&gt;
+  &lt;submission action=&quot;http://example.com/search&quot;
+              method=&quot;post&quot; xml:id=&quot;s&quot;/&gt;
+ &lt;/model&gt;
+&lt;/h:head&gt;
+&lt;h:body&gt;
+ &lt;h:p&gt;
+  &lt;input ref=&quot;q&quot;&gt;&lt;label&gt;Find&lt;/label&gt;&lt;/input&gt;
+  &lt;submit submission=&quot;s&quot;&gt;&lt;label&gt;Go&lt;/label&gt;&lt;/submit&gt;
+ &lt;/h:p&gt;
+&lt;/h:body&gt;
+&lt;/h:html&gt;
+</pre></div>
+  </div>
+
+ </div>
+ <p class="para">
+  Приведенная выше форма отображает текстовое поле для ввода (названное <i><tt class="parameter">q</tt></i>
+)
+  и кнопку для оправки формы, при нажатии на которую все введенные данные 
+  будут отправлены скрипту, указанному в поле <i>action</i>.
+ </p>
+ <p class="para">
+  Тут мы подошли к еще одному существенному различию с точки зрения вашего 
+  веб-приложения. Стандартная HTML-форма отправляет данные как 
+  <i>application/x-www-form-urlencoded</i>, а XForms 
+  для передачи данных использует разметку XML.
+ </p>
+ <p class="para">
+  Если вы решили работать с XForms, скорее всего вы захотите получить
+  отправленные пользователем данные в формате XML. В таком случае обратите внимание
+  на переменную <var class="varname">$HTTP_RAW_POST_DATA</var>, в ней содержится
+  XML-документ, сгенерированный браузером, который в дальнейшем можно 
+  обработать предпочитаемым вами движком XSLT или парсером XML.
+ </p>
+ <p class="para">
+  Если XML-разметка вас не интересует, и вы хотите, чтобы передаваемые данные 
+  были помещены в стандартный массив <var class="varname">$_POST</var>, вы можете
+  указать клиентскому браузеру на необходимость отправлять данные 
+  в формате <i>application/x-www-form-urlencoded</i>.
+  Для этого установите атрибут <i><tt class="parameter">method</tt></i>
+ значением
+  <em class="emphasis">urlencoded-post</em>.
+ </p>
+ <div class="example">
+  <p><b>Пример #2 Использование XForm совместно с массивом <var class="varname">$_POST</var></b></p>
+  <div class="example-contents">
+<div class="cdata"><pre>
+&lt;h:html xmlns:h=&quot;http://www.w3.org/1999/xhtml&quot;
+        xmlns=&quot;http://www.w3.org/2002/xforms&quot;&gt;
+&lt;h:head&gt;
+ &lt;h:title&gt;Search&lt;/h:title&gt;
+ &lt;model&gt;
+  &lt;submission action=&quot;http://example.com/search&quot;
+              method=&quot;urlencoded-post&quot; xml:id=&quot;s&quot;/&gt;
+ &lt;/model&gt;
+&lt;/h:head&gt;
+&lt;h:body&gt;
+ &lt;h:p&gt;
+  &lt;input ref=&quot;q&quot;&gt;&lt;label&gt;Find&lt;/label&gt;&lt;/input&gt;
+  &lt;submit submission=&quot;s&quot;&gt;&lt;label&gt;Go&lt;/label&gt;&lt;/submit&gt;
+ &lt;/h:p&gt;
+&lt;/h:body&gt;
+&lt;/h:html&gt;
+</pre></div>
+  </div>
+
+ </div>
+ <blockquote><p><b class="note">Замечание</b>: 
+  <span class="simpara">
+   В дополнение к вышесказанному следует заметить, что большое количество браузеров не поддерживают
+   XForms. Если приведенные примеры потерпели неудачу, проверьте версию используемого
+   вами браузера.
+  </span>
+ </p></blockquote>
+</div>
+<hr /><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="features.sessions.html">Sessions</a></div>
+ <div class="next" style="float: right;"><a href="features.file-upload.html">Загрузка файлов на сервер</a></div>
+ <div class="up"><a href="features.html">Отличительные особенности</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

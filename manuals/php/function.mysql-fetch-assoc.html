@@ -1,0 +1,81 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <title>Обрабатывает ряд результата запроса и возвращает ассоциативный массив.</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+ </head>
+ <body><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="function.mysql-fetch-array.html">mysql_fetch_array</a></div>
+ <div class="next" style="float: right;"><a href="function.mysql-fetch-field.html">mysql_fetch_field</a></div>
+ <div class="up"><a href="ref.mysql.html">MySQL</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="function.mysql-fetch-assoc" class="refentry">
+   <div class="refnamediv">
+    <h1 class="refname">mysql_fetch_assoc</h1>
+    <p class="verinfo">(PHP 4 &gt;= 4.0.3, PHP 5, PECL mysql:1.0)</p><p class="refpurpose dc-title">mysql_fetch_assoc — 
+     Обрабатывает ряд результата запроса и возвращает ассоциативный массив.
+    </p>
+
+   </div>
+   <div class="refsect1 unknown">
+    <h3 class="title">Описание</h3>
+     <div class="methodsynopsis dc-description">
+      <span class="type">array</span> <span class="methodname"><b><b>mysql_fetch_assoc</b></b></span>
+       ( <span class="methodparam"><span class="type">resource</span> <tt class="parameter">$result</tt></span>
+      )</div>
+
+    <p class="para rdfs-comment">
+     Возвращает ассоциативный массив с названиями индексов, соответсвующими 
+     названиям колонок или <b><tt>FALSE</tt></b> если рядов больше нет.
+    </p>
+    <p class="para">
+     Функция <b>mysql_fetch_assoc()</b> аналогична вызову функции
+     <a href="function.mysql-fetch-array.html" class="function">mysql_fetch_array()</a> со вторым параметром, равным
+     MYSQL_ASSOC. Функция возвращает только ассоциативный массив.
+     Если вам нужны как ассоциативные, так и численные индексы в массиве,
+     обратитесь к функции <a href="function.mysql-fetch-array.html" class="function">mysql_fetch_array()</a>.
+    </p>
+    <p class="para">
+     Если несколько колонок в запросе имеют одинаковые имена, значение ключа
+     массива с индексом названия колонок будет равно значению последней из
+     колонок. Чтобы работать с первыми, используйте функции, возвращающие
+     не ассоциативный массив: <a href="function.mysql-fetch-row.html" class="function">mysql_fetch_row()</a>, либо используйте алиасы.
+     Смотрите пример использования алиасов в SQL в описании
+     функции <a href="function.mysql-fetch-array.html" class="function">mysql_fetch_array()</a>.
+    </p>
+    <p class="para">
+     Важно заметить, что
+     <b>mysql_fetch_assoc()</b> работает <em class="emphasis">НЕ
+     </em> медленнее, чем
+     <a href="function.mysql-fetch-row.html" class="function">mysql_fetch_row()</a>, предоставляя более удобный доступ к
+     данным.
+    </p>
+    <blockquote><p><b class="note">Замечание</b>: <span class="simpara">Имена полей, возвращаемые этой
+функцией, <em class="emphasis">регистро-зависимы</em>.</span></p></blockquote>
+    <p class="para">
+     <div class="example">
+      <p><b>Пример #1 Расширенный пример использования <b>mysql_fetch_assoc()</b></b></p>
+      <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;$conn&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">mysql_connect</span><span style="color: #007700">(</span><span style="color: #DD0000">"localhost"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"mysql_user"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"mysql_password"</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;<br />&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(!</span><span style="color: #0000BB">$conn</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"Unable&nbsp;to&nbsp;connect&nbsp;to&nbsp;DB:&nbsp;"&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #0000BB">mysql_error</span><span style="color: #007700">();<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;exit;<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />&nbsp;&nbsp;&nbsp;&nbsp;<br />&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(!</span><span style="color: #0000BB">mysql_select_db</span><span style="color: #007700">(</span><span style="color: #DD0000">"mydbname"</span><span style="color: #007700">))&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"Unable&nbsp;to&nbsp;select&nbsp;mydbname:&nbsp;"&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #0000BB">mysql_error</span><span style="color: #007700">();<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;exit;<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />&nbsp;&nbsp;&nbsp;&nbsp;<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$sql&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">"SELECT&nbsp;id&nbsp;as&nbsp;userid,&nbsp;fullname,&nbsp;userstatus&nbsp;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;FROM&nbsp;&nbsp;&nbsp;sometable<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;WHERE&nbsp;&nbsp;userstatus&nbsp;=&nbsp;1"</span><span style="color: #007700">;<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$result&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">mysql_query</span><span style="color: #007700">(</span><span style="color: #0000BB">$sql</span><span style="color: #007700">);<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(!</span><span style="color: #0000BB">$result</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"Could&nbsp;not&nbsp;successfully&nbsp;run&nbsp;query&nbsp;($sql)&nbsp;from&nbsp;DB:&nbsp;"&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #0000BB">mysql_error</span><span style="color: #007700">();<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;exit;<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />&nbsp;&nbsp;&nbsp;&nbsp;<br />&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(</span><span style="color: #0000BB">mysql_num_rows</span><span style="color: #007700">(</span><span style="color: #0000BB">$result</span><span style="color: #007700">)&nbsp;==&nbsp;</span><span style="color: #0000BB">0</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"No&nbsp;rows&nbsp;found,&nbsp;nothing&nbsp;to&nbsp;print&nbsp;so&nbsp;am&nbsp;exiting"</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;exit;<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;До&nbsp;тех&nbsp;пор,&nbsp;пока&nbsp;в&nbsp;результате&nbsp;содержатся&nbsp;ряды,&nbsp;помещаем&nbsp;их&nbsp;в<br />&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;ассоциативный&nbsp;массив.<br />&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;Заметка:&nbsp;если&nbsp;запрос&nbsp;возвращает&nbsp;только&nbsp;один&nbsp;ряд&nbsp;--&nbsp;нет&nbsp;нужды&nbsp;в&nbsp;цикле.<br />&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;Заметка:&nbsp;если&nbsp;вы&nbsp;добавите&nbsp;extract($row);&nbsp;в&nbsp;начало&nbsp;цикла,&nbsp;вы&nbsp;сделаете<br />&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;доступными&nbsp;переменные&nbsp;$userid,&nbsp;$fullname,&nbsp;$userstatus.<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">while&nbsp;(</span><span style="color: #0000BB">$row&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">mysql_fetch_assoc</span><span style="color: #007700">(</span><span style="color: #0000BB">$result</span><span style="color: #007700">))&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #0000BB">$row</span><span style="color: #007700">[</span><span style="color: #DD0000">"userid"</span><span style="color: #007700">];<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #0000BB">$row</span><span style="color: #007700">[</span><span style="color: #DD0000">"fullname"</span><span style="color: #007700">];<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #0000BB">$row</span><span style="color: #007700">[</span><span style="color: #DD0000">"userstatus"</span><span style="color: #007700">];<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">mysql_free_result</span><span style="color: #007700">(</span><span style="color: #0000BB">$result</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+      </div>
+
+     </div>
+    </p>
+    <p class="para">
+     См. также 
+     <a href="function.mysql-fetch-row.html" class="function">mysql_fetch_row()</a>,
+     <a href="function.mysql-fetch-array.html" class="function">mysql_fetch_array()</a>,
+     <a href="function.mysql-query.html" class="function">mysql_query()</a> и
+     <a href="function.mysql-error.html" class="function">mysql_error()</a>.
+    </p>
+   </div>
+
+  </div><hr /><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="function.mysql-fetch-array.html">mysql_fetch_array</a></div>
+ <div class="next" style="float: right;"><a href="function.mysql-fetch-field.html">mysql_fetch_field</a></div>
+ <div class="up"><a href="ref.mysql.html">MySQL</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

@@ -1,0 +1,76 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <title>Parse a binary IPTC block into single tags.</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+ </head>
+ <body><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="function.iptcembed.html">iptcembed</a></div>
+ <div class="next" style="float: right;"><a href="function.jpeg2wbmp.html">jpeg2wbmp</a></div>
+ <div class="up"><a href="ref.image.html">Image Функции</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="function.iptcparse" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">iptcparse</h1>
+  <p class="verinfo">(PHP 4, PHP 5)</p><p class="refpurpose dc-title">iptcparse — Parse a binary IPTC block into single tags.</p>
+
+ </div>
+ <div class="refsect1 description">
+  <h3 class="title">Описание</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type">array</span> <span class="methodname"><b><b>iptcparse</b></b></span>
+    ( <span class="methodparam"><span class="type">string</span> <tt class="parameter">$iptcblock</tt></span>
+   )</div>
+
+  <p class="para rdfs-comment">
+   Parses an <a href="http://www.iptc.org/" class="link external">&raquo; IPTC</a> block into its single tags.
+  </p>
+ </div>
+
+ <div class="refsect1 parameters">
+  <h3 class="title">Список параметров</h3>
+  <p class="para">
+   <dl>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">iptcblock</tt></i>
+</span>
+
+     <dd>
+
+      <p class="para">
+       A binary IPTC block
+      </p>
+     </dd>
+
+    </dt>
+
+   </dl>
+
+  </p>
+ </div>
+
+ <div class="refsect1 returnvalues">
+  <h3 class="title">Возвращаемые значения</h3>
+  <p class="para">
+   Returns an array using the tagmarker as an index and the value as the
+   value. It returns <b><tt>FALSE</tt></b> on error or if no IPTC data was found. 
+  </p>
+ </div>
+
+ <div class="refsect1 seealso">
+  <h3 class="title">Смотрите также</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"><a href="function.getimagesize.html" class="function" rel="rdfs-seeAlso">getimagesize()</a> for an example</li>
+   </ul>
+  </p>
+ </div>
+
+</div><hr /><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="function.iptcembed.html">iptcembed</a></div>
+ <div class="next" style="float: right;"><a href="function.jpeg2wbmp.html">jpeg2wbmp</a></div>
+ <div class="up"><a href="ref.image.html">Image Функции</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

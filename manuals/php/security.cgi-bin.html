@@ -1,0 +1,95 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <title>Если PHP установлен как CGI</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+ </head>
+ <body><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="security.general.html">Общие рассуждения</a></div>
+ <div class="next" style="float: right;"><a href="security.cgi-bin.default.html">Вариант 1: обслуживаются только общедоступные файлы</a></div>
+ <div class="up"><a href="security.html">Безопасность</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div>
+   <h1>Если PHP установлен как CGI</h1>
+<h2>Содержание</h2><ul class="chunklist chunklist_chapter"><li><a href="security.cgi-bin.default.html">Вариант 1: обслуживаются только общедоступные файлы</a></li><li><a href="security.cgi-bin.force-redirect.html">Вариант 2: использование --enable-force-cgi-redirect</a></li><li><a href="security.cgi-bin.doc-root.html">Вариант 3: использование опций doc_root и user_dir</a></li><li><a href="security.cgi-bin.shell.html">Вариант 4: PHP вне дерева веб-документов</a></li></ul>
+
+
+   <div id="security.cgi-bin.attacks" class="sect1">
+    <h2 class="title">Возможные атаки</h2>
+    <p class="simpara">
+     Использование PHP как бинарного <acronym title="Common Gateway Interface">CGI</acronym>-приложения 
+     является одним из вариантов, когда по каким-либо причинам нежелательно
+     интегрировать PHP в веб-сервер (например Apache) в качестве модуля,
+     либо предполагается использование таких утилит, как chroot и setuid для
+     организации безопасного окружения во время работы скриптов.	
+     Такая установка обычно сопровождается копированием исполняемого 
+     файла PHP в директорию cgi-bin веб-сервера.  CERT (организация, следящая за угрозами безопасности)
+     <a href="http://www.cert.org/advisories/CA-1996-11.html" class="link external">&raquo; CA-96.11</a>  рекомендует не помещать
+     какие-либо интерпретаторы в каталог cgi-bin. Даже если PHP используется
+     как самостоятельный интерпрктатор, он спроектирован так, чтобы предотвратить
+     возможность следующих атак:
+    </p>
+    <ul class="itemizedlist">
+     <li class="listitem">
+      <span class="simpara">
+       Доступ к системным файлам: <var class="filename">http://my.host/cgi-bin/php?/etc/passwd</var>
+      </span>
+      <span class="simpara">
+       Данные, введенные в строке запроса (URL) после вопросительного знака,
+       передаются интерпретатору как аргументы командной строки согласно
+       CGI протоколу. Обычно интерпретаторы открывают
+       и исполняют файл, указанный в качестве первого аргумента.
+      </span>
+      <span class="simpara">
+       В случае использования PHP посредством CGI-протокола он не
+       станет интерпретировать аргументы командной строки.
+      </span>
+     </li>
+     <li class="listitem">
+      <span class="simpara">
+       Доступ к произвольному документу на сервере:
+       <var class="filename">http://my.host/cgi-bin/php/secret/doc.html</var>
+      </span>
+      <span class="simpara">
+       Согласно общепринятому соглашению часть пути в запрошенной странице, которая расположена после
+       имени выполняемого модуля PHP, <var class="filename">/secret/doc.html</var>,
+       используется для указания файла, который будет интерпретирован как
+       <acronym title="Common Gateway Interface">CGI</acronym>-программа Обычно, некоторые конфигурационные
+       опции веб-серевера (например, Action для сервера Apache) используются
+       для перенаправления документа, к примеру, для перенаправления запросов 
+       вида <var class="filename">http://my.host/secret/script.php</var> интерпретатору PHP.
+       В таком случае веб-сервер вначале проверяет права доступа к
+       директории  <var class="filename">/secret</var>, и после этого
+       создает перенаправленный запрос <var class="filename">http://my.host/cgi-bin/php/secret/script.php</var>.
+       К сожалению, если запрос изначально задан в полном виде,
+       проверка на наличие прав для файла  <var class="filename">/secret/script.php</var>
+       не выполняется, она происходит только для файла 
+       <var class="filename">/cgi-bin/php</var>. Таким образом, пользователь
+       имеет возможность обратиться к <var class="filename">/cgi-bin/php</var>,
+       и, как следствие, к любому защищенному документу на сервере.
+      </span>
+      <span class="simpara">
+       В PHP, указывая во время компиляции опцию <a href="configure.html#configure.enable-force-cgi-redirect" class="link">--enable-force-cgi-redirect</a>,
+       а таке опции <a href="ini.core.html#ini.doc-root" class="link">doc_root</a> и <a href="ini.core.html#ini.user-dir" class="link">user_dir</a> во время выполнения скрипта,
+       можно предотвратить подобные атаки для директорий с ограниченным доступом.
+       Более детально приведенные опции, а также их комбинации будут рассмотрены ниже.
+      </span>
+     </li>
+    </ul>
+   </div>
+
+   
+
+   
+
+   
+
+   
+
+  </div>
+<hr /><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="security.general.html">Общие рассуждения</a></div>
+ <div class="next" style="float: right;"><a href="security.cgi-bin.default.html">Вариант 1: обслуживаются только общедоступные файлы</a></div>
+ <div class="up"><a href="security.html">Безопасность</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

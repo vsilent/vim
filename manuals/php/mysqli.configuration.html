@@ -1,0 +1,210 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <title>Настройка во время выполнения</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+ </head>
+ <body><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="mysqli.installation.html">Установка</a></div>
+ <div class="next" style="float: right;"><a href="mysqli.resources.html">Типы ресурсов</a></div>
+ <div class="up"><a href="mysqli.setup.html">Установка и настройка</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="mysqli.configuration" class="section">
+ <h2 class="title">Настройка во время выполнения</h2>
+ <p class="simpara">
+Поведение этих функций зависит от установок в <var class="filename">php.ini</var>.
+</p>
+ <p class="para">
+  <table border="5">
+   <caption><b>MySQLi Параметры конфигурации</b></caption>
+   <colgroup>
+
+    <thead valign="middle">
+     <tr valign="middle">
+      <th colspan="1">Имя</th>
+      <th colspan="1">Значение по-умолчанию</th>
+      <th colspan="1">Область изменения</th>
+      <th colspan="1">История изменений</th>
+     </tr>
+
+    </thead>
+
+    <tbody valign="middle" class="tbody">
+     <tr valign="middle">
+      <td colspan="1" rowspan="1" align="left">mysqli.max_links</td>
+      <td colspan="1" rowspan="1" align="left">&quot;-1&quot;</td>
+      <td colspan="1" rowspan="1" align="left">PHP_INI_SYSTEM</td>
+      <td colspan="1" rowspan="1" align="left">Доступен начиная с PHP 5.0.0.</td>
+     </tr>
+
+     <tr valign="middle">
+      <td colspan="1" rowspan="1" align="left">mysqli.default_port</td>
+      <td colspan="1" rowspan="1" align="left">&quot;3306&quot;</td>
+      <td colspan="1" rowspan="1" align="left">PHP_INI_ALL</td>
+      <td colspan="1" rowspan="1" align="left">Доступен начиная с PHP 5.0.0.</td>
+     </tr>
+
+     <tr valign="middle">
+      <td colspan="1" rowspan="1" align="left">mysqli.default_socket</td>
+      <td colspan="1" rowspan="1" align="left">NULL</td>
+      <td colspan="1" rowspan="1" align="left">PHP_INI_ALL</td>
+      <td colspan="1" rowspan="1" align="left">Доступен начиная с 5.0.0.</td>
+     </tr>
+
+     <tr valign="middle">
+      <td colspan="1" rowspan="1" align="left">mysqli.default_host</td>
+      <td colspan="1" rowspan="1" align="left">NULL</td>
+      <td colspan="1" rowspan="1" align="left">PHP_INI_ALL</td>
+      <td colspan="1" rowspan="1" align="left">Доступен начиная с PHP 5.0.0.</td>
+     </tr>
+
+     <tr valign="middle">
+      <td colspan="1" rowspan="1" align="left">mysqli.default_user</td>
+      <td colspan="1" rowspan="1" align="left">NULL</td>
+      <td colspan="1" rowspan="1" align="left">PHP_INI_ALL</td>
+      <td colspan="1" rowspan="1" align="left">Доступен начиная с PHP 5.0.0.</td>
+     </tr>
+
+     <tr valign="middle">
+      <td colspan="1" rowspan="1" align="left">mysqli.default_pw</td>
+      <td colspan="1" rowspan="1" align="left">NULL</td>
+      <td colspan="1" rowspan="1" align="left">PHP_INI_ALL</td>
+      <td colspan="1" rowspan="1" align="left">Доступен начиная с PHP 5.0.0.</td>
+     </tr>
+
+    </tbody>
+   </colgroup>
+
+  </table>
+
+ </p>
+ <p class="para">
+  Дальнейшие детали и определения PHP_INI_* констант смотрите в разделе
+  <a href="configuration.changes.html" class="link">конфигурационные изменения</a>.
+ </p>
+
+ <p class="para">Краткое разъяснение конфигурационных
+директив.</p>
+
+ <p class="para">
+ <dl>
+
+  <dt id="ini.mysqli.max-links">
+   <span class="term">
+    <i><tt class="parameter">mysqli.max_links</tt></i>
+
+    <a href="language.types.integer.html" class="type integer">integer</a>
+   </span>
+
+   <dd>
+
+    <p class="para">
+     Максимальное число соединений MySQL на процесс.
+    </p>
+   </dd>
+
+  </dt>
+
+   <dt id="ini.mysqli.default-port">
+   <span class="term">
+    <i><tt class="parameter">mysqli.default_port</tt></i>
+
+    <a href="language.types.string.html" class="type string">string</a>
+   </span>
+
+   <dd>
+
+    <p class="para">
+     TCP порт, используемый по умолчанию для соединения с сервером баз данных
+     если другое значение явно не указано. Если значение по умолчанию не
+     указано, оно будет получено из переменной среды окружения
+     <i>MYSQL_TCP_PORT</i>, директивы <i>mysql-tcp</i> 
+     в файле <var class="filename">/etc/services</var> или константы
+     <i>MYSQL_PORT</i>, которая задаётся во время компиляции, в
+     указанном порядке. Win32 использует только константу
+     <i>MYSQL_PORT</i>.
+    </p>
+   </dd>
+
+  </dt>
+
+  
+  <dt id="ini.mysqli.default-socket">
+   <span class="term">
+    <i><tt class="parameter">mysqli.default_socket</tt></i>
+
+    <a href="language.types.string.html" class="type string">string</a>
+   </span>
+
+   <dd>
+
+    <p class="para">
+     Имя сокета по умолчанию, которое используется для соединения с локальной
+     базой данных если имя сокета было не указано явно.
+    </p>
+   </dd>
+
+  </dt>
+
+   <dt id="ini.mysqli.default-host">
+   <span class="term">
+    <i><tt class="parameter">mysqli.default_host</tt></i>
+
+    <a href="language.types.string.html" class="type string">string</a>
+   </span>
+
+   <dd>
+
+    <p class="para">
+     Имя сервера, которое используется если имя не было указано явно.
+     Это имя не используется в <a href="features.safe-mode.html#ini.safe-mode" class="link">безопасном режиме</a>.
+    </p>
+   </dd>
+
+  </dt>
+
+  
+  <dt id="ini.mysqli.default-user">
+   <span class="term">
+    <i><tt class="parameter">mysqli.default_user</tt></i>
+
+    <a href="language.types.string.html" class="type string">string</a>
+   </span>
+
+   <dd>
+
+    <p class="para">
+     Имя пользователя по умолчанию, используемое если имя не было указано
+     явно. Игнорируется в <a href="features.safe-mode.html#ini.safe-mode" class="link">безопасном режиме</a>.
+    </p>
+   </dd>
+
+  </dt>
+
+  
+  <dt id="ini.mysqli.default-pw">
+   <span class="term">
+    <i><tt class="parameter">mysqli.default_pw</tt></i>
+
+    <a href="language.types.string.html" class="type string">string</a>
+   </span>
+
+   <dd>
+
+    <p class="para">
+     Пароль по умолчанию, используемый если пароль не был явно указан.
+     Игнорируется в <a href="features.safe-mode.html#ini.safe-mode" class="link">безопасном режиме</a>.
+    </p>
+   </dd>
+
+  </dt>
+
+ </dl>
+
+ </p>
+</div><hr /><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="mysqli.installation.html">Установка</a></div>
+ <div class="next" style="float: right;"><a href="mysqli.resources.html">Типы ресурсов</a></div>
+ <div class="up"><a href="mysqli.setup.html">Установка и настройка</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

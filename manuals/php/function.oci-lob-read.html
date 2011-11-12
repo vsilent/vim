@@ -1,0 +1,50 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <title>Возвращает часть объекта LOB</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+ </head>
+ <body><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="function.oci-lob-load.html">lob->load</a></div>
+ <div class="next" style="float: right;"><a href="function.oci-lob-rewind.html">lob->rewind</a></div>
+ <div class="up"><a href="ref.oci8.html">OCI8</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="function.oci-lob-read" class="refentry">
+   <div class="refnamediv">
+    <h1 class="refname">lob-&gt;read</h1>
+   	<p class="verinfo">(No version information available, might be only in CVS)</p><p class="refpurpose dc-title">lob->read — Возвращает часть объекта LOB</p>
+
+   </div>
+   <div class="refsect1 unknown">
+    <h3 class="title">Описание</h3>
+     <div class="methodsynopsis dc-description">
+      <span class="type">string</span> <span class="methodname"><b><b>lob->read</b></b></span>
+       ( <span class="methodparam"><span class="type">int</span> <tt class="parameter">$length</tt></span>
+      )</div>
+
+	   <p class="para rdfs-comment">
+     Читает и возвращает <i><tt class="parameter">length</tt></i>
+ байт данных с текущей 
+     позиции объекта LOB. Чтение останавливается, если длина прочтенных 
+     данных равна <i><tt class="parameter">length</tt></i>
+ или если достигнут конец
+     объекта. Внутренний указатель перемещается на столько байт, сколько было
+     прочитано.
+    </p>
+    <p class="para">
+     Возвращает <b><tt>FALSE</tt></b> в случае ошибки.
+    </p>
+    <p class="para">
+     См. также <b>oci_lob_eof()</b>, 
+     <b>oci_lob_seek()</b>, 
+     <b>oci_lob_tell()</b> и 
+     <b>oci_lob_write()</b>.
+    </p>
+   </div>
+
+  </div><hr /><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="function.oci-lob-load.html">lob->load</a></div>
+ <div class="next" style="float: right;"><a href="function.oci-lob-rewind.html">lob->rewind</a></div>
+ <div class="up"><a href="ref.oci8.html">OCI8</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

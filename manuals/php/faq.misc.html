@@ -1,0 +1,186 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <title>Разные вопросы</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+ </head>
+ <body><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="faq.html">ЧАВО</a></div>
+ <div class="next" style="float: right;"><a href="appendices.html">Appendices</a></div>
+ <div class="up"><a href="faq.html">ЧАВО</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div>
+  <h1>Разные вопросы</h1>
+
+  
+
+   <p class="para">
+    Некоторые вопросы могут не подходить для других категорий.
+    Вы можете найти их здесь.
+   </p>
+
+  <div class="qandaset"><ol class="qandaset_questions"><li><a href="#faq.misc.bz2">
+     
+      Как я могу обращаться со сжатыми bz2 руководствами под Windows?
+     
+    </a></li><li><a href="#faq.misc.arguments.references">
+     
+      Что означает &amp; рядом с аргументом в объявлении функции, например
+      asort()?
+     
+    </a></li><li><a href="#faq.misc.registerglobals">
+     
+      Как обращаться с register_globals?
+     
+    </a></li></ol>
+   <dl>
+    <dt><strong>
+     <p class="para">
+      Как я могу обращаться со сжатыми bz2 руководствами под Windows?
+     </p>
+    </strong></dt>
+    <dd><a name="faq.misc.bz2"></a>
+     <p class="para">
+      Если у вас нет архиватора для работы с bz2 файлами, то
+      <a href="http://www.bzip.org/" class="link external">&raquo; скачайте</a> утилиту для
+      командной строки от Redhat (пожалуйста, ищите подробности ниже).
+     </p>
+     <p class="para">
+      Если вы не хотите использовать утилиту командной строки, вы можете
+      попробовать бесплатные средства, такие как
+      <a href="http://www.stuffit.com/" class="link external">&raquo; Stuffit Expander</a>,
+      <a href="http://www.ultimatezip.com/" class="link external">&raquo; UltimateZip</a>,
+      <a href="http://www.7-zip.org/" class="link external">&raquo; 7-Zip</a> или
+      <a href="http://www.quickzip.org/" class="link external">&raquo; Quick Zip</a>.
+      Если у вас есть такие утилиты как <a href="http://www.rarlab.com/" class="link external">&raquo; WinRAR</a>
+      или <a href="http://www.powerarchiver.com/" class="link external">&raquo; Power Archiver</a>, то
+      с их помощью вы можете легко распаковать bz2 файлы.
+      Если вы пользуетесь Total Commander (бывший Windows Commander),
+      подключаемый модуль bz2 для этой программы доступен бесплатно с
+      сайта <a href="http://www.ghisler.com/" class="link external">&raquo; Total Commander</a>.
+     </p>
+     <p class="para">
+      Утилита командной строки bzip2 от Redhat:
+     </p>
+     <p class="para">
+      Пользователи Win2K Sp2 должны взять последнюю версию 1.0.2,
+      пользователи всех других Windows должны взять версию 1.00.
+      После загрузки переименуйте исполняемый файл в bzip2.exe.
+      Для удобства положите его в директорию в вашем пути, например C:\Windows,
+      где C соответствует диску, на котором установлен ваш Windows.
+     </p>
+     <p class="para">
+      Замечание: lang обозначает ваш язык и x - желаемый формат, например pdf.
+      Чтобы распаковать php_manual_lang.x.bz2, следуйте этим простым
+      инструкциям:
+      <ul class="itemizedlist">
+       <li class="listitem">
+        <span class="simpara">откройте окно запроса команды (command prompt)</span>
+       </li>
+       <li class="listitem">
+        <span class="simpara">
+         cd в директорию, где вы храните скаченный php_manual_lang.x.bz2
+        </span>
+       </li>
+       <li class="listitem">
+        <span class="simpara">
+         вызовите bzip2 -d php_manual_lang.x.bz2, извлеките
+         php_manual_lang.x в ту же директорию
+        </span>
+       </li>
+      </ul>
+     </p>
+     <p class="para">
+      В случае, если вы скачали  php_manual_lang.tar.bz2, содержащий множество
+      html файлов, процедура точно такая же. Единственное отличие заключается в том,
+      что вы получили файл php_manual_lang.tar. Известно, что формат tar
+      обрабатывается большинством распространённых архиваторов под Windows,
+      например такими как <a href="http://www.winzip.com/" class="link external">&raquo; WinZip</a>.
+     </p>
+    </dd>
+   </dl>
+   
+   <dl>
+    <dt><strong>
+     <p class="para">
+      Что означает &amp; рядом с аргументом в объявлении функции, например
+      <a href="function.asort.html" class="function">asort()</a>?
+     </p>
+    </strong></dt>
+    <dd><a name="faq.misc.arguments.references"></a>
+     <p class="para">
+      Это означает, что аргумент
+      <a href="language.references.pass.html" class="link">передаётся по ссылке</a>
+      и функция, вероятно, изменит его согласно документации.
+      Таким путём вы можете передать только переменные и вам не обязательно
+      задавать &amp; при вызове функции (и это даже
+      <a href="ini.core.html#ini.allow-call-time-pass-reference" class="link">не рекомендуется</a>).
+     </p>
+    </dd>
+   </dl>
+   
+   <dl>
+    <dt><strong>
+     <p class="para">
+      Как обращаться с <i>register_globals</i>?
+     </p>
+    </strong></dt>
+    <dd><a name="faq.misc.registerglobals"></a>
+     <p class="para">
+      Для информации по проблемам безопасности, связанных с  
+      <i>register_globals</i>, читайте
+      <a href="security.globals.html" class="link">Использование register_globals</a>
+      в главе Безопасность.
+     </p>
+     <p class="para">
+      Предпочтительнее использовать
+      <a href="language.variables.superglobals.html" class="link">superglobals</a>,
+      чем полагаться на то, что <i>register_globals</i>
+      установлена в On.
+     </p>
+     <p class="para">
+      Если вы пользуетесь совместным хостом с выключенной 
+      <i>register_globals</i> и вам надо использовать некоторые
+      существующие приложения, которые требуют чтобы эта опция была включена;
+      или вы на каком-либо сервере, где эта возможность включена, но вы хотите
+      эмулировать проблему по безопасности, то возможно вам надо эмулировать
+      противоположную установку с помощью PHP.
+      Всегда лучше сначала спросить, если можно каким-либо образом изменить опцию
+      в конфигурации PHP, но если это невозможно, то вы можете воспользоваться
+      следующими совместимыми кусками кода.
+     </p>
+     <p class="para">
+      <div class="example">
+       <p><b>Пример #1 Эмулирование Register Globals</b></p>
+        <div class="example-contents"><p>
+        Следующее эмулирует register_globals установленную в On.
+       </p></div>
+       <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">//&nbsp;Emulate&nbsp;register_globals&nbsp;on<br /></span><span style="color: #007700">if&nbsp;(!</span><span style="color: #0000BB">ini_get</span><span style="color: #007700">(</span><span style="color: #DD0000">'register_globals'</span><span style="color: #007700">))&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$superglobals&nbsp;</span><span style="color: #007700">=&nbsp;array(</span><span style="color: #0000BB">$_SERVER</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$_ENV</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$_FILES</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$_COOKIE</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$_POST</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$_GET</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(isset(</span><span style="color: #0000BB">$_SESSION</span><span style="color: #007700">))&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">array_unshift</span><span style="color: #007700">(</span><span style="color: #0000BB">$superglobals</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$_SESSION</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />&nbsp;&nbsp;&nbsp;&nbsp;foreach&nbsp;(</span><span style="color: #0000BB">$superglobals&nbsp;</span><span style="color: #007700">as&nbsp;</span><span style="color: #0000BB">$superglobal</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">extract</span><span style="color: #007700">(</span><span style="color: #0000BB">$superglobal</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">EXTR_SKIP</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">ini_set</span><span style="color: #007700">(</span><span style="color: #DD0000">'register_globals'</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">true</span><span style="color: #007700">);<br />}<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+       </div>
+
+       <div class="example-contents"><p>
+        Следующее эмулирует register_globals установленную в Off.
+       </p></div>
+       <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">//&nbsp;Emulate&nbsp;register_globals&nbsp;off<br /></span><span style="color: #007700">if&nbsp;(</span><span style="color: #0000BB">ini_get</span><span style="color: #007700">(</span><span style="color: #DD0000">'register_globals'</span><span style="color: #007700">))&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$superglobals&nbsp;</span><span style="color: #007700">=&nbsp;array(</span><span style="color: #0000BB">$_SERVER</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$_ENV</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$_FILES</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$_COOKIE</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$_POST</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$_GET</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(isset(</span><span style="color: #0000BB">$_SESSION</span><span style="color: #007700">))&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">array_unshift</span><span style="color: #007700">(</span><span style="color: #0000BB">$superglobals</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$_SESSION</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />&nbsp;&nbsp;&nbsp;&nbsp;foreach&nbsp;(</span><span style="color: #0000BB">$superglobals&nbsp;</span><span style="color: #007700">as&nbsp;</span><span style="color: #0000BB">$superglobal</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;foreach&nbsp;(</span><span style="color: #0000BB">$superglobal&nbsp;</span><span style="color: #007700">as&nbsp;</span><span style="color: #0000BB">$global&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">$value</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;unset(</span><span style="color: #0000BB">$GLOBALS</span><span style="color: #007700">[</span><span style="color: #0000BB">$global</span><span style="color: #007700">]);<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">ini_set</span><span style="color: #007700">(</span><span style="color: #DD0000">'register_globals'</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">false</span><span style="color: #007700">);<br />}<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+       </div>
+
+      </div>
+     </p>
+    </dd>
+   </dl>
+  </div>
+ </div>
+<hr /><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="faq.html">ЧАВО</a></div>
+ <div class="next" style="float: right;"><a href="appendices.html">Appendices</a></div>
+ <div class="up"><a href="faq.html">ЧАВО</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

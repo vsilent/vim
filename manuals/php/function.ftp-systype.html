@@ -1,0 +1,91 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <title>Возвращает тип операционной системы FTP сервера</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+ </head>
+ <body><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="ref.ftp.html">FTP</a></div>
+ <div class="next" style="float: right;"><a href="book.hw.html">Hyperwave</a></div>
+ <div class="up"><a href="ref.ftp.html">FTP</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="function.ftp-systype" class="refentry">
+   <div class="refnamediv">
+    <h1 class="refname">ftp_systype</h1>
+    <p class="verinfo">(PHP 4, PHP 5)</p><p class="refpurpose dc-title">ftp_systype — Возвращает тип операционной системы FTP сервера</p>
+
+   </div>
+   <div class="refsect1 description">
+    <h3 class="title">Описание</h3>
+    <div class="methodsynopsis dc-description">
+     <span class="type">string</span> <span class="methodname"><b><b>ftp_systype</b></b></span>
+      ( <span class="methodparam"><span class="type">resource</span> <tt class="parameter">$ftp_stream</tt></span>
+     )</div>
+
+    <p class="para rdfs-comment">
+     Возвращает тип операционной системы FTP сервера.
+    </p>
+   </div>
+
+   <div class="refsect1 parameters">
+    <h3 class="title">Список параметров</h3>
+    <p class="para">
+     <dl>
+
+      <dt>
+
+       <span class="term"><i><tt class="parameter">ftp_stream</tt></i>
+</span>
+
+       <dd>
+
+        <p class="para">
+         Идентификатор соединения с FTP сервером
+        </p>
+       </dd>
+
+      </dt>
+
+     </dl>
+
+    </p>
+   </div>
+
+   <div class="refsect1 returnvalues">
+    <h3 class="title">Возвращаемые значения</h3>
+    <p class="para">
+     Возвращает тип операционной системы FTP сервера, или <b><tt>FALSE</tt></b> при
+     возникновении ошибки.
+    </p>
+   </div>
+
+   <div class="refsect1 examples">
+    <h3 class="title">Примеры</h3>
+    <p class="para">
+     <div class="example">
+      <p><b>Пример #1 Пример использования <b>ftp_systype()</b></b></p>
+      <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /><br /></span><span style="color: #FF8000">//&nbsp;установка&nbsp;соединения<br /></span><span style="color: #0000BB">$ftp&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">ftp_connect</span><span style="color: #007700">(</span><span style="color: #DD0000">'ftp.example.com'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">ftp_login</span><span style="color: #007700">(</span><span style="color: #0000BB">$ftp</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'user'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'password'</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">//&nbsp;получение&nbsp;типа&nbsp;системы<br /></span><span style="color: #007700">if&nbsp;(</span><span style="color: #0000BB">$type&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">ftp_systype</span><span style="color: #007700">(</span><span style="color: #0000BB">$ftp</span><span style="color: #007700">))&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"example.com&nbsp;использует&nbsp;$type\n"</span><span style="color: #007700">;<br />}&nbsp;else&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"Не&nbsp;удалось&nbsp;определить&nbsp;тип&nbsp;системы"</span><span style="color: #007700">;<br />}<br /><br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+      </div>
+
+      <div class="example-contents"><p>
+       Вышеприведенный пример выведет (например):
+      </p></div>
+      <div class="example-contents"><pre>
+<div class="cdata"><pre>
+example.com использует UNIX
+</pre></div>
+      </pre></div>
+     </div>
+    </p>
+   </div>
+
+  </div><hr /><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="ref.ftp.html">FTP</a></div>
+ <div class="next" style="float: right;"><a href="book.hw.html">Hyperwave</a></div>
+ <div class="up"><a href="ref.ftp.html">FTP</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

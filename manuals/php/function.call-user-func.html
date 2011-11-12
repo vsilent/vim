@@ -1,0 +1,89 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <title>Вызывает пользовательскую функцию</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+ </head>
+ <body><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="function.call-user-func-array.html">call_user_func_array</a></div>
+ <div class="next" style="float: right;"><a href="function.create-function.html">create_function</a></div>
+ <div class="up"><a href="ref.funchand.html">Управление функциями</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="function.call-user-func" class="refentry">
+   <div class="refnamediv">
+    <h1 class="refname">call_user_func</h1>
+    <p class="verinfo">(PHP 4, PHP 5)</p><p class="refpurpose dc-title">call_user_func — 
+     Вызывает пользовательскую функцию
+    </p>
+
+   </div>
+   <div class="refsect1 unknown">
+    <h3 class="title">Описание</h3>
+     <div class="methodsynopsis dc-description">
+      <span class="type"><a href="language.pseudo-types.html#language.types.mixed" class="type mixed">mixed</a></span> <span class="methodname"><b><b>call_user_func</b></b></span>
+       ( <span class="methodparam"><span class="type"><a href="language.pseudo-types.html#language.types.callback" class="type callback">callback</a></span> <tt class="parameter">$function</tt></span>
+      [, <span class="methodparam"><span class="type"><a href="language.pseudo-types.html#language.types.mixed" class="type mixed">mixed</a></span> <tt class="parameter">$parameter</tt></span>
+      [, <span class="methodparam"><span class="type"><a href="language.pseudo-types.html#language.types.mixed" class="type mixed">mixed</a></span> <tt class="parameter">$...</tt></span>
+     ]] )</div>
+
+    <p class="para rdfs-comment">
+     Вызывает пользовательскую функцию 
+     <i><tt class="parameter">function</tt></i>
+ со следующими параметрами:
+    </p>
+    <p class="para">
+     <div class="informalexample">
+      <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">function&nbsp;</span><span style="color: #0000BB">barber</span><span style="color: #007700">(</span><span style="color: #0000BB">$type</span><span style="color: #007700">)&nbsp;<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"You&nbsp;wanted&nbsp;a&nbsp;$type&nbsp;haircut,&nbsp;no&nbsp;problem"</span><span style="color: #007700">;<br />}<br /></span><span style="color: #0000BB">call_user_func</span><span style="color: #007700">(</span><span style="color: #DD0000">'barber'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"mushroom"</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">call_user_func</span><span style="color: #007700">(</span><span style="color: #DD0000">'barber'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"shave"</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+      </div>
+
+     </div>
+    </p>
+    <p class="para">
+     Методы класса также могут быть вызваны статически при передаче 
+     <i>array($classname, $methodname)</i>
+     в качестве параметра <i><tt class="parameter">function</tt></i>
+.
+    </p>
+    <p class="para">
+     <div class="informalexample">
+      <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">class&nbsp;</span><span style="color: #0000BB">myclass&nbsp;</span><span style="color: #007700">{<br />&nbsp;&nbsp;function&nbsp;</span><span style="color: #0000BB">say_hello</span><span style="color: #007700">()&nbsp;<br />&nbsp;&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"Hello!\n"</span><span style="color: #007700">;<br />&nbsp;&nbsp;}<br />}<br /><br /></span><span style="color: #0000BB">$classname&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">"myclass"</span><span style="color: #007700">;<br /><br /></span><span style="color: #0000BB">call_user_func</span><span style="color: #007700">(array(</span><span style="color: #0000BB">$classname</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'say_hello'</span><span style="color: #007700">));<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+      </div>
+
+     </div>
+    </p>
+    <blockquote><p><b class="note">Замечание</b>: 
+     
+      Обратите внимание, что параметры для <b>call_user_func()</b> не могут
+      передаваться по ссылке.
+      <div class="informalexample">
+       <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">function&nbsp;</span><span style="color: #0000BB">increment</span><span style="color: #007700">(&amp;</span><span style="color: #0000BB">$var</span><span style="color: #007700">)<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$var</span><span style="color: #007700">++;<br />}<br /><br /></span><span style="color: #0000BB">$a&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">0</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">call_user_func</span><span style="color: #007700">(</span><span style="color: #DD0000">'increment'</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$a</span><span style="color: #007700">);<br />echo&nbsp;</span><span style="color: #0000BB">$a</span><span style="color: #007700">;&nbsp;</span><span style="color: #FF8000">//&nbsp;0<br /><br /></span><span style="color: #0000BB">call_user_func_array</span><span style="color: #007700">(</span><span style="color: #DD0000">'increment'</span><span style="color: #007700">,&nbsp;array(&amp;</span><span style="color: #0000BB">$a</span><span style="color: #007700">));&nbsp;</span><span style="color: #FF8000">//&nbsp;You&nbsp;can&nbsp;use&nbsp;this&nbsp;instead<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">$a</span><span style="color: #007700">;&nbsp;</span><span style="color: #FF8000">//&nbsp;1<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+       </div>
+
+      </div>
+     <br />
+    </p></blockquote>
+    <p class="para">
+     См. также:
+     <a href="function.is-callable.html" class="function">is_callable()</a>, и
+     <a href="function.call-user-func-array.html" class="function">call_user_func_array()</a>
+    </p>
+   </div>
+
+  </div><hr /><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="function.call-user-func-array.html">call_user_func_array</a></div>
+ <div class="next" style="float: right;"><a href="function.create-function.html">create_function</a></div>
+ <div class="up"><a href="ref.funchand.html">Управление функциями</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

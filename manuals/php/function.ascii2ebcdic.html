@@ -1,0 +1,44 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <title>Преобразовать строку из ASCII в EBCDIC</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+ </head>
+ <body><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="function.apache-setenv.html">apache_setenv</a></div>
+ <div class="next" style="float: right;"><a href="function.ebcdic2ascii.html">ebcdic2ascii</a></div>
+ <div class="up"><a href="ref.apache.html">Функции для работы с сервером Apache</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="function.ascii2ebcdic" class="refentry">
+   <div class="refnamediv">
+    <h1 class="refname">ascii2ebcdic</h1>
+    <p class="verinfo">(No version information available, might be only in CVS)</p><p class="refpurpose dc-title">ascii2ebcdic — Преобразовать строку из ASCII в EBCDIC</p>
+
+   </div>
+   <div class="refsect1 unknown">
+    <h3 class="title">Описание</h3>
+     <div class="methodsynopsis dc-description">
+      <span class="type">integer</span> <span class="methodname"><b><b>ascii2ebcdic</b></b></span>
+       ( <span class="methodparam"><span class="type">string</span> <tt class="parameter">$ascii_str</tt></span>
+      )</div>
+
+    <p class="para rdfs-comment">
+     Функция <b>ascii2ebcdic()</b> предназначена для использования
+     с сервером Apache и доступна только на операционных системах,
+     основанных на стандарте EBCDIC (OS/390, BS2000). Эта функция преобразует
+     ASCII-строку <i><tt class="parameter">ascii_строка</tt></i>
+ в ее эквивалентное
+     представление в формате EBCDIC (безопасна для использования с двоичными
+     данными) и возвращает резальтат.
+    </p>
+    <p class="para">
+     Также ознакомьтесь с обратной функцией <a href="function.ebcdic2ascii.html" class="function">ebcdic2ascii()</a>.
+    </p>
+   </div>
+
+  </div><hr /><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="function.apache-setenv.html">apache_setenv</a></div>
+ <div class="next" style="float: right;"><a href="function.ebcdic2ascii.html">ebcdic2ascii</a></div>
+ <div class="up"><a href="ref.apache.html">Функции для работы с сервером Apache</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

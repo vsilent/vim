@@ -1,0 +1,178 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <title>Делаем что-нибудь полезное</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+ </head>
+ <body><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="tutorial.firstpage.html">Первая страница на PHP</a></div>
+ <div class="next" style="float: right;"><a href="tutorial.forms.html">Работа с формами</a></div>
+ <div class="up"><a href="tutorial.html">Краткое руководство</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="tutorial.useful" class="sect1">
+   <h2 class="title">Делаем что-нибудь полезное</h2>
+   <p class="para">
+    Давайте сделаем что-нибудь полезное. К примеру, определим, какой
+    браузер использует тот, кто смотрит в данный момент нашу страницу.
+    Для этого мы проверим строку с именем браузера, посылаемую нам в
+    HTTP-запросе. Эта информация хранится в <a href="language.variables.html" class="link">переменной</a>. Переменные в PHP всегда
+    предваряются знаком доллара. Интересующая нас в данный момент переменная
+    называется <var class="varname">$_SERVER[&quot;HTTP_USER_AGENT&quot;]</var>.
+   </p>
+   <blockquote><p><b class="note">Замечание</b>: 
+    <b>Пару слов об автоматической глобализации переменных в PHP</b>
+    
+     <a href="reserved.variables.server.html" class="link">$_SERVER</a> - специальная
+     зарезервированная переменная PHP, которая содержит всю информацию,
+     полученную от Web-сервера. Она является автоглобализованной (или
+     суперглобальной). Для более подробной информации смотрите раздел
+     &quot;<a href="language.variables.superglobals.html" class="link">Суперглобальные 
+     переменные</a>&quot;. Эти специальные переменные появились в PHP, начиная 
+     с версии <a href="http://www.php.net/releases/4_1_0.php" class="link external">&raquo; 4.1.0</a>.  До этого
+     использовались массивы <var class="varname">$HTTP_*_VARS</var>, такие, как
+     <var class="varname">$HTTP_SERVER_VARS</var>. Эти массивы, несмотря на то,
+     что они уже устарели, до сих пор существуют (см. замечания по
+     <a href="tutorial.oldcode.html" class="link">старым программам</a>).
+    <br />
+   </p></blockquote>
+   <p class="para">
+    Для вывода данной переменной мы сделаем так:
+   </p>
+   <p class="para">
+    <div class="example">
+    <p><b>Пример #1 Вывод значения переменной (элемента массива)</b></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php&nbsp;</span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">$_SERVER</span><span style="color: #007700">[</span><span style="color: #DD0000">"HTTP_USER_AGENT"</span><span style="color: #007700">];&nbsp;</span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+    <div class="example-contents"><p>
+     Пример вывода данной программы:
+     <div class="example-contents"><pre>
+Mozilla/4.0 (compatible; MSIE 5.01; Windows NT 5.0)
+     </pre></div>
+    </p></div>
+   </div>
+   </p>
+   <p class="para">
+    В PHP есть огромное количество <a href="language.types.html" class="link">типов</a>
+    переменных. В предыдущем примере мы печатали элемент
+    <a href="language.types.array.html" class="link">массива</a>. Массивы
+    в PHP являются очень мощным средством.
+   </p>
+   <p class="para">
+    <var class="varname">$_SERVER</var> - просто переменная, которая предоставлена
+    вам языком PHP. Список таких переменных можно посмотреть в разделе
+    &quot;<a href="reserved.variables.html" class="link">Зарезервированные переменные</a>&quot;.
+    А можно получить их полный список с помощью такой программы:
+   </p>
+   <p class="para">
+    <div class="example">
+     <p><b>Пример #2 Показываем все стандартные переменные с помощью
+     функции <a href="function.phpinfo.html" class="function">phpinfo()</a></b></p>
+     <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php&nbsp;phpinfo</span><span style="color: #007700">();&nbsp;</span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+     </div>
+
+    </div>
+   </p>
+   <p class="para">
+    Если открыть данный файл в браузере, вы увидите страничку с
+    информацией о PHP, а также список всех доступных вам переменных.
+   </p>
+   <p class="para">
+    Внутрь тегов PHP можно помещать множество команд и создавать
+    кусочки кода, делающие гораздо большее, чем просто вывод на экран.
+    К примеру, если мы хотим сделать проверку на Internet Explorer, мы
+    можем поступить так:
+   </p>
+   <p class="para">
+    <div class="example">
+     <p><b>Пример #3 Пример использования <a href="language.control-structures.html" class="link">управляющих
+     структур</a> и <a href="language.functions.html" class="link">функций</a></b></p>
+     <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">if&nbsp;(</span><span style="color: #0000BB">strstr</span><span style="color: #007700">(</span><span style="color: #0000BB">$_SERVER</span><span style="color: #007700">[</span><span style="color: #DD0000">"HTTP_USER_AGENT"</span><span style="color: #007700">],&nbsp;</span><span style="color: #DD0000">"MSIE"</span><span style="color: #007700">))&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"Вы&nbsp;используете&nbsp;Internet&nbsp;Explorer&lt;br&nbsp;/&gt;"</span><span style="color: #007700">;<br />}<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+     </div>
+
+     <div class="example-contents"><p>
+      Пример вывода данной программы:
+      <div class="example-contents"><pre>
+<div class="cdata"><pre>
+You are using Internet Explorer&lt;br /&gt;
+</pre></div>
+      </pre></div>
+     </p></div>
+    </div>
+   </p>
+   <p class="para">
+    Здесь мы показали несколько новых элементов. Во-первых, здесь есть
+    команда <a href="control-structures.if.html" class="link">if</a>.
+    Если вам знаком основной синтаксис языка C, то вы уже заметили что-то
+    схожее. Если же вы не знаете C или подобного по синтаксису языка, то
+    лучший вариант - взять какую-либо книжку по PHP и прочитать ее. Другой
+    вариант - почитать раздел &quot;<a href="langref.html" class="link">Описание языка</a>&quot;
+    данного руководства. Список книг по PHP можно найти здесь:
+    <a href="http://www.php.net/books.php" class="link external">&raquo; http://www.php.net/books.php</a>.
+   </p>
+   <p class="para">
+    Во-вторых, здесь есть вызов функции <a href="function.strstr.html" class="function">strstr()</a>.
+    <a href="function.strstr.html" class="function">strstr()</a> - встроенная в PHP функция, которая ищет
+    одну строку в другой. В данном случае мы ищем строку
+    <i>&quot;MSIE&quot;</i> в <var class="varname">$_SERVER[&quot;HTTP_USER_AGENT&quot;]</var>.
+    Если строка не найдена, эта функция возвращает <b><tt>FALSE</tt></b>, если найдена -
+    <b><tt>TRUE</tt></b>. Если она вернет <b><tt>TRUE</tt></b>, то условие в
+    <a href="control-structures.if.html" class="link">if</a> окажется истинным, и
+    код в командных скобках ({ }) выполнится. В противном случае данный код
+    не выполняется. Попробуйте создать аналогичные примеры с использованием
+    команд <a href="control-structures.if.html" class="link">if</a>, 
+    <a href="control-structures.else.html" class="link">else</a>, и других функций,
+    таких, как <a href="function.strtoupper.html" class="function">strtoupper()</a> и <a href="function.strlen.html" class="function">strlen()</a>.
+    Также примеры содержатся во многих описаниях функций в данном руководстве.
+   </p>
+   <p class="para">
+    Продемонстрируем, как можно входить в режим кода PHP и выходить из
+    него прямо внутри кода:
+   </p>
+   <p class="para">
+    <div class="example">
+     <p><b>Пример #4 Смешение режимов HTML и PHP</b></p>
+     <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">if&nbsp;(</span><span style="color: #0000BB">strstr</span><span style="color: #007700">(</span><span style="color: #0000BB">$_SERVER</span><span style="color: #007700">[</span><span style="color: #DD0000">"HTTP_USER_AGENT"</span><span style="color: #007700">],&nbsp;</span><span style="color: #DD0000">"MSIE"</span><span style="color: #007700">))&nbsp;{<br /></span><span style="color: #0000BB">?&gt;<br /></span>&lt;h3&gt;strstr&nbsp;вернул&nbsp;true&lt;/h3&gt;<br />&lt;center&gt;&lt;b&gt;Вы&nbsp;используете&nbsp;Internet&nbsp;Explorer&lt;/b&gt;&lt;/center&gt;<br /><span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">}&nbsp;else&nbsp;{<br /></span><span style="color: #0000BB">?&gt;<br /></span>&lt;h3&gt;strstr&nbsp;вернул&nbsp;false&lt;/h3&gt;<br />&lt;center&gt;&lt;b&gt;Вы&nbsp;не&nbsp;используете&nbsp;Internet&nbsp;Explorer&lt;/b&gt;&lt;/center&gt;<br /><span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">}<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+     </div>
+
+     <div class="example-contents"><p>
+      Пример вывода данной программы:
+      <div class="example-contents"><pre>
+<div class="cdata"><pre>
+&lt;h3&gt;strstr вернул true&lt;/h3&gt;
+&lt;center&gt;&lt;b&gt;Вы используете Internet Explorer&lt;/b&gt;&lt;/center&gt;
+</pre></div>
+      </pre></div>
+     </p></div>
+    </div>
+   </p>
+   <p class="para">
+    Вместо использования команды PHP echo для вывода, мы вышли из режима
+    кода и послали содержимое HTML. Важный момент здесь - то, что логическая
+    структура кода PHP при этом не теряется. Только одна HTML-часть будет
+    послана клиенту в зависимости от результата функции
+    <a href="function.strstr.html" class="function">strstr()</a> (другими словами, в зависимости от того,
+    найдена строка &quot;MSIE&quot; или нет).
+   </p>
+  </div><hr /><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="tutorial.firstpage.html">Первая страница на PHP</a></div>
+ <div class="next" style="float: right;"><a href="tutorial.forms.html">Работа с формами</a></div>
+ <div class="up"><a href="tutorial.html">Краткое руководство</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

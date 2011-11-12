@@ -1,0 +1,289 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <title>SQL-инъекции</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+ </head>
+ <body><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="security.database.html">Безопасность баз данных</a></div>
+ <div class="next" style="float: right;"><a href="security.errors.html">Сообщения об ошибках</a></div>
+ <div class="up"><a href="security.database.html">Безопасность баз данных</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="security.database.sql-injection" class="sect1">
+    <h2 class="title">SQL-инъекции</h2>
+    <p class="simpara">
+     Многие веб-разработчики даже не догадываются, что SQL-запросы
+     могут быть подделаны, и считают, что SQL-запросы всегда достоверны.
+     На самом деле поддельные запросы могут обойти ограничения доступа,
+     стандартную проверку авторизации, а некоторые виды запросов могут
+     дать возможность выполнять команды операционной системы.
+    </p>
+    <p class="simpara">
+     Принудительное внедрение вредоносных инструкций в SQL-запросы - методика, в которой взломщик создает или
+     изменяет текущие SQL-запросы для работы со скрытыми данными, их изменения
+     или даже выполнения опасных команд операционной системы на сервере базы данных.
+     Атака выполняется на базе приложения, строящего SQL-запросы из пользовательского
+     ввода и статических переменных. Следующие примеры, к сожалению, построены на 
+     реальных фактах.
+    </p>
+    <p class="para">
+     Благодаря отсутствию проверки пользовательского ввода и соединением с базой
+     данных под учетной записью суперпользователя (или любого другого пользователя, 
+     наделенного соответствующими привелегиями), взломщик может создать еще
+     одного пользователя БД с правами суперпользователя.
+     <div class="example">
+      <p><b>Пример #1 
+       Постраничный вывод результата... и создание суперпользователя в PostgreSQL и MySQL
+      </b></p>
+      <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$offset&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">argv</span><span style="color: #007700">[</span><span style="color: #0000BB">0</span><span style="color: #007700">];&nbsp;</span><span style="color: #FF8000">//&nbsp;проверка&nbsp;пользовательских&nbsp;данных&nbsp;отсутствует<br /></span><span style="color: #0000BB">$query&nbsp;&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">"SELECT&nbsp;id,&nbsp;name&nbsp;FROM&nbsp;products&nbsp;ORDER&nbsp;BY&nbsp;name&nbsp;LIMIT&nbsp;20&nbsp;OFFSET&nbsp;$offset;"</span><span style="color: #007700">;<br /></span><span style="color: #FF8000">//&nbsp;используя&nbsp;PostgreSQL&nbsp;<br /></span><span style="color: #0000BB">$result&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">pg_exec</span><span style="color: #007700">(</span><span style="color: #0000BB">$conn</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$query</span><span style="color: #007700">);<br /></span><span style="color: #FF8000">//&nbsp;используя&nbsp;MySQL<br /></span><span style="color: #0000BB">$result&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">mysql_query</span><span style="color: #007700">(</span><span style="color: #0000BB">$query</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+      </div>
+
+     </div>
+      Обычно пользователи кликают по ссылкам &#039;вперед&#039; и &#039;назад&#039;, вследствии чего значение
+      переменной <var class="varname">$offset</var> заносится в адресную строку.
+      Скрипт ожидает, что <var class="varname">$offset</var> - десятиричное число.
+      Однако, взломщик может попытаться взломать систему, присоединив к строке
+      запроса дополнительную подстроку, обработанную функцией <a href="function.urlencode.html" class="function">urlencode()</a>:
+      <div class="informalexample">
+       <div class="example-contents">
+<div class="cdata"><pre>
+// используя PostgreSQL 
+0;
+insert into pg_shadow(usename,usesysid,usesuper,usecatupd,passwd)
+    select &#039;crack&#039;, usesysid, &#039;t&#039;,&#039;t&#039;,&#039;crack&#039;
+    from pg_shadow where usename=&#039;postgres&#039;;
+--
+
+// используя MySQL
+0;
+UPDATE user SET Password=PASSWORD(&#039;crack&#039;) WHERE user=&#039;root&#039;;
+FLUSH PRIVILEGES;
+</pre></div>
+       </div>
+
+      </div>
+      Если это произойдет, скрипт предоставит взломщику доступ к базе
+      с правами суперпользователя. Заметим, что <i>0;</i> использован
+      для того, чтобы задать правильное значение смещения для первого запроса и 
+      корректно его завершить.
+    </p>
+    <blockquote><p><b class="note">Замечание</b>: 
+     
+      Уже привычна технология, когда разработчики указывают принудительное 
+      игнорирование парсером SQL оставшейся части запроса при помощи нотации
+	<i>--</i>, означающей комментарий.
+     <br />
+    </p></blockquote>
+    <p class="para">
+     Еще один вероятный способ получить пароли учетных записей в БД - атака страниц,
+     предоставляющих поиск по базе. Взломщику нужно лишь проверить, используется
+     ли в запросе передаваемая на сервер и необрабатываемая надлежащим образом переменная.
+     Это может быть один из устанавливаемых на предыдущей странице фильтров,
+     таких как <i>WHERE, ORDER BY, LIMIT</i> и <i>OFFSET</i>,
+     используемых при построении запросов <i>SELECT</i>.
+     
+     В случае, если используемая вами база данных поддерживает
+     конструкцию <i>UNION</i>, взломщик может присоединить
+     к оригинальному запросу еще один дополнительный, для извлечения пользовательских
+     паролей. Настоятельно рекомендуем использовать только зашифрованные 
+     пароли.
+     <div class="example">
+      <p><b>Пример #2 
+      Листинг статей... и некоторых паролей (для любой базы данных)
+      </b></p>
+      <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$query&nbsp;&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">"SELECT&nbsp;id,&nbsp;name,&nbsp;inserted,&nbsp;size&nbsp;FROM&nbsp;products<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;WHERE&nbsp;size&nbsp;=&nbsp;'$size'<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ORDER&nbsp;BY&nbsp;$order&nbsp;LIMIT&nbsp;$limit,&nbsp;$offset;"</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$result&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">odbc_exec</span><span style="color: #007700">(</span><span style="color: #0000BB">$conn</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$query</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+      </div>
+
+     </div>
+     Статическая часть запроса может  комбинироваться с другим SQL-запросом,
+     который откроет все пароли:
+     <div class="informalexample">
+      <div class="example-contents">
+<div class="cdata"><pre>
+&#039;
+union select &#039;1&#039;, concat(uname||&#039;-&#039;||passwd) as name, &#039;1971-01-01&#039;, &#039;0&#039; from usertable;
+--
+</pre></div>
+      </div>
+
+     </div>
+     Если этот запрос (использующий <i>&#039;</i> и
+     <i>--</i>) присоединить к значению одной из переменных,
+     используемых для формирования <var class="varname">$query</var>,
+     запрос заметно преобразится.
+    </p>
+    <p class="para">
+     Команды UPDATE также могут использоваться для атаки. Опять же, есть угроза разделения
+     инструкции на несколько запросов, присоединения дополнительного запроса.
+     Также взломщик может видоизменить выражение <i>SET</i>.
+     В этом случае потенциальному взломщику необходимо обладать некоторой дополнительной
+     информацией для успешного манипулирования запросами. Эту информацию можно
+     получить, проанализировав используемые в форме имена переменных либо просто перебирая все
+     наиболее распространенные варианты  названия соответствующих полей (а их не так уж и много).
+     <div class="example">
+     <p><b>Пример #3 
+      От восстановления пароля... до получения дополнительных привилегий (для любой базы данных)
+     </b></p>
+      <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$query&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">"UPDATE&nbsp;usertable&nbsp;SET&nbsp;pwd='$pwd'&nbsp;WHERE&nbsp;uid='$uid';"</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+      </div>
+
+     </div>
+     Но злоумышленник может ввести значение
+     <i>&#039; or uid like&#039;%admin%&#039;; --</i> для переменной <var class="varname">$uid</var> для
+     изменения пароля администратора или просто присвоить переменной <var class="varname">$pwd</var> значение
+     <i>&quot;hehehe&#039;, admin=&#039;yes&#039;, trusted=100 &quot;</i> (с завершающими пробелами)
+     для получения дополнительных привелегий. При выполнении запросы переплетаются:
+     <div class="informalexample">
+      <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">//&nbsp;$uid&nbsp;==&nbsp;'&nbsp;or&nbsp;uid&nbsp;like'%admin%';&nbsp;--<br /></span><span style="color: #0000BB">$query&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">"UPDATE&nbsp;usertable&nbsp;SET&nbsp;pwd='...'&nbsp;WHERE&nbsp;uid=''&nbsp;or&nbsp;uid&nbsp;like&nbsp;'%admin%';&nbsp;--"</span><span style="color: #007700">;<br /><br /></span><span style="color: #FF8000">//&nbsp;$pwd&nbsp;==&nbsp;"hehehe',&nbsp;admin='yes',&nbsp;trusted=100&nbsp;"<br /></span><span style="color: #0000BB">$query&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">"UPDATE&nbsp;usertable&nbsp;SET&nbsp;pwd='hehehe',&nbsp;admin='yes',&nbsp;trusted=100&nbsp;WHERE&nbsp;...;"</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+      </div>
+
+     </div>
+    </p>
+    <p class="para">
+     Пугающий пример того, как на сервере баз данных могут выполняться команды 
+     операционной системы.
+     <div class="example">
+     <p><b>Пример #4 Выполнение команд операционной системы на сервере (для базы MSSQL)</b></p>
+      <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+$query&nbsp;&nbsp;=&nbsp;"SELECT&nbsp;*&nbsp;FROM&nbsp;products&nbsp;WHERE&nbsp;id&nbsp;LIKE&nbsp;'%$prod%'";<br />$result&nbsp;=&nbsp;mssql_query($query);</span>
+</code></div>
+      </div>
+
+     </div>
+     Если взломщик введет значениме
+     <i>a%&#039; exec master..xp_cmdshell &#039;net user test testpass /ADD&#039; --</i>
+     для переменной <var class="varname">$prod</var>, тогда запрос <var class="varname">$query</var> 
+     будет выглядеть так:
+     <div class="informalexample">
+      <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+$query&nbsp;&nbsp;=&nbsp;"SELECT&nbsp;*&nbsp;FROM&nbsp;products<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;WHERE&nbsp;id&nbsp;LIKE&nbsp;'%a%'<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;exec&nbsp;master..xp_cmdshell&nbsp;'net&nbsp;user&nbsp;test&nbsp;testpass&nbsp;/ADD'--";<br />$result&nbsp;=&nbsp;mssql_query($query);</span>
+</code></div>
+      </div>
+
+     </div>
+     MSSQL сервер выполняет SQL-команды в пакетном режиме, в том числе 
+     и операции по заведению локальных учетных записей базы данных. В случае,
+     если приложение работает с привилегиями администратора и сервис MSSQL
+     запущен с необходимыми привилегиями, выполнив приведенные выше действия,
+     взломщик получит аккаунт для доступа к серверу.
+    </p>
+    <blockquote><p><b class="note">Замечание</b>: 
+     
+      Некоторые приведенные в этой главе примеры касаются конкретной базы данных.
+      Это не означает, что аналогичные атаки на другие программные продукты невозможны.
+      Работоспособность вашей базы данных может быть нарушена каким-либо другим способом.
+     <br />
+    </p></blockquote>
+
+    <div id="security.database.avoiding" class="sect2">
+     <h3 class="title">Способы защиты</h3>
+     <p class="simpara">
+      Вы можете утешать себя тем, что в большинстве случаев, взломщик должен
+      обладать некоторой информацией о структуре базы данных. Вы правы, 
+      но вы не знаете, когда и как будет предпринята попытка взлома, в случае
+      если это произойдет ваша БД окажется незащищенной. Если вы используете
+      программный продукт с открытыми исходными кодами или просто общедоступный
+      пакет для работы с базой данных (например контент менеджер или форум), взломщик
+      легко сможет воспроизвести интересующие его участки кода. В случае
+      если они плохо спроектированы, это может являться одной из угроз вашей безопасности.
+     </p>
+     <p class="simpara">
+      Большинство успешных атак основывается на коде, написанном без учета соответствующих
+      требований безопасности. Не доверяйте никаким вводим данным, особенно если
+      они поступают со стороны клиента, даже если это списки в форме, скрытые поля или куки.
+      Приведенные примеры показывают, к каким последствиям могут привести подделанные запросы.
+     </p>
+
+     <ul class="itemizedlist">
+      <li class="listitem">
+       <span class="simpara">
+        Старайтесь не открывать соединение с базой, используя учетную запись 
+        владельца или администратора. Всегда старайтесь использовать специально созданных
+        пользователей с максимально ограниченными правами.
+       </span>
+      </li>
+      <li class="listitem">
+       <span class="simpara">
+        Всегда проверяйте введенные данные на соответствие ожидаемому типу.
+        В PHP есть множество функций для проверки данных: начиная от простейших
+        <a href="ref.var.html" class="link">Функций для работы с переменными</a> и
+        <a href="ref.ctype.html" class="link">Функции определения типа символов</a>
+        (такие как <a href="function.is-numeric.html" class="function">is_numeric()</a>, <a href="function.ctype-digit.html" class="function">ctype_digit()</a>)
+        и заканчивая <a href="ref.pcre.html" class="link">Perl-совместимыми регулярными выражениями</a>.
+       </span>
+      </li>
+      <li class="listitem">
+       <p class="para">
+        В случае, если приложение ожидает цифровой ввод, примените функцию
+        <a href="function.is-numeric.html" class="function">is_numeric()</a> для проверки введенных данных, или
+        принудительно укажите их тип при помощи <a href="function.settype.html" class="function">settype()</a>, 
+        или просто используйте числовое представление при помощи функции
+        <a href="function.sprintf.html" class="function">sprintf()</a>.
+        <div class="example">
+         <p><b>Пример #5 Более безопасная реализация постраничной навигации</b></p>
+         <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+settype($offset,&nbsp;'integer');<br />$query&nbsp;=&nbsp;"SELECT&nbsp;id,&nbsp;name&nbsp;FROM&nbsp;products&nbsp;ORDER&nbsp;BY&nbsp;name&nbsp;LIMIT&nbsp;20&nbsp;OFFSET&nbsp;$offset;";<br /><br />//&nbsp;обратите&nbsp;внимание&nbsp;на&nbsp;формат&nbsp;%d,&nbsp;использование&nbsp;%s&nbsp;было&nbsp;бы&nbsp;бессмысленно<br />$query&nbsp;=&nbsp;sprintf("SELECT&nbsp;id,&nbsp;name&nbsp;FROM&nbsp;products&nbsp;ORDER&nbsp;BY&nbsp;name&nbsp;LIMIT&nbsp;20&nbsp;OFFSET&nbsp;%d;",<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$offset);</span>
+</code></div>
+         </div>
+
+        </div>
+       </p>
+      </li>
+      <li class="listitem">
+       <span class="simpara">
+        Экранируйте любой нецифровой ввод, используемый в запросах к БД при помощи
+        функций 
+        <a href="function.addslashes.html" class="function">addslashes()</a> или <a href="function.addcslashes.html" class="function">addcslashes()</a>.
+        Обратите внимание на <a href="security.database.storage.html" class="link">первый пример</a>.
+        Следует помнить, что одного использования кавычек в запросе мало, это легко
+        обойти.
+       </span>
+      </li>
+      <li class="listitem">
+       <span class="simpara">
+        Не выводите никакой информации о БД, особенно о ее структуре.
+        Также ознакомьтесь с соответствующими разделами документации: <a href="security.errors.html" class="link">Сообщения об ошибках</a> и <a href="ref.errorfunc.html" class="link">Функции обработки и логирования ошибок</a>.
+       </span>
+      </li>
+      <li class="listitem">
+       <span class="simpara">
+        Вы можете использовать хранимые процедуры и заранее определенные курсоры для
+        абстрагированной работы с данными, не предоставляя пользователям 
+        прямого доступа к данным и представлениям, но это решение имеет свои особенности.
+       </span>
+      </li>
+     </ul>
+
+     <p class="simpara">
+      Помимо всего вышесказанного, вы можете логировать запросы в вашем скрипте либо
+      на уровне базы данных, если она это поддерживает. Очевидно, что логирование
+      не может предотвратить нанесение ущерба, но может помочь при трассировке взломанного
+      приложения. Лог-файл полезен не сам по себе, а информацией, которая в нем содержится.
+      Причем, в большинстве случаев полезно логировать все возможные детали.
+     </p>
+    </div>
+   </div><hr /><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="security.database.html">Безопасность баз данных</a></div>
+ <div class="next" style="float: right;"><a href="security.errors.html">Сообщения об ошибках</a></div>
+ <div class="up"><a href="security.database.html">Безопасность баз данных</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

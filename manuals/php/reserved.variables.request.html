@@ -1,0 +1,119 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <title>Данные HTTP-запроса</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+ </head>
+ <body><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="reserved.variables.files.html">$_FILES</a></div>
+ <div class="next" style="float: right;"><a href="reserved.variables.session.html">$_SESSION</a></div>
+ <div class="up"><a href="reserved.variables.html">Предопределённые переменные</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="reserved.variables.request" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">$_REQUEST</h1>
+  <p class="verinfo">(No version information available, might be only in CVS)</p><p class="refpurpose dc-title">$_REQUEST — Данные HTTP-запроса</p>
+
+ </div>
+ 
+ <div class="refsect1 description">
+  <h3 class="title">Описание</h3>
+  <p class="para">
+   Ассоциативный массив, который по умолчанию содержит данные переменных
+   <a href="reserved.variables.get.html" class="link">$_GET</a>,
+   <a href="reserved.variables.post.html" class="link">$_POST</a> и
+   <a href="reserved.variables.cookies.html" class="link">$_COOKIE</a>.
+  </p>
+ </div>
+
+ 
+
+ <div class="refsect1 changelog">
+  <h3 class="title">Список изменений</h3>
+  <p class="para">
+   <table class="informaltable">
+    <colgroup>
+
+     <thead valign="middle">
+      <tr valign="middle">
+       <th colspan="1">Версия</th>
+       <th colspan="1">Описание</th>
+      </tr>
+
+     </thead>
+
+     <tbody valign="middle" class="tbody">
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left">5.3.0</td>
+       <td colspan="1" rowspan="1" align="left">
+        Добавлена директива <a href="ini.core.html#ini.request-order" class="link">request_order</a>.
+        Она позволяет контролировать содержимое переменной <var class="varname">$_REQUEST</var>.
+       </td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left">4.3.0</td>
+       <td colspan="1" rowspan="1" align="left">
+        Данные переменной <a href="reserved.variables.files.html" class="link">$_FILES</a>
+        более не включаются в <var class="varname">$_REQUEST</var>.
+       </td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left">4.1.0</td>
+       <td colspan="1" rowspan="1" align="left">
+        Добавлена переменная <var class="varname">$_REQUEST</var>.
+       </td>
+      </tr>
+
+     </tbody>
+    </colgroup>
+
+   </table>
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 notes">
+  <h3 class="title">Примечания</h3>
+  <blockquote><p><b class="note">Замечание</b>: This is a &#039;superglobal&#039;, or
+automatic global, variable. This simply means that it is available in
+all scopes throughout a script. There is no need to do 
+<strong class="command">global $variable;</strong> to access it within functions or methods.
+<br /></p></blockquote>
+  <blockquote><p><b class="note">Замечание</b>: 
+   
+    При работе в <a href="features.commandline.html" class="link">командной строке</a>, 
+    переменные <a href="reserved.variables.argv.html" class="link">argv</a> и
+    <a href="reserved.variables.argc.html" class="link">argc</a>
+    <em class="emphasis">не</em> включаются в <var class="varname">$_REQUEST</var>, они
+    присутствуют в массиве <a href="reserved.variables.server.html" class="link">$_SERVER</a>.
+   <br />
+  </p></blockquote>
+  <blockquote><p><b class="note">Замечание</b>: 
+   
+    Данным, которые были переданы в скрипт посредством методов GET, POST или
+    в COOKIE нельзя доверять. Их наличие и порядок добавления данных в
+    соответствующие массивы контролируется директивой
+    <a href="ini.core.html#ini.variables-order" class="link">variables_order</a>.
+   <br />
+  </p></blockquote>
+ </div>
+
+
+ <div class="refsect1 seealso">
+  <h3 class="title">Смотрите также</h3>
+  <ul class="simplelist">
+   <li class="member"><a href="function.import-request-variables.html" class="function" rel="rdfs-seeAlso">import_request_variables()</a></li>
+   <li class="member"><a href="language.variables.external.html" class="link">Работа с внешними данными</a></li>
+   <li class="member"><a href="book.filter.html" class="link">Функции фильтрации данных</a></li>
+  </ul>
+ </div>
+
+ 
+</div><hr /><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="reserved.variables.files.html">$_FILES</a></div>
+ <div class="next" style="float: right;"><a href="reserved.variables.session.html">$_SESSION</a></div>
+ <div class="up"><a href="reserved.variables.html">Предопределённые переменные</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

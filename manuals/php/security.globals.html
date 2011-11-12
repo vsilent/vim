@@ -1,0 +1,124 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <title>Использование глобальных переменных (Register_Globals)</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+ </head>
+ <body><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="security.errors.html">Сообщения об ошибках</a></div>
+ <div class="next" style="float: right;"><a href="security.variables.html">Данные, введенные пользователем</a></div>
+ <div class="up"><a href="security.html">Безопасность</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div>
+   <h1>Использование глобальных переменных (Register_Globals)</h1>
+
+   <p class="para">
+    Наверное, наиболее спорным моментом в разработке PHP стала замена 
+    значения по умолчанию для опции <a href="ini.core.html#ini.register-globals" class="link">
+    register_globals</a> с ON на OFF в версии <a href="http://www.php.net/releases/4_2_0.php" class="link external">&raquo; 4.2.0</a>.
+    Большинство пользователей доверились разработчикам, даже не зная, что это за 
+    опция и как она влияет на работу PHP. Эта страница документации призвана
+    показать, как эта настройка сочетается с вопросами безопасности при
+    разработке приложений. Следует понимать, что сама по себе эта опция 
+    никак не влияет на безопасность, ургозу представляет некорректное 
+    использование предоставляемых ею возможностей.
+   </p>
+   <p class="para">
+    В случае, если значение параметра register_globals ON, перед выполнением
+    вашего кода будут инициализированы различные переменные, например,
+    переменные, переданные при отправке формы. Также, учитывая тот факт,
+    что PHP не требует инициализации переменных, написать потенциально опасный
+    код очень легко. Это было очень спорным решением, но общество разработчиков
+    PHP решило изменить значение по умолчанию этой  директивы на OFF. В
+    противном случае при написании кода разработчики не могли бы с уверенностью
+    сказать, откуда пришла та или иная переменная и насколько она достоверна.
+    До такого нововведения переменные, определяемые разработчиком внутри скрипта, 
+    и передаваемые пользователем внешние данные могли перемешиваться. 
+    Приведем простой пример злоупотребления конфигурационной опцией register_globals: 
+   </p>
+   <p class="para">
+    <div class="example">
+     <p><b>Пример #1 Пример опасного кода с register_globals = on</b></p>
+     <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">//&nbsp;устанавливаем&nbsp;переменную&nbsp;$authorized&nbsp;=&nbsp;true&nbsp;только&nbsp;для&nbsp;пользователей,&nbsp;прошедших&nbsp;авторизацию<br /></span><span style="color: #007700">if&nbsp;(</span><span style="color: #0000BB">authenticated_user</span><span style="color: #007700">())&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$authorized&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">true</span><span style="color: #007700">;<br />}<br /><br /></span><span style="color: #FF8000">//&nbsp;Поскольку&nbsp;в&nbsp;случае&nbsp;неудачи&nbsp;при&nbsp;проверке&nbsp;авторизации&nbsp;переменная&nbsp;$authorized&nbsp;<br />//&nbsp;не&nbsp;установлена,&nbsp;она&nbsp;может&nbsp;быть&nbsp;установлена&nbsp;автоматически,&nbsp;благодаря&nbsp;register_globals,<br />//&nbsp;например,&nbsp;при&nbsp;GET&nbsp;запросе&nbsp;GET&nbsp;auth.php?authorized=1.<br />//&nbsp;Таким&nbsp;образом,&nbsp;пройти&nbsp;эту&nbsp;проверку&nbsp;можно&nbsp;без&nbsp;авторизации<br /></span><span style="color: #007700">if&nbsp;(</span><span style="color: #0000BB">$authorized</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;include&nbsp;</span><span style="color: #DD0000">"/highly/sensitive/data.php"</span><span style="color: #007700">;<br />}<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+     </div>
+
+    </div>
+   </p>
+   <p class="para">
+    В случае register_globals = on логика работы скрипта может быть нарушена.
+    В случае, если установленное значение off, переменная <var class="varname">$authorized</var> не 
+    может быть установлена из внешних данных запроса, и скрипт будет работать
+    корректно. Но все же инициализация переменных - один из признаков хорошего
+    тона в программировании. Например, в приведенном выше участке кода 
+    мы могли поместить <i>$authorized = false</i> в качестве 
+    первой строки. Такой код работал бы как со значением on, так и off опции
+    register_globals, и подразумевая, что по умолчанию пользователь не проходил
+    авторизацию.
+   </p>
+   <p class="para">
+    Приведем еще один пример, использующий <a href="ref.session.html" class="link">сессии</a>.
+    В случае, если register_globals = on, мы можем использовать переменную
+    <var class="varname">$username</var> в приведенном ниже примере, но тогда у нас
+    не будет уверенности в достоверности ее значения (к примеру, она могла быть передана в GET-запросе). 
+   </p>
+   <p class="para">
+    <div class="example">
+     <p><b>Пример #2 Пример использования сессий со значением register_globals on или off</b></p>
+     <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">//&nbsp;Мы&nbsp;не&nbsp;знаем,&nbsp;откуда&nbsp;получена&nbsp;переменная&nbsp;$username,&nbsp;но&nbsp;точно&nbsp;знаем,&nbsp;что<br />//&nbsp;переменная&nbsp;$_SESSION&nbsp;хранит&nbsp;в&nbsp;себе&nbsp;данные&nbsp;сессии<br /></span><span style="color: #007700">if&nbsp;(isset(</span><span style="color: #0000BB">$_SESSION</span><span style="color: #007700">[</span><span style="color: #DD0000">'username'</span><span style="color: #007700">]))&nbsp;{<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"Hello&nbsp;&lt;b&gt;{$_SESSION['username']}&lt;/b&gt;"</span><span style="color: #007700">;<br /><br />}&nbsp;else&nbsp;{<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"Hello&nbsp;&lt;b&gt;Guest&lt;/b&gt;&lt;br&nbsp;/&gt;"</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"Would&nbsp;you&nbsp;like&nbsp;to&nbsp;login?"</span><span style="color: #007700">;<br /><br />}<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+     </div>
+
+    </div>
+   </p>
+   <p class="para">
+    Также существует возможность реализации оперативного реагирования
+    в случае попытки подмены переменных. Так как во время разработки приложения
+    мы знаем ожидаемое значение переменной, а также знаем ее достоверное 
+    значение, мы можем их сопоставить. Это не защитит код от подмены переменных,
+    но усложнит перебор возможных вариантов. Если вы не хотите знать, как именно
+    были получены внешние данные, используйте переменную <var class="varname">$_REQUEST</var>,
+    которая состоит из данных  GET и POST запросов, а также данных COOKIE.  
+    Также, информацию об этом можно найти в разделе
+    <a href="language.variables.external.html" class="link">внешние данные в PHP</a>.
+   </p>
+   <p class="para">
+    <div class="example">
+     <p><b>Пример #3 Обнаружение попытки подмены переменных</b></p>
+     <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">if&nbsp;(isset(</span><span style="color: #0000BB">$_COOKIE</span><span style="color: #007700">[</span><span style="color: #DD0000">'MAGIC_COOKIE'</span><span style="color: #007700">]))&nbsp;{<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;MAGIC_COOKIE&nbsp;получена&nbsp;из&nbsp;достоверного&nbsp;источника.<br />&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;Для&nbsp;полной&nbsp;уверенности&nbsp;необходимо&nbsp;проверить&nbsp;ее&nbsp;значение.<br /><br /></span><span style="color: #007700">}&nbsp;elseif&nbsp;(isset(</span><span style="color: #0000BB">$_GET</span><span style="color: #007700">[</span><span style="color: #DD0000">'MAGIC_COOKIE'</span><span style="color: #007700">])&nbsp;||&nbsp;isset(</span><span style="color: #0000BB">$_POST</span><span style="color: #007700">[</span><span style="color: #DD0000">'MAGIC_COOKIE'</span><span style="color: #007700">]))&nbsp;{<br /><br />&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">mail</span><span style="color: #007700">(</span><span style="color: #DD0000">"admin@example.com"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"Обнаружена&nbsp;попытка&nbsp;взлома"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$_SERVER</span><span style="color: #007700">[</span><span style="color: #DD0000">'REMOTE_ADDR'</span><span style="color: #007700">]);<br />&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"Обнаружено&nbsp;нарушение&nbsp;безопасности,&nbsp;администратор&nbsp;уведомлен."</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;exit;<br /><br />}&nbsp;else&nbsp;{<br /><br />&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;MAGIC_COOKIE&nbsp;в&nbsp;данных&nbsp;запроса&nbsp;не&nbsp;присутствует<br /></span><span style="color: #007700">}<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+     </div>
+
+    </div>
+   </p>
+   <p class="para">
+    Следует понимать, что установка register_globals в off не сделает ваш код
+    безопасным. Каждую полученную от пользователя переменную следует проверять
+    на соответствие ожидаемому значению. Всегда проверяйте ввод пользователя и 
+    инициализируйте все используемые переменные. Для проверки на наличие
+    неинициализированных переменных можно включить в опцию <a href="function.error-reporting.html" class="function">error_reporting()</a> 
+    отображение ошибок категории <b><tt>E_NOTICE</tt></b>.
+   </p>
+
+   <blockquote><p><b class="note">Замечание</b>: <b>Суперглобальные переменные:
+замечание о доступности</b>Начиная с PHP 4.1.0, стали доступными
+суперглобальные массивы, такие как <var class="varname">$_GET</var>,
+<var class="varname">$_POST</var>, <var class="varname">$_SERVER</var> и т.д. Дополнительную
+информацию смотрите в разделе руководства <a href="language.variables.predefined.html" class="link">superglobals</a><br /></p></blockquote>
+
+  </div>
+<hr /><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="security.errors.html">Сообщения об ошибках</a></div>
+ <div class="next" style="float: right;"><a href="security.variables.html">Данные, введенные пользователем</a></div>
+ <div class="up"><a href="security.html">Безопасность</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

@@ -1,0 +1,61 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <title>Возвращает канонизированный абсолютный путь к файлу</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+ </head>
+ <body><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="function.readlink.html">readlink</a></div>
+ <div class="next" style="float: right;"><a href="function.rename.html">rename</a></div>
+ <div class="up"><a href="ref.filesystem.html">Файловая система</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="function.realpath" class="refentry">
+   <div class="refnamediv">
+    <h1 class="refname">realpath</h1>
+    <p class="verinfo">(PHP 4, PHP 5)</p><p class="refpurpose dc-title">realpath — Возвращает канонизированный абсолютный путь к файлу</p>
+
+   </div>
+   <div class="refsect1 unknown">
+    <h3 class="title">Описание</h3>
+     <div class="methodsynopsis dc-description">
+      <span class="type">string</span> <span class="methodname"><b><b>realpath</b></b></span>
+       ( <span class="methodparam"><span class="type">string</span> <tt class="parameter">$path</tt></span>
+      )</div>
+
+    <p class="para rdfs-comment">
+     <b>realpath()</b> раскрывает все символические ссылки,
+     переходы типа &#039;/./&#039;, &#039;/../&#039; и лишние символы &#039;/&#039; в
+     пути <i><tt class="parameter">path</tt></i>
+, возвращая канонизированный абсолютный
+     путь к файлу. В этом пути не будет символических ссылок и компонентов типа
+     &#039;/./&#039; или &#039;/../&#039;.
+    </p>
+    <p class="para">
+     <b>realpath()</b> возвращает <b><tt>FALSE</tt></b> при неудаче, например
+     если файл не существует.
+    </p>
+    <p class="para">
+     <div class="example">
+      <p><b>Пример #1 Пример использования функции <b>realpath()</b></b></p>
+      <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$real_path&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">realpath</span><span style="color: #007700">(</span><span style="color: #DD0000">"../../index.php"</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+      </div>
+
+     </div>
+    </p>
+    <p class="para">
+     См. также описание функций <a href="function.basename.html" class="function">basename()</a>, 
+     <a href="function.dirname.html" class="function">dirname()</a> и
+     <a href="function.pathinfo.html" class="function">pathinfo()</a>.
+    </p>
+   </div>
+
+  </div><hr /><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="function.readlink.html">readlink</a></div>
+ <div class="next" style="float: right;"><a href="function.rename.html">rename</a></div>
+ <div class="up"><a href="ref.filesystem.html">Файловая система</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

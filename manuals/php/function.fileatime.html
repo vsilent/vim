@@ -1,0 +1,76 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <title>Получить время последнего доступа к файлу</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+ </head>
+ <body><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="function.file.html">file</a></div>
+ <div class="next" style="float: right;"><a href="function.filectime.html">filectime</a></div>
+ <div class="up"><a href="ref.filesystem.html">Файловая система</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="function.fileatime" class="refentry">
+   <div class="refnamediv">
+    <h1 class="refname">fileatime</h1>
+    <p class="verinfo">(PHP 4, PHP 5)</p><p class="refpurpose dc-title">fileatime — Получить время последнего доступа к файлу</p>
+
+   </div>
+   <div class="refsect1 unknown">
+    <h3 class="title">Описание</h3>
+     <div class="methodsynopsis dc-description">
+      <span class="type">int</span> <span class="methodname"><b><b>fileatime</b></b></span>
+       ( <span class="methodparam"><span class="type">string</span> <tt class="parameter">$filename</tt></span>
+      )</div>
+
+    <p class="simpara"> 
+     Возвращает время, когда в последний раз был осуществлен доступ
+     к указанному файлу, или <b><tt>FALSE</tt></b> в случае ошибки.
+     Время возвращается в формате &#039;Unix timestamp&#039;.
+    </p>
+    <p class="simpara">
+     Примечание: Предполагается, что время последнего доступа файла
+     изменяется во время чтения блоков файла. Это может потребовать
+     значительного количества системных ресурсов, особенно когда
+     приложение обращается к большому числу файлов или каталогов.
+     С целью увеличения производительности, некоторые файловые системы
+     на платформах Unix могут быть примонтированы с отключенной
+     возможностью обновления времени последнего доступа к файлам,
+     примером этого могут служить каталоги для хранения сообщений
+     USENET. В подобных случаях использование данной функции бессмысленно.
+    </p>
+    
+    <blockquote><p><b class="note">Замечание</b>: <span class="simpara">Результаты этой функции
+кэшируются. Более подробную информацию смотрите в разделе
+<a href="function.clearstatcache.html" class="function">clearstatcache()</a>.</span></p></blockquote>
+    
+    <div class="tip"><b class="tip">Подсказка</b><p class="simpara">Начиная с 
+<i>PHP 5.0.0</i>, эта функция также может быть
+использована с <em class="emphasis">некоторыми</em> упаковщиками url.
+Список упаковщиков, поддерживаемых семейством функций
+<a href="function.stat.html" class="function">stat()</a>, смотрите в <a href="wrappers.html" class="xref">List of Supported Protocols/Wrappers</a>.</p></div>
+
+    <p class="para">
+     <div class="example">
+      <p><b>Пример #1 Пример использования функции <b>fileatime()</b></b></p>
+      <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /><br /></span><span style="color: #FF8000">//&nbsp;Пример&nbsp;вывода:&nbsp;В&nbsp;последний&nbsp;раз&nbsp;обращение&nbsp;к&nbsp;файлу&nbsp;somefile.txt&nbsp;было&nbsp;произведено:&nbsp;December&nbsp;29&nbsp;2002&nbsp;22:16:23.<br /><br /></span><span style="color: #0000BB">$filename&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">'somefile.txt'</span><span style="color: #007700">;<br />if&nbsp;(</span><span style="color: #0000BB">file_exists</span><span style="color: #007700">(</span><span style="color: #0000BB">$filename</span><span style="color: #007700">))&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"В&nbsp;последний&nbsp;раз&nbsp;обращение&nbsp;к&nbsp;файлу&nbsp;$filename&nbsp;было&nbsp;произведено:&nbsp;"&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #0000BB">date</span><span style="color: #007700">(</span><span style="color: #DD0000">"F&nbsp;d&nbsp;Y&nbsp;H:i:s."</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">fileatime</span><span style="color: #007700">(</span><span style="color: #0000BB">$filename</span><span style="color: #007700">));<br />}<br /><br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+      </div>
+
+     </div>
+    </p>
+    <p class="simpara">
+     См.также описания функций <a href="function.filemtime.html" class="function">filemtime()</a>,
+     <a href="function.fileinode.html" class="function">fileinode()</a> и
+     <a href="function.date.html" class="function">date()</a>.
+    </p>
+   </div>
+
+  </div><hr /><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="function.file.html">file</a></div>
+ <div class="next" style="float: right;"><a href="function.filectime.html">filectime</a></div>
+ <div class="up"><a href="ref.filesystem.html">Файловая система</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

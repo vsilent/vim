@@ -1,0 +1,166 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <title>Установка</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+ </head>
+ <body><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="sdo.setup.html">Установка и настройка</a></div>
+ <div class="next" style="float: right;"><a href="sdo.configuration.html">Настройка во время выполнения</a></div>
+ <div class="up"><a href="sdo.setup.html">Установка и настройка</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="sdo.installation" class="section">
+  <h2 class="title">Установка</h2>
+  <blockquote><p><b class="note">Замечание</b>: 
+   
+    Earlier versions of the SDO extension required a separate shared
+    library for the XML DAS. This is now obsolete and any references to
+    <var class="filename">php_sdo_das_xml.dll</var>
+    or
+    <var class="filename">sdo_das_xml.so</var>
+    should be removed from your <var class="filename">php.ini</var>.
+   <br />
+  </p></blockquote>
+  <div class="procedure">
+   <b class="title">Unix systems</b>
+   <ol type="1"><li>
+    <p class="para">
+     The three SDO components - the SDO core, the XML DAS and the
+     Relational DAS - are packaged together with Service Component 
+     Architecture (SCA) into one PECL project, SCA_SDO, so you can 
+     download SCA and all three parts of SDO with the command:
+     <div class="example-contents"><pre>
+<div class="cdata"><pre>
+pecl install SCA_SDO
+</pre></div>
+     </pre></div>
+    </p>
+    <p class="para">
+     This command will build the SDO shared library as well as
+     installing the PHP files that make up SCA and the SDO 
+     Relational DAS.
+    </p>
+    <p class="para">
+     If you want to use the latest beta version, then instead run:
+     <div class="example-contents"><pre>
+<div class="cdata"><pre>
+pecl install SCA_SDO-beta
+</pre></div>
+     </pre></div>
+    </p>
+   </li>
+   <li>
+    <p class="para">
+     The
+     <strong class="command">pecl</strong>
+     command automatically installs the SDO module into your PHP
+     extensions directory. To enable the SDO extension you must add the
+     following line to
+     <var class="filename">php.ini</var>:
+     <div class="example-contents"><pre>
+<div class="cdata"><pre>
+extension=sdo.so
+</pre></div>
+     </pre></div>
+    </p>
+    <p class="para">
+     For more information about building PECL packages, consult the
+     <a href="install.pecl.html" class="link">PECL installation</a>
+     section of the manual.
+    </p>
+   </li>
+  </ol></div>
+
+  <div class="procedure">
+   <b class="title">Windows</b>
+   <ol type="1"><li>
+    <p class="para">
+     The latest SDO DLL can be downloaded from
+     <a href="http://pecl4win.php.net/ext.php/php_sdo.dll" class="link external">&raquo; php_sdo.dll</a>
+     .
+    </p>
+    <p class="para">
+     Note that currently the
+     <a href="http://pecl4win.php.net/" class="link external">&raquo; pecl4win</a>
+     site does not provide this binary at the current release level;
+     you can only download the latest level.
+    </p>
+   </li>
+   <li>
+    <p class="para">
+     The
+     <strong class="command">pecl</strong>
+     command automatically installs the SDO module into your PHP
+     extensions directory. To enable the SDO extension you must add the
+     following line to
+     <var class="filename">php.ini</var>:
+     <div class="example-contents"><pre>
+<div class="cdata"><pre>
+extension=php_sdo.dll
+</pre></div>
+     </pre></div>
+    </p>
+   </li>
+   <li>
+    <p class="para">
+     The Relational DAS can be downloaded and installed with the
+     command:
+     <div class="example-contents"><pre>
+<div class="cdata"><pre>
+pecl install -B sdo
+</pre></div>
+     </pre></div>
+    </p>
+    <p class="para">
+     The Relational DAS is written in PHP. You may need to update your
+     <a href="ini.core.html#ini.include-path" class="link">include_path</a>
+     in
+     <var class="filename">php.ini</var>
+     to point to the directory that contains
+     <var class="filename">sdo/DAS/Relational</var>.
+    </p>
+   </li>
+  </ol></div>
+
+  <div class="procedure">
+   <b class="title">Building SDO on Linux</b>
+   <p class="para">
+    This section describes how to build the SDO core and XML DAS on
+    Linux. You would only need to know how to do this if you wish to
+    build a recent version that you have checked out of CVS.
+   </p>
+   <ol type="1"><li>
+    <p class="para">
+     Change to the main extension directory:
+     <strong class="command">cd &lt; wherever your sdo code is &gt;</strong>
+    </p>
+   </li>
+   <li>
+    <p class="para">
+     Run
+     <strong class="command">phpize</strong>
+     , which will set up the environment to compile SDO.
+    </p>
+   </li>
+   <li>
+    <p class="para">
+     Next, run
+     <strong class="command">./configure; make; make install</strong>
+     . Please note, you may need to login as root to install the
+     extension.
+    </p>
+   </li>
+   <li>
+    <p class="para">
+     Make sure that the module is loaded by PHP, by adding
+     <var class="filename">extension=sdo.so</var>
+     to your <var class="filename">php.ini</var> file.
+    </p>
+   </li>
+  </ol></div>
+ </div><hr /><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="sdo.setup.html">Установка и настройка</a></div>
+ <div class="next" style="float: right;"><a href="sdo.configuration.html">Настройка во время выполнения</a></div>
+ <div class="up"><a href="sdo.setup.html">Установка и настройка</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

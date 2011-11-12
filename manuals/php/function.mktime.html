@@ -1,0 +1,129 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <title>Возвращает метку времени для заданной даты</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+ </head>
+ <body><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="function.microtime.html">microtime</a></div>
+ <div class="next" style="float: right;"><a href="function.strftime.html">strftime</a></div>
+ <div class="up"><a href="ref.datetime.html">Date/Time</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="function.mktime" class="refentry">
+   <div class="refnamediv">
+    <h1 class="refname">mktime</h1>
+    <p class="verinfo">(PHP 4, PHP 5)</p><p class="refpurpose dc-title">mktime — Возвращает метку времени для заданной даты</p>
+
+   </div>
+   <div class="refsect1 unknown">
+    <h3 class="title">Description</h3>
+     <div class="methodsynopsis dc-description">
+      <span class="type">int</span> <span class="methodname"><b><b>mktime</b></b></span>
+       ([ <span class="methodparam"><span class="type">int</span> <tt class="parameter">$hour</tt></span>
+      [, <span class="methodparam"><span class="type">int</span> <tt class="parameter">$minute</tt></span>
+      [, <span class="methodparam"><span class="type">int</span> <tt class="parameter">$second</tt></span>
+      [, <span class="methodparam"><span class="type">int</span> <tt class="parameter">$month</tt></span>
+      [, <span class="methodparam"><span class="type">int</span> <tt class="parameter">$day</tt></span>
+      [, <span class="methodparam"><span class="type">int</span> <tt class="parameter">$year</tt></span>
+      [, <span class="methodparam"><span class="type">int</span> <tt class="parameter">$is_dst</tt></span> 
+     ]]]]]]] )</div>
+
+    <p class="para rdfs-comment">
+     Функция возвращает метку времени Unix, соответствующую дате и 
+     времени, заданным аргументами.
+     Метка времени - это целое число равное разнице в секундах между 
+     заданной датой/временем и началом Эпохи Unix (The Unix Epoch, 1 января 1970 г).
+    </p>
+    <p class="para">
+     Функция <b>mktime()</b> возвращает <b><tt>FALSE</tt></b>, если аргументы
+     были неверны (до 5.1.0 в этом случае она возвращала -1).
+    </p>
+    <p class="para">
+     Аргументы могут быть опущены в порядке справа налево. В этом случае их 
+     значения по умолчанию равны соответствующим компонентам локальной 
+     даты/времени.
+    </p>
+    <p class="para">
+     Аргумент <i><tt class="parameter">is_dst</tt></i>
+ может быть установлен в 1, 
+     если заданной дате соответствует летнее время, 0 в противном случае, 
+     или -1 (значение по умолчанию), если неизвестно, действует ли летнее 
+     время на заданную дату. В последнем случае PHP пытается определить это 
+     самостоятельно. Это можно привести к неожиданному результату 
+     (который, тем не менее, не будет неверным).
+    </p>
+    <blockquote><p><b class="note">Замечание</b>: 
+     
+      Аргумент <i><tt class="parameter">is_dst</tt></i>
+ был добавлен в версии 3.0.10.
+      Начиная с версии 5.1.0 этот параметр более не рекомендуется к
+      использованию. Вместо этого рекомендуется устанавливать соответствующую
+      временную зону. 
+     <br />
+    </p></blockquote>
+    <p class="para">
+     Функцию <b>mktime()</b> удобно использовать для 
+     выполнения арифметических операций с датами, так как она вычисляет 
+     верные значения при некорректных аргументах. Например, в следующем 
+     примере каждая строка выведет &quot;Jan-01-1998&quot;.
+    </p>
+    <p class="para">
+     <div class="example">
+      <p><b>Пример #1 Пример использования функции <b>mktime()</b></b></p>
+      <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">date</span><span style="color: #007700">(</span><span style="color: #DD0000">"M-d-Y"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">mktime</span><span style="color: #007700">(</span><span style="color: #0000BB">0</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">0</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">0</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">12</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">32</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">1997</span><span style="color: #007700">));<br />echo&nbsp;</span><span style="color: #0000BB">date</span><span style="color: #007700">(</span><span style="color: #DD0000">"M-d-Y"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">mktime</span><span style="color: #007700">(</span><span style="color: #0000BB">0</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">0</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">0</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">13</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">1</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">1997</span><span style="color: #007700">));<br />echo&nbsp;</span><span style="color: #0000BB">date</span><span style="color: #007700">(</span><span style="color: #DD0000">"M-d-Y"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">mktime</span><span style="color: #007700">(</span><span style="color: #0000BB">0</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">0</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">0</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">1</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">1</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">1998</span><span style="color: #007700">));<br />echo&nbsp;</span><span style="color: #0000BB">date</span><span style="color: #007700">(</span><span style="color: #DD0000">"M-d-Y"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">mktime</span><span style="color: #007700">(</span><span style="color: #0000BB">0</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">0</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">0</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">1</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">1</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">98</span><span style="color: #007700">));<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+      </div>
+
+     </div>
+    </p>
+    <p class="para">
+     <i><tt class="parameter">year</tt></i>
+ может быть двух- или четырехзначным 
+     числом. Значения от 0 до 69 соответствуют 2000-2069, а 70-99 
+     соответствуют 1970-1999 (в большинстве современных систем, где время 
+     представляется 32-битным целым со знаком, допустимыми являются 
+     значения <i><tt class="parameter">year</tt></i>
+ между 1901 и 2038).
+    </p>
+    <p class="para">
+     <blockquote><p><b class="note">Замечание</b>: 
+      <b>Внимание</b>
+      <span class="simpara">
+       До PHP 5.1.0 отрицательные метки времени не поддерживались под всеми
+       системами Windows, а также некоторыми другими. Следовательно, 
+       допустимые значения параметра <i><tt class="parameter">year</tt></i>
+ были 
+       между 1970 и 2038.
+      </span>
+     </p></blockquote>
+    </p>
+    <p class="para">
+     Последний день любого месяца можно вычислить как &quot;нулевой&quot; день 
+     следующего месяца. Оба приведенных ниже примера выведут &quot;Последний 
+     день в феврале 2000 г: 29&quot;.
+     <div class="example">
+      <p><b>Пример #2 Последний день следующего месяца</b></p>
+      <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$lastday&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">mktime</span><span style="color: #007700">(</span><span style="color: #0000BB">0</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">0</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">0</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">3</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">0</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">2000</span><span style="color: #007700">);<br />echo&nbsp;</span><span style="color: #0000BB">strftime</span><span style="color: #007700">(</span><span style="color: #DD0000">"Последний&nbsp;день&nbsp;в&nbsp;феврале&nbsp;2000&nbsp;г::&nbsp;%d"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$lastday</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br /></span><span style="color: #0000BB">$lastday&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">mktime</span><span style="color: #007700">(</span><span style="color: #0000BB">0</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">0</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">0</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">4</span><span style="color: #007700">,&nbsp;-</span><span style="color: #0000BB">31</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">2000</span><span style="color: #007700">);<br />echo&nbsp;</span><span style="color: #0000BB">strftime</span><span style="color: #007700">(</span><span style="color: #DD0000">"Последний&nbsp;день&nbsp;в&nbsp;феврале&nbsp;2000&nbsp;г::&nbsp;%d"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$lastday</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+      </div>
+
+     </div>
+    </p>
+    <p class="para">
+     См. также <a href="function.date.html" class="function">date()</a>, <a href="function.time.html" class="function">time()</a> и
+     <a href="function.gmmktime.html" class="function">gmmktime()</a>.
+    </p>
+   </div>
+
+  </div><hr /><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="function.microtime.html">microtime</a></div>
+ <div class="next" style="float: right;"><a href="function.strftime.html">strftime</a></div>
+ <div class="up"><a href="ref.datetime.html">Date/Time</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

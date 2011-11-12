@@ -1,0 +1,627 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <title>Building from source</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+ </head>
+ <body><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="install.windows.xitami.html">Xitami on Microsoft Windows</a></div>
+ <div class="next" style="float: right;"><a href="install.windows.extensions.html">Installation of extensions on Windows</a></div>
+ <div class="up"><a href="install.windows.html">Installation on Windows systems</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="install.windows.building" class="sect1">
+ <h2 class="title">Building from source</h2>
+ <p class="para">
+  This chapter teaches how to compile PHP from sources on windows, using
+  Microsoft&#039;s tools. To compile PHP with cygwin, please refer to <a href="install.unix.html" class="xref">Установка на Unix системы</a>.
+ </p>
+ 
+ <div id="install.windows.building.quick-guide" class="sect2">
+  <h3 class="title">Quick Guide to Building On Windows</h3>
+  
+  <p class="para">
+   This step-by-step quick-start guide was written in March of 2008, running
+   Windows XP Service Pack 2 with all the latest updates and building PHP 5.2.5
+   and PHP 5.3. Experiences using different tools may differ.
+  </p>
+  
+  <ol class="orderedlist">
+   <li class="listitem">
+    <p class="para">
+     Download and install:
+    </p>
+    <ul class="itemizedlist">
+     <li class="listitem">
+      <span class="simpara">
+       <a href="http://www.microsoft.com/express/download/" class="link external">&raquo; Microsoft
+       Visual C++ 2008 Express Edition</a>
+      </span>
+     </li>
+     <li class="listitem">
+      <span class="simpara">
+       <a href="http://www.microsoft.com/downloads/details.aspx?FamilyID=E6E1C3DF-A74F-4207-8586-711EBE331CDC" class="link external">&raquo; 
+       Windows SDK for Windows Server 2008 and .NET Framework 3.5</a>
+      </span>
+     </li>
+    </ul>
+   </li>
+    
+   <li class="listitem">
+    <span class="simpara">
+     Copy <var class="filename">C:\Program Files\Microsoft SDKs\Windows\v6.1\Include\WinResrc.h</var>
+     to <var class="filename">C:\Program Files\Microsoft SDKs\Windows\v6.1\Include\winres.h</var>.
+    </span>
+   </li>
+    
+   <li class="listitem">
+    <span class="simpara">
+     Create the directory <var class="filename">C:\work</var>.
+    </span>
+   </li>
+    
+   <li class="listitem">
+    <span class="simpara">
+     Download <a href="http://www.php.net/extra/win32build.zip" class="link external">&raquo; the Windows build
+     tools</a> and unzip the contents into <var class="filename">C:\work</var>.
+    </span>
+   </li>
+    
+   <li class="listitem">
+    <span class="simpara">
+     Create the directory <var class="filename">C:\usr\local\lib</var>. Copy the
+     <var class="filename">C:\work\win32build\bin\bison.simple</var> into the new
+     directory.
+    </span>
+   </li>
+    
+   <li class="listitem">
+    <span class="simpara">
+     Download <a href="http://www.php.net/extra/bindlib_w32.zip" class="link external">&raquo; the Windows DNS
+     resolver library</a> and unzip the contents into
+     <var class="filename">C:\work</var>.
+    </span>
+   </li>
+    
+   <li class="listitem">
+    <span class="simpara">
+     Open <var class="filename">C:\work\bindlib_w32\bindlib.dsw</var>. If and when
+     asked whether to update the project, choose Yes. Choose either Debug or
+     Release configuration in the top toolbar, then choose Build =&gt; Build
+     Solution.
+    </span>
+   </li>
+   
+   <li class="listitem">
+    <span class="simpara">
+     Obtain a copy of the PHP source and extract it into the
+     <var class="filename">C:\work</var> directory. At this point, that directory
+     should look something like this:
+    </span>
+    <div class="example-contents"><pre>
+<div class="cdata"><pre>
++-C:\work
+| +-bindlib_w32
+| | +-Debug
+| | | +-resolv.lib
+| | | +-...
+| | +-...
+| +-win32build
+| | +-bin
+| | +-include
+| | +-lib
+| +-php-5.2.5
+| | +-build
+| | +-win32
+| | +-...</pre></div></pre></div>
+   </li>
+    
+   <li class="listitem">
+    <span class="simpara">
+     Open a shell using the Visual Studio 2008 Command Prompt shortcut in the
+     Start menu.
+    </span>
+   </li>
+   
+   <li class="listitem">
+    <span class="simpara">
+     Execute the command:
+    </span>
+    <div class="example-contents"><pre>
+<div class="cdata"><pre>
+C:\Program Files\Microsoft Visual Studio 9.0\VC&gt; set &quot;PATH=C:\work\win32build\bin;%PATH%&quot;
+C:\Program Files\Microsoft Visual Studio 9.0\VC&gt;</pre></div></pre></div>
+   </li>
+   
+   <li class="listitem">
+    <span class="simpara">
+     Enter the <var class="filename">C:\work\php-5.2.5</var> directory.
+    </span>
+   </li>
+   
+   <li class="listitem">
+    <span class="simpara">
+     Run <strong class="command">cscript /nologo win32\build\buildconf.js</strong>.
+    </span>
+   </li>
+   
+   <li class="listitem">
+    <span class="simpara">
+     Run <strong class="command">cscript /nologo configure.js --disable-all --enable-cli
+     --enable-cgi --enable-object-out-dir=.. --disable-ipv6</strong>. To
+     enable debugging, add <strong class="command">--enable-debug</strong> to the end.
+    </span>
+   </li>
+   
+   <li class="listitem">
+    <span class="simpara">
+     Run <strong class="command">nmake</strong>.
+    </span>
+   </li>
+   
+   <li class="listitem">
+    <span class="simpara">
+     If all went well, there will now be a working PHP CLI executable at
+     <var class="filename">C:\work\Debug_TS\php.exe</var>, or
+     <var class="filename">C:\work\Release_TS\php.exe</var>.
+    </span>
+   </li>
+
+  </ol>
+ </div>
+
+ <div id="install.windows.building.environment" class="sect2">
+  <h3 class="title">Build Environment</h3>
+  <p class="para">
+   To compile and build PHP you need a Microsoft Development Environment.
+   The following environments are supported:
+  </p>
+  <ul class="itemizedlist">
+   <li class="listitem">
+    <span class="simpara">
+     Microsoft Visual C++ 6.0 (official)
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     Microsoft Visual C++ .NET
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     Microsoft Visual C++ 2005, Windows Platform SDK and .NET Framework SDK (current)
+    </span>
+   </li>
+  </ul>
+  <p class="para">
+   While VC6 (Microsoft Visual C++ 6.0) is used to perform official Windows
+   builds, it can no longer be downloaded from Microsoft&#039;s website. New users
+   seeking to build PHP for free must use Microsoft Visual C++ 2005 Express
+   Edition and its auxiliary components.
+  </p>
+  
+  <div id="install.windows.building.environment.express2005" class="sect3">
+   <h4 class="title">Setting up Microsoft Visual C++ 2005 Express</h4>
+   <blockquote><p><b class="note">Замечание</b>: 
+    <span class="simpara">
+     Combined, these components are very large and will require over one
+     gigabyte of disk space.
+    </span>
+   </p></blockquote>
+   <p class="para">
+    Setting up Microsoft Visual C++ 2005 Express is rather involved,
+    and requires the installation of three separate packages and various
+    compatibility changes. Be sure to keep track of the paths in which
+    these programs are installed into. Download and install the following
+    programs:
+   </p>
+   <ul class="itemizedlist">
+    <li class="listitem">
+     <span class="simpara">
+      <a href="http://msdn.microsoft.com/vstudio/express/visualc/" class="link external">&raquo; Microsoft Visual C++ 2005 Express</a>
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <a href="http://www.microsoft.com/downloads/details.aspx?FamilyId=0BAF2B35-C656-4969-ACE8-E4C0C0716ADB" class="link external">&raquo; Microsoft Windows Server 2005 Platform SDK</a>
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <a href="http://www.microsoft.com/downloads/details.aspx?FamilyId=FE6F2099-B7B4-4F47-A244-C96D69C35DEC" class="link external">&raquo; .NET Framework 2.0 Software Development Kit</a>
+     </span>
+    </li>
+   </ul>
+   <p class="para">
+    There are a few post-installation steps:
+   </p>
+   <ul class="itemizedlist">
+    <li class="listitem">
+     <span class="simpara">
+      <a href="http://msdn2.microsoft.com/en-us/library/ms235626(VS.80).aspx" class="link external">&raquo; MSVC 2005 Express must
+      be configured to use Windows Platform SDK</a>. It is not necessary
+      to perform step two, as PHP does not use the graphical user interface.
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      Windows Platform SDK contains a file named <var class="filename">WinResrc.h</var>
+      usually in <var class="filename">Include</var> folder inside the SDK&#039;s installation
+      directory. This needs to be copied and renamed to <var class="filename">winres.h</var>,
+      the name PHP uses for the file.
+     </span>
+    </li>
+   </ul>
+   <p class="para">
+    Finally, when using MSVC 2005 Express from the command line, several
+    environment variables must be set up. <var class="filename">vsvars32.bat</var>
+    usually found in <var class="filename">C:\Program Files\Microsoft Visual Studio 8\Common7\Tools</var>
+    (search for the file if otherwise) contains these declarations. The
+    <var class="varname">PATH</var>, <var class="varname">INCLUDE</var> and <var class="varname">LIB</var>
+    environment variables need the corresponding <var class="filename">bin</var>,
+    <var class="filename">include</var> and <var class="filename">lib</var> directories
+    of the two newly installed SDKs added to them.
+   </p>
+   <blockquote><p><b class="note">Замечание</b>: 
+    <span class="simpara">
+     The .NET SDK paths may already be present in the <var class="filename">vsvars32.bat</var>
+     file, as this SDK installs itself into the same directory as
+     Microsoft Visual C++ 2005 Express.
+    </span>
+   </p></blockquote>
+  </div>
+ </div>
+ 
+ <div id="install.windows.building.libraries" class="sect2">
+  <h3 class="title">Libraries</h3>
+  <p class="para">
+   To extract the downloaded files you will also need a ZIP extraction
+   utility. Windows XP and newer already include this functionality built-in.
+  </p>
+  <p class="para">
+   Before you get started, you have to download:
+  </p>
+  <ul class="itemizedlist">
+   <li class="listitem">
+    <span class="simpara">
+     the win32 buildtools from the PHP site at <a href="http://www.php.net/extra/win32build.zip" class="link external">&raquo; http://www.php.net/extra/win32build.zip</a>.
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     the source code for the DNS name resolver used by PHP from <a href="http://www.php.net/extra/bindlib_w32.zip" class="link external">&raquo; http://www.php.net/extra/bindlib_w32.zip</a>. This is a
+     replacement for the <var class="filename">resolv.lib</var> library included in
+     <var class="filename">win32build.zip</var>.
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     If you plan to compile PHP as a Apache module you will also need the
+     <a href="http://www.apache.org/dist/httpd/" class="link external">&raquo; Apache sources</a>.
+    </span>
+   </li>
+  </ul>
+  <p class="simpara">
+   Finally, you are going to need the source to PHP itself. You can get the
+   latest development version using <a href="http://www.php.net/anoncvs.php" class="link external">&raquo; anonymous
+   CVS</a>, a <a href="http://snaps.php.net/" class="link external">&raquo; snapshot</a> or the
+   most recent released <a href="http://www.php.net/downloads.php" class="link external">&raquo; source</a>
+   tarball.
+  </p>
+ </div>
+
+ <div id="install.windows.building.install" class="sect2">
+  <h3 class="title">Putting it all together</h3>
+  <p class="para">
+   After downloading the required packages you have to extract them in a
+   proper place:
+   <ul class="itemizedlist">
+    <li class="listitem">
+     <span class="simpara">
+      Create a working directory where all files end up after extracting, e.g:
+      <var class="filename">C:\work</var>.
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      Create the directory <var class="filename">win32build</var> under your  working
+      directory (<var class="filename">C:\work</var>) and unzip
+      <var class="filename">win32build.zip</var> into it.
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      Create the directory <var class="filename">bindlib_w32</var> under your working
+      directory (<var class="filename">C:\work</var>) and unzip
+      <var class="filename">bindlib_w32.zip</var> into it.
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      Extract the downloaded PHP source code into your working directory
+      (<var class="filename">C:\work</var>).
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      Build the libraries you are going to need (or download the binaries if
+      available) and place the headers and libs in the <var class="filename">C:\work\win32build\include</var> and <var class="filename">C:\work\win32build\lib</var> directories,
+      respectively.
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      If you don&#039;t have cygwin installed with bison and flex, you also need to
+      make the <var class="filename">C:\work\win32build\bin</var>
+      directory available in the PATH, so that thoses tools can be found by
+      the configure script.
+     </span>
+    </li>
+   </ul>
+   Following this steps your directory structure looks like this:
+   <div class="example-contents"><pre>
+<div class="cdata"><pre>
++--C:\work
+|  |
+|  +--bindlib_w32
+|  |  |
+|  |  +--arpa
+|  |  |
+|  |  +--conf
+|  |  |
+|  |  +--...
+|  |
+|  +--php-5.x.x
+|  |  |
+|  |  +--build
+|  |  |
+|  |  +--...
+|  |  |
+|  |  +--win32
+|  |  |
+|  |  +--...
+|  |
+|  +--win32build
+|  |  |
+|  |  +--bin
+|  |  |
+|  |  +--include
+|  |  |
+|  |  +--lib
+</pre></div>
+   </pre></div>
+  </p>
+  <p class="para">
+   If you aren&#039;t using <a href="http://www.cygwin.com/" class="link external">&raquo; Cygwin</a>, you must also
+   create the directories <var class="filename">C:\usr\local\lib</var> and then copy
+   <var class="filename">bison.simple</var> from <var class="filename">C:\work\win32build\bin </var> to <var class="filename">C:\usr\local\lib</var>.
+  </p>
+  <blockquote><p><b class="note">Замечание</b>: 
+   <span class="simpara">
+    If you want to use PEAR and the comfortable command line installer, the
+    CLI-SAPI is mandatory. For more information about PEAR and the installer
+    read the documentation at the <a href="http://pear.php.net/manual/" class="link external">&raquo; PEAR</a> website.
+   </span>
+  </p></blockquote>
+ </div>
+
+ <div id="install.windows.building.resolvlib" class="sect2">
+  <h3 class="title">Build resolv.lib</h3>
+  <p class="para">
+   You must build the <var class="filename">resolv.lib</var> library. Decide whether
+   you want to have debug symbols available (bindlib - Win32 Debug) or not
+   (bindlib - Win32 Release), but please remember the choice you made, because
+   the debug build will only link with PHP when it is also built in debug mode.
+   Build the appropriate configuration:
+   <ul class="itemizedlist">
+    <li class="listitem">
+     <span class="simpara">
+      For GUI users, launch VC++, by double-clicking in
+      <var class="filename">C:\work\bindlib_w32\bindlib.dsw</var>. Then select
+      Build=&gt;Rebuild All.
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      For command line users, make sure that you either have the C++
+      environment variables registered, or have run
+      <strong class="command">vcvars.bat</strong>, and then execute one of the following
+      commands:
+     </span>
+     <ul class="itemizedlist">
+      <li class="listitem">
+       <span class="simpara">
+        <strong class="command">msdev bindlib.dsp /MAKE &quot;bindlib - Win32 Debug&quot;</strong>
+       </span>
+      </li>
+      <li class="listitem">
+       <span class="simpara">
+        <strong class="command">msdev bindlib.dsp /MAKE &quot;bindlib - Win32 Release&quot;</strong>
+       </span>
+      </li>
+     </ul>
+    </li>
+   </ul>
+   At this point, you should have a usable <var class="filename">resolv.lib</var> in
+   either your <var class="filename">C:\work\bindlib_w32\Debug</var> or
+   <var class="filename">Release</var> subdirectories. Copy this file into your
+   <var class="filename">C:\work\win32build\lib</var> directory
+   over the file by the same name found in there.
+  </p>
+ </div>
+
+ <div id="install.windows.building.new" class="sect2">
+  <h3 class="title">Building PHP using the new build system [PHP &gt;=5 only]</h3>
+  <p class="para">
+   This chapter explains how to compile PHP &gt;=5 using the new build system,
+   which is CLI-based and very similar with the main PHP&#039;s Unix build system.
+  </p>
+  <blockquote><p><b class="note">Замечание</b>: 
+   
+    This build system isn&#039;t available in PHP 4. Please refer to <a href="install.windows.building.html" class="xref">Building from source</a> instead.
+   <br />
+  </p></blockquote>
+  <p class="para">
+   Before starting, be sure you have read <a href="install.windows.building.html" class="xref">Building from source</a> and you have built all needed
+   libraries, like <a href="http://www.xmlsoft.org/" class="link external">&raquo; Libxml</a> or <a href="http://icu.sourceforge.net/" class="link external">&raquo; ICU</a> (needed for PHP &gt;= 6).
+  </p>
+  <p class="para">
+   First you should open a Visual Studio Command Prompt, which should be
+   available under the Start menu. A regular Command Prompt window shouldn&#039;t
+   work, as probably it doesn&#039;t have the necessary environment variables set.
+   Then type something like <strong class="command">cd C:\work\php-5.x.x</strong> to enter
+   in the PHP source dir. Now you are ready to start configuring PHP.
+  </p>
+  <p class="para">
+   The second step is running the <strong class="command">buildconf</strong> batch file to
+   make the configure script, by scanning the folder for
+   <var class="filename">config.w32</var> files. By default this command will also
+   search in the following directories: <var class="filename">pecl;
+   ..\pecl; pecl\rpc; ..\pecl\rpc</var>. Since PHP 5.1.0, you can change
+   this behaviour by using the <i>--add-modules-dir</i> argument
+   (e.g. <strong class="command">cscript /nologo win32/build/buildconf.js
+    --add-modules-dir=../php-gtk2 --add-modules-dir=../pecl</strong>).
+  </p>
+  <p class="para">
+   The third step is configuring. To view the list of the available
+   configuration options type <strong class="command">cscript /nologo configure.js
+   --help</strong>. After choosing the options that you will enable/disable,
+   type something like: <strong class="command">cscript /nologo configure.js --disable-foo
+   --enable-fun-ext</strong>. Using <i>--enable-foo=shared</i>
+   will attempt to build the &#039;foo&#039; extension as a shared, dynamically loadable
+   module.
+  </p>
+  <p class="para">
+   The last step is compiling. To achieve this just issue the command
+   <strong class="command">nmake</strong>. The generated files (e.g. .exe and .dll) will be
+   placed in either <var class="filename">Release_TS</var> or
+   <var class="filename">Debug_TS</var> directories (if built with
+   Thread safety), or in the <var class="filename">Release</var> or
+   <var class="filename">Debug</var> directories otherwise.
+  </p>
+  <p class="para">
+   Optionally you may also run PHP&#039;s test suite, by typing <strong class="command">nmake
+   test</strong>. If you want to run just a specific test, you may use the
+   &#039;TESTS&#039; variable (e.g. <strong class="command">nmake /D TESTS=ext/sqlite/tests
+   test</strong> - will only run sqlite&#039;s tests). To delete the files that
+   were created during the compilation, you can use the <strong class="command">nmake
+   clean</strong> command.
+  </p>
+  <p class="para">
+   A very useful configure option to build snapshots is
+   <i>--enable-snapshot-build</i>, which add a new compiling mode
+   (<strong class="command">nmake build-snap</strong>). This tries to build every extension
+   available (as shared, by default), but it will ignore build errors in
+   individual extensions or SAPI.
+  </p>
+ </div>
+
+ <div id="install.windows.building.dsw" class="sect2">
+  <h3 class="title">Building PHP using DSW files [PHP 4]</h3>
+  <p class="para">
+   Compiling PHP using the DSW files isn&#039;t supported as of PHP 5, as a much
+   <a href="install.windows.building.html#install.windows.building.new" class="link">more flexible system was made
+    available</a>. Anyway, you can still use them, but keep in mind that
+   they are not maintained very often, so you can have compiling problems. To
+   compile PHP 4 for windows, this is the only available way though.
+  </p>
+ 
+  <div id="install.windows.building.dsw.configure" class="sect3">
+   <h4 class="title">Configure MVC ++</h4>
+   <p class="para">
+    The first step is to configure MVC++ to prepare for compiling. Launch
+    Microsoft Visual C++, and from the menu select Tools =&gt; Options. In the
+    dialog, select the directories tab. Sequentially change the dropdown to
+    Executables, Includes, and Library files. Your entries should look like
+    this:
+    <ul class="itemizedlist">
+     <li class="listitem">
+      <span class="simpara">
+       Executable files: <var class="filename">C:\work\win32build\bin</var>, Cygwin users:
+       <var class="filename">C:\cygwin\bin</var>
+      </span>
+     </li>
+     <li class="listitem">
+      <span class="simpara">
+       Include files: <var class="filename">C:\work\win32build\include</var>
+      </span>
+     </li>
+     <li class="listitem">
+      <span class="simpara">
+       Library files: <var class="filename">C:\work\win32build\lib</var>
+      </span>
+     </li>
+    </ul>
+   </p>
+  </div>
+
+  <div id="install.windows.building.dsw.compile" class="sect3">
+   <h4 class="title">Compiling</h4>
+   <p class="simpara">
+    The best way to get started is to build the CGI version:
+   </p>
+   <ul class="itemizedlist">
+    <li class="listitem">
+     <span class="simpara">
+      For GUI users, launch VC++, and then select File =&gt; Open Workspace
+      and select <var class="filename">C:\work\php-4.x.x\win32\php4ts.dsw</var>. Then
+      select Build=&gt;Set Active Configuration and select the desired
+      configuration, either <i>php4ts - Win32 Debug_TS</i> or
+      <i>php4ts - Win32 Release_TS</i>. Finally select
+      Build=&gt;Rebuild All.
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      For command line users, make sure that you either have the C++
+      environment variables registered, or have run
+      <strong class="command">vcvars.bat</strong>, and then execute one of the following
+      commands from the <var class="filename">C:\work\php-4.x.x\win32</var> directory:
+     </span>
+     <ul class="itemizedlist">
+      <li class="listitem">
+       <span class="simpara">
+        <strong class="command">msdev php4ts.dsp /MAKE &quot;php4ts - Win32 Debug_TS&quot;</strong>
+       </span>
+      </li>
+      <li class="listitem">
+       <span class="simpara">
+        <strong class="command">msdev php4ts.dsp /MAKE &quot;php4ts - Win32 Release_TS&quot;</strong>
+       </span>
+      </li>
+      <li class="listitem">
+       <span class="simpara">
+        At this point, you should have a usable <var class="filename">php.exe</var>
+        in either your <var class="filename">C:\work\php-4.x.x\Debug_TS</var> or
+        <var class="filename">Release_TS</var> subdirectories.
+       </span>
+      </li>
+     </ul>
+    </li>
+   </ul>
+   <p class="simpara">
+    It is possible to do minor customization to the build process by editing
+    the <var class="filename">main/config.win32.h</var> file. For example you can
+    change the default location of <var class="filename">php.ini</var>, the built-in extensions, and the
+    default location for your extensions.
+   </p>
+   <p class="simpara">
+    Next you may want to build the CLI version which is designed to use <a href="features.commandline.html" class="link">PHP from the command line</a>. The steps
+    are the same as for building the CGI version, except you have to select
+    the <i>php4ts_cli - Win32 Debug_TS</i> or <i>php4ts_cli
+    - Win32 Release_TS</i> project file. After a successful compiling
+    run you will find the <var class="filename">php.exe</var> in either the directory
+    <var class="filename">Release_TS\cli\</var> or <var class="filename">Debug_TS\cli\</var>.
+   </p>
+   <p class="simpara">
+    In order to build the SAPI module (<var class="filename">php4isapi.dll</var>) for
+    integrating PHP with Microsoft IIS, set your active configuration to
+    <var class="filename">php4isapi-whatever-config</var> and build the desired dll.
+   </p>
+  </div>
+ </div>
+</div><hr /><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="install.windows.xitami.html">Xitami on Microsoft Windows</a></div>
+ <div class="next" style="float: right;"><a href="install.windows.extensions.html">Installation of extensions on Windows</a></div>
+ <div class="up"><a href="install.windows.html">Installation on Windows systems</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

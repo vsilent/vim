@@ -1,0 +1,82 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <title>Настройка во время выполнения</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+ </head>
+ <body><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="dbx.installation.html">Установка</a></div>
+ <div class="next" style="float: right;"><a href="dbx.resources.html">Типы ресурсов</a></div>
+ <div class="up"><a href="dbx.setup.html">Установка и настройка</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="dbx.configuration" class="section">
+ <h2 class="title">Настройка во время выполнения</h2>
+ <p class="simpara">
+Поведение этих функций зависит от установок в <var class="filename">php.ini</var>.
+</p>
+ <p class="para">
+  <table border="5">
+   <caption><b>DBX Configuration Options</b></caption>
+   <colgroup>
+
+    <thead valign="middle">
+     <tr valign="middle">
+      <th colspan="1">Name</th>
+      <th colspan="1">Default</th>
+      <th colspan="1">Changeable</th>
+      <th colspan="1">Changelog</th>
+     </tr>
+
+    </thead>
+
+    <tbody valign="middle" class="tbody">
+     <tr valign="middle">
+      <td colspan="1" rowspan="1" align="left">dbx.colnames_case</td>
+      <td colspan="1" rowspan="1" align="left">&quot;unchanged&quot;</td>
+      <td colspan="1" rowspan="1" align="left">PHP_INI_SYSTEM</td>
+      <td colspan="1" rowspan="1" align="left">Available since PHP 4.3.0. Removed in PHP 5.1.0.</td>
+     </tr>
+
+    </tbody>
+   </colgroup>
+
+  </table>
+
+  Для подробного описания констант
+PHP_INI_*, обратитесь к документации функции <a href="function.ini-set.html" class="function">ini_set()</a>.
+</p>
+
+<p class="para">Краткое разъяснение конфигурационных
+директив.</p>
+
+<p class="para">
+ <dl>
+
+   <dt id="ini.dbx.colnames-case">
+   <span class="term">
+    <i><tt class="parameter">dbx.colnames_case</tt></i>
+
+    <a href="language.types.string.html" class="type string">string</a>
+   </span>
+
+   <dd>
+
+    <p class="para">
+     Columns names can be returned &quot;unchanged&quot; or converted to
+     &quot;uppercase&quot; or &quot;lowercase&quot;. This directive can be overridden
+     with a flag to <a href="function.dbx-query.html" class="function">dbx_query()</a>.
+    </p>
+   </dd>
+
+  </dt>
+
+ 
+ </dl>
+
+ </p>
+</div><hr /><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="dbx.installation.html">Установка</a></div>
+ <div class="next" style="float: right;"><a href="dbx.resources.html">Типы ресурсов</a></div>
+ <div class="up"><a href="dbx.setup.html">Установка и настройка</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

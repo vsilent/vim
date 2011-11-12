@@ -1,0 +1,83 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <title>Копирует файл</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+ </head>
+ <body><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="function.clearstatcache.html">clearstatcache</a></div>
+ <div class="next" style="float: right;"><a href="function.delete.html">delete</a></div>
+ <div class="up"><a href="ref.filesystem.html">Файловая система</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="function.copy" class="refentry">
+   <div class="refnamediv">
+    <h1 class="refname">copy</h1>
+    <p class="verinfo">(PHP 4, PHP 5)</p><p class="refpurpose dc-title">copy — Копирует файл</p>
+
+   </div>
+   <div class="refsect1 unknown">
+    <h3 class="title">Описание</h3>
+     <div class="methodsynopsis dc-description">
+      <span class="type">bool</span> <span class="methodname"><b><b>copy</b></b></span>
+       ( <span class="methodparam"><span class="type">string</span> <tt class="parameter">$source</tt></span>
+      , <span class="methodparam"><span class="type">string</span> <tt class="parameter">$dest</tt></span>
+      )</div>
+
+    <p class="para rdfs-comment">
+     Создает копию файла, чье имя передано в параметре <i><tt class="parameter">source</tt></i>
+,
+     в файле с именем <i><tt class="parameter">dest</tt></i>
+. Возвращает <b><tt>TRUE</tt></b> в случае успешного завершения или <b><tt>FALSE</tt></b> в случае возникновения ошибки.
+     <div class="example">
+      <p><b>Пример #1 Пример использования функции <b>copy()</b></b></p>
+      <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$file&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">'example.txt'</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$newfile&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">'example.txt.bak'</span><span style="color: #007700">;<br /><br />if&nbsp;(!</span><span style="color: #0000BB">copy</span><span style="color: #007700">(</span><span style="color: #0000BB">$file</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$newfile</span><span style="color: #007700">))&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"не&nbsp;удалось&nbsp;скопировать&nbsp;$file...\n"</span><span style="color: #007700">;<br />}<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+      </div>
+
+     </div>
+    </p>
+    <p class="para">
+     Если вы хотите переместить файл, воспользуйтесь функцией <a href="function.rename.html" class="function">rename()</a>.
+    </p>
+    <blockquote><p><b class="note">Замечание</b>: 
+     
+      Начиная с PHP версии 4.3.0, оба параметра, <i><tt class="parameter">source</tt></i>
+ и
+      <i><tt class="parameter">dest</tt></i>
+, могут быть URL&#039;ами, если были
+      включены &quot;упаковщики fopen&quot;.  За более подробной информацией
+      обратитесь к описанию функции <a href="function.fopen.html" class="function">fopen()</a>.
+      Если параметр <i><tt class="parameter">dest</tt></i>
+ является URL, выполнение
+      функции может завершиться ошибкой, если упаковщик не поддерживает
+      перезапись существующих файлов.
+     <br />
+    </p></blockquote>
+    <div class="warning"><b class="warning">Внимание</b>
+     <p class="para">
+      Если файл-назначение существует, он будет перезаписан.
+     </p>
+    </div>
+    <blockquote><p><b class="note">Замечание</b>: 
+     
+      Замечание отностильно совместимости Windows: Если вы копируете пустой файл,
+      <b>copy()</b> вернёт <b><tt>FALSE</tt></b>, но файл будет нормально
+      скопирован.
+     <br />
+    </p></blockquote>
+    <p class="para"> 
+     См.также описание функций <a href="function.move-uploaded-file.html" class="function">move_uploaded_file()</a>,
+     <a href="function.rename.html" class="function">rename()</a>, а также главу руководства
+     <a href="features.file-upload.html" class="link">Обработка загрузки файлов</a>.
+    </p>
+   </div>
+
+  </div><hr /><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="function.clearstatcache.html">clearstatcache</a></div>
+ <div class="next" style="float: right;"><a href="function.delete.html">delete</a></div>
+ <div class="up"><a href="ref.filesystem.html">Файловая система</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

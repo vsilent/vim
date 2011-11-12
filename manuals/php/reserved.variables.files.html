@@ -1,0 +1,95 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <title>HTTP File Upload variables</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+ </head>
+ <body><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="reserved.variables.post.html">$_POST</a></div>
+ <div class="next" style="float: right;"><a href="reserved.variables.request.html">$_REQUEST</a></div>
+ <div class="up"><a href="reserved.variables.html">Предопределённые переменные</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="reserved.variables.files" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">$_FILES</h1>
+  <h1 class="refname">$HTTP_POST_FILES [deprecated]</h1>
+  <p class="verinfo">(No version information available, might be only in CVS)</p><p class="refpurpose dc-title">$HTTP_POST_FILES [deprecated] — HTTP File Upload variables</p>
+
+ </div>
+ 
+ <div class="refsect1 description">
+  <h3 class="title">Описание</h3>
+  <p class="para">
+   An associative <a href="language.types.array.html" class="type array">array</a> of items uploaded to the current script
+   via the HTTP POST method. 
+  </p>
+
+  <p class="simpara">
+   <var class="varname">$HTTP_POST_FILES</var> contains the same initial
+   information, but is not a <a href="language.variables.superglobals.html" class="link">superglobal</a>. 
+   (Note that <var class="varname">$HTTP_POST_FILES</var> and <var class="varname">$_FILES</var>
+   are different variables and that PHP handles them as such)
+  </p>
+
+ </div>
+
+ 
+
+ <div class="refsect1 changelog">
+  <h3 class="title">Список изменений</h3>
+  <p class="para">
+   <table class="informaltable">
+    <colgroup>
+
+     <thead valign="middle">
+      <tr valign="middle">
+       <th colspan="1">Версия</th>
+       <th colspan="1">Описание</th>
+      </tr>
+
+     </thead>
+
+     <tbody valign="middle" class="tbody">
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left">4.1.0</td>
+       <td colspan="1" rowspan="1" align="left">
+        Introduced <var class="varname">$_FILES</var> that deprecated
+        <var class="varname">$HTTP_POST_FILES</var>.
+       </td>
+      </tr>
+
+     </tbody>
+    </colgroup>
+
+   </table>
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 notes">
+  <h3 class="title">Примечания</h3>
+  <blockquote><p><b class="note">Замечание</b>: This is a &#039;superglobal&#039;, or
+automatic global, variable. This simply means that it is available in
+all scopes throughout a script. There is no need to do 
+<strong class="command">global $variable;</strong> to access it within functions or methods.
+<br /></p></blockquote>
+ </div>
+
+
+ <div class="refsect1 seealso">
+  <h3 class="title">Смотрите также</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"><a href="function.move-uploaded-file.html" class="function" rel="rdfs-seeAlso">move_uploaded_file()</a></li>
+    <li class="member"><a href="features.file-upload.html" class="link">Handling File Uploads</a></li>
+   </ul>
+  </p>
+ </div>
+
+
+</div><hr /><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="reserved.variables.post.html">$_POST</a></div>
+ <div class="next" style="float: right;"><a href="reserved.variables.request.html">$_REQUEST</a></div>
+ <div class="up"><a href="reserved.variables.html">Предопределённые переменные</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

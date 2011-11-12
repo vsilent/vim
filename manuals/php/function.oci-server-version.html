@@ -1,0 +1,59 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <title>Возвращает строку с информацией о версии сервера Oracle</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+ </head>
+ <body><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="function.oci-rollback.html">oci_rollback</a></div>
+ <div class="next" style="float: right;"><a href="function.oci-set-prefetch.html">oci_set_prefetch</a></div>
+ <div class="up"><a href="ref.oci8.html">OCI8</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="function.oci-server-version" class="refentry">
+   <div class="refnamediv">
+    <h1 class="refname">oci_server_version</h1>
+    <p class="verinfo">(PHP 5, PECL oci8:1.1-1.2.4)</p><p class="refpurpose dc-title">oci_server_version — Возвращает строку с информацией о версии сервера Oracle</p>
+
+   </div>
+   <div class="refsect1 unknown">
+	   <h3 class="title">Описание</h3>
+     <div class="methodsynopsis dc-description">
+      <span class="type">string</span> <span class="methodname"><b><b>oci_server_version</b></b></span>
+       ( <span class="methodparam"><span class="type">resource</span> <tt class="parameter">$connection</tt></span>
+      )</div>
+
+    <p class="para rdfs-comment">
+     Возвращает строку с информацией о версии сервера Oracle, с которым
+     установлено соединение <i><tt class="parameter">connection</tt></i>
+ или <b><tt>FALSE</tt></b> в
+     случае ошибки.
+    </p>  
+    <p class="para">
+     <div class="example">
+      <p><b>Пример #1 Пример использования <b>oci_server_version()</b></b></p>
+      <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />&nbsp;&nbsp;&nbsp;&nbsp;$conn&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">oci_connect</span><span style="color: #007700">(</span><span style="color: #DD0000">"scott"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"tiger"</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"Server&nbsp;Version:&nbsp;"&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #0000BB">oci_server_version</span><span style="color: #007700">(</span><span style="color: #0000BB">$conn</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">oci_close</span><span style="color: #007700">(</span><span style="color: #0000BB">$conn</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+      </div>
+
+     </div>
+    </p>
+    <blockquote><p><b class="note">Замечание</b>: 
+     
+      В версиях PHP ниже 5.0.0 эта функция называлась
+      <a href="function.ociserverversion.html" class="function">ociserverversion()</a>. 
+      В PHP 5.0.0 и выше <a href="function.ociserverversion.html" class="function">ociserverversion()</a> является
+      алиасом <b>oci_server_version()</b>, поэтому вы можете
+      продолжать использовать это имя, однако это не рекомендуется.
+     <br />
+    </p></blockquote>
+   </div>
+
+  </div><hr /><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="function.oci-rollback.html">oci_rollback</a></div>
+ <div class="next" style="float: right;"><a href="function.oci-set-prefetch.html">oci_set_prefetch</a></div>
+ <div class="up"><a href="ref.oci8.html">OCI8</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

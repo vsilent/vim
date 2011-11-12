@@ -1,0 +1,102 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <title>Should antialias functions be used or not</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+ </head>
+ <body><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="function.imagealphablending.html">imagealphablending</a></div>
+ <div class="next" style="float: right;"><a href="function.imagearc.html">imagearc</a></div>
+ <div class="up"><a href="ref.image.html">Image Функции</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="function.imageantialias" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">imageantialias</h1>
+  <p class="verinfo">(PHP 4 &gt;= 4.3.2, PHP 5)</p><p class="refpurpose dc-title">imageantialias — Should antialias functions be used or not</p>
+
+ </div>
+ <div class="refsect1 description">
+  <h3 class="title">Описание</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type">bool</span> <span class="methodname"><b><b>imageantialias</b></b></span>
+    ( <span class="methodparam"><span class="type">resource</span> <tt class="parameter">$image</tt></span>
+   , <span class="methodparam"><span class="type">bool</span> <tt class="parameter">$on</tt></span>
+   )</div>
+
+  <p class="para rdfs-comment">
+   Activate the fast drawing antialiased methods for lines and wired polygons.
+   It does not support alpha components. It works using a direct blend
+   operation. It works only with truecolor images.
+  </p>
+  <p class="para">
+   Thickness and styled are not supported.
+  </p>
+  <p class="para">
+   Using antialiased primitives with transparent background color can end with
+   some unexpected results. The blend method uses the background color as any
+   other colors. The lack of alpha component support does not allow an alpha
+   based antialiasing method.
+  </p>
+ </div>
+
+ <div class="refsect1 parameters">
+  <h3 class="title">Список параметров</h3>
+  <p class="para">
+   <dl>
+
+    <dt>
+<span class="term"><i><tt class="parameter">
+image</tt></i>
+</span>
+<dd>
+<p class="para">An image resource, returned by one of the image creation functions, 
+such as <a href="function.imagecreatetruecolor.html" class="function">imagecreatetruecolor()</a>.</p></dd>
+</dt>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">on</tt></i>
+</span>
+
+     <dd>
+
+      <p class="para">
+       Whether to enable antialiasing or not.
+      </p>
+     </dd>
+
+    </dt>
+
+   </dl>
+
+  </p>
+ </div>
+
+ <div class="refsect1 returnvalues">
+  <h3 class="title">Возвращаемые значения</h3>
+  <p class="para">
+   Возвращает <b><tt>TRUE</tt></b> в случае успешного завершения или <b><tt>FALSE</tt></b> в случае возникновения ошибки.
+  </p>
+ </div>
+
+ <div class="refsect1 notes">
+  <h3 class="title">Примечания</h3>
+  <blockquote><p><b class="note">Замечание</b>: <span class="simpara">Эта функция доступна только в том
+случае, если PHP был скомпилирован со встроенной библиотекой GD.</span></p></blockquote>
+ </div>
+
+ <div class="refsect1 seealso">
+  <h3 class="title">Смотрите также</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"><a href="function.imagecreatetruecolor.html" class="function" rel="rdfs-seeAlso">imagecreatetruecolor()</a></li>
+   </ul>
+  </p>
+ </div>
+
+</div><hr /><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="function.imagealphablending.html">imagealphablending</a></div>
+ <div class="next" style="float: right;"><a href="function.imagearc.html">imagearc</a></div>
+ <div class="up"><a href="ref.image.html">Image Функции</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

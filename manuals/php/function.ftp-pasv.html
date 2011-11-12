@@ -1,0 +1,98 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <title>Включает или выключает пассивный режим</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+ </head>
+ <body><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="function.ftp-nlist.html">ftp_nlist</a></div>
+ <div class="next" style="float: right;"><a href="function.ftp-put.html">ftp_put</a></div>
+ <div class="up"><a href="ref.ftp.html">FTP</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="function.ftp-pasv" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">ftp_pasv</h1>
+  <p class="verinfo">(PHP 4, PHP 5)</p><p class="refpurpose dc-title">ftp_pasv — Включает или выключает пассивный режим</p>
+
+ </div>
+ <div class="refsect1 description">
+  <h3 class="title">Описание</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type">bool</span> <span class="methodname"><b><b>ftp_pasv</b></b></span>
+    ( <span class="methodparam"><span class="type">resource</span> <tt class="parameter">$ftp_stream</tt></span>
+   , <span class="methodparam"><span class="type">bool</span> <tt class="parameter">$pasv</tt></span>
+   )</div>
+
+  <p class="para rdfs-comment">
+   <b>ftp_pasv()</b> включает или выключает пассивный режим.
+   В пассивном передача данных инициируется клиентом, а не сервером.
+  </p>
+ </div>
+
+ <div class="refsect1 parameters">
+  <h3 class="title">Список параметров</h3>
+  <p class="para">
+   <dl>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">ftp_stream</tt></i>
+</span>
+
+     <dd>
+
+      <p class="para">
+       Идентификатор соединения с FTP сервером
+      </p>
+     </dd>
+
+    </dt>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">pasv</tt></i>
+</span>
+
+     <dd>
+
+      <p class="para">
+       Если <b><tt>TRUE</tt></b>, пассивный режим будет включен, иначе выключен.
+      </p>
+     </dd>
+
+    </dt>
+
+   </dl>
+
+  </p>
+ </div>
+
+ <div class="refsect1 returnvalues">
+  <h3 class="title">Возвращаемые значения</h3>
+  <p class="para">
+   Возвращает <b><tt>TRUE</tt></b> в случае успешного завершения или <b><tt>FALSE</tt></b> в случае возникновения ошибки.
+  </p>
+ </div>
+
+ <div class="refsect1 examples">
+  <h3 class="title">Примеры</h3>
+  <p class="para">
+   <div class="example">
+    <p><b>Пример #1 Пример использования <b>ftp_pasv()</b></b></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$file&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">'somefile.txt'</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$remote_file&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">'readme.txt'</span><span style="color: #007700">;<br /><br /></span><span style="color: #FF8000">//&nbsp;установка&nbsp;соединения<br /></span><span style="color: #0000BB">$conn_id&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">ftp_connect</span><span style="color: #007700">(</span><span style="color: #0000BB">$ftp_server</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">//&nbsp;проверка&nbsp;имени&nbsp;пользователя&nbsp;и&nbsp;пароля<br /></span><span style="color: #0000BB">$login_result&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">ftp_login</span><span style="color: #007700">(</span><span style="color: #0000BB">$conn_id</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$ftp_user_name</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$ftp_user_pass</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">//&nbsp;включение&nbsp;пассивного&nbsp;режима<br /></span><span style="color: #0000BB">ftp_pasv</span><span style="color: #007700">(</span><span style="color: #0000BB">$conn_id</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">true</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">//&nbsp;загрузка&nbsp;файла<br /></span><span style="color: #007700">if&nbsp;(</span><span style="color: #0000BB">ftp_put</span><span style="color: #007700">(</span><span style="color: #0000BB">$conn_id</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$remote_file</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$file</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">FTP_ASCII</span><span style="color: #007700">))&nbsp;{<br />&nbsp;echo&nbsp;</span><span style="color: #DD0000">"$file&nbsp;загружен&nbsp;на&nbsp;сервер\n"</span><span style="color: #007700">;<br />}&nbsp;else&nbsp;{<br />&nbsp;echo&nbsp;</span><span style="color: #DD0000">"Не&nbsp;удалось&nbsp;загрузить&nbsp;$file&nbsp;на&nbsp;сервер\n"</span><span style="color: #007700">;<br />}<br /><br /></span><span style="color: #FF8000">//&nbsp;закрытие&nbsp;соединения<br /></span><span style="color: #0000BB">ftp_close</span><span style="color: #007700">(</span><span style="color: #0000BB">$conn_id</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+  </p>
+ </div>
+
+</div><hr /><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="function.ftp-nlist.html">ftp_nlist</a></div>
+ <div class="next" style="float: right;"><a href="function.ftp-put.html">ftp_put</a></div>
+ <div class="up"><a href="ref.ftp.html">FTP</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

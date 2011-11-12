@@ -1,0 +1,173 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <title>Import a large object from file</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+ </head>
+ <body><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="function.pg-lo-export.html">pg_lo_export</a></div>
+ <div class="next" style="float: right;"><a href="function.pg-lo-open.html">pg_lo_open</a></div>
+ <div class="up"><a href="ref.pgsql.html">PostgreSQL</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="function.pg-lo-import" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">pg_lo_import</h1>
+  <p class="verinfo">(PHP 4 &gt;= 4.2.0, PHP 5)</p><p class="refpurpose dc-title">pg_lo_import — Import a large object from file</p>
+
+ </div>
+
+ <div class="refsect1 description">
+  <h3 class="title">Описание</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type">int</span> <span class="methodname"><b><b>pg_lo_import</b></b></span>
+    ( <span class="methodparam"><span class="type">resource</span> <tt class="parameter">$connection</tt></span>
+   , <span class="methodparam"><span class="type">string</span> <tt class="parameter">$pathname</tt></span>
+   )</div>
+
+  <div class="methodsynopsis dc-description">
+   <span class="type">int</span> <span class="methodname"><b><b>pg_lo_import</b></b></span>
+    ( <span class="methodparam"><span class="type">string</span> <tt class="parameter">$pathname</tt></span>
+   )</div>
+
+  <p class="para rdfs-comment">
+   <b>pg_lo_import()</b> creates a new large object
+   in the database using a file on the filesystem as its data
+   source.
+  </p>
+  <p class="para">
+   To use the large object interface, it is necessary to
+   enclose it within a transaction block.
+  </p>
+  <blockquote><p><b class="note">Замечание</b>: <span class="simpara">Когда опция <a href="features.safe-mode.html" class="link">safe mode</a> включена, PHP проверяет,
+имеют ли файлы/каталоги, с которыми вы собираетесь работать, такой
+же UID (владельца), как и выполняемый скрипт.</span></p></blockquote>
+  <blockquote><p><b class="note">Замечание</b>: 
+   
+    This function used to be called <b>pg_loimport()</b>.
+   <br />
+  </p></blockquote>
+ </div>
+
+
+ <div class="refsect1 parameters">
+  <h3 class="title">Список параметров</h3>
+  <p class="para">
+   <dl>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">connection</tt></i>
+</span>
+
+     <dd>
+
+      <p class="para">
+       PostgreSQL database connection resource.  When 
+       <i><tt class="parameter">connection</tt></i>
+ is not present, the default connection 
+       is used. The default connection is the last connection made by 
+       <a href="function.pg-connect.html" class="function">pg_connect()</a> or <a href="function.pg-pconnect.html" class="function">pg_pconnect()</a>.
+      </p>
+     </dd>
+
+    </dt>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">pathname</tt></i>
+</span>
+
+     <dd>
+
+      <p class="para">
+       The full path and file name of the file on the client
+       filesystem from which to read the large object data.
+      </p>
+     </dd>
+
+    </dt>
+
+   </dl>
+
+  </p>
+ </div>
+
+
+ <div class="refsect1 returnvalues">
+  <h3 class="title">Возвращаемые значения</h3>
+  <p class="para">
+   The <var class="varname">OID</var> of the newly created large object, or
+   <b><tt>FALSE</tt></b> on failure.
+  </p>
+ </div>
+
+
+ <div class="refsect1 changelog">
+  <h3 class="title">Список изменений</h3>
+  <p class="para">
+   <table class="informaltable">
+    <colgroup>
+
+     <thead valign="middle">
+      <tr valign="middle">
+       <th colspan="1">Версия</th>
+       <th colspan="1">Описание</th>
+      </tr>
+
+     </thead>
+
+     <tbody valign="middle" class="tbody">
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left">4.2.0</td>
+       <td colspan="1" rowspan="1" align="left"><p class="para">
+        The syntax of this function changed. It used to be:
+        <div class="methodsynopsis dc-description">
+         <span class="type">int</span> <span class="methodname"><b><b>pg_lo_import</b></b></span>
+          ( <span class="methodparam"><span class="type">string</span> <tt class="parameter">$pathname</tt></span>
+         [, <span class="methodparam"><span class="type">resource</span> <tt class="parameter">$connection</tt></span>
+        ] )</div>
+
+       </p></td>
+      </tr>
+
+     </tbody>
+    </colgroup>
+
+   </table>
+  </p>
+ </div>
+
+
+ <div class="refsect1 examples">
+  <h3 class="title">Примеры</h3>
+  <p class="para">
+   <div class="example">
+    <p><b>Пример #1 <b>pg_lo_import()</b> example</b></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />&nbsp;&nbsp;&nbsp;$database&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">pg_connect</span><span style="color: #007700">(</span><span style="color: #DD0000">"dbname=jacarta"</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">pg_query</span><span style="color: #007700">(</span><span style="color: #0000BB">$database</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"begin"</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$oid&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">pg_lo_import</span><span style="color: #007700">(</span><span style="color: #0000BB">$database</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'/tmp/lob.dat'</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">pg_query</span><span style="color: #007700">(</span><span style="color: #0000BB">$database</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"commit"</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div> 
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 seealso">
+  <h3 class="title">Смотрите также</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"><a href="function.pg-lo-export.html" class="function" rel="rdfs-seeAlso">pg_lo_export()</a></li>
+    <li class="member"><a href="function.pg-lo-open.html" class="function" rel="rdfs-seeAlso">pg_lo_open()</a></li>
+   </ul>
+  </p>
+ </div>
+
+</div><hr /><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="function.pg-lo-export.html">pg_lo_export</a></div>
+ <div class="next" style="float: right;"><a href="function.pg-lo-open.html">pg_lo_open</a></div>
+ <div class="up"><a href="ref.pgsql.html">PostgreSQL</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

@@ -1,0 +1,53 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <title>Освобождает память от результата запроса</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+ </head>
+ <body><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="function.mysql-field-type.html">mysql_field_type</a></div>
+ <div class="next" style="float: right;"><a href="function.mysql-get-client-info.html">mysql_get_client_info</a></div>
+ <div class="up"><a href="ref.mysql.html">MySQL</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="function.mysql-free-result" class="refentry">
+   <div class="refnamediv">
+    <h1 class="refname">mysql_free_result</h1>
+    <p class="verinfo">(PHP 4, PHP 5, PECL mysql:1.0)</p><p class="refpurpose dc-title">mysql_free_result — Освобождает память от результата запроса</p>
+
+   </div>
+   <div class="refsect1 unknown">
+    <h3 class="title">Описание</h3>
+     <div class="methodsynopsis dc-description">
+      <span class="type">bool</span> <span class="methodname"><b><b>mysql_free_result</b></b></span>
+       ( <span class="methodparam"><span class="type">resource</span> <tt class="parameter">$result</tt></span>
+      )</div>
+
+    <p class="para rdfs-comment">
+     <b>mysql_free_result()</b> высвободит всю память, занимаемую
+     результатом, на который ссылается переданный функции указатель <i><tt class="parameter">result</tt></i>
+.
+    </p>
+    <p class="para">
+     <b>mysql_free_result()</b> нуждается в вызове только в том
+     случае, если вы всерьёз обеспокоены тем, сколько памяти используют ваши
+     запросы к БД, возвращающие большое количество данных. Вся память,
+     используемая для хранения этих данных автоматически очистится в конце
+     работы скрипта.
+     
+    </p>
+    <p class="para">
+     Возвращает <b><tt>TRUE</tt></b> в случае успешного завершения или <b><tt>FALSE</tt></b> в случае возникновения ошибки.
+    </p>
+    <p class="para">
+     Для совместимости, как алиас, доступна устаревшая функция
+     <b>mysql_freeresult()</b>. Однако, использовать её крайне не
+     рекомендуется.
+    </p>
+   </div>
+
+  </div><hr /><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="function.mysql-field-type.html">mysql_field_type</a></div>
+ <div class="next" style="float: right;"><a href="function.mysql-get-client-info.html">mysql_get_client_info</a></div>
+ <div class="up"><a href="ref.mysql.html">MySQL</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

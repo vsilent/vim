@@ -1,0 +1,39 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <title>Введение</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+ </head>
+ <body><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="book.apache.html">Apache</a></div>
+ <div class="next" style="float: right;"><a href="apache.setup.html">Установка и настройка</a></div>
+ <div class="up"><a href="book.apache.html">Apache</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="intro.apache" class="preface">
+  <h1 class="title">Введение</h1>
+  <p class="para">
+   Эти функции доступны только в том случае, если PHP работает
+   в качестве модуля Apache.
+  </p>
+  <blockquote><p><b class="note">Замечание</b>: 
+   <span class="simpara">
+    Начиная с PHP 4.3.2, переменная <span class="envar">PATH_TRANSLATED</span> больше 
+    не создаётся под Apache 2, в отличие от Apache 1, где она создаётся со
+    тем же значением, что и <span class="envar">SCRIPT_FILENAME</span> (если другое
+    значение не было установлено самим Apache).
+    Это изменение было сделано для соответствия спецификации
+    <acronym title="Common Gateway Interface">CGI</acronym>, которая гласит, что <span class="envar">PATH_TRANSLATED</span>
+    должна быть объявлена только тогда, когда определена переменная 
+    <span class="envar">PATH_INFO</span>.
+   </span>
+   <span class="simpara">
+    Пользователи Apache 2 могут использовать опцию <i>AcceptPathInfo = On</i>
+    в <var class="filename">httpd.conf</var>, чтобы объявить переменную <span class="envar">PATH_INFO</span>.
+   </span>
+  </p></blockquote>
+ </div><hr /><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="book.apache.html">Apache</a></div>
+ <div class="next" style="float: right;"><a href="apache.setup.html">Установка и настройка</a></div>
+ <div class="up"><a href="book.apache.html">Apache</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

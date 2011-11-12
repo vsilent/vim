@@ -1,0 +1,165 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <title>Настройка во время выполнения</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+ </head>
+ <body><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="apache.installation.html">Установка</a></div>
+ <div class="next" style="float: right;"><a href="apache.resources.html">Типы ресурсов</a></div>
+ <div class="up"><a href="apache.setup.html">Установка и настройка</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="apache.configuration" class="section">
+ <h2 class="title">Настройка во время выполнения</h2>
+ <p class="para">
+  The behaviour of the Apache PHP module is affected by settings in <var class="filename">php.ini</var>.
+  Configuration settings from <var class="filename">php.ini</var> may be overridden by
+  <a href="configuration.changes.html#configuration.changes.apache" class="link">php_flag</a> settings
+  in the server configuration file or local <var class="filename">.htaccess</var> files.
+ </p>
+ <div class="example">
+  <p><b>Пример #1 Turning off PHP parsing for a directory using <var class="filename">.htaccess</var></b></p>
+  <div class="example-contents"><div class="cdata"><pre>php_flag engine off</pre></div></div>
+
+ </div>
+ <p class="para">
+  <table border="5">
+   <caption><b>Apache configuration options</b></caption>
+   <colgroup>
+
+    <thead valign="middle">
+     <tr valign="middle">
+      <th colspan="1">Name</th>
+      <th colspan="1">Default</th>
+      <th colspan="1">Changeable</th>
+      <th colspan="1">Changelog</th>
+     </tr>
+
+    </thead>
+
+    <tbody valign="middle" class="tbody">
+     <tr valign="middle">
+      <td colspan="1" rowspan="1" align="left">engine</td>
+      <td colspan="1" rowspan="1" align="left">&quot;1&quot;</td>
+      <td colspan="1" rowspan="1" align="left">PHP_INI_ALL</td>
+      <td colspan="1" rowspan="1" align="left">Available since PHP 4.0.5.</td>
+     </tr>
+
+     <tr valign="middle">
+      <td colspan="1" rowspan="1" align="left">child_terminate</td>
+      <td colspan="1" rowspan="1" align="left">&quot;0&quot;</td>
+      <td colspan="1" rowspan="1" align="left">PHP_INI_ALL</td>
+      <td colspan="1" rowspan="1" align="left">Available since PHP 4.0.5.</td>
+     </tr>
+
+     <tr valign="middle">
+      <td colspan="1" rowspan="1" align="left">last_modified</td>
+      <td colspan="1" rowspan="1" align="left">&quot;0&quot;</td>
+      <td colspan="1" rowspan="1" align="left">PHP_INI_ALL</td>
+      <td colspan="1" rowspan="1" align="left">Available since PHP 4.0.5.</td>
+     </tr>
+
+     <tr valign="middle">
+      <td colspan="1" rowspan="1" align="left">xbithack</td>
+      <td colspan="1" rowspan="1" align="left">&quot;0&quot;</td>
+      <td colspan="1" rowspan="1" align="left">PHP_INI_ALL</td>
+      <td colspan="1" rowspan="1" align="left">Available since PHP 4.0.5.</td>
+     </tr>
+
+    </tbody>
+   </colgroup>
+
+  </table>
+
+  Для подробного описания констант
+PHP_INI_*, обратитесь к документации функции <a href="function.ini-set.html" class="function">ini_set()</a>.
+ </p>
+ 
+ <p class="para">Краткое разъяснение конфигурационных
+директив.</p>
+ 
+ <p class="para">
+  <dl>
+
+   <dt id="ini.engine">
+    <span class="term">
+     <i><tt class="parameter">engine</tt></i>
+
+     <a href="language.types.boolean.html" class="type boolean">boolean</a>
+    </span>
+
+    <dd>
+
+     <p class="para">
+      Turns PHP parsing on or off.
+      This directive is really only useful in the Apache module
+      version of PHP. It is used by sites that would like to turn
+      PHP parsing on and off on a per-directory or per-virtual
+      server basis. By putting <strong class="userinput"><code>engine off</code></strong>
+
+      in the appropriate places in the <var class="filename">httpd.conf</var> file, PHP can
+      be enabled or disabled.
+     </p>
+    </dd>
+
+   </dt>
+
+   <dt id="ini.child-terminate">
+    <span class="term">
+     <i><tt class="parameter">child_terminate</tt></i>
+
+     <a href="language.types.boolean.html" class="type boolean">boolean</a>
+    </span>
+
+    <dd>
+
+     <p class="para">
+      Specify whether PHP scripts may request child process termination on end of request, 
+      see also <a href="function.apache-child-terminate.html" class="function">apache_child_terminate()</a>.
+     </p>
+    </dd>
+
+   </dt>
+
+   <dt id="ini.last-modified">
+    <span class="term">
+     <i><tt class="parameter">last_modified</tt></i>
+
+     <a href="language.types.boolean.html" class="type boolean">boolean</a>
+    </span>
+
+    <dd>
+
+     <p class="para">
+      Send PHP scripts modification date as Last-Modified: header for this request.
+     </p>
+    </dd>
+
+   </dt>
+
+   <dt id="ini.xbithack">
+    <span class="term">
+     <i><tt class="parameter">xbithack</tt></i>
+
+     <a href="language.types.boolean.html" class="type boolean">boolean</a>
+    </span>
+
+    <dd>
+
+     <p class="para">
+      Parse files with executable bit set as PHP regardless of their file ending.
+     </p>
+    </dd>
+
+   </dt>
+
+  </dl>
+
+ </p>
+
+</div><hr /><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="apache.installation.html">Установка</a></div>
+ <div class="next" style="float: right;"><a href="apache.resources.html">Типы ресурсов</a></div>
+ <div class="up"><a href="apache.setup.html">Установка и настройка</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

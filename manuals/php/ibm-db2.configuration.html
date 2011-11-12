@@ -1,0 +1,236 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <title>Настройка во время выполнения</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+ </head>
+ <body><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="ibm-db2.installation.html">Установка</a></div>
+ <div class="next" style="float: right;"><a href="ibm-db2.resources.html">Типы ресурсов</a></div>
+ <div class="up"><a href="ibm-db2.setup.html">Установка и настройка</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="ibm-db2.configuration" class="section">
+ <h2 class="title">Настройка во время выполнения</h2>
+ <p class="simpara">
+Поведение этих функций зависит от установок в <var class="filename">php.ini</var>.
+</p>
+ <p class="para">
+  <table border="5">
+   <caption><b>ibm_db2 Опции настройки</b></caption>
+   <colgroup>
+
+    <thead valign="middle">
+     <tr valign="middle">
+      <th colspan="1">Имя</th>
+      <th colspan="1">По умолчанию</th>
+      <th colspan="1">Меняемо</th>
+      <th colspan="1">Changelog</th>
+     </tr>
+
+    </thead>
+
+    <tbody valign="middle" class="tbody">
+     <tr valign="middle">
+      <td colspan="1" rowspan="1" align="left">ibm_db2.binmode</td>
+      <td colspan="1" rowspan="1" align="left">&quot;1&quot;</td>
+      <td colspan="1" rowspan="1" align="left">PHP_INI_ALL</td>
+      <td class="empty">&nbsp;</td>
+     </tr>
+
+     <tr valign="middle">
+      <td colspan="1" rowspan="1" align="left">ibm_db2.i5_allow_commit</td>
+      <td colspan="1" rowspan="1" align="left">&quot;0&quot;</td>
+      <td colspan="1" rowspan="1" align="left">PHP_INI_SYSTEM</td>
+      <td colspan="1" rowspan="1" align="left">Available since ibm_db2 1.4.9.</td>
+     </tr>
+
+     <tr valign="middle">
+      <td colspan="1" rowspan="1" align="left">ibm_db2.i5_dbcs_alloc</td>
+      <td colspan="1" rowspan="1" align="left">&quot;0&quot;</td>
+      <td colspan="1" rowspan="1" align="left">PHP_INI_SYSTEM</td>
+      <td colspan="1" rowspan="1" align="left">Available since ibm_db2 1.5.0.</td>
+     </tr>
+
+     <tr valign="middle">
+      <td colspan="1" rowspan="1" align="left">ibm_db2.instance_name</td>
+      <td colspan="1" rowspan="1" align="left">NULL</td>
+      <td colspan="1" rowspan="1" align="left">PHP_INI_SYSTEM</td>
+      <td colspan="1" rowspan="1" align="left">Available since ibm_db2 1.0.2.</td>
+     </tr>
+
+     <tr valign="middle">
+      <td colspan="1" rowspan="1" align="left">ibm_db2.i5_all_pconnect</td>
+      <td colspan="1" rowspan="1" align="left">&quot;0&quot;</td>
+      <td colspan="1" rowspan="1" align="left">PHP_INI_SYSTEM</td>
+      <td colspan="1" rowspan="1" align="left">Available since ibm_db2 1.6.5.</td>
+     </tr>
+
+    </tbody>
+   </colgroup>
+
+  </table>
+
+
+ </p>
+ 
+ <p class="para">Краткое разъяснение конфигурационных
+директив.</p>
+ 
+ <p class="para">
+  <dl>
+
+   <dt id="ini.ibm-db2.binmode">
+    <span class="term">
+     <i><tt class="parameter">ibm_db2.binmode</tt></i>
+
+     <a href="language.types.integer.html" class="type integer">integer</a>
+    </span>
+
+    <dd>
+
+     <p class="para">
+      This option controls the mode used for converting to and from binary
+      data in the PHP application.
+      <ul class="itemizedlist">
+       <li class="listitem">
+        <p class="para">
+         1 (DB2_BINARY)
+        </p>
+       </li>
+       <li class="listitem">
+        <p class="para">
+         2 (DB2_CONVERT)
+        </p>
+       </li>
+       <li class="listitem">
+        <p class="para">
+         3 (DB2_PASSTHRU)
+        </p>
+       </li>
+      </ul>
+     </p>
+    </dd>
+
+   </dt>
+
+   <dt id="ini.ibm-db2.i5-allow-commit">
+    <span class="term">
+     <i><tt class="parameter">ibm_db2.i5_allow_commit</tt></i>
+
+     <a href="language.types.integer.html" class="type integer">integer</a>
+    </span>
+
+    <dd>
+
+     <p class="para">
+      This option controls the commit mode used for i5 schema collections 
+      in the PHP application.
+      <ul class="itemizedlist">
+       <li class="listitem">
+        <p class="para">
+         0 no commit (see i5_commit for override)
+        </p>
+       </li>
+       <li class="listitem">
+        <p class="para">
+         1 allow commit (see i5_commit for override)
+        </p>
+       </li>
+      </ul>
+     </p>
+    </dd>
+
+   </dt>
+
+   <dt id="ini.ibm-db2.i5-dbcs-alloc">
+    <span class="term">
+     <i><tt class="parameter">ibm_db2.i5_dbcs_alloc</tt></i>
+
+     <a href="language.types.integer.html" class="type integer">integer</a>
+    </span>
+
+    <dd>
+
+     <p class="para">
+      This option controls the internal ibm_db2 allocation scheme 
+      for large DBCS column buffers.
+      <ul class="itemizedlist">
+       <li class="listitem">
+        <p class="para">
+         0 no expanded allocations (see i5_dbcs_alloc for override)
+        </p>
+       </li>
+       <li class="listitem">
+        <p class="para">
+         1 use expanded allocations (see i5_dbcs_alloc for override)
+        </p>
+       </li>
+      </ul>
+     </p>
+    </dd>
+
+   </dt>
+
+   <dt id="ini.ibm-db2.instance-name">
+    <span class="term">
+     <i><tt class="parameter">ibm_db2.instance_name</tt></i>
+
+     <a href="language.types.string.html" class="type string">string</a>
+    </span>
+
+    <dd>
+
+     <p class="para">
+      On Linux and UNIX operating systems, this option defines the name of the
+      instance to use for cataloged database connections. If this option is set,
+      its value overrides the DB2INSTANCE environment variable setting.
+     </p>
+     <p class="para">
+      This option is ignored on Windows operating systems.
+     </p>
+    </dd>
+
+   </dt>
+
+   <dt id="ini.ibm-db2.i5-all-pconnect">
+    <span class="term">
+     <i><tt class="parameter">ibm_db2.i5_all_pconnect</tt></i>
+
+     <a href="language.types.integer.html" class="type integer">integer</a>
+    </span>
+
+    <dd>
+
+     <p class="para">
+      This option overrides i5 db2_connect full open and close in the PHP 
+      application. When ibm_db2.i5_all_pconnect = 1, all db2 connections 
+      become persistent (db2_pconnect). On i5/OS, db2_pconnect performs 
+      dramatically better with lower machine stress over db2_connect. This 
+      is a convenience override of db2_connect to evoke db2_pconnect without 
+      PHP source code changes. 
+      <ul class="itemizedlist">
+       <li class="listitem">
+        <p class="para">
+         0 db2_connect default full open and close
+        </p>
+       </li>
+       <li class="listitem">
+        <p class="para">
+         1 db2_connect override to db2_pconnect for persistent connection only
+        </p>
+       </li>
+      </ul>
+     </p>
+    </dd>
+
+   </dt>
+
+  </dl>
+
+ </p>
+</div><hr /><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="ibm-db2.installation.html">Установка</a></div>
+ <div class="next" style="float: right;"><a href="ibm-db2.resources.html">Типы ресурсов</a></div>
+ <div class="up"><a href="ibm-db2.setup.html">Установка и настройка</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

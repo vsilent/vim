@@ -1,0 +1,189 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <title>Типы</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+ </head>
+ <body><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="language.basic-syntax.comments.html">Комментарии</a></div>
+ <div class="next" style="float: right;"><a href="language.types.boolean.html">Булев</a></div>
+ <div class="up"><a href="langref.html">Справочник языка</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div>
+  <h1>Типы</h1>
+<h2>Содержание</h2><ul class="chunklist chunklist_chapter"><li><a href="language.types.boolean.html">Булев</a></li><li><a href="language.types.integer.html">Целые</a></li><li><a href="language.types.float.html">Числа с плавающей точкой</a></li><li><a href="language.types.string.html">Строки</a></li><li><a href="language.types.array.html">Массивы</a></li><li><a href="language.types.object.html">Объекты</a></li><li><a href="language.types.resource.html">Ресурс</a></li><li><a href="language.types.null.html">NULL</a></li><li><a href="language.pseudo-types.html">Псевдо-типы, используемые в этой документации</a></li><li><a href="language.types.type-juggling.html">Манипуляции с типами</a></li></ul>
+
+
+  <div id="language.types.intro" class="sect1">
+  <h2 class="title">Введение</h2>
+  
+  <p class="simpara">
+   PHP поддерживает восемь простых типов.
+  </p>
+  
+  <p class="para">
+   Четыре скалярных типа:
+
+   <ul class="itemizedlist">
+
+    <li class="listitem">
+     <span class="simpara">
+      <a href="language.types.boolean.html" class="type boolean">boolean</a>
+     </span>
+    </li>
+
+    <li class="listitem">
+     <span class="simpara">
+      <a href="language.types.integer.html" class="type integer">integer</a>
+     </span>
+    </li>
+
+    <li class="listitem">
+     <span class="simpara">
+      <a href="language.types.float.html" class="type float">float</a> (число с плавающей точкой или &#039;<a href="language.types.float.html" class="type double">double</a>&#039;)
+     </span>
+    </li>
+
+    <li class="listitem">
+     <span class="simpara">
+      <a href="language.types.string.html" class="type string">string</a>
+     </span>
+    </li>
+
+   </ul>
+
+   Два смешанных типа:
+
+   <ul class="itemizedlist">
+
+    <li class="listitem">
+     <span class="simpara">
+      <a href="language.types.array.html" class="type array">array</a>
+     </span>
+    </li>
+
+    <li class="listitem">
+     <span class="simpara">
+      <a href="language.types.object.html" class="type object">object</a>
+     </span>
+    </li>
+
+   </ul>
+
+   И, наконец, два специальных типа:
+
+   <ul class="itemizedlist">
+
+    <li class="listitem">
+     <span class="simpara">
+      <a href="language.types.resource.html" class="type resource">resource</a>
+     </span>
+    </li>
+
+    <li class="listitem">
+     <span class="simpara">
+      <a href="language.types.null.html" class="type NULL">NULL</a>
+     </span>
+    </li>
+
+   </ul>
+
+   Для удобства понимания в этом руководстве используется также несколько
+   <a href="language.pseudo-types.html" class="link">псевдо-типов</a>:
+
+   <ul class="itemizedlist">
+ 
+    <li class="listitem">
+     <span class="simpara">
+      <a href="language.pseudo-types.html#language.types.mixed" class="link">mixed</a>
+     </span>
+    </li>
+ 
+    <li class="listitem">
+     <span class="simpara">
+      <a href="language.pseudo-types.html#language.types.number" class="link">number</a>
+     </span>
+    </li>
+ 
+    <li class="listitem">
+     <span class="simpara">
+      <a href="language.pseudo-types.html#language.types.mixed" class="link">callback</a>
+     </span>
+    </li>
+
+   </ul>
+   Вы также можете найти несколько упоминаний типа двойной точности.
+   Рассматривайте его как число с плавающей точкой, два имени существуют только
+   по историческим причинам.
+  </p>
+  
+  <p class="simpara">
+   Как правило, программист не устанавливает тип переменной;
+   предпочтительнее, чтобы это делал PHP во время выполнения программы в
+   зависимости от контекста, в котором используется переменная.
+  </p>
+  <blockquote><p><b class="note">Замечание</b>: 
+   <span class="simpara">
+    Если вы желаете проверить тип и значение определенного <a href="language.expressions.html" class="link">выражения</a>, используйте
+    <a href="function.var-dump.html" class="function">var_dump()</a>.
+   </span>
+   
+    Если же вам для отладки необходимо просто удобочитаемое представление
+    типа, используйте <a href="function.gettype.html" class="function">gettype()</a>. Чтобы проверить на
+    определенный тип, <em class="emphasis">не</em> используйте <a href="function.gettype.html" class="function">gettype()</a>,
+    применяйте для этого <i>is_<span class="replaceable">type</span></i>
+    функции. Вот несколько примеров:
+    <div class="informalexample">
+     <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$bool&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">TRUE</span><span style="color: #007700">;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;логический<br /></span><span style="color: #0000BB">$str&nbsp;&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">"foo"</span><span style="color: #007700">;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;строковый<br /></span><span style="color: #0000BB">$int&nbsp;&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">12</span><span style="color: #007700">;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;целочисленный<br /><br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">gettype</span><span style="color: #007700">(</span><span style="color: #0000BB">$bool</span><span style="color: #007700">);&nbsp;</span><span style="color: #FF8000">//&nbsp;выводит&nbsp;"boolean"<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">gettype</span><span style="color: #007700">(</span><span style="color: #0000BB">$str</span><span style="color: #007700">);&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;выводит&nbsp;"string"<br /><br />//&nbsp;Если&nbsp;это&nbsp;целое,&nbsp;увеличить&nbsp;на&nbsp;четыре<br /></span><span style="color: #007700">if&nbsp;(</span><span style="color: #0000BB">is_int</span><span style="color: #007700">(</span><span style="color: #0000BB">$int</span><span style="color: #007700">))&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$int&nbsp;</span><span style="color: #007700">+=&nbsp;</span><span style="color: #0000BB">4</span><span style="color: #007700">;<br />}<br /><br /></span><span style="color: #FF8000">//&nbsp;Если&nbsp;$bool&nbsp;-&nbsp;это&nbsp;строка,&nbsp;вывести&nbsp;ее<br />//&nbsp;(ничего&nbsp;не&nbsp;выводит)<br /></span><span style="color: #007700">if&nbsp;(</span><span style="color: #0000BB">is_string</span><span style="color: #007700">(</span><span style="color: #0000BB">$bool</span><span style="color: #007700">))&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"Строка:&nbsp;$bool"</span><span style="color: #007700">;<br />}<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+     </div>
+
+    </div>
+   <br />
+  </p></blockquote>
+  <p class="simpara">
+   Если вы хотите принудительно изменить тип переменной, вы можете либо
+   <a href="language.types.type-juggling.html#language.types.typecasting" class="link">привести</a>
+   переменную, либо использовать функцию <a href="function.settype.html" class="function">settype()</a>.
+  </p>
+  <p class="simpara">
+   Обратите внимание, что переменная, в зависимости от ее типа в данный
+   момент, в определенных ситуациях может иметь разные значения.
+   Более подробную информацию смотрите в разделе <a href="language.types.type-juggling.html" class="link">Манипуляции с типами</a>.
+   Также вам, возможно, будет интересно посмотреть
+   <a href="types.comparisons.html" class="link">таблицы сравнения типов</a>,  
+   поскольку в них приведены примеры связанных сравнений различных
+   типов.
+  </p>
+ </div>
+   
+   
+
+   
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+  
+ 
+  
+
+  
+
+ </div>
+<hr /><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="language.basic-syntax.comments.html">Комментарии</a></div>
+ <div class="next" style="float: right;"><a href="language.types.boolean.html">Булев</a></div>
+ <div class="up"><a href="langref.html">Справочник языка</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

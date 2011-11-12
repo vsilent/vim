@@ -1,0 +1,219 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <title>Apache 2.0 на Unix системах</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+ </head>
+ <body><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="install.unix.html">Установка на Unix системы</a></div>
+ <div class="next" style="float: right;"><a href="install.unix.caudium.html">Caudium</a></div>
+ <div class="up"><a href="install.unix.html">Установка на Unix системы</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="install.unix.apache2" class="sect1">
+    <h2 class="title">Apache 2.0 на Unix системах</h2>
+    <p class="para">
+     Этот раздел описывает установку PHP c Apache 2.0 на Unix системах.
+    </p>
+   
+    <div class="warning"><b class="warning">Внимание</b><p class="para">Мы не рекомендуем использовать
+потоковый MPM в промышленной среде вместе с Apache 2. Вместо этого, используйте
+prefork MPM или первый Apache. Подробную информацию по этому вопросы вы можете
+найти в соответствующем 
+<a href="faq.installation.html#faq.installation.apache2" class="link">разделе FAQ</a></p></div>
+    
+    <p class="para">
+     За базовой информацией об Apache 2.0 обращаетесь к 
+     <a href="http://httpd.apache.org/docs/2.0/" class="link external">&raquo; документации Apache</a>.
+   </p>
+
+    
+
+
+    <blockquote><p><b class="note">Замечание</b>: 
+     <b>Совместимость PHP и Apache 2.0.x </b>
+     
+      Следующие версии PHP признаны совместимыми с веб-сервером Apache 2.0.x
+      <ul class="itemizedlist">
+       <li class="listitem">
+        <span class="simpara">
+         PHP 4.3.0 и более поздние, доступны на странице
+         <a href="http://www.php.net/downloads.php" class="link external">&raquo; http://www.php.net/downloads.php</a>.
+        </span>
+       </li>
+       <li class="listitem">
+        <span class="simpara">
+         Последняя стабильная разрабатываемая версия.
+         Скачать исходные коды можно здесь:<a href="http://snaps.php.net/php5-latest.tar.gz" class="link external">&raquo; 
+         http://snaps.php.net/php5-latest.tar.gz</a>, а бинарные сборки для 
+         Windows здесь: <a href="http://snaps.php.net/win32/php5-win32-latest.zip" class="link external">&raquo; 
+         http://snaps.php.net/win32/php5-win32-latest.zip</a>.
+        </span>
+       </li>
+       <li class="listitem">
+        <span class="simpara">
+         Версии в разработке:
+         <a href="http://qa.php.net/" class="link external">&raquo; http://qa.php.net/</a>.
+        </span>
+       </li>
+       <li class="listitem">
+        <span class="simpara">
+         Вы всегда можете получить PHP с помощью 
+         <a href="http://www.php.net/anoncvs.php" class="link external">&raquo; анонимного CVS</a>.
+        </span>
+       </li>
+      </ul>
+      Эти версии PHP совместимы с Apache 2.0.40 и более поздними релизами сервера.
+     <br />
+     
+      Apache 2.0 <i>SAPI</i> поддерживается начиная с версии PHP 4.2.0.
+      PHP 4.2.3 работает с версией Apache 2.0.39, не используйте другие версии Apache 
+      с PHP 4.2.3. Все же рекомендуется устанавливать PHP 4.3.0 или более позднюю версию
+      и самую последнюю версию Apache2.
+     <br />
+     
+      Все упомянутые версии PHP продолжают работать с Apache 1.3.x.
+     <br />
+    </p></blockquote>
+
+
+
+
+    <p class="para">
+     Скачайте последнюю версию <a href="http://www.apache.org/" class="link external">&raquo; 
+     Apache 2.0</a> и соответствующую версию PHP.
+     Это краткое руководство описывает лишь базовую установку Apache 2.0 и PHP
+     Для получения более детальной информации прочитайте <a href="http://httpd.apache.org/docs/2.0/" class="link external">&raquo; документацию Apache</a>.
+     В инструкции ниже опущены номера версий - замените &#039;NN&#039; на
+     номер версии присутствующий в именах скачанных вами файлов.
+    </p>
+    <div class="example">
+     <p><b>Пример #1 
+      Инструкция по установке PHP, как подгружаемого модуля Apache 2
+     </b></p>
+     <div class="example-contents"><pre>
+<div class="cdata"><pre>
+1.  gzip -d httpd-2_0_NN.tar.gz
+2.  tar xvf httpd-2_0_NN.tar
+3.  gunzip php-NN.tar.gz
+4.  tar -xvf php-NN.tar
+5.  cd httpd-2_0_NN
+6.  ./configure --enable-so
+7.  make
+8.  make install
+
+    Теперь ваш Apache 2.0.NN доступен как /usr/local/apache2,
+    сконфигурирован с поддержкой подгружаемых модулей и стандартным
+    мульти-процессорным модулем (MPM) prefork.
+    Чтобы простестировать правильность установки используйте стандартную
+    процедуру запуска Apache, такую как:
+    /usr/local/apache2/bin/apachectl start
+    Затем остановите сервер, чтобы сконфигурировать и установить PHP
+    /usr/local/apache2/bin/apachectl stop.
+
+9.  cd ../php-NN
+
+10. Теперь мы сконфигурируем PHP. Здесь вы можете настроить установку
+     PHP при помощи параметров командной строки скрипта configure.
+     Вы можете включить или выключить некоторые расширения. Просмотрите вывод
+     команды ./configure --help для получения полного списка параметров
+     конфигурации. В нашем примере мы сконфигурируем PHP очень просто -
+     с поддержкой Apache и MySQL. В вашей системе путь до apxs может
+     отличаться от указанного в примере, так же бинарный файл может иметь имя
+     apxs2. 
+    
+      ./configure --with-apxs2=/usr/local/apache2/bin/apxs --with-mysql
+
+11. make
+12. make install
+
+    Если вы решите изменить параметры конфигурации после установки, вам надо
+    будет повторить только три последних шага. Так же вам надо будет
+    рестартовать Apache, чтобы новые модули подгрузились и начали работать.
+    Перекомпиляция Apache для этого не требуется.
+                
+    Заметьте, что &#039;make install&#039; установит так же PEAR,
+    различные инструменты PHP - такие как phpize, версию PHP для командной
+    строки (PHP CLI) и т.д.
+    
+13. Настройка вашего php.ini 
+    
+    cp php.ini-dist /usr/local/lib/php.ini
+          
+    Вероятно, вы захотите изменить некоторые настройки в php.ini.
+    Если вы предпочитаете держать файл php.ini в другом месте, используйте
+    параметр --with-config-file-path=/some/path в шаге 10. Если вы используете
+    php.ini-recomended, прочитайте его, чтобы знать какие изменения в
+    поведении PHP это повлечет.
+
+14. Отредактируйте ваш httpd.conf, чтобы Apache подгружал модуль PHP. Путь в
+    инструкции LoadModule должен указывать на модуль PHP. Команда make
+    install может добавить эту иструкцию автоматически, но этого может и не
+    произойти, поэтому проверьте, чтобы убедиться.
+
+    Для PHP 4:
+  
+      LoadModule php4_module modules/libphp4.so
+      
+    Для PHP 5:
+    
+      LoadModule php5_module modules/libphp5.so
+ 
+15. Теперь следует сконфигурировать Apache, чтобы он передавал файлы с
+    некоторыми расширениями на обработку модулю PHP. В нашем примере сделаем
+    это для файлов с расширениями .php и .phtml. Вы можете добавить так же
+    другие расширения в конец строки, разделяя их символом пробела.
+            
+      AddType application/x-httpd-php .php .phtml
+                  
+    Сделаем то же самое для расширения .phps - модуль PHP покажет его как
+    исходный код с подстветкой синтаксиса, вместо того, чтобы исполнять.
+    
+      AddType application/x-httpd-php-source .phps
+ 
+16. Используйте стандартную процедуру запуска Apache, например:
+   
+      /usr/local/apache2/bin/apachectl start
+   
+</pre></div>
+
+      </pre></div>
+     </div>
+    <p class="para">
+     Следуя иструкциям выше вы запустите веб-сервер Apache 2.0 с поддержкой
+     PHP, как модуля <i>SAPI</i>. Конечно, для PHP и Apache
+     доступно гораздо больше параметров конфигурации. Используйте 
+     <strong class="command">./configure --help</strong> для получения полного списка
+     параметров конфигурации. Если вы хотите собрать многопоточную версию Apache 2.0, 
+     вам следует заменить стандартный модуль MPM <var class="filename">prefork</var>
+     на <var class="filename">worker</var> или <var class="filename">perchild</var>.
+     Чтобы сделать это, нужно добавить в строку configure на шаге 6, описанном
+     выше один из двух параметров
+     <span class="option">--with-mpm=worker</span> или
+     <span class="option">--with-mpm=perchild</span>. 
+     Вам следует как могут повлиять такие изменения. Для получения
+     подробной информации прочитайте документацию Apache касательно 
+     <a href="http://httpd.apache.org/docs/2.0/mpm.html" class="link external">&raquo; модулей MPM</a>.
+    </p>
+    <blockquote><p><b class="note">Замечание</b>: 
+     
+      Если вы хотите использовать зависимый контент (content negotiation),
+      прочитайте  
+      <a href="faq.installation.html#faq.installation.apache.multiviews" class="link">Apache MultiViews 
+      FAQ</a>.
+     <br />
+    </p></blockquote>
+    <blockquote><p><b class="note">Замечание</b>: 
+     
+      Для построения многопоточной версии Apache, ваша система должна
+      поддерживать потоки. Это так же подразумевает сборку PHP c
+      поддержкой Zend Thread Safety (ZTS). И, как следствие, не все
+      расширения PHP смогут работать. Рекомендуется установка Apache с
+      модулем MPM <var class="filename">prefork</var>.
+     <br />
+    </p></blockquote>
+   </div><hr /><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="install.unix.html">Установка на Unix системы</a></div>
+ <div class="next" style="float: right;"><a href="install.unix.caudium.html">Caudium</a></div>
+ <div class="up"><a href="install.unix.html">Установка на Unix системы</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

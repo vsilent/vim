@@ -1,0 +1,74 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <title>Compiling PECL extensions statically into PHP</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+ </head>
+ <body><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="install.pecl.html">Installation of PECL extensions</a></div>
+ <div class="next" style="float: right;"><a href="install.problems.html">Проблемы?</a></div>
+ <div class="up"><a href="install.pecl.html">Installation of PECL extensions</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="install.pecl.static" class="sect1">
+  <h2 class="title">Compiling PECL extensions statically into PHP</h2>
+  <p class="simpara">
+   You might find that you need to build a PECL extension statically into your
+   PHP binary.  To do this, you&#039;ll need to place the extension source under
+   the <var class="filename">php-src/ext/</var> directory and tell the PHP build
+   system to regenerate its configure script.
+  </p>
+  <p class="para">
+   <div class="example-contents"><pre>
+<div class="cdata"><pre>
+$ cd /your/phpsrcdir/ext
+$ pecl download extname
+$ gzip -d &lt; extname.tgz | tar -xvf -
+$ mv extname-x.x.x extname
+</pre></div>
+   </pre></div>
+  </p>
+  <p class="simpara">
+   This will result in the following directory:
+  </p>
+  <p class="para">
+   <div class="example-contents"><pre>
+    /your/phpsrcdir/ext/extname
+   </pre></div>
+  </p>
+  <p class="simpara">
+   From here, force PHP to rebuild the configure script, and then build PHP as normal:
+  </p>
+  <p class="para">
+   <div class="example-contents"><pre>
+$ cd /your/phpsrcdir 
+$ rm configure
+$ ./buildconf --force
+$ ./configure --help
+$ ./configure --with-extname --enable-someotherext --with-foobar
+$ make
+$ make install
+   </pre></div>
+  </p>
+  <blockquote><p><b class="note">Замечание</b>: 
+   <span class="simpara">
+    To run the &#039;buildconf&#039; script you need autoconf 2.13 and automake 1.4+
+    (newer versions of autoconf may work, but are not supported).
+   </span>
+  </p></blockquote>
+  <p class="simpara">
+   Whether <i>--enable-extname</i> or <i>--with-extname
+   </i> is used depends on the extension.  Typically an extension that 
+   does not require external libraries uses <i>--enable</i>.  To be
+   sure, run the following after buildconf:
+  </p>
+  <p class="para">
+   <div class="example-contents"><pre>
+$ ./configure --help | grep extname
+   </pre></div>
+  </p>
+ </div><hr /><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="install.pecl.html">Installation of PECL extensions</a></div>
+ <div class="next" style="float: right;"><a href="install.problems.html">Проблемы?</a></div>
+ <div class="up"><a href="install.pecl.html">Installation of PECL extensions</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

@@ -1,0 +1,143 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <title>Предопределенные константы</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+ </head>
+ <body><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="pcre.resources.html">Типы ресурсов</a></div>
+ <div class="next" style="float: right;"><a href="pcre.examples.html">Примеры</a></div>
+ <div class="up"><a href="book.pcre.html">PCRE</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div>
+ <h1>Предопределенные константы</h1>
+
+ <p class="simpara">
+Перечисленные ниже константы определены данным расширением и могут быть
+доступны только в том случае, если PHP был собран с
+поддержкой этого расширения или же в том случае, если
+данное расширение подгружается во время выполнения.
+</p>
+ <table border="5">
+  <caption><b>PREG константы</b></caption>
+  <colgroup>
+
+   <thead valign="middle">
+    <tr valign="middle">
+     <th colspan="1">константа</th>
+     <th colspan="1">описание</th>
+    </tr>
+
+   </thead>
+
+   <tbody valign="middle" class="tbody">
+    <tr valign="middle">
+     <td colspan="1" rowspan="1" align="left">PREG_PATTERN_ORDER</td>
+     <td colspan="1" rowspan="1" align="left">
+      Меняет порядок элементов в результирующем массиве так, чтобы 
+      элемент $matches[0] содержал полные вхождения шаблона, 
+      элемент $matches[1] - все вхождения первой взятой в круглые скобки подмаски, и так далее.
+      Только <b>reg_match_all()</b> реагирует на данный модификатор;
+      остальными функциями он игнорируется.
+     </td>
+    </tr>
+
+    <tr valign="middle">
+     <td colspan="1" rowspan="1" align="left">PREG_SET_ORDER</td>
+     <td colspan="1" rowspan="1" align="left">
+      Меняет порядок элементов в результирующем массиве так, чтобы 
+      элемент $matches[0] содержал первый набор вхождений (полное вхождение,
+      вхождение первой подмаски, заключенной в круглые скобки...),
+      аналогично элемент $matches[1] - второй набор вхождений, и так далее.
+      Только <b>reg_match_all()</b> реагирует на данный модификатор;
+      остальными функциями он игнорируется.
+     </td>
+    </tr>
+
+    <tr valign="middle">
+     <td colspan="1" rowspan="1" align="left">PREG_OFFSET_CAPTURE</td>
+     <td colspan="1" rowspan="1" align="left">
+      Смотрите описание флага
+      <b><tt>PREG_SPLIT_OFFSET_CAPTURE</tt></b>.
+      Данный флаг доступен в PHP 4.3.0 и выше.
+     </td>
+    </tr>
+
+    <tr valign="middle">
+     <td colspan="1" rowspan="1" align="left">PREG_SPLIT_NO_EMPTY</td>
+     <td colspan="1" rowspan="1" align="left">
+      В случае, если этот флаг указан, функция <a href="function.preg-split.html" class="function">preg_split()</a>
+      вернет только непустые подстроки.
+     </td>
+    </tr>
+
+    <tr valign="middle">
+     <td colspan="1" rowspan="1" align="left">PREG_SPLIT_DELIM_CAPTURE</td>
+     <td colspan="1" rowspan="1" align="left">
+      В случае, если этот флаг указан, выражение, заключенное в круглые скобки в 
+      разделяющем шаблоне, также извлекается из заданной строки и возвращается
+      функцией. Этот флаг был добавлен в PHP 4.0.5.
+     </td>
+    </tr>
+
+    <tr valign="middle">
+     <td colspan="1" rowspan="1" align="left">PREG_SPLIT_OFFSET_CAPTURE</td>
+     <td colspan="1" rowspan="1" align="left">
+      В случае, если этот флаг указан, для каждой найденной подстроки будет указана
+      ее позиция в исходной строке. Необходимо помнить, что этот флаг меняет 
+      формат возвращаемых данных: каждое вхождение возвращается в виде массива,
+      в нулевом элементе которого содержится найденная подстрока, а в первом - смещение.
+      Этот флаг доступен в PHP 4.3.0 и выше и используется только в
+      функции <a href="function.preg-split.html" class="function">preg_split()</a>.
+     </td>
+    </tr>
+
+    <tr valign="middle">
+     <td colspan="1" rowspan="1" align="left"><b><tt>PREG_NO_ERROR</tt></b></td>
+     <td colspan="1" rowspan="1" align="left">
+      Возвращается функцией <a href="function.preg-last-error.html" class="function">preg_last_error()</a>, если ошибок нет. 
+      Доступна начиная с PHP 5.2.0.
+     </td>
+    </tr>
+
+    <tr valign="middle">
+     <td colspan="1" rowspan="1" align="left"><b><tt>PREG_INTERNAL_ERROR</tt></b></td>
+     <td colspan="1" rowspan="1" align="left">
+      Возвращается функцией <a href="function.preg-last-error.html" class="function">preg_last_error()</a> в случае,
+      если произошла внутренняя ошибка PCRE.
+      Доступна начиная с PHP 5.2.0.
+     </td>
+    </tr>
+
+    <tr valign="middle">
+     <td colspan="1" rowspan="1" align="left"><b><tt>PREG_BACKTRACK_LIMIT_ERROR</tt></b></td>
+     <td colspan="1" rowspan="1" align="left">
+      Возвращается функцией <a href="function.preg-last-error.html" class="function">preg_last_error()</a> в случае,
+      когда <a href="pcre.configuration.html#ini.pcre.backtrack-limit" class="link">лимит обратных ссылок</a>
+      был исчерпан.
+      Доступна начиная с PHP 5.2.0.
+     </td>
+    </tr>
+
+    <tr valign="middle">
+     <td colspan="1" rowspan="1" align="left"><b><tt>PREG_RECURSION_LIMIT_ERROR</tt></b></td>
+     <td colspan="1" rowspan="1" align="left">
+      Возвращается функцией <a href="function.preg-last-error.html" class="function">preg_last_error()</a> в случае,
+      если <a href="pcre.configuration.html#ini.pcre.recursion-limit" class="link">лимит рекурсии</a> был
+      исчерпан.
+      Доступна начиная с PHP 5.2.0.
+     </td>
+    </tr>
+
+   </tbody>
+  </colgroup>
+
+ </table>
+
+</div>
+<hr /><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="pcre.resources.html">Типы ресурсов</a></div>
+ <div class="next" style="float: right;"><a href="pcre.examples.html">Примеры</a></div>
+ <div class="up"><a href="book.pcre.html">PCRE</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

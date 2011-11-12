@@ -1,0 +1,49 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <title>Возвращает длину каждого поля в результате.</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+ </head>
+ <body><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="function.mysql-fetch-field.html">mysql_fetch_field</a></div>
+ <div class="next" style="float: right;"><a href="function.mysql-fetch-object.html">mysql_fetch_object</a></div>
+ <div class="up"><a href="ref.mysql.html">MySQL</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="function.mysql-fetch-lengths" class="refentry">
+   <div class="refnamediv">
+    <h1 class="refname">mysql_fetch_lengths</h1>
+    <p class="verinfo">(PHP 4, PHP 5, PECL mysql:1.0)</p><p class="refpurpose dc-title">mysql_fetch_lengths — 
+     Возвращает длину каждого поля в результате.
+    </p>
+
+   </div>
+   <div class="refsect1 unknown">
+    <h3 class="title">Описание</h3>
+     <div class="methodsynopsis dc-description">
+      <span class="type">array</span> <span class="methodname"><b><b>mysql_fetch_lengths</b></b></span>
+       ( <span class="methodparam"><span class="type">resource</span> <tt class="parameter">$result</tt></span>
+      )</div>
+
+    <p class="para rdfs-comment">
+     Возвращает массив длин для каждого поля, содержащегося в последнем,
+     обработанном функцией <a href="function.mysql-fetch-row.html" class="function">mysql_fetch_row()</a>, ряду. При
+     неудаче возвращает <b><tt>FALSE</tt></b>.
+    </p>
+    <p class="para">
+     <b>mysql_fetch_lengths()</b> возвращает длины каждого поля,
+     содержащегося в последнем ряду, обработанном функциями
+     <a href="function.mysql-fetch-row.html" class="function">mysql_fetch_row()</a>,
+     <a href="function.mysql-fetch-array.html" class="function">mysql_fetch_array()</a>, и
+     <a href="function.mysql-fetch-object.html" class="function">mysql_fetch_object()</a> в массиве, начинающемся с 0.
+    </p>
+    <p class="para">
+     См. также <a href="function.mysql-fetch-row.html" class="function">mysql_fetch_row()</a>.
+    </p>
+   </div>
+
+  </div><hr /><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="function.mysql-fetch-field.html">mysql_fetch_field</a></div>
+ <div class="next" style="float: right;"><a href="function.mysql-fetch-object.html">mysql_fetch_object</a></div>
+ <div class="up"><a href="ref.mysql.html">MySQL</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

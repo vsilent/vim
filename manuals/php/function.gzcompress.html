@@ -1,0 +1,104 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <title>Сжимает строку</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+ </head>
+ <body><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="function.gzclose.html">gzclose</a></div>
+ <div class="next" style="float: right;"><a href="function.gzdecode.html">gzdecode</a></div>
+ <div class="up"><a href="ref.zlib.html">Zlib</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="function.gzcompress" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">gzcompress</h1>
+  <p class="verinfo">(PHP 4 &gt;= 4.0.1, PHP 5)</p><p class="refpurpose dc-title">gzcompress — Сжимает строку</p>
+
+ </div>
+ <div class="refsect1 description">
+  <h3 class="title">Описание</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type">string</span> <span class="methodname"><b><b>gzcompress</b></b></span>
+    ( <span class="methodparam"><span class="type">string</span> <tt class="parameter">$data</tt></span>
+   [, <span class="methodparam"><span class="type">int</span> <tt class="parameter">$level</tt></span>
+  ] )</div>
+
+  <p class="para rdfs-comment">
+   Сжимает строку используя формат данных <i>ZLIB</i>.
+  </p>
+  <p class="para">
+   Для подробностей по алгоритму сжатия ZLIB, см.
+   &quot;<a href="http://www.faqs.org/rfcs/rfc1950" class="link external">&raquo; ZLIB Compressed Data Format    Specification 3.3</a>&quot; (RFC 1950).
+  </p>
+  <blockquote><p><b class="note">Замечание</b>: 
+   
+    Это <em class="emphasis">не</em> есть gzip-сжатие, которое включает 
+    некоторые заголовочные данные. Для gzip-сжатие обратитесь к 
+    <a href="function.gzencode.html" class="function">gzencode()</a>.
+   <br />
+  </p></blockquote>
+ </div>
+
+ <div class="refsect1 parameters">
+  <h3 class="title">Список параметров</h3>
+  <p class="para">
+   <dl>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">data</tt></i>
+</span>
+
+     <dd>
+
+      <p class="para">
+       Данные для сжаитя.
+      </p>
+     </dd>
+
+    </dt>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">level</tt></i>
+</span>
+
+     <dd>
+
+      <p class="para">
+       Уровень сжатия. 0 - без сжатия, 9 - максимум.
+      </p>
+     </dd>
+
+    </dt>
+
+   </dl>
+
+  </p>
+ </div>
+
+ <div class="refsect1 returnvalues">
+  <h3 class="title">Возвращаемые значения</h3>
+  <p class="para">
+   Сжатая строка или <b><tt>FALSE</tt></b> в случае ошибки.
+  </p>
+ </div>
+
+ <div class="refsect1 seealso">
+  <h3 class="title">Смотрите также</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"><a href="function.gzdeflate.html" class="function" rel="rdfs-seeAlso">gzdeflate()</a></li>
+    <li class="member"><a href="function.gzinflate.html" class="function" rel="rdfs-seeAlso">gzinflate()</a></li>
+    <li class="member"><a href="function.gzuncompress.html" class="function" rel="rdfs-seeAlso">gzuncompress()</a></li>
+    <li class="member"><a href="function.gzencode.html" class="function" rel="rdfs-seeAlso">gzencode()</a></li>
+   </ul>
+  </p>
+ </div>
+
+</div><hr /><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="function.gzclose.html">gzclose</a></div>
+ <div class="next" style="float: right;"><a href="function.gzdecode.html">gzdecode</a></div>
+ <div class="up"><a href="ref.zlib.html">Zlib</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

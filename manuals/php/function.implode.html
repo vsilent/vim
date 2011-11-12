@@ -1,0 +1,73 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <title>Объединяет элементы массива в строку</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+ </head>
+ <body><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="function.htmlspecialchars.html">htmlspecialchars</a></div>
+ <div class="next" style="float: right;"><a href="function.join.html">join</a></div>
+ <div class="up"><a href="ref.strings.html">Функции обработки строк</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="function.implode" class="refentry">
+   <div class="refnamediv">
+    <h1 class="refname">implode</h1>
+    <p class="verinfo">(PHP 4, PHP 5)</p><p class="refpurpose dc-title">implode — Объединяет элементы массива в строку</p>
+
+   </div>
+   <div class="refsect1 unknown">
+    <h3 class="title">Описание</h3>
+     <div class="methodsynopsis dc-description">
+      <span class="type">string</span> <span class="methodname"><b><b>implode</b></b></span>
+       ( <span class="methodparam"><span class="type">string</span> <tt class="parameter">$glue</tt></span>
+      , <span class="methodparam"><span class="type">array</span> <tt class="parameter">$pieces</tt></span>
+      )</div>
+
+    <p class="para rdfs-comment">
+     Возвращает строку, полученную объединением строковых представлений 
+     элементов массива <i><tt class="parameter">pieces</tt></i>
+, со вставкой строки
+     <i><tt class="parameter">glue</tt></i>
+ между соседними элементами.
+     <div class="example">
+      <p><b>Пример #1 Пример использования <b>implode()</b></b></p>
+      <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /><br />$array&nbsp;</span><span style="color: #007700">=&nbsp;array(</span><span style="color: #DD0000">'lastname'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'email'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'phone'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$comma_separated&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">implode</span><span style="color: #007700">(</span><span style="color: #DD0000">","</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$array</span><span style="color: #007700">);<br /><br />echo&nbsp;</span><span style="color: #0000BB">$comma_separated</span><span style="color: #007700">;&nbsp;</span><span style="color: #FF8000">//&nbsp;lastname,email,phone<br /><br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+      </div>
+
+     </div>
+    </p>
+    <blockquote><p><b class="note">Замечание</b>: 
+     
+      По историческим причинам, функции <b>implode()</b> можно 
+      передавать аргументы в любом порядке, однако для унификации с 
+      функцией <a href="function.explode.html" class="function">explode()</a> следует использовать 
+      документированный порядок аргументов.
+     <br />
+    </p></blockquote>
+    <blockquote><p><b class="note">Замечание</b>: 
+     
+      Начиная с версии 4.3.0 аргумент <i><tt class="parameter">glue</tt></i>
+ функции 
+      <b>implode()</b> является необязательным и по умолчанию 
+      равен пустой строке (&#039;&#039;). Для обеспечении обратной совместимости 
+      рекомендуется всегда передавать оба аргумента.
+     <br />
+    </p></blockquote>
+    <blockquote><p><b class="note">Замечание</b>: <span class="simpara">Эта функция безопасна
+для обработки данных в двоичной форме.</span></p></blockquote>
+    <p class="simpara">
+     См. также описания функций <a href="function.explode.html" class="function">explode()</a> и 
+     <a href="function.split.html" class="function">split()</a>.
+    </p>
+   </div>
+
+  </div><hr /><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="function.htmlspecialchars.html">htmlspecialchars</a></div>
+ <div class="next" style="float: right;"><a href="function.join.html">join</a></div>
+ <div class="up"><a href="ref.strings.html">Функции обработки строк</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

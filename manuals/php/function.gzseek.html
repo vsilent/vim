@@ -1,0 +1,100 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <title>Перемещает индикатор позиции в gz-файле</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+ </head>
+ <body><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="function.gzrewind.html">gzrewind</a></div>
+ <div class="next" style="float: right;"><a href="function.gztell.html">gztell</a></div>
+ <div class="up"><a href="ref.zlib.html">Zlib</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="function.gzseek" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">gzseek</h1>
+  <p class="verinfo">(PHP 4, PHP 5)</p><p class="refpurpose dc-title">gzseek — Перемещает индикатор позиции в gz-файле</p>
+
+ </div>
+ <div class="refsect1 description">
+  <h3 class="title">Описание</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type">int</span> <span class="methodname"><b><b>gzseek</b></b></span>
+    ( <span class="methodparam"><span class="type">resource</span> <tt class="parameter">$zp</tt></span>
+   , <span class="methodparam"><span class="type">int</span> <tt class="parameter">$offset</tt></span>
+   )</div>
+
+  <p class="para rdfs-comment">
+   Устанавливает индикатор позиции файла, на который ссылается zp, 
+   в смещение в байтах потока этого файла. Эквивалентно вызову (на C)
+   <i>gzseek(zp, offset, SEEK_SET)</i>.
+  </p>
+  <p class="para">
+   Если файл открыт для чтения, эта функция симулируется, но будет 
+   работать очень медленно. Если файл открыт для записи, разрешён 
+   только поиск вперёд; <b>gzseek()</b> при этом сжимает 
+   последовательность нулей до новой позиции.
+  </p>
+ </div>
+
+ <div class="refsect1 parameters">
+  <h3 class="title">Список параметров</h3>
+  <p class="para">
+   <dl>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">zp</tt></i>
+</span>
+
+     <dd>
+
+      <p class="para">
+       Указатель на gz-файл, возвращённый, после его успешного открытия, функцией <a href="function.gzopen.html" class="function">gzopen()</a>.
+      </p>
+     </dd>
+
+    </dt>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">offset</tt></i>
+</span>
+
+     <dd>
+
+      <p class="para">
+       Смещение.
+      </p>
+     </dd>
+
+    </dt>
+
+   </dl>
+
+  </p>
+ </div>
+
+ <div class="refsect1 returnvalues">
+  <h3 class="title">Возвращаемые значения</h3>
+  <p class="para">
+   При успешном завершении возвращает 0; иначе -1. 
+   Обратите внимание, что если смещение стоит после EOF, это не является ошибкой.
+  </p>
+ </div>
+
+ <div class="refsect1 seealso">
+  <h3 class="title">Смотрите также</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"><a href="function.gztell.html" class="function" rel="rdfs-seeAlso">gztell()</a></li>
+    <li class="member"><a href="function.gzrewind.html" class="function" rel="rdfs-seeAlso">gzrewind()</a></li>
+   </ul>
+  </p>
+ </div>
+
+</div><hr /><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="function.gzrewind.html">gzrewind</a></div>
+ <div class="next" style="float: right;"><a href="function.gztell.html">gztell</a></div>
+ <div class="up"><a href="ref.zlib.html">Zlib</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

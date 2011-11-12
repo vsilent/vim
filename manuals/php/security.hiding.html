@@ -1,0 +1,74 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <title>Сокрытие PHP</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+ </head>
+ <body><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="security.magicquotes.disabling.html">Отключение волшебных кавычек</a></div>
+ <div class="next" style="float: right;"><a href="security.current.html">Необходимость обновлений</a></div>
+ <div class="up"><a href="security.html">Безопасность</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div>
+   <h1>Сокрытие PHP</h1>
+
+   <p class="para">
+    В общем случае внесение неясности ненамного улучшает защищенность системы.
+    Но бывают случаи, когда следует использовать малейшую возможность.
+   </p>
+   <p class="para">
+    Несколько несложных методик могут помочь вам скрыть PHP, что усложняет
+    работу потенциального взломщика, который пытается найти брешь в вашей
+    системе. Установив опцию expose_php = off в конфигурационном файле <var class="filename">php.ini</var>,
+    вы уменьшите количество доступной хакеру информации.
+   </p>
+   <p class="para">
+    Еще одна методика заключается в настройке веб-сервера таким образом, 
+    чтобы он обрабатывал файлы с различными расширениями как PHP-скрипты.
+    Это можно указать как в <var class="filename">.htaccess</var> файлах, так и конфигурационном файле Apache.
+    В таком случае вы сможете использовать при написании кода нестандартные расширения:
+    <div class="example">
+     <p><b>Пример #1 Маскировка PHP под другие языки программирования</b></p>
+     <div class="example-contents">
+<div class="cdata"><pre>
+# Теперь PHP-скрипты могут иметь те же расширения, что и другие языки программирования
+AddType application/x-httpd-php .asp .py .pl
+</pre></div>
+     </div>
+
+    </div>
+    Или скрыть его совсем:
+    <div class="example">
+     <p><b>Пример #2 Использование неизвестных расширений для PHP-скриптов</b></p>
+     <div class="example-contents">
+<div class="cdata"><pre>
+# Теперь PHP-скрипты могут иметь неизвестные типы файлов
+AddType application/x-httpd-php .bop .foo .133t
+</pre></div>
+     </div>
+
+    </div>
+    Также можно спрятать его под видом HTML-кода, что приведет к потере производительности,
+    так как все HTML файлы будут обрабатываться как PHP-код:
+    <div class="example">
+     <p><b>Пример #3 Маскировка PHP-кода под html-файлы</b></p>
+     <div class="example-contents">
+<div class="cdata"><pre>
+# Теперь PHP-скртпы могут выглядеть как обыкновенный HTML
+AddType application/x-httpd-php .htm .html
+</pre></div>
+     </div>
+
+    </div>
+    Чтобы достичь желаемого эффекта, вы должны переименовать все ваши скрипты
+    в соответствии с выбранным вами расширением. Описанное в этом разделе документации
+    повышение безопасности через сокрытие PHP имеет мало недостатков при 
+    небольших затратах.
+   </p>
+  </div>
+<hr /><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="security.magicquotes.disabling.html">Отключение волшебных кавычек</a></div>
+ <div class="next" style="float: right;"><a href="security.current.html">Необходимость обновлений</a></div>
+ <div class="up"><a href="security.html">Безопасность</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

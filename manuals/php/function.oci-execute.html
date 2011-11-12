@@ -1,0 +1,57 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <title>Выполняет выражение SQL</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+ </head>
+ <body><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="function.oci-error.html">oci_error</a></div>
+ <div class="next" style="float: right;"><a href="function.oci-fetch-all.html">oci_fetch_all</a></div>
+ <div class="up"><a href="ref.oci8.html">OCI8</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="function.oci-execute" class="refentry">
+   <div class="refnamediv">
+    <h1 class="refname">oci_execute</h1>
+    <p class="verinfo">(PHP 5, PECL oci8:1.1-1.2.4)</p><p class="refpurpose dc-title">oci_execute — Выполняет выражение SQL</p>
+
+   </div>
+   <div class="refsect1 unknown">
+    <h3 class="title">Описание</h3>
+     <div class="methodsynopsis dc-description">
+      <span class="type">bool</span> <span class="methodname"><b><b>oci_execute</b></b></span>
+       ( <span class="methodparam"><span class="type">resource</span> <tt class="parameter">$stmt</tt></span>
+      [, <span class="methodparam"><span class="type">int</span> <tt class="parameter">$mode</tt></span>
+     ] )</div>
+
+    <p class="para rdfs-comment">
+     <b>oci_execute()</b> выполняет предварительно подготовленное
+     к выполнению выражение SQL (см. <a href="function.oci-parse.html" class="function">oci_parse()</a>). 
+     Необязательный третий параметр <i><tt class="parameter">mode</tt></i>
+ позволяет 
+     вам указывать режим выполнения (по умолчанию он равен 
+     <b><tt>OCI_COMMIT_ON_SUCCESS</tt></b>).
+     Если вы не хотите, чтобы после выполнения выражения автоматически
+     выполнялся оператор <i>COMMIT</i>, завершающий транзакцию, 
+     то вам необходимо указать <b><tt>OCI_DEFAULT</tt></b>, как значение 
+     параметра <i><tt class="parameter">mode</tt></i>
+.
+    </p>
+    <blockquote><p><b class="note">Замечание</b>: 
+     
+      В версиях PHP ниже 5.0.0 эта функция называлась <a href="function.ociexecute.html" class="function">ociexecute()</a>. 
+      В PHP 5.0.0 и выше <a href="function.ociexecute.html" class="function">ociexecute()</a> является
+      алиасом <b>oci_execute()</b>, поэтому вы можете
+      продолжать использовать это имя, однако это не рекомендуется.
+     <br />
+    </p></blockquote>
+    <p class="para">
+     Возвращает <b><tt>TRUE</tt></b> в случае успешного завершения или <b><tt>FALSE</tt></b> в случае возникновения ошибки.
+    </p>
+   </div>
+
+  </div><hr /><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="function.oci-error.html">oci_error</a></div>
+ <div class="next" style="float: right;"><a href="function.oci-fetch-all.html">oci_fetch_all</a></div>
+ <div class="up"><a href="ref.oci8.html">OCI8</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

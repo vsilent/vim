@@ -1,0 +1,97 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <title>Define a color as transparent</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+ </head>
+ <body><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="function.imagecolorstotal.html">imagecolorstotal</a></div>
+ <div class="next" style="float: right;"><a href="function.imageconvolution.html">imageconvolution</a></div>
+ <div class="up"><a href="ref.image.html">Image Функции</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="function.imagecolortransparent" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">imagecolortransparent</h1>
+  <p class="verinfo">(PHP 4, PHP 5)</p><p class="refpurpose dc-title">imagecolortransparent — Define a color as transparent</p>
+
+ </div>
+ <div class="refsect1 description">
+  <h3 class="title">Описание</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type">int</span> <span class="methodname"><b><b>imagecolortransparent</b></b></span>
+    ( <span class="methodparam"><span class="type">resource</span> <tt class="parameter">$image</tt></span>
+   [, <span class="methodparam"><span class="type">int</span> <tt class="parameter">$color</tt></span>
+  ] )</div>
+
+  <p class="para rdfs-comment">
+   Sets the transparent color in the given <i><tt class="parameter">image</tt></i>
+.
+  </p>
+ </div>
+
+ <div class="refsect1 parameters">
+  <h3 class="title">Список параметров</h3>
+  <p class="para">
+   <dl>
+
+    <dt>
+<span class="term"><i><tt class="parameter">
+image</tt></i>
+</span>
+<dd>
+<p class="para">An image resource, returned by one of the image creation functions, 
+such as <a href="function.imagecreatetruecolor.html" class="function">imagecreatetruecolor()</a>.</p></dd>
+</dt>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">color</tt></i>
+</span>
+
+     <dd>
+
+      <p class="para">
+       A color identifier created with 
+       <a href="function.imagecolorallocate.html" class="function">imagecolorallocate()</a>
+      </p>
+     </dd>
+
+    </dt>
+
+   </dl>
+
+  </p>
+ </div>
+
+ <div class="refsect1 returnvalues">
+  <h3 class="title">Возвращаемые значения</h3>
+  <p class="para">
+   The identifier of the new (or current, if none is specified)
+   transparent color is returned.
+  </p>
+ </div>
+
+ <div class="refsect1 notes">
+  <h3 class="title">Примечания</h3>
+  <blockquote><p><b class="note">Замечание</b>: 
+   
+    Transparency is copied only with <a href="function.imagecopymerge.html" class="function">imagecopymerge()</a> and
+    true color images, not with <a href="function.imagecopy.html" class="function">imagecopy()</a> or pallete images.
+   <br />
+  </p></blockquote>
+  <blockquote><p><b class="note">Замечание</b>: 
+   
+    The transparent color is a property of the image, transparency is not a
+    property of the color. Once you have set a color to be the transparent
+    color, any regions of the image in that color that were drawn previously
+    will be transparent.
+   <br />
+  </p></blockquote>
+ </div>
+
+</div><hr /><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="function.imagecolorstotal.html">imagecolorstotal</a></div>
+ <div class="next" style="float: right;"><a href="function.imageconvolution.html">imageconvolution</a></div>
+ <div class="up"><a href="ref.image.html">Image Функции</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

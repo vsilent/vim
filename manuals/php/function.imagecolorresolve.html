@@ -1,0 +1,121 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <title>Get the index of the specified color or its closest possible alternative</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+ </head>
+ <body><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="function.imagecolormatch.html">imagecolormatch</a></div>
+ <div class="next" style="float: right;"><a href="function.imagecolorresolvealpha.html">imagecolorresolvealpha</a></div>
+ <div class="up"><a href="ref.image.html">Image Функции</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="function.imagecolorresolve" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">imagecolorresolve</h1>
+  <p class="verinfo">(PHP 4, PHP 5)</p><p class="refpurpose dc-title">imagecolorresolve — Get the index of the specified color or its closest possible alternative</p>
+
+ </div>
+ <div class="refsect1 description">
+  <h3 class="title">Описание</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type">int</span> <span class="methodname"><b><b>imagecolorresolve</b></b></span>
+    ( <span class="methodparam"><span class="type">resource</span> <tt class="parameter">$image</tt></span>
+   , <span class="methodparam"><span class="type">int</span> <tt class="parameter">$red</tt></span>
+   , <span class="methodparam"><span class="type">int</span> <tt class="parameter">$green</tt></span>
+   , <span class="methodparam"><span class="type">int</span> <tt class="parameter">$blue</tt></span>
+   )</div>
+
+  <p class="para rdfs-comment">
+   This function is guaranteed to return a color index for a
+   requested color, either the exact color or the closest possible
+   alternative.
+  </p>
+  <p class="para">
+   If you created the image from a file, only colors used in the image are
+   resolved. Colors present only in the pallete are not resolved.
+  </p>
+ </div>
+
+ <div class="refsect1 parameters">
+  <h3 class="title">Список параметров</h3>
+  <p class="para">
+   <dl>
+
+    <dt>
+<span class="term"><i><tt class="parameter">
+image</tt></i>
+</span>
+<dd>
+<p class="para">An image resource, returned by one of the image creation functions, 
+such as <a href="function.imagecreatetruecolor.html" class="function">imagecreatetruecolor()</a>.</p></dd>
+</dt>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">red</tt></i>
+</span>
+
+     <dd>
+
+      <p class="para">
+       Value of red component
+      </p>
+     </dd>
+
+    </dt>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">green</tt></i>
+</span>
+
+     <dd>
+
+      <p class="para">
+       Value of green component
+      </p>
+     </dd>
+
+    </dt>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">blue</tt></i>
+</span>
+
+     <dd>
+
+      <p class="para">
+       Value of blue component
+      </p>
+     </dd>
+
+    </dt>
+
+   </dl>
+
+  </p>
+ </div>
+
+ <div class="refsect1 returnvalues">
+  <h3 class="title">Возвращаемые значения</h3>
+  <p class="para">
+   Returns a color index.
+  </p>
+ </div>
+
+ <div class="refsect1 seealso">
+  <h3 class="title">Смотрите также</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"><a href="function.imagecolorclosest.html" class="function" rel="rdfs-seeAlso">imagecolorclosest()</a></li>
+   </ul>
+  </p>
+ </div>
+
+</div><hr /><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="function.imagecolormatch.html">imagecolormatch</a></div>
+ <div class="next" style="float: right;"><a href="function.imagecolorresolvealpha.html">imagecolorresolvealpha</a></div>
+ <div class="up"><a href="ref.image.html">Image Функции</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

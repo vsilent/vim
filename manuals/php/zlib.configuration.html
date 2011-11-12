@@ -1,0 +1,142 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <title>Настройка во время выполнения</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+ </head>
+ <body><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="zlib.installation.html">Установка</a></div>
+ <div class="next" style="float: right;"><a href="zlib.resources.html">Типы ресурсов</a></div>
+ <div class="up"><a href="zlib.setup.html">Установка и настройка</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="zlib.configuration" class="section">
+ <h2 class="title">Настройка во время выполнения</h2>
+ <p class="simpara">
+Поведение этих функций зависит от установок в <var class="filename">php.ini</var>.
+</p>
+ <p class="para">
+  Модуль zlib предоставляет возможность сжатия передаваемых страниц (в т.ч. динамических) 
+  на лету, если браузер это поддерживает. За сжатие отвечают три параметра в <a href="configuration.html#configuration.file" class="link">конфигурационном файле</a> <var class="filename">php.ini</var>.
+   <table border="5">
+   <caption><b>Конфигурационные параметры, касающиеся Zlib</b></caption>
+   <colgroup>
+
+    <thead valign="middle">
+     <tr valign="middle">
+      <th colspan="1">Параметр</th>
+      <th colspan="1">Значение по умолчанию</th>
+      <th colspan="1">Переменная окружения</th>
+     </tr>
+
+    </thead>
+
+    <tbody valign="middle" class="tbody">
+     <tr valign="middle">
+      <td colspan="1" rowspan="1" align="left">zlib.output_compression</td>
+      <td colspan="1" rowspan="1" align="left">&quot;Off&quot;</td>
+      <td colspan="1" rowspan="1" align="left">PHP_INI_ALL</td>
+     </tr>
+
+     <tr valign="middle">
+      <td colspan="1" rowspan="1" align="left">zlib.output_compression_level</td>
+      <td colspan="1" rowspan="1" align="left">&quot;-1&quot;</td>
+      <td colspan="1" rowspan="1" align="left">PHP_INI_ALL</td>
+     </tr>
+
+     <tr valign="middle">
+      <td colspan="1" rowspan="1" align="left">zlib.output_handler</td>
+      <td colspan="1" rowspan="1" align="left">&quot;&quot;</td>
+      <td colspan="1" rowspan="1" align="left">PHP_INI_ALL</td>
+     </tr>
+
+    </tbody>
+   </colgroup>
+
+  </table>
+
+   Для подробностей и определения переменных PHP_INI_* см.
+  <a href="function.ini-set.html" class="function">ini_set()</a>.
+</p>
+ 
+ <p class="para">Краткое разъяснение конфигурационных
+директив.</p>
+ 
+ <p class="para">
+ <dl>
+
+  <dt id="ini.zlib.output-compression">
+   <span class="term">
+    <i><tt class="parameter">zlib.output_compression</tt></i>
+
+    <a href="language.types.boolean.html" class="type boolean">boolean</a>/<a href="language.types.integer.html" class="type integer">integer</a>
+   </span>
+
+   <dd>
+
+    <p class="para">
+     Сжимать ли страницы. Если значение равно &quot;On&quot; в <var class="filename">php.ini</var> или в настройках Apache, 
+     страницы будут сжиматься если обозреватель посылает заголовок &quot;Accept-Encoding: gzip&quot; или
+     &quot;deflate&quot;. при этом в вывод будут добавлены заголовки &quot;Content-Encoding: gzip&quot; (соответственно
+     &quot;deflate&quot;) и &quot;Vary: Accept-Encoding&quot;.
+    </p>
+    <p class="para">
+     Аргументы также могут быть целого типа, так вы можете установить размер буфера 
+     (дискретизации) вывода (по умолчанию 4 Кб).
+    </p>
+    <blockquote><p><b class="note">Замечание</b>: 
+     
+      <a href="outcontrol.configuration.html#ini.output-handler" class="link">output_handler</a> должен быть
+      пустым, если выбрано значение &#039;On&#039;! Вместо него следует использовать zlib.output_handler.
+     <br />
+    </p></blockquote>
+   </dd>
+
+  </dt>
+
+
+  <dt id="ini.zlib.output-compression-level">
+   <span class="term">
+    <i><tt class="parameter">zlib.output_compression_level</tt></i>
+
+    <a href="language.types.integer.html" class="type integer">integer</a>
+   </span>
+
+   <dd>
+
+    <p class="para">
+     Уровень сжатия.
+    </p>
+   </dd>
+
+  </dt>
+
+
+  <dt id="ini.zlib.output-handler">
+   <span class="term">
+    <i><tt class="parameter">zlib.output_handler</tt></i>
+
+    <a href="language.types.string.html" class="type string">string</a>
+   </span>
+
+   <dd>
+
+    <p class="para">
+     Если zlib.output_compression активировано здесь, указывать дополнительные 
+     обработчики вывода (output handlers) нельзя. Этот параметр делает то же, 
+     что и <a href="outcontrol.configuration.html#ini.output-handler" class="link">output_handler</a>, но в другом 
+     порядке.
+    </p>
+   </dd>
+
+  </dt>
+
+
+ </dl>
+
+ </p>
+</div><hr /><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="zlib.installation.html">Установка</a></div>
+ <div class="next" style="float: right;"><a href="zlib.resources.html">Типы ресурсов</a></div>
+ <div class="up"><a href="zlib.setup.html">Установка и настройка</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

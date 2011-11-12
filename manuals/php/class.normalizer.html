@@ -1,0 +1,259 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <title>The Normalizer class</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+ </head>
+ <body><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="locale.setdefault.html">Locale::setDefault</a></div>
+ <div class="next" style="float: right;"><a href="normalizer.isnormalized.html">Normalizer::isNormalized</a></div>
+ <div class="up"><a href="book.intl.html">intl</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div>
+ <h1 class="title">The Normalizer class</h1>
+ 
+
+ <div class="partintro">
+
+  
+  <div id="normalizer.intro" class="section">
+   <h2 class="title">Введение</h2>
+   <p class="simpara">
+    Normalization is a process that involves transforming characters and
+    sequences of characters into a formally-defined underlying representation.
+    This process is most important when text needs to be compared for sorting
+    and searching, but it is also used when storing text to ensure that the
+    text is stored in a consistent representation.
+   </p>
+   <p class="para">
+    The Unicode Consortium has defined a number of normalization forms
+    reflecting the various needs of applications:
+    <ul class="simplelist">
+     <li class="member">Normalization Form D (NFD) - Canonical Decomposition</li>
+     <li class="member">
+      Normalization Form C (NFC) - Canonical Decomposition followed by
+      Canonical Composition
+     </li>
+     <li class="member">
+      Normalization Form KD (NFKD) - Compatibility Decomposition
+     </li>
+     <li class="member">
+      Normalization Form KC (NFKC) - Compatibility Decomposition followed by
+      Canonical Composition
+     </li>
+    </ul>
+    The different forms are defined in terms of a set of transformations on
+    the text, transformations that are expressed by both an algorithm and a
+    set of data files.
+   </p>
+  </div>
+  
+
+  <div id="normalizer.synopsis" class="section">
+   <h2 class="title">Class synopsis</h2>
+
+   
+   <div class="classsynopsis">
+    <div class="ooclass">
+     <b class="classname">Normalizer</b>
+    </div>
+
+    
+    <div class="classsynopsisinfo">
+     <span class="ooclass">
+       class <b class="classname">Normalizer</b>
+     </span>
+     {</div>
+    
+
+    
+
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Methods */</div>
+    <div class="methodsynopsis dc-description">
+    <span class="modifier">static</span>
+    <span class="type">boolean</span>
+     <span class="methodname"><b><a href="normalizer.isnormalized.html" class="function">isNormalized</a></b></span>
+     ( <span class="methodparam"><span class="type">string</span> <tt class="parameter">$input</tt></span>
+    [, <span class="methodparam"><span class="type">string</span> <tt class="parameter">$form</tt></span>
+   ] )</div>
+<div class="methodsynopsis dc-description">
+    <span class="modifier">static</span>
+    <span class="type">string</span>
+     <span class="methodname"><b><a href="normalizer.normalize.html" class="function">normalize</a></b></span>
+     ( <span class="methodparam"><span class="type">string</span> <tt class="parameter">$input</tt></span>
+    [, <span class="methodparam"><span class="type">string</span> <tt class="parameter">$form</tt></span>
+   ] )</div>
+
+   }</div>
+   
+
+  </div>
+
+  
+
+  
+
+<div id="intl.normalizer-constants" class="section">
+ <h2 class="title">Предопределенные константы</h2>
+
+ <p class="para">
+  The following constants define the normalization form used by the
+  normalizer:
+  <dl>
+
+   <dt>
+
+    <span class="term">
+     <b><tt>Normalizer::FORM_C</tt></b>
+     (<a href="language.types.string.html" class="type string">string</a>)
+    </span>
+
+    <dd>
+
+     <span class="simpara">
+      Normalization Form C (NFC) - Canonical Decomposition followed by
+      Canonical Composition
+     </span>
+    </dd>
+
+   </dt>
+
+
+   <dt>
+
+    <span class="term">
+     <b><tt>Normalizer::FORM_D</tt></b>
+     (<a href="language.types.string.html" class="type string">string</a>)
+    </span>
+
+    <dd>
+
+     <span class="simpara">Normalization Form D (NFD) - Canonical Decomposition</span>
+    </dd>
+
+   </dt>
+
+
+   <dt>
+
+    <span class="term">
+     <b><tt>Normalizer::FORM_KC</tt></b>
+     (<a href="language.types.string.html" class="type string">string</a>)
+    </span>
+
+    <dd>
+
+     <span class="simpara">
+      Normalization Form KC (NFKC) - Compatibility Decomposition, followed by
+      Canonical Composition
+     </span>
+    </dd>
+
+   </dt>
+
+
+   <dt>
+
+    <span class="term">
+     <b><tt>Normalizer::FORM_KD</tt></b>
+     (<a href="language.types.string.html" class="type string">string</a>)
+    </span>
+
+    <dd>
+
+     <span class="simpara">
+      Normalization Form KD (NFKD) - Compatibility Decomposition
+     </span>
+    </dd>
+
+   </dt>
+
+
+   <dt>
+
+    <span class="term">
+     <b><tt>Normalizer::NONE</tt></b>
+     (<a href="language.types.string.html" class="type string">string</a>)
+    </span>
+
+    <dd>
+
+     <span class="simpara">No decomposition/composition</span>
+    </dd>
+
+   </dt>
+
+
+   <dt>
+
+    <span class="term">
+     <b><tt>Normalizer::OPTION_DEFAULT</tt></b>
+     (<a href="language.types.string.html" class="type string">string</a>)
+    </span>
+
+    <dd>
+
+     <span class="simpara">Default normalization options</span>
+    </dd>
+
+   </dt>
+
+  </dl>
+
+ </p>
+</div>
+
+
+
+
+
+  <div id="normalizer.seealso" class="section">
+   <h2 class="title">Смотрите также</h2>
+   <p class="para">
+    <ul class="simplelist">
+     <li class="member">
+      <a href="http://unicode.org/reports/tr15/" class="link external">&raquo; 
+       Unicode Normalization
+      </a>
+     </li>
+     <li class="member">
+      <a href="http://unicode.org/faq/normalization.html" class="link external">&raquo; 
+       Unicode Normalization FAQ
+      </a>
+     </li>
+     <li class="member">
+      <a href="http://www.icu-project.org/userguide/normalization.html" class="link external">&raquo; 
+       ICU User Guide - Normalization
+      </a>
+     </li>
+     <li class="member">
+      <a href="http://www.icu-project.org/apiref/icu4c/unorm_8h.html" class="link external">&raquo; 
+       ICU API Reference - Normalization
+      </a>
+     </li>
+    </ul>
+   </p>
+  </div>
+ </div>
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+<h2>Содержание</h2><ul class="chunklist chunklist_reference"><li><a href="normalizer.isnormalized.html">Normalizer::isNormalized</a> — Checks if the provided string is already in the specified normalization
+   form.</li><li><a href="normalizer.normalize.html">Normalizer::normalize</a> — Normalizes the input provided and returns the normalized string</li></ul>
+</div>
+<hr /><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="locale.setdefault.html">Locale::setDefault</a></div>
+ <div class="next" style="float: right;"><a href="normalizer.isnormalized.html">Normalizer::isNormalized</a></div>
+ <div class="up"><a href="book.intl.html">intl</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

@@ -1,0 +1,92 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <title>Перемещает загруженный файл в новое место</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+ </head>
+ <body><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="function.mkdir.html">mkdir</a></div>
+ <div class="next" style="float: right;"><a href="function.parse-ini-file.html">parse_ini_file</a></div>
+ <div class="up"><a href="ref.filesystem.html">Файловая система</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="function.move-uploaded-file" class="refentry">
+   <div class="refnamediv">
+    <h1 class="refname">move_uploaded_file</h1>
+    <p class="verinfo">(PHP 4 &gt;= 4.0.3, PHP 5)</p><p class="refpurpose dc-title">move_uploaded_file — Перемещает загруженный файл в новое место</p>
+
+   </div>
+   <div class="refsect1 unknown">
+    <h3 class="title">Описание</h3>
+     <div class="methodsynopsis dc-description">
+      <span class="type">bool</span> <span class="methodname"><b><b>move_uploaded_file</b></b></span>
+       ( <span class="methodparam"><span class="type">string</span> <tt class="parameter">$filename</tt></span>
+      , <span class="methodparam"><span class="type">string</span> <tt class="parameter">$destination</tt></span>
+      )</div>
+
+    <p class="para rdfs-comment">
+     Эта функция проверяет, является ли файл
+     <i><tt class="parameter">filename</tt></i>
+ загруженным на сервер
+     (переданным по протоколу HTTP POST). Если файл действительно
+     загружен на сервер, он будет перемещён в место, указанное
+     в аргументе <i><tt class="parameter">destination</tt></i>
+.
+    </p>
+    <p class="para">
+     Если <i><tt class="parameter">filename</tt></i>
+ не является загруженным файлов,
+     никаких действий не предпринимается и
+     <b>move_uploaded_file()</b> возвращает <b><tt>FALSE</tt></b>. 
+    </p>
+    <p class="para">
+     Если <i><tt class="parameter">filename</tt></i>
+ является загруженным файлом, но
+     не может быть перемещён по каким-либо причинам, никакие действия не
+     предпринимаются и
+     <b>move_uploaded_file()</b> возвращает <b><tt>FALSE</tt></b>.
+     Кроме того, отображается предупреждение.
+    </p>
+    <p class="para">
+     Такая проверка особенно важна в том случае, если существует шанс того,
+     что какие-либо действия, производимые над загруженным файлом, могут
+     открыть его содержимое пользователю или даже другим пользователям
+     системы.
+    </p>
+    <blockquote><p><b class="note">Замечание</b>: 
+     
+      На <b>move_uploaded_file()</b> не распространяются нормальные
+      UID-ограничения режима <a href="features.safe-mode.html#ini.safe-mode" class="link">безопасный режим</a>. Это не является нарушением
+      безопасности, потому что <b>move_uploaded_file()</b>
+      оперирует лишь теми файлами, которые загружены на сервер через PHP.
+      Функция <b>move_uploaded_file()</b> принимает во внимание
+      как <a href="features.safe-mode.html#ini.safe-mode" class="link">безопасный режим</a>, так и <a href="features.safe-mode.html#ini.open-basedir" class="link">open_basedir</a>. Тем не менее, ограничения
+      накладываются лишь на параметр <i><tt class="parameter">destination</tt></i>
+, чтобы
+      разрешить перемещение загруженных файлов, так как параметр
+      <i><tt class="parameter">filename</tt></i>
+ может конфликтовать с этими
+      ограничениями. <b>move_uploaded_file()</b> гарантирует
+      безопасность этой операции, работая лишь с теми файлами, которые были
+      загружены через PHP.
+     <br />
+    </p></blockquote>
+    <div class="warning"><b class="warning">Внимание</b>
+     <p class="para">
+      Если файл <i><tt class="parameter">destination</tt></i>
+ уже существует, он
+      будет перезаписан.
+     </p>
+    </div>
+    <p class="para">
+     См. также описание функции <a href="function.is-uploaded-file.html" class="function">is_uploaded_file()</a> и раздел
+     <a href="features.file-upload.html" class="link">Загрузка файлов на сервер</a>
+     для примеров использования этих функций.
+    </p>
+   </div>
+
+  </div><hr /><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="function.mkdir.html">mkdir</a></div>
+ <div class="next" style="float: right;"><a href="function.parse-ini-file.html">parse_ini_file</a></div>
+ <div class="up"><a href="ref.filesystem.html">Файловая система</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

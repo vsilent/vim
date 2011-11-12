@@ -1,0 +1,65 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <title>Создаёт временный файл</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+ </head>
+ <body><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="function.tempnam.html">tempnam</a></div>
+ <div class="next" style="float: right;"><a href="function.touch.html">touch</a></div>
+ <div class="up"><a href="ref.filesystem.html">Файловая система</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="function.tmpfile" class="refentry">
+   <div class="refnamediv">
+    <h1 class="refname">tmpfile</h1>
+    <p class="verinfo">(PHP 4, PHP 5)</p><p class="refpurpose dc-title">tmpfile — Создаёт временный файл</p>
+
+   </div>
+   <div class="refsect1 unknown">
+    <h3 class="title">Описание</h3>
+     <div class="methodsynopsis dc-description">
+      <span class="type">resource</span> <span class="methodname"><b><b>tmpfile</b></b></span>
+       ( <span class="methodparam">void</span>
+      )</div>
+
+    <p class="para rdfs-comment">
+     Создаёт временный файл с уникальным именем, открывая его в режиме
+     чтения и записи (w+), и возвращает файловый указатель таким же образом,
+     как это делает <a href="function.fopen.html" class="function">fopen()</a>.
+     Этот файл автоматически удаляется после закрытия (использования
+     <a href="function.fclose.html" class="function">fclose()</a>) или после завершения работы скрипта).
+    </p>
+    <p class="para">
+     Для дополнительной информации, обратитесь к документации
+     вашей системы по функции <i>tmpfile(3)</i>, а также
+     к заголовочному файлу <var class="filename">stdio.h</var>.
+    </p>
+    <p class="para">
+     <div class="example">
+      <p><b>Пример #1 Пример использования функции <b>tmpfile()</b></b></p>
+      <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$temp&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">tmpfile</span><span style="color: #007700">();<br /></span><span style="color: #0000BB">fwrite</span><span style="color: #007700">(</span><span style="color: #0000BB">$temp</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"записываем&nbsp;во&nbsp;временный&nbsp;файл"</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">fseek</span><span style="color: #007700">(</span><span style="color: #0000BB">$temp</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">0</span><span style="color: #007700">);<br />echo&nbsp;</span><span style="color: #0000BB">fread</span><span style="color: #007700">(</span><span style="color: #0000BB">$temp</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">1024</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">fclose</span><span style="color: #007700">(</span><span style="color: #0000BB">$temp</span><span style="color: #007700">);&nbsp;</span><span style="color: #FF8000">//&nbsp;происходит&nbsp;удаление&nbsp;файла<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+      </div>
+
+      <div class="example-contents"><p>Результат выполнения данного примера:</p></div>
+      <div class="example-contents"><pre>
+<div class="cdata"><pre>
+записываем во временный файл
+</pre></div>
+      </pre></div>
+     </div>
+    </p>
+    <p class="para">
+     См. также описание функции <a href="function.tempnam.html" class="function">tempnam()</a>.
+    </p>
+   </div>
+
+  </div><hr /><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="function.tempnam.html">tempnam</a></div>
+ <div class="next" style="float: right;"><a href="function.touch.html">touch</a></div>
+ <div class="up"><a href="ref.filesystem.html">Файловая система</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

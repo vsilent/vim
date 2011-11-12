@@ -1,0 +1,78 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <title>Экранирует SQL спец-символы для mysql_query.</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+ </head>
+ <body><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="function.mysql-error.html">mysql_error</a></div>
+ <div class="next" style="float: right;"><a href="function.mysql-fetch-array.html">mysql_fetch_array</a></div>
+ <div class="up"><a href="ref.mysql.html">MySQL</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="function.mysql-escape-string" class="refentry">
+   <div class="refnamediv">
+    <h1 class="refname">mysql_escape_string</h1>
+    <p class="verinfo">(PHP 4 &gt;= 4.0.3, PHP 5, PECL mysql:1.0)</p><p class="refpurpose dc-title">mysql_escape_string — 
+     Экранирует SQL спец-символы для mysql_query. 
+    </p>
+
+   </div>
+   <div class="refsect1 unknown">
+    <h3 class="title">Описание</h3>
+    <div class="methodsynopsis dc-description">
+     <span class="type">string</span> <span class="methodname"><b><b>mysql_escape_string</b></b></span>
+      ( <span class="methodparam"><span class="type">string</span> <tt class="parameter">$unescaped_string</tt></span>
+     )</div>
+
+    <p class="para rdfs-comment">
+     Функция экранирует все спец-символы в <i><tt class="parameter">unescaped_string</tt></i>
+,
+     вследствие чего, её можно безопасно использовать в <a href="function.mysql-query.html" class="function">mysql_query()</a>.
+    </p>
+    <blockquote><p><b class="note">Замечание</b>: 
+     <span class="simpara">
+      <b>mysql_escape_string()</b> не экраинрует
+      <i>%</i> и <i>_</i>.
+     </span>
+     <span class="simpara">
+      Функция идентична <a href="function.mysql-real-escape-string.html" class="function">mysql_real_escape_string()</a>, исключая то, что
+      <a href="function.mysql-real-escape-string.html" class="function">mysql_real_escape_string()</a> принимает параметром ещё и указатель на соединение
+      и экранирует в зависимости от кодировки.
+      <b>mysql_escape_string()</b> не делает этого и результат
+      работы не зависит от кодировки, в который вы работаете с БД.
+     </span>
+    </p></blockquote>
+    <p class="para">
+     <div class="example">
+      <p><b>Пример #1 Пример использования <b>mysql_escape_string()</b></b></p>
+      <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />&nbsp;&nbsp;&nbsp;&nbsp;$item&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">"Zak's&nbsp;Laptop"</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$escaped_item&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">mysql_escape_string</span><span style="color: #007700">(</span><span style="color: #0000BB">$item</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">printf&nbsp;</span><span style="color: #007700">(</span><span style="color: #DD0000">"Escaped&nbsp;string:&nbsp;%s\n"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$escaped_item</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+      </div>
+
+      <div class="example-contents"><p>
+       Вышеописанный пример выдаст следующий результат:
+      </p></div>
+      <div class="example-contents"><pre>
+<div class="cdata"><pre>
+Escaped string: Zak\&#039;s Laptop
+</pre></div>
+      </pre></div>
+     </div>
+    </p>
+    <p class="para">
+     См. также
+     <a href="function.mysql-real-escape-string.html" class="function">mysql_real_escape_string()</a>,
+     <a href="function.addslashes.html" class="function">addslashes()</a> и директиву
+     <a href="info.configuration.html#ini.magic-quotes-gpc" class="link">magic_quotes_gpc</a>.
+    </p>
+   </div>
+
+  </div><hr /><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="function.mysql-error.html">mysql_error</a></div>
+ <div class="next" style="float: right;"><a href="function.mysql-fetch-array.html">mysql_fetch_array</a></div>
+ <div class="up"><a href="ref.mysql.html">MySQL</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

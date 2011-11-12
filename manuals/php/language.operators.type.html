@@ -1,0 +1,58 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <title>Оператор проверки принадлежности к классу</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+ </head>
+ <body><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="language.operators.html">Операторы</a></div>
+ <div class="next" style="float: right;"><a href="language.control-structures.html">Control Structures</a></div>
+ <div class="up"><a href="language.operators.html">Операторы</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="language.operators.type" class="sect1">
+   <h2 class="title">Оператор проверки принадлежности к классу</h2>
+   <p class="para">
+    Оператор <i>instanceof</i> используется для определения того,
+	является ли текущий объект экземпляром указанного <a href="language.oop.html" class="link">класса </a>.
+   </p>
+   <p class="simpara">
+    Оператор <i>instanceof</i> был добавлен в PHP 5.
+   До этого использовалась конструкция <a href="function.is-a.html" class="function">is_a()</a>,
+   которая на данный момент не рекомендуется к применению, 
+   более предпочтительно использовать оператор <i>instanceof</i> .  
+   </p>
+   <div class="informalexample">
+    <div class="example-contents">
+<div class="cdata"><pre>
+&lt;?php
+class A { }
+class B { }
+
+$thing = new A;
+
+if ($thing instanceof A) {
+    echo &#039;A&#039;;
+}
+if ($thing instanceof B) {
+    echo &#039;B&#039;;
+}
+?&gt;
+</pre></div>
+    </div>
+
+    <p class="simpara">
+     Поскольку объект <var class="varname">$thing</var> является экземпляром <span class="type класса">класса</span> A, и никак не B,
+	 то будет выполнен только первый, опирающийся на класс A, блок:
+    </p>
+    <div class="example-contents"><pre>A</pre></div>
+   </div>
+   <p class="para">
+    Ознакомьтесь также с описанием функций <a href="function.get-class.html" class="function">get_class()</a> и 
+    <a href="function.is-a.html" class="function">is_a()</a>.
+   </p>
+  </div><hr /><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="language.operators.html">Операторы</a></div>
+ <div class="next" style="float: right;"><a href="language.control-structures.html">Control Structures</a></div>
+ <div class="up"><a href="language.operators.html">Операторы</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

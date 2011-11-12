@@ -1,0 +1,288 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <title>Форматирует текущую дату/время с учетом текущей локали</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+ </head>
+ <body><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="function.mktime.html">mktime</a></div>
+ <div class="next" style="float: right;"><a href="function.strptime.html">strptime</a></div>
+ <div class="up"><a href="ref.datetime.html">Date/Time</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="function.strftime" class="refentry">
+   <div class="refnamediv">
+    <h1 class="refname">strftime</h1>
+    <p class="verinfo">(PHP 4, PHP 5)</p><p class="refpurpose dc-title">strftime — Форматирует текущую дату/время с учетом текущей локали</p>
+
+   </div>
+   <div class="refsect1 unknown">
+    <h3 class="title">Описание</h3>
+     <div class="methodsynopsis dc-description">
+      <span class="type">string</span> <span class="methodname"><b><b>strftime</b></b></span>
+       ( <span class="methodparam"><span class="type">string</span> <tt class="parameter">$format</tt></span>
+      [, <span class="methodparam"><span class="type">int</span> <tt class="parameter">$
+        timestamp
+       </tt></span>
+     ] )</div>
+
+    <p class="para rdfs-comment">
+     Возвращает строку, отформатированную в соответствии с аргументом 
+     <i><tt class="parameter">format</tt></i>
+, используя аргумент 
+     <i><tt class="parameter">timestamp</tt></i>
+ или текущее системное время, если 
+     этот аргумент не передан. Названия месяцев, дней недели и другие 
+     строки, зависящие от языка, соответствуют текущей локали, 
+     установленной функцией <a href="function.setlocale.html" class="function">setlocale()</a>.
+    </p>
+    <p class="para">
+     <b>strftime()</b> использует функции операционной 
+     системы, поэтому отдельные форматирующие символы могут не работать 
+     в вашей операционной системе. Кроме того, не все платформы 
+     поддерживают отрицательные метки времени. Это значит, что %e, %T, %R и %D 
+     (а возможно и другие) и даты до <i>Jan 1, 1970</i> не 
+     поддерживаются Windows, некоторыми версиями Linux и некоторыми 
+     другими операционными системами. Список форматирующих символов, 
+     поддерживаемых Windows, можно найти на 
+     <a href="http://msdn.microsoft.com/library/default.asp?url=/library/en-us/vclib/html/_crt_strftime.2c_.wcsftime.asp" class="link external">&raquo; сайте <acronym title="Microsoft Developer Network">MSDN</acronym></a>.
+    </p>
+    <p class="para">
+     В форматирующей строке распознаются следующие символы:
+     <ul class="itemizedlist">
+      <li class="listitem">
+       <span class="simpara">
+        %a - сокращенное название дня недели в текущей локали
+       </span>
+      </li>
+      <li class="listitem">
+       <span class="simpara">
+        %A - полное название дня недели в текущей локали
+       </span>
+      </li>
+      <li class="listitem">
+       <span class="simpara">
+        %b - сокращенное название месяца в текущей локали
+       </span>
+      </li>
+      <li class="listitem">
+       <span class="simpara">
+        %B - полное название месяца в текущей локали
+       </span>
+      </li>
+      <li class="listitem">
+       <span class="simpara">
+        %c - предпочтительный формат даты и времени в текущей локали
+       </span>
+      </li>
+      <li class="listitem">
+       <span class="simpara">
+        %C - столетие (год, деленный на 100 и округленный до целого, от 00 до 99)
+       </span>
+      </li>
+      <li class="listitem">
+       <span class="simpara">
+        %d - день месяца в виде десятичного числа (от 01 до 31)
+       </span>
+      </li>
+      <li class="listitem">
+       <span class="simpara">
+        %D - аналогично %m/%d/%y
+       </span>
+      </li>
+      <li class="listitem">
+       <span class="simpara">
+        %e - день месяца в виде десятичного числа, если это одна цифра, то
+        перед ней добавляется пробел (от &#039; 1&#039; до &#039;31&#039;)
+       </span>
+      </li>
+      <li class="listitem">
+       <span class="simpara">
+        %g - то же, что и %G, но без столетия
+       </span>
+      </li>
+      <li class="listitem">
+       <span class="simpara">
+        %G - год, 4-значное число, соответствующее номеру недели по ISO (см. %V).
+        Аналогично %Y, за исключением того, что если номер недели по ISO 
+        соответствует предыдущему или следующему году, используется 
+        соответствующий год.
+       </span>
+      </li>
+      <li class="listitem">
+       <span class="simpara">
+        %h - то же, что и %b
+       </span>
+      </li>
+      <li class="listitem">
+       <span class="simpara">
+        %H - номер часа от 00 до 23
+       </span>
+      </li>
+      <li class="listitem">
+       <span class="simpara">
+        %I - номер часа от 01 до 12
+       </span>
+      </li>
+      <li class="listitem">
+       <span class="simpara">
+        %j - номер дня в году (от 001 до 366)
+       </span>
+      </li>
+      <li class="listitem">
+       <span class="simpara">
+        %m - номер месяца (от 01 до 12)
+       </span>
+      </li>
+      <li class="listitem">
+       <span class="simpara">
+        %M - минуты
+       </span>
+      </li>
+      <li class="listitem">
+       <span class="simpara">
+        %n - символ &quot;\n&quot;
+       </span>
+      </li>
+      <li class="listitem">
+       <span class="simpara">
+        %p - `am&#039; или `pm&#039;, или соответствующие строки в текущей локали
+       </span>
+      </li>
+      <li class="listitem">
+       <span class="simpara">
+        %r - время в формате a.m. или p.m.
+       </span>
+      </li>
+      <li class="listitem">
+       <span class="simpara">
+        %R - время в 24-часовом формате
+       </span>
+      </li>
+      <li class="listitem">
+       <span class="simpara">
+        %S - секунды
+       </span>
+      </li>
+      <li class="listitem">
+       <span class="simpara">
+        %t - символ табуляции (&quot;\t&quot;)
+       </span>
+      </li>
+      <li class="listitem">
+       <span class="simpara">
+        %T - текущее время, аналогично %H:%M:%S
+       </span>
+      </li>
+      <li class="listitem">
+       <span class="simpara">
+        %u - номер дня недели от 1 до 7, где 1 соответствует понедельнику
+       </span>
+       <div class="warning"><b class="warning">Внимание</b>
+        <p class="simpara">
+         На Sun Solaris 1 соответствует воскресенью, хотя в ISO 9889:1999 
+         (текущий стандарт языка C) явно указано, что это должен быть 
+         понедельник.
+        </p>
+       </div>
+      </li>
+      <li class="listitem">
+       <span class="simpara">
+        %U - порядковый номер недели в текущем году. Первым днем первой 
+        недели в году считается первое воскресенье года.
+       </span>
+      </li>
+      <li class="listitem">
+       <span class="simpara"> 
+        %V - порядковый номер недели в году по стандарту ISO 8601:1988 
+        от 01 до 53, где 1 соответствует первой неделе в году, в которой 
+        как минимум 4 дня принадлежат этому году. Первым днем недели считается понедельник.
+        (Используйте %G or %g для определения соответствующего года)
+       </span>
+      </li>
+      <li class="listitem">
+       <span class="simpara">
+        %W - порядковый номер недели в текущем году. Первым днем первой 
+        недели в году считается первый понедельник года.
+       </span>
+      </li>
+      <li class="listitem">
+       <span class="simpara">
+        %w - номер дня недели, 0 соответствует воскресенью
+       </span>
+      </li>
+      <li class="listitem">
+       <span class="simpara">
+        %x - предпочтительный формат даты без времени в текущей локали
+       </span>
+      </li>
+      <li class="listitem">
+       <span class="simpara">
+        %X - предпочтительный формат времени без даты в текущей локали
+       </span>
+      </li>
+      <li class="listitem">
+       <span class="simpara">
+        %y - год без столетия (от 00 до 99)
+       </span>
+      </li>
+      <li class="listitem">
+       <span class="simpara">
+        %Y - год, включая столетие
+       </span>
+      </li>
+      <li class="listitem">
+       <span class="simpara">
+        %Z - временная зона в виде смещения, аббревиатуры или полного 
+        наименования
+       </span>
+      </li>
+      <li class="listitem">
+       <span class="simpara">
+        %% - символ `%&#039;
+       </span>
+      </li>
+     </ul>
+     <div class="example">
+      <p><b>Пример #1 Пример использования функции <b>strftime()</b> с разными локалями</b></p>
+      <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />setlocale</span><span style="color: #007700">(</span><span style="color: #0000BB">LC_TIME</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"C"</span><span style="color: #007700">);<br />echo&nbsp;</span><span style="color: #0000BB">strftime</span><span style="color: #007700">(</span><span style="color: #DD0000">"%A"</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">setlocale</span><span style="color: #007700">(</span><span style="color: #0000BB">LC_TIME</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"fi_FI"</span><span style="color: #007700">);<br />echo&nbsp;</span><span style="color: #0000BB">strftime</span><span style="color: #007700">(</span><span style="color: #DD0000">"&nbsp;по-фински&nbsp;-&nbsp;%A,"</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">setlocale</span><span style="color: #007700">(</span><span style="color: #0000BB">LC_TIME</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"fr_FR"</span><span style="color: #007700">);<br />echo&nbsp;</span><span style="color: #0000BB">strftime</span><span style="color: #007700">(</span><span style="color: #DD0000">"&nbsp;по-французски&nbsp;-&nbsp;%A&nbsp;и"</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">setlocale</span><span style="color: #007700">(</span><span style="color: #0000BB">LC_TIME</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"de_DE"</span><span style="color: #007700">);<br />echo&nbsp;</span><span style="color: #0000BB">strftime</span><span style="color: #007700">(</span><span style="color: #DD0000">"&nbsp;по-немецки&nbsp;-&nbsp;%A.\n"</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+      </div>
+
+     </div>
+     Этот пример будет работать, если на вашей системе установлены 
+     соответствующие локали.
+     <blockquote><p><b class="note">Замечание</b>: 
+      <span class="simpara">
+       %G and %V, которые основаны на номере недели по ISO 8601:1988,
+       Могут давать результат, отличный от ожидаемого, если вы не 
+       полностью понимаете систему нумерации, используемую этим 
+       стандартом. Смотрите описание %V выше и следующий пример.
+      </span>
+     </p></blockquote>
+     <div class="example">
+      <p><b>Пример #2 Пример номеров недели по ISO 8601:1988</b></p>
+      <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">/*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Декабрь&nbsp;2002&nbsp;/&nbsp;Январь&nbsp;2003<br />ISO&nbsp;&nbsp;&nbsp;&nbsp;Пн&nbsp;&nbsp;Вт&nbsp;&nbsp;Ср&nbsp;&nbsp;Чт&nbsp;&nbsp;Пт&nbsp;&nbsp;Сб&nbsp;&nbsp;Вс<br />-----&nbsp;----------------------------<br />51&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;16&nbsp;&nbsp;17&nbsp;&nbsp;18&nbsp;&nbsp;19&nbsp;&nbsp;20&nbsp;&nbsp;21&nbsp;&nbsp;22&nbsp;<br />52&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;23&nbsp;&nbsp;24&nbsp;&nbsp;25&nbsp;&nbsp;26&nbsp;&nbsp;27&nbsp;&nbsp;28&nbsp;&nbsp;29<br />1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;30&nbsp;&nbsp;31&nbsp;&nbsp;&nbsp;1&nbsp;&nbsp;&nbsp;2&nbsp;&nbsp;&nbsp;3&nbsp;&nbsp;&nbsp;4&nbsp;&nbsp;&nbsp;5<br />2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;6&nbsp;&nbsp;&nbsp;7&nbsp;&nbsp;&nbsp;8&nbsp;&nbsp;&nbsp;9&nbsp;&nbsp;10&nbsp;&nbsp;11&nbsp;&nbsp;12<br />3&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;13&nbsp;&nbsp;14&nbsp;&nbsp;15&nbsp;&nbsp;16&nbsp;&nbsp;17&nbsp;&nbsp;18&nbsp;&nbsp;19&nbsp;&nbsp;&nbsp;*/<br /><br />//&nbsp;Вывод:&nbsp;12/28/2002&nbsp;-&nbsp;%V,%G,%Y&nbsp;=&nbsp;52,2002,2002<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #DD0000">"12/28/2002&nbsp;-&nbsp;%V,%G,%Y&nbsp;=&nbsp;"&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #0000BB">strftime</span><span style="color: #007700">(</span><span style="color: #DD0000">"%V,%G,%Y"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">strtotime</span><span style="color: #007700">(</span><span style="color: #DD0000">"12/28/2002"</span><span style="color: #007700">))&nbsp;.&nbsp;</span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br /><br /></span><span style="color: #FF8000">//&nbsp;Вывод:&nbsp;12/30/2002&nbsp;-&nbsp;%V,%G,%Y&nbsp;=&nbsp;1,2003,2002<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #DD0000">"12/30/2002&nbsp;-&nbsp;%V,%G,%Y&nbsp;=&nbsp;"&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #0000BB">strftime</span><span style="color: #007700">(</span><span style="color: #DD0000">"%V,%G,%Y"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">strtotime</span><span style="color: #007700">(</span><span style="color: #DD0000">"12/30/2002"</span><span style="color: #007700">))&nbsp;.&nbsp;</span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br /><br /></span><span style="color: #FF8000">//&nbsp;Вывод:&nbsp;1/3/2003&nbsp;-&nbsp;%V,%G,%Y&nbsp;=&nbsp;1,2003,2003<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #DD0000">"1/3/2003&nbsp;-&nbsp;%V,%G,%Y&nbsp;=&nbsp;"&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #0000BB">strftime</span><span style="color: #007700">(</span><span style="color: #DD0000">"%V,%G,%Y"</span><span style="color: #007700">,</span><span style="color: #0000BB">strtotime</span><span style="color: #007700">(</span><span style="color: #DD0000">"1/3/2003"</span><span style="color: #007700">))&nbsp;.&nbsp;</span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br /><br /></span><span style="color: #FF8000">//&nbsp;Вывод:&nbsp;1/10/2003&nbsp;-&nbsp;%V,%G,%Y&nbsp;=&nbsp;2,2003,2003<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #DD0000">"1/10/2003&nbsp;-&nbsp;%V,%G,%Y&nbsp;=&nbsp;"&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #0000BB">strftime</span><span style="color: #007700">(</span><span style="color: #DD0000">"%V,%G,%Y"</span><span style="color: #007700">,</span><span style="color: #0000BB">strtotime</span><span style="color: #007700">(</span><span style="color: #DD0000">"1/10/2003"</span><span style="color: #007700">))&nbsp;.&nbsp;</span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br /><br /><br /><br /></span><span style="color: #FF8000">/*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Декабрь&nbsp;2004&nbsp;/&nbsp;Январь&nbsp;2005<br />ISO&nbsp;&nbsp;&nbsp;&nbsp;Пн&nbsp;&nbsp;Вт&nbsp;&nbsp;Ср&nbsp;&nbsp;Чт&nbsp;&nbsp;Пт&nbsp;&nbsp;Сб&nbsp;&nbsp;Вс<br />-----&nbsp;----------------------------<br />51&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;13&nbsp;&nbsp;14&nbsp;&nbsp;15&nbsp;&nbsp;16&nbsp;&nbsp;17&nbsp;&nbsp;18&nbsp;&nbsp;19<br />52&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;20&nbsp;&nbsp;21&nbsp;&nbsp;22&nbsp;&nbsp;23&nbsp;&nbsp;24&nbsp;&nbsp;25&nbsp;&nbsp;26<br />53&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;27&nbsp;&nbsp;28&nbsp;&nbsp;29&nbsp;&nbsp;30&nbsp;&nbsp;31&nbsp;&nbsp;&nbsp;1&nbsp;&nbsp;&nbsp;2<br />1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3&nbsp;&nbsp;&nbsp;4&nbsp;&nbsp;&nbsp;5&nbsp;&nbsp;&nbsp;6&nbsp;&nbsp;&nbsp;7&nbsp;&nbsp;&nbsp;8&nbsp;&nbsp;&nbsp;9<br />2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;10&nbsp;&nbsp;11&nbsp;&nbsp;12&nbsp;&nbsp;13&nbsp;&nbsp;14&nbsp;&nbsp;15&nbsp;&nbsp;16&nbsp;&nbsp;&nbsp;*/<br /><br />//&nbsp;Вывод:&nbsp;12/23/2004&nbsp;-&nbsp;%V,%G,%Y&nbsp;=&nbsp;52,2004,2004<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #DD0000">"12/23/2004&nbsp;-&nbsp;%V,%G,%Y&nbsp;=&nbsp;"&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #0000BB">strftime</span><span style="color: #007700">(</span><span style="color: #DD0000">"%V,%G,%Y"</span><span style="color: #007700">,</span><span style="color: #0000BB">strtotime</span><span style="color: #007700">(</span><span style="color: #DD0000">"12/23/2004"</span><span style="color: #007700">))&nbsp;.&nbsp;</span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br /><br /></span><span style="color: #FF8000">//&nbsp;Вывод:&nbsp;12/31/2004&nbsp;-&nbsp;%V,%G,%Y&nbsp;=&nbsp;53,2004,2004<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #DD0000">"12/31/2004&nbsp;-&nbsp;%V,%G,%Y&nbsp;=&nbsp;"&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #0000BB">strftime</span><span style="color: #007700">(</span><span style="color: #DD0000">"%V,%G,%Y"</span><span style="color: #007700">,</span><span style="color: #0000BB">strtotime</span><span style="color: #007700">(</span><span style="color: #DD0000">"12/31/2004"</span><span style="color: #007700">))&nbsp;.&nbsp;</span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br /><br /></span><span style="color: #FF8000">//&nbsp;Вывод:&nbsp;1/2/2005&nbsp;-&nbsp;%V,%G,%Y&nbsp;=&nbsp;53,2004,2005<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #DD0000">"1/2/2005&nbsp;-&nbsp;%V,%G,%Y&nbsp;=&nbsp;"&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #0000BB">strftime</span><span style="color: #007700">(</span><span style="color: #DD0000">"%V,%G,%Y"</span><span style="color: #007700">,</span><span style="color: #0000BB">strtotime</span><span style="color: #007700">(</span><span style="color: #DD0000">"1/2/2005"</span><span style="color: #007700">))&nbsp;.&nbsp;</span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br /><br /></span><span style="color: #FF8000">//&nbsp;Вывод:&nbsp;1/3/2005&nbsp;-&nbsp;%V,%G,%Y&nbsp;=&nbsp;1,2005,2005<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #DD0000">"1/3/2005&nbsp;-&nbsp;%V,%G,%Y&nbsp;=&nbsp;"&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #0000BB">strftime</span><span style="color: #007700">(</span><span style="color: #DD0000">"%V,%G,%Y"</span><span style="color: #007700">,</span><span style="color: #0000BB">strtotime</span><span style="color: #007700">(</span><span style="color: #DD0000">"1/3/2005"</span><span style="color: #007700">))&nbsp;.&nbsp;</span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br /><br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+      </div>
+
+     </div>
+    </p>
+    <p class="para">
+     См. также описание функций <a href="function.setlocale.html" class="function">setlocale()</a>,
+     <a href="function.mktime.html" class="function">mktime()</a>, и <a href="http://www.opengroup.org/onlinepubs/007908799/xsh/strftime.html" class="link external">&raquo; 
+     спецификацию <b>strftime()</b> Open Group</a>.
+    </p>
+   </div>
+
+  </div><hr /><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="function.mktime.html">mktime</a></div>
+ <div class="next" style="float: right;"><a href="function.strptime.html">strptime</a></div>
+ <div class="up"><a href="ref.datetime.html">Date/Time</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

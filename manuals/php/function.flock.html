@@ -1,0 +1,144 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <title>Портируемое рекомендательное запирание файлов</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+ </head>
+ <body><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="function.filetype.html">filetype</a></div>
+ <div class="next" style="float: right;"><a href="function.fnmatch.html">fnmatch</a></div>
+ <div class="up"><a href="ref.filesystem.html">Файловая система</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="function.flock" class="refentry">
+   <div class="refnamediv">
+    <h1 class="refname">flock</h1>
+    <p class="verinfo">(PHP 4, PHP 5)</p><p class="refpurpose dc-title">flock — Портируемое рекомендательное запирание файлов</p>
+
+   </div>
+   <div class="refsect1 unknown">
+    <h3 class="title">Описание</h3>
+     <div class="methodsynopsis dc-description">
+      <span class="type">bool</span> <span class="methodname"><b><b>flock</b></b></span>
+       ( <span class="methodparam"><span class="type">resource</span> <tt class="parameter">$handle</tt></span>
+      , <span class="methodparam"><span class="type">int</span> <tt class="parameter">$operation</tt></span>
+      [, <span class="methodparam"><span class="type">int</span> <tt class="parameter reference">&$wouldblock</tt></span>
+     ] )</div>
+
+    <p class="simpara">
+     PHP поддерживает портируемый механизм запирания файлов целиком,
+     который имеет рекомендательный характер (это означает, что все
+     обращающиеся к файлу программы должны использовать такой же
+     способ запирания файла, иначе запирание не сработает).
+    </p>
+    <blockquote><p><b class="note">Замечание</b>: 
+     
+      <b>flock()</b> является обязательным под Windows.
+     <br />
+    </p></blockquote>
+    <p class="simpara">
+     <b>flock()</b> применяется к <i><tt class="parameter">handle</tt></i>
+,
+     который должен быть указателем на открытый файл.
+     Параметр <i><tt class="parameter">operation</tt></i>
+ может принимать следующие
+     значения:
+    </p>
+    <p class="para">
+     <ul class="itemizedlist">
+      <li class="listitem">
+       <span class="simpara">
+        Чтобы установить общее запирание (чтение), установите
+        <i><tt class="parameter">operation</tt></i>
+ в значение
+        <b><tt>LOCK_SH</tt></b> (или 1, в случае версии PHP ниже 4.0.1).
+       </span>
+      </li>
+      <li class="listitem">
+       <span class="simpara">
+        Чтобы установить эксклюзивное запирание (запись), установите
+        <i><tt class="parameter">operation</tt></i>
+ в значение
+        <b><tt>LOCK_EX</tt></b> (или 2, в случае версии PHP ниже 4.0.1).
+       </span>
+      </li>
+      <li class="listitem">
+       <span class="simpara">
+        Чтобы отпереть файл (после общего или эксклюзивного запирания),
+        установите <i><tt class="parameter">operation</tt></i>
+ в значение
+        <b><tt>LOCK_UN</tt></b> (или 3, в случае версии PHP ниже 4.0.1).
+       </span>
+      </li>
+      <li class="listitem">
+       <span class="simpara">
+        Если вы не хотите, чтобы <b>flock()</b> блокировал
+        файл при запирании, добавьте <b><tt>LOCK_NB</tt></b>
+        (или 4, при использовании версии PHP ниже 4.0.1) к параметру
+        <i><tt class="parameter">operation</tt></i>
+.
+       </span>
+      </li>
+     </ul>
+    </p>
+    <p class="simpara">
+     <b>flock()</b> позволяет вам реализовывать простую модель
+     чтения/записи, которая может быть использована практически на любой
+     платформе (включая большинство проивзодных от Unix платформ, и даже
+     Windows).  Необязательный третий аргумент устанавливается в <b><tt>TRUE</tt></b>,
+     если запирание также блокирует (код ошибки EWOULDBLOCK). Блокировка
+     снимается при помощи этой же функции <a href="function.fclose.html" class="function">fclose()</a>
+     (которая также автоматически вызывается при завершении выполнения
+     скрипта).
+    </p>
+    <p class="simpara">
+      Возвращает <b><tt>TRUE</tt></b> в случае успешного завершения или <b><tt>FALSE</tt></b> в случае возникновения ошибки.
+    </p>
+    <p class="para">
+     <div class="example">
+      <p><b>Пример #1 Пример использования функции <b>flock()</b></b></p>
+      <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /><br />$fp&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">fopen</span><span style="color: #007700">(</span><span style="color: #DD0000">"/tmp/lock.txt"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"w+"</span><span style="color: #007700">);<br /><br />if&nbsp;(</span><span style="color: #0000BB">flock</span><span style="color: #007700">(</span><span style="color: #0000BB">$fp</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">LOCK_EX</span><span style="color: #007700">))&nbsp;{&nbsp;</span><span style="color: #FF8000">//&nbsp;выполнить&nbsp;эксплюзивное&nbsp;запирание<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">fwrite</span><span style="color: #007700">(</span><span style="color: #0000BB">$fp</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"Что-нибудь&nbsp;пишем\n"</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">flock</span><span style="color: #007700">(</span><span style="color: #0000BB">$fp</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">LOCK_UN</span><span style="color: #007700">);&nbsp;</span><span style="color: #FF8000">//&nbsp;отпираем&nbsp;файл<br /></span><span style="color: #007700">}&nbsp;else&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"Не&nbsp;могу&nbsp;запереть&nbsp;файл&nbsp;!"</span><span style="color: #007700">;<br />}<br /><br /></span><span style="color: #0000BB">fclose</span><span style="color: #007700">(</span><span style="color: #0000BB">$fp</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+      </div>
+
+     </div>
+    </p>
+    <blockquote><p><b class="note">Замечание</b>: 
+     
+      Из-за того, что функции <b>flock()</b> необходим указатель
+      на файл, вам может понадобиться воспользоваться специальным запирающим
+      файлом для того, чтобы ограничить доступ к файлу, который вы намерены
+      очищать путём открытыя его в режиме записи (используя &quot;w&quot; или &quot;w+&quot; в
+      качестве аргумента функции <a href="function.fopen.html" class="function">fopen()</a>).
+     <br />
+    </p></blockquote>
+    <div class="warning"><b class="warning">Внимание</b>
+     <p class="para">
+      <b>flock()</b> не будет работать на NFS и многих других
+      сетевых файловых системах. Обратитесь к документации вашей операционной
+      системы для получения дополнительной информации.
+     </p>
+     <p class="para">
+      В некоторых операционных системах <b>flock()</b> реализован
+      на уровне процессов. При использовании многопоточных серверных API,
+      таких как ISAPI, вы не можете полагаться на <b>flock()</b>
+      для защиты ваших файлов от дугих PHP-скриптов, которые
+      работают в параллельном потоке на том же сервере!
+     </p>
+     <p class="para">
+      <b>flock()</b> не поддерживается на старых файловых системах
+      вроде <i>FAT</i> и его производных, так что всегда будет
+      возвращать <b><tt>FALSE</tt></b> в этом окружении (это особенно касается пользователей
+      Windows 98).
+     </p>
+    </div>
+   </div>
+
+  </div><hr /><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="function.filetype.html">filetype</a></div>
+ <div class="next" style="float: right;"><a href="function.fnmatch.html">fnmatch</a></div>
+ <div class="up"><a href="ref.filesystem.html">Файловая система</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

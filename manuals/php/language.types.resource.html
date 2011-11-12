@@ -1,0 +1,68 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <title>Ресурс</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+ </head>
+ <body><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="language.types.object.html">Объекты</a></div>
+ <div class="next" style="float: right;"><a href="language.types.null.html">NULL</a></div>
+ <div class="up"><a href="language.types.html">Типы</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="language.types.resource" class="sect1">
+   <h2 class="title">Ресурс</h2>
+    
+    <p class="para">
+     Ресурс - это специальная переменная, содержащая
+     ссылку на внешний ресурс. Ресурсы создаются и
+     используются специальными функциями. Полный перечень
+     этих функций и соответствующих типов ресурсов
+     смотрите в <a href="resource.html" class="link">приложении</a>.
+    </p>
+    
+    <blockquote><p><b class="note">Замечание</b>: 
+     <span class="simpara">
+      Тип ресурс был введен в PHP 4
+     </span>
+    </p></blockquote>
+
+   <div id="language.types.resource.casting" class="sect2">
+    <h3 class="title">Преобразование в ресурс</h3>
+    
+    <p class="para">
+     Поскольку тип ресурс содержит специальные указатели на
+     открытые файлы, соединения с базой данных, область
+     изображения и тому подобное, вы не можете преобразовать
+     какое-либо значение в ресурс.
+    </p>
+   </div>
+
+    <div id="language.types.resource.self-destruct" class="sect2">
+     <h3 class="title">Освобождение ресурсов</h3>
+    
+    <p class="para">
+     В связи с системой подсчета ссылок, введенной в движке
+     Zend PHP 4 автоматически определяется, что ресурс
+     больше никуда не ссылается (как в Java). Когда это
+     происходит, все ресурсы, которые использовались для
+     данного ресурса, освобождаются сборщиком мусора.
+     По этой причине маловероятно, что когда-либо будет
+     необходимо освобождать память вручную, используя
+     какую-нибудь free_result функцию.
+     <blockquote><p><b class="note">Замечание</b>: 
+      <span class="simpara">
+       Постоянные ссылки базы данных являются особыми, они
+       <em class="emphasis">не</em> уничтожаются сборщиком мусора.
+       Смотрите также раздел о <a href="features.persistent-connections.html" class="link">постоянных
+       соединениях</a>.
+      </span>
+     </p></blockquote>
+    </p>
+    
+   </div>
+  </div><hr /><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="language.types.object.html">Объекты</a></div>
+ <div class="next" style="float: right;"><a href="language.types.null.html">NULL</a></div>
+ <div class="up"><a href="language.types.html">Типы</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

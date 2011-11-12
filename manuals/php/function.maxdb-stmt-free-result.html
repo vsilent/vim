@@ -1,0 +1,71 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <title>Frees stored result memory for the given statement handle</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+ </head>
+ <body><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="function.maxdb-stmt-fetch.html">maxdb_stmt_fetch</a></div>
+ <div class="next" style="float: right;"><a href="function.maxdb-stmt-init.html">maxdb_stmt_init</a></div>
+ <div class="up"><a href="ref.maxdb.html">MaxDB PHP Функции</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="function.maxdb-stmt-free-result" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">maxdb_stmt_free_result</h1>
+  <h1 class="refname">stmt-&gt;free_result</h1>
+  <p class="verinfo">(No version information available, might be only in CVS)</p><p class="refpurpose dc-title">stmt->free_result — Frees stored result memory for the given statement handle</p>
+
+ </div>
+
+ <div class="refsect1 description">
+  <h3 class="title">Описание</h3>
+  <p class="para">Procedural style:</p>
+  <div class="methodsynopsis dc-description">
+   <span class="type"><span class="type void">void</span></span> <span class="methodname"><b><b>maxdb_stmt_free_result</b></b></span>
+    ( <span class="methodparam"><span class="type">resource</span> <tt class="parameter">$stmt</tt></span>
+   )</div>
+
+  <p class="para rdfs-comment">Object oriented style (method):</p>
+  <div class="classsynopsis">
+   <div class="ooclass"><b class="classname">stmt</b></div>
+   <div class="methodsynopsis dc-description">
+    <span class="type">void</span>
+     <span class="methodname"><b><b>free_result</b></b></span>
+     ( <span class="methodparam">void</span>
+    )</div>
+
+  </div>
+  <p class="para">
+   The <b>maxdb_stmt_free_result()</b> function frees the result memory
+   associated with the statement represented by the
+   <i><tt class="parameter">stmt</tt></i>
+ parameter, which was allocated by
+   <a href="function.maxdb-stmt-store-result.html" class="function">maxdb_stmt_store_result()</a>.
+   </p>
+ </div>
+
+
+ <div class="refsect1 returnvalues">
+  <h3 class="title">Возвращаемые значения</h3>
+  <p class="para">
+   This function doesn&#039;t return any value.
+  </p>
+ </div>
+
+
+ <div class="refsect1 seealso">
+  <h3 class="title">Смотрите также</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"><a href="function.maxdb-stmt-store-result.html" class="function" rel="rdfs-seeAlso">maxdb_stmt_store_result()</a></li>
+   </ul>
+  </p>
+ </div>
+
+
+</div><hr /><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="function.maxdb-stmt-fetch.html">maxdb_stmt_fetch</a></div>
+ <div class="next" style="float: right;"><a href="function.maxdb-stmt-init.html">maxdb_stmt_init</a></div>
+ <div class="up"><a href="ref.maxdb.html">MaxDB PHP Функции</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

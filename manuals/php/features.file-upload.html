@@ -1,0 +1,269 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <title>Загрузка файлов на сервер</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+ </head>
+ <body><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="features.xforms.html">Работа с XForms</a></div>
+ <div class="next" style="float: right;"><a href="features.file-upload.errors.html">Разъяснение сообщений об ошибках</a></div>
+ <div class="up"><a href="features.html">Отличительные особенности</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div>
+  <h1> Загрузка файлов на сервер</h1>
+<h2>Содержание</h2><ul class="chunklist chunklist_chapter"><li><a href="features.file-upload.errors.html">Разъяснение сообщений об ошибках</a></li><li><a href="features.file-upload.common-pitfalls.html">Наиболее распространенные ошибки</a></li><li><a href="features.file-upload.multiple.html">Загрузка на сервер нескольких файлов</a></li><li><a href="features.file-upload.put-method.html">Поддержка метода PUT</a></li></ul>
+
+
+  <div id="features.file-upload.post-method" class="sect1">
+   <h2 class="title">Загрузка файлов методом POST</h2>
+
+   <p class="simpara">
+    PHP способен принимать файл загружаемый при помощи любого
+    браузера, поддерживающего стандарт RFC-1867 (в том числе 
+    <span class="productname">Netscape Navigator 3</span> и выше, 
+	<span class="productname">Microsoft Internet Explorer 3</span> 
+    с патчем от Microsoft или более поздние версии без патча).
+    Это дает возможность загружать как текстовые, так и бинарные 
+    файлы. Вместе с PHP-аутентификацией и функциями
+    для работы с файловой системой вы получаете полный контроль над тем,
+    кому разрешено загружать файлы, и над тем, что делать с файлом после
+    его загрузки.
+   </p>
+   <blockquote><p><b class="note">Замечание</b>: 
+    <b>Смежные замечания по конфигурации</b>
+    
+     Также ознакомьтесь с описанием директив <a href="ini.core.html#ini.file-uploads" class="link">file_uploads</a>, 
+     <a href="ini.core.html#ini.upload-max-filesize" class="link">upload_max_filesize</a>,
+     <a href="ini.core.html#ini.upload-tmp-dir" class="link">upload_tmp_dir</a>, 
+	 <a href="info.configuration.html#ini.max-input-time" class="link">max_input_time</a> и
+     <a href="ini.core.html#ini.post-max-size" class="link">post_max_size</a> конфигурационного
+     файла <var class="filename">php.ini</var>
+    <br />
+   </p></blockquote>
+   <p class="para">
+    Также следует заметить, что PHP поддерживает загрузку файлов методом PUT,
+    который используется в клиентах <span class="productname">Netscape Composer</span> 
+	и W3C <span class="productname">Amaya</span>. Для получения
+    более детальной документации обратитесь к разделу  
+    <a href="features.file-upload.put-method.html" class="link">поддержка метода PUT</a>
+   </p>
+   <p class="para">
+    Страница для загрузки файлов может быть реализована при помощи
+    специальной формы, которая выглядит примерно так:
+   </p>
+   <p class="para">
+    <div class="example">
+     <p><b>Пример #1 Форма для загрузки файлов</b></p>
+     <div class="example-contents">
+<div class="cdata"><pre>
+&lt;form enctype=&quot;multipart/form-data&quot; action=&quot;_URL_&quot; method=&quot;post&quot;&gt;
+ &lt;input type=&quot;hidden&quot; name=&quot;MAX_FILE_SIZE&quot; value=&quot;30000&quot; /&gt;
+ Отправить этот файл: &lt;input name=&quot;userfile&quot; type=&quot;file&quot; /&gt;
+ &lt;input type=&quot;submit&quot; value=&quot;Send File&quot; /&gt;
+&lt;/form&gt;
+</pre></div>
+     </div>
+
+    </div>
+   </p>
+   <p class="para">
+    В приведенном выше примере &quot;_URL_&quot; необходимо заменить ссылкой
+    на PHP-скрипт. Скрытое поле <i>MAX_FILE_SIZE</i>(значение необходимо
+    указывать в байтах) должно предшествовать полю для выбора файла,
+    и его значение является максимально допустимым размером принимаемого
+    файла. Также следует убедиться, что в атрибутах формы вы указали
+    <i>enctype=&quot;multipart/form-data&quot;</i>, в противном случае
+    загрузка файлов на сервер выполняться не будет.
+    <div class="warning"><b class="warning">Внимание</b>
+     <p class="para">
+      Опция <i>MAX_FILE_SIZE</i> является рекомендацией браузеру, даже если 
+      бы PHP также проверял это условие. Обойти это ограничение на 
+      стороне браузера достаточно просто, следовательно, вы не должны 
+      полагаться на то, что все файлы большего размера будут блокированы 
+      при помощи этой возможности. Тем не менее, ограничение PHP касательно 
+      максимального размера обойти невозможно. Вы в любом случае должны 
+      добавлять переменную формы <i>MAX_FILE_SIZE</i>, так как она предотвращает 
+      тревожное ожидание пользователей при передаче огромных файлов, только 
+      для того, чтобы узнать, что файл слишком большой и передача фактически 
+      не состоялась.
+     </p>
+    </div>
+   </p>
+
+   <p class="para">
+    Переменные, определенные для загруженных файлов, зависят от 
+    версии PHP и текущей конфигурации. Суперглобальный массив
+    <a href="reserved.variables.files.html" class="link">$_FILES</a>
+    доступен начиная с PHP 4.1.0. Массив <var class="varname">$HTTP_POST_FILES</var> 
+    доступен начиная с PHP 4.0.0.  Эти массивы содержат всю информацию
+    о загруженных файлах.  Использование <var class="varname">$_FILES</var> 
+    является более предпочтительным. 
+    В случае, если конфигурационная директива <a href="ini.core.html#ini.register-globals" class="link">register_globals</a> 
+    установлена значением <em class="emphasis">on</em>, дополнительно будут объявлены переменные с соответствующими именами.
+    Начиная с версии <a href="http://www.php.net/releases/4_2_0.php" class="link external">&raquo; 4.2.0</a> значением
+    по умолчанию для опции <a href="ini.core.html#ini.register-globals" class="link">register_globals</a> 
+    является <em class="emphasis">off</em>.
+   </p>
+   <p class="para">
+    Содержимое массива <a href="reserved.variables.files.html" class="link">$_FILES</a>
+    для нашего примера приведено ниже. Обратите внимание, что здесь предполагается
+    использование имени <em class="emphasis">userfile</em> для поля выбора файла, как и 
+    в приведенном выше примере. На самом деле имя поля может быть любым.
+    <dl>
+
+     <dt>
+
+      <span class="term"><var class="varname">$_FILES[&#039;userfile&#039;][&#039;name&#039;]</var></span>
+
+      <dd>
+
+       <p class="para">
+        Оригинальное имя файла на компьютере клиента.
+       </p>
+      </dd>
+
+     </dt>
+
+     <dt>
+
+      <span class="term"><var class="varname">$_FILES[&#039;userfile&#039;][&#039;type&#039;]</var></span>
+
+      <dd>
+
+       <p class="para">
+        Mime-тип файла, в случае, если браузер предоставил такую
+        информацию. Пример: <i>&quot;image/gif&quot;</i>.
+        </p>
+      </dd>
+
+     </dt>
+
+     <dt>
+
+      <span class="term"><var class="varname">$_FILES[&#039;userfile&#039;][&#039;size&#039;]</var></span>
+
+      <dd>
+
+       <p class="para">
+        Размер в байтах принятого файла.
+       </p>
+      </dd>
+
+     </dt>
+
+     <dt>
+
+      <span class="term"><var class="varname">$_FILES[&#039;userfile&#039;][&#039;tmp_name&#039;]</var></span>
+
+      <dd>
+
+       <p class="para">
+        Временное имя, с которым принятый файл был сохранен на сервере.
+       </p>
+      </dd>
+
+     </dt>
+
+     <dt>
+
+      <span class="term"><var class="varname">$_FILES[&#039;userfile&#039;][&#039;error&#039;]</var></span>
+
+      <dd>
+
+       <p class="para">
+        <a href="features.file-upload.errors.html" class="link">Код ошибки</a>, которая
+        может возникнуть при загрузке файла. Ключ <em class="emphasis">[&#039;error&#039;]</em>
+        был добавлен в PHP 4.2.0
+       </p>
+      </dd>
+
+     </dt>
+
+    </dl>
+
+   </p>
+   <blockquote><p><b class="note">Замечание</b>: 
+    
+     В PHP 4.1.0 и более ранних версиях описанный выше массив назывался
+     <var class="varname">$HTTP_POST_FILES</var> и не являлся
+     <a href="language.variables.superglobals.html" class="link">суперглобальным</a>, 
+     в отличие от <var class="varname">$_FILES</var>.  В PHP 3 массив
+     <var class="varname">$HTTP_POST_FILES</var> не определен.
+    <br />
+   </p></blockquote>
+   <p class="para">
+    В случае, если <a href="ini.core.html#ini.register-globals" class="link">register_globals</a>
+    установлена значением <em class="emphasis">on</em> в конфигурационном
+    файле <var class="filename">php.ini</var>, будут доступны дополнительные переменные. Например,
+    <var class="varname">$userfile_name</var> будет эквивалентна переменной <var class="varname">$_FILES[&#039;userfile&#039;][&#039;name&#039;]</var>,
+    а <var class="varname">$userfile_type</var> соответствует <var class="varname">$_FILES[&#039;userfile&#039;][&#039;type&#039;]</var>, и так далее. 
+    Не стоит забывать, что начиная с PHP 4.2.0 для директивы register_globals 
+    значение по умолчанию <em class="emphasis">off</em>.  Рекомендуется не полагаться на значение этой директивы.
+   </p>
+   <p class="para">
+    По умолчанию принятые файлы сохраняются на сервере в стандартной 
+    временной папке до тех пор, пока не будет задана другая директория при
+    помощи директивы <a href="ini.core.html#ini.upload-tmp-dir" class="link">upload_tmp_dir</a> 
+    конфигурационного файла <var class="filename">php.ini</var>. Директорию сервера по умолчанию
+    можно сменить, установив переменную <span class="envar">TMPDIR</span> для
+    окружения, в котором выполняется PHP. Установка переменной <span class="envar">TMPDIR</span> при помощи 
+    функции <a href="function.putenv.html" class="function">putenv()</a> внутри PHP-скрипта работать
+    не будет. Эта переменная окружения также может использоваться для того,
+    чтобы удостовериться, что другие операции также работают с принятыми файлами.
+    <div class="example">
+     <p><b>Пример #2 Проверка загружаемых на сервер файлов</b></p>
+     <div class="example-contents"><p>
+      Для получения более детальной информации вы можете ознакомится
+      с описанием функций <a href="function.is-uploaded-file.html" class="function">is_uploaded_file()</a> 
+      и <a href="function.move-uploaded-file.html" class="function">move_uploaded_file()</a>. Следующий пример
+      принимает и обрабатывает загруженный при помощи формы файл.
+     </p></div>
+     <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">//&nbsp;В&nbsp;PHP&nbsp;4.1.0&nbsp;и&nbsp;более&nbsp;ранних&nbsp;версиях&nbsp;следует&nbsp;использовать&nbsp;$HTTP_POST_FILES&nbsp;<br />//&nbsp;вместо&nbsp;$_FILES.<br /><br /></span><span style="color: #0000BB">$uploaddir&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">'/var/www/uploads/'</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$uploadfile&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$uploaddir&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #0000BB">basename</span><span style="color: #007700">(</span><span style="color: #0000BB">$_FILES</span><span style="color: #007700">[</span><span style="color: #DD0000">'userfile'</span><span style="color: #007700">][</span><span style="color: #DD0000">'name'</span><span style="color: #007700">]);<br /><br />print&nbsp;</span><span style="color: #DD0000">"&lt;pre&gt;"</span><span style="color: #007700">;<br />if&nbsp;(</span><span style="color: #0000BB">move_uploaded_file</span><span style="color: #007700">(</span><span style="color: #0000BB">$_FILES</span><span style="color: #007700">[</span><span style="color: #DD0000">'userfile'</span><span style="color: #007700">][</span><span style="color: #DD0000">'tmp_name'</span><span style="color: #007700">],&nbsp;</span><span style="color: #0000BB">$uploadfile</span><span style="color: #007700">))&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;print&nbsp;</span><span style="color: #DD0000">"File&nbsp;is&nbsp;valid,&nbsp;and&nbsp;was&nbsp;successfully&nbsp;uploaded.&nbsp;"</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;print&nbsp;</span><span style="color: #DD0000">"Here's&nbsp;some&nbsp;more&nbsp;debugging&nbsp;info:\n"</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">print_r</span><span style="color: #007700">(</span><span style="color: #0000BB">$_FILES</span><span style="color: #007700">);<br />}&nbsp;else&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;print&nbsp;</span><span style="color: #DD0000">"Possible&nbsp;file&nbsp;upload&nbsp;attack!&nbsp;&nbsp;Here's&nbsp;some&nbsp;debugging&nbsp;info:\n"</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;print&nbsp;</span><span style="color: #DD0000">"Possible&nbsp;file&nbsp;upload&nbsp;attack!&nbsp;&nbsp;Дополнительная&nbsp;отладочная&nbsp;информация:\n"</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">print_r</span><span style="color: #007700">(</span><span style="color: #0000BB">$_FILES</span><span style="color: #007700">);<br />}<br />print&nbsp;</span><span style="color: #DD0000">"&lt;/pre&gt;"</span><span style="color: #007700">;<br /><br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+     </div>
+
+    </div>
+   </p>
+   <p class="simpara">
+    PHP-скрипт, принимающий загруженный файл, должен реализовывать логику,
+    необходимую для определения дальнейших действий над принятым файлом.
+    Например, вы можете проверить переменную <var class="varname">$_FILES[&#039;userfile&#039;][&#039;size&#039;]</var>,
+    чтобы отсечь слишком большие или слишком маленькие файлы. Также вы
+    можете использовать переменную <var class="varname">$_FILES[&#039;userfile&#039;][&#039;type&#039;]</var>
+    для исключения файлов, которые не удовлетворяют критерию касательно
+    типа файла. Начиная с PHP 4.2.0 вы можете использовать 
+    <var class="varname">$_FILES[&#039;userfile&#039;][&#039;error&#039;]</var> и <a href="features.file-upload.errors.html" class="link">разъяснение сообщений об ошибках</a>
+    при реализации вашей логики. Независимо от того, какую модель поведения
+    вы выбрали, вы должны удалить файл из временной папки или переместить его в 
+    другую директорию.
+   </p>
+   <p class="simpara">
+    В случае, если при отправке формы файл выбран не был, PHP установит 
+    переменную <var class="varname">$_FILES[&#039;userfile&#039;][&#039;size&#039;]</var> значением 0, а переменную
+    <var class="varname">$_FILES[&#039;userfile&#039;][&#039;tmp_name&#039;]</var> - пустой строкой.
+    none.
+   </p>
+   <p class="simpara">
+    По окончанию работы скрипта, в случае, если принятый файл не был
+    переименован, или перемещен он будет автоматически удален из временной папки.
+   </p>
+  </div>
+
+  
+
+  
+  
+  
+
+  
+
+ </div>
+<hr /><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="features.xforms.html">Работа с XForms</a></div>
+ <div class="next" style="float: right;"><a href="features.file-upload.errors.html">Разъяснение сообщений об ошибках</a></div>
+ <div class="up"><a href="features.html">Отличительные особенности</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

@@ -1,0 +1,602 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <title>Использование PHP</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+ </head>
+ <body><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="faq.build.html">Проблемы Сборки</a></div>
+ <div class="next" style="float: right;"><a href="faq.html.html">PHP и HTML</a></div>
+ <div class="up"><a href="faq.html">ЧАВО</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div>
+  <h1>Использование PHP</h1>
+
+  
+
+  <p class="para">
+   В этом разделе собрано множество общих ошибок, которые могут вам
+   встретиться при написании PHP скриптов.
+  </p>
+
+  <div class="qandaset"><ol class="qandaset_questions"><li><a href="#faq.using.anyform">
+     
+      Я хочу написать общий PHP скрипт, кторый может обрабатывать данные,
+      приходящие из любой формы. Как узнать какие переменные метода POST
+      доступны?
+     
+    </a></li><li><a href="#faq.using.addslashes">
+     
+      Мне надо преобразовать все одиночные кавычки (&#039;) в обратную косую черту с
+      последующей одиночной кавычкой (\&#039;).
+      Как я могу сделать это с помощью регулярного выражения?
+      Я также хотел бы преобразовать &quot; в \&quot; и \ в \\.
+     
+    </a></li><li><a href="#faq.using.stripslashes">
+     
+      Все мои &quot; превратились в \&quot; и мои &#039; в \&#039;, как я могу избавиться от
+      всех этих нежелательных обратных косых черт? Как и почему они появились?
+     
+    </a></li><li><a href="#faq.register-globals">
+     
+      Как директива PHP register_globals касается меня?
+     
+    </a></li><li><a href="#faq.using.wrong-order">
+     
+      Когда я делаю следующее, вывод распечатывается не в том порядке:
+     
+
+&lt;?phpfunction&nbsp;myfunc($argument){&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;$argument&nbsp;+&nbsp;10;}$variable&nbsp;=&nbsp;10;echo&nbsp;"myfunc($variable)&nbsp;=&nbsp;"&nbsp;.&nbsp;myfunc($variable);?&gt;
+
+
+    
+
+     Что происходит?
+     
+    </a></li><li><a href="#faq.using.newlines">
+     
+      Эй, что произошло с моими строками?
+      
+
+&lt;pre&gt;&lt;?php&nbsp;echo&nbsp;"This&nbsp;should&nbsp;be&nbsp;the&nbsp;first&nbsp;line.";&nbsp;?&gt;&lt;?php&nbsp;echo&nbsp;"This&nbsp;should&nbsp;show&nbsp;up&nbsp;after&nbsp;the&nbsp;new&nbsp;line&nbsp;above.";&nbsp;?&gt;&lt;/pre&gt;
+
+      
+
+     
+    </a></li><li><a href="#faq.using.headers-sent">
+     
+      Я получаю сообщение
+      &#039;Warning: Cannot send session cookie - headers already
+      sent...&#039; или &#039;Cannot add header information - headers already sent...&#039;.
+     
+    </a></li><li><a href="#faq.using.header">
+     
+      Мне необходим прямой доступ к информации в заголовке запроса. 
+      Как я могу это сделать?
+     
+    </a></li><li><a href="#faq.using.authentication">
+     
+      Когда я пытаюсь использовать аутентификацию с IIS, я получаю
+      &#039;No Input file specified&#039;.
+     
+    </a></li><li><a href="#faq.using.iis.sharing">
+     
+      Windows: У меня нет доступа к файлам, разделяемых другим компьютером,
+      по IIS.
+     
+    </a></li><li><a href="#faq.using.netscape">
+     
+      Мой PHP скрипт работает в IE и Lynx, а в Netscape некоторый 
+      вывод отсутствует. Когда я выполняю &quot;View Source&quot;, я вижу
+      содержимое в IE, а в Netscape нет.
+     
+    </a></li><li><a href="#faq.using.mixml">
+     
+      Как я должен совмещать XML и PHP? Он жалуется на мои &lt;?xml тэги!
+     
+    </a></li><li><a href="#faq.using.editor">
+     
+      Как я могу использовать PHP с FrontPage или каким-либо другим
+      редактором HTML, который настаивает на перемещении моего кода?
+     
+    </a></li><li><a href="#faq.using.variables">
+     
+      Где я могу найти полный список переменных, доступных мне в PHP?
+     
+    </a></li><li><a href="#faq.using.freepdf">
+     
+      Как я могу генерировать PDF файлы без использования платных или
+      коммерческих библиотек, как PDFLib? 
+      Я бы хотел что-нибудь бесплатное и не требующее внешних библиотек PDF.
+     
+    </a></li><li><a href="#faq.using.cgi-vars">
+     
+      Я пытаюсь получить доступ к одной из стандартных CGI переменных
+      (таких как $DOCUMENT_ROOT или $HTTP_REFERER) в определённой 
+      пользователем функции и, похоже, она не может быть найдена.
+      В чём дело?
+     
+    </a></li><li><a href="#faq.using.shorthandbytes">
+     
+      Несколько PHP директив могут принимать сокращения для байтовых значений
+      в отличие от только integer байтовах значений.
+      Каковы все доступные сокращения? И могу ли я использовать их вне php.ini?
+     
+    </a></li></ol>
+   <dl>
+    <dt><strong>
+     <p class="para">
+      Я хочу написать общий PHP скрипт, кторый может обрабатывать данные,
+      приходящие из любой формы. Как узнать какие переменные метода POST
+      доступны?
+     </p>
+    </strong></dt>
+    <dd><a name="faq.using.anyform"></a>
+     <p class="para">
+      PHP предлагает множество <a href="language.variables.predefined.html" class="link">
+      предопределённых переменных</a>, таких как суперглобальная <var class="varname">
+      $_POST</var>. Вы можете пройтись по <var class="varname">$_POST</var>
+      так как это ассоциативный массив всех значений, пришедших с POST.
+      Для примера, давайте просто пройдёмся по ним с
+      <a href="control-structures.foreach.html" class="link">foreach</a>,
+      проверим на пустые (<a href="function.empty.html" class="function">empty()</a>) значения и распечатаем.
+      <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$empty&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$post&nbsp;</span><span style="color: #007700">=&nbsp;array();<br />foreach&nbsp;(</span><span style="color: #0000BB">$_POST&nbsp;</span><span style="color: #007700">as&nbsp;</span><span style="color: #0000BB">$varname&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">$varvalue</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(empty(</span><span style="color: #0000BB">$varvalue</span><span style="color: #007700">))&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$empty</span><span style="color: #007700">[</span><span style="color: #0000BB">$varname</span><span style="color: #007700">]&nbsp;=&nbsp;</span><span style="color: #0000BB">$varvalue</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;else&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$post</span><span style="color: #007700">[</span><span style="color: #0000BB">$varname</span><span style="color: #007700">]&nbsp;=&nbsp;</span><span style="color: #0000BB">$varvalue</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />}<br /><br />print&nbsp;</span><span style="color: #DD0000">"&lt;pre&gt;"</span><span style="color: #007700">;<br />if&nbsp;(empty(</span><span style="color: #0000BB">$empty</span><span style="color: #007700">))&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;print&nbsp;</span><span style="color: #DD0000">"None&nbsp;of&nbsp;the&nbsp;POSTed&nbsp;values&nbsp;are&nbsp;empty,&nbsp;posted:\n"</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$post</span><span style="color: #007700">);<br />}&nbsp;else&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;print&nbsp;</span><span style="color: #DD0000">"We&nbsp;have&nbsp;"&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #0000BB">count</span><span style="color: #007700">(</span><span style="color: #0000BB">$empty</span><span style="color: #007700">)&nbsp;.&nbsp;</span><span style="color: #DD0000">"&nbsp;empty&nbsp;values\n"</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;print&nbsp;</span><span style="color: #DD0000">"Posted:\n"</span><span style="color: #007700">;&nbsp;</span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$post</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;print&nbsp;</span><span style="color: #DD0000">"Empty:\n"</span><span style="color: #007700">;&nbsp;&nbsp;</span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$empty</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;exit;<br />}<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+      </div>
+
+     </p>
+     
+     <blockquote><p><b class="note">Замечание</b>: <b>Суперглобальные переменные:
+замечание о доступности</b>Начиная с PHP 4.1.0, стали доступными
+суперглобальные массивы, такие как <var class="varname">$_GET</var>,
+<var class="varname">$_POST</var>, <var class="varname">$_SERVER</var> и т.д. Дополнительную
+информацию смотрите в разделе руководства <a href="language.variables.predefined.html" class="link">superglobals</a><br /></p></blockquote>
+
+    </dd>
+   </dl>
+
+   <dl>
+    <dt><strong>
+     <p class="para">
+      Мне надо преобразовать все одиночные кавычки (&#039;) в обратную косую черту с
+      последующей одиночной кавычкой (\&#039;).
+      Как я могу сделать это с помощью регулярного выражения?
+      Я также хотел бы преобразовать &quot; в \&quot; и \ в \\.
+     </p>
+    </strong></dt>
+    <dd><a name="faq.using.addslashes"></a>
+     <p class="para">
+      Это делает функция <a href="function.addslashes.html" class="function">addslashes()</a>. 
+      Смотрите также <a href="function.mysql-escape-string.html" class="function">mysql_escape_string()</a>.
+      Также вы можете избавиться от обратной косой черты с помощью
+      <a href="function.stripslashes.html" class="function">stripslashes()</a>.
+     </p>
+
+     <blockquote><p><b class="note">Замечание</b>: <b>Замечание о директиве: magic_quotes_gpc
+</b>Директива PHP <a href="info.configuration.html#ini.magic-quotes-gpc" class="link">
+magic_quotes_gpc</a> имеет значение по умолчанию <i>on</i>
+(включена). По сути это применяет функцию <a href="function.addslashes.html" class="function">addslashes()</a> ко
+всем вашим GET-, POST-, и COOKIE-данным. Чтобы удалить добавленные косые
+черты, вы можете использовать <a href="function.stripslashes.html" class="function">stripslashes()</a>.<br /></p></blockquote>
+
+    </dd>
+   </dl>
+   
+   <dl>
+    <dt><strong>
+     <p class="para">
+      Все мои &quot; превратились в \&quot; и мои &#039; в \&#039;, как я могу избавиться от
+      всех этих нежелательных обратных косых черт? Как и почему они появились?
+     </p>
+    </strong></dt>
+    <dd><a name="faq.using.stripslashes"></a>
+     <p class="para">
+      PHP функция <a href="function.stripslashes.html" class="function">stripslashes()</a> удалит эти
+      обратные косые черты из вашей строки (<a href="language.types.string.html" class="type string">string</a>). Вероятнее всего,
+      обратные косые черты магически появились из-за того, что включена
+      PHP директива <a href="info.configuration.html#ini.magic-quotes-gpc" class="link">magic_quotes_gpc</a>
+     </p>
+     
+     <blockquote><p><b class="note">Замечание</b>: <b>Замечание о директиве: magic_quotes_gpc
+</b>Директива PHP <a href="info.configuration.html#ini.magic-quotes-gpc" class="link">
+magic_quotes_gpc</a> имеет значение по умолчанию <i>on</i>
+(включена). По сути это применяет функцию <a href="function.addslashes.html" class="function">addslashes()</a> ко
+всем вашим GET-, POST-, и COOKIE-данным. Чтобы удалить добавленные косые
+черты, вы можете использовать <a href="function.stripslashes.html" class="function">stripslashes()</a>.<br /></p></blockquote>
+     
+    </dd>
+   </dl>   
+
+   <dl>
+    <dt><strong>
+     <p class="para">
+      Как директива PHP register_globals касается меня?
+     </p>
+    </strong></dt>
+    <dd><a name="faq.register-globals"></a>
+     <p class="para">
+      Во-первых, следует объяснить что делает эта директива.
+      Скажем, используется вот такой URL:
+      <i>http://example.com/foo.php?animal=cat</i>
+      и в <var class="filename">foo.php</var> у нас находится следующий PHP-код:
+     </p>
+     <p class="para">
+      <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">//&nbsp;Использование&nbsp;$_GET&nbsp;в&nbsp;данном&nbsp;случае&nbsp;более&nbsp;предпочтительно<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">$_GET</span><span style="color: #007700">[</span><span style="color: #DD0000">'animal'</span><span style="color: #007700">];<br /><br /></span><span style="color: #FF8000">//&nbsp;Чтобы&nbsp;переменная&nbsp;$animal&nbsp;была&nbsp;определена,&nbsp;директива&nbsp;register_globals&nbsp;должна<br />//&nbsp;быть&nbsp;включена.<br />//&nbsp;НЕ&nbsp;ДЕЛАЙТЕ&nbsp;ЭТОГО!<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">$animal</span><span style="color: #007700">;<br /><br /></span><span style="color: #FF8000">//&nbsp;Это&nbsp;касается&nbsp;всех&nbsp;переменных,&nbsp;включая&nbsp;$_SERVER<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">$_SERVER</span><span style="color: #007700">[</span><span style="color: #DD0000">'PHP_SELF'</span><span style="color: #007700">];<br /><br /></span><span style="color: #FF8000">//&nbsp;Опять-таки,&nbsp;чтобы&nbsp;$PHP_SELF&nbsp;была&nbsp;определена,&nbsp;надо&nbsp;включить&nbsp;register_globals<br />//&nbsp;НЕ&nbsp;ДЕЛАЙТЕ&nbsp;ЭТОГО!<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">$PHP_SELF</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+     </div>
+
+    </p>
+    <p class="para">
+     Код выше демонстрирует как register_globals создаёт множество переменных.
+     Годами такой стиль написания не одобрялся и годами register_globals была
+     выключена по умолчанию. В PHP 6 директива register_globals наконец
+     удалена. Несмотря на то, что большинство хостингов отключает
+     register_globals, осталось еще много устаревших статей, руководств и
+     книг, которые требуют включения этой директивы.
+    </p>
+    <p class="para">
+     См. также следующие источники за дополнительной информацией:
+     <ul class="simplelist">
+      <li class="member">Директива <a href="ini.core.html#ini.register-globals" class="link">register_globals</a></li>
+      <li class="member"><a href="security.globals.html" class="link">Глава о безопасности и register_globals</a></li>
+      <li class="member"><a href="language.variables.external.html" class="link">Работа с внешними данными</a></li>
+      <li class="member"><a href="language.variables.superglobals.html" class="link">Суперглобальные переменные</a></li>
+     </ul>
+    </p>
+    <blockquote><p><b class="note">Замечание</b>: 
+     
+      В примере выше мы использовали <acronym title="Uniform Resource Locator">URL</acronym>, который содержал
+      QUERY_STRING. Передача информации подобным образом происходит с помощью
+      метода HTTP GET, вот почему мы использовали суперглобальный массив <var class="varname">$_GET</var>.
+     <br />
+    </p></blockquote>
+   </dd>
+  </dl>
+
+   <dl>
+    <dt><strong>
+     <p class="para">
+      Когда я делаю следующее, вывод распечатывается не в том порядке:
+     <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">function&nbsp;</span><span style="color: #0000BB">myfunc</span><span style="color: #007700">(</span><span style="color: #0000BB">$argument</span><span style="color: #007700">)<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #0000BB">$argument&nbsp;</span><span style="color: #007700">+&nbsp;</span><span style="color: #0000BB">10</span><span style="color: #007700">;<br />}<br /></span><span style="color: #0000BB">$variable&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">10</span><span style="color: #007700">;<br />echo&nbsp;</span><span style="color: #DD0000">"myfunc($variable)&nbsp;=&nbsp;"&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #0000BB">myfunc</span><span style="color: #007700">(</span><span style="color: #0000BB">$variable</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+     Что происходит?
+     </p>
+    </strong></dt>
+    <dd><a name="faq.using.wrong-order"></a>
+     <p class="para">
+      Для того, чтобы использовать результат вашей функции в выражении
+      (таком как соединение с другими строками, как в вышеприведённом примере),
+      вам необходимо вернуть значение с помощью <b>return()</b>,
+      а не выводить его через <a href="function.echo.html" class="function">echo()</a>.
+     </p>
+    </dd>
+   </dl>
+
+   <dl>
+    <dt><strong>
+     <p class="para">
+      Эй, что произошло с моими строками?
+      <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+&lt;pre&gt;<br /><span style="color: #0000BB">&lt;?php&nbsp;</span><span style="color: #007700">echo&nbsp;</span><span style="color: #DD0000">"This&nbsp;should&nbsp;be&nbsp;the&nbsp;first&nbsp;line."</span><span style="color: #007700">;&nbsp;</span><span style="color: #0000BB">?&gt;<br />&lt;?php&nbsp;</span><span style="color: #007700">echo&nbsp;</span><span style="color: #DD0000">"This&nbsp;should&nbsp;show&nbsp;up&nbsp;after&nbsp;the&nbsp;new&nbsp;line&nbsp;above."</span><span style="color: #007700">;&nbsp;</span><span style="color: #0000BB">?&gt;<br /></span>&lt;/pre&gt;</span>
+</code></div>
+      </div>
+
+     </p>
+    </strong></dt>
+    <dd><a name="faq.using.newlines"></a>
+     <p class="para">
+      В PHP, блок кода завершается либо с &quot;?&gt;&quot;, либо с &quot;?&gt;\n&quot;
+      (где \n означает &quot;новая строка&quot;). В вышеприведённом примере
+      предложения выведутся на одной строке, так как PHP опусткает
+      символ новой строки после завершения блока. Это означает,
+      что вам необходимо вставить дополнительный символ новой строки
+      после каждого блока PHP кода, для того чтобы вывод продолжался
+      с новой строки.
+     </p>
+     <p class="para">
+      Почему PHP делает это? Потому что при форматировании обычного HTML
+      это, обычно, упрощает вашу жизнь когда вым не нужна эта новая строка
+      и вам не надо создавать невероятно длинные строки для того, чтобы
+      сделать сырой исходник страницы читаемым. 
+     </p>
+    </dd>
+   </dl>
+
+   <dl>
+    <dt><strong>
+     <p class="para">
+      Я получаю сообщение
+      &#039;Warning: Cannot send session cookie - headers already
+      sent...&#039; или &#039;Cannot add header information - headers already sent...&#039;.
+     </p>
+    </strong></dt>
+    <dd><a name="faq.using.headers-sent"></a>
+     <p class="para">
+      Функциям <a href="function.header.html" class="function">header()</a>, <a href="function.setcookie.html" class="function">setcookie()</a>,
+      и <a href="ref.session.html" class="link">функциям сессии</a> нужно добавить
+      заголовки к выходному потоку, но заголовки могут быть посланы только перед 
+      всем другим содержимым. Перед использованием этих функций не может быть 
+      никакого вывода HTML. Функция <a href="function.headers-sent.html" class="function">headers_sent()</a>
+      проверит если ваш скрипт уже послал заголовки; также смотрите
+      <a href="ref.outcontrol.html" class="link"> Функции Управления Выводом</a>.
+     </p>
+    </dd>
+   </dl>
+
+   <dl>
+    <dt><strong>
+     <p class="para">
+      Мне необходим прямой доступ к информации в заголовке запроса. 
+      Как я могу это сделать?
+     </p>
+    </strong></dt>
+    <dd><a name="faq.using.header"></a>
+     <p class="para">
+      Это делает функция <a href="function.getallheaders.html" class="function">getallheaders()</a> если вы
+      запускаете PHP как модуль Apache. Так следующий кусок кода
+      покажет вам все заголовки запроса:
+      <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$headers&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">getallheaders</span><span style="color: #007700">();<br />foreach&nbsp;(</span><span style="color: #0000BB">$headers&nbsp;</span><span style="color: #007700">as&nbsp;</span><span style="color: #0000BB">$name&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">$content</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"headers[$name]&nbsp;=&nbsp;$content&lt;br&nbsp;/&gt;\n"</span><span style="color: #007700">;<br />}<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+      </div>
+
+     </p>
+     <p class="para">
+      Также смотрите
+      <a href="function.apache-lookup-uri.html" class="function">apache_lookup_uri()</a>,
+      <a href="function.apache-response-headers.html" class="function">apache_response_headers()</a> и
+      <a href="function.fsockopen.html" class="function">fsockopen()</a>
+     </p>
+    </dd>
+   </dl>
+
+   <dl>
+    <dt><strong>
+     <p class="para">
+      Когда я пытаюсь использовать аутентификацию с IIS, я получаю
+      &#039;No Input file specified&#039;.
+     </p>
+    </strong></dt>
+    <dd><a name="faq.using.authentication"></a>
+     <p class="para">
+      Это недостаток модели безопасности IIS. Проблема общая для всех
+      CGI программ, выполняющихся под IIS. Чтобы обойти проблему, 
+      создайте простой HTML файл (неразбираемый PHP) как входную страницу
+      в аутентифицируемой директории. Затем используйте META тэг для
+      перенаправления на PHP страницу или поместите ссылку на PHP страницу.
+      После этого PHP распознает аутентификацию правильно. 
+      С модулем ISAPI такой проблемы нет. Это не должно повлиять на другие
+      web сервисы NT. Для дополнительной информации смотрите:
+      <a href="http://support.microsoft.com/kb/q160422/" class="link external">&raquo; http://support.microsoft.com/kb/q160422/</a> и раздел руководства
+      <a href="features.http-auth.html" class="link">HTTP Аутентификация</a>.
+     </p>
+    </dd>
+   </dl>
+
+   <dl>
+    <dt><strong>
+     <p class="para">
+      Windows: У меня нет доступа к файлам, разделяемых другим компьютером,
+      по IIS.
+     </p>
+    </strong></dt>
+    <dd><a name="faq.using.iis.sharing"></a>
+     <p class="para">
+      Вам необходимо сделать изменения. Идите в <i>Internet Information
+      Services</i>. Найдите ваш PHP файл и перейдите в его свойства.
+      Идите в закладку <i>File Security</i>, <i>Edit -&gt;
+      Anonymous access and authentication control</i>.
+     </p>
+     <p class="para">
+      Вы можете исправить проблему либо сняв отметку с <i>Anonymous
+      Access</i> и оставив отмеченым <i>Integrated Window
+      Authentication</i>, либо отметив <i>Anonymous
+      Access</i> и отредактировать права пользователя, так как у него
+      может не быть прав.
+     </p>
+    </dd>
+   </dl>
+
+   <dl>
+    <dt><strong>
+     <p class="para">
+      Мой PHP скрипт работает в IE и Lynx, а в Netscape некоторый 
+      вывод отсутствует. Когда я выполняю &quot;View Source&quot;, я вижу
+      содержимое в IE, а в Netscape нет.
+     </p>
+    </strong></dt>
+    <dd><a name="faq.using.netscape"></a>
+     <p class="para">
+      Netscape более строг к HTML тэгам (таким как таблицы), чем IE.
+      Может быть полезно пропустить ваш HTML вывод через HTML validator,
+      такой как <a href="http://validator.w3.org/" class="link external">&raquo; validator.w3.org</a>.
+      Например, это может быть вызвано отсутствием &lt;/table&gt;.
+     </p>
+     <p class="para">
+      Также, оба IE и Lynx игнорируют любые NUL-ы (<i>\0</i>)
+      в HTML потоке, а Netscape нет. Лучший способ проверить это - скомпилировать
+      версию <a href="features.commandline.html" class="link">командной строки</a> PHP
+      (также известную как CGI версия) и выполнить ваш скрипт из командной строки.
+      На *nix, пропустите вывод через <i>od -c</i> и ищите любые
+      <i>\0</i> символы. Если вы под Windows, вам надо найти
+      редактор или какую-либо другую программу, которая позволяет просматривать
+      двоичные файлы. Когда Netscape видит NUL в файле, он обычно не будет 
+      больше ничего выводить на этой строке, тогда как IE и Lynx будут.
+     </p>
+    </dd>
+   </dl>
+
+   <dl>
+    <dt><strong>
+     <p class="para">
+      Как я должен совмещать XML и PHP? Он жалуется на мои &lt;?xml тэги!
+     </p>
+    </strong></dt>
+    <dd><a name="faq.using.mixml"></a>
+     <p class="para">
+      Для того, чтобы встроить &lt;?xml напрямую в ваш PHP код, вам надо отключить
+      короткие тэги, установив PHP директиву
+      <a href="ini.core.html#ini.short-open-tag" class="link">short_open_tags</a> в
+      <i>0</i>. Вы можете установить эту директиву с помощью
+      <a href="function.ini-set.html" class="function">ini_set()</a>. Независимо от того, что включена или нет
+      <a href="ini.core.html#ini.short-open-tag" class="link">short_open_tags</a>,
+      вы можете делать что-то типа:
+      <i>&lt;?php echo &#039;&lt;?xml&#039;; ?&gt;</i>. 
+      По умолчанию эта директива включена.
+     </p>
+    </dd>
+   </dl>
+
+   <dl>
+    <dt><strong>
+     <p class="para">
+      Как я могу использовать PHP с FrontPage или каким-либо другим
+      редактором HTML, который настаивает на перемещении моего кода?
+     </p>
+    </strong></dt>
+    <dd><a name="faq.using.editor"></a>
+     <p class="para">
+      Самое простое, что можно сделать - это включить поддержку ASP тэгов в вашем
+      PHP коде. Это позволит вам использовать разделители кода в стиле ASP
+      &lt;% и %&gt;. Некоторые популярные редакторы HTML обращаются с ними
+      более интеллигентно (пока ещё). Чтобы разрешить тэги в стиле ASP,
+      вам надо установить переменную <a href="ini.core.html#ini.asp-tags" class="link">asp_tags</a>
+      в <var class="filename">php.ini</var> или использовать соответствующую директиву Apache.
+     </p>
+    </dd>
+   </dl>
+
+   <dl>
+    <dt><strong>
+     <p class="para">
+      Где я могу найти полный список переменных, доступных мне в PHP?
+     </p>
+    </strong></dt>
+    <dd><a name="faq.using.variables"></a>
+     <p class="para">
+      Читайте страницу руководства по 
+      <a href="language.variables.predefined.html" class="link">предопределённым
+      переменным</a> так как она содержит частичный список предопределённых
+      переменных, доступных вашему скрипту. Полный список доступных переменных
+      (и множество другой информации) можно увидеть, вызвав функцию
+      <a href="function.phpinfo.html" class="function">phpinfo()</a>. Не забудьте прочитать раздел руководства
+      по <a href="language.variables.external.html" class="link">переменным извне PHP
+      </a> так как он описывает общие сценарии для внешних переменных, таких 
+      как HTML форма, Cookie и URL.
+     </p>
+     
+     <blockquote><p><b class="note">Замечание</b>: <b>register_globals: важное
+замечание</b>Начиная с PHP 4.2.0, значением директивы PHP
+<a href="ini.core.html#ini.register-globals" class="link">register_globals</a> по умолчанию
+является <em class="emphasis">off</em> (выключено). Сообщество PHP рекомендует
+всем не полагаться на эту директиву, а использовать вместо этого иные
+средства, такие как <a href="language.variables.predefined.html" class="link">superglobals</a>.<br /></p></blockquote>
+
+    </dd>
+   </dl>
+
+   <dl>
+    <dt><strong>
+     <p class="para">
+      Как я могу генерировать PDF файлы без использования платных или
+      коммерческих библиотек, как <a href="ref.pdf.html" class="link">PDFLib</a>? 
+      Я бы хотел что-нибудь бесплатное и не требующее внешних библиотек PDF.
+     </p>
+    </strong></dt>
+    <dd><a name="faq.using.freepdf"></a>
+     <p class="para">
+      Есть несколько альтернатив, написанных на PHP, таких как 
+      <a href="http://www.ros.co.nz/pdf/" class="link external">&raquo; http://www.ros.co.nz/pdf/</a>, 
+      <a href="http://www.fpdf.org/" class="link external">&raquo; http://www.fpdf.org/</a>, 
+      <a href="http://www.gnuvox.com/pdf4php/" class="link external">&raquo; http://www.gnuvox.com/pdf4php/</a> и
+      <a href="http://www.potentialtech.com/ppl.php" class="link external">&raquo; http://www.potentialtech.com/ppl.php</a>.
+      А также модуль <a href="http://www.stillhq.com/cgi-bin/getpage?area=panda" class="link external">&raquo; Panda</a>.
+     </p>
+    </dd>
+   </dl>
+
+   <dl>
+    <dt><strong>
+     <p class="para">
+      Я пытаюсь получить доступ к одной из стандартных CGI переменных
+      (таких как $DOCUMENT_ROOT или $HTTP_REFERER) в определённой 
+      пользователем функции и, похоже, она не может быть найдена.
+      В чём дело?
+     </p>
+    </strong></dt>
+    <dd><a name="faq.using.cgi-vars"></a>
+     <p class="para">
+      Важно осознавать, что директива PHP <a href="ini.core.html#ini.register-globals" class="link">register_globals</a> 
+      также затрагивает переменные окружения и сервера. 
+      Когда register_globals = off (по умолчанию off, начиная с PHP 4.2.0),
+      default is off since PHP 4.2.0), <var class="varname">$DOCUMENT_ROOT</var>
+      не будет существовать. Вместо ипользуйте <var class="varname">$_SERVER[&#039;DOCUMENT_ROOT&#039;]
+      </var>. Если register_globals = on, то переменные
+      <var class="varname">$DOCUMENT_ROOT</var> и
+      <var class="varname">$GLOBALS[&#039;DOCUMENT_ROOT&#039;]</var> будут также существовать.
+     </p>
+     <p class="para">
+      Если вы уверины, что register_globals = on и удивляетесь почему
+      <var class="varname">$DOCUMENT_ROOT</var> недоступна внутри функции, то
+      это потому, что, как любые другие переменные, она требует
+      <i>global $DOCUMENT_ROOT</i> внутри функции.
+      Также смотрите страницу руководства по 
+      <a href="language.variables.scope.html" class="link">области
+      определения переменной</a>.
+      Предпочтительно кодировать с register_globals = off.
+     </p>
+     
+     <blockquote><p><b class="note">Замечание</b>: <b>Суперглобальные переменные:
+замечание о доступности</b>Начиная с PHP 4.1.0, стали доступными
+суперглобальные массивы, такие как <var class="varname">$_GET</var>,
+<var class="varname">$_POST</var>, <var class="varname">$_SERVER</var> и т.д. Дополнительную
+информацию смотрите в разделе руководства <a href="language.variables.predefined.html" class="link">superglobals</a><br /></p></blockquote>
+
+    </dd>
+   </dl>
+
+   <dl>
+    <dt><strong>
+     <p class="para">
+      Несколько PHP директив могут принимать сокращения для байтовых значений
+      в отличие от только <a href="language.types.integer.html" class="type integer">integer</a> байтовах значений.
+      Каковы все доступные сокращения? И могу ли я использовать их вне <var class="filename">php.ini</var>?
+     </p>
+    </strong></dt>
+    <dd><a name="faq.using.shorthandbytes"></a>
+     <p class="para">
+      Доступные опции: K (для Килобайтов), M (для Мегабайтов) и 
+      G (для Гигабайтов; доступна начиная с PHP 5.1.0);
+      они чувствительны к регистру. Всё остальное считается байтами.
+      <i>1M</i> равно одному Мегабайту или
+      <i>1048576</i> байтам. <i>1K</i> равно
+      одному Килобайту или <i>1024</i> байтам.
+      Вы не можете использовать эти сокращения вне <var class="filename">php.ini</var>, вместо
+      используйте <a href="language.types.integer.html" class="type integer">integer</a> значения байтов. Смотрите документацию
+      по <a href="function.ini-get.html" class="function">ini_get()</a> для примеров как преобразовать эти значения.
+     </p>
+    </dd>
+   </dl>
+
+  </div>
+ </div>
+<hr /><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="faq.build.html">Проблемы Сборки</a></div>
+ <div class="next" style="float: right;"><a href="faq.html.html">PHP и HTML</a></div>
+ <div class="up"><a href="faq.html">ЧАВО</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

@@ -1,0 +1,111 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <title>Creates a text field object</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+ </head>
+ <body><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="function.swftextfield.align.html">SWFTextField->align()</a></div>
+ <div class="next" style="float: right;"><a href="function.swftextfield.setbounds.html">SWFTextField->setBounds()</a></div>
+ <div class="up"><a href="class.swftextfield.html">SWFTextField</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="function.swftextfield.construct" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">SWFTextField-&gt;__construct()</h1>
+  <p class="verinfo">(PHP 5)</p><p class="refpurpose dc-title">SWFTextField->__construct() — Creates a text field object</p>
+
+ </div>
+ <div class="refsect1 description">
+  <h3 class="title">Описание</h3>
+  <div class="classsynopsis">
+   <div class="ooclass"><b class="classname">SWFTextField</b></div>
+   <div class="methodsynopsis dc-description">
+    <span class="type">SWFTextField</span> <span class="methodname"><b><b>__construct</b></b></span>
+     ([ <span class="methodparam"><span class="type">int</span> <tt class="parameter">$flags</tt></span>
+   ] )</div>
+
+  </div>
+  <div class="warning"><b class="warning">Внимание</b><p class="simpara">
+Эта функция является <em class="emphasis">ЭКСПЕРИМЕНТАЛЬНОЙ</em>.
+Поведение этой функции, ее имя и относящаяся к ней документация
+могут измениться в последующих версиях PHP без уведомления.
+Используйте эту функцию на свой страх и риск.</p></div>
+  <p class="para">
+   <b>swftextfield()</b> creates a new text field object. 
+   Text Fields are less flexible than <b>swftext()</b> objects- 
+   they can&#039;t be rotated, scaled non-proportionally, or skewed, but they can
+   be used as form entries, and they can use browser-defined fonts.
+  </p>
+  <p class="para">
+   The optional flags change the text field&#039;s behavior. It has the following
+   possibles values : 
+   <ul class="itemizedlist">
+    <li class="listitem">
+     <span class="simpara">
+      SWFTEXTFIELD_DRAWBOX draws the outline of the textfield
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      SWFTEXTFIELD_HASLENGTH 
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      SWFTEXTFIELD_HTML allows text markup using HTML-tags
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      SWFTEXTFIELD_MULTILINE allows multiple lines
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      SWFTEXTFIELD_NOEDIT indicates that the field shouldn&#039;t be user-editable
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      SWFTEXTFIELD_NOSELECT makes the field non-selectable 
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      SWFTEXTFIELD_PASSWORD obscures the data entry
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      SWFTEXTFIELD_WORDWRAP allows text to wrap
+     </span>
+    </li>
+   </ul>
+   Flags are combined with the bitwise 
+   <a href="language.operators.bitwise.html" class="link">OR</a> operation. For example, 
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$t&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">newSWFTextField</span><span style="color: #007700">(</span><span style="color: #0000BB">SWFTEXTFIELD_PASSWORD&nbsp;</span><span style="color: #007700">|&nbsp;</span><span style="color: #0000BB">SWFTEXTFIELD_NOEDIT</span><span style="color: #007700">);&nbsp;<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+   </div>
+
+    creates a totally useless non-editable password field. 
+  </p>
+  <p class="simpara">
+   SWFTextField has the following methods : <b>swftextfield->setfont()</b>,
+   <b>swftextfield->setbounds()</b>, <b>swftextfield->align()</b>, 
+   <b>swftextfield->setheight()</b>, <b>swftextfield->setleftmargin()</b>, 
+   <b>swftextfield->setrightmargin()</b>, <b>swftextfield->setmargins()</b>, 
+   <b>swftextfield->setindentation()</b>, <b>swftextfield->setlinespacing()</b>, 
+   <b>swftextfield->setcolor()</b>, <b>swftextfield->setname()</b> and 
+   <b>swftextfield->addstring()</b>.
+  </p>
+ </div>
+
+</div><hr /><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="function.swftextfield.align.html">SWFTextField->align()</a></div>
+ <div class="next" style="float: right;"><a href="function.swftextfield.setbounds.html">SWFTextField->setBounds()</a></div>
+ <div class="up"><a href="class.swftextfield.html">SWFTextField</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

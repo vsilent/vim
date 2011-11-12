@@ -1,0 +1,143 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <title>Set the alpha blending flag to use the bundled libgd layering effects</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+ </head>
+ <body><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="function.imagejpeg.html">imagejpeg</a></div>
+ <div class="next" style="float: right;"><a href="function.imageline.html">imageline</a></div>
+ <div class="up"><a href="ref.image.html">Image Функции</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="function.imagelayereffect" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">imagelayereffect</h1>
+  <p class="verinfo">(PHP 4 &gt;= 4.3.0, PHP 5)</p><p class="refpurpose dc-title">imagelayereffect — Set the alpha blending flag to use the bundled libgd layering effects</p>
+
+ </div>
+ <div class="refsect1 description">
+  <h3 class="title">Описание</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type">bool</span> <span class="methodname"><b><b>imagelayereffect</b></b></span>
+    ( <span class="methodparam"><span class="type">resource</span> <tt class="parameter">$image</tt></span>
+   , <span class="methodparam"><span class="type">int</span> <tt class="parameter">$effect</tt></span>
+   )</div>
+
+  <p class="para rdfs-comment">
+   Set the alpha blending flag to use the bundled libgd layering effects.
+  </p>
+ </div>
+
+ <div class="refsect1 parameters">
+  <h3 class="title">Список параметров</h3>
+  <p class="para">
+   <dl>
+
+    <dt>
+<span class="term"><i><tt class="parameter">
+image</tt></i>
+</span>
+<dd>
+<p class="para">An image resource, returned by one of the image creation functions, 
+such as <a href="function.imagecreatetruecolor.html" class="function">imagecreatetruecolor()</a>.</p></dd>
+</dt>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">effect</tt></i>
+</span>
+
+     <dd>
+
+      <p class="para">
+       One of the following constants:
+       <dl>
+
+        <dt>
+
+         <br /><span class="term"><b><tt>IMG_EFFECT_REPLACE</tt></b></span>
+
+         <dd>
+
+          <span class="simpara">
+           Use pixel replacement (equivalent of passing <b><tt>TRUE</tt></b> to
+           <a href="function.imagealphablending.html" class="function">imagealphablending()</a>)
+          </span>
+         </dd>
+
+        </dt>
+
+        <dt>
+
+         <span class="term"><b><tt>IMG_EFFECT_ALPHABLEND</tt></b></span>
+
+         <dd>
+
+          <span class="simpara">
+           Use normal pixel blending (equivalent of passing <b><tt>FALSE</tt></b> to
+           <a href="function.imagealphablending.html" class="function">imagealphablending()</a>)
+          </span>
+         </dd>
+
+        </dt>
+
+        <dt>
+
+         <span class="term"><b><tt>IMG_EFFECT_NORMAL</tt></b></span>
+
+         <dd>
+
+          <span class="simpara">
+           Same as <b><tt>IMG_EFFECT_ALPHABLEND</tt></b>.
+          </span>
+         </dd>
+
+        </dt>
+
+        <dt>
+
+         <span class="term"><b><tt>IMG_EFFECT_OVERLAY</tt></b></span>
+
+         <dd>
+
+          <span class="simpara">
+           Overlay has the effect that black background pixels will remain
+           black, white background pixels will remain white, but grey
+           background pixels will take the colour of the foreground pixel.
+          </span>
+         </dd>
+
+        </dt>
+
+       </dl>
+
+      </p>
+     </dd>
+
+    </dt>
+
+   </dl>
+
+  </p>
+ </div>
+
+ <div class="refsect1 returnvalues">
+  <h3 class="title">Возвращаемые значения</h3>
+  <p class="para">
+   Возвращает <b><tt>TRUE</tt></b> в случае успешного завершения или <b><tt>FALSE</tt></b> в случае возникновения ошибки.
+  </p>
+ </div>
+
+ <div class="refsect1 notes">
+  <h3 class="title">Примечания</h3>
+  <blockquote><p><b class="note">Замечание</b>: <span class="simpara">Эта функция доступна только в том
+случае, если PHP был скомпилирован со встроенной библиотекой GD.</span></p></blockquote>
+  <blockquote><p><b class="note">Замечание</b>: <span class="simpara">Эта функция нуждается в GD версии 2.0.1 или выше.</span></p></blockquote>
+ </div>
+
+</div><hr /><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="function.imagejpeg.html">imagejpeg</a></div>
+ <div class="next" style="float: right;"><a href="function.imageline.html">imageline</a></div>
+ <div class="up"><a href="ref.image.html">Image Функции</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

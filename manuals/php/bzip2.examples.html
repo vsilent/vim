@@ -1,0 +1,35 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <title>Примеры</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+ </head>
+ <body><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="bzip2.constants.html">Предопределенные константы</a></div>
+ <div class="next" style="float: right;"><a href="ref.bzip2.html">Bzip2</a></div>
+ <div class="up"><a href="book.bzip2.html">Функции сжатия Bzip2</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div>
+ <h1>Примеры</h1>
+
+ <p class="para">
+  Следующий пример откроет временный файл, запишет в него тестовую строку,
+  после чего выведет содержимое файла.
+ </p>
+ <div class="example">
+  <p><b>Пример #1 Пример работы с bzip2</b></p>
+  <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /><br />$filename&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">"/tmp/testfile.bz2"</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$str&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">"This&nbsp;is&nbsp;a&nbsp;test&nbsp;string.\n"</span><span style="color: #007700">;<br /><br /></span><span style="color: #FF8000">//&nbsp;открываем&nbsp;файл&nbsp;для&nbsp;записи<br /></span><span style="color: #0000BB">$bz&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">bzopen</span><span style="color: #007700">(</span><span style="color: #0000BB">$filename</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"w"</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">//&nbsp;пишем&nbsp;строку&nbsp;в&nbsp;файл<br /></span><span style="color: #0000BB">bzwrite</span><span style="color: #007700">(</span><span style="color: #0000BB">$bz</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$str</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">//&nbsp;закрываем&nbsp;файл<br /></span><span style="color: #0000BB">bzclose</span><span style="color: #007700">(</span><span style="color: #0000BB">$bz</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">//&nbsp;открываем&nbsp;файл&nbsp;для&nbsp;чтения<br /></span><span style="color: #0000BB">$bz&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">bzopen</span><span style="color: #007700">(</span><span style="color: #0000BB">$filename</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"r"</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">//&nbsp;читаем&nbsp;и&nbsp;выводим&nbsp;10&nbsp;символов<br /></span><span style="color: #007700">print&nbsp;</span><span style="color: #0000BB">bzread</span><span style="color: #007700">(</span><span style="color: #0000BB">$bz</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">10</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">//&nbsp;выводим&nbsp;всё,&nbsp;до&nbsp;конца&nbsp;файла&nbsp;и&nbsp;закрываем&nbsp;его.<br /></span><span style="color: #007700">print&nbsp;</span><span style="color: #0000BB">bzread</span><span style="color: #007700">(</span><span style="color: #0000BB">$bz</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">bzclose</span><span style="color: #007700">(</span><span style="color: #0000BB">$bz</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+   </div>
+
+ </div>
+</div>
+<hr /><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="bzip2.constants.html">Предопределенные константы</a></div>
+ <div class="next" style="float: right;"><a href="ref.bzip2.html">Bzip2</a></div>
+ <div class="up"><a href="book.bzip2.html">Функции сжатия Bzip2</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

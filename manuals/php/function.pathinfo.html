@@ -1,0 +1,86 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <title>Возвращает информацию о пути к файлу</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+ </head>
+ <body><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="function.parse-ini-file.html">parse_ini_file</a></div>
+ <div class="next" style="float: right;"><a href="function.pclose.html">pclose</a></div>
+ <div class="up"><a href="ref.filesystem.html">Файловая система</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="function.pathinfo" class="refentry">
+   <div class="refnamediv">
+    <h1 class="refname">pathinfo</h1>
+    <p class="verinfo">(PHP 4 &gt;= 4.0.3, PHP 5)</p><p class="refpurpose dc-title">pathinfo — Возвращает информацию о пути к файлу</p>
+
+   </div>
+   <div class="refsect1 unknown">
+    <h3 class="title">Описание</h3>
+     <div class="methodsynopsis dc-description">
+      <span class="type">array</span> <span class="methodname"><b><b>pathinfo</b></b></span>
+       ( <span class="methodparam"><span class="type">string</span> <tt class="parameter">$path</tt></span>
+      [, <span class="methodparam"><span class="type">int</span> <tt class="parameter">$options</tt></span>
+     ] )</div>
+
+    <p class="para rdfs-comment">
+     <b>pathinfo()</b> возвращает ассоциативный массив,
+     который содержит информацию о пути <i><tt class="parameter">path</tt></i>
+.
+     Возвращаемый массив состоит из следующих элементов:
+     <i>dirname</i>, <i>basename</i>
+     и <i>extension</i>.
+    </p>
+    <p class="para">
+     Вы можете указать, какие элементы будут возвращены при помощи
+     необязательного параметра <i><tt class="parameter">options</tt></i>
+. Он состоит из
+     <b><tt>PATHINFO_DIRNAME</tt></b>,
+     <b><tt>PATHINFO_BASENAME</tt></b>,
+     <b><tt>PATHINFO_EXTENSION</tt></b> и
+     <b><tt>PATHINFO_FILENAME</tt></b> (появилась в PHP 5.2.0).
+     По умолчанию возвращаются все элементы.
+    </p>
+    <p class="para">
+     <div class="example">
+      <p><b>Пример #1 Пример использования функции <b>pathinfo()</b></b></p>
+      <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$path_parts&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">pathinfo</span><span style="color: #007700">(</span><span style="color: #DD0000">'/www/htdocs/index.html'</span><span style="color: #007700">);<br /><br />echo&nbsp;</span><span style="color: #0000BB">$path_parts</span><span style="color: #007700">[</span><span style="color: #DD0000">'dirname'</span><span style="color: #007700">],&nbsp;</span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br />echo&nbsp;</span><span style="color: #0000BB">$path_parts</span><span style="color: #007700">[</span><span style="color: #DD0000">'basename'</span><span style="color: #007700">],&nbsp;</span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br />echo&nbsp;</span><span style="color: #0000BB">$path_parts</span><span style="color: #007700">[</span><span style="color: #DD0000">'extension'</span><span style="color: #007700">],&nbsp;</span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+      </div>
+
+      <div class="example-contents"><p>
+       Результат:
+      </p></div>
+      <div class="example-contents"><pre>
+<div class="cdata"><pre>
+/www/htdocs
+index.html
+html
+</pre></div>
+      </pre></div>
+     </div>
+    </p>
+    <blockquote><p><b class="note">Замечание</b>: 
+     
+      Для дополнительной информации о получении текущей информации о пути,
+      обратитесь к секции <a href="language.variables.predefined.html" class="link">
+      Предопределенные зарезервированные переменные</a>.
+     <br />
+    </p></blockquote>
+    <p class="para">
+     См. также описание функций <a href="function.dirname.html" class="function">dirname()</a>,
+     <a href="function.basename.html" class="function">basename()</a>,
+     <a href="function.parse-url.html" class="function">parse_url()</a>
+     и <a href="function.realpath.html" class="function">realpath()</a>.
+    </p>
+   </div>
+
+  </div><hr /><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="function.parse-ini-file.html">parse_ini_file</a></div>
+ <div class="next" style="float: right;"><a href="function.pclose.html">pclose</a></div>
+ <div class="up"><a href="ref.filesystem.html">Файловая система</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

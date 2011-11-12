@@ -1,0 +1,89 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <title>Переименовывает файл или директорию</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+ </head>
+ <body><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="function.realpath.html">realpath</a></div>
+ <div class="next" style="float: right;"><a href="function.rewind.html">rewind</a></div>
+ <div class="up"><a href="ref.filesystem.html">Файловая система</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="function.rename" class="refentry">
+   <div class="refnamediv">
+    <h1 class="refname">rename</h1>
+    <p class="verinfo">(PHP 4, PHP 5, PECL zip:1.1.0-1.4.1)</p><p class="refpurpose dc-title">rename — Переименовывает файл или директорию</p>
+
+   </div>
+   <div class="refsect1 unknown">
+    <h3 class="title">Описание</h3>
+     <div class="methodsynopsis dc-description">
+      <span class="type">bool</span> <span class="methodname"><b><b>rename</b></b></span>
+       ( <span class="methodparam"><span class="type">string</span> <tt class="parameter">$oldname</tt></span>
+      , <span class="methodparam"><span class="type">string</span> <tt class="parameter">$newname</tt></span>
+      [, <span class="methodparam"><span class="type">resource</span> <tt class="parameter">$context</tt></span>
+     ] )</div>
+
+    <p class="para rdfs-comment"> 
+     Пытается переименовать <i><tt class="parameter">oldname</tt></i>
+ в
+     <i><tt class="parameter">newname</tt></i>
+.
+    </p> 
+    <p class="para"> 
+     Возвращает <b><tt>TRUE</tt></b> в случае успешного завершения или <b><tt>FALSE</tt></b> в случае возникновения ошибки.
+    </p>
+    <p class="para">
+     <div class="example">
+      <p><b>Пример #1 Пример использования функции <b>rename()</b></b></p>
+      <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />rename</span><span style="color: #007700">(</span><span style="color: #DD0000">"/tmp/tmp_file.txt"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"/home/user/login/docs/my_file.txt"</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+      </div>
+
+     </div>
+    </p>
+    <blockquote><p><b class="note">Замечание</b>: 
+     
+      В версиях PHP ниже 4.3.3, функция <b>rename()</b> не могла
+      переименовать файлы, находящиеся на другом разделе в ОС, основанных на *nix.
+     <br />
+    </p></blockquote>
+    <blockquote><p><b class="note">Замечание</b>: 
+     <span class="simpara">
+      Начиная с версии PHP 5.0.0, функция <b>rename()</b> также
+      может быть использована с <em class="emphasis">некоторыми</em> обвёртками
+      URL. Обратитесь к <a href="wrappers.html" class="xref">List of Supported Protocols/Wrappers</a>
+      для получения списка обвёрток, которые поддерживают <b>rename()</b>.
+     </span>
+    </p></blockquote>
+    <blockquote><p><b class="note">Замечание</b>: 
+     <span class="simpara">
+      Обвёртка, используемая в <i><tt class="parameter">oldname</tt></i>
+
+      <em class="emphasis">ОБЯЗАНА</em> совпадать с обвёрткой, используемой в
+      <i><tt class="parameter">newname</tt></i>
+.
+     </span>
+    </p></blockquote>
+    <blockquote><p><b class="note">Замечание</b>: 
+     <span class="simpara">
+      Аттрибут <i><tt class="parameter">context</tt></i>
+ был добавлен начиная с версии PHP 5.0.0.
+     </span>
+    </p></blockquote>
+    <p class="para">
+     См. также описание функций <a href="function.copy.html" class="function">copy()</a>, 
+     <a href="function.unlink.html" class="function">unlink()</a> и
+     <a href="function.move-uploaded-file.html" class="function">move_uploaded_file()</a>.
+    </p>
+   </div>
+
+  </div><hr /><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="function.realpath.html">realpath</a></div>
+ <div class="next" style="float: right;"><a href="function.rewind.html">rewind</a></div>
+ <div class="up"><a href="ref.filesystem.html">Файловая система</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

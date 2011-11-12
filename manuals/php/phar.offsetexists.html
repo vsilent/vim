@@ -1,0 +1,109 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <title>determines whether a file exists in the phar</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+ </head>
+ <body><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="phar.mungserver.html">Phar::mungServer</a></div>
+ <div class="next" style="float: right;"><a href="phar.offsetget.html">Phar::offsetGet</a></div>
+ <div class="up"><a href="class.Phar.html">Phar</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="phar.offsetexists" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">Phar::offsetExists</h1>
+  <p class="verinfo">(PECL phar:1.0.0-1.2.1)</p><p class="refpurpose dc-title">Phar::offsetExists — determines whether a file exists in the phar</p>
+
+ </div>
+ <div class="refsect1 description">
+  <h3 class="title">Описание</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type">bool</span> <span class="methodname"><b><b>Phar::offsetExists</b></b></span>
+    ( <span class="methodparam"><span class="type">string</span> <tt class="parameter">$offset</tt></span>
+   )</div>
+
+  <p class="para rdfs-comment">
+   This is an implementation of the <span class="interfacename">ArrayAccess</span> interface allowing
+   direct manipulation of the contents of a Phar archive using
+   array access brackets.
+  </p>
+  <p class="para">
+   offsetExists() is called whenever <a href="function.isset.html" class="function">isset()</a> is called.
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters">
+  <h3 class="title">Список параметров</h3>
+  <p class="para">
+   <dl>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">offset</tt></i>
+</span>
+
+     <dd>
+
+      <p class="para">
+       The filename (relative path) to look for in a Phar.
+      </p>
+     </dd>
+
+    </dt>
+
+   </dl>
+
+  </p>
+ </div>
+
+ <div class="refsect1 returnvalues">
+  <h3 class="title">Возвращаемые значения</h3>
+  <p class="para">
+   Returns <b><tt>TRUE</tt></b> if the file exists within the phar, or <b><tt>FALSE</tt></b> if not.
+  </p>
+ </div>
+
+
+ <div class="refsect1 examples">
+  <h3 class="title">Примеры</h3>
+  <p class="para">
+   <div class="example">
+    <p><b>Пример #1 A <b>Phar::offsetExists()</b> example</b></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$p&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">Phar</span><span style="color: #007700">(</span><span style="color: #0000BB">dirname</span><span style="color: #007700">(</span><span style="color: #0000BB">__FILE__</span><span style="color: #007700">)&nbsp;.&nbsp;</span><span style="color: #DD0000">'/my.phar'</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">0</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'my.phar'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$p</span><span style="color: #007700">[</span><span style="color: #DD0000">'firstfile.txt'</span><span style="color: #007700">]&nbsp;=&nbsp;</span><span style="color: #DD0000">'first&nbsp;file'</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$p</span><span style="color: #007700">[</span><span style="color: #DD0000">'secondfile.txt'</span><span style="color: #007700">]&nbsp;=&nbsp;</span><span style="color: #DD0000">'second&nbsp;file'</span><span style="color: #007700">;<br /></span><span style="color: #FF8000">//&nbsp;the&nbsp;next&nbsp;set&nbsp;of&nbsp;lines&nbsp;call&nbsp;offsetExists()&nbsp;indirectly<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(isset(</span><span style="color: #0000BB">$p</span><span style="color: #007700">[</span><span style="color: #DD0000">'firstfile.txt'</span><span style="color: #007700">]));<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(isset(</span><span style="color: #0000BB">$p</span><span style="color: #007700">[</span><span style="color: #DD0000">'nothere.txt'</span><span style="color: #007700">]));<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+    <div class="example-contents"><p>Результат выполнения данного примера:</p></div>
+    <div class="example-contents"><pre>
+<div class="cdata"><pre>
+bool(true)
+bool(false)
+</pre></div>
+    </pre></div>
+   </div>
+  </p>
+ </div>
+
+
+ <div class="refsect1 seealso">
+  <h3 class="title">Смотрите также</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"><a href="phar.offsetget.html" class="function" rel="rdfs-seeAlso">Phar::offsetGet()</a></li>
+    <li class="member"><a href="phar.offsetset.html" class="function" rel="rdfs-seeAlso">Phar::offsetSet()</a></li>
+    <li class="member"><a href="phar.offsetunset.html" class="function" rel="rdfs-seeAlso">Phar::offsetUnset()</a></li>
+   </ul>
+  </p>
+ </div>
+
+
+</div><hr /><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="phar.mungserver.html">Phar::mungServer</a></div>
+ <div class="next" style="float: right;"><a href="phar.offsetget.html">Phar::offsetGet</a></div>
+ <div class="up"><a href="class.Phar.html">Phar</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

@@ -1,0 +1,110 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <title>Возвращает число затронуиых прошлой операцией рядов.</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+ </head>
+ <body><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="ref.mysql.html">MySQL</a></div>
+ <div class="next" style="float: right;"><a href="function.mysql-change-user.html">mysql_change_user</a></div>
+ <div class="up"><a href="ref.mysql.html">MySQL</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="function.mysql-affected-rows" class="refentry">
+   <div class="refnamediv">
+    <h1 class="refname">mysql_affected_rows</h1>
+    <p class="verinfo">(PHP 4, PHP 5, PECL mysql:1.0)</p><p class="refpurpose dc-title">mysql_affected_rows — Возвращает число затронуиых прошлой операцией рядов.</p>
+
+   </div>
+   <div class="refsect1 unknown">
+    <h3 class="title">Описание</h3>
+     <div class="methodsynopsis dc-description">
+      <span class="type">int</span> <span class="methodname"><b><b>mysql_affected_rows</b></b></span>
+       ([ <span class="methodparam"><span class="type">resource</span> <tt class="parameter">$link_identifier</tt></span>
+     ] )</div>
+
+    <p class="para rdfs-comment">
+     <b>mysql_affected_rows()</b> возвращает количество
+     рядов, затронутых последним INSERT, UPDATE, DELETE запросом
+     к серверу, на который ссылается указатель <i><tt class="parameter">link_identifier</tt></i>
+.  Если
+     ресурс не указан, функция использует последнее, успешное соединение,
+     выполненное с помощью функции <a href="function.mysql-connect.html" class="function">mysql_connect()</a>.
+    </p>
+    <blockquote><p><b class="note">Замечание</b>: 
+     
+      При использовании транзакций <b>mysql_affected_rows()</b> надо вызывать
+      после INSERT, UPDATE, DELETE запроса, но не после подтверждения.
+     <br />
+    </p></blockquote>
+    <p class="para">
+     Если последний запрос был DELETE без указания WHERE и, соответственно,
+     таблица была очищена, функция вернёт ноль (0).
+    </p>
+    <blockquote><p><b class="note">Замечание</b>: 
+     
+      При использовании UPDATE, MySQL не обновит колонки, уже содержащие новое
+      значение. Вследствие этого, функция <b>mysql_affected_rows()</b>
+      не всегда возвращает количество рядов, подошедших по условия, только
+      количество рядов, обновлённых запросом.
+     <br />
+    </p></blockquote>
+    <p class="para">
+     <b>mysql_affected_rows()</b> не работает с SELECT -- только с
+     запросами, модифицирующими таблицу. Чтобы получить количество рядов,
+     возвращённых SELECT-запросом, используйте функцию 
+     <a href="function.mysql-num-rows.html" class="function">mysql_num_rows()</a>.
+    </p>
+    <p class="para">
+     Если последний запрос был неудачным, функция вернёт -1.
+     <div class="example">
+      <p><b>Пример #1 DELETE-запрос</b></p>
+      <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">/*&nbsp;соединямеся&nbsp;с&nbsp;базой&nbsp;данных&nbsp;*/<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">mysql_pconnect</span><span style="color: #007700">(</span><span style="color: #DD0000">"localhost"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"mysql_user"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"mysql_password"</span><span style="color: #007700">)&nbsp;or<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;die(</span><span style="color: #DD0000">"Could&nbsp;not&nbsp;connect:&nbsp;"&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #0000BB">mysql_error</span><span style="color: #007700">());<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">mysql_select_db</span><span style="color: #007700">(</span><span style="color: #DD0000">"mydb"</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">/*&nbsp;здесь&nbsp;функция&nbsp;вернёт&nbsp;корректное&nbsp;число&nbsp;удалённых&nbsp;записей&nbsp;*/<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">mysql_query</span><span style="color: #007700">(</span><span style="color: #DD0000">"DELETE&nbsp;FROM&nbsp;mytable&nbsp;WHERE&nbsp;id&nbsp;&lt;&nbsp;10"</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">printf&nbsp;</span><span style="color: #007700">(</span><span style="color: #DD0000">"Records&nbsp;deleted:&nbsp;%d\n"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">mysql_affected_rows</span><span style="color: #007700">());<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">/*&nbsp;без&nbsp;указания&nbsp;WHERE&nbsp;в&nbsp;запросе,&nbsp;функция&nbsp;всегда&nbsp;возвращает&nbsp;0&nbsp;&nbsp;*/<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">mysql_query</span><span style="color: #007700">(</span><span style="color: #DD0000">"DELETE&nbsp;FROM&nbsp;mytable"</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">printf&nbsp;</span><span style="color: #007700">(</span><span style="color: #DD0000">"Records&nbsp;deleted:&nbsp;%d\n"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">mysql_affected_rows</span><span style="color: #007700">());<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+      </div>
+
+      <div class="example-contents"><p>
+       Вышеописанный пример выдаст следующий результат:
+      </p></div>
+      <div class="example-contents"><pre>
+<div class="cdata"><pre>
+Records deleted: 10
+Records deleted: 0
+</pre></div>
+      </pre></div>
+     </div>
+    </p>
+    <p class="para">
+     <div class="example">
+      <p><b>Пример #2 UPDATE-запрос</b></p>
+      <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">/*&nbsp;соединямеся&nbsp;с&nbsp;базой&nbsp;данных&nbsp;*/<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">mysql_pconnect</span><span style="color: #007700">(</span><span style="color: #DD0000">"localhost"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"mysql_user"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"mysql_password"</span><span style="color: #007700">)&nbsp;or<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;die(</span><span style="color: #DD0000">"Could&nbsp;not&nbsp;connect:&nbsp;"&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #0000BB">mysql_error</span><span style="color: #007700">());<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">mysql_select_db</span><span style="color: #007700">(</span><span style="color: #DD0000">"mydb"</span><span style="color: #007700">);<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">/*&nbsp;Обновляем&nbsp;ряды&nbsp;*/<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">mysql_query</span><span style="color: #007700">(</span><span style="color: #DD0000">"UPDATE&nbsp;mytable&nbsp;SET&nbsp;used=1&nbsp;WHERE&nbsp;id&nbsp;&lt;&nbsp;10"</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">printf&nbsp;</span><span style="color: #007700">(</span><span style="color: #DD0000">"Updated&nbsp;records:&nbsp;%d\n"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">mysql_affected_rows</span><span style="color: #007700">());<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">mysql_query</span><span style="color: #007700">(</span><span style="color: #DD0000">"COMMIT"</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+      </div>
+
+      <div class="example-contents"><p>
+        Вышеописанный пример выдаст следующий результат:
+      </p></div>
+      <div class="example-contents"><pre>
+<div class="cdata"><pre>
+Updated Records: 10
+</pre></div>
+      </pre></div>
+     </div> 
+    </p>
+    <p class="para">
+     См. также <a href="function.mysql-num-rows.html" class="function">mysql_num_rows()</a>,
+     <a href="function.mysql-info.html" class="function">mysql_info()</a>.
+    </p>
+   </div>
+
+  </div><hr /><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="ref.mysql.html">MySQL</a></div>
+ <div class="next" style="float: right;"><a href="function.mysql-change-user.html">mysql_change_user</a></div>
+ <div class="up"><a href="ref.mysql.html">MySQL</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

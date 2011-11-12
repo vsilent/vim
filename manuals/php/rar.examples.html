@@ -1,0 +1,37 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <title>Примеры</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+ </head>
+ <body><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="rar.constants.html">Предопределенные константы</a></div>
+ <div class="next" style="float: right;"><a href="ref.rar.html">Rar</a></div>
+ <div class="up"><a href="book.rar.html">Функции Rar</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div>
+ <h1>Примеры</h1>
+
+ <p class="para">
+  <div class="example">
+   <p><b>Пример #1 Пример работы с расширением Rar</b></p>
+   <div class="example-contents">
+    <div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;$rar_file&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">rar_open</span><span style="color: #007700">(</span><span style="color: #DD0000">'example.rar'</span><span style="color: #007700">)&nbsp;or&nbsp;die(</span><span style="color: #DD0000">"Невозможно&nbsp;открыть&nbsp;архив"</span><span style="color: #007700">);<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$entries&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">rar_list</span><span style="color: #007700">(</span><span style="color: #0000BB">$rar_file</span><span style="color: #007700">);<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;foreach&nbsp;(</span><span style="color: #0000BB">$entries&nbsp;</span><span style="color: #007700">as&nbsp;</span><span style="color: #0000BB">$entry</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">'Файл:&nbsp;'&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #0000BB">$entry</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getName</span><span style="color: #007700">()&nbsp;.&nbsp;</span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">'Размер&nbsp;сжатого&nbsp;элемента:&nbsp;'&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #0000BB">$entry</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getPackedSize</span><span style="color: #007700">()&nbsp;.&nbsp;</span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">'Размер&nbsp;в&nbsp;распакованном&nbsp;состоянии:&nbsp;'&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #0000BB">$entry</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getUnpackedSize</span><span style="color: #007700">()&nbsp;.&nbsp;</span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$entry</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">extract</span><span style="color: #007700">(</span><span style="color: #DD0000">'/dir/extract/to/'</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">rar_close</span><span style="color: #007700">(</span><span style="color: #0000BB">$rar_file</span><span style="color: #007700">);<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+   </div>
+
+  </div>
+ </p>
+ <p class="para">
+  В этом примере открывается архивный файл Rar и каждый заархивированный элемент
+  извлекается в указанную директорию.
+ </p>
+</div>
+<hr /><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="rar.constants.html">Предопределенные константы</a></div>
+ <div class="next" style="float: right;"><a href="ref.rar.html">Rar</a></div>
+ <div class="up"><a href="book.rar.html">Функции Rar</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

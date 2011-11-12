@@ -1,0 +1,134 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <title>Основы синтаксиса</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+ </head>
+ <body><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="langref.html">Справочник языка</a></div>
+ <div class="next" style="float: right;"><a href="language.basic-syntax.instruction-separation.html">Разделение инструкций</a></div>
+ <div class="up"><a href="langref.html">Справочник языка</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div>
+  <h1>Основы синтаксиса</h1>
+<h2>Содержание</h2><ul class="chunklist chunklist_chapter"><li><a href="language.basic-syntax.instruction-separation.html">Разделение инструкций</a></li><li><a href="language.basic-syntax.comments.html">Комментарии</a></li></ul>
+
+  <div id="language.basic-syntax.phpmode" class="sect1">
+   <h2 class="title">Вставка в HTML</h2>
+  
+   <p class="para">
+    Когда PHP обрабатывает файл, он просто передаёт его текст, пока не
+    встретит один из специальных тегов, который сообщает ему о
+    необходимости начать интерпретацию текста как кода PHP. Затем он
+    выполняет весь найденный код до закрывающего тега, говорящего
+    интерпретатору, что далее снова идет просто текст. Этот механизм
+    позволяет вам внедрять PHP-код в HTML - все за пределами тегов PHP
+    остается неизменным, тогда как внутри - интерпретируется как код.
+   </p>
+
+   <p class="para">
+    Существует четыре набора тегов, которые могут быть использованы
+    для обозначения PHP-кода. Из них только два (&lt;?php. . .?&gt; и &lt;script
+    language=&quot;php&quot;&gt;. . .&lt;/script&gt;) всегда доступны; другие
+    могут быть включены или выключены в конфигурационном файле <var class="filename">php.ini</var>.
+    Хотя короткие теги и теги в стиле ASP могут быть удобны, они не
+    так переносимы, как длинные версии. Кроме того, если вы намереваетесь
+    вставлять PHP-код в XML или XHTML, чтобы соответствовать XML, вам
+    следует использовать форму &lt;?php. . .?&gt;.
+   </p>
+
+   <p class="para">
+    Теги, поддерживаемые PHP:
+   </p>
+
+    <p class="para">
+     <div class="example">
+      <p><b>Пример #1 Способы вставки в HTML</b></p>
+      <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+1.&nbsp;&nbsp;<span style="color: #0000BB">&lt;?php&nbsp;</span><span style="color: #007700">echo(</span><span style="color: #DD0000">"если&nbsp;вы&nbsp;хотите&nbsp;работать&nbsp;с&nbsp;документами&nbsp;XHTML&nbsp;или&nbsp;XML,&nbsp;делайте&nbsp;так\n"</span><span style="color: #007700">);&nbsp;</span><span style="color: #0000BB">?&gt;<br /></span><br />2.&nbsp;&nbsp;<span style="color: #0000BB">&lt;?&nbsp;</span><span style="color: #007700">echo&nbsp;(</span><span style="color: #DD0000">"это&nbsp;простейшая&nbsp;инструкция&nbsp;обработки&nbsp;SGML\n"</span><span style="color: #007700">);&nbsp;</span><span style="color: #0000BB">?&gt;<br /></span>&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #0000BB">&lt;?=&nbsp;выражение&nbsp;?&gt;</span>&nbsp;Это&nbsp;синоним&nbsp;для&nbsp;"<span style="color: #0000BB">&lt;?&nbsp;</span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">выражение&nbsp;?&gt;</span>"<br />&nbsp;&nbsp;&nbsp;&nbsp;<br />3.&nbsp;&nbsp;<span style="color: #0000BB">&lt;script&nbsp;language="php"&gt;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">echo&nbsp;(</span><span style="color: #DD0000">"некоторые&nbsp;редакторы&nbsp;(например,&nbsp;FrontPage)&nbsp;не<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;любят&nbsp;инструкции&nbsp;обработки"</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">&lt;/script&gt;<br /></span><br />4.&nbsp;&nbsp;&lt;%&nbsp;echo&nbsp;("Вы&nbsp;можете&nbsp;по&nbsp;выбору&nbsp;использовать&nbsp;теги&nbsp;в&nbsp;стиле&nbsp;ASP");&nbsp;%&gt;<br />&nbsp;&nbsp;&nbsp;&nbsp;&lt;%=&nbsp;$variable;&nbsp;#&nbsp;Это&nbsp;синоним&nbsp;для&nbsp;"&lt;%&nbsp;echo&nbsp;.&nbsp;.&nbsp;."&nbsp;%&gt;</span>
+</code></div>
+      </div>
+
+     </div>
+    </p>
+
+   <p class="para">
+    Первый способ, &lt;?php. . .?&gt;, наиболее предпочтительный, так
+    как он позволяет использовать PHP в коде, соответствующем правилам
+    XML, таком как XHTML.
+   </p>
+
+   <p class="para">
+    Второй способ не всегда доступен. Короткие теги доступны только
+    когда они включены. Это можно сделать, используя функцию
+    <b>short_tags()</b> (только в PHP 3), включив
+    установку <a href="ini.core.html#ini.short-open-tag" class="link">short_open_tag</a>
+    в конфигурационном файле PHP, либо скомпилировав PHP с параметром
+    --enable-short-tags для <strong class="command">configure</strong>. Даже если
+    оно включено по умолчанию в php.ini-dist, использование коротких
+    тегов не рекомендуется.
+   </p>
+
+   <p class="para">
+    Четвертый способ доступен только если теги в стиле ASP были
+    включены, используя конфигурационную установку
+    <a href="ini.core.html#ini.asp-tags" class="link">asp_tags</a>.
+
+    <blockquote><p><b class="note">Замечание</b>: 
+     Поддержка тегов в стиле ASP была добавлена в версии 3.0.4.<br />
+    </p></blockquote>
+   </p>
+
+   <p class="para">
+    <blockquote><p><b class="note">Замечание</b>: 
+     
+      Следует избегать использования коротких тегов при разработке
+      приложений или библиотек, предназначенных для распространения
+      или размещения на PHP-серверах, не находящихся под вашим
+      контролем, так как короткие теги могут не поддерживаться на
+      целевом сервере. Для создания переносимого, совместимого
+      кода, не используйте короткие теги.
+     <br />
+    </p></blockquote>
+   </p>
+
+   <p class="para">
+    Закрывающий тег блока PHP-кода включает сразу следующий за ним
+    перевод строки, если он имеется. Кроме того, закрывающий тег
+    автоматически подразумевает точку с запятой; вам не нужно
+    заканчивать последнюю строку кода в блоке точкой с запятой.
+    Закрывающий тег PHP-блока в конце файла не является обязательным.
+   </p>
+    
+   <p class="para">
+    PHP позволяет использовать такие структуры:
+    <div class="example"><p><b>Пример #2 Профессиональная вставка</b></p>
+     <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">if&nbsp;(</span><span style="color: #0000BB">$expression</span><span style="color: #007700">)&nbsp;{&nbsp;<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">?&gt;<br /></span>&nbsp;&nbsp;&nbsp;&nbsp;&lt;strong&gt;Это&nbsp;истина.&lt;/strong&gt;<br />&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #0000BB">&lt;?php&nbsp;<br /></span><span style="color: #007700">}&nbsp;else&nbsp;{&nbsp;<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">?&gt;<br /></span>&nbsp;&nbsp;&nbsp;&nbsp;&lt;strong&gt;Это&nbsp;ложь.&lt;/strong&gt;<br />&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #0000BB">&lt;?php&nbsp;<br /></span><span style="color: #007700">}<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+     </div>
+
+    </div>
+    Этот код работает так, как ожидается, потому что когда PHP
+    встречает закрывающие теги ?&gt;, он просто выводит все, что он
+    находит до следующего открывающего тега. Приведенный здесь пример
+    конечно придуманный, но для вывода больших блоков текста выход из
+    режима интерпретации PHP обычно более эффективен, чем отправка
+    всего текста через <a href="function.echo.html" class="function">echo()</a>,
+    <a href="function.print.html" class="function">print()</a> или что-либо подобное.
+   </p>
+  </div>
+  
+  
+
+  
+ </div>
+<hr /><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="langref.html">Справочник языка</a></div>
+ <div class="next" style="float: right;"><a href="language.basic-syntax.instruction-separation.html">Разделение инструкций</a></div>
+ <div class="up"><a href="langref.html">Справочник языка</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

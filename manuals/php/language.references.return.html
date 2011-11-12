@@ -1,0 +1,56 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <title>Возвращение по ссылке</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+ </head>
+ <body><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="language.references.pass.html">Передача по ссылке</a></div>
+ <div class="next" style="float: right;"><a href="language.references.unset.html">Сброс переменных-ссылок</a></div>
+ <div class="up"><a href="language.references.html">Ссылки. Разъяснения</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="language.references.return" class="sect1">
+   <h2 class="title">Возвращение по ссылке</h2>
+   <p class="para">
+    Возвращение по ссылке используется в тех случаях, когда вы хотите
+    использовать функцию для выбора переменной, с которой должна быть связана
+    данная ссылка. При возвращении по ссылке используйте такой синтаксис:
+    <div class="informalexample">
+     <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">function&nbsp;&amp;</span><span style="color: #0000BB">find_var</span><span style="color: #007700">(</span><span style="color: #0000BB">$param</span><span style="color: #007700">)<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">/*&nbsp;...&nbsp;код&nbsp;...&nbsp;*/<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">return&nbsp;</span><span style="color: #0000BB">$found_var</span><span style="color: #007700">;<br />}<br /><br /></span><span style="color: #0000BB">$foo&nbsp;</span><span style="color: #007700">=&amp;&nbsp;</span><span style="color: #0000BB">find_var</span><span style="color: #007700">(</span><span style="color: #0000BB">$bar</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$foo</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">x&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">2</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+     </div>
+
+    </div>
+    В этом примере устанавливается свойство объекта, возвращённого функцией
+    <var class="varname">find_var</var>, а не его копии, как было бы без использования
+    ссылок.
+   </p>
+   <blockquote><p><b class="note">Замечание</b>: 
+    <span class="simpara">
+     В отличие от передачи параметров по ссылке, <i>&amp;</i>
+     здесь нужно использовать в обоих местах - для указания на то, что вы
+     возвращаете ссылку, а не копию, как обычно, и для указания того, что
+     происходит связывание по ссылке, а не обычное присвоение.
+    </span>
+   </p></blockquote>
+   <blockquote><p><b class="note">Замечание</b>: 
+    <span class="simpara">
+    Если вы возвращаете ссылку из функции используя следующий синтаксис:
+    <i>return ($this-&gt;value);</i>, это <em class="emphasis">не</em>  
+    будет работать, так как вы возвращаете по ссылке результат
+    <em class="emphasis">выражения</em>, а не переменную. По ссылке можно
+    возвращать только переменные, ничего больше. Начиная с PHP 4.4.0 и PHP 5.1.0, 
+    если код пытается вернуть по ссылке динамическое выражение или результат оператора 
+    <i>new</i>, будет выброжено предупреждение <b><tt>E_NOTICE</tt></b>.
+    </span>
+   </p></blockquote>
+
+  </div><hr /><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="language.references.pass.html">Передача по ссылке</a></div>
+ <div class="next" style="float: right;"><a href="language.references.unset.html">Сброс переменных-ссылок</a></div>
+ <div class="up"><a href="language.references.html">Ссылки. Разъяснения</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

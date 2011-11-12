@@ -1,0 +1,113 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <title>Return the PHP loader or bootstrap stub of a Phar archive</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+ </head>
+ <body><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="phar.count.html">Phar::count</a></div>
+ <div class="next" style="float: right;"><a href="phar.decompress.html">Phar::decompress</a></div>
+ <div class="up"><a href="class.Phar.html">Phar</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="phar.createdefaultstub" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">Phar::createDefaultStub</h1>
+  <p class="verinfo">(No version information available, might be only in CVS)</p><p class="refpurpose dc-title">Phar::createDefaultStub — Return the PHP loader or bootstrap stub of a Phar archive</p>
+
+ </div>
+ <div class="refsect1 description">
+  <h3 class="title">Описание</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type">string</span> <span class="methodname"><b><b>Phar::createDefaultStub</b></b></span>
+    ( <span class="methodparam">void</span>
+   )</div>
+
+
+  <p class="para rdfs-comment">
+   This method is intended for creation of phar-file format-specific stubs, and is
+   not intended for use with tar- or zip-based phar archives.
+  </p>
+  <p class="para">
+   Phar archives contain a bootstrap loader, or <i>stub</i>
+   written in PHP that is executed when the archive is executed in PHP either via
+   include:
+   <div class="example-contents">
+    <div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">include&nbsp;</span><span style="color: #DD0000">'myphar.phar'</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+   </div>
+
+   or by simple execution:
+   <div class="example-contents"><pre>
+    <div class="cdata"><pre>
+php myphar.phar
+    </pre></div>
+   </pre></div>
+  </p>
+  <p class="para">
+   This method provides a simple and easy method to create a stub that will
+   run a startup file from the phar archive.  In addition, different files can
+   be specified for running the phar archive from the command line versus through
+   a web server.  The loader stub also calls <a href="phar.interceptfilefuncs.html" class="function">Phar::interceptFileFuncs()</a>
+   to allow easy bundling of a PHP application that accesses the file system.  If the
+   phar extension is not present, the loader stub will extract the phar archive
+   to a temporary directory and then operate on the files.  A shutdown function
+   erases the temporary files on exit.
+  </p>
+
+ </div>
+
+ <div class="refsect1 returnvalues">
+  <h3 class="title">Возвращаемые значения</h3>
+  <p class="para">
+   Returns a string containing the contents of a customized bootstrap loader (stub)
+   that allows the created Phar archive to work with or without the Phar extension
+   enabled.
+  </p>
+ </div>
+
+
+ <div class="refsect1 errors">
+  <h3 class="title">Errors/Exceptions</h3>
+  <p class="para">
+   Throws <span class="classname">UnexpectedValueException</span> if either parameter is longer
+   than 400 bytes.
+  </p>
+ </div>
+
+
+ <div class="refsect1 examples">
+  <h3 class="title">Примеры</h3>
+  <p class="para">
+   <div class="example">
+    <p><b>Пример #1 A <b>Phar::createDefaultStub()</b> example</b></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+try&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;$phar&nbsp;=&nbsp;new&nbsp;Phar('myphar.phar');<br />&nbsp;&nbsp;&nbsp;&nbsp;$phar-&gt;setStub($phar-&gt;createDefaultStub('cli.php',&nbsp;'web/index.php'));<br />}&nbsp;catch&nbsp;(Exception&nbsp;$e)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;handle&nbsp;errors<br />}</span>
+</code></div>
+    </div>
+
+   </div>
+  </p>
+ </div>
+
+
+ <div class="refsect1 seealso">
+  <h3 class="title">Смотрите также</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"><a href="phar.setstub.html" class="function" rel="rdfs-seeAlso">Phar::setStub()</a></li>
+    <li class="member"><a href="phar.getstub.html" class="function" rel="rdfs-seeAlso">Phar::getStub()</a></li>
+   </ul>
+  </p>
+ </div>
+
+
+
+</div><hr /><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="phar.count.html">Phar::count</a></div>
+ <div class="next" style="float: right;"><a href="phar.decompress.html">Phar::decompress</a></div>
+ <div class="up"><a href="class.Phar.html">Phar</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

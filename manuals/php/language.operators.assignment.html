@@ -1,0 +1,66 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <title>Оператор присвоения</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+ </head>
+ <body><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="language.operators.arithmetic.html">Арифметические операторы</a></div>
+ <div class="next" style="float: right;"><a href="language.operators.bitwise.html">Побитовые операторы</a></div>
+ <div class="up"><a href="language.operators.html">Операторы</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="language.operators.assignment" class="sect1">
+   <h2 class="title">Оператор присвоения</h2>
+   <p class="simpara">
+    Базовый оператор присвоения обозначается как
+	<i>=</i>. На первый взгляд может показаться,
+	что это оператор &quot;равно&quot;. На самом деле это не так. В действительности,
+	оператор присвоения означает, что левый операнд получает значение
+	правого выражения, (т.е. устанавливается результирующим значением).
+   </p>
+   <p class="para">
+    Результатом выполнения оператора присвоения является само присвоенное значение.
+	Таким образом, результат выполнения <i>$a = 3</i> будет равен 
+	<i>3</i>. Это позволяет использовать конструкции вида:
+    <div class="informalexample">
+     <div class="example-contents"> 
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /><br />$a&nbsp;</span><span style="color: #007700">=&nbsp;(</span><span style="color: #0000BB">$b&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">4</span><span style="color: #007700">)&nbsp;+&nbsp;</span><span style="color: #0000BB">5</span><span style="color: #007700">;&nbsp;</span><span style="color: #FF8000">//&nbsp;результат:&nbsp;$a&nbsp;установлена&nbsp;значением&nbsp;9,&nbsp;переменной&nbsp;$b&nbsp;присвоено&nbsp;4.<br /><br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+     </div>
+
+    </div>
+   </p>
+   <p class="para">
+    В дополнение к базовому оператору присвоения имеются &quot;комбинированные операторы&quot; для
+	всех  бинарных арифметических и строковых операций, которые позволяют
+	использовать некоторое значение в выражении, а затем установить его как 
+	результат данного выражения. Например:
+    <div class="informalexample">
+     <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /><br />$a&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">3</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$a&nbsp;</span><span style="color: #007700">+=&nbsp;</span><span style="color: #0000BB">5</span><span style="color: #007700">;&nbsp;</span><span style="color: #FF8000">//&nbsp;устанавливает&nbsp;$a&nbsp;значением&nbsp;8,&nbsp;аналогично&nbsp;записи:&nbsp;$a&nbsp;=&nbsp;$a&nbsp;+&nbsp;5;<br /></span><span style="color: #0000BB">$b&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">"Hello&nbsp;"</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$b&nbsp;</span><span style="color: #007700">.=&nbsp;</span><span style="color: #DD0000">"There!"</span><span style="color: #007700">;&nbsp;</span><span style="color: #FF8000">//&nbsp;устанавливает&nbsp;$b&nbsp;строкой&nbsp;"Hello&nbsp;There!",&nbsp;&nbsp;как&nbsp;и&nbsp;$b&nbsp;=&nbsp;$b&nbsp;.&nbsp;"There!";<br /><br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+     </div>
+
+    </div>
+   </p>
+   <p class="para">
+   Обратите внимание, что присвоение копирует оригинальную переменную в новую
+   (присвоение по значению), таким образом все последующие изменения
+   одной из переменных на другой никак не отражаются. Начиная с PHP 4, также поддерживается
+   присваивание по ссылке, используя синтаксис <span class="computeroutput">$var =
+    &amp;$othervar;</span>, но в PHP 3 такая возможность отсутствует.
+	&#039;Присвоение по ссылке&#039; означает, что обе переменные указывают на 
+	одни и те же данные и никакого копирования не происходит.
+	Для получения более полной информации об этой возможности, обратитесь к разделу 
+	документации <a href="language.references.html" class="link">Подробно об указателях</a>.
+   </p>
+  </div><hr /><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="language.operators.arithmetic.html">Арифметические операторы</a></div>
+ <div class="next" style="float: right;"><a href="language.operators.bitwise.html">Побитовые операторы</a></div>
+ <div class="up"><a href="language.operators.html">Операторы</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

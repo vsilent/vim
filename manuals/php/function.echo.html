@@ -1,0 +1,85 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <title>Выводит одну или более строк</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+ </head>
+ <body><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="function.crypt.html">crypt</a></div>
+ <div class="next" style="float: right;"><a href="function.explode.html">explode</a></div>
+ <div class="up"><a href="ref.strings.html">Функции обработки строк</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="function.echo" class="refentry">
+   <div class="refnamediv">
+    <h1 class="refname">echo</h1>
+    <p class="verinfo">(PHP 4, PHP 5)</p><p class="refpurpose dc-title">echo — Выводит одну или более строк</p>
+
+   </div>
+   <div class="refsect1 unknown">
+    <h3 class="title">Описание</h3>
+     <div class="methodsynopsis dc-description">
+      <span class="type"><span class="type void">void</span></span> <span class="methodname"><b><b>echo</b></b></span>
+       ( <span class="methodparam"><span class="type">string</span> <tt class="parameter">$arg1</tt></span>
+      [, <span class="methodparam"><span class="type">string</span> <tt class="parameter">$argn...</tt></span>
+     ] )</div>
+
+    <p class="simpara">
+     Выводит все аргументы.
+    </p>
+    <p class="para">
+     На самом деле <b>echo()</b> - это не функция, а 
+     конструкция языка, поэтому заключать аргументы в скобки не 
+     обязательно, даже при использовании нескольких аргументов.
+    </p>
+    <p class="para">
+     <div class="example">
+      <p><b>Пример #1 Примеры использования <b>echo()</b></b></p>
+      <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #DD0000">"Привет&nbsp;мир!"</span><span style="color: #007700">;<br /><br />echo&nbsp;</span><span style="color: #DD0000">"Это&nbsp;занимет<br />несколько&nbsp;строк.&nbsp;Переводы&nbsp;строки&nbsp;тоже<br />выводятся"</span><span style="color: #007700">;<br /><br />echo&nbsp;</span><span style="color: #DD0000">"Это&nbsp;занимет\nнесколько&nbsp;строк.&nbsp;Переводы&nbsp;строки&nbsp;тоже\nвыводятся"</span><span style="color: #007700">;<br /><br />echo&nbsp;</span><span style="color: #DD0000">"Экранирование&nbsp;символов&nbsp;делается&nbsp;\"Так\"."</span><span style="color: #007700">;<br /><br /></span><span style="color: #FF8000">//&nbsp;с&nbsp;echo&nbsp;можно&nbsp;использовать&nbsp;переменные&nbsp;...<br /></span><span style="color: #0000BB">$foo&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">"foobar"</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$bar&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">"barbaz"</span><span style="color: #007700">;<br /><br />echo&nbsp;</span><span style="color: #DD0000">"foo&nbsp;-&nbsp;это&nbsp;$foo"</span><span style="color: #007700">;&nbsp;</span><span style="color: #FF8000">//&nbsp;foo&nbsp;-&nbsp;это&nbsp;foobar<br /><br />//&nbsp;...&nbsp;и&nbsp;массивы<br /></span><span style="color: #0000BB">$bar&nbsp;</span><span style="color: #007700">=&nbsp;array(</span><span style="color: #DD0000">"value"&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">"foo"</span><span style="color: #007700">);<br /><br />echo&nbsp;</span><span style="color: #DD0000">"это&nbsp;{$bar['value']}&nbsp;!"</span><span style="color: #007700">;&nbsp;</span><span style="color: #FF8000">//&nbsp;это&nbsp;foo&nbsp;!<br /><br />//&nbsp;При&nbsp;использовании&nbsp;одиночных&nbsp;кавычек&nbsp;выводится<br />//&nbsp;имя&nbsp;переменной,а&nbsp;не&nbsp;значение<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #DD0000">'foo&nbsp;-&nbsp;это&nbsp;$foo'</span><span style="color: #007700">;&nbsp;</span><span style="color: #FF8000">//&nbsp;foo&nbsp;-&nbsp;это&nbsp;$foo<br /><br />//&nbsp;можно&nbsp;вывести&nbsp;просто&nbsp;значения&nbsp;переменных<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">$foo</span><span style="color: #007700">;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;foobar<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">$foo</span><span style="color: #007700">,</span><span style="color: #0000BB">$bar</span><span style="color: #007700">;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;foobarbarbaz<br /><br />//&nbsp;Некоторые&nbsp;предпочитают&nbsp;передачу&nbsp;нескольких&nbsp;аргументов<br />//&nbsp;вместо&nbsp;конкатенации<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #DD0000">'Эта&nbsp;'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'строка&nbsp;'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'была&nbsp;'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'создана&nbsp;'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'несколькими&nbsp;параметрами.'</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">chr</span><span style="color: #007700">(</span><span style="color: #0000BB">10</span><span style="color: #007700">);<br />echo&nbsp;</span><span style="color: #DD0000">'Эта&nbsp;'&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #DD0000">'строка&nbsp;'&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #DD0000">'была&nbsp;'&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #DD0000">'создана&nbsp;'&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #DD0000">'с&nbsp;помощью&nbsp;конкатенации.'&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br /><br />echo&nbsp;&lt;&lt;&lt;END<br /></span><span style="color: #0000BB">Здесь&nbsp;используется&nbsp;синтаксис&nbsp;"here&nbsp;document"&nbsp;для&nbsp;вывода<br />нескольких&nbsp;строк&nbsp;с&nbsp;подстановкой&nbsp;переменных&nbsp;$variable.<br />Заметьте,что&nbsp;закрывающий&nbsp;идентификатор&nbsp;должен&nbsp;<br />располагаться&nbsp;в&nbsp;отдельной&nbsp;строке.&nbsp;никаких&nbsp;пробелов!<br /></span><span style="color: #007700">END;<br /><br /></span><span style="color: #FF8000">//&nbsp;Следующая&nbsp;строка&nbsp;неверна,&nbsp;так&nbsp;как&nbsp;echo&nbsp;не&nbsp;является&nbsp;функцией<br /></span><span style="color: #007700">(</span><span style="color: #0000BB">$some_var</span><span style="color: #007700">)&nbsp;?&nbsp;echo&nbsp;</span><span style="color: #DD0000">'true'&nbsp;</span><span style="color: #007700">:&nbsp;echo&nbsp;</span><span style="color: #DD0000">'false'</span><span style="color: #007700">;<br /><br /></span><span style="color: #FF8000">//&nbsp;Но&nbsp;это&nbsp;можно&nbsp;записать&nbsp;по&nbsp;другому<br /></span><span style="color: #007700">(</span><span style="color: #0000BB">$some_var</span><span style="color: #007700">)&nbsp;?&nbsp;print(</span><span style="color: #DD0000">'true'</span><span style="color: #007700">):&nbsp;print(</span><span style="color: #DD0000">'false'</span><span style="color: #007700">);&nbsp;</span><span style="color: #FF8000">//&nbsp;print&nbsp;является&nbsp;функцией<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">$some_var&nbsp;</span><span style="color: #007700">?&nbsp;</span><span style="color: #DD0000">'true'</span><span style="color: #007700">:&nbsp;</span><span style="color: #DD0000">'false'</span><span style="color: #007700">;&nbsp;</span><span style="color: #FF8000">//&nbsp;echo&nbsp;вынесен&nbsp;за&nbsp;пределы&nbsp;выражения<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+      </div>
+
+     </div>
+    </p>
+    <p class="para">
+     <b>echo()</b> имеет также краткую форму, представляющую 
+     собой знак равенства, следующий непосредственно за открывающим
+     тэгом. Этот сокращенный синтаксис допустим только когда директива 
+     конфигурации <a href="ini.core.html#ini.short-open-tag" class="link">short_open_tag</a>
+     включена.
+     <div class="informalexample">
+      <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+I&nbsp;have&nbsp;<span style="color: #0000BB">&lt;?=$foo?&gt;</span>&nbsp;foo.</span>
+</code></div>
+      </div>
+
+     </div>
+    </p>
+    <p class="simpara">
+     Различия между <a href="function.print.html" class="function">print()</a> и <b>echo()</b>
+     рассматриваются в этой статье: 
+     <a href="http://www.faqts.com/knowledge_base/view.phtml/aid/1/fid/40" class="link external">&raquo; http://www.faqts.com/knowledge_base/view.phtml/aid/1/fid/40</a>
+    </p>
+    
+    <blockquote><p><b class="note">Замечание</b>: <span class="simpara">Поскольку это языковая
+конструкция, а не функция, она не может вызываться при помощи
+<a href="functions.variable-functions.html" class="link">переменных функций</a></span>
+</p></blockquote>
+    
+    <p class="simpara">
+     См. также описания функций
+     <a href="function.print.html" class="function">print()</a>,
+     <a href="function.printf.html" class="function">printf()</a>, и
+     <a href="function.flush.html" class="function">flush()</a>.
+    </p>
+   </div>
+
+  </div><hr /><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="function.crypt.html">crypt</a></div>
+ <div class="next" style="float: right;"><a href="function.explode.html">explode</a></div>
+ <div class="up"><a href="ref.strings.html">Функции обработки строк</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

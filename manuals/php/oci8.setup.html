@@ -1,0 +1,148 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <title>Установка и настройка</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+ </head>
+ <body><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="intro.oci8.html">Введение</a></div>
+ <div class="next" style="float: right;"><a href="oci8.installation.html">Установка</a></div>
+ <div class="up"><a href="book.oci8.html">Oracle/OCI8</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div>
+ <h1>Установка и настройка</h1>
+<h2>Содержание</h2><ul class="chunklist chunklist_chapter"><li><a href="oci8.installation.html">Установка</a></li><li><a href="oci8.configuration.html">Настройка во время выполнения</a></li><li><a href="oci8.resources.html">Типы ресурсов</a></li></ul>
+
+
+ 
+ <div id="oci8.requirements" class="section">
+  <h2 class="title">Требования</h2>
+  <p class="para">
+   Вам понадобятся клиентские библиотеки Oracle для того, чтобы использовать
+   этот модуль. Пользователям Windows необходимы библиотеки минимум
+   версии 10 для того, чтобы использовать <var class="filename">php_oci8.dll</var>.
+  </p>
+  <p class="para">
+   Мы рекомендуем вам использовать Oracle Instant Client, доступный по
+   адресу <a href="http://www.oracle.com/technology/tech/oci/instantclient/instantclient.html" class="link external">&raquo; http://www.oracle.com/technology/tech/oci/instantclient/instantclient.html</a>.
+   Для использования модуля OCI8 достаточно установить &quot;basic&quot; версию пакета 
+   Oracle Instant Client. Instant Client не требует установки переменных 
+   ORACLE_SID или ORACLE_HOME. Однако, вам возможно понадобится установить 
+   переменные окружения LD_LIBRARY_PATH и NLS_LANG.
+  </p>
+  <p class="para">
+   Перед использованием этого модуля, проверьте, что вы установили все
+   необходимые переменные окружения. Эти переменные, перечисленные ниже,
+   должны быть доступны пользователю Oracle и пользователю, с правами
+   которого работает веб-сервер. Переменные окружения, необходимые для
+   корректной работы с Oracle:
+   <ul class="itemizedlist">
+    <li class="listitem">
+     <span class="simpara">
+      ORACLE_HOME
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      ORACLE_SID
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      LD_PRELOAD
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      LD_LIBRARY_PATH
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      NLS_LANG
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      ORA_NLS33
+     </span>
+    </li>
+   </ul>
+  </p>
+  <p class="para">
+   После установки среды окружения для веб-сервера, добавьте
+   пользователя, с правами которого работает веб-сервер, в группу oracle.
+  </p>
+  <blockquote><p><b class="note">Замечание</b>: 
+   <b>Если ваш веб-сервер не стартует или возвращает ошибку при старте</b>
+   
+    Проверьте, что Apache был слинкован с библиотекой
+    <i>pthread</i>: 
+   <br />
+   
+   <div class="informalexample">
+    <div class="example-contents"><pre>
+<div class="cdata"><pre>
+# ldd /www/apache/bin/httpd 
+  libpthread.so.0 =&gt; /lib/libpthread.so.0 (0x4001c000)
+  libm.so.6 =&gt; /lib/libm.so.6 (0x4002f000)
+  libcrypt.so.1 =&gt; /lib/libcrypt.so.1 (0x4004c000)
+  libdl.so.2 =&gt; /lib/libdl.so.2 (0x4007a000)
+  libc.so.6 =&gt; /lib/libc.so.6 (0x4007e000)
+  /lib/ld-linux.so.2 =&gt; /lib/ld-linux.so.2 (0x40000000)
+</pre></div>
+    </pre></div>
+   </div>
+  <br />
+  
+   Если libpthread не присутствует в списке, то вам придется переустановить Apache:
+  <br />
+  
+   <div class="informalexample">
+    <div class="example-contents"><pre>
+<div class="cdata"><pre>
+# cd /usr/src/apache_1.3.xx
+# make clean
+# LIBS=-lpthread ./config.status
+# make
+# make install
+</pre></div>
+    </pre></div>
+   </div>
+  <br />
+  
+   Обратите внимание на то, что на некоторых системах, например, UnixWare,
+   вместо <i>libthread</i> присутствует
+   <i>libpthread</i>. PHP и Apache также должны быть собраны с 
+    EXTRA_LIBS=-lthread.
+  <br />
+ </p></blockquote>
+ </div>
+ 
+
+ 
+ 
+ 
+
+ 
+ 
+
+   
+
+
+
+
+
+ 
+
+ 
+ 
+ 
+
+</div>
+<hr /><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="intro.oci8.html">Введение</a></div>
+ <div class="next" style="float: right;"><a href="oci8.installation.html">Установка</a></div>
+ <div class="up"><a href="book.oci8.html">Oracle/OCI8</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

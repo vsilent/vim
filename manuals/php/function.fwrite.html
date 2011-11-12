@@ -1,0 +1,86 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <title>Бинарно-безопасная запись в файл</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+ </head>
+ <body><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="function.ftruncate.html">ftruncate</a></div>
+ <div class="next" style="float: right;"><a href="function.glob.html">glob</a></div>
+ <div class="up"><a href="ref.filesystem.html">Файловая система</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="function.fwrite" class="refentry">
+   <div class="refnamediv">
+    <h1 class="refname">fwrite</h1>
+    <p class="verinfo">(PHP 4, PHP 5)</p><p class="refpurpose dc-title">fwrite — Бинарно-безопасная запись в файл</p>
+
+   </div>
+   <div class="refsect1 unknown">
+    <h3 class="title">Описание</h3>
+     <div class="methodsynopsis dc-description">
+      <span class="type">int</span> <span class="methodname"><b><b>fwrite</b></b></span>
+       ( <span class="methodparam"><span class="type">resource</span> <tt class="parameter">$handle</tt></span>
+      , <span class="methodparam"><span class="type">string</span> <tt class="parameter">$string</tt></span>
+      [, <span class="methodparam"><span class="type">int</span> <tt class="parameter">$length</tt></span>
+     ] )</div>
+
+    <p class="simpara">
+     <b>fwrite()</b> записывает содержимое
+     <i><tt class="parameter">string</tt></i>
+ в файловый поток
+     <i><tt class="parameter">handle</tt></i>
+. Если передан аргумент
+     <i><tt class="parameter">length</tt></i>
+, запись остановится после того,
+     как <i><tt class="parameter">length</tt></i>
+ байтов будут записаны или
+     будет достигнут конец строки <i><tt class="parameter">string</tt></i>
+,
+     смотря что произойдёт первым.
+    </p>
+    <p class="simpara">
+     <b>fwrite()</b> возвращает количество записанных байтов
+     или <b><tt>FALSE</tt></b> в случае ошибки.
+    </p>
+    <p class="simpara">
+     Обратите внимание, что если аргумент <i><tt class="parameter">length</tt></i>
+
+     указан, то конфигурационная опция <a href="info.configuration.html#ini.magic-quotes-runtime" class="link">magic_quotes_runtime</a>
+     будет проигнорирована и строка <i><tt class="parameter">string</tt></i>
+
+     не будет очищена от слешей.
+    </p>
+    <blockquote><p><b class="note">Замечание</b>: 
+     
+      В системах, различающих двоичные и текстовые файлы (к примеру, Windows),
+      файл должен быть открыт используя флаг &#039;b&#039; в конце аргумента mode
+      функции <a href="function.fopen.html" class="function">fopen()</a>.
+     <br />
+    </p></blockquote>
+    <p class="para">
+     <div class="example">
+      <p><b>Пример #1 Простой пример использования fwrite</b></p>
+      <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$filename&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">'test.txt'</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$somecontent&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">"Добавить&nbsp;это&nbsp;к&nbsp;файлу\n"</span><span style="color: #007700">;<br /><br /></span><span style="color: #FF8000">//&nbsp;Вначале&nbsp;давайте&nbsp;убедимся,&nbsp;что&nbsp;файл&nbsp;существует&nbsp;и&nbsp;доступен&nbsp;для&nbsp;записи.<br /></span><span style="color: #007700">if&nbsp;(</span><span style="color: #0000BB">is_writable</span><span style="color: #007700">(</span><span style="color: #0000BB">$filename</span><span style="color: #007700">))&nbsp;{<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;В&nbsp;нашем&nbsp;примере&nbsp;мы&nbsp;открываем&nbsp;$filename&nbsp;в&nbsp;режиме&nbsp;"дописать&nbsp;в&nbsp;конец".<br />&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;Таким&nbsp;образом,&nbsp;смещение&nbsp;установлено&nbsp;в&nbsp;конец&nbsp;файла&nbsp;и<br />&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;наш&nbsp;$somecontent&nbsp;допишется&nbsp;в&nbsp;конец&nbsp;при&nbsp;использовании&nbsp;fwrite().<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">if&nbsp;(!</span><span style="color: #0000BB">$handle&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">fopen</span><span style="color: #007700">(</span><span style="color: #0000BB">$filename</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'a'</span><span style="color: #007700">))&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"Не&nbsp;могу&nbsp;открыть&nbsp;файл&nbsp;($filename)"</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;exit;<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;Записываем&nbsp;$somecontent&nbsp;в&nbsp;наш&nbsp;открытый&nbsp;файл.<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">if&nbsp;(</span><span style="color: #0000BB">fwrite</span><span style="color: #007700">(</span><span style="color: #0000BB">$handle</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$somecontent</span><span style="color: #007700">)&nbsp;===&nbsp;</span><span style="color: #0000BB">FALSE</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"Не&nbsp;могу&nbsp;произвести&nbsp;запись&nbsp;в&nbsp;файл&nbsp;($filename)"</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;exit;<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />&nbsp;&nbsp;&nbsp;&nbsp;<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"Ура!&nbsp;Записали&nbsp;($somecontent)&nbsp;в&nbsp;файл&nbsp;($filename)"</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">fclose</span><span style="color: #007700">(</span><span style="color: #0000BB">$handle</span><span style="color: #007700">);<br /><br />}&nbsp;else&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"Файл&nbsp;$filename&nbsp;недоступен&nbsp;для&nbsp;записи"</span><span style="color: #007700">;<br />}<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+      </div>
+
+     </div>
+    </p>
+    <p class="simpara">
+     См. также описание функций <a href="function.fread.html" class="function">fread()</a>,
+     <a href="function.fopen.html" class="function">fopen()</a>,
+     <a href="function.fsockopen.html" class="function">fsockopen()</a>,
+     <a href="function.popen.html" class="function">popen()</a> и
+     <a href="function.file-put-contents.html" class="function">file_put_contents()</a>.
+    </p>
+   </div>
+
+  </div><hr /><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="function.ftruncate.html">ftruncate</a></div>
+ <div class="next" style="float: right;"><a href="function.glob.html">glob</a></div>
+ <div class="up"><a href="ref.filesystem.html">Файловая система</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

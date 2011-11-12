@@ -1,0 +1,88 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <title>Установка с интерфейсами CGI и командной строки</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+ </head>
+ <body><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="install.unix.sun.html">Sun, iPlanet and Netscape servers on Sun Solaris</a></div>
+ <div class="next" style="float: right;"><a href="install.unix.hpux.html">HP-UX specific installation notes</a></div>
+ <div class="up"><a href="install.unix.html">Установка на Unix системы</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="install.unix.commandline" class="sect1">
+   <h2 class="title">Установка с интерфейсами CGI и командной строки</h2>
+   <p class="para">
+    По умолчанию, при сборке PHP как CGI-программы создается интерпретатор 
+    командной строки, который может быть использован для обработки CGI-скриптов
+    и выполнения функций не связанных с Web-программированием. PHP как
+    модуль сервера выигрывает в производительности, однако PHP CGI позволяет
+    запускать PHP от пользователя, отличного от того, под которым исполняется 
+    сервер.
+   </p>
+   <div class="warning"><b class="warning">Внимание</b><p class="para">Используя установку CGI, ваш сервер
+открыт для нескольких возможных атак. Пожалуйста, ознакомьтесь с разделом
+<a href="security.cgi-bin.html" class="link">&quot;Безопасность CGI&quot;</a> чтобы узнать,
+как можно защитить себя от этих атак.</p></div>
+   <p class="para">
+    В PHP 4.0.3 было добавлено несколько важных дополнений. Новый SAPI командной 
+    строки, названый CLI, и имеющий такое же имя как и CGI.
+    Исполняемый файл устанавливается в <i>{PREFIX}/bin/php</i>, 
+    где {PREFIX} указывается вами при запуске конфигурационного скрипта перед
+    сборкой. Более детально вы можете ознакомиться с этой темой в разделе  
+    <a href="features.commandline.html" class="link">Использование PHP в командной строке</a>.
+   </p>
+   
+   <div id="install.unix.commandline.testing" class="sect2">
+    <h3 class="title">Тестирование</h3>
+    <p class="simpara">
+     Если вы собрали PHP как CGI, вы можете протестировать вашу сборку
+     командой <strong class="command">make test</strong>. Тестирование вашей сборки - 
+     всегда хорошая идея. Таким образом вы можете обнаружить работы PHP на вашей 
+     платформе раньше, вместо того, чтобы бороться с ними позже.
+    </p>
+   </div>
+
+   <div id="install.unix.commandline.benchmarking" class="sect2">
+    <h3 class="title">Тестирование производительности(Benchmarking)</h3>
+    <p class="simpara">
+     Если вы собрали PHP 3 как CGI, вы можете протестировать производительность
+     вашей сборки посредством команды <strong class="command">make bench</strong>. Заметьте,
+     что если <a href="features.safe-mode.html#ini.safe-mode" class="link">безопасный режим</a> включен по умолчанию, тестирование производительности 
+     не сможет нормально завершиться, если оно длится более 30 секунд. Это 
+     происходит потому, что функция <a href="function.set-time-limit.html" class="function">set_time_limit()</a> не может
+     использоваться при включенном <a href="features.safe-mode.html#ini.safe-mode" class="link">безопасный режим</a>. Используйте параметр <a href="info.configuration.html#ini.max-execution-time" class="link">max_execution_time</a> в конфигурационном
+     файле, чтобы позволить вашим скриптам исполняться дольше 30 секунд.
+     <strong class="command">make bench</strong> игнорирует <a href="configuration.html#configuration.file" class="link">конфигурационный файл</a>.
+    </p>
+    <blockquote><p><b class="note">Замечание</b>: 
+     <span class="simpara">
+        <strong class="command">make bench</strong> доступно только для PHP 3.
+     </span>
+    </p></blockquote>
+   </div>
+   
+   <div id="install.unix.commandline.using-variables" class="sect2">
+    <h3 class="title">Использование переменных</h3>
+    <p class="simpara">
+      Некоторые <a href="reserved.variables.server.html" class="link">переменные
+      окружения сервера</a> не определены в текущей 
+      <a href="http://hoohoo.ncsa.uiuc.edu/cgi/env.html" class="link external">&raquo; спецификации CGI/1.1</a>.
+      Только следующие переменные определены: <var class="varname">AUTH_TYPE</var>, 
+      <var class="varname">CONTENT_LENGTH</var>, <var class="varname">CONTENT_TYPE</var>,
+      <var class="varname">GATEWAY_INTERFACE</var>, <var class="varname">PATH_INFO</var>, 
+      <var class="varname">PATH_TRANSLATED</var>, <var class="varname">QUERY_STRING</var>,
+      <var class="varname">REMOTE_ADDR</var>, <var class="varname">REMOTE_HOST</var>, 
+      <var class="varname">REMOTE_IDENT</var>, <var class="varname">REMOTE_USER</var>,
+      <var class="varname">REQUEST_METHOD</var>, <var class="varname">SCRIPT_NAME</var>, 
+      <var class="varname">SERVER_NAME</var>, <var class="varname">SERVER_PORT</var>,
+      <var class="varname">SERVER_PROTOCOL</var>, and <var class="varname">SERVER_SOFTWARE</var>.
+      Все остальное должно обрабатываться как &#039;vendor extensions&#039;.
+    </p>
+   </div>
+   
+  </div><hr /><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="install.unix.sun.html">Sun, iPlanet and Netscape servers on Sun Solaris</a></div>
+ <div class="next" style="float: right;"><a href="install.unix.hpux.html">HP-UX specific installation notes</a></div>
+ <div class="up"><a href="install.unix.html">Установка на Unix системы</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

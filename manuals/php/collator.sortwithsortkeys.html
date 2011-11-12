@@ -1,0 +1,137 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <title>Sort array using specified collator and sort keys</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+ </head>
+ <body><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="collator.setstrength.html">Collator::setStrength</a></div>
+ <div class="next" style="float: right;"><a href="collator.sort.html">Collator::sort</a></div>
+ <div class="up"><a href="class.collator.html">Collator</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="collator.sortwithsortkeys" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">Collator::sortWithSortKeys</h1>
+  <h1 class="refname">collator_sort_with_sort_keys</h1>
+  <p class="verinfo">(No version information available, might be only in CVS)</p><p class="refpurpose dc-title">collator_sort_with_sort_keys — Sort array using specified collator and sort keys</p>
+
+ </div>
+
+ <div class="refsect1 description">
+  <h3 class="title">Описание</h3>
+  <p class="para">
+   Object oriented style
+  </p>
+  <div class="methodsynopsis dc-description">
+   <span class="type">bool</span>
+    <span class="methodname"><b><b>Collator::sortWithSortKeys</b></b></span>
+    ( <span class="methodparam"><span class="type">array</span> <tt class="parameter reference">&$arr</tt></span>
+   )</div>
+
+  <p class="para rdfs-comment">
+   Procedural style
+  </p>
+  <div class="methodsynopsis dc-description">
+   <span class="type">bool</span>
+    <span class="methodname"><b><b>collator_sort_with_sort_keys</b></b></span>
+    ( <span class="methodparam"><span class="type"><a href="class.collator.html" class="type Collator">Collator</a></span> <tt class="parameter">$coll</tt></span>
+   , <span class="methodparam"><span class="type">array</span> <tt class="parameter reference">&$arr</tt></span>
+   )</div>
+
+  <p class="para rdfs-comment">
+   Similar to <a href="collator.sort.html" class="function">collator_sort()</a>
+   but uses ICU sorting keys produced by ucol_getSortKey() to gain more speed
+   on large arrays.
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters">
+  <h3 class="title">Список параметров</h3>
+  <p class="para">
+   <dl>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">coll</tt></i>
+</span>
+
+     <dd>
+
+      <p class="para">
+       <span class="classname">Collator</span> object.
+      </p>
+     </dd>
+
+    </dt>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">arr</tt></i>
+</span>
+
+     <dd>
+
+      <p class="para">Array of strings to sort</p>
+     </dd>
+
+    </dt>
+
+   </dl>
+
+  </p>
+ </div>
+
+
+ <div class="refsect1 returnvalues">
+  <h3 class="title">Возвращаемые значения</h3>
+  <p class="para">
+   Возвращает <b><tt>TRUE</tt></b> в случае успешного завершения или <b><tt>FALSE</tt></b> в случае возникновения ошибки.
+  </p>
+ </div>
+
+
+ <div class="refsect1 examples">
+  <h3 class="title">Примеры</h3>
+  <p class="para">
+   <div class="example">
+    <p><b>Пример #1 <b>collator_sort_with_sort_keys()</b> example</b></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$arr&nbsp;&nbsp;</span><span style="color: #007700">=&nbsp;array(&nbsp;</span><span style="color: #DD0000">'Köpfe'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'Kypper'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'Kopfe'&nbsp;</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$coll&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">collator_create</span><span style="color: #007700">(&nbsp;</span><span style="color: #DD0000">'sv'&nbsp;</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">collator_sort_with_sort_keys</span><span style="color: #007700">(&nbsp;</span><span style="color: #0000BB">$coll</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$arr&nbsp;</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">var_export</span><span style="color: #007700">(&nbsp;</span><span style="color: #0000BB">$arr&nbsp;</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+    <div class="example-contents"><p>Результат выполнения данного примера:</p></div>
+    <div class="example-contents"><pre>
+<div class="cdata"><pre>
+array (
+  0 =&gt; &#039;Kopfe&#039;,
+  1 =&gt; &#039;Kypper&#039;,
+  2 =&gt; &#039;Köpfe&#039;,
+)
+</pre></div>
+    </pre></div>
+   </div>
+  </p>
+ </div>
+
+
+ <div class="refsect1 seealso">
+  <h3 class="title">Смотрите также</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"><a href="class.collator.html#intl.collator-constants" class="link"><span class="classname">Collator</span> constants</a></li>
+    <li class="member"><a href="collator.sort.html" class="function" rel="rdfs-seeAlso">collator_sort()</a></li>
+    <li class="member"><a href="collator.asort.html" class="function" rel="rdfs-seeAlso">collator_asort()</a></li>
+   </ul>
+  </p>
+ </div>
+
+</div><hr /><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="collator.setstrength.html">Collator::setStrength</a></div>
+ <div class="next" style="float: right;"><a href="collator.sort.html">Collator::sort</a></div>
+ <div class="up"><a href="class.collator.html">Collator</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

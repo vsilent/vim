@@ -1,0 +1,72 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <title>Установка</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+ </head>
+ <body><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="apd.setup.html">Установка и настройка</a></div>
+ <div class="next" style="float: right;"><a href="apd.installwin32.html">Building on Win32</a></div>
+ <div class="up"><a href="apd.setup.html">Установка и настройка</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="apd.installation" class="section">
+ <h2 class="title">Установка</h2>
+ <p class="para">
+  APD is currently available as a PECL extension from 
+  <a href="http://pecl.php.net/package/apd" class="link external">&raquo; http://pecl.php.net/package/apd</a>.
+  Make sure you have installed the CGI version of PHP and it is available
+  in your current path along with the phpize script.
+ </p>
+ <p class="para">
+  Run the following command to download, build, and install the latest stable
+  version of APD:
+ <div class="example-contents"><pre>
+<div class="cdata"><pre>
+pear install apd
+</pre></div>
+  </pre></div>
+ </p>
+ <p class="para">
+  This automatically installs the APD Zend module into your PHP
+  extensions directory. It is not mandatory to keep it there; you can
+  store the module in any directory PHP can read as long as you set
+  the zend_extension parameter accordingly.
+ </p>
+ <p class="para">
+  Windows users can download the extension dll <var class="filename">php_apd.dll</var>
+  from <a href="http://snaps.php.net/win32/PECL_STABLE/" class="link external">&raquo; http://snaps.php.net/win32/PECL_STABLE/</a>.
+ </p>
+ <p class="para">
+  In your INI file, add the following lines:
+ </p>
+ <p class="para">
+  <div class="example-contents">
+<div class="cdata"><pre>
+zend_extension = /absolute/path/to/apd.so
+apd.dumpdir = /absolute/path/to/trace/directory
+apd.statement_tracing = 0
+</pre></div>
+  </div>
+
+ </p>
+ <p class="para">
+  Depending on your PHP build, the zend_extension directive can be one of the
+  following:
+ </p>
+ <p class="para">
+  <div class="example-contents">
+<div class="cdata"><pre>
+zend_extension              (non ZTS, non debug build)
+zend_extension_ts           (    ZTS, non debug build)
+zend_extension_debug        (non ZTS,     debug build)
+zend_extension_debug_ts     (    ZTS,     debug build)
+</pre></div>
+  </div>
+
+ </p>
+</div><hr /><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="apd.setup.html">Установка и настройка</a></div>
+ <div class="next" style="float: right;"><a href="apd.installwin32.html">Building on Win32</a></div>
+ <div class="up"><a href="apd.setup.html">Установка и настройка</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

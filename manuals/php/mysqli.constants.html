@@ -1,0 +1,555 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <title>Предопределенные константы</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+ </head>
+ <body><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="mysqli.resources.html">Типы ресурсов</a></div>
+ <div class="next" style="float: right;"><a href="ref.mysqli.html">mysqli</a></div>
+ <div class="up"><a href="book.mysqli.html">mysqli</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div>
+ <h1>Предопределенные константы</h1>
+
+ 
+ <table border="5">
+  <caption><b>Константы MySQLi</b></caption>
+   <colgroup>
+
+    <thead valign="middle">
+     <tr valign="middle">
+      <th colspan="1">Имя</th>
+      <th colspan="1">Описание</th>
+     </tr>
+
+    </thead>
+
+    <tbody valign="middle" class="tbody">
+     <tr valign="middle">
+      <td colspan="1" rowspan="1" align="left">
+       <b><tt>MYSQLI_READ_DEFAULT_GROUP</tt></b>
+       (<a href="language.types.integer.html" class="link">integer</a>)
+      </td>
+      <td colspan="1" rowspan="1" align="left">
+       Читать опции из указанной группы в файле `my.cnf&#039; или файле указанном
+       с помощью <i>MYSQLI_READ_DEFAULT_FILE</i>
+      </td>
+     </tr>
+
+     <tr valign="middle">
+      <td colspan="1" rowspan="1" align="left">
+       <b><tt>MYSQLI_READ_DEFAULT_FILE</tt></b>
+       (<a href="language.types.integer.html" class="link">integer</a>)
+      </td>
+      <td colspan="1" rowspan="1" align="left">
+       Читать опции из указанного файла вместо <i>my.cnf</i>
+      </td>
+     </tr>
+
+     <tr valign="middle">
+      <td colspan="1" rowspan="1" align="left">
+       <b><tt>MYSQLI_OPT_CONNECT_TIMEOUT</tt></b>
+       (<a href="language.types.integer.html" class="link">integer</a>)
+      </td>
+      <td colspan="1" rowspan="1" align="left">
+       Тайм-аут подключения в секундах.
+      </td>
+     </tr>
+
+     <tr valign="middle">
+      <td colspan="1" rowspan="1" align="left">
+       <b><tt>MYSQLI_OPT_LOCAL_INFILE</tt></b>
+       (<a href="language.types.integer.html" class="link">integer</a>)
+      </td>
+      <td colspan="1" rowspan="1" align="left">
+       Включает команду <i>LOAD LOCAL INFILE</i>.
+      </td>
+     </tr>
+
+     <tr valign="middle">
+      <td colspan="1" rowspan="1" align="left">
+       <b><tt>MYSQLI_INIT_COMMAND</tt></b>
+       (<a href="language.types.integer.html" class="link">integer</a>)
+      </td>
+      <td colspan="1" rowspan="1" align="left">
+       Команда, которая будет выполнена при подключении к серверу MySQL. 
+       Эта команда будет повторно вызвана при переподключении.
+      </td>
+     </tr>
+
+     <tr valign="middle">
+      <td colspan="1" rowspan="1" align="left">
+       <b><tt>MYSQLI_CLIENT_SSL</tt></b>
+       (<a href="language.types.integer.html" class="link">integer</a>)
+      </td>
+      <td colspan="1" rowspan="1" align="left">
+       Использовать SSL (шифрованый протокол). Эта опция не может быть уставовлена приложениями; 
+       она устанавливается внутри библиотеки клиента MySQL.
+      </td>
+     </tr>
+
+     <tr valign="middle">
+      <td colspan="1" rowspan="1" align="left">
+       <b><tt>MYSQLI_CLIENT_COMPRESS</tt></b>
+       (<a href="language.types.integer.html" class="link">integer</a>)
+      </td>
+      <td colspan="1" rowspan="1" align="left">
+       Использовать компрессию.
+      </td>
+     </tr>
+
+     <tr valign="middle">
+      <td colspan="1" rowspan="1" align="left">
+       <b><tt>MYSQLI_CLIENT_INTERACTIVE</tt></b>
+       (<a href="language.types.integer.html" class="link">integer</a>)
+      </td>
+      <td colspan="1" rowspan="1" align="left">
+       Ждать <i>interactive_timeout</i> секунд (вместо
+       <i>wait_timeout</i>) бездействия перед закрытием 
+       соединения. Переменная сессии клиента <i>wait_timeout</i>
+       будет установлена в значение переменной сессии
+       <i>interactive_timeout</i>. 
+      </td>
+     </tr>
+
+     <tr valign="middle">
+      <td colspan="1" rowspan="1" align="left">
+       <b><tt>MYSQLI_CLIENT_IGNORE_SPACE</tt></b>
+       (<a href="language.types.integer.html" class="link">integer</a>)
+      </td>
+      <td colspan="1" rowspan="1" align="left">
+       Разрешить пробелы после имен функций. Делает все имена функций зарезервированными словами. 
+      </td>
+     </tr>
+
+     <tr valign="middle">
+      <td colspan="1" rowspan="1" align="left">
+       <b><tt>MYSQLI_CLIENT_NO_SCHEMA</tt></b>
+       (<a href="language.types.integer.html" class="link">integer</a>)
+      </td>
+      <td colspan="1" rowspan="1" align="left">
+       Запретить синтаксис db_name.tbl_name.col_name.
+      </td>
+     </tr>
+
+     <tr valign="middle">
+      <td colspan="1" rowspan="1" align="left">
+       <b><tt>MYSQLI_CLIENT_MULTI_QUERIES</tt></b>
+       (<a href="language.types.integer.html" class="link">integer</a>)
+      </td>
+      <td colspan="1" rowspan="1" align="left">
+      </td>
+     </tr>
+
+     <tr valign="middle">
+      <td colspan="1" rowspan="1" align="left">
+       <b><tt>MYSQLI_STORE_RESULT</tt></b>
+       (<a href="language.types.integer.html" class="link">integer</a>)
+      </td>
+      <td colspan="1" rowspan="1" align="left">
+       Для использования буферизации наборов данных.
+      </td>
+     </tr>
+
+     <tr valign="middle">
+      <td colspan="1" rowspan="1" align="left">
+       <b><tt>MYSQLI_USE_RESULT</tt></b>
+       (<a href="language.types.integer.html" class="link">integer</a>)
+      </td>
+      <td colspan="1" rowspan="1" align="left">
+       Для использования небуферизированных наборов данных.
+      </td>
+     </tr>
+
+     <tr valign="middle">
+      <td colspan="1" rowspan="1" align="left">
+       <b><tt>MYSQLI_ASSOC</tt></b>
+       (<a href="language.types.integer.html" class="link">integer</a>)
+      </td>
+      <td colspan="1" rowspan="1" align="left">
+       Результат возвращается в виде ассоциативного массива с именами полей в 
+       качестве индексов.
+      </td>
+     </tr>
+
+     <tr valign="middle">
+      <td colspan="1" rowspan="1" align="left">
+       <b><tt>MYSQLI_NUM</tt></b>
+       (<a href="language.types.integer.html" class="link">integer</a>)
+      </td>
+      <td colspan="1" rowspan="1" align="left">
+       Результат возвращается в виде индексного массива.
+      </td>
+     </tr>
+
+     <tr valign="middle">
+      <td colspan="1" rowspan="1" align="left">
+       <b><tt>MYSQLI_BOTH</tt></b>
+       (<a href="language.types.integer.html" class="link">integer</a>)
+      </td>
+      <td colspan="1" rowspan="1" align="left">
+       Результат возвращается в виде массива, который содержит как числовой,
+       так ассоциативный (с именами полей) индексы.
+      </td>
+     </tr>
+
+     <tr valign="middle">     
+      <td colspan="1" rowspan="1" align="left">
+       <b><tt>MYSQLI_NOT_NULL_FLAG</tt></b>
+       (<a href="language.types.integer.html" class="link">integer</a>)
+      </td>
+     <td colspan="1" rowspan="1" align="left">
+      Информирует о том, что поле определено как <i>NOT NULL</i>.
+     </td>
+     </tr>
+
+     <tr valign="middle">
+      <td colspan="1" rowspan="1" align="left">
+       <b><tt>MYSQLI_PRI_KEY_FLAG</tt></b>
+       (<a href="language.types.integer.html" class="link">integer</a>)
+      </td>
+      <td colspan="1" rowspan="1" align="left">
+       Поле является частью первичного индекса.
+      </td>
+     </tr>
+
+     <tr valign="middle">
+      <td colspan="1" rowspan="1" align="left">
+       <b><tt>MYSQLI_UNIQUE_KEY_FLAG</tt></b>
+       (<a href="language.types.integer.html" class="link">integer</a>)
+      </td>
+      <td colspan="1" rowspan="1" align="left">
+       Поле является частью уникального индекса.
+      </td>
+     </tr>
+
+     <tr valign="middle">
+      <td colspan="1" rowspan="1" align="left">
+       <b><tt>MYSQLI_MULTIPLE_KEY_FLAG</tt></b>
+       (<a href="language.types.integer.html" class="link">integer</a>)
+      </td>
+     <td colspan="1" rowspan="1" align="left">
+      Поле является частью индекса.
+     </td>
+     </tr>
+
+     <tr valign="middle">
+      <td colspan="1" rowspan="1" align="left">
+       <b><tt>MYSQLI_BLOB_FLAG</tt></b>
+       (<a href="language.types.integer.html" class="link">integer</a>)
+      </td>
+     <td colspan="1" rowspan="1" align="left">Поле определено как <i>BLOB</i>.</td>
+     </tr>
+
+     <tr valign="middle">
+      <td colspan="1" rowspan="1" align="left">
+       <b><tt>MYSQLI_UNSIGNED_FLAG</tt></b>
+       (<a href="language.types.integer.html" class="link">integer</a>)
+      </td>
+     <td colspan="1" rowspan="1" align="left">Поле определено как <i>UNSIGNED</i>.</td>
+     </tr>
+
+     <tr valign="middle">
+      <td colspan="1" rowspan="1" align="left">
+       <b><tt>MYSQLI_ZEROFILL_FLAG</tt></b>
+       (<a href="language.types.integer.html" class="link">integer</a>)
+      </td>
+     <td colspan="1" rowspan="1" align="left">Поле определено как <i>ZEROFILL</i>.</td>
+     </tr>
+
+     <tr valign="middle">
+      <td colspan="1" rowspan="1" align="left">
+       <b><tt>MYSQLI_AUTO_INCREMENT_FLAG</tt></b>
+       (<a href="language.types.integer.html" class="link">integer</a>)
+      </td>
+     <td colspan="1" rowspan="1" align="left">Поле определено как <i>AUTO_INCREMENT</i>.</td>
+     </tr>
+
+     <tr valign="middle">
+      <td colspan="1" rowspan="1" align="left">
+       <b><tt>MYSQLI_TIMESTAMP_FLAG</tt></b>
+       (<a href="language.types.integer.html" class="link">integer</a>)
+      </td>
+     <td colspan="1" rowspan="1" align="left">Поле определено как <i>TIMESTAMP</i>.</td>
+     </tr>
+
+     <tr valign="middle">
+      <td colspan="1" rowspan="1" align="left">
+       <b><tt>MYSQLI_SET_FLAG</tt></b>
+       (<a href="language.types.integer.html" class="link">integer</a>)
+      </td>
+     <td colspan="1" rowspan="1" align="left">Поле определено как <i>SET</i>.</td>
+     </tr>
+
+     <tr valign="middle">
+      <td colspan="1" rowspan="1" align="left">
+       <b><tt>MYSQLI_NUM_FLAG</tt></b>
+       (<a href="language.types.integer.html" class="link">integer</a>)
+      </td>
+     <td colspan="1" rowspan="1" align="left">Поле определено как <i>NUMERIC</i>.</td>
+     </tr>
+
+     <tr valign="middle">
+      <td colspan="1" rowspan="1" align="left">
+       <b><tt>MYSQLI_PART_KEY_FLAG</tt></b>
+       (<a href="language.types.integer.html" class="link">integer</a>)
+      </td>
+     <td colspan="1" rowspan="1" align="left">Поле является честью мультииндекса.</td>
+     </tr>
+
+     <tr valign="middle">
+      <td colspan="1" rowspan="1" align="left">
+       <b><tt>MYSQLI_GROUP_FLAG</tt></b>
+       (<a href="language.types.integer.html" class="link">integer</a>)
+      </td>
+     <td colspan="1" rowspan="1" align="left">Поле является частью <i>GROUP BY</i>.</td>
+     </tr>
+
+     <tr valign="middle">
+      <td colspan="1" rowspan="1" align="left">
+       <b><tt>MYSQLI_TYPE_DECIMAL</tt></b>
+       (<a href="language.types.integer.html" class="link">integer</a>)
+      </td>
+     <td colspan="1" rowspan="1" align="left">Поле определено как <i>DECIMAL</i>.</td>
+     </tr>
+
+     <tr valign="middle">
+      <td colspan="1" rowspan="1" align="left">
+       <b><tt>MYSQLI_TYPE_NEWDECIMAL</tt></b>
+       (<a href="language.types.integer.html" class="link">integer</a>)
+      </td>
+      <td colspan="1" rowspan="1" align="left">Математическая точность полей <i>DECIMAL</i> или
+       <i>NUMERIC</i> (MySQL 5.0.3 и выше).</td>
+     </tr>
+
+     <tr valign="middle">
+      <td colspan="1" rowspan="1" align="left">
+       <b><tt>MYSQLI_TYPE_BIT</tt></b>
+       (<a href="language.types.integer.html" class="link">integer</a>)
+      </td>
+      <td colspan="1" rowspan="1" align="left">Поле определено как <i>BIT</i> (MySQL 5.0.3 и выше).</td>
+     </tr>
+
+     <tr valign="middle">
+      <td colspan="1" rowspan="1" align="left">
+       <b><tt>MYSQLI_TYPE_TINY</tt></b>
+       (<a href="language.types.integer.html" class="link">integer</a>)
+      </td>
+     <td colspan="1" rowspan="1" align="left">Поле определено как <i>TINYINT</i>.</td>
+     </tr>
+
+     <tr valign="middle">
+      <td colspan="1" rowspan="1" align="left">
+       <b><tt>MYSQLI_TYPE_SHORT</tt></b>
+       (<a href="language.types.integer.html" class="link">integer</a>)
+      </td>
+     <td colspan="1" rowspan="1" align="left">Поле определено как <i>INT</i>.</td>
+     </tr>
+
+     <tr valign="middle">
+      <td colspan="1" rowspan="1" align="left">
+       <b><tt>MYSQLI_TYPE_LONG</tt></b>
+       (<a href="language.types.integer.html" class="link">integer</a>)
+      </td>
+     <td colspan="1" rowspan="1" align="left">Поле определено как <i>INT</i>.</td>
+     </tr>
+
+     <tr valign="middle">
+      <td colspan="1" rowspan="1" align="left">
+       <b><tt>MYSQLI_TYPE_FLOAT</tt></b>
+       (<a href="language.types.integer.html" class="link">integer</a>)
+      </td>
+     <td colspan="1" rowspan="1" align="left">Поле определено как <i>FLOAT</i>.</td>
+     </tr>
+
+     <tr valign="middle">
+      <td colspan="1" rowspan="1" align="left">
+       <b><tt>MYSQLI_TYPE_DOUBLE</tt></b>
+       (<a href="language.types.integer.html" class="link">integer</a>)
+      </td>
+     <td colspan="1" rowspan="1" align="left">Поле определено как <i>DOUBLE</i>.</td>
+     </tr>
+
+     <tr valign="middle">
+      <td colspan="1" rowspan="1" align="left">
+       <b><tt>MYSQLI_TYPE_NULL</tt></b>
+       (<a href="language.types.integer.html" class="link">integer</a>)
+      </td>
+     <td colspan="1" rowspan="1" align="left">Поле определено как <i>DEFAULT NULL</i>.</td>
+     </tr>
+
+     <tr valign="middle">
+      <td colspan="1" rowspan="1" align="left">
+       <b><tt>MYSQLI_TYPE_TIMESTAMP</tt></b>
+       (<a href="language.types.integer.html" class="link">integer</a>)
+      </td>
+     <td colspan="1" rowspan="1" align="left">Поле определено как <i>TIMESTAMP</i>.</td>
+     </tr>
+
+     <tr valign="middle">
+      <td colspan="1" rowspan="1" align="left">
+       <b><tt>MYSQLI_TYPE_LONGLONG</tt></b>
+       (<a href="language.types.integer.html" class="link">integer</a>)
+      </td>
+     <td colspan="1" rowspan="1" align="left">Поле определено как <i>BIGINT</i>.</td>
+     </tr>
+
+     <tr valign="middle">
+      <td colspan="1" rowspan="1" align="left">
+       <b><tt>MYSQLI_TYPE_INT24</tt></b>
+       (<a href="language.types.integer.html" class="link">integer</a>)
+      </td>
+     <td colspan="1" rowspan="1" align="left">Поле определено как <i>MEDIUMINT</i>.</td>
+     </tr>
+
+     <tr valign="middle">
+      <td colspan="1" rowspan="1" align="left">
+       <b><tt>MYSQLI_TYPE_DATE</tt></b>
+       (<a href="language.types.integer.html" class="link">integer</a>)
+      </td>
+     <td colspan="1" rowspan="1" align="left">Поле определено как <i>DATE</i>.</td>
+     </tr>
+
+     <tr valign="middle">
+      <td colspan="1" rowspan="1" align="left">
+       <b><tt>MYSQLI_TYPE_TIME</tt></b>
+       (<a href="language.types.integer.html" class="link">integer</a>)
+      </td>
+     <td colspan="1" rowspan="1" align="left">Поле определено как <i>TIME</i>.</td>
+     </tr>
+
+     <tr valign="middle">
+      <td colspan="1" rowspan="1" align="left">
+       <b><tt>MYSQLI_TYPE_DATETIME</tt></b>
+       (<a href="language.types.integer.html" class="link">integer</a>)
+      </td>
+     <td colspan="1" rowspan="1" align="left">Поле определено как <i>DATETIME</i>.</td>
+     </tr>
+
+     <tr valign="middle">
+      <td colspan="1" rowspan="1" align="left">
+       <b><tt>MYSQLI_TYPE_YEAR</tt></b>
+       (<a href="language.types.integer.html" class="link">integer</a>)
+      </td>
+     <td colspan="1" rowspan="1" align="left">Поле определено как <i>YEAR</i>.</td>
+     </tr>
+
+     <tr valign="middle">
+      <td colspan="1" rowspan="1" align="left">
+       <b><tt>MYSQLI_TYPE_NEWDATE</tt></b>
+       (<a href="language.types.integer.html" class="link">integer</a>)
+      </td>
+     <td colspan="1" rowspan="1" align="left">Поле определено как <i>DATE</i>.</td>
+     </tr>
+
+     <tr valign="middle">
+      <td colspan="1" rowspan="1" align="left">
+       <b><tt>MYSQLI_TYPE_ENUM</tt></b>
+       (<a href="language.types.integer.html" class="link">integer</a>)
+      </td>
+     <td colspan="1" rowspan="1" align="left">Поле определено как <i>ENUM</i>.</td>
+     </tr>
+
+     <tr valign="middle">
+      <td colspan="1" rowspan="1" align="left">
+       <b><tt>MYSQLI_TYPE_SET</tt></b>
+       (<a href="language.types.integer.html" class="link">integer</a>)
+      </td>
+     <td colspan="1" rowspan="1" align="left">Поле определено как <i>SET</i>.</td>
+     </tr>
+
+     <tr valign="middle">
+      <td colspan="1" rowspan="1" align="left">
+       <b><tt>MYSQLI_TYPE_TINY_BLOB</tt></b>
+       (<a href="language.types.integer.html" class="link">integer</a>)
+      </td>
+     <td colspan="1" rowspan="1" align="left">Поле определено как <i>TINYBLOB</i>.</td>
+     </tr>
+
+     <tr valign="middle">
+      <td colspan="1" rowspan="1" align="left">
+       <b><tt>MYSQLI_TYPE_MEDIUM_BLOB</tt></b>
+       (<a href="language.types.integer.html" class="link">integer</a>)
+      </td>
+     <td colspan="1" rowspan="1" align="left">Поле определено как <i>MEDIUMBLOB</i>.</td>
+     </tr>
+
+     <tr valign="middle">
+      <td colspan="1" rowspan="1" align="left">
+       <b><tt>MYSQLI_TYPE_LONG_BLOB</tt></b>
+       (<a href="language.types.integer.html" class="link">integer</a>)
+      </td>
+     <td colspan="1" rowspan="1" align="left">Поле определено как <i>LONGBLOB</i>.</td>
+     </tr>
+
+     <tr valign="middle">
+      <td colspan="1" rowspan="1" align="left">
+       <b><tt>MYSQLI_TYPE_BLOB</tt></b>
+       (<a href="language.types.integer.html" class="link">integer</a>)
+      </td>
+     <td colspan="1" rowspan="1" align="left">Поле определено как <i>BLOB</i>.</td>
+     </tr>
+
+     <tr valign="middle">
+      <td colspan="1" rowspan="1" align="left">
+       <b><tt>MYSQLI_TYPE_VAR_STRING</tt></b>
+       (<a href="language.types.integer.html" class="link">integer</a>)
+      </td>
+     <td colspan="1" rowspan="1" align="left">Поле определено как <i>VARCHAR</i>.</td>
+     </tr>
+
+     <tr valign="middle">
+      <td colspan="1" rowspan="1" align="left">
+       <b><tt>MYSQLI_TYPE_STRING</tt></b>
+       (<a href="language.types.integer.html" class="link">integer</a>)
+      </td>
+     <td colspan="1" rowspan="1" align="left">Поле определено как <i>CHAR</i>.</td>
+     </tr>
+
+     <tr valign="middle">
+      <td colspan="1" rowspan="1" align="left">
+       <b><tt>MYSQLI_TYPE_GEOMETRY</tt></b>
+       (<a href="language.types.integer.html" class="link">integer</a>)
+      </td>
+     <td colspan="1" rowspan="1" align="left">Поле определено как <i>GEOMETRY</i>.</td>
+     </tr>
+
+     <tr valign="middle">
+      <td colspan="1" rowspan="1" align="left">
+       <b><tt>MYSQLI_NEED_DATA</tt></b>
+       (<a href="language.types.integer.html" class="link">integer</a>)
+      </td>
+     <td colspan="1" rowspan="1" align="left">Имеются еще данные, доступные для связанных переменных.</td>
+     </tr>
+
+     <tr valign="middle">
+      <td colspan="1" rowspan="1" align="left">
+       <b><tt>MYSQLI_NO_DATA</tt></b>
+       (<a href="language.types.integer.html" class="link">integer</a>)
+      </td>
+     <td colspan="1" rowspan="1" align="left">Больше нет доступных данных для связанных переменных.</td>
+     </tr>
+
+     <tr valign="middle">
+      <td colspan="1" rowspan="1" align="left">
+       <b><tt>MYSQLI_DATA_TRUNCATED</tt></b>
+       (<a href="language.types.integer.html" class="link">integer</a>)
+      </td>
+      <td colspan="1" rowspan="1" align="left">
+       Произошло урезание данных. Доступно начиная с PHP 5.1.0 и MySQL 5.0.5.
+      </td>
+     </tr>
+
+    </tbody>
+   </colgroup>
+
+  </table>
+
+</div>
+<hr /><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="mysqli.resources.html">Типы ресурсов</a></div>
+ <div class="next" style="float: right;"><a href="ref.mysqli.html">mysqli</a></div>
+ <div class="up"><a href="book.mysqli.html">mysqli</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

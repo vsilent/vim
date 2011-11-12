@@ -1,0 +1,163 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <title>Function to extract a sequence of default grapheme clusters from a text buffer, which must be encoded in UTF-8.</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+ </head>
+ <body><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="ref.intl.html">intl Функции</a></div>
+ <div class="next" style="float: right;"><a href="function.grapheme-stripos.html">grapheme_stripos</a></div>
+ <div class="up"><a href="ref.intl.html">intl Функции</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="function.grapheme-extract" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">grapheme_extract</h1>
+  <p class="verinfo">(No version information available, might be only in CVS)</p><p class="refpurpose dc-title">grapheme_extract — Function to extract a sequence of default grapheme clusters from a text buffer, which must be encoded in UTF-8.</p>
+
+ </div>
+ <div class="refsect1 description">
+  <h3 class="title">Описание</h3>
+  <p class="para">Procedural style</p>
+  <div class="methodsynopsis dc-description">
+   <span class="type">string</span> <span class="methodname"><b><b>grapheme_extract</b></b></span>
+   ( <span class="methodparam"><span class="type">string</span> <tt class="parameter">$haystack</tt></span>
+  , <span class="methodparam"><span class="type">int</span> <tt class="parameter">$size</tt></span>
+  [, <span class="methodparam"><span class="type">int</span> <tt class="parameter">$start</tt></span>
+  ] )</div>
+
+  <p class="para rdfs-comment">
+   Function to extract a sequence of default grapheme clusters from a text buffer, which must be encoded in UTF-8. 
+  </p> 
+  </div>
+
+
+ <div class="refsect1 parameters">
+  <h3 class="title">Список параметров</h3>
+  <p class="para">
+   <dl>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">haystack</tt></i>
+</span>
+
+     <dd>
+
+      <p class="para">
+	  String to search.
+      </p>
+     </dd>
+
+    </dt>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">size</tt></i>
+</span>
+
+     <dd>
+
+      <p class="para">
+	  Maximum number items - based on the $extract_type - to return.
+      </p>
+     </dd>
+
+    </dt>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">extract_type</tt></i>
+</span>
+
+     <dd>
+
+      <p class="para">
+       Defines the type of units referred to by the $size parameter:
+      </p>
+       <p class="para">
+        <ul class="simplelist">
+         <li class="member">GRAPHEME_EXTR_COUNT (default) - $size is the number of default
+         grapheme clusters to extract.</li>
+         <li class="member">GRAPHEME_EXTR_MAXBYTES - $size is the maximum number of bytes
+         returned.</li>
+         <li class="member">GRAPHEME_EXTR_MAXCHARS - $size is the maximum number of UTF-8
+         characters returned.</li>
+        </ul>
+       </p>
+     </dd>
+
+    </dt>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">start</tt></i>
+</span>
+
+     <dd>
+
+      <p class="para">
+	  Starting position in $haystack in bytes - if given, it must be zero or a
+   positive value that is less than or equal to the length of $haystack in
+   bytes. The default is zero. If $start does not point to the first byte of a UTF-8
+   character, the start position is moved to the next character boundary.
+      </p>
+     </dd>
+
+    </dt>
+
+   </dl>
+
+  </p>
+ </div>
+
+   
+ 
+ <div class="refsect1 returnvalues">
+  <h3 class="title">Возвращаемые значения</h3>
+  <p class="para">
+   A string starting at offset $start and ending on a default grapheme cluster
+   boundary that conforms to the $size and $extract_type specified.
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 examples">
+  <h3 class="title">Примеры</h3>
+   <div class="example">
+    <p><b>Пример #1 <b>grapheme_extract()</b> example</b></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+&lt;&nbsp;?php<br /><br />$char_a_ring_nfd&nbsp;=&nbsp;"a\xCC\x8A";&nbsp;&nbsp;//&nbsp;'LATIN&nbsp;SMALL&nbsp;LETTER&nbsp;A&nbsp;WITH&nbsp;RING&nbsp;ABOVE'&nbsp;(U+00E5)&nbsp;normalization&nbsp;form&nbsp;"D"<br />$char_o_diaeresis_nfd&nbsp;=&nbsp;"o\xCC\x88";&nbsp;//&nbsp;'LATIN&nbsp;SMALL&nbsp;LETTER&nbsp;O&nbsp;WITH&nbsp;DIAERESIS'&nbsp;(U+00F6)&nbsp;normalization&nbsp;form&nbsp;"D"<br /><br />print&nbsp;urlencode(grapheme_extract(&nbsp;$char_a_ring_nfd&nbsp;.&nbsp;$char_o_diaeresis_nfd,&nbsp;1,&nbsp;GRAPHEME_EXTR_COUNT,&nbsp;2));<br /><br />?&gt;</span>
+</code></div>
+    </div>
+
+   </div>
+     <p class="para">Результат выполнения данного примера:</p>
+     <div class="example-contents"><pre>
+         <div class="cdata"><pre>
+o%CC%88
+</pre></div>
+     </pre></div>
+ </div>
+
+
+ <div class="refsect1 seealso">
+  <h3 class="title">Смотрите также</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"><a href="function.grapheme-substr.html" class="function" rel="rdfs-seeAlso">grapheme_substr()</a></li>
+     <li class="member">
+      <a href="http://unicode.org/reports/tr29/#Grapheme_Cluster_Boundaries" class="link external">&raquo; 
+       Unicode Text Segmentation: Grapheme Cluster Boundaries
+      </a>
+     </li>
+   </ul>
+  </p>
+ </div>
+
+</div><hr /><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="ref.intl.html">intl Функции</a></div>
+ <div class="next" style="float: right;"><a href="function.grapheme-stripos.html">grapheme_stripos</a></div>
+ <div class="up"><a href="ref.intl.html">intl Функции</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

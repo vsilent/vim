@@ -1,0 +1,77 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <title>Parse markup in file or URI</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+ </head>
+ <body><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="function.tidy-node-prev.html">tidy_node->prev</a></div>
+ <div class="next" style="float: right;"><a href="function.tidy-parse-string.html">tidy_parse_string</a></div>
+ <div class="up"><a href="ref.tidy.html">tidy</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="function.tidy-parse-file" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">tidy_parse_file</h1>
+  <p class="verinfo">(PHP 5, PECL tidy:0.5.2-1.2)</p><p class="refpurpose dc-title">tidy_parse_file — Parse markup in file or URI</p>
+
+ </div>
+ <div class="refsect1 unknown">
+  <h3 class="title">Description</h3>
+  <p class="para">Procedural style:</p>
+  <div class="methodsynopsis dc-description">
+   <span class="type"><span class="type tidy">tidy</span></span> <span class="methodname"><b><b>tidy_parse_file</b></b></span>
+    ( <span class="methodparam"><span class="type">string</span> <tt class="parameter">$filename</tt></span>
+   [, <span class="methodparam"><span class="type"><a href="language.pseudo-types.html#language.types.mixed" class="type mixed">mixed</a></span> <tt class="parameter">$config</tt></span>
+   [, <span class="methodparam"><span class="type">string</span> <tt class="parameter">$encoding</tt></span>
+   [, <span class="methodparam"><span class="type">bool</span> <tt class="parameter">$use_include_path</tt></span>
+  ]]] )</div>
+
+  <p class="para rdfs-comment">Object oriented style:</p>
+  <div class="methodsynopsis dc-description">
+   <span class="type">bool</span> <span class="methodname"><b><b>tidy->parseFile</b></b></span>
+    ( <span class="methodparam"><span class="type">string</span> <tt class="parameter">$filename</tt></span>
+   [, <span class="methodparam"><span class="type"><a href="language.pseudo-types.html#language.types.mixed" class="type mixed">mixed</a></span> <tt class="parameter">$config</tt></span>
+   [, <span class="methodparam"><span class="type">string</span> <tt class="parameter">$encoding</tt></span>
+   [, <span class="methodparam"><span class="type">bool</span> <tt class="parameter">$use_include_path</tt></span>
+  ]]] )</div>
+
+  <p class="para rdfs-comment">
+   This function parses the given file.
+  </p>
+  <p class="para">Параметр <i><tt class="parameter">config</tt></i>
+ может быть передан как
+в виде строки, так и в виде массива. В случае передачи строки, параметр рассматривается как
+путь к конфигурационному файлу, в противном случае содержание массива рассматривается
+как собственно конфигурация. За подробной информацией о опциях обращайтесь к 
+<a href="http://tidy.sourceforge.net/docs/quickref.html" class="link external">&raquo; http://tidy.sourceforge.net/docs/quickref.html</a>.</p>
+<p class="para">Возможные значения параметра <i><tt class="parameter">encoding</tt></i>
+:
+ascii, latin1, raw, utf8, iso2022, mac, win1252, utf16le, utf16be, utf16, big5 и shiftjis.</p>
+  <p class="para">
+   <div class="example">
+    <p><b>Пример #1 <b>tidy_parse_file()</b> example</b></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$tidy&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">tidy_parse_file</span><span style="color: #007700">(</span><span style="color: #DD0000">'file.html'</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">$tidy</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">cleanRepair</span><span style="color: #007700">();<br /><br />if(!empty(</span><span style="color: #0000BB">$tidy</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">errorBuffer</span><span style="color: #007700">))&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"The&nbsp;following&nbsp;errors&nbsp;or&nbsp;warnings&nbsp;occured:\n"</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #0000BB">$tidy</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">errorBuffer</span><span style="color: #007700">;<br />}<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+  </p>
+  <blockquote><p><b class="note">Замечание</b>: <span class="simpara">
+Опциональные параметры <i>config_options</i> и 
+<i>enconding</i> были добавлены в Tidy 2.0.</span></p></blockquote>
+  <p class="para">
+   See also <a href="function.tidy-parse-string.html" class="function">tidy_parse_string()</a>,
+   <a href="function.tidy-repair-file.html" class="function">tidy_repair_file()</a> and
+   <a href="function.tidy-repair-string.html" class="function">tidy_repair_string()</a>.
+  </p>
+ </div>
+
+</div><hr /><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="function.tidy-node-prev.html">tidy_node->prev</a></div>
+ <div class="next" style="float: right;"><a href="function.tidy-parse-string.html">tidy_parse_string</a></div>
+ <div class="up"><a href="ref.tidy.html">tidy</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

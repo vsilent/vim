@@ -1,0 +1,507 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <title>Устанавливает параметр для сеанса CURL</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+ </head>
+ <body><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="function.curl-setopt-array.html">curl_setopt_array</a></div>
+ <div class="next" style="float: right;"><a href="function.curl-version.html">curl_version</a></div>
+ <div class="up"><a href="ref.curl.html">CURL</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="function.curl-setopt" class="refentry">
+   <div class="refnamediv">
+    <h1 class="refname">curl_setopt</h1>
+    <p class="verinfo">(PHP 4 &gt;= 4.0.2, PHP 5)</p><p class="refpurpose dc-title">curl_setopt — Устанавливает параметр для сеанса CURL</p>
+
+   </div>
+   <div class="refsect1 unknown">
+    <h3 class="title">Описание</h3>
+     <div class="methodsynopsis dc-description">
+      <span class="type">bool</span> <span class="methodname"><b><b>curl_setopt</b></b></span>
+       ( <span class="methodparam"><span class="type">resource</span> <tt class="parameter">$ch</tt></span>
+      , <span class="methodparam"><span class="type">string</span> <tt class="parameter">$option</tt></span>
+      , <span class="methodparam"><span class="type"><a href="language.pseudo-types.html#language.types.mixed" class="type mixed">mixed</a></span> <tt class="parameter">$value</tt></span>
+      )</div>
+
+    <p class="para rdfs-comment">
+     Функция <b>curl_setopt()</b> Устанавливает параметр для 
+     сеанса CURL, заданного аргументом <i><tt class="parameter">ch</tt></i>
+.  
+     Аргумент <i><tt class="parameter">option</tt></i>
+ задает устанавливаемый 
+     параметр, а  <i><tt class="parameter">value</tt></i>
+ - его значение.
+    </p>
+    <p class="para">
+     Для перечисленных ниже параметров, <i><tt class="parameter">value</tt></i>
+ 
+     должен быть целым числом:
+     <ul class="itemizedlist">
+      <li class="listitem">
+       <span class="simpara">
+        <i><tt class="parameter">CURLOPT_INFILESIZE</tt></i>
+: при закачке файла на 
+        удаленный сервер, следует использовать этот параметр для указания 
+        ожидаемого размера файла.
+       </span>
+      </li>
+      <li class="listitem">
+       <span class="simpara">
+        <i><tt class="parameter">CURLOPT_VERBOSE</tt></i>
+: При установке этого 
+        параметра в ненулевое значение cURL будет выводить подробные 
+        сообщения о всех производимых действиях.
+       </span>
+      </li>
+      <li class="listitem">
+       <span class="simpara">
+        <i><tt class="parameter">CURLOPT_HEADER</tt></i>
+: При установке этого 
+        параметра в ненулевое значение результат будет включать полученные 
+        заголовки.
+       </span>
+      </li>
+      <li class="listitem">
+       <p class="para">
+        <i><tt class="parameter">CURLOPT_NOPROGRESS</tt></i>
+: При установке этого 
+        параметра в ненулевое значение не будет выводиться индикатор 
+        прогресса операции.
+        <blockquote><p><b class="note">Замечание</b>: 
+         <span class="simpara">
+          В PHP этот параметр устанавливается в ненулевое значение по 
+          умолчнию. Изменять его значение рекомендуется только при 
+          отладке.
+         </span>
+        </p></blockquote>
+       </p>
+      </li>
+      <li class="listitem">
+       <span class="simpara">
+        <i><tt class="parameter">CURLOPT_NOBODY</tt></i>
+: При установке этого 
+        параметра в ненулевое значение результат не будет включать
+        документ (например, вам нужно получить только заголовки).
+       </span>
+      </li>
+      <li class="listitem">
+       <span class="simpara">
+        <i><tt class="parameter">CURLOPT_FAILONERROR</tt></i>
+: При установке этого 
+        параметра в ненулевое значение, получение HTTP кода
+        более 300 считается ошибкой.
+       </span>
+      </li>
+      <li class="listitem">
+       <span class="simpara">
+        <i><tt class="parameter">CURLOPT_UPLOAD</tt></i>
+: Установка этого 
+        параметра в ненулевое значение означает, что будет производиться 
+        закачка файла на удаленный сервер.
+       </span>
+      </li>
+      <li class="listitem">
+       <span class="simpara">
+        <i><tt class="parameter">CURLOPT_POST</tt></i>
+: При установке этого 
+        параметра в ненулевое значение будет отправлен HTTP запрос методом POST 
+        типа <i>application/x-www-form-urlencoded</i>, 
+        используемый браузерами при отправке форм.
+       </span>
+      </li>
+      <li class="listitem">
+       <span class="simpara">
+        <i><tt class="parameter">CURLOPT_FTPLISTONLY</tt></i>
+: При установке этого 
+        параметра в ненулевое значение будет получен список файлов в 
+        директории FTP сервера.
+       </span>
+      </li>
+      <li class="listitem">
+       <span class="simpara">
+        <i><tt class="parameter">CURLOPT_FTPAPPEND</tt></i>
+: При установке этого 
+        параметра в ненулевое значение данные будут добавляться к файлу на 
+        FTP сервере, в противном случае файл будет перезаписан.
+       </span>
+      </li>
+      <li class="listitem">
+       <span class="simpara">
+        <i><tt class="parameter">CURLOPT_NETRC</tt></i>
+: При установке этого 
+        параметра в ненулевое значение будет сделана попытка найти имя 
+        пользователя и пароль к удаленному серверу в файле 
+        <var class="filename">~./netrc</var>.
+       </span>
+      </li>
+      <li class="listitem">
+       <span class="simpara">
+        <i><tt class="parameter">CURLOPT_FOLLOWLOCATION</tt></i>
+: При установке этого 
+        параметра в ненулевое значение, при получении HTTP заголовка 
+        &quot;Location: &quot; будет происходить перенаправление на указанный этим 
+        заголовком URL (это действие выполняется рекурсивно, для каждого 
+        полученного заголовка &quot;Location:&quot;).
+       </span>
+      </li>
+      <li class="listitem">
+       <span class="simpara">
+        <i><tt class="parameter">CURLOPT_PUT</tt></i>
+: При установке этого 
+        параметра в ненулевое значение, будет производиться закачка файла 
+        методом HTTP PUT. Файл задается параметрами 
+        <i><tt class="parameter">CURLOPT_INFILE</tt></i>
+ и
+        <i><tt class="parameter">CURLOPT_INFILESIZE</tt></i>
+.
+       </span>
+      </li>
+      <li class="listitem">
+       <span class="simpara">
+        <i><tt class="parameter">CURLOPT_MUTE</tt></i>
+: При установке этого 
+        параметра в ненулевое значение, все сообщения cURL будут 
+        подавляться.
+       </span>
+      </li>
+      <li class="listitem">
+       <span class="simpara">
+        <i><tt class="parameter">CURLOPT_TIMEOUT</tt></i>
+: Задает масимальное время 
+        выполнения операции в секундах.
+       </span>
+      </li>
+      <li class="listitem">
+       <span class="simpara">
+        <i><tt class="parameter">CURLOPT_LOW_SPEED_LIMIT</tt></i>
+: Задает минимальную 
+        скорость передачи в байтах в секунду. Если в течении времени, 
+        заданного параметром 
+        <i><tt class="parameter">CURLOPT_LOW_SPEED_TIME</tt></i>
+, скорость передачи 
+        будет меньше этого значения, операция будет прервана.
+       </span>
+      </li>
+      <li class="listitem">
+       <span class="simpara">
+        <i><tt class="parameter">CURLOPT_LOW_SPEED_TIME</tt></i>
+: Задает время в 
+        секундах, в течение которого скорость передачи должна быть ниже, 
+        чем <i><tt class="parameter">CURLOPT_LOW_SPEED_LIMIT</tt></i>
+, чтобы операция 
+        была признана слишком медленной и прервана.
+       </span>
+      </li>
+      <li class="listitem">
+       <span class="simpara">
+        <i><tt class="parameter">CURLOPT_RESUME_FROM</tt></i>
+: Задает позицию в файле 
+        в байтах, с которой начнется передача данных.
+       </span>
+      </li>
+      <li class="listitem">
+       <span class="simpara">
+        <i><tt class="parameter">CURLOPT_CAINFO</tt></i>
+: Имя файла, содержащего один 
+        или более сертификатов, которые будут использованы при проверке 
+        подлинности удаленного сервера. Имеет значение только совместно с 
+        параметром <i><tt class="parameter">CURLOPT_SSL_VERIFYPEER</tt></i>
+.
+       </span>
+      </li>
+      <li class="listitem">
+       <span class="simpara">
+        <i><tt class="parameter">CURLOPT_SSL_VERIFYPEER</tt></i>
+: Установите этот 
+        параметр в ноль, чтобы запретить проверку сертификата удаленного 
+        сервера (начиная с curl 7.10, по умолчанию этот параметр имеет 
+        значение <b><tt>TRUE</tt></b>). Дополнительные сертификаты можно задать с 
+        помощью параметра <i><tt class="parameter">CURLOPT_CAINFO</tt></i>
+ 
+        (добавленного в in curl 7.9.8). Можно также указать путь к файлам 
+        сертификатов в параметре <i><tt class="parameter">CURLOPT_CAPATH</tt></i>
+.
+        Если <i><tt class="parameter">CURLOPT_SSL_VERIFYPEER</tt></i>
+ установлен в 0, 
+        возможно, также потребуется установить 
+        <i><tt class="parameter">CURLOPT_SSL_VERIFYHOST</tt></i>
+ в 1 или 0 (по 
+        умолчанию 2).
+       </span>
+      </li>
+      <li class="listitem">
+       <span class="simpara">
+        <i><tt class="parameter">CURLOPT_SSLVERSION</tt></i>
+: Целое число, 
+        указывающее, какую версию SSL использовать (2 или 3). По умолчанию 
+        версия SSL определяется автоматически, но в некоторых случаях 
+        требуется явное указание.
+       </span>
+      </li>
+      <li class="listitem">
+       <span class="simpara">
+        <i><tt class="parameter">CURLOPT_SSL_VERIFYHOST</tt></i>
+: Задает проверку 
+        имени, указанного в сертификате удаленного сервера, при 
+        установлении SSL соединения. Значение 1 означает проверку 
+        существования имени, значение 2 - кроме того, и проверку 
+        соответствия имени хоста.
+       </span>
+      </li>
+      <li class="listitem">
+       <span class="simpara">
+        <i><tt class="parameter">CURLOPT_TIMECONDITION</tt></i>
+: Задает способ 
+        интерпретации значения параметра 
+        <i><tt class="parameter">CURLOPT_TIMEVALUE</tt></i>
+. Возможные значения:
+         TIMECOND_IFMODSINCE или TIMECOND_ISUNMODSINCE.  Применяется 
+         только для протокола HTTP.
+       </span>
+      </li>
+      <li class="listitem">
+       <span class="simpara">
+        <i><tt class="parameter">CURLOPT_TIMEVALUE</tt></i>
+: Задает время в секундах 
+        с 1 января 1970 г. Это значение будет использовано в соответствии 
+        со значением параметра <i><tt class="parameter">CURLOPT_TIMECONDITION</tt></i>
+
+        (по умолчанию TIMECOND_IFMODSINCE).
+       </span>
+      </li>
+      <li class="listitem">
+       <span class="simpara">
+        <i><tt class="parameter">CURLOPT_RETURNTRANSFER</tt></i>
+: При установке этого 
+        параметра в ненулевое значение CURL будет возвращать результат, а 
+        не выводить его.
+       </span>
+      </li>
+     </ul>
+    </p>
+    <p class="para">
+     Для перечисленных ниже параметров, <i><tt class="parameter">value</tt></i>
+ 
+     должен быть строкой:
+     <ul class="itemizedlist">
+      <li class="listitem">
+       <span class="simpara">
+        <i><tt class="parameter">CURLOPT_URL</tt></i>
+: URL, с которым будет 
+        производиться операция. Значение этого параметра также может  быть 
+        задано в вызове функции <a href="function.curl-init.html" class="function">curl_init()</a>.
+       </span>
+      </li>
+      <li class="listitem">
+       <span class="simpara">
+        <i><tt class="parameter">CURLOPT_USERPWD</tt></i>
+: Стока с именем 
+        пользователя и паролем в виде [username]:[password].
+       </span>
+      </li>
+      <li class="listitem">
+       <span class="simpara">
+        <i><tt class="parameter">CURLOPT_PROXYUSERPWD</tt></i>
+: Стока с именем 
+        пользователя и паролем к HTTP прокси-серверу в виде 
+        [username]:[password].
+       </span>
+      </li>
+      <li class="listitem">
+       <span class="simpara">
+        <i><tt class="parameter">CURLOPT_RANGE</tt></i>
+: Задает участок файла, 
+        который нужно загрузить, в формате &quot;X-Y&quot; , причем X или Y 
+        могут быть опущены. Протокол HTTP также поддерживает передачу 
+        нескольких фрагментов файла, это задается в виде &quot;X-Y,N-M&quot;.
+       </span>
+      </li>
+      <li class="listitem">
+       <span class="simpara">
+        <i><tt class="parameter">CURLOPT_POSTFIELDS</tt></i>
+: Строка, содержащая 
+        данные для  HTTP POST запроса.
+       </span>
+      </li>
+      <li class="listitem">
+       <span class="simpara">
+        <i><tt class="parameter">CURLOPT_REFERER</tt></i>
+: Задает значение HTTP 
+        заголовка &quot;Referer: &quot;.
+       </span>
+      </li>
+      <li class="listitem">
+       <span class="simpara">
+        <i><tt class="parameter">CURLOPT_USERAGENT</tt></i>
+: Задает значение HTTP 
+        заголовка &quot;User-Agent: &quot;.
+       </span>
+      </li>
+      <li class="listitem">
+       <span class="simpara">
+        <i><tt class="parameter">CURLOPT_FTPPORT</tt></i>
+: Задает значение, которое 
+        будет использоваться для определения IP адреса для команды &quot;PORT&quot; 
+        протокола ftp. Команда &quot;PORT&quot;  сообщает серверу, с каким IP 
+        адресом он должен устанавливать соединение. Это может быть IP 
+        адрес, имя хоста, имя сетевого интерфейса (под Unix), или просто 
+        &#039;-&#039; для использования IP адреса по умолчанию.
+       </span>
+      </li>
+      <li class="listitem">
+       <span class="simpara">
+        <i><tt class="parameter">CURLOPT_COOKIE</tt></i>
+: Содержимое заголовка 
+        &quot;Cookie: &quot;, который будет отправлен с HTTP запросом.
+       </span>
+      </li>
+      <li class="listitem">
+       <span class="simpara">
+        <i><tt class="parameter">CURLOPT_SSLCERT</tt></i>
+: Имя файла с сертификатом в 
+        формате PEM.
+       </span>
+      </li>
+      <li class="listitem">
+       <span class="simpara">
+        <i><tt class="parameter">CURLOPT_SSLCERTPASSWD</tt></i>
+: Пароль к файлу 
+        сертификата, заданному параметром 
+        <i><tt class="parameter">CURLOPT_SSLCERT</tt></i>
+.
+       </span>
+      </li>
+      <li class="listitem">
+       <span class="simpara">
+        <i><tt class="parameter">CURLOPT_COOKIEFILE</tt></i>
+: Имя файла, содержащего 
+        данные cookie. Данные могут быть либо в формате  Netscape, либо 
+        просто HTTP-заголовки.
+       </span>
+      </li>
+      <li class="listitem">
+       <p class="para">
+        <i><tt class="parameter">CURLOPT_CUSTOMREQUEST</tt></i>
+: Задает специальный 
+        метод, который будет использован в HTTP запросе 
+        вместо<i>GET</i> или <i>HEAD</i>. Это 
+        используется для отправке запросов <i>DELETE</i> или 
+        других, редко используемых. Допустимыми зачениями являются
+        <i>GET</i>, <i>POST</i>, и т.д; 
+        не передавайте полный HTTP запрос в этом параметре. Например,
+        &#039;GET /index.html HTTP/1.0\r\n\r\n&#039; недопустимо.
+        <blockquote><p><b class="note">Замечание</b>: 
+         <span class="simpara">
+          Перед использованием этого параметра убедитесь, что сервер, к 
+          которому вы обращаетесь, поддерживает требуемый метод.
+         </span>
+        </p></blockquote>
+       </p>
+      </li>
+      <li class="listitem">
+       <p class="para">
+        <i><tt class="parameter">CURLOPT_PROXY</tt></i>
+: Имя HTTP прокси, через 
+        который будут направляться запросы.
+       </p>
+      </li>
+      <li class="listitem">
+       <p class="para">
+        <i><tt class="parameter">CURLOPT_INTERFACE</tt></i>
+: Имя используемого 
+        сетевого интерфейса. Может быть именем интерфейса, IP адресом или 
+        именем хоста.
+       </p>
+      </li>
+      <li class="listitem">
+       <p class="para">
+        <i><tt class="parameter">CURLOPT_KRB4LEVEL</tt></i>
+: Уровень безопасности 
+        KRB4 (Kerberos 4). Допустимы следующие значения (в порядке 
+        возрастания безопасности) : &#039;clear&#039;, &#039;safe&#039;, 
+        &#039;confidential&#039;, &#039;private&#039;. Если переданное значение не входит в 
+        этот список, используется &#039;private&#039;. Установка этого параметра в
+        <i>NULL</i>, запрещает безопасность KRB4 . В настоящее 
+        время безопасность KRB4 поддерживается только для протокола FTP.
+       </p>
+      </li>
+      <li class="listitem">
+       <p class="para">
+        <i><tt class="parameter">CURLOPT_HTTPHEADER</tt></i>
+: Массив с HTTP 
+        заголовками.
+       </p>
+      </li>
+      <li class="listitem">
+       <p class="para">
+        <i><tt class="parameter">CURLOPT_QUOTE</tt></i>
+: Массив с FTP командами, 
+        которые будут выполнены перед выполнением основного запроса.
+       </p>
+      </li>
+      <li class="listitem">
+       <p class="para">
+        <i><tt class="parameter">CURLOPT_POSTQUOTE</tt></i>
+: Массив с FTP командами, 
+        которые будут выполнены после выполнения основного запроса.
+       </p>
+      </li>
+     </ul>
+    </p>
+    <p class="para">
+     Для перечисленных ниже параметров, <i><tt class="parameter">value</tt></i>
+ 
+     должен быть дескриптором файла, возвращенным функцией 
+     <a href="function.fopen.html" class="function">fopen()</a>:
+     <ul class="itemizedlist">
+      <li class="listitem">
+       <span class="simpara">
+        <i><tt class="parameter">CURLOPT_FILE</tt></i>
+: Файл, в который будет выведен 
+        результат операции. По умолчанию STDOUT.
+       </span>
+      </li>
+      <li class="listitem">
+       <span class="simpara">
+        <i><tt class="parameter">CURLOPT_INFILE</tt></i>
+: Файл, содержащий данные для 
+        передачи.
+       </span>
+      </li>
+      <li class="listitem">
+       <span class="simpara">
+        <i><tt class="parameter">CURLOPT_WRITEHEADER</tt></i>
+: Файл, в который будут
+        выведены полученные заголовки.
+       </span>
+      </li>
+      <li class="listitem">
+       <span class="simpara">
+        <i><tt class="parameter">CURLOPT_STDERR</tt></i>
+: Файл, в который будут 
+        выводиться сообщения об ошибках. По умолчанию STDERR.
+       </span>
+      </li>
+     </ul>
+     <div class="example">
+      <p><b>Пример #1 
+       Инициализация сеанса CURL и загрузка web-страницы
+      </b></p>
+      <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">//&nbsp;инициализация&nbsp;сеанса<br /></span><span style="color: #0000BB">$ch&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">curl_init</span><span style="color: #007700">();<br /><br /></span><span style="color: #FF8000">//&nbsp;установка&nbsp;URL&nbsp;и&nbsp;других&nbsp;необходимых&nbsp;параметров<br /></span><span style="color: #0000BB">curl_setopt</span><span style="color: #007700">(</span><span style="color: #0000BB">$ch</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">CURLOPT_URL</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"http://www.example.com/"</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">curl_setopt</span><span style="color: #007700">(</span><span style="color: #0000BB">$ch</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">CURLOPT_HEADER</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">0</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">//&nbsp;загрузка&nbsp;страницы&nbsp;и&nbsp;выдача&nbsp;её&nbsp;браузеру<br /></span><span style="color: #0000BB">curl_exec</span><span style="color: #007700">(</span><span style="color: #0000BB">$ch</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">//&nbsp;завершение&nbsp;сеанса&nbsp;и&nbsp;освобождение&nbsp;ресурсов<br /></span><span style="color: #0000BB">curl_close</span><span style="color: #007700">(</span><span style="color: #0000BB">$ch</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+      </div>
+
+     </div>
+    </p>
+   </div>
+
+  </div><hr /><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="function.curl-setopt-array.html">curl_setopt_array</a></div>
+ <div class="next" style="float: right;"><a href="function.curl-version.html">curl_version</a></div>
+ <div class="up"><a href="ref.curl.html">CURL</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

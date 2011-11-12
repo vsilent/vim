@@ -1,0 +1,101 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <title>Connecting to Oracle databases</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+ </head>
+ <body><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="ref.pdo-oci.html">Oracle (PDO)</a></div>
+ <div class="next" style="float: right;"><a href="ref.pdo-odbc.html">ODBC and DB2 (PDO)</a></div>
+ <div class="up"><a href="ref.pdo-oci.html">Oracle (PDO)</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="ref.pdo-oci.connection" class="refentry">
+   <div class="refnamediv">
+    <h1 class="refname">PDO_OCI DSN</h1>
+    <p class="verinfo">(No version information available, might be only in CVS)</p><p class="refpurpose dc-title">PDO_OCI DSN — Connecting to Oracle databases</p>
+
+   </div>
+
+   <div class="refsect1 description">
+    <h3 class="title">Описание</h3>
+    <p class="para">
+     The PDO_OCI Data Source Name (DSN) is composed of the following elements:
+     <dl>
+
+      <dt>
+
+       <span class="term">DSN prefix</span>
+
+       <dd>
+
+        <p class="para">
+        The DSN prefix is <strong class="userinput"><code>oci:</code></strong>
+.
+        </p>
+       </dd>
+
+      </dt>
+
+      <dt>
+
+       <span class="term"><b><tt>dbname</tt></b> (Oracle Instant Client)</span>
+
+       <dd>
+
+        <p class="para">
+         The URI for the Oracle Instant Client connection takes the form of
+         <code class="code">dbname=//<var class="varname">hostname</var>:<var class="varname">port-number</var>/<var class="varname">database</var></code>.
+         If you are connecting to a database defined in
+         <var class="filename">tnsnames.ora</var>, use only the name of the database:
+         <code class="code">dbname=<var class="varname">database</var></code>.
+        </p>
+       </dd>
+
+      </dt>
+
+      <dt>
+
+       <span class="term"><b><tt>charset</tt></b></span>
+
+       <dd>
+
+        <p class="para">
+         The client-side character set for the current environment handle.
+        </p>
+       </dd>
+
+      </dt>
+
+     </dl>
+
+    </p>
+   </div>
+
+   <div class="refsect1 examples">
+    <h3 class="title">Примеры</h3>
+    <p class="para">
+     <div class="example">
+      <p><b>Пример #1 PDO_OCI DSN examples</b></p>
+      <div class="example-contents"><p>
+       The following examples show a PDO_OCI DSN for connecting to
+       Oracle databases:
+       <div class="example-contents"><div class="cdata"><pre>
+// Connect to a database defined in tnsnames.ora
+oci:dbname=mydb
+
+// Connect using the Oracle Instant Client
+oci:dbname=//localhost:1521/mydb
+</pre></div>
+       </div>
+
+      </p></div>
+     </div>
+    </p>
+   </div>
+
+  </div><hr /><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="ref.pdo-oci.html">Oracle (PDO)</a></div>
+ <div class="next" style="float: right;"><a href="ref.pdo-odbc.html">ODBC and DB2 (PDO)</a></div>
+ <div class="up"><a href="ref.pdo-oci.html">Oracle (PDO)</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

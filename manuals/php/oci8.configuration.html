@@ -1,0 +1,253 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <title>Настройка во время выполнения</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+ </head>
+ <body><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="oci8.installation.html">Установка</a></div>
+ <div class="next" style="float: right;"><a href="oci8.resources.html">Типы ресурсов</a></div>
+ <div class="up"><a href="oci8.setup.html">Установка и настройка</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="oci8.configuration" class="section">
+    <h2 class="title">Настройка во время выполнения</h2>
+    <p class="simpara">
+Поведение этих функций зависит от установок в <var class="filename">php.ini</var>.
+</p>
+    <p class="para">
+     <table border="5">
+      <caption><b>OCI8 Configuration Options</b></caption>
+      <colgroup>
+
+       <thead valign="middle">
+        <tr valign="middle">
+         <th colspan="1">Name</th>
+         <th colspan="1">Default</th>
+         <th colspan="1">Changeable</th>
+         <th colspan="1">Changelog</th>
+        </tr>
+
+       </thead>
+
+       <tbody valign="middle" class="tbody">
+        <tr valign="middle">
+         <td colspan="1" rowspan="1" align="left">oci8.privileged_connect</td>
+         <td colspan="1" rowspan="1" align="left">&quot;0&quot;</td>
+         <td colspan="1" rowspan="1" align="left">PHP_INI_SYSTEM</td>
+         <td colspan="1" rowspan="1" align="left">Available since PHP 5.1.2.</td>
+        </tr>
+
+        <tr valign="middle">
+         <td colspan="1" rowspan="1" align="left">oci8.max_persistent</td>
+         <td colspan="1" rowspan="1" align="left">&quot;-1&quot;</td>
+         <td colspan="1" rowspan="1" align="left">PHP_INI_SYSTEM</td>
+         <td colspan="1" rowspan="1" align="left">Available since PHP 5.1.2.</td>
+        </tr>
+
+        <tr valign="middle">
+         <td colspan="1" rowspan="1" align="left">oci8.persistent_timeout</td>
+         <td colspan="1" rowspan="1" align="left">&quot;-1&quot;</td>
+         <td colspan="1" rowspan="1" align="left">PHP_INI_SYSTEM</td>
+         <td colspan="1" rowspan="1" align="left">Available since PHP 5.1.2.</td>
+        </tr>
+
+        <tr valign="middle">
+         <td colspan="1" rowspan="1" align="left">oci8.ping_interval</td>
+         <td colspan="1" rowspan="1" align="left">&quot;60&quot;</td>
+         <td colspan="1" rowspan="1" align="left">PHP_INI_SYSTEM</td>
+         <td colspan="1" rowspan="1" align="left">Available since PHP 5.1.2.</td>
+        </tr>
+
+        <tr valign="middle">
+         <td colspan="1" rowspan="1" align="left">oci8.statement_cache_size</td>
+         <td colspan="1" rowspan="1" align="left">&quot;20&quot;</td>
+         <td colspan="1" rowspan="1" align="left">PHP_INI_SYSTEM</td>
+         <td colspan="1" rowspan="1" align="left">Available since PHP 5.1.2.</td>
+        </tr>
+
+        <tr valign="middle">
+         <td colspan="1" rowspan="1" align="left">oci8.default_prefetch</td>
+         <td colspan="1" rowspan="1" align="left">&quot;10&quot;</td>
+         <td colspan="1" rowspan="1" align="left">PHP_INI_SYSTEM</td>
+         <td colspan="1" rowspan="1" align="left">Available since PHP 5.1.2.</td>
+        </tr>
+
+        <tr valign="middle">
+         <td colspan="1" rowspan="1" align="left">oci8.old_oci_close_semantics</td>
+         <td colspan="1" rowspan="1" align="left">&quot;0&quot;</td>
+         <td colspan="1" rowspan="1" align="left">PHP_INI_SYSTEM</td>
+         <td colspan="1" rowspan="1" align="left">Available since PHP 5.1.2.</td>
+        </tr>
+
+       </tbody>
+      </colgroup>
+
+     </table>
+
+    </p>
+    
+    <p class="para">Краткое разъяснение конфигурационных
+директив.</p>
+    
+    <p class="para">
+     <dl>
+
+      <dt id="ini.oci8.privileged_connect">
+       <span class="term">
+        <i><tt class="parameter">oci8.privileged_connect</tt></i>
+
+        <a href="language.types.boolean.html" class="type boolean">boolean</a>
+       </span>
+
+       <dd>
+
+        <p class="para">
+         This option enables privileged connections using external credentials
+         (<b><tt>OCI_SYSOPER</tt></b>, <b><tt>OCI_SYSDBA</tt></b>).
+        </p>
+       </dd>
+
+      </dt>
+
+      <dt id="ini.oci8.max_persistent">
+       <span class="term">
+        <i><tt class="parameter">oci8.max_persistent</tt></i>
+
+        <a href="language.types.integer.html" class="type int">int</a>
+       </span>
+
+       <dd>
+
+        <p class="para">
+         The maximum number of persistent OCI8 connections per process.
+         Setting this option to -1 means that there is no limit.
+        </p>
+       </dd>
+
+      </dt>
+
+      <dt id="ini.oci8.persistent_timeout">
+       <span class="term">
+        <i><tt class="parameter">oci8.persistent_timeout</tt></i>
+
+        <a href="language.types.integer.html" class="type int">int</a>
+       </span>
+
+       <dd>
+
+        <p class="para">
+         The maximum length of time (in seconds) that a given process is 
+         allowed to maintain an idle persistent connection.
+         Setting this option to -1 means that idle persistent connections will
+         be maintained forever.
+        </p>
+       </dd>
+
+      </dt>
+
+      <dt id="ini.oci8.ping_interval">
+       <span class="term">
+        <i><tt class="parameter">oci8.ping_interval</tt></i>
+
+        <a href="language.types.integer.html" class="type int">int</a>
+       </span>
+
+       <dd>
+
+        <p class="para">
+          The length of time (in seconds) that must pass before issuing a ping
+          during <a href="function.oci-pconnect.html" class="function">oci_pconnect()</a>. When set to 0, persistent
+          connections will be pinged every time they are reused. To disable
+          pings completely, set this option to -1.
+        </p>
+        <blockquote><p><b class="note">Замечание</b>: 
+         <span class="simpara">
+          Disabling pings will cause <a href="function.oci-pconnect.html" class="function">oci_pconnect()</a> calls to operate at the 
+          highest efficiency, but may cause PHP to not detect faulty connections, 
+          such as those caused by network partitions, or if the Oracle server has 
+          gone down since PHP connected, until later in the script. Consult the 
+          <a href="function.oci-pconnect.html" class="function">oci_pconnect()</a> documentation for more information.
+         </span>
+        </p></blockquote>
+       </dd>
+
+      </dt>
+
+      <dt id="ini.oci8.statement_cache_size">
+       <span class="term">
+        <i><tt class="parameter">oci8.statement_cache_size</tt></i>
+
+        <a href="language.types.integer.html" class="type int">int</a>
+       </span>
+
+       <dd>
+
+        <p class="para">
+         This option enables statement caching, and specifies how many
+         statements to cache. To disable statement caching just set this option to 0.
+        </p>
+        <blockquote><p><b class="note">Замечание</b>: 
+         <span class="simpara">
+          A larger cache can result in improved performance, at the cost of
+          increased memory usage.
+         </span>
+        </p></blockquote>
+       </dd>
+
+      </dt>
+
+      <dt id="ini.oci8.default_prefetch">
+       <span class="term">
+        <i><tt class="parameter">oci8.default_prefetch</tt></i>
+
+        <a href="language.types.integer.html" class="type int">int</a>
+       </span>
+
+       <dd>
+
+        <p class="para">
+         This option enables statement prefetching and sets the default number
+         of rows that will be fetched automatically after statement execution.
+        </p>
+        <blockquote><p><b class="note">Замечание</b>: 
+         <span class="simpara">
+          A larger prefetch can result in improved performance, at the cost of
+          increased memory usage.
+         </span>
+        </p></blockquote>
+       </dd>
+
+      </dt>
+
+      <dt id="ini.oci8.old_oci_close_semantics">
+       <span class="term">
+        <i><tt class="parameter">oci8.old_oci_close_semantics</tt></i>
+
+        <a href="language.types.boolean.html" class="type boolean">boolean</a>
+       </span>
+
+       <dd>
+
+        <p class="para">
+         This option controls <a href="function.oci-close.html" class="function">oci_close()</a> behaviour.
+         Enabling it means that <a href="function.oci-close.html" class="function">oci_close()</a> will do 
+         nothing; the connection will not be
+         closed until the end of the script. This is for backward
+         compatibility only. If you find that you need to enable this 
+         setting, you are <em class="emphasis">strongly encouraged</em> to 
+         remove the <a href="function.oci-close.html" class="function">oci_close()</a> calls from your 
+         application instead of enabling this option.
+        </p>
+       </dd>
+
+      </dt>
+
+     </dl>
+
+    </p>
+   </div><hr /><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="oci8.installation.html">Установка</a></div>
+ <div class="next" style="float: right;"><a href="oci8.resources.html">Типы ресурсов</a></div>
+ <div class="up"><a href="oci8.setup.html">Установка и настройка</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

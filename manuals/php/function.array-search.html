@@ -1,0 +1,101 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <title>Осуществляет поиск данного значения в массиве и возвращает
+     соответствующий ключ в случае удачи</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+ </head>
+ <body><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="function.array-reverse.html">array_reverse</a></div>
+ <div class="next" style="float: right;"><a href="function.array-shift.html">array_shift</a></div>
+ <div class="up"><a href="ref.array.html">Функции для работы с массивами</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="function.array-search" class="refentry">
+   <div class="refnamediv">
+    <h1 class="refname">array_search</h1>
+    <p class="verinfo">(PHP 4 &gt;= 4.0.5, PHP 5)</p><p class="refpurpose dc-title">array_search — 
+     Осуществляет поиск данного значения в массиве и возвращает
+     соответствующий ключ в случае удачи
+    </p>
+
+   </div>
+   <div class="refsect1 unknown">
+    <h3 class="title">Описание</h3>
+     <div class="methodsynopsis dc-description">
+      <span class="type"><a href="language.pseudo-types.html#language.types.mixed" class="type mixed">mixed</a></span> <span class="methodname"><b><b>array_search</b></b></span>
+       ( <span class="methodparam"><span class="type"><a href="language.pseudo-types.html#language.types.mixed" class="type mixed">mixed</a></span> <tt class="parameter">$needle</tt></span>
+      , <span class="methodparam"><span class="type">array</span> <tt class="parameter">$haystack</tt></span>
+      [, <span class="methodparam"><span class="type">bool</span> <tt class="parameter">$strict</tt></span>
+     ] )</div>
+
+    <p class="para rdfs-comment">
+     Ищет в <i><tt class="parameter">haystack</tt></i>
+ значение
+     <i><tt class="parameter">needle</tt></i>
+ и возвращает ключ, если таковое присутствует
+     в массиве, <b><tt>FALSE</tt></b> в противном случае.
+    </p>
+    <blockquote><p><b class="note">Замечание</b>: 
+     
+      Если <i><tt class="parameter">needle</tt></i>
+ является строкой, производится
+      регистро-зависимое сравнение.
+     <br />
+    </p></blockquote>
+    <blockquote><p><b class="note">Замечание</b>: 
+     
+      До PHP 4.2.0, <b>array_search()</b> при неудаче возвращала
+      <b><tt>NULL</tt></b> вместо <b><tt>FALSE</tt></b>.
+     <br />
+    </p></blockquote>
+    <p class="para">
+     Если вы передадите значение <b><tt>TRUE</tt></b> в качестве необязательного третьего
+     параметра <i><tt class="parameter">strict</tt></i>
+,
+     функция <b>array_search()</b>
+     также проверит тип <i><tt class="parameter">needle</tt></i>
+
+     в массиве <i><tt class="parameter">haystack</tt></i>
+.
+    </p>
+    <p class="para">
+     Если <i><tt class="parameter">needle</tt></i>
+ присутствует в
+     <i><tt class="parameter">haystack</tt></i>
+ более одного раза, будет возвращён
+     первый найденный ключ. Для того, чтобы возвратить ключи для всех найденных значений,
+     используйте функцию <a href="function.array-keys.html" class="function">array_keys()</a> с необязательным параметром
+     <i><tt class="parameter">search_value</tt></i>
+.
+    </p>
+    <p class="para">
+     <div class="example">
+      <p><b>Пример #1 Пример использования <b>array_search()</b></b></p>
+      <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$array&nbsp;</span><span style="color: #007700">=&nbsp;array(</span><span style="color: #0000BB">0&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'blue'</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">1&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'red'</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">2&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">0x000000</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">3&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'green'</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">4&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'red'</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">$key&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">array_search</span><span style="color: #007700">(</span><span style="color: #DD0000">'red'</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$array</span><span style="color: #007700">);&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;$key&nbsp;=&nbsp;1;<br /></span><span style="color: #0000BB">$key&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">array_search</span><span style="color: #007700">(</span><span style="color: #DD0000">'green'</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$array</span><span style="color: #007700">);&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;$key&nbsp;=&nbsp;2;&nbsp;(0x000000&nbsp;==&nbsp;0&nbsp;==&nbsp;'green')<br /></span><span style="color: #0000BB">$key&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">array_search</span><span style="color: #007700">(</span><span style="color: #DD0000">'green'</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$array</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">true</span><span style="color: #007700">);&nbsp;</span><span style="color: #FF8000">//&nbsp;$key&nbsp;=&nbsp;3;<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+      </div>
+
+     </div>
+    </p>
+    <div class="warning"><b class="warning">Внимание</b><p class="simpara">Эта функция
+может возвращать как логическое значение <b><tt>FALSE</tt></b>, так и не относящееся к логическому типу
+значение, которое приводится к <b><tt>FALSE</tt></b>, например, <i>0</i> или
+&quot;&quot;. За более подробной информации обратитесь к разделу <a href="language.types.boolean.html" class="link">Булев тип</a>. Используйте <a href="language.operators.comparison.html" class="link">оператор ===</a> для проверки значения,
+возвращаемого этой функцией.</p></div>
+    <p class="para">
+     См. также <a href="function.array-keys.html" class="function">array_keys()</a>,
+     <a href="function.array-values.html" class="function">array_values()</a>,
+     <a href="function.array-key-exists.html" class="function">array_key_exists()</a>, и
+     <a href="function.in-array.html" class="function">in_array()</a>.
+    </p>
+   </div>
+
+  </div><hr /><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="function.array-reverse.html">array_reverse</a></div>
+ <div class="next" style="float: right;"><a href="function.array-shift.html">array_shift</a></div>
+ <div class="up"><a href="ref.array.html">Функции для работы с массивами</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

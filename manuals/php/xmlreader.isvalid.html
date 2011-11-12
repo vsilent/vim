@@ -1,0 +1,69 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <title>Indicates if the parsed document is valid</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+ </head>
+ <body><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="xmlreader.getparserproperty.html">XMLReader::getParserProperty</a></div>
+ <div class="next" style="float: right;"><a href="xmlreader.lookupnamespace.html">XMLReader::lookupNamespace</a></div>
+ <div class="up"><a href="class.xmlreader.html">XMLReader</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="xmlreader.isvalid" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">XMLReader::isValid</h1>
+  <p class="verinfo">(PHP 5 &gt;= 5.1.2)</p><p class="refpurpose dc-title">XMLReader::isValid — Indicates if the parsed document is valid</p>
+
+ </div>
+ <div class="refsect1 description">
+  <h3 class="title">Описание</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type">bool</span> <span class="methodname"><b><b>XMLReader::isValid</b></b></span>
+    ( <span class="methodparam">void</span>
+   )</div>
+
+  <p class="para rdfs-comment">
+   Returns a boolean indicating if the document being parsed is currently valid.
+  </p>
+ </div>
+
+ <div class="refsect1 returnvalues">
+  <h3 class="title">Возвращаемые значения</h3>
+  <p class="para">
+   Возвращает <b><tt>TRUE</tt></b> в случае успешного завершения или <b><tt>FALSE</tt></b> в случае возникновения ошибки.
+  </p>
+ </div>
+
+ <div class="refsect1 examples">
+  <h3 class="title">Примеры</h3>
+  <p class="para">
+   <div class="example">
+    <p><b>Пример #1 Validating XML</b></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$xml&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">XMLReader</span><span style="color: #007700">::</span><span style="color: #0000BB">open</span><span style="color: #007700">(</span><span style="color: #DD0000">'test.xml'</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">//&nbsp;You&nbsp;must&nbsp;to&nbsp;use&nbsp;it<br /></span><span style="color: #0000BB">$xml</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setParserProperty</span><span style="color: #007700">(</span><span style="color: #0000BB">XMLReader</span><span style="color: #007700">::</span><span style="color: #0000BB">VALIDATE</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">true</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$xml</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">isValid</span><span style="color: #007700">());<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+  </p>
+ </div>
+
+ <div class="refsect1 seealso">
+  <h3 class="title">Смотрите также</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"><a href="xmlreader.setparserproperty.html" class="xref">XMLReader::setParserProperty</a></li>
+    <li class="member"><a href="xmlreader.setrelaxngschema.html" class="xref">XMLReader::setRelaxNGSchema</a></li>
+    <li class="member"><a href="xmlreader.setrelaxngschemasource.html" class="xref">XMLReader::setRelaxNGSchemaSource</a></li>
+   </ul>
+  </p>
+ </div>
+
+</div><hr /><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="xmlreader.getparserproperty.html">XMLReader::getParserProperty</a></div>
+ <div class="next" style="float: right;"><a href="xmlreader.lookupnamespace.html">XMLReader::lookupNamespace</a></div>
+ <div class="up"><a href="class.xmlreader.html">XMLReader</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

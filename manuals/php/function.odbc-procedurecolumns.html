@@ -1,0 +1,76 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <title>Retrieve information about parameters to procedures</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+ </head>
+ <body><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="function.odbc-primarykeys.html">odbc_primarykeys</a></div>
+ <div class="next" style="float: right;"><a href="function.odbc-procedures.html">odbc_procedures</a></div>
+ <div class="up"><a href="ref.uodbc.html">ODBC Функции (Unified)</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="function.odbc-procedurecolumns" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">odbc_procedurecolumns</h1>
+  <p class="verinfo">(PHP 4, PHP 5)</p><p class="refpurpose dc-title">odbc_procedurecolumns — Retrieve information about parameters to procedures</p>
+
+ </div>
+ <div class="refsect1 unknown">
+  <h3 class="title">Description</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type">resource</span> <span class="methodname"><b><b>odbc_procedurecolumns</b></b></span>
+    ( <span class="methodparam"><span class="type">resource</span> <tt class="parameter">$connection_id</tt></span>
+   )</div>
+
+  <div class="methodsynopsis dc-description">
+   <span class="type">resource</span> <span class="methodname"><b><b>odbc_procedurecolumns</b></b></span>
+    ( <span class="methodparam"><span class="type">resource</span> <tt class="parameter">$connection_id</tt></span>
+   , <span class="methodparam"><span class="type">string</span> <tt class="parameter">$qualifier</tt></span>
+   , <span class="methodparam"><span class="type">string</span> <tt class="parameter">$owner</tt></span>
+   , <span class="methodparam"><span class="type">string</span> <tt class="parameter">$proc</tt></span>
+   , <span class="methodparam"><span class="type">string</span> <tt class="parameter">$column</tt></span>
+   )</div>
+
+  <p class="para rdfs-comment">
+   Returns the list of input and output parameters, as well as the
+   columns that make up the result set for the specified procedures. Returns
+   an ODBC result identifier or <b><tt>FALSE</tt></b> on failure.
+  </p>
+  <p class="para">
+   The result set has the following columns:
+   <ul class="itemizedlist">
+    <li class="listitem"><span class="simpara">PROCEDURE_QUALIFIER</span></li>
+    <li class="listitem"><span class="simpara">PROCEDURE_OWNER</span></li>
+    <li class="listitem"><span class="simpara">PROCEDURE_NAME</span></li>
+    <li class="listitem"><span class="simpara">COLUMN_NAME</span></li>
+    <li class="listitem"><span class="simpara">COLUMN_TYPE</span></li>
+    <li class="listitem"><span class="simpara">DATA_TYPE</span></li>
+    <li class="listitem"><span class="simpara">TYPE_NAME</span></li>
+    <li class="listitem"><span class="simpara">PRECISION</span></li>
+    <li class="listitem"><span class="simpara">LENGTH</span></li>
+    <li class="listitem"><span class="simpara">SCALE</span></li>
+    <li class="listitem"><span class="simpara">RADIX</span></li>
+    <li class="listitem"><span class="simpara">NULLABLE</span></li>
+    <li class="listitem"><span class="simpara">REMARKS</span></li>
+   </ul>
+  </p>
+  <p class="simpara">The result set is ordered by PROCEDURE_QUALIFIER, PROCEDURE_OWNER,
+   PROCEDURE_NAME and COLUMN_TYPE.
+  </p>
+  <p class="para">
+   The <i><tt class="parameter">owner</tt></i>
+, <i><tt class="parameter">proc</tt></i>
+ and
+   <i><tt class="parameter">column</tt></i>
+ arguments accept search patterns
+   (&#039;%&#039; to match zero or more characters and &#039;_&#039; to match a single
+   character).
+  </p>
+ </div>
+
+</div><hr /><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="function.odbc-primarykeys.html">odbc_primarykeys</a></div>
+ <div class="next" style="float: right;"><a href="function.odbc-procedures.html">odbc_procedures</a></div>
+ <div class="up"><a href="ref.uodbc.html">ODBC Функции (Unified)</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

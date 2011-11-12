@@ -1,0 +1,128 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <title>Находит файловые пути, совпадающие с шаблоном</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+ </head>
+ <body><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="function.fwrite.html">fwrite</a></div>
+ <div class="next" style="float: right;"><a href="function.is-dir.html">is_dir</a></div>
+ <div class="up"><a href="ref.filesystem.html">Файловая система</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="function.glob" class="refentry">
+   <div class="refnamediv">
+    <h1 class="refname">glob</h1> 
+    <p class="verinfo">(PHP 4 &gt;= 4.3.0, PHP 5)</p><p class="refpurpose dc-title">glob — Находит файловые пути, совпадающие с шаблоном</p>
+
+   </div>
+   <div class="refsect1 unknown">
+    <h3 class="title">Описание</h3>
+    <div class="methodsynopsis dc-description">
+     <span class="type">array</span> <span class="methodname"><b><b>glob</b></b></span>
+      ( <span class="methodparam"><span class="type">string</span> <tt class="parameter">$pattern</tt></span>
+     [, <span class="methodparam"><span class="type">int</span> <tt class="parameter">$flags</tt></span>
+    ] )</div>
+
+    <p class="para rdfs-comment">
+     Функция <b>glob()</b> ищет все пути, совпадающие с шаблоном
+     <i><tt class="parameter">pattern</tt></i>
+ согласно правилам, используемым
+     в функции glob() библиотеки libc, которые похожи на правила, используемые
+     большинством распространённых оболочек. Раскрытие тильды или подстановки
+     параметров не совершаются.
+    </p>
+    <p class="para">
+     Возвращает массив, который содержит совпадающие файлы/директории или
+     <b><tt>FALSE</tt></b> в случае ошибки.
+    </p>
+    <p class="para">
+    Допустимые флаги:
+    <ul class="itemizedlist">
+     <li class="listitem">
+      <span class="simpara">
+       <b><tt>GLOB_MARK</tt></b> - Добавляет слеш к каждому возвращаемому
+       предмету
+      </span>
+     </li>
+     <li class="listitem">
+      <span class="simpara">
+       <b><tt>GLOB_NOSORT</tt></b> - Возвращает файлы в таком виде, в
+       котором они содержатся в директории (без сортировки)
+      </span>
+     </li>
+     <li class="listitem">
+      <span class="simpara">
+       <b><tt>GLOB_NOCHECK</tt></b> - Возвращает шаблон поиска, если
+       с его помощью не был найден ни один файл.
+      </span>
+     </li>
+     <li class="listitem">
+      <span class="simpara">
+       <b><tt>GLOB_NOESCAPE</tt></b> - Обратные слеши не экранируют
+       метасимволы
+      </span>
+     </li>
+     <li class="listitem">
+      <span class="simpara">
+       <b><tt>GLOB_BRACE</tt></b> - Раскрывает {a,b,c} для совпадения с
+       &#039;a&#039;, &#039;b&#039; или &#039;c&#039;
+      </span>
+     </li>
+     <li class="listitem">
+      <span class="simpara">
+       <b><tt>GLOB_ONLYDIR</tt></b> - Возвращает только директории,
+       совпадающие с шаблоном
+      </span>
+     </li>
+    </ul>
+    </p>
+    <blockquote><p><b class="note">Замечание</b>: 
+     <span class="simpara">
+      В версиях ниже PHP ниже 4.3.3 <b><tt>GLOB_ONLYDIR</tt></b> был
+      <em class="emphasis">не</em>
+      доступен в Windows и других системах, не использующих библиотеку GNU C.
+     </span>
+    </p></blockquote>
+    <p class="para">
+     <div class="example">
+      <p><b>Пример #1 
+       Удобный способ, как при помощи <b>glob()</b> можно заменить
+       <a href="function.opendir.html" class="function">opendir()</a> и её друзей.
+      </b></p>
+      <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">foreach&nbsp;(</span><span style="color: #0000BB">glob</span><span style="color: #007700">(</span><span style="color: #DD0000">"*.txt"</span><span style="color: #007700">)&nbsp;as&nbsp;</span><span style="color: #0000BB">$filename</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"$filename&nbsp;size&nbsp;"&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #0000BB">filesize</span><span style="color: #007700">(</span><span style="color: #0000BB">$filename</span><span style="color: #007700">)&nbsp;.&nbsp;</span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br />}<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+      </div>
+
+      <div class="example-contents"><p>
+       Результат будет примерно таким:
+      </p></div>
+      <div class="example-contents"><pre>
+<div class="cdata"><pre>
+funclist.txt size 44686
+funcsummary.txt size 267625
+quickref.txt size 137820
+</pre></div>
+      </pre></div>
+     </div>
+    </p>
+    
+    <blockquote><p><b class="note">Замечание</b>: <span class="simpara">Эта функция не применима для
+работы с <a href="features.remote-files.html" class="link">удаленными файлами</a>, поскольку
+файл должен быть доступен через файловую систему сервера.</span></p></blockquote>
+    
+    <p class="para">
+     См. также описание функций <a href="function.opendir.html" class="function">opendir()</a>,
+     <a href="function.readdir.html" class="function">readdir()</a>,
+     <a href="function.closedir.html" class="function">closedir()</a> и <a href="function.fnmatch.html" class="function">fnmatch()</a>.
+    </p>
+   </div>
+
+  </div><hr /><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="function.fwrite.html">fwrite</a></div>
+ <div class="next" style="float: right;"><a href="function.is-dir.html">is_dir</a></div>
+ <div class="up"><a href="ref.filesystem.html">Файловая система</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

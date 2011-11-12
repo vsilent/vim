@@ -1,0 +1,70 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <title>Завершить процесс Apache по окончании текущего запроса</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+ </head>
+ <body><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="ref.apache.html">Функции для работы с сервером Apache</a></div>
+ <div class="next" style="float: right;"><a href="function.apache-get-modules.html">apache_get_modules</a></div>
+ <div class="up"><a href="ref.apache.html">Функции для работы с сервером Apache</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="function.apache-child-terminate" class="refentry">
+   <div class="refnamediv">
+    <h1 class="refname">apache_child_terminate</h1>
+    <p class="verinfo">(PHP 4 &gt;= 4.0.5, PHP 5)</p><p class="refpurpose dc-title">apache_child_terminate — Завершить процесс Apache по окончании текущего запроса</p>
+
+   </div>
+
+ <div class="refsect1 description">
+  <h3 class="title">Описание</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type">bool</span> <span class="methodname"><b><b>apache_child_terminate</b></b></span>
+    ( <span class="methodparam">void</span>
+   )</div>
+
+  <p class="para rdfs-comment">
+     Функция <b>apache_child_terminate()</b> регистрирует процесс Apache,
+     обслуживающий текущий запрос PHP с тем, чтобы завершить его по окончании
+     выполнения PHP скрипта. Эта функция может быть использована для
+     завершения процесса, для работы которого понадобилось значительное
+     количество оперативной памяти, не возвращенной операционной системе
+     по завершении работы PHP скрипта.
+  </p>
+ </div>
+
+
+ <div class="refsect1 returnvalues">
+  <h3 class="title">Возвращаемые значения</h3>
+  <p class="para">
+   Возвращает <b><tt>TRUE</tt></b>, если PHP работает в качестве Apache 1 модуля, версия Apache не является
+   многопоточной и параметр конфигурации PHP 
+   <a href="apache.configuration.html#ini.child-terminate" class="link">child_terminate</a> установлен в <i>on</i>
+   (по-умолчанию <i>off</i>). В противном случае функция возвратит <b><tt>FALSE</tt></b> 
+   и сгенерирует ошибку уровня <b><tt>E_WARNING</tt></b>.
+  </p>
+ </div>
+
+
+ <div class="refsect1 notes">
+  <h3 class="title">Примечания</h3>
+  <blockquote><p><b class="note">Замечание</b>: <span class="simpara">Для Windows-платформ
+эта функция не реализована.</span></p></blockquote>
+ </div>
+
+
+ <div class="refsect1 seealso">
+  <h3 class="title">Смотрите также</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"><a href="function.exit.html" class="function" rel="rdfs-seeAlso">exit()</a></li>
+   </ul>
+  </p>
+ </div>
+
+</div><hr /><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="ref.apache.html">Функции для работы с сервером Apache</a></div>
+ <div class="next" style="float: right;"><a href="function.apache-get-modules.html">apache_get_modules</a></div>
+ <div class="up"><a href="ref.apache.html">Функции для работы с сервером Apache</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

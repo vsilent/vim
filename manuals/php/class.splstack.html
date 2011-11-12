@@ -1,0 +1,184 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <title>The SplStack class</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+ </head>
+ <body><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="spldoublylinkedlist.valid.html">SplDoublyLinkedList::valid</a></div>
+ <div class="next" style="float: right;"><a href="splstack.construct.html">SplStack::__construct</a></div>
+ <div class="up"><a href="book.spl.html">SPL</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div>
+ <h1 class="title">The SplStack class</h1>
+ 
+ 
+ <div class="partintro">
+ 
+
+  <div id="splstack.intro" class="section">
+   <h2 class="title">Введение</h2>
+   <p class="para">
+    The SplStack class provides the main functionalities of a stack implemented using a doubly linked list.
+   </p>
+  </div>
+
+ 
+  <div id="splstack.synopsis" class="section">
+   <h2 class="title">Class synopsis</h2>
+ 
+
+   <div class="classsynopsis">
+    <div class="ooclass"><b class="classname">SplStack</b></div>
+ 
+
+
+    <div class="classsynopsisinfo">
+     <span class="ooclass">
+       class <b class="classname">SplStack</b>
+     </span>
+
+     <span class="ooclass">
+      <span class="modifier">extends</span>
+      <b class="classname"> SplDoublyLinkedList</b>
+     </span>
+
+     <span class="oointerface">implements 
+      <span class="interfacename">Iterator</span>
+     </span>
+
+     <span class="oointerface">, 
+      <span class="interfacename">ArrayAccess</span>
+     </span>
+ 
+     <span class="oointerface">, 
+      <span class="interfacename">Countable</span>
+     </span>
+ 
+     {</div>
+
+ 
+    
+ 
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Methods */</div>
+    <div class="constructorsynopsis dc-description">
+    <span class="methodname"><b><a href="splstack.construct.html" class="function">__construct</a></b></span>
+    ( <span class="methodparam">void</span>
+   )</div>
+
+    <div class="methodsynopsis dc-description">
+   <span class="type">void</span> <span class="methodname"><b><a href="splstack.setiteratormode.html" class="function">setIteratorMode</a></b></span>
+    ( <span class="methodparam"><span class="type">int</span> <tt class="parameter">$mode</tt></span>
+   )</div>
+
+
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Inherited methods */</div>
+    <div class="methodsynopsis dc-description">
+   <span class="type">mixed</span> <span class="methodname"><b><a href="spldoublylinkedlist.bottom.html" class="function">SplDoublyLinkedList::bottom</a></b></span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="type">int</span> <span class="methodname"><b><a href="spldoublylinkedlist.count.html" class="function">SplDoublyLinkedList::count</a></b></span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="type">mixed</span> <span class="methodname"><b><a href="spldoublylinkedlist.current.html" class="function">SplDoublyLinkedList::current</a></b></span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="type">int</span> <span class="methodname"><b><a href="spldoublylinkedlist.getiteratormode.html" class="function">SplDoublyLinkedList::getIteratorMode</a></b></span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="type">bool</span> <span class="methodname"><b><a href="spldoublylinkedlist.isempty.html" class="function">SplDoublyLinkedList::isEmpty</a></b></span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="type">mixed</span> <span class="methodname"><b><a href="spldoublylinkedlist.key.html" class="function">SplDoublyLinkedList::key</a></b></span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="type">void</span> <span class="methodname"><b><a href="spldoublylinkedlist.next.html" class="function">SplDoublyLinkedList::next</a></b></span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="type">bool</span> <span class="methodname"><b><a href="spldoublylinkedlist.offsetexists.html" class="function">SplDoublyLinkedList::offsetExists</a></b></span>
+    ( <span class="methodparam"><span class="type"><a href="language.pseudo-types.html#language.types.mixed" class="type mixed">mixed</a></span> <tt class="parameter">$index</tt></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="type">mixed</span> <span class="methodname"><b><a href="spldoublylinkedlist.offsetget.html" class="function">SplDoublyLinkedList::offsetGet</a></b></span>
+    ( <span class="methodparam"><span class="type"><a href="language.pseudo-types.html#language.types.mixed" class="type mixed">mixed</a></span> <tt class="parameter">$index</tt></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="type">void</span> <span class="methodname"><b><a href="spldoublylinkedlist.offsetset.html" class="function">SplDoublyLinkedList::offsetSet</a></b></span>
+    ( <span class="methodparam"><span class="type"><a href="language.pseudo-types.html#language.types.mixed" class="type mixed">mixed</a></span> <tt class="parameter">$index</tt></span>
+   , <span class="methodparam"><span class="type"><a href="language.pseudo-types.html#language.types.mixed" class="type mixed">mixed</a></span> <tt class="parameter">$newval</tt></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="type">void</span> <span class="methodname"><b><a href="spldoublylinkedlist.offsetunset.html" class="function">SplDoublyLinkedList::offsetUnset</a></b></span>
+    ( <span class="methodparam"><span class="type"><a href="language.pseudo-types.html#language.types.mixed" class="type mixed">mixed</a></span> <tt class="parameter">$index</tt></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="type">mixed</span> <span class="methodname"><b><a href="spldoublylinkedlist.pop.html" class="function">SplDoublyLinkedList::pop</a></b></span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="type">void</span> <span class="methodname"><b><a href="spldoublylinkedlist.push.html" class="function">SplDoublyLinkedList::push</a></b></span>
+    ( <span class="methodparam"><span class="type"><a href="language.pseudo-types.html#language.types.mixed" class="type mixed">mixed</a></span> <tt class="parameter">$value</tt></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="type">void</span> <span class="methodname"><b><a href="spldoublylinkedlist.rewind.html" class="function">SplDoublyLinkedList::rewind</a></b></span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="type">void</span> <span class="methodname"><b><a href="spldoublylinkedlist.setiteratormode.html" class="function">SplDoublyLinkedList::setIteratorMode</a></b></span>
+    ( <span class="methodparam"><span class="type">int</span> <tt class="parameter">$mode</tt></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="type">mixed</span> <span class="methodname"><b><a href="spldoublylinkedlist.shift.html" class="function">SplDoublyLinkedList::shift</a></b></span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="type">mixed</span> <span class="methodname"><b><a href="spldoublylinkedlist.top.html" class="function">SplDoublyLinkedList::top</a></b></span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="type">void</span> <span class="methodname"><b><a href="spldoublylinkedlist.unshift.html" class="function">SplDoublyLinkedList::unshift</a></b></span>
+    ( <span class="methodparam"><span class="type"><a href="language.pseudo-types.html#language.types.mixed" class="type mixed">mixed</a></span> <tt class="parameter">$value</tt></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="type">bool</span> <span class="methodname"><b><a href="spldoublylinkedlist.valid.html" class="function">SplDoublyLinkedList::valid</a></b></span>
+    ( <span class="methodparam">void</span>
+   )</div>
+
+   }</div>
+ 
+  </div>
+
+
+
+ 
+ </div>
+ 
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+<h2>Содержание</h2><ul class="chunklist chunklist_reference"><li><a href="splstack.construct.html">SplStack::__construct</a> — Constructs a new stack implemented using a doubly linked list</li><li><a href="splstack.setiteratormode.html">SplStack::setIteratorMode</a> — Sets the mode of iteration</li></ul>
+</div>
+<hr /><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="spldoublylinkedlist.valid.html">SplDoublyLinkedList::valid</a></div>
+ <div class="next" style="float: right;"><a href="splstack.construct.html">SplStack::__construct</a></div>
+ <div class="up"><a href="book.spl.html">SPL</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

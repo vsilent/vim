@@ -1,0 +1,79 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <title>Возвращает массив имен методов класса</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+ </head>
+ <body><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="function.class-exists.html">class_exists</a></div>
+ <div class="next" style="float: right;"><a href="function.get-class-vars.html">get_class_vars</a></div>
+ <div class="up"><a href="ref.classobj.html">Функции работы с Классами/Объектами</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="function.get-class-methods" class="refentry">
+   <div class="refnamediv">
+    <h1 class="refname">get_class_methods</h1>
+    <p class="verinfo">(PHP 4, PHP 5)</p><p class="refpurpose dc-title">get_class_methods — Возвращает массив имен методов класса</p>
+
+   </div>
+   <div class="refsect1 unknown">
+    <h3 class="title">Описание</h3>
+     <div class="methodsynopsis dc-description">
+      <span class="type">array</span> <span class="methodname"><b><b>get_class_methods</b></b></span>
+       ( <span class="methodparam"><span class="type"><a href="language.pseudo-types.html#language.types.mixed" class="type mixed">mixed</a></span> <tt class="parameter">$class_name</tt></span>
+      )</div>
+
+    <p class="para rdfs-comment">
+     Функция возвращает массив имен методов определенных для класса
+     <i><tt class="parameter">class_name</tt></i>
+.
+    </p>
+    <blockquote><p><b class="note">Замечание</b>: 
+     
+      Начиная с PHP 4.0.6, вы можете передать функции объект вместо указания
+      имени класса <i><tt class="parameter">class_name</tt></i>
+. К примеру:
+      <div class="informalexample">
+       <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$class_methods&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">get_class_methods</span><span style="color: #007700">(</span><span style="color: #0000BB">$my_class</span><span style="color: #007700">);&nbsp;</span><span style="color: #FF8000">//&nbsp;ниже&nbsp;приведен&nbsp;полный&nbsp;пример<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+       </div>
+
+      </div>
+     <br />
+    </p></blockquote>
+    <p class="para">
+     <div class="example">
+      <p><b>Пример #1 Пример использования <b>get_class_methods()</b></b></p> 
+      <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /><br /></span><span style="color: #007700">class&nbsp;</span><span style="color: #0000BB">myclass&nbsp;</span><span style="color: #007700">{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;конструктор<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">function&nbsp;</span><span style="color: #0000BB">myclass</span><span style="color: #007700">()&nbsp;<br />&nbsp;&nbsp;&nbsp;&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return(</span><span style="color: #0000BB">true</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />&nbsp;&nbsp;&nbsp;&nbsp;<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;метод&nbsp;1<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">function&nbsp;</span><span style="color: #0000BB">myfunc1</span><span style="color: #007700">()&nbsp;<br />&nbsp;&nbsp;&nbsp;&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return(</span><span style="color: #0000BB">true</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;метод&nbsp;2<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">function&nbsp;</span><span style="color: #0000BB">myfunc2</span><span style="color: #007700">()&nbsp;<br />&nbsp;&nbsp;&nbsp;&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return(</span><span style="color: #0000BB">true</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />}<br /><br /></span><span style="color: #0000BB">$my_object&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">myclass</span><span style="color: #007700">();<br /><br /></span><span style="color: #0000BB">$class_methods&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">get_class_methods</span><span style="color: #007700">(</span><span style="color: #0000BB">get_class</span><span style="color: #007700">(</span><span style="color: #0000BB">$my_object</span><span style="color: #007700">));<br /><br />foreach&nbsp;(</span><span style="color: #0000BB">$class_methods&nbsp;</span><span style="color: #007700">as&nbsp;</span><span style="color: #0000BB">$method_name</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"$method_name\n"</span><span style="color: #007700">;<br />}<br /><br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+      </div>
+
+      <div class="example-contents"><p>
+       выведет:
+      </p></div>
+      <div class="example-contents"><pre>
+<div class="cdata"><pre>
+myclass
+myfunc1
+myfunc2
+</pre></div>
+      </pre></div>
+     </div>
+    </p>
+    <p class="simpara">
+     См. также <a href="function.get-class-vars.html" class="function">get_class_vars()</a> и
+     <a href="function.get-object-vars.html" class="function">get_object_vars()</a>.
+    </p>
+   </div>
+
+  </div><hr /><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="function.class-exists.html">class_exists</a></div>
+ <div class="next" style="float: right;"><a href="function.get-class-vars.html">get_class_vars</a></div>
+ <div class="up"><a href="ref.classobj.html">Функции работы с Классами/Объектами</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

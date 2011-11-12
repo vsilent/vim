@@ -1,0 +1,137 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <title>Применить пользовательскую функцию к каждому члену массива</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+ </head>
+ <body><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="function.array-walk-recursive.html">array_walk_recursive</a></div>
+ <div class="next" style="float: right;"><a href="function.array.html">array</a></div>
+ <div class="up"><a href="ref.array.html">Функции для работы с массивами</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="function.array-walk" class="refentry">
+   <div class="refnamediv">
+    <h1 class="refname">array_walk</h1>
+    <p class="verinfo">(PHP 4, PHP 5)</p><p class="refpurpose dc-title">array_walk — 
+     Применить пользовательскую функцию к каждому члену массива
+    </p>
+
+   </div>
+   <div class="refsect1 unknown">
+    <h3 class="title">Описание</h3>
+    <div class="methodsynopsis dc-description">
+     <span class="type">bool</span> <span class="methodname"><b><b>array_walk</b></b></span>
+      ( <span class="methodparam"><span class="type">array</span> <tt class="parameter">$&amp;array</tt></span>
+     , <span class="methodparam"><span class="type"><a href="language.pseudo-types.html#language.types.callback" class="type callback">callback</a></span> <tt class="parameter">$funcname</tt></span>
+     [, <span class="methodparam"><span class="type"><a href="language.pseudo-types.html#language.types.mixed" class="type mixed">mixed</a></span> <tt class="parameter">$userdata</tt></span>
+    ] )</div>
+
+    <p class="simpara">
+     Возвращает <b><tt>TRUE</tt></b> в случае успешного завершения или <b><tt>FALSE</tt></b> в случае возникновения ошибки.
+    </p>
+    <p class="simpara">
+     Применяет пользовательскую функцию <i><tt class="parameter">funcname</tt></i>
+ к каждому
+     элементу массива <i><tt class="parameter">array</tt></i>
+. Обычно у функции
+     <i><tt class="parameter">funcname</tt></i>
+ два параметра.
+     Значение массива <i><tt class="parameter">array</tt></i>
+ в качестве первого параметра, и
+     ключ/индекс в качестве второго. Если указан дополнительный параметр <i><tt class="parameter">userdata</tt></i>
+,
+     он будет передан в качестве третьего параметра в
+     функцию обратного вызова <i><tt class="parameter">funcname</tt></i>
+.
+    </p>
+    <p class="simpara">
+     Если в функцию <i><tt class="parameter">funcname</tt></i>
+ должно быть передано больше параметров, 
+     чем передано на самом деле, ошибка уровня <a href="errorfunc.constants.html" class="link">
+     E_WARNING</a> будет генерироваться каждый раз как <b>array_walk()</b>
+     будет вызывать <i><tt class="parameter">funcname</tt></i>
+. Эти предупреждения могут быть подавлены добавлением 
+     оператора управления ошибками PHP 
+     <a href="language.operators.errorcontrol.html" class="link">@</a> в вызов 
+     <b>array_walk()</b>, или использованием 
+     <a href="function.error-reporting.html" class="function">error_reporting()</a>.
+    </p>
+    <blockquote><p><b class="note">Замечание</b>: 
+     
+      Если требуется, чтобы функция <i><tt class="parameter">funcname</tt></i>
+ изменила
+      значения в массиве, определите первый параметр 
+      <i><tt class="parameter">funcname</tt></i>
+ как 
+      <a href="language.references.html" class="link">ссылку</a>. Тогда
+      все изменения будут применены к элементам массива.
+     <br />
+    </p></blockquote>
+    <blockquote><p><b class="note">Замечание</b>: 
+     
+      Передача в <i><tt class="parameter">funcname</tt></i>
+ параметров key и userdata была
+      добавлена в версии 4.0.0
+     <br />
+    </p></blockquote>
+    <p class="para">
+     <b>array_walk()</b> не изменяет внутренний
+     указатель массива <i><tt class="parameter">array</tt></i>
+.  <b>
+     array_walk()</b> обойдёт все элементы массива 
+     независимо от позиции указателя.  Для того чтобы сбросить указатель, используйте 
+     функцию <a href="function.reset.html" class="function">reset()</a>.  В PHP 3 
+     <b>array_walk()</b> сбрасывает указатель.
+    </p>
+    <p class="para">
+     Вы не сможете изменить непосредственно массив при помощи функции обратного вызова,
+     то есть добавить и удалить элементы, уничтожить значения элементов и т.д.  Если
+     массив, к которому применяется <b>array_walk()</b>, изменится, 
+     то поведение этой функции станет неопределённым и непредсказуемым.
+    </p>
+    <p class="para">
+     <div class="example">
+      <p><b>Пример #1 Пример использования <b>array_walk()</b></b></p>
+      <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$fruits&nbsp;</span><span style="color: #007700">=&nbsp;array(</span><span style="color: #DD0000">"d"&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">"lemon"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"a"&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">"orange"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"b"&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">"banana"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"c"&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">"apple"</span><span style="color: #007700">);<br /><br />function&nbsp;</span><span style="color: #0000BB">test_alter</span><span style="color: #007700">(&amp;</span><span style="color: #0000BB">$item1</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$key</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$prefix</span><span style="color: #007700">)&nbsp;<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$item1&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">"$prefix:&nbsp;$item1"</span><span style="color: #007700">;<br />}<br /><br />function&nbsp;</span><span style="color: #0000BB">test_print</span><span style="color: #007700">(</span><span style="color: #0000BB">$item2</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$key</span><span style="color: #007700">)&nbsp;<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"$key.&nbsp;$item2&lt;br&nbsp;/&gt;\n"</span><span style="color: #007700">;<br />}<br /><br />echo&nbsp;</span><span style="color: #DD0000">"Before&nbsp;...:\n"</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">array_walk</span><span style="color: #007700">(</span><span style="color: #0000BB">$fruits</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'test_print'</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">array_walk</span><span style="color: #007700">(</span><span style="color: #0000BB">$fruits</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'test_alter'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'fruit'</span><span style="color: #007700">);<br />echo&nbsp;</span><span style="color: #DD0000">"...&nbsp;and&nbsp;after:\n"</span><span style="color: #007700">;<br /><br /></span><span style="color: #0000BB">array_walk</span><span style="color: #007700">(</span><span style="color: #0000BB">$fruits</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'test_print'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+      </div>
+
+      <div class="example-contents"><p>
+       Вывод вышеприведённой программы:
+      </p></div>
+      <div class="example-contents"><pre>
+<div class="cdata"><pre>
+Before ...:
+d. lemon
+a. orange
+b. banana
+c. apple
+... and after:
+d. fruit: lemon
+a. fruit: orange
+b. fruit: banana
+c. fruit: apple
+</pre></div>
+      </pre></div>
+     </div>
+    </p>
+    <p class="simpara">
+     См. также <a href="function.array-walk-recursive.html" class="function">array_walk_recursive()</a>,
+     <a href="function.create-function.html" class="function">create_function()</a>,
+     <a href="function.list.html" class="function">list()</a>,
+     <a href="control-structures.foreach.html" class="link">foreach</a>, 
+     <a href="function.each.html" class="function">each()</a>,
+     <a href="function.call-user-func-array.html" class="function">call_user_func_array()</a> и
+     <a href="function.array-map.html" class="function">array_map()</a>.
+    </p>
+   </div>
+
+  </div><hr /><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="function.array-walk-recursive.html">array_walk_recursive</a></div>
+ <div class="next" style="float: right;"><a href="function.array.html">array</a></div>
+ <div class="up"><a href="ref.array.html">Функции для работы с массивами</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

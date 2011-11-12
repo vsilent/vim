@@ -1,0 +1,80 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <title>Общие инструкции по установке</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+ </head>
+ <body><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="install.html">Установка и настройка</a></div>
+ <div class="next" style="float: right;"><a href="install.unix.html">Установка на Unix системы</a></div>
+ <div class="up"><a href="install.html">Установка и настройка</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div>
+   <h1>Общие инструкции по установке</h1>
+
+   <p class="para">
+    Перед началом установки вы должны знать для чего вы хотите использовать PHP.
+    Вы можете использовать PHP для целей описанных в разделе
+    <a href="intro-whatcando.html" class="link">Что может PHP?</a>
+    <ul class="itemizedlist">
+     <li class="listitem"><span class="simpara">Создавать web-сайты и web-приложения (Скрипты на стороне сервера)</span></li>
+     <li class="listitem"><span class="simpara">Скрипты командной строки</span></li>
+     <li class="listitem"><span class="simpara">GUI-приложения (Приложения с графическим интерфейсом пользователя)</span></li>
+    </ul>
+   </p>
+   <p class="para">
+    Для первой и наиболее распространенной цели вам нужны три вещи:
+    Сам PHP, веб-сервер и веб-браузер. Вероятно, вы уже имеете веб-браузер
+    и в зависимости от настроек вашей операционной системы, вы так же 
+    можете иметь и веб-сервер (например Apache в Linux и MacOS X; IIS в 
+    Windows). Так же вы можете арендовать веб-сервер или некоторое дисковое
+    пространство на веб-сервере. В этом случае вам не нужно устанавливать
+    дополнительное программное обеспечение, только писать PHP скрипты, 
+    загружать их на сервер, и просматривать результат их работы в браузере.
+   </p>
+   <p class="para">
+    В случае установки сервера и PHP самостоятельно, у вас есть две 
+    варианта установки PHP. Для многих серверов PHP может быть установлен 
+    как модуль сервера. Это возможно для таких серверов как Apache, 
+    Microsoft Internet Information Server, Netscape и iPlanet. 
+    Если PHP не поддерживает интерфейс для вашего сервера,
+    вы всегда можете использовать его как обработчик CGI или FastCGI.
+    Это означает, что вы должны настроить ваш сервер так, чтобы он 
+    исполнял все PHP файлы, как CGI-скрипты.
+   </p>
+   <p class="para">
+    Если вы так же собираетесь использовать PHP в командной 
+    строке (для генерации изображений, обработки текстов
+    и т.д.), то вам понадобится PHP CLI.
+    Подробнее об этом можно прочитать в разделе 
+    <a href="features.commandline.html" class="link">Использование PHP в 
+    командной строке</a>. В этом случае вам не понадобятся
+    сервер и браузер.
+   </p>
+   <p class="para">
+    Вы так же можете создавать приложения с графическим интерфейсом,
+    используя при этом расширение PHP-GTK. Это требует абсолютно
+    другого подхода, чем программирование под Веб, т.к. вы не выводите
+    HTML или текст, а управляете окнами при помощи PHP. Для получения 
+    более полной информации о PHP-GTK, <a href="http://gtk.php.net/" class="link external">&raquo; посетите сайт посвященный этому расширению
+    </a>. PHP-GTK не включен в стандартную поставку PHP.
+   </p>
+   <p class="para">
+    Начиная с этого момента мы будем описывать установку PHP для веб серверов
+    на Unix и Windows, как модуля сервера и как CGI.
+    Вы так же можете найти информацию об использовании PHP в командной строке
+    в следующих разделах.
+   </p>
+   <p class="para">
+    Исходные коды и бинарные сборки для Windows можно получить здесь:    
+    <a href="http://www.php.net/downloads.php" class="link external">&raquo; http://www.php.net/downloads.php</a>.
+    Мы рекомендуем использовать 
+    <a href="http://www.php.net/mirrors.php" class="link external">&raquo; зеркала</a> для загрузки.
+   </p>
+  </div>
+<hr /><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="install.html">Установка и настройка</a></div>
+ <div class="next" style="float: right;"><a href="install.unix.html">Установка на Unix системы</a></div>
+ <div class="up"><a href="install.html">Установка и настройка</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

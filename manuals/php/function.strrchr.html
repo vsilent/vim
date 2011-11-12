@@ -1,0 +1,75 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <title>Находит последнее вхождение подстроки</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+ </head>
+ <body><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="function.strpos.html">strpos</a></div>
+ <div class="next" style="float: right;"><a href="function.strrev.html">strrev</a></div>
+ <div class="up"><a href="ref.strings.html">Функции обработки строк</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="function.strrchr" class="refentry">
+   <div class="refnamediv">
+    <h1 class="refname">strrchr</h1>
+    <p class="verinfo">(PHP 4, PHP 5)</p><p class="refpurpose dc-title">strrchr — 
+     Находит последнее вхождение подстроки
+    </p>
+
+   </div>
+   <div class="refsect1 unknown">
+    <h3 class="title">Описание</h3>
+     <div class="methodsynopsis dc-description">
+      <span class="type">string</span> <span class="methodname"><b><b>strrchr</b></b></span>
+       ( <span class="methodparam"><span class="type">string</span> <tt class="parameter">$haystack</tt></span>
+      , <span class="methodparam"><span class="type"><span class="type char">char</span></span> <tt class="parameter">$needle</tt></span>
+      )</div>
+
+    <p class="para rdfs-comment">
+     Возвращает подстроку строки <i><tt class="parameter">haystack</tt></i>
+ начиная с
+     последнего вхождения <i><tt class="parameter">needle</tt></i>
+ до конца строки.
+    </p>
+    <p class="para">
+     Если подстрока <i><tt class="parameter">needle</tt></i>
+ не найдена,
+     возвращает  <b><tt>FALSE</tt></b>.
+    </p>
+    <p class="para">
+     В отличие от <a href="function.strchr.html" class="function">strchr()</a>, если 
+     <i><tt class="parameter">needle</tt></i>
+ состоит более чем из одного символа,
+     используется только первый символ.
+    </p>
+    <p class="para">
+     Если <i><tt class="parameter">needle</tt></i>
+ не является строкой, он приводится
+     к целому и трактуется как код символа.
+     <div class="example">
+      <p><b>Пример #1 Пример использования <b>strrchr()</b></b></p>
+      <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">//&nbsp;получить&nbsp;последнюю&nbsp;директорию&nbsp;из&nbsp;$PATH<br /></span><span style="color: #0000BB">$dir&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">substr</span><span style="color: #007700">(</span><span style="color: #0000BB">strrchr</span><span style="color: #007700">(</span><span style="color: #0000BB">$PATH</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">":"</span><span style="color: #007700">),&nbsp;</span><span style="color: #0000BB">1</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">//&nbsp;получить&nbsp;все&nbsp;после&nbsp;последнего&nbsp;перевода&nbsp;строки<br /></span><span style="color: #0000BB">$text&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">"Line&nbsp;1\nLine&nbsp;2\nLine&nbsp;3"</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$last&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">substr</span><span style="color: #007700">(</span><span style="color: #0000BB">strrchr</span><span style="color: #007700">(</span><span style="color: #0000BB">$text</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">10</span><span style="color: #007700">),&nbsp;</span><span style="color: #0000BB">1&nbsp;</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+      </div>
+
+     </div>
+    </p>
+    <p class="para">
+     С версии PHP 4.3.0 <b>strrchr()</b> безопасна для
+     обработки данных в двоичной форме.
+    </p>
+    <p class="para">
+     См. также описание функций <a href="function.strstr.html" class="function">strstr()</a>,
+     <a href="function.substr.html" class="function">substr()</a> и <a href="function.stristr.html" class="function">stristr()</a>.
+    </p>
+   </div>
+
+  </div><hr /><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="function.strpos.html">strpos</a></div>
+ <div class="next" style="float: right;"><a href="function.strrev.html">strrev</a></div>
+ <div class="up"><a href="ref.strings.html">Функции обработки строк</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

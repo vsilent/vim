@@ -1,0 +1,125 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <title>Сортировать несколько массивов или многомерные массивы</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+ </head>
+ <body><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="function.array-merge.html">array_merge</a></div>
+ <div class="next" style="float: right;"><a href="function.array-pad.html">array_pad</a></div>
+ <div class="up"><a href="ref.array.html">Функции для работы с массивами</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="function.array-multisort" class="refentry">
+   <div class="refnamediv">
+    <h1 class="refname">array_multisort</h1>
+    <p class="verinfo">(PHP 4, PHP 5)</p><p class="refpurpose dc-title">array_multisort — Сортировать несколько массивов или многомерные массивы</p>
+
+   </div>
+   <div class="refsect1 unknown">
+    <h3 class="title">Описание</h3>
+     <div class="methodsynopsis dc-description">
+      <span class="type">bool</span> <span class="methodname"><b><b>array_multisort</b></b></span>
+       ( <span class="methodparam"><span class="type">array</span> <tt class="parameter">$ar1</tt></span>
+      [, <span class="methodparam"><span class="type"><a href="language.pseudo-types.html#language.types.mixed" class="type mixed">mixed</a></span> <tt class="parameter">$arg</tt></span>
+      [, <span class="methodparam"><span class="type"><a href="language.pseudo-types.html#language.types.mixed" class="type mixed">mixed</a></span> <tt class="parameter">$...</tt></span>
+      [, <span class="methodparam"><span class="type">array</span> <tt class="parameter">$...</tt></span>
+     ]]] )</div>
+
+    <p class="para rdfs-comment">
+     Функция <b>array_multisort()</b> может быть использована для
+     сортировки сразу нескольких массивов или одного многомерного массива
+     в соответствии с одной или несколькими размерностями. Эта функция
+     сохраняет соответствие между ключами и соответствующими им значениями.
+    </p>
+    <p class="para">
+     Входные массивы рассматриваются как столбцы таблицы, которую
+     нужно отсортировать по строкам - такой подход напоминает
+     поведение выражения SQL ORDER BY. Первый массив имеет
+     проиоритет в процессе сортировки. 
+    </p>
+    <p class="para">
+     Структура аргументов этой функции немного необычна,
+     но удобна. Первым аргументом должен быть массив. Последующие
+     аргументы могут быть как массивами, так и значениями,
+     определяющими порядок сортировки, приведенными в
+     нижеследующем списке.
+    </p>
+    <p class="para">
+     Значения, определяющие порядок сортировки:
+     <ul class="itemizedlist">
+      <li class="listitem">
+       <span class="simpara">SORT_ASC - сортировать в возрастающем порядке</span>
+      </li>
+      <li class="listitem">
+       <span class="simpara">SORT_DESC - сортировать в убывающем порядке</span>
+      </li>
+     </ul>
+    </p>
+    <p class="para">
+     Sorting type flags:
+     <ul class="itemizedlist">
+      <li class="listitem">
+       <span class="simpara">SORT_REGULAR - сравнивать элементы обычным образом</span>
+      </li>
+      <li class="listitem">
+       <span class="simpara">SORT_NUMERIC - сравнивать элементы, как если бы они были числами</span>
+      </li>
+      <li class="listitem">
+       <span class="simpara">SORT_STRING - сравнивать элементы, как если бы они были строками</span>
+      </li>
+     </ul>
+    </p>
+    <p class="para">
+     Недопустимым является указание двух флагов сортировки одинакового типа
+     после каждого массива. Флаги сортировки, переданные после аргумента
+     <i><tt class="parameter">ar1</tt></i>
+, применяются только к этому аргументу -
+     перед тем, как функция начнет обрабатывать следующий массив, эти флаги
+     снова принимают значения по умолчаниюt SORT_ASC и SORT_REGULAR.
+    </p>
+    <p class="para">
+     Возвращает <b><tt>TRUE</tt></b> в случае успешного завершения или <b><tt>FALSE</tt></b> в случае возникновения ошибки.
+    </p>
+    <p class="para">
+     <div class="example">
+      <p><b>Пример #1 Сортировка нескольких массивов</b></p>
+      <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+$ar1&nbsp;=&nbsp;array&nbsp;("10",&nbsp;100,&nbsp;100,&nbsp;"a");<br />$ar2&nbsp;=&nbsp;array&nbsp;(1,&nbsp;3,&nbsp;"2",&nbsp;1);<br />array_multisort&nbsp;($ar1,&nbsp;$ar2);</span>
+</code></div>
+      </div>
+
+     </div>
+    </p>
+    <p class="para">
+     В вышеприведенном примере, после того, как будет осуществлена
+     сортировка, первый массив будет содержать 10, &quot;a&quot;, 100, 100.
+     Второй - 1, 1, &quot;2&quot;, 3. Элементы второго массива, соответствующие
+     идентичным элементам первого (100 и 100), также будут отсортированы.
+    </p>
+    <p class="para">
+     <div class="example">
+      <p><b>Пример #2 Сортировка многомерного массива</b></p>
+      <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+$ar&nbsp;=&nbsp;array&nbsp;(array&nbsp;("10",&nbsp;100,&nbsp;100,&nbsp;"a"),&nbsp;array&nbsp;(1,&nbsp;3,&nbsp;"2",&nbsp;1));<br />array_multisort&nbsp;($ar[0],&nbsp;SORT_ASC,&nbsp;SORT_STRING,<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$ar[1],&nbsp;SORT_NUMERIC,&nbsp;SORT_DESC);</span>
+</code></div>
+      </div>
+
+     </div>
+    </p>
+    <p class="para">
+     В вышеприведенном примере, после сортировки, первый массив
+     будет содержать 10, 100, 100, &quot;a&quot; (его элементы были отсортированы в
+     возрастающем порядке так, как если бы они были строками), а
+     второй массив будет содержать 1, 3, &quot;2&quot;, 1 (элементы отсортированы
+     как числа, в порядке убывания).
+    </p>
+   </div>
+
+  </div><hr /><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="function.array-merge.html">array_merge</a></div>
+ <div class="next" style="float: right;"><a href="function.array-pad.html">array_pad</a></div>
+ <div class="up"><a href="ref.array.html">Функции для работы с массивами</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

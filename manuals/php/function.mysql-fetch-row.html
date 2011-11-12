@@ -1,0 +1,57 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <title>Орабатывает ряд результата запроса и возвращает неассоциативный массив.</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+ </head>
+ <body><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="function.mysql-fetch-object.html">mysql_fetch_object</a></div>
+ <div class="next" style="float: right;"><a href="function.mysql-field-flags.html">mysql_field_flags</a></div>
+ <div class="up"><a href="ref.mysql.html">MySQL</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="function.mysql-fetch-row" class="refentry">
+   <div class="refnamediv">
+    <h1 class="refname">mysql_fetch_row</h1>
+    <p class="verinfo">(PHP 4, PHP 5, PECL mysql:1.0)</p><p class="refpurpose dc-title">mysql_fetch_row — Орабатывает ряд результата запроса и возвращает неассоциативный массив.</p>
+
+   </div>
+   <div class="refsect1 unknown">
+    <h3 class="title">Описание</h3>
+     <div class="methodsynopsis dc-description">
+      <span class="type">array</span> <span class="methodname"><b><b>mysql_fetch_row</b></b></span>
+       ( <span class="methodparam"><span class="type">resource</span> <tt class="parameter">$result</tt></span>
+      )</div>
+
+    <p class="para rdfs-comment">
+     Возвращает массив, содержашей данные обработанного ряда, или <b><tt>FALSE</tt></b>,
+     если рядов больше нет.
+    </p>
+    <p class="para">
+     <b>mysql_fetch_row()</b> обрабатывает один ряд результата, на
+     который ссылается переданный указатель. Ряд возвращается в массиве.
+     Каждая колонка распологается в следующей ячейке массива. Массив
+     начинается с индекса 0.
+    </p>
+    <p class="para">
+     Последующие вызовы функции <b>mysql_fetch_row()</b> вернут
+     следующие ряды или <b><tt>FALSE</tt></b>, если рядов не осталось.
+    </p>
+    <blockquote><p><b class="note">Замечание</b>: <span class="simpara">Имена полей, возвращаемые этой
+функцией, <em class="emphasis">регистро-зависимы</em>.</span></p></blockquote>
+    <p class="para">
+     См. также  
+     <a href="function.mysql-fetch-array.html" class="function">mysql_fetch_array()</a>,
+     <a href="function.mysql-fetch-assoc.html" class="function">mysql_fetch_assoc()</a>,
+     <a href="function.mysql-fetch-object.html" class="function">mysql_fetch_object()</a>,
+     <a href="function.mysql-data-seek.html" class="function">mysql_data_seek()</a>,
+     <a href="function.mysql-fetch-lengths.html" class="function">mysql_fetch_lengths()</a> и 
+     <a href="function.mysql-result.html" class="function">mysql_result()</a>.
+    </p>
+   </div>
+
+  </div><hr /><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="function.mysql-fetch-object.html">mysql_fetch_object</a></div>
+ <div class="next" style="float: right;"><a href="function.mysql-field-flags.html">mysql_field_flags</a></div>
+ <div class="up"><a href="ref.mysql.html">MySQL</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

@@ -1,0 +1,79 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <title>Возвращает тип выражения</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+ </head>
+ <body><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="function.oci-set-prefetch.html">oci_set_prefetch</a></div>
+ <div class="next" style="float: right;"><a href="function.ocibindbyname.html">ocibindbyname</a></div>
+ <div class="up"><a href="ref.oci8.html">OCI8</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="function.oci-statement-type" class="refentry">
+   <div class="refnamediv">
+    <h1 class="refname">oci_statement_type</h1>
+    <p class="verinfo">(PHP 5, PECL oci8:1.1-1.2.4)</p><p class="refpurpose dc-title">oci_statement_type — Возвращает тип выражения</p>
+
+   </div>
+   <div class="refsect1 unknown">
+    <h3 class="title">Описание</h3>
+     <div class="methodsynopsis dc-description">
+      <span class="type">string</span> <span class="methodname"><b><b>oci_statement_type</b></b></span>
+       ( <span class="methodparam"><span class="type">resource</span> <tt class="parameter">$statement</tt></span>
+      )</div>
+
+    <p class="para rdfs-comment">
+     <b>oci_statement_type()</b> возвращает одно из
+     нижеперечисленных значений:
+     <ol class="orderedlist">
+      <li class="listitem"><span class="simpara"><i>SELECT</i></span></li>
+      <li class="listitem"><span class="simpara"><i>UPDATE</i></span></li>
+      <li class="listitem"><span class="simpara"><i>DELETE</i></span></li>
+      <li class="listitem"><span class="simpara"><i>INSERT</i></span></li>
+      <li class="listitem"><span class="simpara"><i>CREATE</i></span></li>
+      <li class="listitem"><span class="simpara"><i>DROP</i></span></li>
+      <li class="listitem"><span class="simpara"><i>ALTER</i></span></li>
+      <li class="listitem"><span class="simpara"><i>BEGIN</i></span></li>
+      <li class="listitem"><span class="simpara"><i>DECLARE</i></span></li>
+      <li class="listitem"><span class="simpara"><i>UNKNOWN</i></span></li>
+     </ol>
+    </p>
+    <p class="para">
+     Параметр <i><tt class="parameter">statement</tt></i>
+ должен быть равен
+     идентификатору выражения, который был получен в результате выполнения
+     <a href="function.oci-parse.html" class="function">oci_parse()</a>.
+    </p>
+    <p class="para">
+     <div class="example">
+      <p><b>Пример #1 Примеры использования <b>oci_statement_type()</b></b></p>
+      <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />&nbsp;&nbsp;&nbsp;&nbsp;$conn&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">oci_connect</span><span style="color: #007700">(</span><span style="color: #DD0000">"scott"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"tiger"</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$sql&nbsp;&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">"delete&nbsp;from&nbsp;emp&nbsp;where&nbsp;deptno&nbsp;=&nbsp;10"</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$stmt&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">oci_parse</span><span style="color: #007700">(</span><span style="color: #0000BB">$conn</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$sql</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(</span><span style="color: #0000BB">oci_statement_type</span><span style="color: #007700">(</span><span style="color: #0000BB">$stmt</span><span style="color: #007700">)&nbsp;==&nbsp;</span><span style="color: #DD0000">"DELETE"</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;die(</span><span style="color: #DD0000">"You&nbsp;are&nbsp;not&nbsp;allowed&nbsp;to&nbsp;delete&nbsp;from&nbsp;this&nbsp;table&lt;br&nbsp;/&gt;"</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />&nbsp;&nbsp;&nbsp;<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">oci_close</span><span style="color: #007700">(</span><span style="color: #0000BB">$conn</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+      </div>
+
+     </div>
+    </p>
+    <blockquote><p><b class="note">Замечание</b>: 
+     
+      В версиях PHP ниже 5.0.0 эта функция называлась
+      <a href="function.ocistatementtype.html" class="function">ocistatementtype()</a>. 
+      В PHP 5.0.0 и выше <a href="function.ocistatementtype.html" class="function">ocistatementtype()</a> является
+      алиасом <b>oci_statement_type()</b>, поэтому вы можете
+      продолжать использовать это имя, однако это не рекомендуется.
+     <br />
+    </p></blockquote>
+    <p class="para">
+     <b>oci_statement_type()</b> возвращает <b><tt>FALSE</tt></b> в случае
+     ошибки.
+    </p>
+   </div>
+
+  </div><hr /><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="function.oci-set-prefetch.html">oci_set_prefetch</a></div>
+ <div class="next" style="float: right;"><a href="function.ocibindbyname.html">ocibindbyname</a></div>
+ <div class="up"><a href="ref.oci8.html">OCI8</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

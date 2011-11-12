@@ -1,0 +1,68 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <title>Возвращает SHA1 хэш строки</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+ </head>
+ <body><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="function.sha1-file.html">sha1_file</a></div>
+ <div class="next" style="float: right;"><a href="function.similar-text.html">similar_text</a></div>
+ <div class="up"><a href="ref.strings.html">Функции обработки строк</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="function.sha1" class="refentry">
+   <div class="refnamediv">
+    <h1 class="refname">sha1</h1>
+    <p class="verinfo">(PHP 4 &gt;= 4.3.0, PHP 5, PECL hash:1.1-1.3)</p><p class="refpurpose dc-title">sha1 — Возвращает SHA1 хэш строки</p>
+
+   </div>
+   <div class="refsect1 unknown">
+    <h3 class="title">Описание</h3>
+     <div class="methodsynopsis dc-description">
+      <span class="type">string</span> <span class="methodname"><b><b>sha1</b></b></span>
+       ( <span class="methodparam"><span class="type">string</span> <tt class="parameter">$str</tt></span>
+      [, <span class="methodparam"><span class="type">bool</span> <tt class="parameter">$raw_output</tt></span>
+     ] )</div>
+
+    <p class="simpara">
+     Возвращает хэш строки <i><tt class="parameter">str</tt></i>
+, вычисленный по
+     алгоритму <a href="http://www.faqs.org/rfcs/rfc3174" class="link external">&raquo; US Secure Hash Algorithm 
+     1</a>. Хэш представляет собой 40-разрядное шестнадцатиричное
+     число. Если необязательный аргумент <i><tt class="parameter">raw_output</tt></i>
+
+     имет значение <b><tt>TRUE</tt></b>, хэш возвращается в виде двоичной строки из 20
+     символов.
+    </p>
+    <blockquote><p><b class="note">Замечание</b>: 
+     <span class="simpara">
+      Необязательный аргумент <i><tt class="parameter">raw_output</tt></i>
+ был 
+      добавлен в PHP 5.0.0 и по умолчанию равен <b><tt>FALSE</tt></b>.
+     </span>
+    </p></blockquote>
+    <p class="para">
+     <div class="example">
+      <p><b>Пример #1 Пример использования <b>sha1()</b></b></p>
+      <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$str&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">'яблоко'</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />if&nbsp;(</span><span style="color: #0000BB">sha1</span><span style="color: #007700">(</span><span style="color: #0000BB">$str</span><span style="color: #007700">)&nbsp;===&nbsp;</span><span style="color: #DD0000">'6099a566a619528259db5aa8d7a5aa2d4122259a'</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"Желаете&nbsp;зеленое&nbsp;или&nbsp;красное&nbsp;яблоко?"</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;exit;<br />}<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+      </div>
+
+     </div>
+    </p>
+    <p class="simpara">
+     См. также описание функций
+     <a href="function.sha1-file.html" class="function">sha1_file()</a>,
+     <a href="function.crc32.html" class="function">crc32()</a> и
+     <a href="function.md5.html" class="function">md5()</a>.
+    </p>
+   </div>
+
+  </div><hr /><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="function.sha1-file.html">sha1_file</a></div>
+ <div class="next" style="float: right;"><a href="function.similar-text.html">similar_text</a></div>
+ <div class="up"><a href="ref.strings.html">Функции обработки строк</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

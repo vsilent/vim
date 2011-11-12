@@ -1,0 +1,84 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <title>Наиболее распространенные ошибки</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+ </head>
+ <body><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="features.file-upload.errors.html">Разъяснение сообщений об ошибках</a></div>
+ <div class="next" style="float: right;"><a href="features.file-upload.multiple.html">Загрузка на сервер нескольких файлов</a></div>
+ <div class="up"><a href="features.file-upload.html">Загрузка файлов на сервер</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="features.file-upload.common-pitfalls" class="sect1">
+   <h2 class="title">Наиболее распространенные ошибки</h2>
+   <p class="simpara">
+    Опция <i>MAX_FILE_SIZE</i> не должна позволять передачу файлов,
+    размер которых превышает лимит, установленный конфигурационной директивой
+    <a href="ini.core.html#ini.upload-max-filesize" class="link">upload_max_filesize</a>.
+    Ограничение по умолчанию составляет 2 мегабайта.
+   </p>
+   <p class="simpara">
+    В случае, если установлено ограничения памяти, вам может понадобиться
+    увеличить значение опции <a href="ini.core.html#ini.memory-limit" class="link">memory_limit</a>.
+    Убедитесь в том, что значение <a href="ini.core.html#ini.memory-limit" class="link">memory_limit</a>
+    достаточно велико.
+   </p>
+   <p class="simpara">
+    В случае, если опция <a href="info.configuration.html#ini.max-execution-time" class="link">max_execution_time</a>
+    установлена слишком маленьким значением, необходимое время работы скрипта
+    может превышать это значение. Убедитесь в том, что значение
+    <i>max_execution_time</i> достаточно велико.
+   </p>
+   <blockquote><p><b class="note">Замечание</b>: 
+    <span class="simpara">
+     Директива <a href="info.configuration.html#ini.max-execution-time" class="link">max_execution_time</a> only
+     касается исключительно времени,  используемого непосредственно самим скриптом.
+     Время, потраченное на внешние действия, такие как системные
+     вызовы при помощи функции <a href="function.system.html" class="function">system()</a> или
+     <a href="function.sleep.html" class="function">sleep()</a>, обращения к базе данных, а также
+     время, потраченное на загрузку файла и другие действия, происходящие
+     вне скрипта, не учитываются при определении максимально допустимого
+     промежутка времени, отведенного для выполнения скрипта.
+    </span>
+   </p></blockquote>
+   <div class="warning"><b class="warning">Внимание</b>
+     <p class="simpara">
+      Директива <a href="info.configuration.html#ini.max-input-time" class="link">max_input_time</a> указывает
+      максимально допустимое время в секундах для получения входящих данных, 
+      в том числе и загружаемых файлов. В случае, если вы имеете дело с несколькими
+      или большими файлами, либо удаленные пользователи используют медленный
+      канал, ограничение по умолчанию в <i>60 секунд</i> может быть превышено.
+     </p>
+   </div> 
+   <p class="simpara">
+    Если директива <a href="ini.core.html#ini.post-max-size" class="link">post_max_size</a> 
+    установлена слишком маленьким значением, большие файлы не смогут быть 
+    загружены на сервер. Убедитесь, что значение директивы
+    <i>post_max_size</i> достаточно велико.
+   </p>
+   <p class="simpara">
+    Если не проверять, с какими файлами вы работаете, пользователи могут
+    получить доступ к конфиденциальной информации, расположенной в других
+    директориях.
+   </p>
+   <p class="simpara">
+    Следут заметить, что <span class="productname">CERN httpd</span> может отсечь все, что идет после первого
+    пробела в получаемом от клиента заголовке content-type. Если у вас именно
+    такой случай, <span class="productname">CERN httpd</span> не будет поддерживать возможность загрузки файлов.
+   </p>
+   <p class="simpara">
+    Поскольку разные системы по-разному работают с файловой структурой,
+    у вас нет никаких гарантий того, что файлы с экзотическими именами
+    (например, которые содержат пробельные символы) будут обработаны корректно.
+   </p>
+   <p class="simpara">
+    Разработчики не должны использовать одинаковые имена для полей ввода и полей
+    выбора файла в пределах одной и той же формы (например, используя имя
+    вида <i>foo[]</i>).
+   </p>
+  </div><hr /><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="features.file-upload.errors.html">Разъяснение сообщений об ошибках</a></div>
+ <div class="next" style="float: right;"><a href="features.file-upload.multiple.html">Загрузка на сервер нескольких файлов</a></div>
+ <div class="up"><a href="features.file-upload.html">Загрузка файлов на сервер</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

@@ -1,0 +1,52 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <title>Пространства имён</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+ </head>
+ <body><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="language.oop5.typehinting.html">Контроль типа</a></div>
+ <div class="next" style="float: right;"><a href="language.namespaces.definition.html">Определение пространства имён</a></div>
+ <div class="up"><a href="langref.html">Справочник языка</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div>
+ <h1>Пространства имён</h1>
+<h2>Содержание</h2><ul class="chunklist chunklist_chapter"><li><a href="language.namespaces.definition.html">Определение пространства имён</a></li><li><a href="language.namespaces.using.html">Использование пространств имён</a></li><li><a href="language.namespaces.global.html">Глобальное пространство имён</a></li><li><a href="language.namespaces.constant.html">__NAMESPACE__</a></li><li><a href="language.namespaces.rules.html">Правила разбора имён</a></li></ul>
+
+ <div id="language.namespaces.rationale" class="sect1">
+  <h2 class="title">Обзор пространств имён</h2>
+  <p class="simpara">
+   Пространства имён введены в PHP для решения проблем в больших 
+   PHP-библиотеках. В PHP все определения классов глобальны, поэтому 
+   авторы библиотек должны выбирать уникальные имена для создаваемых ими классов. 
+   Это делается для того, чтобы при использовании библиотеки совместно 
+   с другими библиотеками не возникало конфликтов имён. Обычно это достигается 
+   введением в имена классов префиксов. Например: если мы будем использовать класс 
+   <span class="classname">dataBase</span> - велика вероятность, что такое имя 
+   класса будет присутствовать и в других библиотеках, а при их совместном 
+   использовании возникнет ошибка. Поэтому мы вынуждены использовать для 
+   класса другое имя. Например: <span class="classname">ourLibraryDataBase</span>
+   Такие действия приводят к черезмерному вырастанию длины имён классов.
+  </p>
+  <p class="simpara">
+   Пространства имён позволяют разработчику управлять зонами видимости имён, 
+   что избавляет от необходимости использования префиксов и черезмерно длинных имён. 
+   Все это служит повышению читабельности кода.
+  </p>
+  <p class="simpara">
+   Пространства имён доступны в PHP начиная с версии 5.3.0. 
+   Данная секция экспериментальна и возможно будет подвержена изменениям.
+  </p>
+ </div>
+ 
+ 
+ 
+ 
+ 
+</div>
+<hr /><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="language.oop5.typehinting.html">Контроль типа</a></div>
+ <div class="next" style="float: right;"><a href="language.namespaces.definition.html">Определение пространства имён</a></div>
+ <div class="up"><a href="langref.html">Справочник языка</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

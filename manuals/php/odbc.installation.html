@@ -1,0 +1,235 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <title>Установка</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+ </head>
+ <body><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="uodbc.setup.html">Установка и настройка</a></div>
+ <div class="next" style="float: right;"><a href="odbc.configuration.html">Настройка во время выполнения</a></div>
+ <div class="up"><a href="uodbc.setup.html">Установка и настройка</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="odbc.installation" class="section">
+ <h2 class="title">Установка</h2>
+ <p class="para">
+  <dl>
+
+   <dt id="install.configure.with-adabas">
+    <span class="term">
+     <span class="option">--with-adabas[=DIR]</span>
+    </span>
+
+    <dd>
+
+     <p class="para">
+      Include Adabas D support. DIR is the Adabas base install directory, 
+      defaults to <var class="filename">/usr/local</var>.
+     </p>
+    </dd>
+
+   </dt>
+
+   <dt id="install.configure.with-sapdb">
+    <span class="term">
+     <span class="option">--with-sapdb[=DIR]</span>
+    </span>
+
+    <dd>
+
+     <p class="para">
+      Include SAP DB support. DIR is SAP DB base install directory, 
+      defaults to <var class="filename">/usr/local</var>.
+     </p>
+    </dd>
+
+   </dt>
+
+   <dt id="install.configure.with-solid">
+    <span class="term">
+     <span class="option">--with-solid[=DIR]</span>
+    </span>
+
+    <dd>
+
+     <p class="para">
+      Include Solid support. DIR is the Solid base install directory, 
+      defaults to <var class="filename">/usr/local/solid</var>.
+     </p>
+    </dd>
+
+   </dt>
+
+   <dt id="install.configure.with-ibm-db2">
+    <span class="term">
+     <span class="option">--with-ibm-db2[=DIR]</span>
+    </span>
+
+    <dd>
+
+     <p class="para">
+      Include IBM DB2 support. DIR is the DB2 base install directory, 
+      defaults to <var class="filename">/home/db2inst1/sqllib</var>.
+     </p>
+    </dd>
+
+   </dt>
+
+   <dt id="install.configure.with-empress">
+    <span class="term">
+     <span class="option">--with-empress[=DIR]</span>
+    </span>
+
+    <dd>
+
+     <p class="para">
+      Include Empress support. DIR is the Empress base install directory, 
+      defaults to $EMPRESSPATH. From PHP 4, this option only supports 
+      Empress Version 8.60 and above.
+     </p>
+    </dd>
+
+   </dt>
+
+   <dt id="install.configure.with-empress-bcs">
+    <span class="term">
+     <span class="option">--with-empress-bcs[=DIR]</span>
+    </span>
+
+    <dd>
+
+     <p class="para">
+      Include Empress Local Access support. DIR is the Empress base 
+      install directory, defaults to $EMPRESSPATH.  From PHP 4, 
+      this option only supports Empress Version 8.60 and above.
+     </p>
+    </dd>
+
+   </dt>
+
+   <dt id="install.configure.with-birdstep">
+    <span class="term">
+     <span class="option">--with-birdstep[=DIR]</span>
+    </span>
+
+    <dd>
+
+     <p class="para">
+      Include Birdstep support. DIR is the Birdstep base install directory, 
+      defaults to <var class="filename">/usr/local/birdstep</var>.
+     </p>
+    </dd>
+
+   </dt>
+
+   <dt id="install.configure.with-custom-odbc">
+    <span class="term">
+     <span class="option">--with-custom-odbc[=DIR]</span>
+    </span>
+
+    <dd>
+
+     <p class="para">
+      Include a user defined ODBC support. The DIR is ODBC install base directory, 
+      which defaults to <var class="filename">/usr/local</var>. Make sure to define
+      CUSTOM_ODBC_LIBS and have some <var class="filename">odbc.h</var> in your include
+      dirs. E.g., you should define following for Sybase SQL Anywhere 5.5.00 on
+      QNX, prior to run configure script:
+<div class="cdata"><pre>
+   CPPFLAGS=&quot;-DODBC_QNX -DSQLANY_BUG&quot;
+   LDFLAGS=-lunix
+   CUSTOM_ODBC_LIBS=&quot;-ldblib -lodbc&quot;.
+</pre></div> 
+     </p>
+    </dd>
+
+   </dt>
+
+   <dt id="install.configure.with-iodbc">
+    <span class="term">
+     <span class="option">--with-iodbc[=DIR]</span>
+    </span>
+
+    <dd>
+
+     <p class="para">
+      Include iODBC support. DIR is the iODBC base install directory, 
+      defaults to <var class="filename">/usr/local</var>.
+     </p>
+    </dd>
+
+   </dt>
+
+   <dt id="install.configure.with-esoob">
+    <span class="term">
+     <span class="option">--with-esoob[=DIR]</span>
+    </span>
+
+    <dd>
+
+     <p class="para">
+      Include Easysoft OOB support. DIR is the OOB base install directory, 
+      defaults to <var class="filename">/usr/local/easysoft/oob/client</var>.
+     </p>
+    </dd>
+
+   </dt>
+
+   <dt id="install.configure.with-unixODBC">
+    <span class="term">
+     <span class="option">--with-unixODBC[=DIR]</span>
+    </span>
+
+    <dd>
+
+     <p class="para">
+      Include unixODBC support. DIR is the unixODBC base install directory, 
+      defaults to <var class="filename">/usr/local</var>.
+     </p>
+    </dd>
+
+   </dt>
+
+   <dt id="install.configure.with-openlink">
+    <span class="term">
+     <span class="option">--with-openlink[=DIR]</span>
+    </span>
+
+    <dd>
+
+     <p class="para">
+      Include OpenLink ODBC support. DIR is the OpenLink base install directory, 
+      defaults to <var class="filename">/usr/local</var>. This is the same as iODBC.
+     </p>
+    </dd>
+
+   </dt>
+
+   <dt id="install.configure.with-dbmaker">
+    <span class="term">
+     <span class="option">--with-dbmaker[=DIR]</span>
+    </span>
+
+    <dd>
+
+     <p class="para">
+      Include DBMaker support. DIR is the DBMaker base install directory, 
+      defaults to where the latest version of DBMaker is installed 
+      (such as <var class="filename">/home/dbmaker/3.6</var>).
+     </p>
+    </dd>
+
+   </dt>
+
+  </dl>
+
+ </p>
+ <p class="simpara"> Версия <i>PHP</i> для
+Windows имеет встроенную поддержку данного расширения. Это означает, что
+для использования данных функций не требуется загрузка никаких
+дополнительных расширений.</p>
+</div><hr /><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="uodbc.setup.html">Установка и настройка</a></div>
+ <div class="next" style="float: right;"><a href="odbc.configuration.html">Настройка во время выполнения</a></div>
+ <div class="up"><a href="uodbc.setup.html">Установка и настройка</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

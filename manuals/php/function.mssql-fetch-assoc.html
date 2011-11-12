@@ -1,0 +1,74 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <title>Returns an associative array of the current row in the result</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+ </head>
+ <body><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="function.mssql-fetch-array.html">mssql_fetch_array</a></div>
+ <div class="next" style="float: right;"><a href="function.mssql-fetch-batch.html">mssql_fetch_batch</a></div>
+ <div class="up"><a href="ref.mssql.html">Microsoft SQL Server Functions</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="function.mssql-fetch-assoc" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">mssql_fetch_assoc</h1>
+  <p class="verinfo">(PHP 4 &gt;= 4.2.0, PHP 5, PECL odbtp:1.1.1-1.1.4)</p><p class="refpurpose dc-title">mssql_fetch_assoc — Returns an associative array of the current row in the result</p>
+
+ </div>
+ 
+ <div class="refsect1 description">
+  <h3 class="title">Описание</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type">array</span> <span class="methodname"><b><b>mssql_fetch_assoc</b></b></span>
+    ( <span class="methodparam"><span class="type">resource</span> <tt class="parameter">$result_id</tt></span>
+   )</div>
+
+  <p class="para rdfs-comment">
+   Returns an associative array that corresponds to the fetched row and moves
+   the internal data pointer ahead. <b>mssql_fetch_assoc()</b> is
+   equivalent to calling <a href="function.mssql-fetch-array.html" class="function">mssql_fetch_array()</a> with
+   <b><tt>MSSQL_ASSOC</tt></b> for the optional second parameter.
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters">
+  <h3 class="title">Список параметров</h3>
+  <p class="para">
+   <dl>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">result_id</tt></i>
+</span>
+
+     <dd>
+
+      <p class="para">
+       The result resource that is being evaluated. This result comes from a
+       call to <a href="function.mssql-query.html" class="function">mssql_query()</a>.
+      </p>
+     </dd>
+
+    </dt>
+
+   </dl>
+
+  </p>
+ </div>
+
+
+ <div class="refsect1 returnvalues">
+  <h3 class="title">Возвращаемые значения</h3>
+  <p class="para">
+   Returns an associative array that corresponds to the fetched row, or
+   <b><tt>FALSE</tt></b> if there are no more rows.
+  </p>
+ </div>
+
+</div><hr /><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="function.mssql-fetch-array.html">mssql_fetch_array</a></div>
+ <div class="next" style="float: right;"><a href="function.mssql-fetch-batch.html">mssql_fetch_batch</a></div>
+ <div class="up"><a href="ref.mssql.html">Microsoft SQL Server Functions</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

@@ -1,0 +1,150 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <title>Примеры</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+ </head>
+ <body><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="session.resources.html">Типы ресурсов</a></div>
+ <div class="next" style="float: right;"><a href="session.idpassing.html">Passing the Session ID</a></div>
+ <div class="up"><a href="book.session.html">Sessions</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div>
+ <h1>Примеры</h1>
+<h2>Содержание</h2><ul class="chunklist chunklist_appendix"><li><a href="session.idpassing.html">Passing the Session ID</a></li><li><a href="session.customhandler.html">Custom Session Handlers</a></li></ul>
+
+ <div id="session.examples.basic" class="section">
+  <blockquote><p><b class="note">Замечание</b>: 
+   
+    As of PHP 4.1.0, <var class="varname">$_SESSION</var> is available as a 
+    global variable just like <var class="varname">$_POST</var>,
+    <var class="varname">$_GET</var>, <var class="varname">$_REQUEST</var> and so on.
+    Unlike <var class="varname">$HTTP_SESSION_VARS</var>,
+    <var class="varname">$_SESSION</var> is always global. Therefore, you do not
+    need to use the <a href="language.variables.scope.html" class="link"><strong class="command">global</strong></a>
+    keyword for <var class="varname">$_SESSION</var>. Please note that this
+    documentation has been changed to use
+    <var class="varname">$_SESSION</var> everywhere. You can substitute
+    <var class="varname">$HTTP_SESSION_VARS</var> for
+    <var class="varname">$_SESSION</var>, if you prefer the former.  Also note
+    that you must start your session using <a href="function.session-start.html" class="function">session_start()</a> 
+    before use of <var class="varname">$_SESSION</var> becomes available.
+   <br />
+   
+    The keys in the <var class="varname">$_SESSION</var> associative
+    array are subject to the
+    same limitations as regular variable names in PHP, i.e. they cannot
+    start with a number and must start with a letter or underscore.
+    For more details see the section on
+    <a href="language.variables.html" class="link">variables</a> in this manual.
+   <br />
+  </p></blockquote>
+
+  <p class="para">
+   If <a href="ini.core.html#ini.register-globals" class="link">register_globals</a>
+   is disabled, only members of the global associative array
+   <var class="varname">$_SESSION</var> can be registered as session
+   variables. The restored session variables will only be available
+   in the array <var class="varname">$_SESSION</var>.
+  </p>
+  <p class="para">
+   Use of <var class="varname">$_SESSION</var> (or
+   <var class="varname">$HTTP_SESSION_VARS</var> with PHP 4.0.6 or less) is
+   recommended for improved security and code readability. With
+   <var class="varname">$_SESSION</var>, there is no need to use the
+   <a href="function.session-register.html" class="function">session_register()</a>,
+   <a href="function.session-unregister.html" class="function">session_unregister()</a>,
+   <a href="function.session-is-registered.html" class="function">session_is_registered()</a> functions. Session variables
+   are accessible like any other variables.
+   <div class="example">
+    <p><b>Пример #1 
+     Registering a variable with <var class="varname">$_SESSION</var>.
+    </b></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />session_start</span><span style="color: #007700">();<br /></span><span style="color: #FF8000">//&nbsp;Use&nbsp;$HTTP_SESSION_VARS&nbsp;with&nbsp;PHP&nbsp;4.0.6&nbsp;or&nbsp;less<br /></span><span style="color: #007700">if&nbsp;(!isset(</span><span style="color: #0000BB">$_SESSION</span><span style="color: #007700">[</span><span style="color: #DD0000">'count'</span><span style="color: #007700">]))&nbsp;{<br />&nbsp;&nbsp;</span><span style="color: #0000BB">$_SESSION</span><span style="color: #007700">[</span><span style="color: #DD0000">'count'</span><span style="color: #007700">]&nbsp;=&nbsp;</span><span style="color: #0000BB">0</span><span style="color: #007700">;<br />}&nbsp;else&nbsp;{<br />&nbsp;&nbsp;</span><span style="color: #0000BB">$_SESSION</span><span style="color: #007700">[</span><span style="color: #DD0000">'count'</span><span style="color: #007700">]++;<br />}<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+   <div class="example">
+    <p><b>Пример #2 
+     Unregistering a variable with <var class="varname">$_SESSION</var> and
+     <a href="ini.core.html#ini.register-globals" class="link">register_globals</a> disabled.
+    </b></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />session_start</span><span style="color: #007700">();<br /></span><span style="color: #FF8000">//&nbsp;Use&nbsp;$HTTP_SESSION_VARS&nbsp;with&nbsp;PHP&nbsp;4.0.6&nbsp;or&nbsp;less<br /></span><span style="color: #007700">unset(</span><span style="color: #0000BB">$_SESSION</span><span style="color: #007700">[</span><span style="color: #DD0000">'count'</span><span style="color: #007700">]);<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+  </p>
+  <p class="para">
+   <div class="caution"><b class="caution">Предостережение</b>
+    <p class="para">
+     Do NOT unset the whole <var class="varname">$_SESSION</var> with
+     <i>unset($_SESSION)</i> as this will disable the
+     registering of session variables through the
+     <var class="varname">$_SESSION</var> superglobal.
+    </p>
+   </div>
+  </p>
+  <div class="warning"><b class="warning">Внимание</b>
+   <p class="para">
+    You can&#039;t use references in session variables as there is no feasible way
+    to restore a reference to another variable.
+   </p>
+  </div>
+  <p class="para">
+   If <a href="ini.core.html#ini.register-globals" class="link">register_globals</a>
+   is enabled, then each global variable can be registered as session
+   variable. Upon a restart of a session, these variables will be restored
+   to corresponding global variables. Since PHP must know which global
+   variables are registered as session variables, users need to register
+   variables with <a href="function.session-register.html" class="function">session_register()</a> function.
+   You can avoid this by simply setting entries in
+   <var class="varname">$_SESSION</var>.
+   <div class="caution"><b class="caution">Предостережение</b>
+    <p class="para">
+     Before PHP 4.3.0, if you are using <var class="varname">$_SESSION</var> and you
+     have disabled <a href="ini.core.html#ini.register-globals" class="link">register_globals</a>,
+     don&#039;t use <a href="function.session-register.html" class="function">session_register()</a>,
+     <a href="function.session-is-registered.html" class="function">session_is_registered()</a> or
+     <a href="function.session-unregister.html" class="function">session_unregister()</a>.
+      Disabling <a href="ini.core.html#ini.register-globals" class="link">register_globals</a>
+      is recommended for both security and performance reasons.
+    </p>
+   </div>
+  </p>
+  <p class="para">
+   If <a href="ini.core.html#ini.register-globals" class="link">register_globals</a>
+   is enabled, then the global variables and the
+   <var class="varname">$_SESSION</var> entries will automatically reference the
+   same values which were registered in the prior session instance.
+   However, if the variable is registered by <var class="varname">$_SESSION</var>
+   then the global variable is available since the next request.
+  </p>
+  <p class="para">
+   There is a defect in PHP 4.2.3 and earlier.  If you register a new
+   session variable by using <a href="function.session-register.html" class="function">session_register()</a>, the
+   entry in the global scope and the <var class="varname">$_SESSION</var> entry will
+   not reference the same value until the next
+   <a href="function.session-start.html" class="function">session_start()</a>.  I.e. a modification to the newly
+   registered global variable will not be reflected by the
+   <var class="varname">$_SESSION</var> entry.  This has been corrected in PHP 4.3.0.
+  </p>
+ </div>
+  
+ 
+ 
+ 
+</div>
+<hr /><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="session.resources.html">Типы ресурсов</a></div>
+ <div class="next" style="float: right;"><a href="session.idpassing.html">Passing the Session ID</a></div>
+ <div class="up"><a href="book.session.html">Sessions</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

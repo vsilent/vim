@@ -1,0 +1,73 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <title>Автоматическая загрузка объектов</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+ </head>
+ <body><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="language.oop5.basic.html">Основы</a></div>
+ <div class="next" style="float: right;"><a href="language.oop5.decon.html">Конструкторы и деструкторы</a></div>
+ <div class="up"><a href="language.oop5.html">Классы и объекты (PHP 5)</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="language.oop5.autoload" class="sect1">
+  <h2 class="title">Автоматическая загрузка объектов</h2>
+  <p class="para">
+   Большинство разработчиков объектно-ориентированных приложений
+   создают для каждого определения класса отдельный файл с 
+   кодом PHP. Одной из самых больших неприятностей в этом случае
+   является необходимость писать в начале каждого скрипта 
+   длинный список подгружаемых файлов.
+  </p>
+  <p class="para">
+   Если используется PHP 5, то делать это не обязательно. 
+   Вы можете определить функцию __autoload, которая автоматически
+   вызывается в том случае, когда вы пытаетесь использовать класс,
+   который не был определен ранее. Вызов этой функции - это
+   последний шанс для интерпретатора загрузить класс прежде, чем
+   он закончит выполнение скрипта с ошибкой.
+  </p>
+  <blockquote><p><b class="note">Замечание</b>: 
+   
+    Исключения, вызванные в функции __autoload, не могут быть
+    перехвачены в блоке <a href="language.exceptions.html" class="link">catch</a>
+    и завершатся с неисправимой ошибкой.
+   <br />
+  </p></blockquote>
+  <blockquote><p><b class="note">Замечание</b>: 
+   
+    Автоматическая загрузка не доступна в случае использования PHP
+    в командной строке в <a href="features.commandline.html" class="link">интерактивном режиме</a>.
+   <br />
+  </p></blockquote>
+  <blockquote><p><b class="note">Замечание</b>: 
+   
+    Если имя класса используется, например, для вызова через <a href="function.call-user-func.html" class="function">call_user_func()</a>,
+    то оно может содержать некоторые опасные символы, такие как <i>../</i>.
+    Поэтому, рекомендуется не использовать данные от пользователей в таких функциях или же,
+    как минимум, проверять значения в <b>__autoload()</b>.
+   <br />
+  </p></blockquote>
+  <p class="para">
+   <div class="example">
+    <p><b>Пример #1 Пример автоматической загрузки</b></p>
+    <div class="example-contents"><p>
+     В этом примере функция пытается загрузить классы <i>MyClass1</i>
+     и <i>MyClass2</i> из файлов <var class="filename">MyClass1.php</var>
+     и <var class="filename">MyClass2.php</var> соответственно.
+    </p></div>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">function&nbsp;</span><span style="color: #0000BB">__autoload</span><span style="color: #007700">(</span><span style="color: #0000BB">$class_name</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;require_once&nbsp;</span><span style="color: #0000BB">$class_name&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #DD0000">'.php'</span><span style="color: #007700">;<br />}<br /><br /></span><span style="color: #0000BB">$obj&nbsp;&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">MyClass1</span><span style="color: #007700">();<br /></span><span style="color: #0000BB">$obj2&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">MyClass2</span><span style="color: #007700">();&nbsp;<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+  </p>
+
+ </div><hr /><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="language.oop5.basic.html">Основы</a></div>
+ <div class="next" style="float: right;"><a href="language.oop5.decon.html">Конструкторы и деструкторы</a></div>
+ <div class="up"><a href="language.oop5.html">Классы и объекты (PHP 5)</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

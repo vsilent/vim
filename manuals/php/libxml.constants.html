@@ -1,0 +1,370 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <title>Предопределенные константы</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+ </head>
+ <body><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="libxml.resources.html">Типы ресурсов</a></div>
+ <div class="next" style="float: right;"><a href="ref.libxml.html">libxml Функции</a></div>
+ <div class="up"><a href="book.libxml.html">libxml</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div>
+ <h1>Предопределенные константы</h1>
+
+ <p class="simpara">
+Перечисленные ниже константы определены данным расширением и могут быть
+доступны только в том случае, если PHP был собран с
+поддержкой этого расширения или же в том случае, если
+данное расширение подгружается во время выполнения.
+</p>
+ <dl>
+
+  <dt>
+
+   <span class="term">
+    <b><tt>LIBXML_COMPACT</tt></b>
+     (<a href="language.types.integer.html" class="type integer">integer</a>)
+   </span>
+
+   <dd>
+
+    <span class="simpara">
+     Activate small nodes allocation optimization. This may speed up your
+     application without needing to change the code.
+    </span>
+    <blockquote><p><b class="note">Замечание</b>: 
+     
+      Only available in Libxml &gt;= 2.6.21
+     <br />
+    </p></blockquote>
+   </dd>
+
+  </dt>
+
+  <dt>
+
+   <span class="term">
+    <b><tt>LIBXML_DTDATTR</tt></b>
+     (<a href="language.types.integer.html" class="type integer">integer</a>)
+   </span>
+
+   <dd>
+
+    <span class="simpara">
+     Default DTD attributes
+    </span>
+   </dd>
+
+  </dt>
+
+  <dt>
+
+   <span class="term">
+    <b><tt>LIBXML_DTDLOAD</tt></b>
+     (<a href="language.types.integer.html" class="type integer">integer</a>)
+   </span>
+
+   <dd>
+
+    <span class="simpara">
+     Load the external subset
+    </span>
+   </dd>
+
+  </dt>
+
+  <dt>
+
+   <span class="term">
+    <b><tt>LIBXML_DTDVALID</tt></b>
+     (<a href="language.types.integer.html" class="type integer">integer</a>)
+   </span>
+
+   <dd>
+
+    <span class="simpara">
+     Validate with the DTD
+    </span>
+   </dd>
+
+  </dt>
+
+  <dt>
+
+   <span class="term">
+    <b><tt>LIBXML_NOBLANKS</tt></b>
+     (<a href="language.types.integer.html" class="type integer">integer</a>)
+   </span>
+
+   <dd>
+
+    <span class="simpara">
+     Remove blank nodes
+    </span>
+   </dd>
+
+  </dt>
+
+  <dt>
+
+   <span class="term">
+    <b><tt>LIBXML_NOCDATA</tt></b>
+     (<a href="language.types.integer.html" class="type integer">integer</a>)
+   </span>
+
+   <dd>
+
+    <span class="simpara">
+     Merge CDATA as text nodes
+    </span>
+   </dd>
+
+  </dt>
+
+  <dt>
+
+   <span class="term">
+    <b><tt>LIBXML_NOEMPTYTAG</tt></b>
+     (<a href="language.types.integer.html" class="type integer">integer</a>)
+   </span>
+
+   <dd>
+
+    <span class="simpara">
+     Expand empty tags (e.g. <i>&lt;br/&gt;</i> to
+     <i>&lt;br&gt;&lt;/br&gt;</i>)
+    </span>
+    <blockquote><p><b class="note">Замечание</b>: 
+     
+      This option is currently just available in the
+      <a href="domdocument.save.html" class="xref">DOMDocument::save</a> and
+      <a href="domdocument.savexml.html" class="xref">DOMDocument::saveXML</a> functions.
+     <br />
+    </p></blockquote>
+   </dd>
+
+  </dt>
+
+  <dt>
+
+   <span class="term">
+    <b><tt>LIBXML_NOENT</tt></b>
+     (<a href="language.types.integer.html" class="type integer">integer</a>)
+   </span>
+
+   <dd>
+
+    <span class="simpara">
+     Substitute entities
+    </span>
+   </dd>
+
+  </dt>
+
+  <dt>
+
+   <span class="term">
+    <b><tt>LIBXML_NOERROR</tt></b>
+     (<a href="language.types.integer.html" class="type integer">integer</a>)
+   </span>
+
+   <dd>
+
+    <span class="simpara">
+     Suppress error reports
+    </span>
+   </dd>
+
+  </dt>
+
+  <dt>
+
+   <span class="term">
+    <b><tt>LIBXML_NONET</tt></b>
+     (<a href="language.types.integer.html" class="type integer">integer</a>)
+   </span>
+
+   <dd>
+
+    <span class="simpara">
+     Disable network access when loading documents
+    </span>
+   </dd>
+
+  </dt>
+
+  <dt>
+
+   <span class="term">
+    <b><tt>LIBXML_NOWARNING</tt></b>
+     (<a href="language.types.integer.html" class="type integer">integer</a>)
+   </span>
+
+   <dd>
+
+    <span class="simpara">
+     Suppress warning reports
+    </span>
+   </dd>
+
+  </dt>
+
+  <dt>
+
+   <span class="term">
+    <b><tt>LIBXML_NOXMLDECL</tt></b>
+     (<a href="language.types.integer.html" class="type integer">integer</a>)
+   </span>
+
+   <dd>
+
+    <span class="simpara">
+     Drop the XML declaration when saving a document
+    </span>
+    <blockquote><p><b class="note">Замечание</b>: 
+     
+      Only available in Libxml &gt;= 2.6.21
+     <br />
+    </p></blockquote>
+   </dd>
+
+  </dt>
+
+  <dt>
+
+   <span class="term">
+    <b><tt>LIBXML_NSCLEAN</tt></b>
+     (<a href="language.types.integer.html" class="type integer">integer</a>)
+   </span>
+
+   <dd>
+
+    <span class="simpara">
+     Remove redundant namespaces declarations
+    </span>
+   </dd>
+
+  </dt>
+
+  <dt>
+
+   <span class="term">
+    <b><tt>LIBXML_XINCLUDE</tt></b>
+     (<a href="language.types.integer.html" class="type integer">integer</a>)
+   </span>
+
+   <dd>
+
+    <span class="simpara">
+     Implement XInclude substitution
+    </span>
+   </dd>
+
+  </dt>
+
+  <dt>
+
+   <span class="term">
+    <b><tt>LIBXML_ERR_ERROR</tt></b>
+     (<a href="language.types.integer.html" class="type integer">integer</a>)
+   </span>
+
+   <dd>
+
+    <span class="simpara">
+     A recoverable error
+    </span>
+   </dd>
+
+  </dt>
+
+  <dt>
+
+   <span class="term">
+    <b><tt>LIBXML_ERR_FATAL</tt></b>
+     (<a href="language.types.integer.html" class="type integer">integer</a>)
+   </span>
+
+   <dd>
+
+    <span class="simpara">
+     A fatal error
+    </span>
+   </dd>
+
+  </dt>
+
+  <dt>
+
+   <span class="term">
+    <b><tt>LIBXML_ERR_NONE</tt></b>
+     (<a href="language.types.integer.html" class="type integer">integer</a>)
+   </span>
+
+   <dd>
+
+    <span class="simpara">
+     No errors
+    </span>
+   </dd>
+
+  </dt>
+
+  <dt>
+
+   <span class="term">
+    <b><tt>LIBXML_ERR_WARNING</tt></b>
+     (<a href="language.types.integer.html" class="type integer">integer</a>)
+   </span>
+
+   <dd>
+
+    <span class="simpara">
+     A simple warning
+    </span>
+   </dd>
+
+  </dt>
+
+  <dt>
+
+   <span class="term">
+    <b><tt>LIBXML_VERSION</tt></b>
+     (<a href="language.types.integer.html" class="type integer">integer</a>)
+   </span>
+
+   <dd>
+
+    <span class="simpara">
+     libxml version like 20605 or 20617
+    </span>
+   </dd>
+
+  </dt>
+
+  <dt>
+
+   <span class="term">
+    <b><tt>LIBXML_DOTTED_VERSION</tt></b>
+     (<a href="language.types.string.html" class="type string">string</a>)
+   </span>
+
+   <dd>
+
+    <span class="simpara">
+     libxml version like 2.6.5 or 2.6.17
+    </span>
+   </dd>
+
+  </dt>
+
+ </dl>
+
+</div>
+<hr /><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="libxml.resources.html">Типы ресурсов</a></div>
+ <div class="next" style="float: right;"><a href="ref.libxml.html">libxml Функции</a></div>
+ <div class="up"><a href="book.libxml.html">libxml</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

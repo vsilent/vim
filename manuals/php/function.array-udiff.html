@@ -1,0 +1,98 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <title>Вычислить расхождение массивов, используя для сравнения функцию обратного вызова</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+ </head>
+ <body><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="function.array-udiff-uassoc.html">array_udiff_uassoc</a></div>
+ <div class="next" style="float: right;"><a href="function.array-uintersect-assoc.html">array_uintersect_assoc</a></div>
+ <div class="up"><a href="ref.array.html">Функции для работы с массивами</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="function.array-udiff" class="refentry">
+   <div class="refnamediv">
+    <h1 class="refname">array_udiff</h1>
+    <p class="verinfo">(PHP 5)</p><p class="refpurpose dc-title">array_udiff — Вычислить расхождение массивов, используя для сравнения функцию обратного вызова</p>
+
+   </div>
+   <div class="refsect1 unknown">
+    <h3 class="title">Описание</h3>
+     <div class="methodsynopsis dc-description">
+      <span class="type">array</span> <span class="methodname"><b><b>array_udiff</b></b></span>
+       ( <span class="methodparam"><span class="type">array</span> <tt class="parameter">$array1</tt></span>
+      , <span class="methodparam"><span class="type">array</span> <tt class="parameter">$array2</tt></span>
+      [, <span class="methodparam"><span class="type">array</span> <tt class="parameter">$ ...</tt></span>
+      ], <span class="methodparam"><span class="type"><a href="language.pseudo-types.html#language.types.callback" class="type callback">callback</a></span> <tt class="parameter">$data_compare_func</tt></span>
+      )</div>
+
+    <p class="para rdfs-comment">
+     <b>array_udiff()</b> возвращает массив,
+     содержащий все значения параметра <i><tt class="parameter">array1</tt></i>
+,
+     отсутствующие в последующих аргументах.
+     Обратите внимание, что ключи сохраняются. Для сравнения значений
+     используется функция <i><tt class="parameter">data_compare_func</tt></i>
+.
+     Она должна возвращать целое число меньшее, равное или большее нуля, если
+     первый параметр, соответственно, должен считаться меньше, равен или больше второго.
+     Обратите внимание на отличие от <a href="function.array-diff.html" class="function">array_diff()</a>, которая использует
+     встроенную функцию для сравнения значений массивов.
+    </p>
+    <p class="para">
+     <div class="example">
+      <p><b>Пример #1 Пример использования <b>array_udiff()</b></b></p>
+      <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">class&nbsp;</span><span style="color: #0000BB">cr&nbsp;</span><span style="color: #007700">{<br />&nbsp;&nbsp;&nbsp;&nbsp;private&nbsp;</span><span style="color: #0000BB">$priv_member</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;function&nbsp;</span><span style="color: #0000BB">cr</span><span style="color: #007700">(</span><span style="color: #0000BB">$val</span><span style="color: #007700">)&nbsp;<br />&nbsp;&nbsp;&nbsp;&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">priv_member&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$val</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />&nbsp;&nbsp;&nbsp;&nbsp;<br />&nbsp;&nbsp;&nbsp;&nbsp;function&nbsp;</span><span style="color: #0000BB">comp_func_cr</span><span style="color: #007700">(</span><span style="color: #0000BB">$a</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$b</span><span style="color: #007700">)&nbsp;<br />&nbsp;&nbsp;&nbsp;&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(</span><span style="color: #0000BB">$a</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">priv_member&nbsp;</span><span style="color: #007700">===&nbsp;</span><span style="color: #0000BB">$b</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">priv_member</span><span style="color: #007700">)&nbsp;return&nbsp;</span><span style="color: #0000BB">0</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;(</span><span style="color: #0000BB">$a</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">priv_member&nbsp;</span><span style="color: #007700">&gt;&nbsp;</span><span style="color: #0000BB">$b</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">priv_member</span><span style="color: #007700">)?&nbsp;</span><span style="color: #0000BB">1</span><span style="color: #007700">:-</span><span style="color: #0000BB">1</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />}<br /></span><span style="color: #0000BB">$a&nbsp;</span><span style="color: #007700">=&nbsp;array(</span><span style="color: #DD0000">"0.1"&nbsp;</span><span style="color: #007700">=&gt;&nbsp;new&nbsp;</span><span style="color: #0000BB">cr</span><span style="color: #007700">(</span><span style="color: #0000BB">9</span><span style="color: #007700">),&nbsp;</span><span style="color: #DD0000">"0.5"&nbsp;</span><span style="color: #007700">=&gt;&nbsp;new&nbsp;</span><span style="color: #0000BB">cr</span><span style="color: #007700">(</span><span style="color: #0000BB">12</span><span style="color: #007700">),&nbsp;</span><span style="color: #0000BB">0&nbsp;</span><span style="color: #007700">=&gt;&nbsp;new&nbsp;</span><span style="color: #0000BB">cr</span><span style="color: #007700">(</span><span style="color: #0000BB">23</span><span style="color: #007700">),&nbsp;</span><span style="color: #0000BB">1</span><span style="color: #007700">=&gt;&nbsp;new&nbsp;</span><span style="color: #0000BB">cr</span><span style="color: #007700">(</span><span style="color: #0000BB">4</span><span style="color: #007700">),&nbsp;</span><span style="color: #0000BB">2&nbsp;</span><span style="color: #007700">=&gt;&nbsp;new&nbsp;</span><span style="color: #0000BB">cr</span><span style="color: #007700">(-</span><span style="color: #0000BB">15</span><span style="color: #007700">),);<br /></span><span style="color: #0000BB">$b&nbsp;</span><span style="color: #007700">=&nbsp;array(</span><span style="color: #DD0000">"0.2"&nbsp;</span><span style="color: #007700">=&gt;&nbsp;new&nbsp;</span><span style="color: #0000BB">cr</span><span style="color: #007700">(</span><span style="color: #0000BB">9</span><span style="color: #007700">),&nbsp;</span><span style="color: #DD0000">"0.5"&nbsp;</span><span style="color: #007700">=&gt;&nbsp;new&nbsp;</span><span style="color: #0000BB">cr</span><span style="color: #007700">(</span><span style="color: #0000BB">22</span><span style="color: #007700">),&nbsp;</span><span style="color: #0000BB">0&nbsp;</span><span style="color: #007700">=&gt;&nbsp;new&nbsp;</span><span style="color: #0000BB">cr</span><span style="color: #007700">(</span><span style="color: #0000BB">3</span><span style="color: #007700">),&nbsp;</span><span style="color: #0000BB">1</span><span style="color: #007700">=&gt;&nbsp;new&nbsp;</span><span style="color: #0000BB">cr</span><span style="color: #007700">(</span><span style="color: #0000BB">4</span><span style="color: #007700">),&nbsp;</span><span style="color: #0000BB">2&nbsp;</span><span style="color: #007700">=&gt;&nbsp;new&nbsp;</span><span style="color: #0000BB">cr</span><span style="color: #007700">(-</span><span style="color: #0000BB">15</span><span style="color: #007700">),);<br /><br /></span><span style="color: #0000BB">$result&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">array_udiff</span><span style="color: #007700">(</span><span style="color: #0000BB">$a</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$b</span><span style="color: #007700">,&nbsp;array(</span><span style="color: #DD0000">"cr"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"comp_func_cr"</span><span style="color: #007700">));<br /></span><span style="color: #0000BB">print_r</span><span style="color: #007700">(</span><span style="color: #0000BB">$result</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+      </div>
+
+      <div class="example-contents"><p>Результат выполнения данного примера:</p></div>
+      <div class="example-contents"><pre>
+<div class="cdata"><pre>
+Array
+(
+    [0.5] =&gt; cr Object
+        (
+            [priv_member:private] =&gt; 12
+        )
+
+    [0] =&gt; cr Object
+        (
+            [priv_member:private] =&gt; 23
+        )
+
+)
+</pre></div>
+      </pre></div>
+     </div>
+    </p>
+    <blockquote><p><b class="note">Замечание</b>: 
+     <span class="simpara">
+      Обратите внимание, что эта функция обрабатывает только одно измерение многомерного
+      массива. Разумеется, вы можете обработать более одного измерения, используя
+      <i>array_udiff($array1[0], $array2[0], &quot;data_compare_func&quot;);</i>.
+     </span>
+    </p></blockquote>
+    <p class="para">
+     См. также
+     <a href="function.array-diff.html" class="function">array_diff()</a>,
+     <a href="function.array-diff-assoc.html" class="function">array_diff_assoc()</a>,
+     <a href="function.array-diff-uassoc.html" class="function">array_diff_uassoc()</a>,
+     <a href="function.array-udiff-assoc.html" class="function">array_udiff_assoc()</a>, 
+     <a href="function.array-udiff-uassoc.html" class="function">array_udiff_uassoc()</a>, 
+     <a href="function.array-intersect.html" class="function">array_intersect()</a>,  
+     <a href="function.array-intersect-assoc.html" class="function">array_intersect_assoc()</a>,
+     <a href="function.array-uintersect.html" class="function">array_uintersect()</a>,  
+     <a href="function.array-uintersect-assoc.html" class="function">array_uintersect_assoc()</a> и 
+     <a href="function.array-uintersect-uassoc.html" class="function">array_uintersect_uassoc()</a>.
+    </p>
+   </div>
+
+  </div><hr /><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="function.array-udiff-uassoc.html">array_udiff_uassoc</a></div>
+ <div class="next" style="float: right;"><a href="function.array-uintersect-assoc.html">array_uintersect_assoc</a></div>
+ <div class="up"><a href="ref.array.html">Функции для работы с массивами</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

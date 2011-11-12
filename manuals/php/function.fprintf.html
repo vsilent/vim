@@ -1,0 +1,79 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <title>Записывает отформатированную строку в поток</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+ </head>
+ <body><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="function.explode.html">explode</a></div>
+ <div class="next" style="float: right;"><a href="function.get-html-translation-table.html">get_html_translation_table</a></div>
+ <div class="up"><a href="ref.strings.html">Функции обработки строк</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="function.fprintf" class="refentry">
+   <div class="refnamediv">
+    <h1 class="refname">fprintf</h1>
+    <p class="verinfo">(PHP 5)</p><p class="refpurpose dc-title">fprintf — Записывает отформатированную строку в поток</p>
+
+   </div>
+   <div class="refsect1 unknown">
+    <h3 class="title">Описание</h3>
+     <div class="methodsynopsis dc-description">
+      <span class="type">int</span> <span class="methodname"><b><b>fprintf</b></b></span>
+       ( <span class="methodparam"><span class="type">resource</span> <tt class="parameter">$handle</tt></span>
+      , <span class="methodparam"><span class="type">string</span> <tt class="parameter">$format</tt></span>
+      [, <span class="methodparam"><span class="type"><a href="language.pseudo-types.html#language.types.mixed" class="type mixed">mixed</a></span> <tt class="parameter">$args</tt></span>
+     ] )</div>
+
+    <p class="simpara">
+     Записывает строку, созданную с использованием строки формата
+     <i><tt class="parameter">format</tt></i>
+, в поток, дескриптор которого передается 
+     в <i><tt class="parameter">handle</tt></i>
+.  Аргумент <i><tt class="parameter">format</tt></i>
+
+     подробно рассмотрен в описании функции <a href="function.sprintf.html" class="function">sprintf()</a>.
+    </p>
+    <p class="simpara">
+     Возвращает длину выведенной строки.
+    </p>
+    <p class="simpara">
+     См. также описание функций <a href="function.printf.html" class="function">printf()</a>,
+     <a href="function.sprintf.html" class="function">sprintf()</a>,
+     <a href="function.sscanf.html" class="function">sscanf()</a>, <a href="function.fscanf.html" class="function">fscanf()</a>, 
+     <a href="function.vsprintf.html" class="function">vsprintf()</a> и
+     <a href="function.number-format.html" class="function">number_format()</a>.
+    </p>
+   </div>
+
+   <div class="refsect1 unknown">
+    <h3 class="title">Примеры</h3>
+    <p class="para">
+     <div class="example">
+      <p><b>Пример #1 <b>fprintf()</b>: заполнение нулями</b></p>
+      <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">if&nbsp;(!(</span><span style="color: #0000BB">$fp&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">fopen</span><span style="color: #007700">(</span><span style="color: #DD0000">'date.txt'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'w'</span><span style="color: #007700">)))<br />&nbsp;&nbsp;&nbsp;&nbsp;return;<br /><br /></span><span style="color: #0000BB">fprintf</span><span style="color: #007700">(</span><span style="color: #0000BB">$fp</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"%04d-%02d-%02d"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$year</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$month</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$day</span><span style="color: #007700">);<br /></span><span style="color: #FF8000">//&nbsp;запишет&nbsp;форматированную&nbsp;дату&nbsp;в&nbsp;файл&nbsp;date.txt<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+      </div>
+
+     </div>
+     <div class="example">
+      <p><b>Пример #2 <b>fprintf()</b>: форматирование денежных величин</b></p>
+      <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">if&nbsp;(!(</span><span style="color: #0000BB">$fp&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">fopen</span><span style="color: #007700">(</span><span style="color: #DD0000">'currency.txt'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'w'</span><span style="color: #007700">)))<br />&nbsp;&nbsp;&nbsp;&nbsp;return;<br /><br /></span><span style="color: #0000BB">$money1&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">68.75</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$money2&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">54.35</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$money&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$money1&nbsp;</span><span style="color: #007700">+&nbsp;</span><span style="color: #0000BB">$money2</span><span style="color: #007700">;<br /></span><span style="color: #FF8000">//&nbsp;echo&nbsp;$money&nbsp;выведет&nbsp;"123.1";<br /></span><span style="color: #0000BB">$len&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">fprintf</span><span style="color: #007700">(</span><span style="color: #0000BB">$fp</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'%01.2f'</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$money</span><span style="color: #007700">);<br /></span><span style="color: #FF8000">//&nbsp;строка&nbsp;"123.10"&nbsp;записана&nbsp;в&nbsp;файл&nbsp;currency.txt<br /><br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #DD0000">"записано&nbsp;$len&nbsp;байт&nbsp;в&nbsp;файл&nbsp;currency.txt"</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+      </div>
+
+     </div>
+    </p>
+   </div>
+
+  </div><hr /><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="function.explode.html">explode</a></div>
+ <div class="next" style="float: right;"><a href="function.get-html-translation-table.html">get_html_translation_table</a></div>
+ <div class="up"><a href="ref.strings.html">Функции обработки строк</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

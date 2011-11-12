@@ -1,0 +1,125 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <title>Первая страница на PHP</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+ </head>
+ <body><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="tutorial.html">Краткое руководство</a></div>
+ <div class="next" style="float: right;"><a href="tutorial.useful.html">Делаем что-нибудь полезное</a></div>
+ <div class="up"><a href="tutorial.html">Краткое руководство</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="tutorial.firstpage" class="sect1">
+   <h2 class="title">Первая страница на PHP</h2>
+   <p class="para">
+    Создайте файл с именем <var class="filename">hello.php</var> в корневом
+    каталоге ваших документов Web-сервера и запишите в него следующее:
+   </p>
+   <p class="para">
+    <div class="example">
+     <p><b>Пример #1 Первый скрипт на PHP: <var class="filename">hello.php</var></b></p>
+     <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+&lt;html&gt;<br />&nbsp;&lt;head&gt;<br />&nbsp;&nbsp;&lt;title&gt;Тестируем&nbsp;PHP&lt;/title&gt;<br />&nbsp;&lt;/head&gt;<br />&nbsp;&lt;body&gt;<br />&nbsp;<span style="color: #0000BB">&lt;?php&nbsp;</span><span style="color: #007700">echo&nbsp;</span><span style="color: #DD0000">"Привет!&lt;p&gt;"</span><span style="color: #007700">;&nbsp;</span><span style="color: #0000BB">?&gt;<br /></span>&nbsp;&lt;/body&gt;<br />&lt;/html&gt;</span>
+</code></div>
+     </div>
+
+     <div class="example-contents"><p>
+      Эта программа выведет следующее:
+      <div class="example-contents"><pre>
+<div class="cdata"><pre>
+&lt;html&gt;
+ &lt;head&gt;
+  &lt;title&gt;Тестируем PHP&lt;/title&gt;
+ &lt;/head&gt;
+ &lt;body&gt;
+ Привет!&lt;p&gt;
+ &lt;/body&gt;
+&lt;/html&gt;
+</pre></div>
+      </pre></div>
+     </p></div>
+    </div>
+   </p>
+   <p class="para">
+    Заметим, что сходства со скриптами на CGI нет. Файл не обязан быть
+    выполнимым или отмеченным любым другим образом. Это просто обычный
+    файл HTML, в котором есть набор специальных тегов, делающих много
+    интересного.
+   </p>
+   <p class="para">
+    Эта программа чрезвычайно проста, и для создания настолько простой
+    странички даже необязательно использовать PHP. Все что она делает -
+    это выводит &quot;<i>Привет!</i> с использованием функции
+    PHP <a href="function.echo.html" class="function">echo()</a>.
+   </p>
+   <p class="para">
+    Если у вас этот пример не отображает ничего или выводит окно загрузки,
+    или если вы видите весь этот файл в текстовом виде, то весьма вероятно,
+    что ваш Web-сервер не имеет поддержки PHP. Попросите вашего администратора
+    сервера включить такую поддержку. Предложите ему инструкцию по установке -
+    раздел &quot;<a href="install.html" class="link">Установка</a>&quot; данной
+    документации.  Если же вы хотите разрабатывать скрипты на PHP дома,
+    то вам в раздел <a href="http://www.php.net/downloads.php" class="link external">&raquo; необходимые файлы</a>.
+    Дома можно разрабатывать скрипты с использованием любой операционной 
+    системы, но вам понадобится установить соответствующий Web-сервер.
+   </p>
+   <p class="para">
+    Цель примера - показать формат специальных тегов PHP. В этом примере
+    мы использовали <i>&lt;?php</i> в качестве открывающего
+    тега, затем шли команды PHP, завершающиеся закрывающим тегом
+    <i>?&gt;</i>. Таким образом можно сколько угодно раз
+    переходить к коду PHP в файле HTML.
+   </p>
+   <blockquote><p><b class="note">Замечание</b>: 
+    <b>Пара слов о текстовых редакторах</b>
+    
+     Существует множество текстовых редакторов и интегрированных сред
+     разработки (IDE), в которых вы можете создавать и редактировать файлы
+     PHP. Список некоторых редакторов содержится в разделе
+     &quot;<a href="http://www.thelinuxconsultancy.co.uk/phpeditors.php" class="link external">&raquo; Список редакторов PHP</a>&quot;. 
+     Если вы хотите порекомендовать какой-либо редактор, посетите данную
+     страницу и попросите добавить данный редактор в список.
+    <br />
+   </p></blockquote>
+   
+   <blockquote><p><b class="note">Замечание</b>: 
+    <b>Пара слов о текстовых процессорах</b>
+    
+     Текстовые процессоры (StarOffice Writer, Microsoft Word, Abiword и
+     др.) в большинстве случаев не подходят для редактирования файлов PHP.
+    <br />
+
+    
+     Если вы используете текстовый процессор для создания скриптов на PHP,
+     вы должны быть уверены, что сохраняете файл, как ЧИСТО ТЕКСТОВЫЙ. В
+     противном случае PHP не сможет обработать и выполнить вашу программу.
+    <br />
+   </p></blockquote>
+   
+   <blockquote><p><b class="note">Замечание</b>: 
+    <b>Пара слов о &quot;Блокноте&quot; Windows</b>
+        
+     При написании скриптов PHP с использованием встроенного &quot;Блокнота&quot;
+     Windows необходимо сохранять файлы с расширением .php. &quot;Блокнот&quot;
+     автоматически добавляет расширение .txt. Для обхода этой проблемы
+     существует несколько методов.
+    <br />
+
+        
+     Можно поместить название файла в кавычки (пример: &quot;hello.php&quot;).
+    <br />
+
+    
+     Кроме того, можно выбрать &quot;Все файлы&quot; вместо &quot;Текстовые документы&quot; из
+     ниспадающего списка с типами файлов в окне сохранения. После этого
+     можно вводить имя файла без кавычек.
+    <br />
+  </p></blockquote>
+   
+  </div><hr /><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="tutorial.html">Краткое руководство</a></div>
+ <div class="next" style="float: right;"><a href="tutorial.useful.html">Делаем что-нибудь полезное</a></div>
+ <div class="up"><a href="tutorial.html">Краткое руководство</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

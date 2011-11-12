@@ -1,0 +1,81 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <title>Breaks this node into two nodes at the specified offset</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+ </head>
+ <body><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="class.domtext.html">DOMText</a></div>
+ <div class="next" style="float: right;"><a href="class.domxpath.html">DOMXPath</a></div>
+ <div class="up"><a href="class.domtext.html">DOMText</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="domtext.splittext" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">DOMText::splitText</h1>
+  <p class="verinfo">(No version information available, might be only in CVS)</p><p class="refpurpose dc-title">DOMText::splitText — 
+   Breaks this node into two nodes at the specified offset
+  </p>
+
+ </div>
+ <div class="refsect1 description">
+  <h3 class="title">Описание</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type"><a href="class.domtext.html" class="type DOMText">DOMText</a></span> <span class="methodname"><b><b>DOMText::splitText</b></b></span>
+    ( <span class="methodparam"><span class="type">int</span> <tt class="parameter">$offset</tt></span>
+   )</div>
+
+  <p class="para rdfs-comment">
+   Breaks this node into two nodes at the specified <i><tt class="parameter">offset</tt></i>
+, 
+   keeping both in the tree as siblings. 
+  </p>
+  <p class="para">
+   After being split, this node will contain all the content up to the 
+   <i><tt class="parameter">offset</tt></i>
+. If the original node had a parent node, 
+   the new node is inserted as the next sibling of the original node. 
+   When the <i><tt class="parameter">offset</tt></i>
+ is equal to the length of this node,
+   the new node has no data.
+  </p>
+ </div>
+
+ <div class="refsect1 parameters">
+  <h3 class="title">Список параметров</h3>
+  <p class="para">
+   <dl>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">offset</tt></i>
+</span>
+
+     <dd>
+
+      <p class="para">
+       The offset at which to split, starting from 0.
+      </p>
+     </dd>
+
+    </dt>
+
+   </dl>
+
+  </p>
+ </div>
+
+ <div class="refsect1 returnvalues">
+  <h3 class="title">Возвращаемые значения</h3>
+  <p class="para">
+   The new node of the same type, which contains all the content at and after the 
+   <i><tt class="parameter">offset</tt></i>
+.
+  </p>
+ </div>
+
+</div><hr /><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="class.domtext.html">DOMText</a></div>
+ <div class="next" style="float: right;"><a href="class.domxpath.html">DOMXPath</a></div>
+ <div class="up"><a href="class.domtext.html">DOMText</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

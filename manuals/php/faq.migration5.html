@@ -1,0 +1,140 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <title>Переход из PHP 4 в PHP 5</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+ </head>
+ <body><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="faq.languages.html">PHP и другие языки</a></div>
+ <div class="next" style="float: right;"><a href="faq.misc.html">Разные вопросы</a></div>
+ <div class="up"><a href="faq.html">ЧАВО</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div>
+  <h1>Переход из PHP 4 в PHP 5</h1>
+
+  
+
+  <p class="para">
+   Этот раздел поможет вам при переходе из PHP 4 в PHP 5.
+  </p>
+
+  <div class="qandaset"><ol class="qandaset_questions"><li><a href="#faq.migration5.php45">
+     
+      Переход из PHP 4 в PHP 5
+     
+    </a></li><li><a href="#faq.migration5.mysql">
+     
+      Работает ли MySQL в PHP 5? Похоже, она исчезла?
+     
+    </a></li><li><a href="#faq.migration5.oop">
+     
+      Я слышал, что PHP 5 имеет полностью новую модель ООП, будет ли мой
+      существующий код работать? Где найти информацию об этих новых
+      возможностях ООП?
+     
+    </a></li><li><a href="#faq.migration5.changes">
+     
+      Кроме новой модели ООП что ещё изменилось в PHP 5?
+      Также есть ли отдельная версия этого руководства для PHP 5?
+     
+    </a></li></ol>
+   <dl>
+    <dt><strong>
+     <p class="para">
+      Переход из PHP 4 в PHP 5
+     </p>
+    </strong></dt>
+    <dd><a name="faq.migration5.php45"></a>
+     <p class="para">
+      Хотя PHP 5 предлагает много новых возможностей, он проектировался
+      для совместимости с ранними версиями PHP насколько это только возможно,
+      в процессе функциональность была нарушена не много.
+     </p>
+     <p class="para">
+      Не забудьте прочитать соответствующее <a href="migration5.html" class="link">
+      приложение по миграции в PHP 5</a> в этом руководстве, так как оно
+      содержит даже больше информации на тему мигрирования в PHP 5.
+     </p>
+    </dd>
+   </dl>
+
+   <dl>
+    <dt><strong>
+     <p class="para">
+      Работает ли MySQL в PHP 5? Похоже, она исчезла?
+     </p>
+    </strong></dt>
+    <dd><a name="faq.migration5.mysql"></a>
+     <p class="para">
+      <a href="ref.mysql.html" class="link">MySQL</a> поддерживается с единственным
+      изменением в том, что поддержка MySQL более не включена
+      <em class="emphasis">по умолчанию</em> в PHP 5.
+      Это главным образом означает, что PHP по умолчанию не включает опцию
+      <span class="option">--with-mysql</span> в строку для
+      <a href="configuration.html" class="link">configure</a>, поэтому вам
+      надо сделать это в ручную при компиляции PHP. Пользователи Windows будут
+      редактировать <var class="filename">php.ini</var> и включать <var class="filename">php_mysql.dll</var>
+      DLL, так как эта DLL не существовала в PHP 4, она была просто включена
+      в ваши бинарники PHP для Windows.
+     </p>
+     <p class="para">
+      Также клиентские библиотеки MySQL больше не поставляются с PHP.
+      Более подробно эта тема освещена <a href="faq.databases.html#faq.databases.mysql.php5" class="link">
+      здесь</a> и обязательно прочитайте <a href="ref.mysql.html" class="link">
+      раздел по MySQL</a> для деталей по установке MySQL. Пример строки
+      конфигурации будет: <span class="option">--with-mysql=/usr</span>,
+      в то время как пользователям Windows будет нужна доступная в системе
+      <var class="filename">libmySQL.dll</var>.
+     </p>
+    </dd>
+   </dl>
+
+   <dl>
+    <dt><strong>
+     <p class="para">
+      Я слышал, что PHP 5 имеет полностью новую модель ООП, будет ли мой
+      существующий код работать? Где найти информацию об этих новых
+      возможностях ООП?
+     </p>
+    </strong></dt>
+    <dd><a name="faq.migration5.oop"></a>
+     <p class="para">
+      Основное изменение в PHP 5 - это изменение в модели ООП, так PHP 5
+      теперь использует <em class="emphasis">Zend Engine 2.0</em>.
+      Директива  <a href="ini.core.html#ini.zend.ze1-compatibility-mode" class="link">
+      zend.ze1_compatibility_mode</a> включает
+      совместимость с Zend Engine 1.0 (PHP 4).
+     </p>
+     <p class="para">
+      Новая модель ООП документирована в <a href="language.oop5.html" class="link">
+      справочнике языка по ООП</a> и <a href="migration5.oop.html" class="link">
+      приложении по переходу к ООП</a>.
+     </p>
+    </dd>
+   </dl>
+
+   <dl>
+    <dt><strong>
+     <p class="para">
+      Кроме новой модели ООП что ещё изменилось в PHP 5?
+      Также есть ли отдельная версия этого руководства для PHP 5?
+     </p>
+    </strong></dt>
+    <dd><a name="faq.migration5.changes"></a>
+     <p class="para">
+      Существует несколько других изменений, для подробностей смотрите
+      <a href="migration5.html" class="link">приложение по переходу в PHP 5</a>.
+      Специальной для PHP 5 версии этого руководства не будет, так как в
+      основном объёме PHP остается всё тем же.
+     </p>
+    </dd>
+   </dl>
+
+  </div>
+ </div>
+<hr /><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="faq.languages.html">PHP и другие языки</a></div>
+ <div class="next" style="float: right;"><a href="faq.misc.html">Разные вопросы</a></div>
+ <div class="up"><a href="faq.html">ЧАВО</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

@@ -1,0 +1,100 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <title>Change the character encoding vector of a font</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+ </head>
+ <body><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="function.imagepsbbox.html">imagepsbbox</a></div>
+ <div class="next" style="float: right;"><a href="function.imagepsextendfont.html">imagepsextendfont</a></div>
+ <div class="up"><a href="ref.image.html">Image Функции</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="function.imagepsencodefont" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">imagepsencodefont</h1>
+  <p class="verinfo">(PHP 4, PHP 5)</p><p class="refpurpose dc-title">imagepsencodefont — Change the character encoding vector of a font</p>
+
+ </div>
+ <div class="refsect1 description">
+  <h3 class="title">Описание</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type">bool</span> <span class="methodname"><b><b>imagepsencodefont</b></b></span>
+    ( <span class="methodparam"><span class="type">resource</span> <tt class="parameter">$font_index</tt></span>
+   , <span class="methodparam"><span class="type">string</span> <tt class="parameter">$encodingfile</tt></span>
+   )</div>
+
+  <p class="para rdfs-comment">
+   Loads a character encoding vector from a file and changes the fonts 
+   encoding vector to it. As a PostScript fonts default vector lacks most of
+   the character positions above 127, you&#039;ll definitely want to change this
+   if you use an other language than English. 
+  </p>
+  <p class="para">
+   If you find yourself using this function all the time, a much
+   better way to define the encoding is to set ps.default_encoding in
+   the <a href="configuration.html#configuration.file" class="link">configuration file</a>
+   to point to the right encoding file and all fonts you load will
+   automatically have the right encoding.
+  </p>
+ </div>
+
+ <div class="refsect1 parameters">
+  <h3 class="title">Список параметров</h3>
+  <p class="para">
+   <dl>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">font_index</tt></i>
+</span>
+
+     <dd>
+
+      <p class="para">
+      </p>
+     </dd>
+
+    </dt>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">encodingfile</tt></i>
+</span>
+
+     <dd>
+
+      <p class="para">
+       The exact format of this file is described in T1libs documentation. 
+       T1lib comes with two ready-to-use files, 
+       <var class="filename">IsoLatin1.enc</var> and 
+       <var class="filename">IsoLatin2.enc</var>.
+      </p>
+     </dd>
+
+    </dt>
+
+   </dl>
+
+  </p>
+ </div>
+
+ <div class="refsect1 returnvalues">
+  <h3 class="title">Возвращаемые значения</h3>
+  <p class="para">
+   Возвращает <b><tt>TRUE</tt></b> в случае успешного завершения или <b><tt>FALSE</tt></b> в случае возникновения ошибки.
+  </p>
+ </div>
+
+ <div class="refsect1 notes">
+  <h3 class="title">Примечания</h3>
+  <blockquote><p><b class="note">Замечание</b>: <span class="simpara">Эта функция доступна только в
+том случае, если PHP был скомпилирован с опцией
+<span class="option">--enable-t1lib</span>.</span></p></blockquote>
+ </div>
+
+</div><hr /><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="function.imagepsbbox.html">imagepsbbox</a></div>
+ <div class="next" style="float: right;"><a href="function.imagepsextendfont.html">imagepsextendfont</a></div>
+ <div class="up"><a href="ref.image.html">Image Функции</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

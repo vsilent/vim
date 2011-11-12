@@ -1,0 +1,108 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <title>Construct a Phar entry object</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+ </head>
+ <body><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="pharfileinfo.compress.html">PharFileInfo::compress</a></div>
+ <div class="next" style="float: right;"><a href="pharfileinfo.decompress.html">PharFileInfo::decompress</a></div>
+ <div class="up"><a href="class.PharFileInfo.html">PharFileInfo</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="pharfileinfo.construct" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">PharFileInfo::__construct</h1>
+  <p class="verinfo">(PECL phar:1.0.0-1.2.1)</p><p class="refpurpose dc-title">PharFileInfo::__construct — Construct a Phar entry object</p>
+
+ </div>
+ <div class="refsect1 description">
+  <h3 class="title">Описание</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type"><span class="type void">void</span></span> <span class="methodname"><b><b>PharFileInfo::__construct</b></b></span>
+    ( <span class="methodparam"><span class="type">string</span> <tt class="parameter">$entry</tt></span>
+   )</div>
+
+
+  <p class="para rdfs-comment">
+   This should not be called directly.  Instead, a PharFileInfo object
+   is initialized by calling <a href="phar.offsetget.html" class="function">Phar::offsetGet()</a>
+   through array access.
+  </p>
+
+ </div>
+
+ <div class="refsect1 parameters">
+  <h3 class="title">Список параметров</h3>
+  <p class="para">
+   <dl>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">entry</tt></i>
+</span>
+
+     <dd>
+
+      <p class="para">
+       The full url to retrieve a file.  If you wish to retrieve the information
+       for the file <i>my/file.php</i> from the phar <i>boo.phar</i>,
+       the entry should be <i>phar://boo.phar/my/file.php</i>.
+      </p>
+     </dd>
+
+    </dt>
+
+   </dl>
+
+  </p>
+ </div>
+
+
+ <div class="refsect1 errors">
+  <h3 class="title">Errors/Exceptions</h3>
+  <p class="para">
+   Throws <span class="classname">BadMethodCallException</span> if
+   <b>__construct()</b> is called twice.
+   Throws <span class="classname">UnexpectedValueException</span> if
+   the phar URL requested is malformed, the requested
+   phar cannot be opened, or the file can&#039;t be found within the phar.
+  </p>
+ </div>
+
+
+ <div class="refsect1 examples">
+  <h3 class="title">Примеры</h3>
+  <p class="para">
+   <div class="example">
+    <p><b>Пример #1 A <b>PharFileInfo::__construct()</b> example</b></p>
+    <div class="example-contents"><p>
+    </p></div>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">try&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$p&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">Phar</span><span style="color: #007700">(</span><span style="color: #DD0000">'/path/to/my.phar'</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">0</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'my.phar'</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$p</span><span style="color: #007700">[</span><span style="color: #DD0000">'testfile.txt'</span><span style="color: #007700">]&nbsp;=&nbsp;</span><span style="color: #DD0000">"hi\nthere\ndude"</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$file&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$p</span><span style="color: #007700">[</span><span style="color: #DD0000">'testfile.txt'</span><span style="color: #007700">];<br />&nbsp;&nbsp;&nbsp;&nbsp;foreach&nbsp;(</span><span style="color: #0000BB">$file&nbsp;</span><span style="color: #007700">as&nbsp;</span><span style="color: #0000BB">$line&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">$text</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"line&nbsp;number&nbsp;$line:&nbsp;$text"</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;this&nbsp;also&nbsp;works<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$file&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">PharFileInfo</span><span style="color: #007700">(</span><span style="color: #DD0000">'phar:///path/to/my.phar/testfile.txt'</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;foreach&nbsp;(</span><span style="color: #0000BB">$file&nbsp;</span><span style="color: #007700">as&nbsp;</span><span style="color: #0000BB">$line&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">$text</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"line&nbsp;number&nbsp;$line:&nbsp;$text"</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />}&nbsp;catch&nbsp;(</span><span style="color: #0000BB">Exception&nbsp;$e</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">'Phar&nbsp;operations&nbsp;failed:&nbsp;'</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$e</span><span style="color: #007700">;<br />}<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+    <div class="example-contents"><p>Результат выполнения данного примера:</p></div>
+    <div class="example-contents"><pre>
+<div class="cdata"><pre>
+line number 1: hi
+line number 2: there
+line number 3: dude
+line number 1: hi
+line number 2: there
+line number 3: dude
+</pre></div>
+    </pre></div>
+   </div>
+  </p>
+ </div>
+
+
+</div><hr /><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="pharfileinfo.compress.html">PharFileInfo::compress</a></div>
+ <div class="next" style="float: right;"><a href="pharfileinfo.decompress.html">PharFileInfo::decompress</a></div>
+ <div class="up"><a href="class.PharFileInfo.html">PharFileInfo</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

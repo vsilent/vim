@@ -1,0 +1,61 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <title>Преобразует строку в верхний регистр</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+ </head>
+ <body><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="function.strtolower.html">strtolower</a></div>
+ <div class="next" style="float: right;"><a href="function.strtr.html">strtr</a></div>
+ <div class="up"><a href="ref.strings.html">Функции обработки строк</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="function.strtoupper" class="refentry">
+   <div class="refnamediv">
+    <h1 class="refname">strtoupper</h1>
+    <p class="verinfo">(PHP 4, PHP 5)</p><p class="refpurpose dc-title">strtoupper — Преобразует строку в верхний регистр</p>
+
+   </div>
+   <div class="refsect1 unknown">
+    <h3 class="title">Описание</h3>
+     <div class="methodsynopsis dc-description">
+      <span class="type">string</span> <span class="methodname"><b><b>strtoupper</b></b></span>
+       ( <span class="methodparam"><span class="type">string</span> <tt class="parameter">$string</tt></span>
+      )</div>
+
+    <p class="para rdfs-comment">
+     Возвращает строку <i><tt class="parameter">string</tt></i>
+, в которой все 
+     буквенные символы переведены в верхний регистр.
+    </p>
+    <p class="para">
+     Принадлежность того или иного символа к буквенным определяется с 
+     учетом текущей локали. Это означает, что, например, в используемой по 
+     умолчанию локали &quot;C&quot; locale, символ Ä не будет преобразован.
+    </p>
+    <div class="example">
+     <p><b>Пример #1 Пример использования <b>strtoupper()</b></b></p>
+     <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$str&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">"Mary&nbsp;Had&nbsp;A&nbsp;Little&nbsp;Lamb&nbsp;and&nbsp;She&nbsp;LOVED&nbsp;It&nbsp;So"</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$str&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">strtoupper</span><span style="color: #007700">(</span><span style="color: #0000BB">$str</span><span style="color: #007700">);<br />echo&nbsp;</span><span style="color: #0000BB">$str</span><span style="color: #007700">;&nbsp;</span><span style="color: #FF8000">//&nbsp;выводит:&nbsp;MARY&nbsp;HAD&nbsp;A&nbsp;LITTLE&nbsp;LAMB&nbsp;AND&nbsp;SHE&nbsp;LOVED&nbsp;IT&nbsp;SO<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+     </div>
+
+    </div>
+    
+    <blockquote><p><b class="note">Замечание</b>: <span class="simpara">Эта функция безопасна
+для обработки данных в двоичной форме.</span></p></blockquote>
+    
+    <p class="para">
+     См. также описание функций <a href="function.strtolower.html" class="function">strtolower()</a>, 
+     <a href="function.ucfirst.html" class="function">ucfirst()</a>, <a href="function.ucwords.html" class="function">ucwords()</a> and 
+     <a href="function.mb-strtoupper.html" class="function">mb_strtoupper()</a>.
+    </p>
+   </div>
+
+  </div><hr /><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="function.strtolower.html">strtolower</a></div>
+ <div class="next" style="float: right;"><a href="function.strtr.html">strtr</a></div>
+ <div class="up"><a href="ref.strings.html">Функции обработки строк</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

@@ -1,0 +1,90 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <title>Возвращает массив вхождений, которые соответствуют шаблону</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+ </head>
+ <body><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="ref.pcre.html">PCRE</a></div>
+ <div class="next" style="float: right;"><a href="function.preg-last-error.html">preg_last_error</a></div>
+ <div class="up"><a href="ref.pcre.html">PCRE</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="function.preg-grep" class="refentry">
+   <div class="refnamediv">
+    <h1 class="refname">preg_grep</h1>
+    <p class="verinfo">(PHP 4, PHP 5)</p><p class="refpurpose dc-title">preg_grep — 
+	Возвращает массив вхождений, которые соответствуют шаблону     
+    </p>
+
+   </div>
+   <div class="refsect1 unknown">
+    <h3 class="title">Описание</h3>
+     <div class="methodsynopsis dc-description">
+      <span class="type">array</span> <span class="methodname"><b><b>preg_grep</b></b></span>
+       ( <span class="methodparam"><span class="type">string</span> <tt class="parameter">$pattern</tt></span>
+      , <span class="methodparam"><span class="type">array</span> <tt class="parameter">$input</tt></span>
+      [, <span class="methodparam"><span class="type">int</span> <tt class="parameter">$flags</tt></span>
+     ] )</div>
+
+
+    <p class="para rdfs-comment">
+     <b>preg_grep()</b> возвращает массив, состоящий из элементов
+     входящего массива <i><tt class="parameter">input</tt></i>
+, которые соответствуют заданному
+     шаблону <i><tt class="parameter">pattern</tt></i>
+.
+    </p>
+ 
+    <p class="para">
+     Параметр <i><tt class="parameter">flags</tt></i>
+ может принимать следующие значения:
+     <dl>
+
+      <dt>
+
+       <span class="term">PREG_GREP_INVERT</span>
+
+       <dd>
+
+        <span class="simpara">
+	В случае, если этот флаг установлен, функция <b>preg_grep()</b>,
+	возвращает те элементы массива, которые <em class="emphasis">не соответствуют</em>
+	заданному шаблону <i><tt class="parameter">pattern</tt></i>
+.
+	Этот флаг доступен, начиная с <i>PHP</i> 4.2.0.
+        </span>
+       </dd>
+
+      </dt>
+
+     </dl>
+
+    </p>
+
+    <p class="para">
+    Начиная с PHP 4.0.4, результат, возвращаемый функцией <b>preg_grep()</b>
+    использует те же индексы, что и массив исходных данных. Если такое поведение
+    вам не подходит, примените <a href="function.array-values.html" class="function">array_values()</a> к массиву, возвращаемому
+    <b>preg_grep()</b> для реиндексации.
+    </p>
+
+    <p class="para">
+     <div class="example">
+      <p><b>Пример #1 <b>preg_grep()</b> пример</b></p>
+      <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">//&nbsp;Возвращает&nbsp;все&nbsp;элементы&nbsp;массива,<br />//&nbsp;содержащие&nbsp;числа&nbsp;с&nbsp;плавающей&nbsp;точкой<br /></span><span style="color: #0000BB">$fl_array&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">preg_grep</span><span style="color: #007700">(</span><span style="color: #DD0000">"/^(\d+)?\.\d+$/"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$array</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+      </div>
+
+     </div>
+    </p>
+   </div>
+
+  </div><hr /><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="ref.pcre.html">PCRE</a></div>
+ <div class="next" style="float: right;"><a href="function.preg-last-error.html">preg_last_error</a></div>
+ <div class="up"><a href="ref.pcre.html">PCRE</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

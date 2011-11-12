@@ -1,0 +1,77 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <title>Разбирает строку в переменные</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+ </head>
+ <body><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="function.ord.html">ord</a></div>
+ <div class="next" style="float: right;"><a href="function.print.html">print</a></div>
+ <div class="up"><a href="ref.strings.html">Функции обработки строк</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="function.parse-str" class="refentry">
+   <div class="refnamediv">
+    <h1 class="refname">parse_str</h1>
+    <p class="verinfo">(PHP 4, PHP 5)</p><p class="refpurpose dc-title">parse_str — Разбирает строку в переменные</p>
+
+   </div>
+   <div class="refsect1 unknown">
+    <h3 class="title">Description</h3>
+     <div class="methodsynopsis dc-description">
+      <span class="type"><span class="type void">void</span></span> <span class="methodname"><b><b>parse_str</b></b></span>
+       ( <span class="methodparam"><span class="type">string</span> <tt class="parameter">$str</tt></span>
+      [, <span class="methodparam"><span class="type">array</span> <tt class="parameter">$arr
+       </tt></span>
+     ] )</div>
+
+    <p class="para rdfs-comment">
+     Разбирает строку <i><tt class="parameter">str</tt></i>
+,которая должна иметь 
+     формат строки запроса URL и присваивает значения переменным в текущем 
+     контексте, если не передан второй аргумент 
+     <i><tt class="parameter">arr</tt></i>
+. В последнем случае значения будкт 
+     сохранены в этой переменной как элементы массива.
+    </p>
+    <blockquote><p><b class="note">Замечание</b>: 
+     
+      Поддержка необязательного второго аргумента была добавлена в PHP 
+      4.0.3.
+     <br />
+    </p></blockquote>
+    <blockquote><p><b class="note">Замечание</b>: 
+     
+      Для получения текущей строки запроса 
+      (<em class="emphasis">QUERY_STRING</em>) может быть использована 
+      переменная <a href="reserved.variables.server.html" class="link">$_SERVER[&#039;QUERY_STRING&#039;]</a>. 
+      Также ознакомьтесь с разделом
+      <a href="language.variables.external.html" class="link">&quot;Переменные вне 
+      PHP&quot;</a>.
+     <br />
+    </p></blockquote>
+    <p class="para">
+     <div class="example">
+      <p><b>Пример #1 Использование <b>parse_str()</b></b></p>
+      <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$str&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">"first=value&amp;arr[]=foo+bar&amp;arr[]=baz"</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">parse_str</span><span style="color: #007700">(</span><span style="color: #0000BB">$str</span><span style="color: #007700">);<br />echo&nbsp;</span><span style="color: #0000BB">$first</span><span style="color: #007700">;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;value<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">$arr</span><span style="color: #007700">[</span><span style="color: #0000BB">0</span><span style="color: #007700">];&nbsp;</span><span style="color: #FF8000">//&nbsp;foo&nbsp;bar<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">$arr</span><span style="color: #007700">[</span><span style="color: #0000BB">1</span><span style="color: #007700">];&nbsp;</span><span style="color: #FF8000">//&nbsp;baz<br /><br /></span><span style="color: #0000BB">parse_str</span><span style="color: #007700">(</span><span style="color: #0000BB">$str</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$output</span><span style="color: #007700">);<br />echo&nbsp;</span><span style="color: #0000BB">$output</span><span style="color: #007700">[</span><span style="color: #DD0000">'first'</span><span style="color: #007700">];&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;value<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">$output</span><span style="color: #007700">[</span><span style="color: #DD0000">'arr'</span><span style="color: #007700">][</span><span style="color: #0000BB">0</span><span style="color: #007700">];&nbsp;</span><span style="color: #FF8000">//&nbsp;foo&nbsp;bar<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">$output</span><span style="color: #007700">[</span><span style="color: #DD0000">'arr'</span><span style="color: #007700">][</span><span style="color: #0000BB">1</span><span style="color: #007700">];&nbsp;</span><span style="color: #FF8000">//&nbsp;baz<br /><br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+      </div>
+
+     </div>
+    </p>
+    <p class="para">
+     См. также описание функций <a href="function.parse-url.html" class="function">parse_url()</a>,
+     <a href="function.pathinfo.html" class="function">pathinfo()</a>, 
+     <a href="function.set-magic-quotes-runtime.html" class="function">set_magic_quotes_runtime()</a> и
+     <a href="function.urldecode.html" class="function">urldecode()</a>.
+    </p>
+   </div>
+
+  </div><hr /><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="function.ord.html">ord</a></div>
+ <div class="next" style="float: right;"><a href="function.print.html">print</a></div>
+ <div class="up"><a href="ref.strings.html">Функции обработки строк</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

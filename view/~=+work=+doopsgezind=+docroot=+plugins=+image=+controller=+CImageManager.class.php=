@@ -1,0 +1,159 @@
+let s:so_save = &so | let s:siso_save = &siso | set so=0 siso=0
+argglobal
+let s:cpo_save=&cpo
+set cpo&vim
+imap <buffer> <SNR>23_allmlOclose  ><Left><Left>
+inoremap <buffer> <SNR>23_allmlOopen <?php print 
+inoremap <buffer> <SNR>23_xhtmltrans <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+inoremap <buffer> <SNR>23_htmltrans <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+vnoremap <buffer>  :call PhpDocRange()
+nnoremap <buffer>  :call PhpDocSingle()
+nmap <buffer> \dxx <Plug>allmlLineXmlDecode
+nmap <buffer> \exx <Plug>allmlLineXmlEncode
+nmap <buffer> \duu <Plug>allmlLineUrlDecode
+nmap <buffer> \euu <Plug>allmlLineUrlEncode
+map <buffer> \dx <Plug>allmlXmlDecode
+map <buffer> \ex <Plug>allmlXmlEncode
+map <buffer> \du <Plug>allmlUrlDecode
+map <buffer> \eu <Plug>allmlUrlEncode
+inoremap <buffer>  :call PhpDocSingle()i
+imap <buffer> & <Plug>allmlXmlV
+imap <buffer> % <Plug>allmlUrlV
+imap <buffer> & <Plug>allmlXmlEncode
+imap <buffer> % <Plug>allmlUrlEncode
+imap <buffer> " <NL>I<# A >F<NL>s
+imap <buffer> ' <#  >2hi
+imap <buffer> _ <NL>I< A >F<NL>s
+imap <buffer> - <  >2hi
+imap <buffer> ] <>O
+inoremap <buffer> > ?>
+inoremap <buffer> < <?php
+imap <buffer>  /
+let &cpo=s:cpo_save
+unlet s:cpo_save
+setlocal keymap=
+setlocal noarabic
+setlocal noautoindent
+setlocal balloonexpr=
+setlocal nobinary
+setlocal bufhidden=
+setlocal buflisted
+setlocal buftype=
+setlocal cindent
+setlocal cinkeys=0{,0},0),:,0#,!^F,o,O,e
+setlocal cinoptions=>s,{0,n0,(0
+setlocal cinwords=if,else,while,do,for,switch
+setlocal comments=s1:/*,mb:*,ex:*/,://,:#
+setlocal commentstring=/*%s*/
+setlocal complete=.,w,b,u,t,i
+setlocal completefunc=
+setlocal nocopyindent
+setlocal nocursorcolumn
+setlocal nocursorline
+setlocal define=
+setlocal dictionary=
+setlocal nodiff
+setlocal equalprg=
+setlocal errorformat=
+setlocal expandtab
+if &filetype != 'php'
+setlocal filetype=php
+endif
+setlocal foldcolumn=0
+setlocal foldenable
+setlocal foldexpr=0
+setlocal foldignore=#
+setlocal foldlevel=2
+setlocal foldmarker={{{,}}}
+setlocal foldmethod=syntax
+setlocal foldminlines=1
+setlocal foldnestmax=20
+setlocal foldtext=foldtext()
+setlocal formatexpr=
+setlocal formatoptions=lqrowcb
+setlocal formatlistpat=^\\s*\\d\\+[\\]:.)}\\t\ ]\\s*
+setlocal grepprg=
+setlocal iminsert=2
+setlocal imsearch=2
+setlocal include=\\(require\\|include\\)\\(_once\\)\\?
+setlocal includeexpr=
+setlocal indentexpr=
+setlocal indentkeys=0{,0},0),:,!^F,o,O,e,*<Return>,=?>,=<?,=*/
+setlocal noinfercase
+setlocal iskeyword=@,48-57,_,192-255,d,o,c,t,y,p,e,4,s,f,x,h,a,r,i,l,b,m,v,n,k,1,u,$,q,?,w,-,g,j
+setlocal keywordprg=
+setlocal nolinebreak
+setlocal nolisp
+setlocal nolist
+setlocal makeprg=
+setlocal matchpairs=(:),{:}
+setlocal modeline
+setlocal modifiable
+setlocal nrformats=octal,hex,alpha
+setlocal number
+setlocal numberwidth=4
+setlocal omnifunc=MyPHPComplete
+setlocal path=
+setlocal nopreserveindent
+setlocal nopreviewwindow
+setlocal quoteescape=\\
+setlocal noreadonly
+setlocal norightleft
+setlocal rightleftcmd=search
+setlocal noscrollbind
+setlocal shiftwidth=4
+setlocal noshortname
+setlocal nosmartindent
+setlocal softtabstop=4
+setlocal nospell
+setlocal spellcapcheck=[.?!]\\_[\\])'\"\	\ ]\\+
+setlocal spellfile=
+setlocal spelllang=en
+setlocal statusline=
+setlocal suffixesadd=
+setlocal swapfile
+setlocal synmaxcol=3000
+if &syntax != 'php'
+setlocal syntax=php
+endif
+setlocal tabstop=4
+setlocal tags=
+setlocal textwidth=80
+setlocal thesaurus=
+setlocal nowinfixheight
+setlocal nowinfixwidth
+setlocal wrap
+setlocal wrapmargin=0
+11
+normal zo
+27
+normal zo
+39
+normal zo
+83
+normal zo
+98
+normal zo
+111
+normal zo
+125
+normal zo
+141
+normal zo
+151
+normal zo
+170
+normal zo
+312
+normal zo
+11
+normal zo
+let s:l = 55 - ((33 * winheight(0) + 23) / 46)
+if s:l < 1 | let s:l = 1 | endif
+exe s:l
+normal! zt
+55
+normal! 0
+let &so = s:so_save | let &siso = s:siso_save
+doautoall SessionLoadPost
+" vim: set ft=vim :

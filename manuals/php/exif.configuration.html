@@ -1,0 +1,227 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <title>Настройка во время выполнения</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+ </head>
+ <body><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="exif.installation.html">Установка</a></div>
+ <div class="next" style="float: right;"><a href="exif.resources.html">Типы ресурсов</a></div>
+ <div class="up"><a href="exif.setup.html">Установка и настройка</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="exif.configuration" class="section">
+ <h2 class="title">Настройка во время выполнения</h2>
+ <p class="simpara">
+Поведение этих функций зависит от установок в <var class="filename">php.ini</var>.
+</p>
+ <p class="para">
+  Exif supports automatically conversion for Unicode and JIS 
+  character encodings of user comments when module
+  <a href="ref.mbstring.html" class="link">mbstring</a>
+  is available. This is done by first decoding the comment
+  using the specified characterset. The result is then encoded
+  with another characterset which should match your
+  <i>HTTP</i> output.
+ <table border="5">
+  <caption><b>Exif configuration options</b></caption>
+  <colgroup>
+
+   <thead valign="middle">
+    <tr valign="middle">
+     <th colspan="1">Name</th>
+     <th colspan="1">Default</th>
+     <th colspan="1">Changeable</th>
+     <th colspan="1">Changelog</th>
+    </tr>
+
+   </thead>
+
+   <tbody valign="middle" class="tbody">
+    <tr valign="middle">
+     <td colspan="1" rowspan="1" align="left">exif.encode_unicode</td>
+     <td colspan="1" rowspan="1" align="left">&quot;ISO-8859-15&quot;</td>
+     <td colspan="1" rowspan="1" align="left">PHP_INI_ALL</td>
+     <td colspan="1" rowspan="1" align="left">Available since PHP 4.3.0.</td>
+    </tr>
+
+    <tr valign="middle">
+     <td colspan="1" rowspan="1" align="left">exif.decode_unicode_motorola</td>
+     <td colspan="1" rowspan="1" align="left">&quot;UCS-2BE&quot;</td>
+     <td colspan="1" rowspan="1" align="left">PHP_INI_ALL</td>
+     <td colspan="1" rowspan="1" align="left">Available since PHP 4.3.0.</td>
+    </tr>
+
+    <tr valign="middle">
+     <td colspan="1" rowspan="1" align="left">exif.decode_unicode_intel</td>
+     <td colspan="1" rowspan="1" align="left">&quot;UCS-2LE&quot;</td>
+     <td colspan="1" rowspan="1" align="left">PHP_INI_ALL</td>
+     <td colspan="1" rowspan="1" align="left">Available since PHP 4.3.0.</td>
+    </tr>
+
+    <tr valign="middle">
+     <td colspan="1" rowspan="1" align="left">exif.encode_jis</td>
+     <td colspan="1" rowspan="1" align="left">&quot;&quot;</td>
+     <td colspan="1" rowspan="1" align="left">PHP_INI_ALL</td>
+     <td colspan="1" rowspan="1" align="left">Available since PHP 4.3.0.</td>
+    </tr>
+
+    <tr valign="middle">
+     <td colspan="1" rowspan="1" align="left">exif.decode_jis_motorola</td>
+     <td colspan="1" rowspan="1" align="left">&quot;JIS&quot;</td>
+     <td colspan="1" rowspan="1" align="left">PHP_INI_ALL</td>
+     <td colspan="1" rowspan="1" align="left">Available since PHP 4.3.0.</td>
+    </tr>
+
+    <tr valign="middle">
+     <td colspan="1" rowspan="1" align="left">exif.decode_jis_intel</td>
+     <td colspan="1" rowspan="1" align="left">&quot;JIS&quot;</td>
+     <td colspan="1" rowspan="1" align="left">PHP_INI_ALL</td>
+     <td colspan="1" rowspan="1" align="left">Available since PHP 4.3.0.</td>
+    </tr>
+
+    </tbody>
+   </colgroup>
+
+  </table>
+
+  Для подробного описания констант
+PHP_INI_*, обратитесь к документации функции <a href="function.ini-set.html" class="function">ini_set()</a>.
+ </p>
+ 
+ <p class="para">Краткое разъяснение конфигурационных
+директив.</p>
+ 
+ <p class="para">
+  <dl>
+
+   <dt id="ini.exif.encode-unicode">
+    <span class="term">
+     <i><tt class="parameter">exif.encode_unicode</tt></i>
+
+     <a href="language.types.string.html" class="type string">string</a>
+    </span>
+
+    <dd>
+
+    <p class="para">
+     <i>exif.encode_unicode</i> defines the 
+     characterset UNICODE user comments are handled.
+     This defaults to ISO-8859-15 which should work for
+     most non Asian countries. The setting can be empty
+     or must be an encoding supported by mbstring. If it
+     is empty the current internal encoding of mbstring is
+     used.
+    </p>
+    </dd>
+
+   </dt>
+
+    <dt id="ini.exif.decode-unicode-motorola">
+    <span class="term">
+     <i><tt class="parameter">exif.decode_unicode_motorola</tt></i>
+
+     <a href="language.types.string.html" class="type string">string</a>
+    </span>
+
+    <dd>
+
+     <p class="para">
+      <i>exif.decode_unicode_motorola</i> defines 
+      the image internal characterset for Unicode encoded user 
+      comments if image is in motorola byte order (big-endian).
+      This setting cannot be empty but you can specify a list
+      of encodings supported by mbstring. The default is UCS-2BE.
+     </p>
+    </dd>
+
+   </dt>
+
+    <dt id="ini.exif.decode-unicode-intel">
+    <span class="term">
+     <i><tt class="parameter">exif.decode_unicode_intel</tt></i>
+
+     <a href="language.types.string.html" class="type string">string</a>
+    </span>
+
+    <dd>
+
+     <p class="para">
+      <i>exif.decode_unicode_intel</i> defines 
+      the image internal characterset for Unicode encoded user 
+      comments if image is in intel byte order (little-endian).
+      This setting cannot be empty but you can specify a list
+      of encodings supported by mbstring. The default is UCS-2LE.
+     </p>
+    </dd>
+
+   </dt>
+
+    <dt id="ini.exif.encode-jis">
+    <span class="term">
+     <i><tt class="parameter">exif.encode_jis</tt></i>
+
+     <a href="language.types.string.html" class="type string">string</a>
+    </span>
+
+    <dd>
+
+     <p class="para">
+      <i>exif.encode_jis</i> defines the 
+      characterset JIS user comments are handled.
+      This defaults to an empty value which forces 
+      the functions to use the current internal encoding
+      of mbstring.
+     </p>
+    </dd>
+
+   </dt>
+
+    <dt id="ini.exif.decode-jis-motorola">
+    <span class="term">
+     <i><tt class="parameter">exif.decode_jis_motorola</tt></i>
+
+     <a href="language.types.string.html" class="type string">string</a>
+    </span>
+
+    <dd>
+
+     <p class="para">
+      <i>exif.decode_jis_motorola</i> defines 
+      the image internal characterset for JIS encoded user 
+      comments if image is in motorola byte order (big-endian).
+      This setting cannot be empty but you can specify a list
+      of encodings supported by mbstring. The default is JIS.
+     </p>
+    </dd>
+
+   </dt>
+
+    <dt id="ini.exif.decode-jis-intel">
+    <span class="term">
+     <i><tt class="parameter">exif.decode_jis_intel</tt></i>
+
+     <a href="language.types.string.html" class="type string">string</a>
+    </span>
+
+    <dd>
+
+     <p class="para">
+      <i>exif.decode_jis_intel</i> defines 
+      the image internal characterset for JIS encoded user 
+      comments if image is in intel byte order (little-endian).
+      This setting cannot be empty but you can specify a list
+      of encodings supported by mbstring. The default is JIS.
+     </p>
+    </dd>
+
+   </dt>
+
+  </dl>
+
+ </p>
+</div><hr /><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="exif.installation.html">Установка</a></div>
+ <div class="next" style="float: right;"><a href="exif.resources.html">Типы ресурсов</a></div>
+ <div class="up"><a href="exif.setup.html">Установка и настройка</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

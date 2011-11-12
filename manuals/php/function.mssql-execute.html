@@ -1,0 +1,103 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <title>Executes a stored procedure on a MS SQL server database</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+ </head>
+ <body><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="function.mssql-data-seek.html">mssql_data_seek</a></div>
+ <div class="next" style="float: right;"><a href="function.mssql-fetch-array.html">mssql_fetch_array</a></div>
+ <div class="up"><a href="ref.mssql.html">Microsoft SQL Server Functions</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="function.mssql-execute" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">mssql_execute</h1>
+  <p class="verinfo">(PHP 4 &gt;= 4.0.7, PHP 5, PECL odbtp:1.1.1-1.1.4)</p><p class="refpurpose dc-title">mssql_execute — Executes a stored procedure on a MS SQL server database</p>
+
+ </div>
+ 
+ <div class="refsect1 description">
+  <h3 class="title">Описание</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type"><a href="language.pseudo-types.html#language.types.mixed" class="type mixed">mixed</a></span> <span class="methodname"><b><b>mssql_execute</b></b></span>
+    ( <span class="methodparam"><span class="type">resource</span> <tt class="parameter">$stmt</tt></span>
+   [, <span class="methodparam"><span class="type">bool</span> <tt class="parameter">$skip_results</tt></span>
+  ] )</div>
+
+  <p class="para rdfs-comment">
+   Executes a stored procedure on a MS SQL server database
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters">
+  <h3 class="title">Список параметров</h3>
+  <p class="para">
+   <dl>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">stmt</tt></i>
+</span>
+
+     <dd>
+
+      <p class="para">
+       Statement handle obtained with <a href="function.mssql-init.html" class="function">mssql_init()</a>. 
+      </p>
+     </dd>
+
+    </dt>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">skip_results</tt></i>
+</span>
+
+     <dd>
+
+      <p class="para">
+      </p>
+     </dd>
+
+    </dt>
+
+   </dl>
+
+  </p>
+ </div>
+
+
+ <div class="refsect1 notes">
+  <h3 class="title">Примечания</h3>
+  <blockquote><p><b class="note">Замечание</b>: 
+   
+    If the stored procedure returns parameters or a return value these will
+    be available after the call to <b>mssql_execute()</b> unless
+    the stored procedure returns more than one result set. In that case
+    use <a href="function.mssql-next-result.html" class="function">mssql_next_result()</a> to shift through the results.
+    When the last result has been processed the output parameters and return
+    values will be available.
+   <br />
+  </p></blockquote>
+ </div>
+
+
+ <div class="refsect1 seealso">
+  <h3 class="title">Смотрите также</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"><a href="function.mssql-bind.html" class="function" rel="rdfs-seeAlso">mssql_bind()</a></li>
+    <li class="member"><a href="function.mssql-free-statement.html" class="function" rel="rdfs-seeAlso">mssql_free_statement()</a></li>
+    <li class="member"><a href="function.mssql-init.html" class="function" rel="rdfs-seeAlso">mssql_init()</a></li>
+   </ul>
+  </p>
+ </div>
+
+
+</div><hr /><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="function.mssql-data-seek.html">mssql_data_seek</a></div>
+ <div class="next" style="float: right;"><a href="function.mssql-fetch-array.html">mssql_fetch_array</a></div>
+ <div class="up"><a href="ref.mssql.html">Microsoft SQL Server Functions</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

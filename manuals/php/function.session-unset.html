@@ -1,0 +1,66 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <title>Free all session variables</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+ </head>
+ <body><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="function.session-unregister.html">session_unregister</a></div>
+ <div class="next" style="float: right;"><a href="function.session-write-close.html">session_write_close</a></div>
+ <div class="up"><a href="ref.session.html">Sessions Функции</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="function.session-unset" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">session_unset</h1>
+  <p class="verinfo">(PHP 4, PHP 5)</p><p class="refpurpose dc-title">session_unset — Free all session variables</p>
+
+ </div>
+ 
+ <div class="refsect1 description">
+  <h3 class="title">Описание</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type"><span class="type void">void</span></span> <span class="methodname"><b><b>session_unset</b></b></span>
+    ( <span class="methodparam">void</span>
+   )</div>
+
+  <p class="para rdfs-comment">
+   The <b>session_unset()</b> function frees all session variables
+   currently registered.
+  </p>
+ </div>
+
+
+ <div class="refsect1 returnvalues">
+  <h3 class="title">Возвращаемые значения</h3>
+  <p class="para">
+   Эта функция не возвращает значения после выполнения.
+  </p>
+ </div>
+
+
+ <div class="refsect1 notes">
+  <h3 class="title">Примечания</h3>
+  <blockquote><p><b class="note">Замечание</b>: 
+   
+    If <var class="varname">$_SESSION</var> (or <var class="varname">$HTTP_SESSION_VARS</var>
+    for PHP 4.0.6 or less) is used, use <a href="function.unset.html" class="function">unset()</a> to
+    unregister a session variable, i.e.
+    <i>unset ($_SESSION[&#039;varname&#039;]);</i>.
+   <br />
+  </p></blockquote>
+  <div class="caution"><b class="caution">Предостережение</b>
+   <p class="para">
+    Do NOT unset the whole <var class="varname">$_SESSION</var> with
+    <i>unset($_SESSION)</i> as this will disable the registering
+    of session variables through the <var class="varname">$_SESSION</var> superglobal.
+   </p>
+  </div>
+ </div>
+
+
+</div><hr /><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="function.session-unregister.html">session_unregister</a></div>
+ <div class="next" style="float: right;"><a href="function.session-write-close.html">session_write_close</a></div>
+ <div class="up"><a href="ref.session.html">Sessions Функции</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

@@ -1,0 +1,368 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <title>Tidy Функции</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+ </head>
+ <body><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="book.tidy.html">Tidy</a></div>
+ <div class="next" style="float: right;"><a href="function.ob-tidyhandler.html">ob_tidyhandler</a></div>
+ <div class="up"><a href="book.tidy.html">Tidy</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div>
+  <h1 class="title">Tidy Функции</h1>
+  
+  <div class="partintro">
+
+   <div id="tidy.classes" class="section">
+    <h2 class="title">Предопределенные классы</h2>
+
+    <div id="tidy.class.tidynode" class="section">
+     <h2 class="title"><span class="classname">tidyNode</span></h2>
+     <div id="tidy.class.tidynode.methods" class="section">
+      <h2 class="title">Методы</h2>
+      <ul class="itemizedlist">
+       <li class="listitem">
+        <p class="para"><a href="function.tidynode-getparent.html" class="xref">tidyNode::getParent</a> - Returns the parent of the current node</p>
+       </li>
+       <li class="listitem">
+        <p class="para"><a href="function.tidyNode-hasChildren.html" class="xref">tidyNode->hasChildren</a> - Returns <b><tt>TRUE</tt></b> if the current node has children</p>
+       </li>
+       <li class="listitem">
+        <p class="para"><a href="function.tidyNode-hasSiblings.html" class="xref">tidyNode->hasSiblings</a> - Returns <b><tt>TRUE</tt></b> if the current node has siblings</p>
+       </li>
+       <li class="listitem">
+        <p class="para"><a href="function.tidyNode-isAsp.html" class="xref">tidyNode->isAsp</a> - Returns <b><tt>TRUE</tt></b> if the current node is ASP code</p>
+       </li>
+       <li class="listitem">
+        <p class="para"><a href="function.tidyNode-isComment.html" class="xref">tidyNode->isComment</a> - Returns <b><tt>TRUE</tt></b> if the current node is a comment</p>
+       </li>
+       <li class="listitem">
+        <p class="para"><a href="function.tidyNode-isHtml.html" class="xref">tidyNode->isHtml</a> - Returns <b><tt>TRUE</tt></b> if the current node is HTML</p>
+       </li>
+       <li class="listitem">
+        <p class="para"><a href="function.tidyNode-isJste.html" class="xref">tidyNode->isJste</a> - Returns <b><tt>TRUE</tt></b> if the current node is JSTE</p>
+       </li>
+       <li class="listitem">
+        <p class="para"><a href="function.tidyNode-isPhp.html" class="xref">tidyNode->isPhp</a> - Returns <b><tt>TRUE</tt></b> if the current node is PHP</p>
+       </li>
+       <li class="listitem">
+        <p class="para"><a href="function.tidyNode-isText.html" class="xref">tidyNode->isText</a> - Returns <b><tt>TRUE</tt></b> if the current node is Text (no markup)</p>
+       </li>
+      </ul>
+     </div>
+
+     <div id="tidy.class.tidynode.properties" class="section">
+      <h2 class="title">Свойства</h2>
+      <ul class="itemizedlist">
+       <li class="listitem">
+        <p class="para">value - the value of the node (e.g. the html text)</p>
+       </li>
+       <li class="listitem">
+        <p class="para">name - the name of the tag (e.g. html, a, etc..)</p>
+       </li>
+       <li class="listitem">
+        <p class="para">type - the type of the node (one of the constants above, e.g. <b><tt>TIDY_NODETYPE_PHP</tt></b>)</p>
+       </li>
+       <li class="listitem">
+        <p class="para">line* - the line where the node starts</p>
+       </li>
+       <li class="listitem">
+        <p class="para">column* - the column where the node starts</p>
+       </li>
+       <li class="listitem">
+        <p class="para">proprietary* - <b><tt>TRUE</tt></b> if the node refers to a proprietary tag</p>
+       </li>
+       <li class="listitem">
+        <p class="para">id - the ID of the tag (one of the constants above, e.g. <b><tt>TIDY_TAG_FRAME</tt></b>)</p>
+       </li>
+       <li class="listitem">
+        <p class="para">attribute - an array with the attributes of the current node, or <b><tt>NULL</tt></b> if there aren&#039;t any</p>
+       </li>
+       <li class="listitem">
+        <p class="para">child - an array with the child <span class="type tidyNode">tidyNode</span>s, or <b><tt>NULL</tt></b> if there aren&#039;t any</p>
+       </li>
+      </ul>
+      <blockquote><p><b class="note">Замечание</b>: 
+       
+        The properties marked with * are just available since PHP 5.1.0.
+       <br />
+      </p></blockquote>
+     </div>
+    </div>
+   </div>
+  </div>
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ <h2>Содержание</h2><ul class="chunklist chunklist_reference"><li><a href="function.ob-tidyhandler.html">ob_tidyhandler</a> — ob_start callback function to repair the buffer</li><li><a href="function.tidy-access-count.html">tidy_access_count</a> — Returns the Number of Tidy accessibility warnings encountered for specified document</li><li><a href="function.tidy-clean-repair.html">tidy_clean_repair</a> — Execute configured cleanup and repair operations on parsed markup</li><li><a href="function.tidy-config-count.html">tidy_config_count</a> — Returns the Number of Tidy configuration errors encountered for specified document</li><li><a href="function.tidy-construct.html">tidy::__construct</a> — Constructs a new tidy object</li><li><a href="function.tidy-diagnose.html">tidy_diagnose</a> — Run configured diagnostics on parsed and repaired markup</li><li><a href="function.tidy-error-count.html">tidy_error_count</a> — Returns the Number of Tidy errors encountered for specified document</li><li><a href="function.tidy-get-body.html">tidy_get_body</a> — Returns a tidyNode Object starting from the <body> tag of the tidy parse tree</li><li><a href="function.tidy-get-config.html">tidy_get_config</a> — Get current Tidy configuration</li><li><a href="function.tidy-get-error-buffer.html">tidy_get_error_buffer</a> — Return warnings and errors which occurred parsing the specified document</li><li><a href="function.tidy-get-head.html">tidy_get_head</a> — Returns a tidyNode Object starting from the <head> tag of the tidy parse tree</li><li><a href="function.tidy-get-html-ver.html">tidy_get_html_ver</a> — Get the Detected HTML version for the specified document</li><li><a href="function.tidy-get-html.html">tidy_get_html</a> — Returns a tidyNode Object starting from the <html> tag of the tidy parse tree</li><li><a href="function.tidy-get-opt-doc.html">tidy_get_opt_doc</a> — Returns the documentation for the given option name</li><li><a href="function.tidy-get-output.html">tidy_get_output</a> — Return a string representing the parsed tidy markup</li><li><a href="function.tidy-get-release.html">tidy_get_release</a> — Get release date (version) for Tidy library</li><li><a href="function.tidy-get-root.html">tidy_get_root</a> — Returns a tidyNode object representing the root of the tidy parse tree</li><li><a href="function.tidy-get-status.html">tidy_get_status</a> — Get status of specified document</li><li><a href="function.tidy-getopt.html">tidy_getopt</a> — Returns the value of the specified configuration option for the tidy document</li><li><a href="function.tidy-is-xhtml.html">tidy_is_xhtml</a> — Indicates if the document is a XHTML document</li><li><a href="function.tidy-is-xml.html">tidy_is_xml</a> — Indicates if the document is a generic (non HTML/XHTML) XML document</li><li><a href="function.tidy-load-config.html">tidy_load_config</a> — Load an ASCII Tidy configuration file with the specified encoding</li><li><a href="function.tidy-node-get-attr.html">tidy_node->get_attr</a> — Return the attribute with the provided attribute id</li><li><a href="function.tidy-node-get-nodes.html">tidy_node->get_nodes</a> — Return an array of nodes under this node with the specified id</li><li><a href="function.tidy-node-next.html">tidy_node->next</a> — Returns the next sibling to this node</li><li><a href="function.tidy-node-prev.html">tidy_node->prev</a> — Returns the previous sibling to this node</li><li><a href="function.tidy-parse-file.html">tidy_parse_file</a> — Parse markup in file or URI</li><li><a href="function.tidy-parse-string.html">tidy_parse_string</a> — Parse a document stored in a string</li><li><a href="function.tidy-repair-file.html">tidy_repair_file</a> — Repair a file and return it as a string</li><li><a href="function.tidy-repair-string.html">tidy_repair_string</a> — Repair a string using an optionally provided configuration file</li><li><a href="function.tidy-reset-config.html">tidy_reset_config</a> — Restore Tidy configuration to default values</li><li><a href="function.tidy-save-config.html">tidy_save_config</a> — Save current settings to named file</li><li><a href="function.tidy-set-encoding.html">tidy_set_encoding</a> — Set the input/output character encoding for parsing markup</li><li><a href="function.tidy-setopt.html">tidy_setopt</a> — Updates the configuration settings for the specified tidy document</li><li><a href="function.tidy-warning-count.html">tidy_warning_count</a> — Returns the Number of Tidy warnings encountered for specified document</li><li><a href="function.tidyNode-hasChildren.html">tidyNode->hasChildren</a> — Returns true if this node has children</li><li><a href="function.tidyNode-hasSiblings.html">tidyNode->hasSiblings</a> — Returns true if this node has siblings</li><li><a href="function.tidyNode-isAsp.html">tidyNode->isAsp</a> — Returns true if this node is ASP</li><li><a href="function.tidyNode-isComment.html">tidyNode->isComment</a> — Returns true if this node represents a comment</li><li><a href="function.tidyNode-isHtml.html">tidyNode->isHtml</a> — Returns true if this node is part of a HTML document</li><li><a href="function.tidyNode-isJste.html">tidyNode->isJste</a> — Returns true if this node is JSTE</li><li><a href="function.tidyNode-isPhp.html">tidyNode->isPhp</a> — Returns true if this node is PHP</li><li><a href="function.tidyNode-isText.html">tidyNode->isText</a> — Returns true if this node represents text (no markup)</li><li><a href="function.tidynode-getparent.html">tidyNode::getParent</a> — returns the parent node of the current node</li></ul>
+</div>
+<hr /><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="book.tidy.html">Tidy</a></div>
+ <div class="next" style="float: right;"><a href="function.ob-tidyhandler.html">ob_tidyhandler</a></div>
+ <div class="up"><a href="book.tidy.html">Tidy</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

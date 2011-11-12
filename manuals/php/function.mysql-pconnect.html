@@ -1,0 +1,114 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <title>Устанавливает постоянное соединение с сервером MySQL.</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+ </head>
+ <body><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="function.mysql-num-rows.html">mysql_num_rows</a></div>
+ <div class="next" style="float: right;"><a href="function.mysql-ping.html">mysql_ping</a></div>
+ <div class="up"><a href="ref.mysql.html">MySQL</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="function.mysql-pconnect" class="refentry">
+   <div class="refnamediv">
+    <h1 class="refname">mysql_pconnect</h1>
+    <p class="verinfo">(PHP 4, PHP 5, PECL mysql:1.0)</p><p class="refpurpose dc-title">mysql_pconnect — 
+     Устанавливает постоянное соединение с сервером MySQL.
+    </p>
+
+   </div>
+   <div class="refsect1 unknown">
+    <h3 class="title">Описание</h3>
+     <div class="methodsynopsis dc-description">
+      <span class="type">resource</span> <span class="methodname"><b><b>mysql_pconnect</b></b></span>
+       ([ <span class="methodparam"><span class="type">string</span> <tt class="parameter">$server</tt></span>
+      [, <span class="methodparam"><span class="type">string</span> <tt class="parameter">$username</tt></span>
+      [, <span class="methodparam"><span class="type">string</span> <tt class="parameter">$password</tt></span>
+      [, <span class="methodparam"><span class="type">int</span> <tt class="parameter">$client_flags</tt></span>
+     ]]]] )</div>
+
+    <p class="para rdfs-comment">
+     Возвращает указатель на постоянное соединение с MySQL или <b><tt>FALSE</tt></b>, в
+     случае ошибки.
+    </p>
+    <p class="para">
+     <b>mysql_pconnect()</b> устанавливает постоянное соединение с сервером 
+     MySQL. Следующие значения по умолчанию установлены для отсутсвующих
+     параметров: <i><tt class="parameter">server</tt></i>
+ = &#039;localhost:3306&#039;, 
+     <i><tt class="parameter">username</tt></i>
+ = имя пользователя владельца процесса 
+     сервера и <i><tt class="parameter">password</tt></i>
+ = пустой пароль.
+     Параметр <i><tt class="parameter">client_flags</tt></i>
+ может быть комбинацией
+     следующих констант: MYSQL_CLIENT_COMPRESS, MYSQL_CLIENT_IGNORE_SPACE,
+     MYSQL_CLIENT_INTERACTIVE.
+    </p>
+
+
+    <p class="para">
+     Параметр <i><tt class="parameter">server</tt></i>
+ может также включать номер
+     порта, к примеру &quot;hostname:port&quot; или путь к сокету,
+     к примеру &quot;:/path/to/socket&quot; для локального сервера.
+     <blockquote><p><b class="note">Замечание</b>: 
+      
+       Поддержка указания порта через &quot;:port&quot; была
+       добавлена в PHP 3.0B4.
+      <br />
+      
+       Поддержка указания локального сокета как &quot;:/path/to/socket&quot;
+       была добавлена в PHP 3.0.10.
+      <br />
+     </p></blockquote>
+    </p>
+
+    
+    <p class="para">
+     <b>mysql_pconnect()</b> работает аналогично
+     <a href="function.mysql-connect.html" class="function">mysql_connect()</a> с двумя отличиями.
+    </p>
+    <p class="para">
+     Во-первых, при соединении, функция пытается найти уже открытый
+     (постоянный) указатель на тот же сервер с тем же пользователем и паролем.
+     Если он найден, возвращён функцией будет именно он, вместо открытия
+     нового соединения.
+    </p>
+    <p class="para">
+     Во-вторых, соединение с SQL-сервером не будет закрыто, когда работа
+     скрипта закончится. Вместо этого, оно останется рабочим для будущего
+     использования (<a href="function.mysql-close.html" class="function">mysql_close()</a> также не закрывает
+     постоянные соединения)
+    </p>
+    <p class="para">
+     Опциональный параметр <i><tt class="parameter">client_flags</tt></i>
+ появился в PHP 4.3.0.
+    </p>
+    <p class="para">
+     Соединения такого типа называют &#039;постоянными&#039;.
+    </p>
+    <blockquote><p><b class="note">Замечание</b>: 
+     
+      Учтите, что соединения такого типа работают только, если
+      PHP установлен как модуль. За дополнительной информацией обращайтесь к
+      разделу 
+      <a href="features.persistent-connections.html" class="link">Постоянные Соединения с
+      Базами Данных</a>.
+     <br />
+    </p></blockquote>
+    <div class="warning"><b class="warning">Внимание</b>
+     <p class="para">
+      Использование устойчивых соединений может потребовать некоторой
+      настройки Apache и MySQL. Убедитесь, что вы не превысите максимальное
+      число дозволенных соединений.
+     </p>
+    </div>
+   </div>
+
+  </div><hr /><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="function.mysql-num-rows.html">mysql_num_rows</a></div>
+ <div class="next" style="float: right;"><a href="function.mysql-ping.html">mysql_ping</a></div>
+ <div class="up"><a href="ref.mysql.html">MySQL</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

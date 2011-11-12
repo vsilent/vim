@@ -1,0 +1,60 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <title>Почему не надо использовать волшебные кавычки</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+ </head>
+ <body><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="security.magicquotes.why.html">Зачем использовать волшебные кавычки?</a></div>
+ <div class="next" style="float: right;"><a href="security.magicquotes.disabling.html">Отключение волшебных кавычек</a></div>
+ <div class="up"><a href="security.magicquotes.html">Волшебные кавычки</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="security.magicquotes.whynot" class="sect1">
+    <h2 class="title">Почему не надо использовать волшебные кавычки</h2>
+    <ul class="itemizedlist">
+     <li class="listitem">
+      <span class="simpara">
+       Переносимость
+      </span>
+      <span class="simpara">
+      	Возможность присваивания значений on или off сказывается на
+      	переносимости. Используйте <a href="function.get-magic-quotes-gpc.html" class="function">get_magic_quotes_gpc()</a>
+      	для проверки и пишите код соответствующим образом.
+      </span>
+     </li>
+     <li class="listitem">
+      <span class="simpara">
+       Производительность
+      </span>
+      <span class="simpara">
+       Так как не все данные заносятся в базу данных, то присутствует потеря
+       производительности при экранировании всех данных. Простой вызов
+       экранирующих функций (например, <a href="function.addslashes.html" class="function">addslashes()</a>)
+       во время выполнения более эффективен.
+      </span>
+      <span class="simpara">
+       Хотя <var class="filename">php.ini-dist</var> включает эти директивы по
+       умолчанию, <var class="filename">php.ini-recommended</var> отключает их.
+       Эта рекомендация соответствует, в основном, по причинам
+       производительности.
+      </span>
+     </li>
+     <li class="listitem">
+      <span class="simpara">
+       Неудобство
+      </span>
+      <span class="simpara">
+       Так как не все данные должны быть экранированы, то часто досадно
+       видеть экранированные данные там, где этого не должно быть.
+       Например, при отправке письма из формы можно наблюдать связку \&#039;
+       в самом письме. Для того, чтобы это исправить, требуется дополнительно
+       использовать <a href="function.stripslashes.html" class="function">stripslashes()</a>.
+      </span>
+     </li>
+    </ul>
+   </div><hr /><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="security.magicquotes.why.html">Зачем использовать волшебные кавычки?</a></div>
+ <div class="next" style="float: right;"><a href="security.magicquotes.disabling.html">Отключение волшебных кавычек</a></div>
+ <div class="up"><a href="security.magicquotes.html">Волшебные кавычки</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

@@ -1,0 +1,69 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <title>Находит наибольшее значение</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+ </head>
+ <body><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="function.log.html">log</a></div>
+ <div class="next" style="float: right;"><a href="function.min.html">min</a></div>
+ <div class="up"><a href="ref.math.html">Математические функции</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="function.max" class="refentry">
+   <div class="refnamediv">
+    <h1 class="refname">max</h1>
+    <p class="verinfo">(PHP 4, PHP 5)</p><p class="refpurpose dc-title">max — Находит наибольшее значение</p>
+
+   </div>
+   <div class="refsect1 unknown">
+    <h3 class="title">Описание</h3>
+    <div class="methodsynopsis dc-description">
+     <span class="type"><a href="language.pseudo-types.html#language.types.mixed" class="type mixed">mixed</a></span> <span class="methodname"><b><b>max</b></b></span>
+      ( <span class="methodparam"><span class="type"><a href="language.pseudo-types.html#language.types.number" class="type number">number</a></span> <tt class="parameter">$arg1</tt></span>
+     , <span class="methodparam"><span class="type"><a href="language.pseudo-types.html#language.types.number" class="type number">number</a></span> <tt class="parameter">$arg2</tt></span>
+     [, <span class="methodparam"><span class="type"><a href="language.pseudo-types.html#language.types.number" class="type number">number</a></span> <tt class="parameter">$...</tt></span>
+    ] )</div>
+
+    <div class="methodsynopsis dc-description">
+     <span class="type"><a href="language.pseudo-types.html#language.types.mixed" class="type mixed">mixed</a></span> <span class="methodname"><b><b>max</b></b></span>
+      ( <span class="methodparam"><span class="type">array</span> <tt class="parameter">$numbers</tt></span>
+     )</div>
+
+    <p class="para rdfs-comment">
+     Возвращает наибольшее из предложенных чисел.
+    </p>
+    <p class="para">
+     Если в качестве аргументов передан только один - массив чисел, <b>max()</b> возвращает наибольшее из них.
+     Если первый аргумент - integer или float, то обязательно должен быть хотя бы ещё один. В этом случае функция вернёт наибольшее из них.
+     Можно сравнивать неограниченное количество чисел.
+    </p>
+    <blockquote><p><b class="note">Замечание</b>: 
+     
+      PHP считает строку, которую не удалось преобразовать в число, как <i>0</i>, но вернёт саму строку, в случае, если все остальные числа отрицательные.
+      Если указано несколько элементов, эквивалентных      <i>0</i>, <b>max()</b> вернёт первый из них (самый левый).
+     <br />
+    </p></blockquote>
+    <p class="para">
+     <div class="example">
+      <p><b>Пример #1 Примеры использования <b>max()</b></b></p>
+      <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">max</span><span style="color: #007700">(</span><span style="color: #0000BB">1</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">3</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">5</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">6</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">7</span><span style="color: #007700">);&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;7<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">max</span><span style="color: #007700">(array(</span><span style="color: #0000BB">2</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">4</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">5</span><span style="color: #007700">));&nbsp;</span><span style="color: #FF8000">//&nbsp;5<br /><br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">max</span><span style="color: #007700">(</span><span style="color: #0000BB">0</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'hello'</span><span style="color: #007700">);&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;0<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">max</span><span style="color: #007700">(</span><span style="color: #DD0000">'hello'</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">0</span><span style="color: #007700">);&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;hello<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">max</span><span style="color: #007700">(-</span><span style="color: #0000BB">1</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'hello'</span><span style="color: #007700">);&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;hello<br /><br />//&nbsp;При&nbsp;указании&nbsp;нескольких&nbsp;массивов,&nbsp;они&nbsp;сравниваются&nbsp;полностью<br />//&nbsp;в&nbsp;нашем&nbsp;примере:&nbsp;2&nbsp;==&nbsp;2,&nbsp;но&nbsp;4&nbsp;&lt;&nbsp;5<br /></span><span style="color: #0000BB">$val&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">max</span><span style="color: #007700">(array(</span><span style="color: #0000BB">2</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">4</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">8</span><span style="color: #007700">),&nbsp;array(</span><span style="color: #0000BB">2</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">5</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">7</span><span style="color: #007700">));&nbsp;</span><span style="color: #FF8000">//&nbsp;array(2,&nbsp;5,&nbsp;7)<br /><br />//&nbsp;При&nbsp;указании&nbsp;массива&nbsp;и&nbsp;отдельных&nbsp;чисел,<br />//&nbsp;всегда&nbsp;возвращается&nbsp;массив,&nbsp;т.к.&nbsp;он&nbsp;считается&nbsp;самым&nbsp;большим<br /></span><span style="color: #0000BB">$val&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">max</span><span style="color: #007700">(</span><span style="color: #DD0000">'string'</span><span style="color: #007700">,&nbsp;array(</span><span style="color: #0000BB">2</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">5</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">7</span><span style="color: #007700">),&nbsp;</span><span style="color: #0000BB">42</span><span style="color: #007700">);&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;array(2,&nbsp;5,&nbsp;7)<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+      </div>
+
+     </div>
+    </p>
+    <p class="para">
+     См также <a href="function.min.html" class="function">min()</a> и
+     <a href="function.count.html" class="function">count()</a>.
+    </p>
+   </div>
+
+  </div><hr /><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="function.log.html">log</a></div>
+ <div class="next" style="float: right;"><a href="function.min.html">min</a></div>
+ <div class="up"><a href="ref.math.html">Математические функции</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

@@ -1,0 +1,61 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <title>Возвращает элемент из списка аргументов</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+ </head>
+ <body><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="function.create-function.html">create_function</a></div>
+ <div class="next" style="float: right;"><a href="function.func-get-args.html">func_get_args</a></div>
+ <div class="up"><a href="ref.funchand.html">Управление функциями</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="function.func-get-arg" class="refentry">
+   <div class="refnamediv">
+    <h1 class="refname">func_get_arg</h1>
+    <p class="verinfo">(PHP 4, PHP 5)</p><p class="refpurpose dc-title">func_get_arg — Возвращает элемент из списка аргументов</p>
+
+   </div>
+   <div class="refsect1 unknown">
+    <h3 class="title">Описание</h3>
+     <div class="methodsynopsis dc-description">
+      <span class="type"><a href="language.pseudo-types.html#language.types.mixed" class="type mixed">mixed</a></span> <span class="methodname"><b><b>func_get_arg</b></b></span>
+       ( <span class="methodparam"><span class="type">int</span> <tt class="parameter">$arg_num</tt></span>
+      )</div>
+
+    <p class="simpara">
+     Возвращает <i><tt class="parameter">arg_num</tt></i>
+-ый аргумент из списка 
+     аргументов пользовательской функции. Нумерация аргументов функции 
+     начинается с нуля. <b>func_get_arg()</b> генерирует
+     предупреждение при вызове вне определения функции.
+    </p>
+    <p class="simpara">
+     Если <i><tt class="parameter">arg_num</tt></i>
+ больше количества
+     переданных аргументов, будет сгенерировано предупреждение и
+     <b>func_get_arg()</b> вернет <b><tt>FALSE</tt></b>.
+    </p>
+    <p class="para">
+     <div class="informalexample">
+      <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">function&nbsp;</span><span style="color: #0000BB">foo</span><span style="color: #007700">()&nbsp;<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$numargs&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">func_num_args</span><span style="color: #007700">();<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"Number&nbsp;of&nbsp;arguments:&nbsp;$numargs&lt;br&nbsp;/&gt;\n"</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(</span><span style="color: #0000BB">$numargs&nbsp;</span><span style="color: #007700">&gt;=&nbsp;</span><span style="color: #0000BB">2</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"Second&nbsp;argument&nbsp;is:&nbsp;"&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #0000BB">func_get_arg</span><span style="color: #007700">(</span><span style="color: #0000BB">1</span><span style="color: #007700">)&nbsp;.&nbsp;</span><span style="color: #DD0000">"&lt;br&nbsp;/&gt;\n"</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br />}&nbsp;<br /><br /></span><span style="color: #0000BB">foo&nbsp;</span><span style="color: #007700">(</span><span style="color: #0000BB">1</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">2</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">3</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+      </div>
+
+     </div>
+    </p>
+    <p class="simpara">
+     <b>func_get_arg()</b> может быть использована совместно с
+     <a href="function.func-num-args.html" class="function">func_num_args()</a> и <a href="function.func-get-args.html" class="function">func_get_args()</a> 
+     для создания функций с переменным количеством аргументов.
+    </p>
+   </div>
+
+  </div><hr /><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="function.create-function.html">create_function</a></div>
+ <div class="next" style="float: right;"><a href="function.func-get-args.html">func_get_args</a></div>
+ <div class="up"><a href="ref.funchand.html">Управление функциями</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

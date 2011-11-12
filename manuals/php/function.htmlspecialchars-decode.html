@@ -1,0 +1,163 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <title>Преобразует специальные HTML-сущности обратно в соответствующие символы</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+ </head>
+ <body><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="function.htmlentities.html">htmlentities</a></div>
+ <div class="next" style="float: right;"><a href="function.htmlspecialchars.html">htmlspecialchars</a></div>
+ <div class="up"><a href="ref.strings.html">Функции обработки строк</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="function.htmlspecialchars-decode" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">htmlspecialchars_decode</h1>
+  <p class="verinfo">(PHP 5 &gt;= 5.1.0)</p><p class="refpurpose dc-title">htmlspecialchars_decode — 
+   Преобразует специальные HTML-сущности обратно в соответствующие символы
+  </p>
+
+ </div>
+ <div class="refsect1 description">
+  <h3 class="title">Описание</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type">string</span> <span class="methodname"><b><b>htmlspecialchars_decode</b></b></span>
+    ( <span class="methodparam"><span class="type">string</span> <tt class="parameter">$string</tt></span>
+   [, <span class="methodparam"><span class="type">int</span> <tt class="parameter">$quote_style</tt></span>
+  ] )</div>
+
+
+  <p class="para rdfs-comment">
+   Эта функция является обратной к <a href="function.htmlspecialchars.html" class="function">htmlspecialchars()</a>. Она
+   преобразует специальные HTML-сущности обратно в соответствующие символы.
+  </p>
+  <p class="para">
+   Конвертируемые сущности : <i>&amp;amp;</i>,
+   <i>&amp;quot;</i> (когда ENT_NOQUOTES не установлена),
+   <i>&amp;#039;</i> (когда ENT_QUOTES установлена),
+   <i>&amp;lt;</i> and <i>&amp;gt;</i>.
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters">
+  <h3 class="title">Список параметров</h3>
+  <p class="para">
+   <dl>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">string</tt></i>
+</span>
+
+     <dd>
+
+      <p class="para">
+       Строка, которую надо преобразовать
+      </p>
+     </dd>
+
+    </dt>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">quote_style</tt></i>
+</span>
+
+     <dd>
+
+      <p class="para">
+       Стиль ковычек. Может принимать значение одной из следующих констант:
+       <table border="5">
+        <caption><b>Константы quote_style</b></caption>
+        <colgroup>
+
+         <thead valign="middle">
+          <tr valign="middle">
+           <th colspan="1">Имя константы</th>
+           <th colspan="1">Описание</th>
+          </tr>
+
+         </thead>
+
+         <tbody valign="middle" class="tbody">
+          <tr valign="middle">
+           <td colspan="1" rowspan="1" align="left"><b><tt>ENT_COMPAT</tt></b></td>
+           <td colspan="1" rowspan="1" align="left">Преобразовывать двойные ковычки и пропускать одинарные
+            (по умолчанию)</td>
+          </tr>
+
+          <tr valign="middle">
+           <td colspan="1" rowspan="1" align="left"><b><tt>ENT_QUOTES</tt></b></td>
+           <td colspan="1" rowspan="1" align="left">Преобразовывать и двойные, и одинарные ковычки</td>
+          </tr>
+
+          <tr valign="middle">
+           <td colspan="1" rowspan="1" align="left"><b><tt>ENT_NOQUOTES</tt></b></td>
+           <td colspan="1" rowspan="1" align="left">Не преобразовывать ни двойные, ни одинарные ковычки</td>
+          </tr>
+
+         </tbody>
+        </colgroup>
+
+       </table>
+
+      </p>
+     </dd>
+
+    </dt>
+
+   </dl>
+
+  </p>
+ </div>
+
+
+ <div class="refsect1 returnvalues">
+  <h3 class="title">Возвращаемые значения</h3>
+  <p class="para">
+   Возвращает преобразованную строку.
+  </p>
+ </div>
+
+
+ <div class="refsect1 examples">
+  <h3 class="title">Примеры</h3>
+  <p class="para">
+   <div class="example">
+    <p><b>Пример #1 Пример использования функции <b>htmlspecialchars_decode()</b></b></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$str&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">'&lt;p&gt;this&nbsp;-&amp;gt;&nbsp;&amp;quot;&lt;/p&gt;'</span><span style="color: #007700">;<br /><br />echo&nbsp;</span><span style="color: #0000BB">htmlspecialchars_decode</span><span style="color: #007700">(</span><span style="color: #0000BB">$str</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">//&nbsp;обратите&nbsp;внимание,&nbsp;что&nbsp;в&nbsp;данном&nbsp;случае&nbsp;ковычки&nbsp;не&nbsp;будут&nbsp;преобразованы<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">htmlspecialchars_decode</span><span style="color: #007700">(</span><span style="color: #0000BB">$str</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">ENT_NOQUOTES</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+    <div class="example-contents"><p>Результат выполнения данного примера:</p></div>
+    <div class="example-contents"><pre>
+<div class="cdata"><pre>
+&lt;p&gt;this -&gt; &quot;&lt;/p&gt;
+&lt;p&gt;this -&gt; &amp;quot;&lt;/p&gt;
+</pre></div>
+    </pre></div>
+   </div>
+  </p>
+ </div>
+
+
+ <div class="refsect1 seealso">
+  <h3 class="title">Смотрите также</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"><a href="function.htmlspecialchars.html" class="function" rel="rdfs-seeAlso">htmlspecialchars()</a></li>
+    <li class="member"><a href="function.html-entity-decode.html" class="function" rel="rdfs-seeAlso">html_entity_decode()</a></li>
+    <li class="member"><a href="function.get-html-translation-table.html" class="function" rel="rdfs-seeAlso">get_html_translation_table()</a></li>
+   </ul>
+  </p>
+ </div>
+
+</div><hr /><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="function.htmlentities.html">htmlentities</a></div>
+ <div class="next" style="float: right;"><a href="function.htmlspecialchars.html">htmlspecialchars</a></div>
+ <div class="up"><a href="ref.strings.html">Функции обработки строк</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

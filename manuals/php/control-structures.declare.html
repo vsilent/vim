@@ -1,0 +1,108 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <title>declare</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+ </head>
+ <body><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="control-structures.switch.html">switch</a></div>
+ <div class="next" style="float: right;"><a href="function.return.html">return</a></div>
+ <div class="up"><a href="language.control-structures.html">Control Structures</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="control-structures.declare" class="sect1">
+   <h2 class="title"><i>declare</i></h2>
+   <p class="para">
+    The <i>declare</i> construct is used to
+    set execution directives for a block of code.
+    The syntax of <i>declare</i> is similar to
+    the syntax of other flow control constructs:
+    <div class="informalexample">
+     <div class="example-contents">
+<div class="cdata"><pre>
+declare (directive)
+    statement
+</pre></div>
+     </div>
+
+    </div>
+   </p>
+   <p class="para">
+    The <i>directive</i> section allows the
+    behavior of the <i>declare</i> block to
+    be set.
+    Currently only one directive is recognized: the
+    <i>ticks</i> directive. (See below for more
+    information on the
+    <a href="control-structures.declare.html#control-structures.declare.ticks" class="link">ticks</a>
+    directive)
+   </p>
+   <p class="para">
+    The <i>statement</i> part of the
+    <i>declare</i> block will be executed -- how
+    it is executed and what side effects occur during execution
+    may depend on the directive set in the
+    <i>directive</i> block.
+   </p>
+   <p class="para">
+    The <i>declare</i> construct can also be used in the global
+    scope, affecting all code following it.
+    <div class="informalexample">
+     <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">//&nbsp;these&nbsp;are&nbsp;the&nbsp;same:<br /><br />//&nbsp;you&nbsp;can&nbsp;use&nbsp;this:<br /></span><span style="color: #007700">declare(</span><span style="color: #0000BB">ticks</span><span style="color: #007700">=</span><span style="color: #0000BB">1</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;entire&nbsp;script&nbsp;here<br /></span><span style="color: #007700">}<br /><br /></span><span style="color: #FF8000">//&nbsp;or&nbsp;you&nbsp;can&nbsp;use&nbsp;this:<br /></span><span style="color: #007700">declare(</span><span style="color: #0000BB">ticks</span><span style="color: #007700">=</span><span style="color: #0000BB">1</span><span style="color: #007700">);<br /></span><span style="color: #FF8000">//&nbsp;entire&nbsp;script&nbsp;here<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+     </div>
+
+    </div>
+   </p>
+   <div id="control-structures.declare.ticks" class="sect2">
+    <h3 class="title">Ticks</h3>
+    <p class="para">A tick is an event that occurs for every
+    <var class="varname">N</var> low-level statements executed
+    by the parser within the <i>declare</i> block.
+    The value for <var class="varname">N</var> is specified
+    using <code class="code">ticks=<var class="varname">N</var></code>
+    within the <i>declare</i> blocks&#039;s
+    <i>directive</i> section.
+   </p>
+   <p class="para">
+    The event(s) that occur on each tick are specified using the
+    <a href="function.register-tick-function.html" class="function">register_tick_function()</a>. See the example
+    below for more details. Note that more than one event can occur
+    for each tick.
+   </p>
+   <p class="para">
+    <div class="example">
+     <p><b>Пример #1 Profile a section of PHP code</b></p>
+     <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">//&nbsp;A&nbsp;function&nbsp;that&nbsp;records&nbsp;the&nbsp;time&nbsp;when&nbsp;it&nbsp;is&nbsp;called<br /></span><span style="color: #007700">function&nbsp;</span><span style="color: #0000BB">profile</span><span style="color: #007700">(</span><span style="color: #0000BB">$dump&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">FALSE</span><span style="color: #007700">)<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;static&nbsp;</span><span style="color: #0000BB">$profile</span><span style="color: #007700">;<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;Return&nbsp;the&nbsp;times&nbsp;stored&nbsp;in&nbsp;profile,&nbsp;then&nbsp;erase&nbsp;it<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">if&nbsp;(</span><span style="color: #0000BB">$dump</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$temp&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$profile</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;unset(</span><span style="color: #0000BB">$profile</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">$temp</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$profile</span><span style="color: #007700">[]&nbsp;=&nbsp;</span><span style="color: #0000BB">microtime</span><span style="color: #007700">();<br />}<br /><br /></span><span style="color: #FF8000">//&nbsp;Set&nbsp;up&nbsp;a&nbsp;tick&nbsp;handler<br /></span><span style="color: #0000BB">register_tick_function</span><span style="color: #007700">(</span><span style="color: #DD0000">"profile"</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">//&nbsp;Initialize&nbsp;the&nbsp;function&nbsp;before&nbsp;the&nbsp;declare&nbsp;block<br /></span><span style="color: #0000BB">profile</span><span style="color: #007700">();<br /><br /></span><span style="color: #FF8000">//&nbsp;Run&nbsp;a&nbsp;block&nbsp;of&nbsp;code,&nbsp;throw&nbsp;a&nbsp;tick&nbsp;every&nbsp;2nd&nbsp;statement<br /></span><span style="color: #007700">declare(</span><span style="color: #0000BB">ticks</span><span style="color: #007700">=</span><span style="color: #0000BB">2</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;for&nbsp;(</span><span style="color: #0000BB">$x&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">1</span><span style="color: #007700">;&nbsp;</span><span style="color: #0000BB">$x&nbsp;</span><span style="color: #007700">&lt;&nbsp;</span><span style="color: #0000BB">50</span><span style="color: #007700">;&nbsp;++</span><span style="color: #0000BB">$x</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #0000BB">similar_text</span><span style="color: #007700">(</span><span style="color: #0000BB">md5</span><span style="color: #007700">(</span><span style="color: #0000BB">$x</span><span style="color: #007700">),&nbsp;</span><span style="color: #0000BB">md5</span><span style="color: #007700">(</span><span style="color: #0000BB">$x</span><span style="color: #007700">*</span><span style="color: #0000BB">$x</span><span style="color: #007700">)),&nbsp;</span><span style="color: #DD0000">"&lt;br&nbsp;/&gt;;"</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />}<br /><br /></span><span style="color: #FF8000">//&nbsp;Display&nbsp;the&nbsp;data&nbsp;stored&nbsp;in&nbsp;the&nbsp;profiler<br /></span><span style="color: #0000BB">print_r</span><span style="color: #007700">(</span><span style="color: #0000BB">profile</span><span style="color: #007700">(</span><span style="color: #0000BB">TRUE</span><span style="color: #007700">));<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+     </div>
+
+    </div>
+    The example profiles the PHP code within the &#039;declare&#039;
+    block, recording the time at which every second low-level
+    statement in the block was executed. This information can
+    then be used to find the slow areas within particular
+    segments of code. This process can be performed using other
+    methods: using ticks is more convenient and easier to
+    implement.
+   </p>
+   <p class="simpara">
+    Ticks are well suited for debugging, implementing simple
+    multitasking, background I/O and many other tasks.
+   </p>
+   <p class="simpara">
+    See also <a href="function.register-tick-function.html" class="function">register_tick_function()</a> and
+    <a href="function.unregister-tick-function.html" class="function">unregister_tick_function()</a>.
+   </p>
+   </div>
+  </div><hr /><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="control-structures.switch.html">switch</a></div>
+ <div class="next" style="float: right;"><a href="function.return.html">return</a></div>
+ <div class="up"><a href="language.control-structures.html">Control Structures</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

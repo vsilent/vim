@@ -1,0 +1,56 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <title>Выполняет запрос CURL</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+ </head>
+ <body><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="function.curl-error.html">curl_error</a></div>
+ <div class="next" style="float: right;"><a href="function.curl-getinfo.html">curl_getinfo</a></div>
+ <div class="up"><a href="ref.curl.html">CURL</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="function.curl-exec" class="refentry">
+   <div class="refnamediv">
+    <h1 class="refname">curl_exec</h1>
+    <p class="verinfo">(PHP 4 &gt;= 4.0.2, PHP 5)</p><p class="refpurpose dc-title">curl_exec — Выполняет запрос CURL</p>
+
+   </div>
+   <div class="refsect1 unknown">
+    <h3 class="title">Описание</h3>
+     <div class="methodsynopsis dc-description">
+      <span class="type"><a href="language.pseudo-types.html#language.types.mixed" class="type mixed">mixed</a></span> <span class="methodname"><b><b>curl_exec</b></b></span>
+       ( <span class="methodparam"><span class="type">resource</span> <tt class="parameter">$ch</tt></span>
+      )</div>
+
+    <p class="para rdfs-comment">
+     Эта функция вызывается после инициализации сеанса и установки всех 
+     необходимых параметров.  Именна эта функция фактически выполняет 
+     требуемую операцию.
+     <div class="example">
+      <p><b>Пример #1 
+       Инициализация сеанса CURL и загрузка web-страницы
+      </b></p>
+      <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">//&nbsp;инициализация&nbsp;сеанса<br /></span><span style="color: #0000BB">$ch&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">curl_init</span><span style="color: #007700">();<br /><br /></span><span style="color: #FF8000">//&nbsp;установка&nbsp;URL&nbsp;и&nbsp;других&nbsp;необходимых&nbsp;параметров<br /></span><span style="color: #0000BB">curl_setopt</span><span style="color: #007700">(</span><span style="color: #0000BB">$ch</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">CURLOPT_URL</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"http://www.example.com/"</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">curl_setopt</span><span style="color: #007700">(</span><span style="color: #0000BB">$ch</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">CURLOPT_HEADER</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">0</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">//&nbsp;загрузка&nbsp;страницы&nbsp;и&nbsp;выдача&nbsp;её&nbsp;браузеру<br /></span><span style="color: #0000BB">curl_exec</span><span style="color: #007700">(</span><span style="color: #0000BB">$ch</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">//&nbsp;завершение&nbsp;сеанса&nbsp;и&nbsp;освобождение&nbsp;ресурсов<br /></span><span style="color: #0000BB">curl_close</span><span style="color: #007700">(</span><span style="color: #0000BB">$ch</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+      </div>
+
+     </div>
+    </p>
+    <blockquote><p><b class="note">Замечание</b>: 
+     
+      Если вам нужно, чтобы эта функция вернула результат, а не вывела 
+      его в браузер, используйте опцию CURLOPT_RETURNTRANSFER с функцией
+      <a href="function.curl-setopt.html" class="function">curl_setopt()</a>.
+     <br />
+    </p></blockquote>
+   </div>
+
+  </div><hr /><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="function.curl-error.html">curl_error</a></div>
+ <div class="next" style="float: right;"><a href="function.curl-getinfo.html">curl_getinfo</a></div>
+ <div class="up"><a href="ref.curl.html">CURL</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

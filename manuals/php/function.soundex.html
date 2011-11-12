@@ -1,0 +1,66 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <title>Возвращает ключ soundex для строки</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+ </head>
+ <body><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="function.similar-text.html">similar_text</a></div>
+ <div class="next" style="float: right;"><a href="function.sprintf.html">sprintf</a></div>
+ <div class="up"><a href="ref.strings.html">Функции обработки строк</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="function.soundex" class="refentry">
+   <div class="refnamediv">
+    <h1 class="refname">soundex</h1>
+    <p class="verinfo">(PHP 4, PHP 5)</p><p class="refpurpose dc-title">soundex — Возвращает ключ soundex для строки</p>
+
+   </div>
+   <div class="refsect1 unknown">
+    <h3 class="title">Описание</h3>
+     <div class="methodsynopsis dc-description">
+      <span class="type">string</span> <span class="methodname"><b><b>soundex</b></b></span>
+       ( <span class="methodparam"><span class="type">string</span> <tt class="parameter">$str</tt></span>
+      )</div>
+
+    <p class="para rdfs-comment">
+     Возвращает ключ soundex для строки <i><tt class="parameter">str</tt></i>
+.
+    </p>
+    <p class="para">
+     Двум словам, имеющим схожее произношение, соответствует один и тот же
+     ключ soundex. Это свойство может быть использовано, например, при 
+     поиске по базе даных, когда известно произношение слова и неизвестно 
+     его написание. Данная функция возвращает строку из 4 символов, 
+     начинающуюся с буквы.
+    </p>
+    <p class="para">
+     Данная реализация функции soundex описана Дональдом Кнутом (Donald 
+     Knuth) в книге &quot;The Art Of Computer Programming, vol. 3: Sorting And
+     Searching&quot;, Addison-Wesley (1973), стр. 391-392.
+    </p>
+    <p class="para">
+     <div class="example">
+      <p><b>Пример #1 Примеры soundex</b></p>
+      <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />soundex</span><span style="color: #007700">(</span><span style="color: #DD0000">"Euler"</span><span style="color: #007700">)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;==&nbsp;</span><span style="color: #0000BB">soundex</span><span style="color: #007700">(</span><span style="color: #DD0000">"Ellery"</span><span style="color: #007700">);&nbsp;</span><span style="color: #FF8000">//&nbsp;E460<br /></span><span style="color: #0000BB">soundex</span><span style="color: #007700">(</span><span style="color: #DD0000">"Gauss"</span><span style="color: #007700">)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;==&nbsp;</span><span style="color: #0000BB">soundex</span><span style="color: #007700">(</span><span style="color: #DD0000">"Ghosh"</span><span style="color: #007700">);&nbsp;</span><span style="color: #FF8000">//&nbsp;G200<br /></span><span style="color: #0000BB">soundex</span><span style="color: #007700">(</span><span style="color: #DD0000">"Hilbert"</span><span style="color: #007700">)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;==&nbsp;</span><span style="color: #0000BB">soundex</span><span style="color: #007700">(</span><span style="color: #DD0000">"Heilbronn"</span><span style="color: #007700">);&nbsp;</span><span style="color: #FF8000">//&nbsp;H416<br /></span><span style="color: #0000BB">soundex</span><span style="color: #007700">(</span><span style="color: #DD0000">"Knuth"</span><span style="color: #007700">)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;==&nbsp;</span><span style="color: #0000BB">soundex</span><span style="color: #007700">(</span><span style="color: #DD0000">"Kant"</span><span style="color: #007700">);&nbsp;</span><span style="color: #FF8000">//&nbsp;K530<br /></span><span style="color: #0000BB">soundex</span><span style="color: #007700">(</span><span style="color: #DD0000">"Lloyd"</span><span style="color: #007700">)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;==&nbsp;</span><span style="color: #0000BB">soundex</span><span style="color: #007700">(</span><span style="color: #DD0000">"Ladd"</span><span style="color: #007700">);&nbsp;</span><span style="color: #FF8000">//&nbsp;L300<br /></span><span style="color: #0000BB">soundex</span><span style="color: #007700">(</span><span style="color: #DD0000">"Lukasiewicz"</span><span style="color: #007700">)&nbsp;==&nbsp;</span><span style="color: #0000BB">soundex</span><span style="color: #007700">(</span><span style="color: #DD0000">"Lissajous"</span><span style="color: #007700">);&nbsp;</span><span style="color: #FF8000">//&nbsp;L222<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+      </div>
+
+     </div>
+    </p>
+    <p class="para">
+     См. также описание функций
+     <a href="function.levenshtein.html" class="function">levenshtein()</a>,
+     <a href="function.metaphone.html" class="function">metaphone()</a> и
+     <a href="function.similar-text.html" class="function">similar_text()</a>.
+    </p>
+   </div>
+
+  </div><hr /><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="function.similar-text.html">similar_text</a></div>
+ <div class="next" style="float: right;"><a href="function.sprintf.html">sprintf</a></div>
+ <div class="up"><a href="ref.strings.html">Функции обработки строк</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

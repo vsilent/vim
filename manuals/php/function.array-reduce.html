@@ -1,0 +1,73 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <title>Итеративно уменьшить массив к единственному значению, используя
+     функцию обратного вызова</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+ </head>
+ <body><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="function.array-rand.html">array_rand</a></div>
+ <div class="next" style="float: right;"><a href="function.array-reverse.html">array_reverse</a></div>
+ <div class="up"><a href="ref.array.html">Функции для работы с массивами</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="function.array-reduce" class="refentry">
+   <div class="refnamediv">
+    <h1 class="refname">array_reduce</h1>
+    <p class="verinfo">(PHP 4 &gt;= 4.0.5, PHP 5)</p><p class="refpurpose dc-title">array_reduce — 
+     Итеративно уменьшить массив к единственному значению, используя
+     функцию обратного вызова
+    </p>
+
+   </div>
+   <div class="refsect1 unknown">
+    <h3 class="title">Описание</h3>
+     <div class="methodsynopsis dc-description">
+      <span class="type"><a href="language.pseudo-types.html#language.types.mixed" class="type mixed">mixed</a></span> <span class="methodname"><b><b>array_reduce</b></b></span>
+       ( <span class="methodparam"><span class="type">array</span> <tt class="parameter">$input</tt></span>
+      , <span class="methodparam"><span class="type"><a href="language.pseudo-types.html#language.types.callback" class="type callback">callback</a></span> <tt class="parameter">$function</tt></span>
+      [, <span class="methodparam"><span class="type">int</span> <tt class="parameter">$initial</tt></span>
+     ] )</div>
+
+    <p class="para rdfs-comment">
+     <b>array_reduce()</b> итеративно применяет функцию
+     <i><tt class="parameter">function</tt></i>
+ к элементам массива
+     <i><tt class="parameter">input</tt></i>
+ и, таким образом, сводит массив
+     к единственному значению. Если указан дополнительный параметр 
+     <i><tt class="parameter">initial</tt></i>
+, он будет использован в начале процесса, 
+     или в качестве окончательного результата, если массив пуст.
+    </p>
+    <p class="para">
+     <div class="example">
+      <p><b>Пример #1 Пример использования<b>array_reduce()</b></b></p>
+      <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">function&nbsp;</span><span style="color: #0000BB">rsum</span><span style="color: #007700">(</span><span style="color: #0000BB">$v</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$w</span><span style="color: #007700">)&nbsp;<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$v&nbsp;</span><span style="color: #007700">+=&nbsp;</span><span style="color: #0000BB">$w</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">$v</span><span style="color: #007700">;<br />}<br /><br />function&nbsp;</span><span style="color: #0000BB">rmul</span><span style="color: #007700">(</span><span style="color: #0000BB">$v</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$w</span><span style="color: #007700">)&nbsp;<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$v&nbsp;</span><span style="color: #007700">*=&nbsp;</span><span style="color: #0000BB">$w</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">$v</span><span style="color: #007700">;<br />}<br /><br /></span><span style="color: #0000BB">$a&nbsp;</span><span style="color: #007700">=&nbsp;array(</span><span style="color: #0000BB">1</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">2</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">3</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">4</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">5</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$x&nbsp;</span><span style="color: #007700">=&nbsp;array();<br /></span><span style="color: #0000BB">$b&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">array_reduce</span><span style="color: #007700">(</span><span style="color: #0000BB">$a</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"rsum"</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$c&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">array_reduce</span><span style="color: #007700">(</span><span style="color: #0000BB">$a</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"rmul"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">10</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$d&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">array_reduce</span><span style="color: #007700">(</span><span style="color: #0000BB">$x</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"rsum"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">1</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+      </div>
+
+     </div>
+    </p>
+    <p class="para">
+     В результате переменная <var class="varname">$b</var> содержит
+     <i>15</i>, <var class="varname">$c</var> содержит
+     <i>1200</i> (= 1*2*3*4*5*10), и
+     <var class="varname">$d</var> содержит <i>1</i>.
+    </p>
+    <p class="para">
+     См. также <a href="function.array-filter.html" class="function">array_filter()</a>,
+     <a href="function.array-map.html" class="function">array_map()</a>,
+     <a href="function.array-unique.html" class="function">array_unique()</a>, и
+     <a href="function.array-count-values.html" class="function">array_count_values()</a>.
+    </p>
+   </div>
+
+  </div><hr /><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="function.array-rand.html">array_rand</a></div>
+ <div class="next" style="float: right;"><a href="function.array-reverse.html">array_reverse</a></div>
+ <div class="up"><a href="ref.array.html">Функции для работы с массивами</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

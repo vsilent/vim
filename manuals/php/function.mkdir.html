@@ -1,0 +1,92 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <title>Создаёт директорию</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+ </head>
+ <body><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="function.lstat.html">lstat</a></div>
+ <div class="next" style="float: right;"><a href="function.move-uploaded-file.html">move_uploaded_file</a></div>
+ <div class="up"><a href="ref.filesystem.html">Файловая система</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="function.mkdir" class="refentry">
+   <div class="refnamediv">
+    <h1 class="refname">mkdir</h1>
+    <p class="verinfo">(PHP 4, PHP 5)</p><p class="refpurpose dc-title">mkdir — Создаёт директорию</p>
+
+   </div>
+   <div class="refsect1 unknown">
+    <h3 class="title">Описание</h3>
+     <div class="methodsynopsis dc-description">
+      <span class="type">bool</span> <span class="methodname"><b><b>mkdir</b></b></span>
+       ( <span class="methodparam"><span class="type">string</span> <tt class="parameter">$pathname</tt></span>
+      [, <span class="methodparam"><span class="type">int</span> <tt class="parameter">$mode</tt></span>
+      [, <span class="methodparam"><span class="type">bool</span> <tt class="parameter">$recursive</tt></span>
+      [, <span class="methodparam"><span class="type">resource</span> <tt class="parameter">$context</tt></span>
+     ]]] )</div>
+
+    <p class="para rdfs-comment">
+     Пытается создать директорию, заданную в pathname.
+    </p>
+    <p class="para">
+     Обратите внимание, что аргумент mode необходимо задавать
+     в виде восьмиричного числа (первой цифрой должен быть ноль).
+     На аргумент mode также влияет текущее значение umask, которое
+     можно изменить при помощи <a href="function.umask.html" class="function">umask()</a>.
+    </p>
+    <p class="para">
+     <blockquote><p><b class="note">Замечание</b>: 
+      
+       Аргумент mode игнорируется в Windows и стал необязательным начиная с
+       версии PHP 4.2.0.
+      <br />
+     </p></blockquote>
+    </p>
+    <p class="para">
+     По умолчанию mode равен 0777, что является самыми широкими правами
+     доступа. Для получения информации о режимах, обратитесь к странице
+     <a href="function.chmod.html" class="function">chmod()</a>.
+     <div class="example">
+     <p><b>Пример #1 Пример использования функции <b>mkdir()</b></b></p>
+      <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />mkdir</span><span style="color: #007700">(</span><span style="color: #DD0000">"/path/to/my/dir"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">0700</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+      </div>
+
+     </div>
+    </p>
+    <p class="para">
+     Возвращает <b><tt>TRUE</tt></b> в случае успешного завершения или <b><tt>FALSE</tt></b> в случае возникновения ошибки.
+    </p>
+    <blockquote><p><b class="note">Замечание</b>: 
+     <span class="simpara">
+      Начиная с версии PHP 5.0.0 <b>mkdir()</b> также может
+      использоваться с <em class="emphasis">некоторыми</em> URL-обвёртками.
+      Обратитесь к <a href="wrappers.html" class="xref">List of Supported Protocols/Wrappers</a> для получения списка обвёрток,
+      которые поддерживает <b>mkdir()</b>.
+     </span>
+    </p></blockquote>
+    <blockquote><p><b class="note">Замечание</b>: 
+     <span class="simpara">
+      Аргументы <i><tt class="parameter">recursive</tt></i>
+ и <i><tt class="parameter">context</tt></i>
+
+      доступны начиная с версии PHP 5.0.0.
+     </span>
+    </p></blockquote>
+    <blockquote><p><b class="note">Замечание</b>: <span class="simpara">Когда опция <a href="features.safe-mode.html" class="link">safe mode</a> включена, PHP проверяет,
+имеет ли каталог, с которым вы собираетесь работать, такой же UID (владельца),
+как и выполняемый скрипт.</span></p></blockquote>
+    <p class="para">
+     См. также описание функции <a href="function.rmdir.html" class="function">rmdir()</a>.
+    </p>
+   </div>
+
+  </div><hr /><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="function.lstat.html">lstat</a></div>
+ <div class="next" style="float: right;"><a href="function.move-uploaded-file.html">move_uploaded_file</a></div>
+ <div class="up"><a href="ref.filesystem.html">Файловая система</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

@@ -1,0 +1,37 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <title>Установка</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+ </head>
+ <body><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="unicode.setup.html">Установка и настройка</a></div>
+ <div class="next" style="float: right;"><a href="unicode.configuration.html">Настройка во время выполнения</a></div>
+ <div class="up"><a href="unicode.setup.html">Установка и настройка</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="unicode.installation" class="section">
+ <h2 class="title">Установка</h2>
+ <p class="para">
+  First you should download and install ICU:
+  <div class="example">
+   <p><b>Пример #1 install ICU on Unix</b></p>
+   <div class="example-contents">
+<div class="cdata"><pre>
+./configure --disable-threads --enable-extras --enable-icuio --enable-layout
+make &amp;&amp; make install
+</pre></div>
+   </div>
+
+  </div>
+ </p>
+ <p class="para">
+  Then checkout latest PHP and configure it <span class="option">--with-icu-dir=&lt;dir&gt;</span> option, where
+  &lt;dir&gt; was the dir to where you installed ICU. You don&#039;t need to
+  explicitly use this option if you install ICU to a standard location.
+ </p>
+</div><hr /><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="unicode.setup.html">Установка и настройка</a></div>
+ <div class="next" style="float: right;"><a href="unicode.configuration.html">Настройка во время выполнения</a></div>
+ <div class="up"><a href="unicode.setup.html">Установка и настройка</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

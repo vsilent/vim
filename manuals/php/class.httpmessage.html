@@ -1,0 +1,546 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <title>The HttpMessage class</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+ </head>
+ <body><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="function.HttpInflateStream-update.html">HttpInflateStream::update</a></div>
+ <div class="next" style="float: right;"><a href="function.HttpMessage-addHeaders.html">HttpMessage::addHeaders</a></div>
+ <div class="up"><a href="book.http.html">HTTP</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div>
+ <h1 class="title">The <span class="classname">HttpMessage</span> class</h1>
+ <div class="partintro">
+  <div id="httpmessage.synopsis" class="section">
+   <h2 class="title">Class synopsis</h2>
+   <div class="classsynopsis">
+    <div class="ooclass"><b class="classname">HttpMessage</b></div>
+    <div class="classsynopsisinfo">
+     <span class="ooclass"> class <b class="classname">HttpMessage</b></span>
+     <span class="oointerface">implements 
+      <span class="interfacename">Iterator</span>
+     </span>
+     <span class="oointerface">, 
+      <span class="interfacename">Countable</span>
+     </span>
+     <span class="oointerface">, 
+      <span class="interfacename">Serializable</span>
+     </span>
+     {</div>
+    <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+   <span class="type">void</span> <span class="methodname"><b><a href="function.HttpMessage-addHeaders.html" class="function">addHeaders</a></b></span>
+    ( <span class="methodparam"><span class="type">array</span> <tt class="parameter">$headers</tt></span>
+   [, <span class="methodparam"><span class="type">bool</span> <tt class="parameter">$append = FALSE</tt></span>
+  ] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+   <span class="type">void</span> <span class="methodname"><b><a href="function.HttpMessage-construct.html" class="function">__construct</a></b></span>
+    ([ <span class="methodparam"><span class="type">string</span> <tt class="parameter">$message</tt></span>
+  ] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+   <span class="type">HttpMessage</span> <span class="methodname"><b><a href="function.HttpMessage-detach.html" class="function">detach</a></b></span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">static public</span>
+   <span class="type">HttpMessage</span> <span class="methodname"><b><a href="function.HttpMessage-factory.html" class="function">factory</a></b></span>
+    ([ <span class="methodparam"><span class="type">string</span> <tt class="parameter">$raw_message</tt></span>
+   [, <span class="methodparam"><span class="type">string</span> <tt class="parameter">$class_name = &#039;HttpMessage&#039;</tt></span>
+  ]] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">static public</span>
+   <span class="type">HttpMessage</span> <span class="methodname"><b><a href="function.HttpMessage-fromEnv.html" class="function">fromEnv</a></b></span>
+    ( <span class="methodparam"><span class="type">int</span> <tt class="parameter">$message_type</tt></span>
+   [, <span class="methodparam"><span class="type">string</span> <tt class="parameter">$class_name = &#039;HttpMessage&#039;</tt></span>
+  ] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">static public</span>
+   <span class="type">HttpMessage</span> <span class="methodname"><b><a href="function.HttpMessage-fromString.html" class="function">fromString</a></b></span>
+    ([ <span class="methodparam"><span class="type">string</span> <tt class="parameter">$raw_message</tt></span>
+   [, <span class="methodparam"><span class="type">string</span> <tt class="parameter">$class_name = &#039;HttpMessage&#039;</tt></span>
+  ]] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+   <span class="type">string</span> <span class="methodname"><b><a href="function.HttpMessage-getBody.html" class="function">getBody</a></b></span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+   <span class="type">string</span> <span class="methodname"><b><a href="function.HttpMessage-getHeader.html" class="function">getHeader</a></b></span>
+    ( <span class="methodparam"><span class="type">string</span> <tt class="parameter">$header</tt></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+   <span class="type">array</span> <span class="methodname"><b><a href="function.HttpMessage-getHeaders.html" class="function">getHeaders</a></b></span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+   <span class="type">string</span> <span class="methodname"><b><a href="function.HttpMessage-getHttpVersion.html" class="function">getHttpVersion</a></b></span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+   <span class="type">HttpMessage</span> <span class="methodname"><b><a href="function.HttpMessage-getParentMessage.html" class="function">getParentMessage</a></b></span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+   <span class="type">string</span> <span class="methodname"><b><a href="function.HttpMessage-getRequestMethod.html" class="function">getRequestMethod</a></b></span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+   <span class="type">string</span> <span class="methodname"><b><a href="function.HttpMessage-getRequestUrl.html" class="function">getRequestUrl</a></b></span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+   <span class="type">int</span> <span class="methodname"><b><a href="function.HttpMessage-getResponseCode.html" class="function">getResponseCode</a></b></span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+   <span class="type">string</span> <span class="methodname"><b><a href="function.HttpMessage-getResponseStatus.html" class="function">getResponseStatus</a></b></span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+   <span class="type">int</span> <span class="methodname"><b><a href="function.HttpMessage-getType.html" class="function">getType</a></b></span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+   <span class="type">string</span> <span class="methodname"><b><a href="function.HttpMessage-guessContentType.html" class="function">guessContentType</a></b></span>
+    ( <span class="methodparam"><span class="type">string</span> <tt class="parameter">$magic_file</tt></span>
+   [, <span class="methodparam"><span class="type">int</span> <tt class="parameter">$magic_mode = MAGIC_MIME</tt></span>
+  ] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+   <span class="type">void</span> <span class="methodname"><b><a href="function.HttpMessage-prepend.html" class="function">prepend</a></b></span>
+    ( <span class="methodparam"><span class="type"><a href="class.httpmessage.html" class="type HttpMessage">HttpMessage</a></span> <tt class="parameter">$message</tt></span>
+   [, <span class="methodparam"><span class="type">bool</span> <tt class="parameter">$top = TRUE</tt></span>
+  ] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+   <span class="type">HttpMessage</span> <span class="methodname"><b><a href="function.HttpMessage-reverse.html" class="function">reverse</a></b></span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+   <span class="type">bool</span> <span class="methodname"><b><a href="function.HttpMessage-send.html" class="function">send</a></b></span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+   <span class="type">void</span> <span class="methodname"><b><a href="function.HttpMessage-setBody.html" class="function">setBody</a></b></span>
+    ( <span class="methodparam"><span class="type">string</span> <tt class="parameter">$body</tt></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+   <span class="type">void</span> <span class="methodname"><b><a href="function.HttpMessage-setHeaders.html" class="function">setHeaders</a></b></span>
+    ( <span class="methodparam"><span class="type">array</span> <tt class="parameter">$headers</tt></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+   <span class="type">bool</span> <span class="methodname"><b><a href="function.HttpMessage-setHttpVersion.html" class="function">setHttpVersion</a></b></span>
+    ( <span class="methodparam"><span class="type">string</span> <tt class="parameter">$version</tt></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+   <span class="type">bool</span> <span class="methodname"><b><a href="function.HttpMessage-setRequestMethod.html" class="function">setRequestMethod</a></b></span>
+    ( <span class="methodparam"><span class="type">string</span> <tt class="parameter">$method</tt></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+   <span class="type">bool</span> <span class="methodname"><b><a href="function.HttpMessage-setRequestUrl.html" class="function">setRequestUrl</a></b></span>
+    ( <span class="methodparam"><span class="type">string</span> <tt class="parameter">$url</tt></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+   <span class="type">bool</span> <span class="methodname"><b><a href="function.HttpMessage-setResponseCode.html" class="function">setResponseCode</a></b></span>
+    ( <span class="methodparam"><span class="type">int</span> <tt class="parameter">$code</tt></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+   <span class="type">bool</span> <span class="methodname"><b><a href="function.HttpMessage-setResponseStatus.html" class="function">setResponseStatus</a></b></span>
+    ( <span class="methodparam"><span class="type">string</span> <tt class="parameter">$status</tt></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+   <span class="type">void</span> <span class="methodname"><b><a href="function.HttpMessage-setType.html" class="function">setType</a></b></span>
+    ( <span class="methodparam"><span class="type">int</span> <tt class="parameter">$type</tt></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+   <span class="type">HttpRequest|HttpResponse</span> <span class="methodname"><b><a href="function.HttpMessage-toMessageTypeObject.html" class="function">toMessageTypeObject</a></b></span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+   <span class="type">string</span> <span class="methodname"><b><a href="function.HttpMessage-toString.html" class="function">toString</a></b></span>
+    ([ <span class="methodparam"><span class="type">bool</span> <tt class="parameter">$include_parent = FALSE</tt></span>
+  ] )</div>
+
+   }</div>
+  </div>
+
+ <div id="http.HttpMessage.members" class="section">
+  <h2 class="title">Class Members</h2>
+  <div id="http.HttpMessage.properties" class="section">
+   <h2 class="title">Свойства</h2>
+   <table border="5">
+    <caption><b>Instance Properties</b></caption>
+    <colgroup>
+
+     <thead valign="middle">
+      <tr valign="middle">
+       <th colspan="1">Modifiers</th>
+       <th colspan="1">Type</th>
+       <th colspan="1">Name</th>
+       <th colspan="1">Description</th>
+      </tr>
+
+     </thead>
+
+     <tbody valign="middle" class="tbody">
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left">protected</td>
+       <td colspan="1" rowspan="1" align="left">int</td>
+       <td colspan="1" rowspan="1" align="left">type</td>
+       <td colspan="1" rowspan="1" align="left">message type</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left">protected</td>
+       <td colspan="1" rowspan="1" align="left">string</td>
+       <td colspan="1" rowspan="1" align="left">body</td>
+       <td colspan="1" rowspan="1" align="left">message body</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left">protected</td>
+       <td colspan="1" rowspan="1" align="left">float</td>
+       <td colspan="1" rowspan="1" align="left">httpVersion</td>
+       <td colspan="1" rowspan="1" align="left">HTTP protocol version</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left">protected</td>
+       <td colspan="1" rowspan="1" align="left">array</td>
+       <td colspan="1" rowspan="1" align="left">headers</td>
+       <td colspan="1" rowspan="1" align="left">message headers</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left">protected</td>
+       <td colspan="1" rowspan="1" align="left">string</td>
+       <td colspan="1" rowspan="1" align="left">requestMethod</td>
+       <td colspan="1" rowspan="1" align="left">request method name</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left">protected</td>
+       <td colspan="1" rowspan="1" align="left">requestUrl</td>
+       <td colspan="1" rowspan="1" align="left">string</td>
+       <td colspan="1" rowspan="1" align="left">request URL</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left">protected</td>
+       <td colspan="1" rowspan="1" align="left">int</td>
+       <td colspan="1" rowspan="1" align="left">responseCode</td>
+       <td colspan="1" rowspan="1" align="left">response code</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left">protected</td>
+       <td colspan="1" rowspan="1" align="left">string</td>
+       <td colspan="1" rowspan="1" align="left">responseStatus</td>
+       <td colspan="1" rowspan="1" align="left">response status message</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left">protected</td>
+       <td colspan="1" rowspan="1" align="left">HttpMessage</td>
+       <td colspan="1" rowspan="1" align="left">parentMessage</td>
+       <td colspan="1" rowspan="1" align="left">reference to parent message</td>
+      </tr>
+
+     </tbody>
+    </colgroup>
+
+   </table>
+
+   <blockquote><p><b class="note">Замечание</b>: 
+    
+     None of these default properties can be accessed by reference, array key/index notation nor be used
+     in increment or decrement operations.
+    <br />
+   </p></blockquote>
+  </div>
+  <div id="http.HttpMessage.constants" class="section">
+   <h2 class="title">Предопределенные константы</h2>
+   <table border="5">
+    
+    <colgroup>
+
+     <thead valign="middle">
+      <tr valign="middle">
+       <th colspan="1">Type</th>
+       <th colspan="1">Name</th>
+       <th colspan="1">Description</th>
+      </tr>
+
+     </thead>
+
+     <tbody valign="middle" class="tbody">
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left">int</td>
+       <td colspan="1" rowspan="1" align="left">TYPE_NONE</td>
+       <td colspan="1" rowspan="1" align="left">message has is of no specific type</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left">int</td>
+       <td colspan="1" rowspan="1" align="left">TYPE_REQUEST</td>
+       <td colspan="1" rowspan="1" align="left">message is a request style HTTP message</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left">int</td>
+       <td colspan="1" rowspan="1" align="left">TYPE_RESPONSE</td>
+       <td colspan="1" rowspan="1" align="left">message is a response style HTTP message</td>
+      </tr>
+
+     </tbody>
+    </colgroup>
+
+   </table>
+
+  </div>
+ </div>
+ </div>
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h2>Содержание</h2><ul class="chunklist chunklist_reference"><li><a href="function.HttpMessage-addHeaders.html">HttpMessage::addHeaders</a> — Add headers</li><li><a href="function.HttpMessage-construct.html">HttpMessage::__construct</a> — HttpMessage constructor</li><li><a href="function.HttpMessage-detach.html">HttpMessage::detach</a> — Detach HttpMessage</li><li><a href="function.HttpMessage-factory.html">HttpMessage::factory</a> — Create HttpMessage from string</li><li><a href="function.HttpMessage-fromEnv.html">HttpMessage::fromEnv</a> — Create HttpMessage from environment</li><li><a href="function.HttpMessage-fromString.html">HttpMessage::fromString</a> — Create HttpMessage from string</li><li><a href="function.HttpMessage-getBody.html">HttpMessage::getBody</a> — Get message body</li><li><a href="function.HttpMessage-getHeader.html">HttpMessage::getHeader</a> — Get header</li><li><a href="function.HttpMessage-getHeaders.html">HttpMessage::getHeaders</a> — Get message headers</li><li><a href="function.HttpMessage-getHttpVersion.html">HttpMessage::getHttpVersion</a> — Get HTTP version</li><li><a href="function.HttpMessage-getParentMessage.html">HttpMessage::getParentMessage</a> — Get parent message</li><li><a href="function.HttpMessage-getRequestMethod.html">HttpMessage::getRequestMethod</a> — Get request method</li><li><a href="function.HttpMessage-getRequestUrl.html">HttpMessage::getRequestUrl</a> — Get request URL</li><li><a href="function.HttpMessage-getResponseCode.html">HttpMessage::getResponseCode</a> — Get response code</li><li><a href="function.HttpMessage-getResponseStatus.html">HttpMessage::getResponseStatus</a> — Get response status</li><li><a href="function.HttpMessage-getType.html">HttpMessage::getType</a> — Get message type</li><li><a href="function.HttpMessage-guessContentType.html">HttpMessage::guessContentType</a> — Guess content type</li><li><a href="function.HttpMessage-prepend.html">HttpMessage::prepend</a> — Prepend message(s)</li><li><a href="function.HttpMessage-reverse.html">HttpMessage::reverse</a> — Reverse message chain</li><li><a href="function.HttpMessage-send.html">HttpMessage::send</a> — Send message</li><li><a href="function.HttpMessage-setBody.html">HttpMessage::setBody</a> — Set message body</li><li><a href="function.HttpMessage-setHeaders.html">HttpMessage::setHeaders</a> — Set headers</li><li><a href="function.HttpMessage-setHttpVersion.html">HttpMessage::setHttpVersion</a> — Set HTTP version</li><li><a href="function.HttpMessage-setRequestMethod.html">HttpMessage::setRequestMethod</a> — Set request method</li><li><a href="function.HttpMessage-setRequestUrl.html">HttpMessage::setRequestUrl</a> — Set request URL</li><li><a href="function.HttpMessage-setResponseCode.html">HttpMessage::setResponseCode</a> — Set response code</li><li><a href="function.HttpMessage-setResponseStatus.html">HttpMessage::setResponseStatus</a> — Set response status</li><li><a href="function.HttpMessage-setType.html">HttpMessage::setType</a> — Set message type</li><li><a href="function.HttpMessage-toMessageTypeObject.html">HttpMessage::toMessageTypeObject</a> — Create HTTP object regarding message type</li><li><a href="function.HttpMessage-toString.html">HttpMessage::toString</a> — Get string representation</li></ul>
+</div>
+<hr /><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="function.HttpInflateStream-update.html">HttpInflateStream::update</a></div>
+ <div class="next" style="float: right;"><a href="function.HttpMessage-addHeaders.html">HttpMessage::addHeaders</a></div>
+ <div class="up"><a href="book.http.html">HTTP</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

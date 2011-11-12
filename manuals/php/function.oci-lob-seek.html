@@ -1,0 +1,64 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <title>Устанавливает позицию внутреннего указателя</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+ </head>
+ <body><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="function.oci-lob-savefile.html">OCI-Lob->saveFile</a></div>
+ <div class="next" style="float: right;"><a href="function.oci-lob-setbuffering.html">OCI-Lob->setBuffering</a></div>
+ <div class="up"><a href="ref.oci8.html">OCI8</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="function.oci-lob-seek" class="refentry">
+   <div class="refnamediv">
+    <h1 class="refname">lob-&gt;seek</h1>
+    <p class="verinfo">(No version information available, might be only in CVS)</p><p class="refpurpose dc-title">lob->seek — Устанавливает позицию внутреннего указателя</p>
+
+   </div>
+   <div class="refsect1 unknown">
+    <h3 class="title">Описание</h3>
+     <div class="methodsynopsis dc-description">
+      <span class="type">boolean</span> <span class="methodname"><b><b>lob->seek</b></b></span>
+       ( <span class="methodparam"><span class="type">int</span> <tt class="parameter">$offset</tt></span>
+      [, <span class="methodparam"><span class="type">int</span> <tt class="parameter">$whence</tt></span>
+     ] )</div>
+
+    <p class="para rdfs-comment">
+     Устанавливает позицию внутреннего указателя объекта LOB. Параметр 
+     <i><tt class="parameter">offset</tt></i>
+ указывает количество байтов, на которые
+     следует переместиться от позиции, определяемой параметром
+     <i><tt class="parameter">whence</tt></i>
+: 
+     <ul class="simplelist">
+      <li class="member">
+       <b><tt>OCI_SEEK_SET</tt></b> - установить позицию, равную
+       <i><tt class="parameter">offset</tt></i>
+
+      </li>
+      <li class="member">
+       <b><tt>OCI_SEEK_CUR</tt></b> - прибавить к текущей позиции 
+       <i><tt class="parameter">offset</tt></i>
+ байт
+      </li>
+      <li class="member">
+       <b><tt>OCI_SEEK_END</tt></b> - прибавить к концу файла 
+       <i><tt class="parameter">offset</tt></i>
+ байт (чтобы переместить указатель в
+       начало - укажите отрицательный <i><tt class="parameter">offset</tt></i>
+)
+      </li>
+     </ul>
+    </p>
+    <p class="para">
+     См. также <b>oci_lob_rewind()</b> и 
+     <b>oci_lob_tell()</b>.
+    </p>
+   </div>
+
+  </div><hr /><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="function.oci-lob-savefile.html">OCI-Lob->saveFile</a></div>
+ <div class="next" style="float: right;"><a href="function.oci-lob-setbuffering.html">OCI-Lob->setBuffering</a></div>
+ <div class="up"><a href="ref.oci8.html">OCI8</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

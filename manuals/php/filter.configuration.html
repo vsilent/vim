@@ -1,0 +1,109 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <title>Настройка во время выполнения</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+ </head>
+ <body><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="filter.installation.html">Установка</a></div>
+ <div class="next" style="float: right;"><a href="filter.resources.html">Типы ресурсов</a></div>
+ <div class="up"><a href="filter.setup.html">Установка и настройка</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="filter.configuration" class="section">
+ <h2 class="title">Настройка во время выполнения</h2>
+ <p class="simpara">
+Поведение этих функций зависит от установок в <var class="filename">php.ini</var>.
+</p>
+ <p class="para">
+  <table border="5">
+   <caption><b>Параметры конфигурации Filter</b></caption>
+   <colgroup>
+
+    <thead valign="middle">
+     <tr valign="middle">
+      <th colspan="1">Имя</th>
+      <th colspan="1">Значение по умолчанию</th>
+      <th colspan="1">Область изменения</th>
+      <th colspan="1">Changelog</th>
+     </tr>
+
+    </thead>
+
+    <tbody valign="middle" class="tbody">
+     <tr valign="middle">
+      <td colspan="1" rowspan="1" align="left">filter.default</td>
+      <td colspan="1" rowspan="1" align="left">&quot;unsafe_raw&quot;</td>
+      <td colspan="1" rowspan="1" align="left">PHP_INI_PERDIR</td>
+      <td colspan="1" rowspan="1" align="left">PHP_INI_ALL в filter &lt;= 0.9.4. Доступна с PHP 5.2.0.</td>
+     </tr>
+
+     <tr valign="middle">
+      <td colspan="1" rowspan="1" align="left">filter.default_flags</td>
+      <td colspan="1" rowspan="1" align="left">NULL</td>
+      <td colspan="1" rowspan="1" align="left">PHP_INI_PERDIR</td>
+      <td colspan="1" rowspan="1" align="left">PHP_INI_ALL в filter &lt;= 0.9.4. Доступна с PHP 5.2.0.</td>
+     </tr>
+
+    </tbody>
+   </colgroup>
+
+  </table>
+
+  Для подробного описания констант
+PHP_INI_*, обратитесь к документации функции <a href="function.ini-set.html" class="function">ini_set()</a>.
+</p>
+
+<p class="para">Краткое разъяснение конфигурационных
+директив.</p>
+
+<p class="para">
+ <dl>
+
+  <dt id="ini.filter.default">
+   <span class="term">
+    <i><tt class="parameter">filter.default</tt></i>
+
+    <a href="language.types.string.html" class="type string">string</a>
+   </span>
+
+   <dd>
+
+    <p class="para">
+     Фильтрует все $_GET, $_POST, $_COOKIE и $_REQUEST данные этим фильтром.
+     Исходные данные могут быть получены с помощью <a href="function.filter-input.html" class="function">filter_input()</a>.
+    </p>
+    <p class="para">
+     Принимает имя указанного фильтра как значение по умолчанию. См.
+     список существующих фильтров для получения списка имен фильтров.
+    </p>
+   </dd>
+
+  </dt>
+
+  
+  <dt id="ini.filter.default-flags">
+   <span class="term">
+    <i><tt class="parameter">filter.default_flags</tt></i>
+
+    <a href="language.types.integer.html" class="type integer">integer</a>
+   </span>
+
+   <dd>
+
+    <p class="para">
+     Флаги по умолчанию
+    </p>
+   </dd>
+
+  </dt>
+
+  
+ </dl>
+
+ </p>
+</div><hr /><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="filter.installation.html">Установка</a></div>
+ <div class="next" style="float: right;"><a href="filter.resources.html">Типы ресурсов</a></div>
+ <div class="up"><a href="filter.setup.html">Установка и настройка</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

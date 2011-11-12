@@ -1,0 +1,2484 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <title>Директивы php.ini</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+ </head>
+ <body><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="configure.html">Configure options</a></div>
+ <div class="next" style="float: right;"><a href="ini.core.html">Описание встроенных директив php.ini</a></div>
+ <div class="up"><a href="appendices.html">Appendices</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div>
+ <h1>Директивы <var class="filename">php.ini</var></h1>
+<h2>Содержание</h2><ul class="chunklist chunklist_appendix"><li><a href="ini.core.html">Описание встроенных директив php.ini</a></li></ul>
+
+
+ <div id="ini.list" class="section">
+  <h2 class="title">Список директив <var class="filename">php.ini</var></h2>
+  <p class="para">
+   Этот список включает директивы <var class="filename">php.ini</var>, которые вы можете использовать
+   для настроки PHP.
+  </p>
+  <p class="para">
+   <table border="5">
+    <caption><b>Конфигурационные опции</b></caption>
+    <colgroup>
+
+     <thead valign="middle">
+      <tr valign="middle">
+       <th colspan="1">Имя</th>
+       <th colspan="1">По умолчанию</th>
+       <th colspan="1">Изменяемый</th>
+       <th colspan="1">Список изменений</th>
+      </tr>
+
+     </thead>
+
+     <tbody valign="middle" class="tbody">
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left"><a href="ini.core.html#ini.allow-call-time-pass-reference" class="link">allow_call_time_pass_reference</a></td>
+       <td colspan="1" rowspan="1" align="left">&quot;1&quot;</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_PERDIR</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_ALL в PHP &lt;= 4.0.0.</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left"><a href="filesystem.configuration.html#ini.allow-url-fopen" class="link">allow_url_fopen</a></td>
+       <td colspan="1" rowspan="1" align="left">&quot;1&quot;</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_SYSTEM</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_ALL в PHP &lt;= 4.3.4. Доступна с версии PHP 4.0.4.</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left"><a href="ini.core.html#ini.always-populate-raw-post-data" class="link">always_populate_raw_post_data</a></td>
+       <td colspan="1" rowspan="1" align="left">&quot;0&quot;</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_PERDIR</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_ALL в PHP &lt;= 4.2.3. Доступна с версии PHP 4.1.0.</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left">apc.cache_by_default</td>
+       <td colspan="1" rowspan="1" align="left">&quot;1&quot;</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_SYSTEM</td>
+       <td class="empty">&nbsp;</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left">apc.enabled</td>
+       <td colspan="1" rowspan="1" align="left">&quot;1&quot;</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_SYSTEM</td>
+       <td class="empty">&nbsp;</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left">apc.filters</td>
+       <td colspan="1" rowspan="1" align="left">&quot;&quot;</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_SYSTEM</td>
+       <td class="empty">&nbsp;</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left">apc.gc_ttl</td>
+       <td colspan="1" rowspan="1" align="left">&quot;3600&quot;</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_SYSTEM</td>
+       <td class="empty">&nbsp;</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left">apc.mmap_file_mask</td>
+       <td colspan="1" rowspan="1" align="left">NULL</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_SYSTEM</td>
+       <td class="empty">&nbsp;</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left">apc.num_files_hint</td>
+       <td colspan="1" rowspan="1" align="left">&quot;1000&quot;</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_SYSTEM</td>
+       <td class="empty">&nbsp;</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left">apc.optimization</td>
+       <td colspan="1" rowspan="1" align="left">&quot;0&quot;</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_SYSTEM</td>
+       <td class="empty">&nbsp;</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left">apc.shm_segments</td>
+       <td colspan="1" rowspan="1" align="left">&quot;1&quot;</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_SYSTEM</td>
+       <td class="empty">&nbsp;</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left">apc.shm_size</td>
+       <td colspan="1" rowspan="1" align="left">&quot;30&quot;</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_SYSTEM</td>
+       <td class="empty">&nbsp;</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left">apc.slam_defense</td>
+       <td colspan="1" rowspan="1" align="left">&quot;0&quot;</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_SYSTEM</td>
+       <td class="empty">&nbsp;</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left">apc.ttl</td>
+       <td colspan="1" rowspan="1" align="left">&quot;0&quot;</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_SYSTEM</td>
+       <td class="empty">&nbsp;</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left">apc.user_entries_hint</td>
+       <td colspan="1" rowspan="1" align="left">&quot;100&quot;</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_SYSTEM</td>
+       <td class="empty">&nbsp;</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left">apc.user_ttl</td>
+       <td colspan="1" rowspan="1" align="left">&quot;0&quot;</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_SYSTEM</td>
+       <td class="empty">&nbsp;</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left"><a href="apd.configuration.html#ini.apd.dumpdir" class="link">apd.dumpdir</a></td>
+       <td colspan="1" rowspan="1" align="left">NULL</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_ALL</td>
+       <td class="empty">&nbsp;</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left">apd.statement_tracing</td>
+       <td colspan="1" rowspan="1" align="left">&quot;0&quot;</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_ALL</td>
+       <td class="empty">&nbsp;</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left"><a href="ini.core.html#ini.arg-separator.input" class="link">arg_separator.input</a></td>
+       <td colspan="1" rowspan="1" align="left">&quot;&amp;&quot;</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_PERDIR</td>
+       <td colspan="1" rowspan="1" align="left">Доступна с версии PHP 4.0.5.</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left"><a href="ini.core.html#ini.arg-separator.output" class="link">arg_separator.output</a></td>
+       <td colspan="1" rowspan="1" align="left">&quot;&amp;&quot;</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_ALL</td>
+       <td colspan="1" rowspan="1" align="left">Доступна с версии PHP 4.0.5.</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left"><a href="ini.core.html#ini.asp-tags" class="link">asp_tags</a></td>
+       <td colspan="1" rowspan="1" align="left">&quot;0&quot;</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_PERDIR</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_ALL в PHP &lt;= 4.0.0.</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left"><a href="info.configuration.html#ini.assert.active" class="link">assert.active</a></td>
+       <td colspan="1" rowspan="1" align="left">&quot;1&quot;</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_ALL</td>
+       <td class="empty">&nbsp;</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left"><a href="info.configuration.html#ini.assert.bail" class="link">assert.bail</a></td>
+       <td colspan="1" rowspan="1" align="left">&quot;0&quot;</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_ALL</td>
+       <td class="empty">&nbsp;</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left"><a href="info.configuration.html#ini.assert.callback" class="link">assert.callback</a></td>
+       <td colspan="1" rowspan="1" align="left">NULL</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_ALL</td>
+       <td class="empty">&nbsp;</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left"><a href="info.configuration.html#ini.assert.quiet-eval" class="link">assert.quiet_eval</a></td>
+       <td colspan="1" rowspan="1" align="left">&quot;0&quot;</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_ALL</td>
+       <td class="empty">&nbsp;</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left"><a href="info.configuration.html#ini.assert.warning" class="link">assert.warning</a></td>
+       <td colspan="1" rowspan="1" align="left">&quot;1&quot;</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_ALL</td>
+       <td class="empty">&nbsp;</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left"><a href="ini.core.html#ini.auto-append-file" class="link">auto_append_file</a></td>
+       <td colspan="1" rowspan="1" align="left">NULL</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_PERDIR</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_ALL в PHP &lt;= 4.2.3.</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left"><a href="filesystem.configuration.html#ini.auto-detect-line-endings" class="link">auto_detect_line_endings</a></td>
+       <td colspan="1" rowspan="1" align="left">&quot;0&quot;</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_ALL</td>
+       <td colspan="1" rowspan="1" align="left">Доступна с версии PHP 4.3.0.</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left"><a href="ini.core.html#ini.auto-globals-jit" class="link">auto_globals_jit</a></td>
+       <td colspan="1" rowspan="1" align="left">&quot;1&quot;</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_PERDIR</td>
+       <td colspan="1" rowspan="1" align="left">Доступна с версии PHP 5.0.0.</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left"><a href="ini.core.html#ini.auto-prepend-file" class="link">auto_prepend_file</a></td>
+       <td colspan="1" rowspan="1" align="left">NULL</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_PERDIR</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_ALL в PHP &lt;= 4.2.3.</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left"><a href="bc.configuration.html#ini.bcmath.scale" class="link">bcmath.scale</a></td>
+       <td colspan="1" rowspan="1" align="left">&quot;0&quot;</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_ALL</td>
+       <td colspan="1" rowspan="1" align="left">Доступна с версии PHP 5.0.0.</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left">blenc.key_file</td>
+       <td colspan="1" rowspan="1" align="left">&quot;/usr/local/etc/blenckeys&quot;</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_ALL</td>
+       <td class="empty">&nbsp;</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left"><a href="misc.configuration.html#ini.browscap" class="link">browscap</a></td>
+       <td colspan="1" rowspan="1" align="left">NULL</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_SYSTEM</td>
+       <td class="empty">&nbsp;</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left"><a href="apache.configuration.html#ini.child-terminate" class="link">child_terminate</a></td>
+       <td colspan="1" rowspan="1" align="left">&quot;0&quot;</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_ALL</td>
+       <td colspan="1" rowspan="1" align="left">Доступна с версии PHP 4.0.5.</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left"><a href="com.configuration.html#ini.com.allow-dcom" class="link">com.allow_dcom</a></td>
+       <td colspan="1" rowspan="1" align="left">&quot;0&quot;</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_SYSTEM</td>
+       <td colspan="1" rowspan="1" align="left">Доступна с версии PHP 4.0.5.</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left"><a href="com.configuration.html#ini.com.autoregister-casesensitive" class="link">com.autoregister_casesensitive</a></td>
+       <td colspan="1" rowspan="1" align="left">&quot;1&quot;</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_ALL</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_SYSTEM в PHP 4. Доступна с версии PHP 4.1.0.</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left"><a href="com.configuration.html#ini.com.autoregister-typelib" class="link">com.autoregister_typelib</a></td>
+       <td colspan="1" rowspan="1" align="left">&quot;0&quot;</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_ALL</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_SYSTEM в PHP 4. Доступна с версии PHP 4.1.0.</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left"><a href="com.configuration.html#ini.com.autoregister-verbose" class="link">com.autoregister_verbose</a></td>
+       <td colspan="1" rowspan="1" align="left">&quot;0&quot;</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_ALL</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_SYSTEM в PHP 4. Доступна с версии PHP 4.1.0.</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left"><a href="com.configuration.html#ini.com.code-page" class="link">com.code_page</a></td>
+       <td colspan="1" rowspan="1" align="left">&quot;&quot;</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_ALL</td>
+       <td colspan="1" rowspan="1" align="left">Доступна с версии PHP 5.0.0.</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left"><a href="com.configuration.html#ini.com.typelib-file" class="link">com.typelib_file</a></td>
+       <td colspan="1" rowspan="1" align="left">&quot;&quot;</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_SYSTEM</td>
+       <td colspan="1" rowspan="1" align="left">Доступна с версии PHP 4.0.5.</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left">crack.default_dictionary</td>
+       <td colspan="1" rowspan="1" align="left">NULL</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_SYSTEM</td>
+       <td colspan="1" rowspan="1" align="left">Доступна с версии PHP 4.0.5.</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left">daffodildb.default_host</td>
+       <td colspan="1" rowspan="1" align="left">&quot;localhost&quot;</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_ALL</td>
+       <td class="empty">&nbsp;</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left">daffodildb.default_password</td>
+       <td colspan="1" rowspan="1" align="left">&quot;daffodil&quot;</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_ALL</td>
+       <td class="empty">&nbsp;</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left">daffodildb.default_socket</td>
+       <td colspan="1" rowspan="1" align="left">NULL</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_ALL</td>
+       <td class="empty">&nbsp;</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left">daffodildb.default_user</td>
+       <td colspan="1" rowspan="1" align="left">&quot;DAFFODIL&quot;</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_ALL</td>
+       <td class="empty">&nbsp;</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left">daffodildb.port</td>
+       <td colspan="1" rowspan="1" align="left">&quot;3456&quot;</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_ALL</td>
+       <td class="empty">&nbsp;</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left">date.default_latitude</td>
+       <td colspan="1" rowspan="1" align="left">&quot;31.7667&quot;</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_ALL</td>
+       <td colspan="1" rowspan="1" align="left">Доступна с версии PHP 5.0.0.</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left">date.default_longitude</td>
+       <td colspan="1" rowspan="1" align="left">&quot;35.2333&quot;</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_ALL</td>
+       <td colspan="1" rowspan="1" align="left">Доступна с версии PHP 5.0.0.</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left">date.sunrise_zenith</td>
+       <td colspan="1" rowspan="1" align="left">&quot;90.83&quot;</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_ALL</td>
+       <td colspan="1" rowspan="1" align="left">Доступна с версии PHP 5.0.0.</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left">date.sunset_zenith</td>
+       <td colspan="1" rowspan="1" align="left">&quot;90.83&quot;</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_ALL</td>
+       <td colspan="1" rowspan="1" align="left">Доступна с версии PHP 5.0.0.</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left">dba.default_handler</td>
+       <td colspan="1" rowspan="1" align="left">&quot;&quot;</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_ALL</td>
+       <td colspan="1" rowspan="1" align="left">Доступна с версии PHP 4.3.3.</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left"><a href="dbx.configuration.html#ini.dbx.colnames-case" class="link">dbx.colnames_case</a></td>
+       <td colspan="1" rowspan="1" align="left">&quot;unchanged&quot;</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_SYSTEM</td>
+       <td colspan="1" rowspan="1" align="left">Доступна с версии PHP 4.3.0.</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left"><a href="ini.core.html#ini.default-charset" class="link">default_charset</a></td>
+       <td colspan="1" rowspan="1" align="left">&quot;&quot;</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_ALL</td>
+       <td class="empty">&nbsp;</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left"><a href="ini.core.html#ini.default-mimetype" class="link">default_mimetype</a></td>
+       <td colspan="1" rowspan="1" align="left">&quot;text/html&quot;</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_ALL</td>
+       <td class="empty">&nbsp;</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left"><a href="filesystem.configuration.html#ini.default-socket-timeout" class="link">default_socket_timeout</a></td>
+       <td colspan="1" rowspan="1" align="left">&quot;60&quot;</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_ALL</td>
+       <td colspan="1" rowspan="1" align="left">Доступна с версии PHP 4.3.0.</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left"><a href="network.configuration.html#ini.define-syslog-variables" class="link">define_syslog_variables</a></td>
+       <td colspan="1" rowspan="1" align="left">&quot;0&quot;</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_ALL</td>
+       <td class="empty">&nbsp;</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left"><a href="features.safe-mode.html#ini.disable-classes" class="link">disable_classes</a></td>
+       <td colspan="1" rowspan="1" align="left">&quot;&quot;</td>
+       <td colspan="1" rowspan="1" align="left">Только <var class="filename">php.ini</var></td>
+       <td colspan="1" rowspan="1" align="left">Доступна с версии PHP 4.3.2.</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left"><a href="features.safe-mode.html#ini.disable-functions" class="link">disable_functions</a></td>
+       <td colspan="1" rowspan="1" align="left">&quot;&quot;</td>
+       <td colspan="1" rowspan="1" align="left">Только <var class="filename">php.ini</var></td>
+       <td colspan="1" rowspan="1" align="left">Доступна с версии PHP 4.0.1.</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left"><a href="errorfunc.configuration.html#ini.display-errors" class="link">display_errors</a></td>
+       <td colspan="1" rowspan="1" align="left">&quot;1&quot;</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_ALL</td>
+       <td class="empty">&nbsp;</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left"><a href="errorfunc.configuration.html#ini.display-startup-errors" class="link">display_startup_errors</a></td>
+       <td colspan="1" rowspan="1" align="left">&quot;0&quot;</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_ALL</td>
+       <td colspan="1" rowspan="1" align="left">Доступна с версии PHP 4.0.3.</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left"><a href="errorfunc.configuration.html#ini.docref-ext" class="link">docref_ext</a></td>
+       <td colspan="1" rowspan="1" align="left">&quot;&quot;</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_ALL</td>
+       <td colspan="1" rowspan="1" align="left">Доступна с версии PHP 4.3.2.</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left"><a href="errorfunc.configuration.html#ini.docref-root" class="link">docref_root</a></td>
+       <td colspan="1" rowspan="1" align="left">&quot;&quot;</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_ALL</td>
+       <td colspan="1" rowspan="1" align="left">Доступна с версии PHP 4.3.0.</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left"><a href="ini.core.html#ini.doc-root" class="link">doc_root</a></td>
+       <td colspan="1" rowspan="1" align="left">NULL</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_SYSTEM</td>
+       <td class="empty">&nbsp;</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left"><a href="info.configuration.html#ini.enable-dl" class="link">enable_dl</a></td>
+       <td colspan="1" rowspan="1" align="left">&quot;1&quot;</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_SYSTEM</td>
+       <td class="empty">&nbsp;</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left"><a href="apache.configuration.html#ini.engine" class="link">engine</a></td>
+       <td colspan="1" rowspan="1" align="left">&quot;1&quot;</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_ALL</td>
+       <td colspan="1" rowspan="1" align="left">Доступна с версии PHP 4.0.5.</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left"><a href="errorfunc.configuration.html#ini.error-append-string" class="link">error_append_string</a></td>
+       <td colspan="1" rowspan="1" align="left">NULL</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_ALL</td>
+       <td class="empty">&nbsp;</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left"><a href="errorfunc.configuration.html#ini.error-log" class="link">error_log</a></td>
+       <td colspan="1" rowspan="1" align="left">NULL</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_ALL</td>
+       <td class="empty">&nbsp;</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left"><a href="errorfunc.configuration.html#ini.error-prepend-string" class="link">error_prepend_string</a></td>
+       <td colspan="1" rowspan="1" align="left">NULL</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_ALL</td>
+       <td class="empty">&nbsp;</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left"><a href="errorfunc.configuration.html#ini.error-reporting" class="link">error_reporting</a></td>
+       <td colspan="1" rowspan="1" align="left">NULL</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_ALL</td>
+       <td class="empty">&nbsp;</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left"><a href="exif.configuration.html#ini.exif.decode-jis-intel" class="link">exif.decode_jis_intel</a></td>
+       <td colspan="1" rowspan="1" align="left">&quot;JIS&quot;</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_ALL</td>
+       <td colspan="1" rowspan="1" align="left">Доступна с версии PHP 4.3.0.</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left"><a href="exif.configuration.html#ini.exif.decode-jis-motorola" class="link">exif.decode_jis_motorola</a></td>
+       <td colspan="1" rowspan="1" align="left">&quot;JIS&quot;</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_ALL</td>
+       <td colspan="1" rowspan="1" align="left">Доступна с версии PHP 4.3.0.</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left"><a href="exif.configuration.html#ini.exif.decode-unicode-intel" class="link">exif.decode_unicode_intel</a></td>
+       <td colspan="1" rowspan="1" align="left">&quot;UCS-2LE&quot;</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_ALL</td>
+       <td colspan="1" rowspan="1" align="left">Доступна с версии PHP 4.3.0.</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left"><a href="exif.configuration.html#ini.exif.decode-unicode-motorola" class="link">exif.decode_unicode_motorola</a></td>
+       <td colspan="1" rowspan="1" align="left">&quot;UCS-2BE&quot;</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_ALL</td>
+       <td colspan="1" rowspan="1" align="left">Доступна с версии PHP 4.3.0.</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left"><a href="exif.configuration.html#ini.exif.encode-jis" class="link">exif.encode_jis</a></td>
+       <td colspan="1" rowspan="1" align="left">&quot;&quot;</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_ALL</td>
+       <td colspan="1" rowspan="1" align="left">Доступна с версии PHP 4.3.0.</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left"><a href="exif.configuration.html#ini.exif.encode-unicode" class="link">exif.encode_unicode</a></td>
+       <td colspan="1" rowspan="1" align="left">&quot;ISO-8859-15&quot;</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_ALL</td>
+       <td colspan="1" rowspan="1" align="left">Доступна с версии PHP 4.3.0.</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left"><a href="ini.core.html#ini.expose-php" class="link">expose_php</a></td>
+       <td colspan="1" rowspan="1" align="left">&quot;1&quot;</td>
+       <td colspan="1" rowspan="1" align="left">Только <var class="filename">php.ini</var></td>
+       <td class="empty">&nbsp;</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left"><a href="ini.core.html#ini.extension-dir" class="link">extension_dir</a></td>
+       <td colspan="1" rowspan="1" align="left">&quot;/path/to/php&quot;</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_SYSTEM</td>
+       <td class="empty">&nbsp;</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left">fbsql.allow_persistent</td>
+       <td colspan="1" rowspan="1" align="left">&quot;1&quot;</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_SYSTEM</td>
+       <td colspan="1" rowspan="1" align="left">Доступна с версии PHP 4.2.0.</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left">fbsql.autocommit</td>
+       <td colspan="1" rowspan="1" align="left">&quot;1&quot;</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_SYSTEM</td>
+       <td colspan="1" rowspan="1" align="left">Доступна с версии PHP 4.0.6.</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left">fbsql.batchsize</td>
+       <td colspan="1" rowspan="1" align="left">&quot;1000&quot;</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_ALL</td>
+       <td colspan="1" rowspan="1" align="left">Доступна с версии PHP 5-cvs.</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left">fbsql.default_database</td>
+       <td colspan="1" rowspan="1" align="left">&quot;&quot;</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_SYSTEM</td>
+       <td colspan="1" rowspan="1" align="left">Доступна с версии PHP 4.0.6.</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left">fbsql.default_database_password</td>
+       <td colspan="1" rowspan="1" align="left">&quot;&quot;</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_SYSTEM</td>
+       <td colspan="1" rowspan="1" align="left">Доступна с версии PHP 4.0.6.</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left">fbsql.default_host</td>
+       <td colspan="1" rowspan="1" align="left">NULL</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_SYSTEM</td>
+       <td colspan="1" rowspan="1" align="left">Доступна с версии PHP 4.0.6.</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left">fbsql.default_password</td>
+       <td colspan="1" rowspan="1" align="left">&quot;&quot;</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_SYSTEM</td>
+       <td colspan="1" rowspan="1" align="left">Доступна с версии PHP 4.0.6.</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left">fbsql.default_user</td>
+       <td colspan="1" rowspan="1" align="left">&quot;_SYSTEM&quot;</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_SYSTEM</td>
+       <td colspan="1" rowspan="1" align="left">Доступна с версии PHP 4.0.6.</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left">fbsql.generate_warnings</td>
+       <td colspan="1" rowspan="1" align="left">&quot;0&quot;</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_SYSTEM</td>
+       <td colspan="1" rowspan="1" align="left">Доступна с версии PHP 4.0.6.</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left">fbsql.max_connections</td>
+       <td colspan="1" rowspan="1" align="left">&quot;128&quot;</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_SYSTEM</td>
+       <td colspan="1" rowspan="1" align="left">Доступна с версии PHP 4.0.6.</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left">fbsql.max_links</td>
+       <td colspan="1" rowspan="1" align="left">&quot;128&quot;</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_SYSTEM</td>
+       <td colspan="1" rowspan="1" align="left">Доступна с версии PHP 4.0.6.</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left">fbsql.max_persistent</td>
+       <td colspan="1" rowspan="1" align="left">&quot;-1&quot;</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_SYSTEM</td>
+       <td colspan="1" rowspan="1" align="left">Доступна с версии PHP 4.0.6.</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left">fbsql.max_results</td>
+       <td colspan="1" rowspan="1" align="left">&quot;128&quot;</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_SYSTEM</td>
+       <td colspan="1" rowspan="1" align="left">Доступна с версии PHP 4.0.6.</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left"><a href="ini.core.html#ini.file-uploads" class="link">file_uploads</a></td>
+       <td colspan="1" rowspan="1" align="left">&quot;1&quot;</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_SYSTEM</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_ALL в PHP &lt;= 4.2.3. Доступна с версии PHP 4.0.3.</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left"><a href="misc.configuration.html#ini.syntax-highlighting" class="link">highlight.bg</a></td>
+       <td colspan="1" rowspan="1" align="left">&quot;#FFFFFF&quot;</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_ALL</td>
+       <td class="empty">&nbsp;</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left"><a href="misc.configuration.html#ini.syntax-highlighting" class="link">highlight.comment</a></td>
+       <td colspan="1" rowspan="1" align="left">&quot;#FF8000&quot;</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_ALL</td>
+       <td class="empty">&nbsp;</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left"><a href="misc.configuration.html#ini.syntax-highlighting" class="link">highlight.default</a></td>
+       <td colspan="1" rowspan="1" align="left">&quot;#0000BB&quot;</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_ALL</td>
+       <td class="empty">&nbsp;</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left"><a href="misc.configuration.html#ini.syntax-highlighting" class="link">highlight.html</a></td>
+       <td colspan="1" rowspan="1" align="left">&quot;#000000&quot;</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_ALL</td>
+       <td class="empty">&nbsp;</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left"><a href="misc.configuration.html#ini.syntax-highlighting" class="link">highlight.keyword</a></td>
+       <td colspan="1" rowspan="1" align="left">&quot;#007700&quot;</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_ALL</td>
+       <td class="empty">&nbsp;</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left"><a href="misc.configuration.html#ini.syntax-highlighting" class="link">highlight.string</a></td>
+       <td colspan="1" rowspan="1" align="left">&quot;#DD0000&quot;</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_ALL</td>
+       <td class="empty">&nbsp;</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left"><a href="errorfunc.configuration.html#ini.html-errors" class="link">html_errors</a></td>
+       <td colspan="1" rowspan="1" align="left">&quot;1&quot;</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_ALL</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_SYSTEM в PHP &lt;= 4.2.3. Доступна с версии PHP 4.0.2.</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left">http.allowed_methods</td>
+       <td colspan="1" rowspan="1" align="left">&quot;OPTIONS,GET,HEAD,POST,PUT,DELETE,TRACE,CONNECT&quot;</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_ALL</td>
+       <td class="empty">&nbsp;</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left">hyperwave.allow_persistent</td>
+       <td colspan="1" rowspan="1" align="left">&quot;0&quot;</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_SYSTEM</td>
+       <td colspan="1" rowspan="1" align="left">Доступна с версии PHP 4.3.2.</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left">hyperwave.default_port</td>
+       <td colspan="1" rowspan="1" align="left">&quot;418&quot;</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_ALL</td>
+       <td class="empty">&nbsp;</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left"><a href="ibase.configuration.html#ini.ibase.allow-persistent" class="link">ibase.allow_persistent</a></td>
+       <td colspan="1" rowspan="1" align="left">&quot;1&quot;</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_SYSTEM</td>
+       <td class="empty">&nbsp;</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left"><a href="ibase.configuration.html#ini.ibase.dateformat" class="link">ibase.dateformat</a></td>
+       <td colspan="1" rowspan="1" align="left">&quot;%Y-%m-%d&quot;</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_ALL</td>
+       <td class="empty">&nbsp;</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left"><a href="ibase.configuration.html#ini.ibase.default-charset" class="link">ibase.default_charset</a></td>
+       <td colspan="1" rowspan="1" align="left">NULL</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_ALL</td>
+       <td colspan="1" rowspan="1" align="left">Доступна с версии PHP 5.0.0.</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left"><a href="ibase.configuration.html#ini.ibase.default-db" class="link">ibase.default_db</a></td>
+       <td colspan="1" rowspan="1" align="left">NULL</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_SYSTEM</td>
+       <td colspan="1" rowspan="1" align="left">Доступна с версии PHP 5.0.0.</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left"><a href="ibase.configuration.html#ini.ibase.default-password" class="link">ibase.default_password</a></td>
+       <td colspan="1" rowspan="1" align="left">NULL</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_ALL</td>
+       <td class="empty">&nbsp;</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left"><a href="ibase.configuration.html#ini.ibase.default-user" class="link">ibase.default_user</a></td>
+       <td colspan="1" rowspan="1" align="left">NULL</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_ALL</td>
+       <td class="empty">&nbsp;</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left"><a href="ibase.configuration.html#ini.ibase.max-links" class="link">ibase.max_links</a></td>
+       <td colspan="1" rowspan="1" align="left">&quot;-1&quot;</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_SYSTEM</td>
+       <td class="empty">&nbsp;</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left"><a href="ibase.configuration.html#ini.ibase.max-persistent" class="link">ibase.max_persistent</a></td>
+       <td colspan="1" rowspan="1" align="left">&quot;-1&quot;</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_SYSTEM</td>
+       <td class="empty">&nbsp;</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left"><a href="ibase.configuration.html#ini.ibase.timeformat" class="link">ibase.timeformat</a></td>
+       <td colspan="1" rowspan="1" align="left">&quot;%H:%M:%S&quot;</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_ALL</td>
+       <td class="empty">&nbsp;</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left"><a href="ibase.configuration.html#ini.ibase.timestampformat" class="link">ibase.timestampformat</a></td>
+       <td colspan="1" rowspan="1" align="left">&quot;%Y-%m-%d %H:%M:%S&quot;</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_ALL</td>
+       <td class="empty">&nbsp;</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left">iconv.input_encoding</td>
+       <td colspan="1" rowspan="1" align="left">&quot;ISO-8859-1&quot;</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_ALL</td>
+       <td colspan="1" rowspan="1" align="left">Доступна с версии PHP 4.0.5.</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left">iconv.internal_encoding</td>
+       <td colspan="1" rowspan="1" align="left">&quot;ISO-8859-1&quot;</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_ALL</td>
+       <td colspan="1" rowspan="1" align="left">Доступна с версии PHP 4.0.5.</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left">iconv.output_encoding</td>
+       <td colspan="1" rowspan="1" align="left">&quot;ISO-8859-1&quot;</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_ALL</td>
+       <td colspan="1" rowspan="1" align="left">Доступна с версии PHP 4.0.5.</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left"><a href="ifx.configuration.html#ini.ifx.allow-persistent" class="link">ifx.allow_persistent</a></td>
+       <td colspan="1" rowspan="1" align="left">&quot;1&quot;</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_SYSTEM</td>
+       <td class="empty">&nbsp;</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left"><a href="ifx.configuration.html#ini.ifx.blobinfile" class="link">ifx.blobinfile</a></td>
+       <td colspan="1" rowspan="1" align="left">&quot;1&quot;</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_ALL</td>
+       <td class="empty">&nbsp;</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left"><a href="ifx.configuration.html#ini.ifx.byteasvarchar" class="link">ifx.byteasvarchar</a></td>
+       <td colspan="1" rowspan="1" align="left">&quot;0&quot;</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_ALL</td>
+       <td class="empty">&nbsp;</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left"><a href="ifx.configuration.html#ini.ifx.charasvarchar" class="link">ifx.charasvarchar</a></td>
+       <td colspan="1" rowspan="1" align="left">&quot;0&quot;</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_ALL</td>
+       <td class="empty">&nbsp;</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left"><a href="ifx.configuration.html#ini.ifx.default-host" class="link">ifx.default_host</a></td>
+       <td colspan="1" rowspan="1" align="left">NULL</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_SYSTEM</td>
+       <td class="empty">&nbsp;</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left"><a href="ifx.configuration.html#ini.ifx.default-password" class="link">ifx.default_password</a></td>
+       <td colspan="1" rowspan="1" align="left">NULL</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_SYSTEM</td>
+       <td class="empty">&nbsp;</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left"><a href="ifx.configuration.html#ini.ifx.default-user" class="link">ifx.default_user</a></td>
+       <td colspan="1" rowspan="1" align="left">NULL</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_SYSTEM</td>
+       <td class="empty">&nbsp;</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left"><a href="ifx.configuration.html#ini.ifx.max-links" class="link">ifx.max_links</a></td>
+       <td colspan="1" rowspan="1" align="left">&quot;-1&quot;</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_SYSTEM</td>
+       <td class="empty">&nbsp;</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left"><a href="ifx.configuration.html#ini.ifx.max-persistent" class="link">ifx.max_persistent</a></td>
+       <td colspan="1" rowspan="1" align="left">&quot;-1&quot;</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_SYSTEM</td>
+       <td class="empty">&nbsp;</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left"><a href="ifx.configuration.html#ini.ifx.nullformat" class="link">ifx.nullformat</a></td>
+       <td colspan="1" rowspan="1" align="left">&quot;0&quot;</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_ALL</td>
+       <td class="empty">&nbsp;</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left"><a href="ifx.configuration.html#ini.ifx.textasvarchar" class="link">ifx.textasvarchar</a></td>
+       <td colspan="1" rowspan="1" align="left">&quot;0&quot;</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_ALL</td>
+       <td class="empty">&nbsp;</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left"><a href="errorfunc.configuration.html#ini.ignore-repeated-errors" class="link">ignore_repeated_errors</a></td>
+       <td colspan="1" rowspan="1" align="left">&quot;0&quot;</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_ALL</td>
+       <td colspan="1" rowspan="1" align="left">Доступна с версии PHP 4.3.0.</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left"><a href="errorfunc.configuration.html#ini.ignore-repeated-source" class="link">ignore_repeated_source</a></td>
+       <td colspan="1" rowspan="1" align="left">&quot;0&quot;</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_ALL</td>
+       <td colspan="1" rowspan="1" align="left">Доступна с версии PHP 4.3.0.</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left"><a href="misc.configuration.html#ini.ignore-user-abort" class="link">ignore_user_abort</a></td>
+       <td colspan="1" rowspan="1" align="left">&quot;0&quot;</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_ALL</td>
+       <td class="empty">&nbsp;</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left"><a href="outcontrol.configuration.html#ini.implicit-flush" class="link">implicit_flush</a></td>
+       <td colspan="1" rowspan="1" align="left">&quot;0&quot;</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_ALL</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_PERDIR in PHP &lt;= 4.2.3.</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left"><a href="ini.core.html#ini.include-path" class="link">include_path</a></td>
+       <td colspan="1" rowspan="1" align="left">&quot;.;/path/to/php/pear&quot;</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_ALL</td>
+       <td class="empty">&nbsp;</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left">ingres.allow_persistent</td>
+       <td colspan="1" rowspan="1" align="left">&quot;1&quot;</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_SYSTEM</td>
+       <td colspan="1" rowspan="1" align="left">Доступна с версии PHP 4.0.2.</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left">ingres.default_database</td>
+       <td colspan="1" rowspan="1" align="left">NULL</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_ALL</td>
+       <td colspan="1" rowspan="1" align="left">Доступна с версии PHP 4.0.2.</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left">ingres.default_password</td>
+       <td colspan="1" rowspan="1" align="left">NULL</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_ALL</td>
+       <td colspan="1" rowspan="1" align="left">Доступна с версии PHP 4.0.2.</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left">ingres.default_user</td>
+       <td colspan="1" rowspan="1" align="left">NULL</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_ALL</td>
+       <td colspan="1" rowspan="1" align="left">Доступна с версии PHP 4.0.2.</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left">ingres.max_links</td>
+       <td colspan="1" rowspan="1" align="left">&quot;-1&quot;</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_SYSTEM</td>
+       <td colspan="1" rowspan="1" align="left">Доступна с версии PHP 4.0.2.</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left">ingres.max_persistent</td>
+       <td colspan="1" rowspan="1" align="left">&quot;-1&quot;</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_SYSTEM</td>
+       <td colspan="1" rowspan="1" align="left">Доступна с версии PHP 4.0.2.</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left">ircg.control_user</td>
+       <td colspan="1" rowspan="1" align="left">&quot;nobody&quot;</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_ALL</td>
+       <td colspan="1" rowspan="1" align="left">Доступна с версии PHP 5.0.0.</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left">ircg.keep_alive_interval</td>
+       <td colspan="1" rowspan="1" align="left">&quot;60&quot;</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_ALL</td>
+       <td colspan="1" rowspan="1" align="left">Доступна с версии PHP 5.0.0.</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left">ircg.max_format_message_sets</td>
+       <td colspan="1" rowspan="1" align="left">&quot;12&quot;</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_ALL</td>
+       <td colspan="1" rowspan="1" align="left">Доступна с версии PHP 5.0.0.</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left">ircg.shared_mem_size</td>
+       <td colspan="1" rowspan="1" align="left">&quot;6000000&quot;</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_ALL</td>
+       <td colspan="1" rowspan="1" align="left">Доступна с версии PHP 5.0.0.</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left">ircg.work_dir</td>
+       <td colspan="1" rowspan="1" align="left">&quot;/tmp/ircg&quot;</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_ALL</td>
+       <td colspan="1" rowspan="1" align="left">Доступна с версии PHP 5.0.0.</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left"><a href="apache.configuration.html#ini.last-modified" class="link">last_modified</a></td>
+       <td colspan="1" rowspan="1" align="left">&quot;0&quot;</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_ALL</td>
+       <td colspan="1" rowspan="1" align="left">Доступна с версии PHP 4.0.5.</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left">ldap.max_links</td>
+       <td colspan="1" rowspan="1" align="left">&quot;-1&quot;</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_SYSTEM</td>
+       <td class="empty">&nbsp;</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left"><a href="errorfunc.configuration.html#ini.log-errors" class="link">log_errors</a></td>
+       <td colspan="1" rowspan="1" align="left">&quot;0&quot;</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_ALL</td>
+       <td class="empty">&nbsp;</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left"><a href="errorfunc.configuration.html#ini.log-errors-max-len" class="link">log_errors_max_len</a></td>
+       <td colspan="1" rowspan="1" align="left">&quot;1024&quot;</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_ALL</td>
+       <td colspan="1" rowspan="1" align="left">Доступна с версии PHP 4.3.0.</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left"><a href="info.configuration.html#ini.magic-quotes-gpc" class="link">magic_quotes_gpc</a></td>
+       <td colspan="1" rowspan="1" align="left">&quot;1&quot;</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_PERDIR</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_ALL в PHP &lt;= 4.2.3.</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left"><a href="info.configuration.html#ini.magic-quotes-runtime" class="link">magic_quotes_runtime</a></td>
+       <td colspan="1" rowspan="1" align="left">&quot;0&quot;</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_ALL</td>
+       <td class="empty">&nbsp;</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left"><a href="sybase.configuration.html#ini.magic-quotes-sybase" class="link">magic_quotes_sybase</a></td>
+       <td colspan="1" rowspan="1" align="left">&quot;0&quot;</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_ALL</td>
+       <td class="empty">&nbsp;</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left">mail.force_extra_parameters</td>
+       <td colspan="1" rowspan="1" align="left">NULL</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_PERDIR</td>
+       <td colspan="1" rowspan="1" align="left">Доступна с версии PHP 5.0.0.</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left">mailparse.def_charset</td>
+       <td colspan="1" rowspan="1" align="left">&quot;us-ascii&quot;</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_ALL</td>
+       <td colspan="1" rowspan="1" align="left">Доступна с версии PHP 4.1.0.</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left"><a href="maxdb.configuration.html#ini.maxdb.default-db" class="link">maxdb.default_db</a></td>
+       <td colspan="1" rowspan="1" align="left">NULL</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_ALL</td>
+       <td class="empty">&nbsp;</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left"><a href="maxdb.configuration.html#ini.maxdb.default-host" class="link">maxdb.default_host</a></td>
+       <td colspan="1" rowspan="1" align="left">NULL</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_ALL</td>
+       <td class="empty">&nbsp;</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left">maxdb.default_pw</td>
+       <td colspan="1" rowspan="1" align="left">NULL</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_ALL</td>
+       <td class="empty">&nbsp;</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left"><a href="maxdb.configuration.html#ini.maxdb.default-user" class="link">maxdb.default_user</a></td>
+       <td colspan="1" rowspan="1" align="left">NULL</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_ALL</td>
+       <td class="empty">&nbsp;</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left"><a href="maxdb.configuration.html#ini.maxdb.long-readlen" class="link">maxdb.long_readlen</a></td>
+       <td colspan="1" rowspan="1" align="left">&quot;200&quot;</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_ALL</td>
+       <td class="empty">&nbsp;</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left"><a href="info.configuration.html#ini.max-execution-time" class="link">max_execution_time</a></td>
+       <td colspan="1" rowspan="1" align="left">&quot;30&quot;</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_ALL</td>
+       <td class="empty">&nbsp;</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left"><a href="info.configuration.html#ini.max-input-time" class="link">max_input_time</a></td>
+       <td colspan="1" rowspan="1" align="left">&quot;-1&quot;</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_PERDIR</td>
+       <td colspan="1" rowspan="1" align="left">Доступна с версии PHP 4.3.0.</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left"><a href="mbstring.configuration.html#ini.mbstring.detect-order" class="link">mbstring.detect_order</a></td>
+       <td colspan="1" rowspan="1" align="left">NULL</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_ALL</td>
+       <td colspan="1" rowspan="1" align="left">Доступна с версии PHP 4.0.6.</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left"><a href="mbstring.configuration.html#ini.mbstring.encoding-translation" class="link">mbstring.encoding_translation</a></td>
+       <td colspan="1" rowspan="1" align="left">&quot;0&quot;</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_PERDIR</td>
+       <td colspan="1" rowspan="1" align="left">Доступна с версии PHP 4.3.0.</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left"><a href="mbstring.configuration.html#ini.mbstring.func-overload" class="link">mbstring.func_overload</a></td>
+       <td colspan="1" rowspan="1" align="left">&quot;0&quot;</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_PERDIR</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_SYSTEM в PHP &lt;= 4.2.3. Доступна с версии PHP 4.2.0.</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left"><a href="mbstring.configuration.html#ini.mbstring.http-input" class="link">mbstring.http_input</a></td>
+       <td colspan="1" rowspan="1" align="left">&quot;pass&quot;</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_ALL</td>
+       <td colspan="1" rowspan="1" align="left">Доступна с версии PHP 4.0.6.</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left"><a href="mbstring.configuration.html#ini.mbstring.http-output" class="link">mbstring.http_output</a></td>
+       <td colspan="1" rowspan="1" align="left">&quot;pass&quot;</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_ALL</td>
+       <td colspan="1" rowspan="1" align="left">Доступна с версии PHP 4.0.6.</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left"><a href="mbstring.configuration.html#ini.mbstring.internal-encoding" class="link">mbstring.internal_encoding</a></td>
+       <td colspan="1" rowspan="1" align="left">NULL</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_ALL</td>
+       <td colspan="1" rowspan="1" align="left">Доступна с версии PHP 4.0.6.</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left"><a href="mbstring.configuration.html#ini.mbstring.language" class="link">mbstring.language</a></td>
+       <td colspan="1" rowspan="1" align="left">&quot;neutral&quot;</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_PERDIR</td>
+       <td colspan="1" rowspan="1" align="left">Доступна с версии PHP 4.3.0.</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left">mbstring.script_encoding</td>
+       <td colspan="1" rowspan="1" align="left">NULL</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_ALL</td>
+       <td colspan="1" rowspan="1" align="left">Доступна с версии PHP 4.3.0.</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left"><a href="mbstring.configuration.html#ini.mbstring.substitute-character" class="link">mbstring.substitute_character</a></td>
+       <td colspan="1" rowspan="1" align="left">NULL</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_ALL</td>
+       <td colspan="1" rowspan="1" align="left">Доступна с версии PHP 4.0.6.</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left">mcrypt.algorithms_dir</td>
+       <td colspan="1" rowspan="1" align="left">NULL</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_ALL</td>
+       <td colspan="1" rowspan="1" align="left">Доступна с версии PHP 4.0.2.</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left">mcrypt.modes_dir</td>
+       <td colspan="1" rowspan="1" align="left">NULL</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_ALL</td>
+       <td colspan="1" rowspan="1" align="left">Доступна с версии PHP 4.0.2.</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left"><a href="ini.core.html#ini.memory-limit" class="link">memory_limit</a></td>
+       <td colspan="1" rowspan="1" align="left">&quot;8M&quot;</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_ALL</td>
+       <td class="empty">&nbsp;</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left">mime_magic.debug</td>
+       <td colspan="1" rowspan="1" align="left">&quot;0&quot;</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_SYSTEM</td>
+       <td colspan="1" rowspan="1" align="left">Доступна с версии PHP 5.0.0.</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left">mime_magic.magicfile</td>
+       <td colspan="1" rowspan="1" align="left">&quot;/path/to/php/magic.mime&quot;</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_SYSTEM</td>
+       <td colspan="1" rowspan="1" align="left">Доступна с версии PHP 4.3.0.</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left">mssql.allow_persistent</td>
+       <td colspan="1" rowspan="1" align="left">&quot;1&quot;</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_SYSTEM</td>
+       <td class="empty">&nbsp;</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left">mssql.batchsize</td>
+       <td colspan="1" rowspan="1" align="left">&quot;0&quot;</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_ALL</td>
+       <td colspan="1" rowspan="1" align="left">Доступна с версии PHP 4.0.4.</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left">mssql.compatability_mode</td>
+       <td colspan="1" rowspan="1" align="left">&quot;0&quot;</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_ALL</td>
+       <td class="empty">&nbsp;</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left">mssql.connect_timeout</td>
+       <td colspan="1" rowspan="1" align="left">&quot;5&quot;</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_ALL</td>
+       <td class="empty">&nbsp;</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left">mssql.datetimeconvert</td>
+       <td colspan="1" rowspan="1" align="left">&quot;1&quot;</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_ALL</td>
+       <td colspan="1" rowspan="1" align="left">Доступна с версии PHP 4.2.0.</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left">mssql.max_links</td>
+       <td colspan="1" rowspan="1" align="left">&quot;-1&quot;</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_SYSTEM</td>
+       <td class="empty">&nbsp;</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left">mssql.max_persistent</td>
+       <td colspan="1" rowspan="1" align="left">&quot;-1&quot;</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_SYSTEM</td>
+       <td class="empty">&nbsp;</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left">mssql.max_procs</td>
+       <td colspan="1" rowspan="1" align="left">&quot;25&quot;</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_ALL</td>
+       <td colspan="1" rowspan="1" align="left">Доступна с версии PHP 4.3.0.</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left">mssql.min_error_severity</td>
+       <td colspan="1" rowspan="1" align="left">&quot;10&quot;</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_ALL</td>
+       <td class="empty">&nbsp;</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left">mssql.min_message_severity</td>
+       <td colspan="1" rowspan="1" align="left">&quot;10&quot;</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_ALL</td>
+       <td class="empty">&nbsp;</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left">mssql.secure_connection</td>
+       <td colspan="1" rowspan="1" align="left">&quot;0&quot;</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_SYSTEM</td>
+       <td colspan="1" rowspan="1" align="left">Доступна с версии PHP 4.3.0.</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left">mssql.textlimit</td>
+       <td colspan="1" rowspan="1" align="left">&quot;-1&quot;</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_ALL</td>
+       <td class="empty">&nbsp;</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left">mssql.textsize</td>
+       <td colspan="1" rowspan="1" align="left">&quot;-1&quot;</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_ALL</td>
+       <td class="empty">&nbsp;</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left">mssql.timeout</td>
+       <td colspan="1" rowspan="1" align="left">&quot;60&quot;</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_ALL</td>
+       <td colspan="1" rowspan="1" align="left">Доступна с версии PHP 4.1.0.</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left"><a href="mysql.configuration.html#ini.mysql.allow-persistent" class="link">mysql.allow_persistent</a></td>
+       <td colspan="1" rowspan="1" align="left">&quot;1&quot;</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_SYSTEM</td>
+       <td class="empty">&nbsp;</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left"><a href="mysql.configuration.html#ini.mysql.connect-timeout" class="link">mysql.connect_timeout</a></td>
+       <td colspan="1" rowspan="1" align="left">&quot;60&quot;</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_ALL</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_SYSTEM в PHP &lt;= 4.3.2. Доступна с версии PHP 4.3.0.</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left"><a href="mysql.configuration.html#ini.mysql.default-host" class="link">mysql.default_host</a></td>
+       <td colspan="1" rowspan="1" align="left">NULL</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_ALL</td>
+       <td class="empty">&nbsp;</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left"><a href="mysql.configuration.html#ini.mysql.default-password" class="link">mysql.default_password</a></td>
+       <td colspan="1" rowspan="1" align="left">NULL</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_ALL</td>
+       <td class="empty">&nbsp;</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left"><a href="mysql.configuration.html#ini.mysql.default-port" class="link">mysql.default_port</a></td>
+       <td colspan="1" rowspan="1" align="left">NULL</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_ALL</td>
+       <td class="empty">&nbsp;</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left"><a href="mysql.configuration.html#ini.mysql.default-socket" class="link">mysql.default_socket</a></td>
+       <td colspan="1" rowspan="1" align="left">NULL</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_ALL</td>
+       <td colspan="1" rowspan="1" align="left">Доступна с версии PHP 4.0.1.</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left"><a href="mysql.configuration.html#ini.mysql.default-user" class="link">mysql.default_user</a></td>
+       <td colspan="1" rowspan="1" align="left">NULL</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_ALL</td>
+       <td class="empty">&nbsp;</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left"><a href="mysql.configuration.html#ini.mysql.max-links" class="link">mysql.max_links</a></td>
+       <td colspan="1" rowspan="1" align="left">&quot;-1&quot;</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_SYSTEM</td>
+       <td class="empty">&nbsp;</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left"><a href="mysql.configuration.html#ini.mysql.max-persistent" class="link">mysql.max_persistent</a></td>
+       <td colspan="1" rowspan="1" align="left">&quot;-1&quot;</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_SYSTEM</td>
+       <td class="empty">&nbsp;</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left"><a href="mysql.configuration.html#ini.mysql.trace-mode" class="link">mysql.trace_mode</a></td>
+       <td colspan="1" rowspan="1" align="left">&quot;0&quot;</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_ALL</td>
+       <td colspan="1" rowspan="1" align="left">Доступна с версии PHP 4.3.0.</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left"><a href="mysqli.configuration.html#ini.mysqli.default-host" class="link">mysqli.default_host</a></td>
+       <td colspan="1" rowspan="1" align="left">NULL</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_ALL</td>
+       <td colspan="1" rowspan="1" align="left">Доступна с версии PHP 5.0.0.</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left"><a href="mysqli.configuration.html#ini.mysqli.default-port" class="link">mysqli.default_port</a></td>
+       <td colspan="1" rowspan="1" align="left">&quot;3306&quot;</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_ALL</td>
+       <td colspan="1" rowspan="1" align="left">Доступна с версии PHP 5.0.0.</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left"><a href="mysqli.configuration.html#ini.mysqli.default-pw" class="link">mysqli.default_pw</a></td>
+       <td colspan="1" rowspan="1" align="left">NULL</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_ALL</td>
+       <td colspan="1" rowspan="1" align="left">Доступна с версии PHP 5.0.0.</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left"><a href="mysqli.configuration.html#ini.mysqli.default-socket" class="link">mysqli.default_socket</a></td>
+       <td colspan="1" rowspan="1" align="left">NULL</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_ALL</td>
+       <td colspan="1" rowspan="1" align="left">Доступна с версии PHP 5.0.0.</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left"><a href="mysqli.configuration.html#ini.mysqli.default-user" class="link">mysqli.default_user</a></td>
+       <td colspan="1" rowspan="1" align="left">NULL</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_ALL</td>
+       <td colspan="1" rowspan="1" align="left">Доступна с версии PHP 5.0.0.</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left"><a href="mysqli.configuration.html#ini.mysqli.max-links" class="link">mysqli.max_links</a></td>
+       <td colspan="1" rowspan="1" align="left">&quot;-1&quot;</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_SYSTEM</td>
+       <td colspan="1" rowspan="1" align="left">Доступна с версии PHP 5.0.0.</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left">mysqli.reconnect</td>
+       <td colspan="1" rowspan="1" align="left">&quot;0&quot;</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_SYSTEM</td>
+       <td colspan="1" rowspan="1" align="left">Доступна с версии PHP 5.0.0.</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left">namazu.debugmode</td>
+       <td colspan="1" rowspan="1" align="left">&quot;0&quot;</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_ALL</td>
+       <td class="empty">&nbsp;</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left">namazu.lang</td>
+       <td colspan="1" rowspan="1" align="left">NULL</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_ALL</td>
+       <td class="empty">&nbsp;</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left">namazu.loggingmode</td>
+       <td colspan="1" rowspan="1" align="left">&quot;0&quot;</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_ALL</td>
+       <td class="empty">&nbsp;</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left">namazu.sortmethod</td>
+       <td colspan="1" rowspan="1" align="left">NULL</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_ALL</td>
+       <td class="empty">&nbsp;</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left">namazu.sortorder</td>
+       <td colspan="1" rowspan="1" align="left">NULL</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_ALL</td>
+       <td class="empty">&nbsp;</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left"><a href="nsapi.configuration.html#ini.nsapi.read-timeout" class="link">nsapi.read_timeout</a></td>
+       <td colspan="1" rowspan="1" align="left">&quot;60&quot;</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_ALL</td>
+       <td colspan="1" rowspan="1" align="left">Доступна с версии PHP 4.3.3.</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left"><a href="odbc.configuration.html#ini.uodbc.allow-persistent" class="link">odbc.allow_persistent</a></td>
+       <td colspan="1" rowspan="1" align="left">&quot;1&quot;</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_SYSTEM</td>
+       <td class="empty">&nbsp;</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left"><a href="odbc.configuration.html#ini.uodbc.check-persistent" class="link">odbc.check_persistent</a></td>
+       <td colspan="1" rowspan="1" align="left">&quot;1&quot;</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_SYSTEM</td>
+       <td class="empty">&nbsp;</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left"><a href="odbc.configuration.html#ini.uodbc.defaultbinmode" class="link">odbc.defaultbinmode</a></td>
+       <td colspan="1" rowspan="1" align="left">&quot;1&quot;</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_ALL</td>
+       <td class="empty">&nbsp;</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left"><a href="odbc.configuration.html#ini.uodbc.defaultlrl" class="link">odbc.defaultlrl</a></td>
+       <td colspan="1" rowspan="1" align="left">&quot;4096&quot;</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_ALL</td>
+       <td class="empty">&nbsp;</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left"><a href="odbc.configuration.html#ini.uodbc.default-db" class="link">odbc.default_db</a></td>
+       <td colspan="1" rowspan="1" align="left">NULL</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_ALL</td>
+       <td class="empty">&nbsp;</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left"><a href="odbc.configuration.html#ini.uodbc.default-pw" class="link">odbc.default_pw</a></td>
+       <td colspan="1" rowspan="1" align="left">NULL</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_ALL</td>
+       <td class="empty">&nbsp;</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left"><a href="odbc.configuration.html#ini.uodbc.default-user" class="link">odbc.default_user</a></td>
+       <td colspan="1" rowspan="1" align="left">NULL</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_ALL</td>
+       <td class="empty">&nbsp;</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left"><a href="odbc.configuration.html#ini.uodbc.max-links" class="link">odbc.max_links</a></td>
+       <td colspan="1" rowspan="1" align="left">&quot;-1&quot;</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_SYSTEM</td>
+       <td class="empty">&nbsp;</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left"><a href="odbc.configuration.html#ini.uodbc.max-persistent" class="link">odbc.max_persistent</a></td>
+       <td colspan="1" rowspan="1" align="left">&quot;-1&quot;</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_SYSTEM</td>
+       <td class="empty">&nbsp;</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left">opendirectory.max_refs</td>
+       <td colspan="1" rowspan="1" align="left">&quot;-1&quot;</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_ALL</td>
+       <td class="empty">&nbsp;</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left">opendirectory.separator</td>
+       <td colspan="1" rowspan="1" align="left">&quot;/&quot;</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_ALL</td>
+       <td class="empty">&nbsp;</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left"><a href="features.safe-mode.html#ini.open-basedir" class="link">open_basedir</a></td>
+       <td colspan="1" rowspan="1" align="left">NULL</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_SYSTEM</td>
+       <td class="empty">&nbsp;</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left"><a href="outcontrol.configuration.html#ini.output-buffering" class="link">output_buffering</a></td>
+       <td colspan="1" rowspan="1" align="left">&quot;0&quot;</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_PERDIR</td>
+       <td class="empty">&nbsp;</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left"><a href="outcontrol.configuration.html#ini.output-handler" class="link">output_handler</a></td>
+       <td colspan="1" rowspan="1" align="left">NULL</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_PERDIR</td>
+       <td colspan="1" rowspan="1" align="left">Доступна с версии PHP 4.0.4.</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left">pdo.global_value</td>
+       <td colspan="1" rowspan="1" align="left">&quot;42&quot;</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_ALL</td>
+       <td class="empty">&nbsp;</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left">pfpro.defaulthost</td>
+       <td colspan="1" rowspan="1" align="left">&quot;test-payflow.verisign.com&quot;</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_ALL</td>
+       <td colspan="1" rowspan="1" align="left">Доступна с версии PHP 4.0.2.</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left">pfpro.defaultport</td>
+       <td colspan="1" rowspan="1" align="left">&quot;443&quot;</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_ALL</td>
+       <td colspan="1" rowspan="1" align="left">Доступна с версии PHP 4.0.2.</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left">pfpro.defaulttimeout</td>
+       <td colspan="1" rowspan="1" align="left">&quot;30&quot;</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_ALL</td>
+       <td colspan="1" rowspan="1" align="left">Доступна с версии PHP 4.0.2.</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left">pfpro.proxyaddress</td>
+       <td colspan="1" rowspan="1" align="left">&quot;&quot;</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_ALL</td>
+       <td colspan="1" rowspan="1" align="left">Доступна с версии PHP 4.0.2.</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left">pfpro.proxylogon</td>
+       <td colspan="1" rowspan="1" align="left">&quot;&quot;</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_ALL</td>
+       <td colspan="1" rowspan="1" align="left">Доступна с версии PHP 4.0.2.</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left">pfpro.proxypassword</td>
+       <td colspan="1" rowspan="1" align="left">&quot;&quot;</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_ALL</td>
+       <td colspan="1" rowspan="1" align="left">Доступна с версии PHP 4.0.2.</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left">pfpro.proxyport</td>
+       <td colspan="1" rowspan="1" align="left">&quot;&quot;</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_ALL</td>
+       <td colspan="1" rowspan="1" align="left">Доступна с версии PHP 4.0.2.</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left"><a href="pgsql.configuration.html#ini.pgsql.allow-persistent" class="link">pgsql.allow_persistent</a></td>
+       <td colspan="1" rowspan="1" align="left">&quot;1&quot;</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_SYSTEM</td>
+       <td class="empty">&nbsp;</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left"><a href="pgsql.configuration.html#ini.pgsql.auto-reset-persistent" class="link">pgsql.auto_reset_persistent</a></td>
+       <td colspan="1" rowspan="1" align="left">&quot;0&quot;</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_SYSTEM</td>
+       <td colspan="1" rowspan="1" align="left">Доступна с версии PHP 4.2.0.</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left"><a href="pgsql.configuration.html#ini.pgsql.ignore-notice" class="link">pgsql.ignore_notice</a></td>
+       <td colspan="1" rowspan="1" align="left">&quot;0&quot;</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_ALL</td>
+       <td colspan="1" rowspan="1" align="left">Доступна с версии PHP 4.3.0.</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left"><a href="pgsql.configuration.html#ini.pgsql.log-notice" class="link">pgsql.log_notice</a></td>
+       <td colspan="1" rowspan="1" align="left">&quot;0&quot;</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_ALL</td>
+       <td colspan="1" rowspan="1" align="left">Доступна с версии PHP 4.3.0.</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left"><a href="pgsql.configuration.html#ini.pgsql.max-links" class="link">pgsql.max_links</a></td>
+       <td colspan="1" rowspan="1" align="left">&quot;-1&quot;</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_SYSTEM</td>
+       <td class="empty">&nbsp;</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left"><a href="pgsql.configuration.html#ini.pgsql.max-persistent" class="link">pgsql.max_persistent</a></td>
+       <td colspan="1" rowspan="1" align="left">&quot;-1&quot;</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_SYSTEM</td>
+       <td class="empty">&nbsp;</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left"><a href="ini.core.html#ini.post-max-size" class="link">post_max_size</a></td>
+       <td colspan="1" rowspan="1" align="left">&quot;8M&quot;</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_PERDIR</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_SYSTEM в PHP &lt;= 4.2.3. Доступна с версии PHP 4.0.3.</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left"><a href="ini.core.html#ini.precision" class="link">precision</a></td>
+       <td colspan="1" rowspan="1" align="left">&quot;14&quot;</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_ALL</td>
+       <td class="empty">&nbsp;</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left">printer.default_printer</td>
+       <td colspan="1" rowspan="1" align="left">&quot;&quot;</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_ALL</td>
+       <td class="empty">&nbsp;</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left">realpath_cache_size</td>
+       <td colspan="1" rowspan="1" align="left">&quot;16K&quot;</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_SYSTEM</td>
+       <td colspan="1" rowspan="1" align="left">Доступна с версии PHP 5-cvs.</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left">realpath_cache_ttl</td>
+       <td colspan="1" rowspan="1" align="left">&quot;120&quot;</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_SYSTEM</td>
+       <td colspan="1" rowspan="1" align="left">Доступна с версии PHP 5-cvs.</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left"><a href="ini.core.html#ini.register-argc-argv" class="link">register_argc_argv</a></td>
+       <td colspan="1" rowspan="1" align="left">&quot;1&quot;</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_PERDIR</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_ALL в PHP &lt;= 4.2.3.</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left"><a href="ini.core.html#ini.register-globals" class="link">register_globals</a></td>
+       <td colspan="1" rowspan="1" align="left">&quot;0&quot;</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_PERDIR</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_ALL в PHP &lt;= 4.2.3.</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left"><a href="ini.core.html#ini.register-long-arrays" class="link">register_long_arrays</a></td>
+       <td colspan="1" rowspan="1" align="left">&quot;1&quot;</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_PERDIR</td>
+       <td colspan="1" rowspan="1" align="left">Доступна с версии PHP 5.0.0.</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left"><a href="errorfunc.configuration.html#ini.report-memleaks" class="link">report_memleaks</a></td>
+       <td colspan="1" rowspan="1" align="left">&quot;1&quot;</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_ALL</td>
+       <td colspan="1" rowspan="1" align="left">Доступна с версии PHP 4.3.0.</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left">report_zend_debug</td>
+       <td colspan="1" rowspan="1" align="left">&quot;1&quot;</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_ALL</td>
+       <td colspan="1" rowspan="1" align="left">Доступна с версии PHP 5.0.0.</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left"><a href="features.safe-mode.html#ini.safe-mode" class="link">safe_mode</a></td>
+       <td colspan="1" rowspan="1" align="left">&quot;0&quot;</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_SYSTEM</td>
+       <td class="empty">&nbsp;</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left"><a href="features.safe-mode.html#ini.safe-mode-allowed-env-vars" class="link">safe_mode_allowed_env_vars</a></td>
+       <td colspan="1" rowspan="1" align="left">&quot;PHP_&quot;</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_SYSTEM</td>
+       <td class="empty">&nbsp;</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left"><a href="features.safe-mode.html#ini.safe-mode-exec-dir" class="link">safe_mode_exec_dir</a></td>
+       <td colspan="1" rowspan="1" align="left">&quot;&quot;</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_SYSTEM</td>
+       <td class="empty">&nbsp;</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left"><a href="features.safe-mode.html#ini.safe-mode-gid" class="link">safe_mode_gid</a></td>
+       <td colspan="1" rowspan="1" align="left">&quot;0&quot;</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_SYSTEM</td>
+       <td colspan="1" rowspan="1" align="left">Доступна с версии PHP 4.1.0.</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left"><a href="features.safe-mode.html#ini.safe-mode-include-dir" class="link">safe_mode_include_dir</a></td>
+       <td colspan="1" rowspan="1" align="left">NULL</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_SYSTEM</td>
+       <td colspan="1" rowspan="1" align="left">Доступна с версии PHP 4.1.0.</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left"><a href="features.safe-mode.html#ini.safe-mode-protected-env-vars" class="link">safe_mode_protected_env_vars</a></td>
+       <td colspan="1" rowspan="1" align="left">&quot;LD_LIBRARY_PATH&quot;</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_SYSTEM</td>
+       <td class="empty">&nbsp;</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left"><a href="mail.configuration.html#ini.sendmail-from" class="link">sendmail_from</a></td>
+       <td colspan="1" rowspan="1" align="left">NULL</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_ALL</td>
+       <td class="empty">&nbsp;</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left"><a href="mail.configuration.html#ini.sendmail-path" class="link">sendmail_path</a></td>
+       <td colspan="1" rowspan="1" align="left">NULL</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_SYSTEM</td>
+       <td class="empty">&nbsp;</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left">serialize_precision</td>
+       <td colspan="1" rowspan="1" align="left">&quot;100&quot;</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_ALL</td>
+       <td colspan="1" rowspan="1" align="left">Доступна с версии PHP 4.3.2.</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left"><a href="session.configuration.html#ini.session.auto-start" class="link">session.auto_start</a></td>
+       <td colspan="1" rowspan="1" align="left">&quot;0&quot;</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_ALL</td>
+       <td class="empty">&nbsp;</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left"><a href="session.configuration.html#ini.session.bug-compat-42" class="link">session.bug_compat_42</a></td>
+       <td colspan="1" rowspan="1" align="left">&quot;1&quot;</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_ALL</td>
+       <td colspan="1" rowspan="1" align="left">Доступна с версии PHP 4.3.0.</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left"><a href="session.configuration.html#ini.session.bug-compat-warn" class="link">session.bug_compat_warn</a></td>
+       <td colspan="1" rowspan="1" align="left">&quot;1&quot;</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_ALL</td>
+       <td colspan="1" rowspan="1" align="left">Доступна с версии PHP 4.3.0.</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left"><a href="session.configuration.html#ini.session.cache-expire" class="link">session.cache_expire</a></td>
+       <td colspan="1" rowspan="1" align="left">&quot;180&quot;</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_ALL</td>
+       <td class="empty">&nbsp;</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left"><a href="session.configuration.html#ini.session.cache-limiter" class="link">session.cache_limiter</a></td>
+       <td colspan="1" rowspan="1" align="left">&quot;nocache&quot;</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_ALL</td>
+       <td class="empty">&nbsp;</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left"><a href="session.configuration.html#ini.session.cookie-domain" class="link">session.cookie_domain</a></td>
+       <td colspan="1" rowspan="1" align="left">&quot;&quot;</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_ALL</td>
+       <td class="empty">&nbsp;</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left"><a href="session.configuration.html#ini.session.cookie-lifetime" class="link">session.cookie_lifetime</a></td>
+       <td colspan="1" rowspan="1" align="left">&quot;0&quot;</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_ALL</td>
+       <td class="empty">&nbsp;</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left"><a href="session.configuration.html#ini.session.cookie-path" class="link">session.cookie_path</a></td>
+       <td colspan="1" rowspan="1" align="left">&quot;/&quot;</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_ALL</td>
+       <td class="empty">&nbsp;</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left"><a href="session.configuration.html#ini.session.cookie-secure" class="link">session.cookie_secure</a></td>
+       <td colspan="1" rowspan="1" align="left">&quot;&quot;</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_ALL</td>
+       <td colspan="1" rowspan="1" align="left">Доступна с версии PHP 4.0.4.</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left"><a href="session.configuration.html#ini.session.entropy-file" class="link">session.entropy_file</a></td>
+       <td colspan="1" rowspan="1" align="left">&quot;&quot;</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_ALL</td>
+       <td class="empty">&nbsp;</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left"><a href="session.configuration.html#ini.session.entropy-length" class="link">session.entropy_length</a></td>
+       <td colspan="1" rowspan="1" align="left">&quot;0&quot;</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_ALL</td>
+       <td class="empty">&nbsp;</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left"><a href="session.configuration.html#ini.session.gc-divisor" class="link">session.gc_divisor</a></td>
+       <td colspan="1" rowspan="1" align="left">&quot;100&quot;</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_ALL</td>
+       <td colspan="1" rowspan="1" align="left">Доступна с версии PHP 4.3.2.</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left"><a href="session.configuration.html#ini.session.gc-maxlifetime" class="link">session.gc_maxlifetime</a></td>
+       <td colspan="1" rowspan="1" align="left">&quot;1440&quot;</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_ALL</td>
+       <td class="empty">&nbsp;</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left"><a href="session.configuration.html#ini.session.gc-probability" class="link">session.gc_probability</a></td>
+       <td colspan="1" rowspan="1" align="left">&quot;1&quot;</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_ALL</td>
+       <td class="empty">&nbsp;</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left"><a href="session.configuration.html#ini.session.hash-bits-per-character" class="link">session.hash_bits_per_character</a></td>
+       <td colspan="1" rowspan="1" align="left">&quot;4&quot;</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_ALL</td>
+       <td colspan="1" rowspan="1" align="left">Доступна с версии PHP 5.0.0.</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left"><a href="session.configuration.html#ini.session.hash-function" class="link">session.hash_function</a></td>
+       <td colspan="1" rowspan="1" align="left">&quot;0&quot;</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_ALL</td>
+       <td colspan="1" rowspan="1" align="left">Доступна с версии PHP 5.0.0.</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left"><a href="session.configuration.html#ini.session.name" class="link">session.name</a></td>
+       <td colspan="1" rowspan="1" align="left">&quot;PHPSESSID&quot;</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_ALL</td>
+       <td class="empty">&nbsp;</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left"><a href="session.configuration.html#ini.session.referer-check" class="link">session.referer_check</a></td>
+       <td colspan="1" rowspan="1" align="left">&quot;&quot;</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_ALL</td>
+       <td class="empty">&nbsp;</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left"><a href="session.configuration.html#ini.session.save-handler" class="link">session.save_handler</a></td>
+       <td colspan="1" rowspan="1" align="left">&quot;files&quot;</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_ALL</td>
+       <td class="empty">&nbsp;</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left"><a href="session.configuration.html#ini.session.save-path" class="link">session.save_path</a></td>
+       <td colspan="1" rowspan="1" align="left">&quot;&quot;</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_ALL</td>
+       <td class="empty">&nbsp;</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left"><a href="session.configuration.html#ini.session.serialize-handler" class="link">session.serialize_handler</a></td>
+       <td colspan="1" rowspan="1" align="left">&quot;php&quot;</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_ALL</td>
+       <td class="empty">&nbsp;</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left"><a href="session.configuration.html#ini.session.use-cookies" class="link">session.use_cookies</a></td>
+       <td colspan="1" rowspan="1" align="left">&quot;1&quot;</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_ALL</td>
+       <td class="empty">&nbsp;</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left"><a href="session.configuration.html#ini.session.use-only-cookies" class="link">session.use_only_cookies</a></td>
+       <td colspan="1" rowspan="1" align="left">&quot;0&quot;</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_ALL</td>
+       <td colspan="1" rowspan="1" align="left">Доступна с версии PHP 4.3.0.</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left"><a href="session.configuration.html#ini.session.use-trans-sid" class="link">session.use_trans_sid</a></td>
+       <td colspan="1" rowspan="1" align="left">&quot;0&quot;</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_ALL</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_ALL в PHP &lt;= 4.2.3. PHP_INI_PERDIR in PHP &lt;= 4-cvs. Доступна с версии PHP 4.0.3.</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left">session_pgsql.create_table</td>
+       <td colspan="1" rowspan="1" align="left">&quot;1&quot;</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_SYSTEM</td>
+       <td class="empty">&nbsp;</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left">session_pgsql.db</td>
+       <td colspan="1" rowspan="1" align="left">&quot;host=localhost dbname=php_session user=nobody&quot;</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_SYSTEM</td>
+       <td class="empty">&nbsp;</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left">session_pgsql.disable</td>
+       <td colspan="1" rowspan="1" align="left">&quot;0&quot;</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_SYSTEM</td>
+       <td class="empty">&nbsp;</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left">session_pgsql.failover_mode</td>
+       <td colspan="1" rowspan="1" align="left">&quot;0&quot;</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_SYSTEM</td>
+       <td class="empty">&nbsp;</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left">session_pgsql.gc_interval</td>
+       <td colspan="1" rowspan="1" align="left">&quot;3600&quot;</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_SYSTEM</td>
+       <td class="empty">&nbsp;</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left">session_pgsql.keep_expired</td>
+       <td colspan="1" rowspan="1" align="left">&quot;0&quot;</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_SYSTEM</td>
+       <td class="empty">&nbsp;</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left">session_pgsql.sem_file_name</td>
+       <td colspan="1" rowspan="1" align="left">&quot;/tmp/php_session_pgsql&quot;</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_SYSTEM</td>
+       <td class="empty">&nbsp;</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left">session_pgsql.serializable</td>
+       <td colspan="1" rowspan="1" align="left">&quot;0&quot;</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_SYSTEM</td>
+       <td class="empty">&nbsp;</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left">session_pgsql.short_circuit</td>
+       <td colspan="1" rowspan="1" align="left">&quot;0&quot;</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_SYSTEM</td>
+       <td class="empty">&nbsp;</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left">session_pgsql.use_app_vars</td>
+       <td colspan="1" rowspan="1" align="left">&quot;0&quot;</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_SYSTEM</td>
+       <td class="empty">&nbsp;</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left">session_pgsql.vacuum_interval</td>
+       <td colspan="1" rowspan="1" align="left">&quot;21600&quot;</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_SYSTEM</td>
+       <td class="empty">&nbsp;</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left"><a href="ini.core.html#ini.short-open-tag" class="link">short_open_tag</a></td>
+       <td colspan="1" rowspan="1" align="left">&quot;1&quot;</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_PERDIR</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_ALL в PHP &lt;= 4.0.0.</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left">simple_cvs.authMethod</td>
+       <td colspan="1" rowspan="1" align="left">&quot;0&quot;</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_ALL</td>
+       <td class="empty">&nbsp;</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left">simple_cvs.compressionLevel</td>
+       <td colspan="1" rowspan="1" align="left">&quot;0&quot;</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_ALL</td>
+       <td class="empty">&nbsp;</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left">simple_cvs.cvsRoot</td>
+       <td colspan="1" rowspan="1" align="left">&quot;0&quot;</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_ALL</td>
+       <td class="empty">&nbsp;</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left">simple_cvs.host</td>
+       <td colspan="1" rowspan="1" align="left">&quot;0&quot;</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_ALL</td>
+       <td class="empty">&nbsp;</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left">simple_cvs.moduleName</td>
+       <td colspan="1" rowspan="1" align="left">&quot;0&quot;</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_ALL</td>
+       <td class="empty">&nbsp;</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left">simple_cvs.userName</td>
+       <td colspan="1" rowspan="1" align="left">&quot;0&quot;</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_ALL</td>
+       <td class="empty">&nbsp;</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left">simple_cvs.workingDir</td>
+       <td colspan="1" rowspan="1" align="left">&quot;0&quot;</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_ALL</td>
+       <td class="empty">&nbsp;</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left"><a href="mail.configuration.html#ini.smtp" class="link">SMTP</a></td>
+       <td colspan="1" rowspan="1" align="left">&quot;localhost&quot;</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_ALL</td>
+       <td class="empty">&nbsp;</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left"><a href="mail.configuration.html#ini.smtp-port" class="link">smtp_port</a></td>
+       <td colspan="1" rowspan="1" align="left">&quot;25&quot;</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_ALL</td>
+       <td colspan="1" rowspan="1" align="left">Доступна с версии PHP 4.3.0.</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left"><a href="soap.configuration.html#ini.soap.wsdl-cache-dir" class="link">soap.wsdl_cache_dir</a></td>
+       <td colspan="1" rowspan="1" align="left">&quot;/tmp&quot;</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_ALL</td>
+       <td colspan="1" rowspan="1" align="left">Доступна с версии PHP 5.0.0.</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left"><a href="soap.configuration.html#ini.soap.wsdl-cache-enabled" class="link">soap.wsdl_cache_enabled</a></td>
+       <td colspan="1" rowspan="1" align="left">&quot;1&quot;</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_ALL</td>
+       <td colspan="1" rowspan="1" align="left">Доступна с версии PHP 5.0.0.</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left"><a href="soap.configuration.html#ini.soap.wsdl-cache-ttl" class="link">soap.wsdl_cache_ttl</a></td>
+       <td colspan="1" rowspan="1" align="left">&quot;86400&quot;</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_ALL</td>
+       <td colspan="1" rowspan="1" align="left">Доступна с версии PHP 5.0.0.</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left"><a href="ini.core.html#ini.sql.safe-mode" class="link">sql.safe_mode</a></td>
+       <td colspan="1" rowspan="1" align="left">&quot;0&quot;</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_SYSTEM</td>
+       <td class="empty">&nbsp;</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left"><a href="sqlite.configuration.html#ini.sqlite.assoc-case" class="link">sqlite.assoc_case</a></td>
+       <td colspan="1" rowspan="1" align="left">&quot;0&quot;</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_ALL</td>
+       <td colspan="1" rowspan="1" align="left">Доступна с версии PHP 5.0.0.</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left"><a href="sybase.configuration.html#ini.sybct.allow-persistent" class="link">sybct.allow_persistent</a></td>
+       <td colspan="1" rowspan="1" align="left">&quot;1&quot;</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_SYSTEM</td>
+       <td colspan="1" rowspan="1" align="left">Доступна с версии PHP 4.0.4.</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left"><a href="sybase.configuration.html#ini.sybct.deadlock-retry-count" class="link">sybct.deadlock_retry_count</a></td>
+       <td colspan="1" rowspan="1" align="left">&quot;0&quot;</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_ALL</td>
+       <td colspan="1" rowspan="1" align="left">Доступна с версии PHP 4.3.0.</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left"><a href="sybase.configuration.html#ini.sybct.hostname" class="link">sybct.hostname</a></td>
+       <td colspan="1" rowspan="1" align="left">NULL</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_ALL</td>
+       <td colspan="1" rowspan="1" align="left">Доступна с версии PHP 4.0.4.</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left"><a href="sybase.configuration.html#ini.sybct.login-timeout" class="link">sybct.login_timeout</a></td>
+       <td colspan="1" rowspan="1" align="left">&quot;-1&quot;</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_ALL</td>
+       <td colspan="1" rowspan="1" align="left">Доступна с версии PHP 4.3.5.</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left"><a href="sybase.configuration.html#ini.sybct.max-links" class="link">sybct.max_links</a></td>
+       <td colspan="1" rowspan="1" align="left">&quot;-1&quot;</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_SYSTEM</td>
+       <td colspan="1" rowspan="1" align="left">Доступна с версии PHP 4.0.4.</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left"><a href="sybase.configuration.html#ini.sybct.max-persistent" class="link">sybct.max_persistent</a></td>
+       <td colspan="1" rowspan="1" align="left">&quot;-1&quot;</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_SYSTEM</td>
+       <td colspan="1" rowspan="1" align="left">Доступна с версии PHP 4.0.4.</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left"><a href="sybase.configuration.html#ini.sybct.min-client-severity" class="link">sybct.min_client_severity</a></td>
+       <td colspan="1" rowspan="1" align="left">&quot;10&quot;</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_ALL</td>
+       <td colspan="1" rowspan="1" align="left">Доступна с версии PHP 4.0.4.</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left"><a href="sybase.configuration.html#ini.sybct.min-server-severity" class="link">sybct.min_server_severity</a></td>
+       <td colspan="1" rowspan="1" align="left">&quot;10&quot;</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_ALL</td>
+       <td colspan="1" rowspan="1" align="left">Доступна с версии PHP 4.0.4.</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left"><a href="tidy.configuration.html#ini.tidy.clean-output" class="link">tidy.clean_output</a></td>
+       <td colspan="1" rowspan="1" align="left">&quot;0&quot;</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_PERDIR</td>
+       <td colspan="1" rowspan="1" align="left">Доступна с версии PHP 5.0.0.</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left"><a href="tidy.configuration.html#ini.tidy.default-config" class="link">tidy.default_config</a></td>
+       <td colspan="1" rowspan="1" align="left">&quot;&quot;</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_SYSTEM</td>
+       <td colspan="1" rowspan="1" align="left">Доступна с версии PHP 5.0.0.</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left"><a href="errorfunc.configuration.html#ini.track-errors" class="link">track_errors</a></td>
+       <td colspan="1" rowspan="1" align="left">&quot;0&quot;</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_ALL</td>
+       <td class="empty">&nbsp;</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left">unserialize_callback_func</td>
+       <td colspan="1" rowspan="1" align="left">NULL</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_ALL</td>
+       <td colspan="1" rowspan="1" align="left">Доступна с версии PHP 4.2.0.</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left"><a href="ini.core.html#ini.upload-max-filesize" class="link">upload_max_filesize</a></td>
+       <td colspan="1" rowspan="1" align="left">&quot;2M&quot;</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_PERDIR</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_ALL в PHP &lt;= 4.2.3.</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left"><a href="ini.core.html#ini.upload-tmp-dir" class="link">upload_tmp_dir</a></td>
+       <td colspan="1" rowspan="1" align="left">NULL</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_SYSTEM</td>
+       <td class="empty">&nbsp;</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left"><a href="session.configuration.html#ini.url-rewriter.tags" class="link">url_rewriter.tags</a></td>
+       <td colspan="1" rowspan="1" align="left">&quot;a=href,area=href,frame=src,form=,fieldset=&quot;</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_ALL</td>
+       <td colspan="1" rowspan="1" align="left">Доступна с версии PHP 4.0.4.</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left"><a href="filesystem.configuration.html#ini.user-agent" class="link">user_agent</a></td>
+       <td colspan="1" rowspan="1" align="left">NULL</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_ALL</td>
+       <td colspan="1" rowspan="1" align="left">Доступна с версии PHP 4.3.0.</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left"><a href="ini.core.html#ini.user-dir" class="link">user_dir</a></td>
+       <td colspan="1" rowspan="1" align="left">NULL</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_SYSTEM</td>
+       <td class="empty">&nbsp;</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left">valkyrie.auto_validate</td>
+       <td colspan="1" rowspan="1" align="left">&quot;0&quot;</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_ALL</td>
+       <td class="empty">&nbsp;</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left">valkyrie.config_path</td>
+       <td colspan="1" rowspan="1" align="left">NULL</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_ALL</td>
+       <td class="empty">&nbsp;</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left"><a href="ini.core.html#ini.variables-order" class="link">variables_order</a></td>
+       <td colspan="1" rowspan="1" align="left">&quot;EGPCS&quot;</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_ALL</td>
+       <td class="empty">&nbsp;</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left"><a href="ini.core.html#ini.request-order" class="link">request_order</a></td>
+       <td colspan="1" rowspan="1" align="left">&quot;&quot;</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_SYSTEM|PHP_INI_PERDIR</td>
+       <td colspan="1" rowspan="1" align="left">Added in PHP 5.3.0</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left"><a href="apache.configuration.html#ini.xbithack" class="link">xbithack</a></td>
+       <td colspan="1" rowspan="1" align="left">&quot;0&quot;</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_ALL</td>
+       <td colspan="1" rowspan="1" align="left">Доступна с версии PHP 4.0.5.</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left">xmlrpc_errors</td>
+       <td colspan="1" rowspan="1" align="left">&quot;0&quot;</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_SYSTEM</td>
+       <td colspan="1" rowspan="1" align="left">Доступна с версии PHP 4.1.0.</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left">xmlrpc_error_number</td>
+       <td colspan="1" rowspan="1" align="left">&quot;0&quot;</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_ALL</td>
+       <td colspan="1" rowspan="1" align="left">Доступна с версии PHP 4.1.0.</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left">xmms.path</td>
+       <td colspan="1" rowspan="1" align="left">&quot;/usr/bin/xmms&quot;</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_ALL</td>
+       <td class="empty">&nbsp;</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left">xmms.session</td>
+       <td colspan="1" rowspan="1" align="left">&quot;0&quot;</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_ALL</td>
+       <td class="empty">&nbsp;</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left"><a href="ini.core.html#ini.y2k-compliance" class="link">y2k_compliance</a></td>
+       <td colspan="1" rowspan="1" align="left">&quot;1&quot;</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_ALL</td>
+       <td class="empty">&nbsp;</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left">yaz.keepalive</td>
+       <td colspan="1" rowspan="1" align="left">&quot;120&quot;</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_ALL</td>
+       <td class="empty">&nbsp;</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left">yaz.log_file</td>
+       <td colspan="1" rowspan="1" align="left">NULL</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_ALL</td>
+       <td colspan="1" rowspan="1" align="left">Доступна с версии PHP 4.3.0.</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left">yaz.log_mask</td>
+       <td colspan="1" rowspan="1" align="left">NULL</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_ALL</td>
+       <td class="empty">&nbsp;</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left">yaz.max_links</td>
+       <td colspan="1" rowspan="1" align="left">&quot;100&quot;</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_ALL</td>
+       <td colspan="1" rowspan="1" align="left">Доступна с версии PHP 4.3.0.</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left"><a href="ini.core.html#ini.zend.ze1-compatibility-mode" class="link">zend.ze1_compatibility_mode</a></td>
+       <td colspan="1" rowspan="1" align="left">&quot;0&quot;</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_ALL</td>
+       <td colspan="1" rowspan="1" align="left">Доступна с версии PHP 5.0.0.</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left"><a href="zlib.configuration.html#ini.zlib.output-compression" class="link">zlib.output_compression</a></td>
+       <td colspan="1" rowspan="1" align="left">&quot;0&quot;</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_ALL</td>
+       <td colspan="1" rowspan="1" align="left">Доступна с версии PHP 4.0.5.</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left"><a href="zlib.configuration.html#ini.zlib.output-compression-level" class="link">zlib.output_compression_level</a></td>
+       <td colspan="1" rowspan="1" align="left">&quot;-1&quot;</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_ALL</td>
+       <td colspan="1" rowspan="1" align="left">Доступна с версии PHP 4.3.0.</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left"><a href="zlib.configuration.html#ini.zlib.output-handler" class="link">zlib.output_handler</a></td>
+       <td colspan="1" rowspan="1" align="left">&quot;&quot;</td>
+       <td colspan="1" rowspan="1" align="left">PHP_INI_ALL</td>
+       <td colspan="1" rowspan="1" align="left">Доступна с версии PHP 4.3.0.</td>
+      </tr>
+
+     </tbody>
+    </colgroup>
+
+   </table>
+
+  </p>
+
+  <p class="para">
+   <table border="5">
+    <caption><b>Определение констант PHP_INI_*</b></caption>
+    <colgroup>
+
+     <thead valign="middle">
+      <tr valign="middle">
+       <th colspan="1">Константа</th>
+       <th colspan="1">Значение</th>
+       <th colspan="1">Смысл</th>
+      </tr>
+
+     </thead>
+
+     <tbody valign="middle" class="tbody">
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left">PHP_INI_USER</td>
+       <td colspan="1" rowspan="1" align="left">1</td>
+       <td colspan="1" rowspan="1" align="left">Опция может быть установлена в пользовательских скриптах</td>
+       <td class="empty">&nbsp;</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left">PHP_INI_PERDIR</td>
+       <td colspan="1" rowspan="1" align="left">2</td>
+       <td colspan="1" rowspan="1" align="left">Опция может быть установлена в <var class="filename">php.ini</var>, <var class="filename">.htaccess</var> или <var class="filename">httpd.conf</var></td>
+       <td class="empty">&nbsp;</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left">PHP_INI_SYSTEM</td>
+       <td colspan="1" rowspan="1" align="left">4</td>
+       <td colspan="1" rowspan="1" align="left">Опция может быть установлена в <var class="filename">php.ini</var> или <var class="filename">httpd.conf</var></td>
+       <td class="empty">&nbsp;</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left">PHP_INI_ALL</td>
+       <td colspan="1" rowspan="1" align="left">7</td>
+       <td colspan="1" rowspan="1" align="left">Опция может быть установлена где угодно</td>
+       <td class="empty">&nbsp;</td>
+      </tr>
+
+     </tbody>
+    </colgroup>
+
+   </table>
+
+  </p>
+ </div>
+
+ 
+</div>
+<hr /><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="configure.html">Configure options</a></div>
+ <div class="next" style="float: right;"><a href="ini.core.html">Описание встроенных директив php.ini</a></div>
+ <div class="up"><a href="appendices.html">Appendices</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

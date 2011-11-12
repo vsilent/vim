@@ -1,0 +1,49 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <title>Очищает и записывает буфер объекта LOB</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+ </head>
+ <body><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="function.oci-lob-export.html">lob->export</a></div>
+ <div class="next" style="float: right;"><a href="function.oci-lob-free.html">OCI-Lob->free</a></div>
+ <div class="up"><a href="ref.oci8.html">OCI8</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="function.oci-lob-flush" class="refentry">
+   <div class="refnamediv">
+    <h1 class="refname">lob-&gt;flush</h1>
+    <p class="verinfo">(No version information available, might be only in CVS)</p><p class="refpurpose dc-title">lob->flush — Очищает и записывает буфер объекта LOB</p>
+
+   </div>
+   <div class="refsect1 unknown">
+    <h3 class="title">Описание</h3>
+     <div class="methodsynopsis dc-description">
+      <span class="type">bool</span> <span class="methodname"><b><b>lob->flush</b></b></span>
+       ([ <span class="methodparam"><span class="type">int</span> <tt class="parameter">$flag</tt></span>
+     ] )</div>
+
+    <p class="para rdfs-comment">
+     <b>lob->flush()</b> непосредственно записывает данные на
+     сервер. По умолчанию ресурсы не освобождаются, но используя флаг
+     <b><tt>OCI_LOB_BUFFER_FREE</tt></b> вы можете сделать это
+     принудительно. Однако, вы должны быть точно уверены в том, что вы
+     делаете, так как следующее чтение из объекта будет более ресурсоемко, чем
+     предыдущие из-за необходимости обращения к серверу. Поэтому использовать
+     флаг <b><tt>OCI_LOB_BUFFER_FREE</tt></b> рекомендуется только после
+     того, как работа с объектом уже закончена.
+    </p>
+    <p class="para">
+     <b>lob->flush()</b> вернет <b><tt>FALSE</tt></b> в том случае, если
+     буферизация объекта не была включена.
+    </p>
+    <p class="para">
+     Возвращает <b><tt>TRUE</tt></b> в случае успешного завершения или <b><tt>FALSE</tt></b> в случае возникновения ошибки.
+    </p>
+   </div>
+
+  </div><hr /><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="function.oci-lob-export.html">lob->export</a></div>
+ <div class="next" style="float: right;"><a href="function.oci-lob-free.html">OCI-Lob->free</a></div>
+ <div class="up"><a href="ref.oci8.html">OCI8</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

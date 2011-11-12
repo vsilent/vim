@@ -1,0 +1,307 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <title>Настройка во время выполнения</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+ </head>
+ <body><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="mysql.installation.html">Установка</a></div>
+ <div class="next" style="float: right;"><a href="mysql.resources.html">Типы ресурсов</a></div>
+ <div class="up"><a href="mysql.setup.html">Установка и настройка</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="mysql.configuration" class="section">
+ <h2 class="title">Настройка во время выполнения</h2>
+ <p class="simpara">
+Поведение этих функций зависит от установок в <var class="filename">php.ini</var>.
+</p>
+ <p class="para">
+  <table border="5">
+   <caption><b>Директивы конфигурации MySQL</b></caption>
+   <colgroup>
+
+    <thead valign="middle">
+     <tr valign="middle">
+      <th colspan="1">Имя</th>
+      <th colspan="1">Значение по умолчанию</th>
+      <th colspan="1">Область изменения</th>
+      <th colspan="1">Changelog</th>
+     </tr>
+
+    </thead>
+
+    <tbody valign="middle" class="tbody">
+     <tr valign="middle">
+      <td colspan="1" rowspan="1" align="left">mysql.allow_persistent</td>
+      <td colspan="1" rowspan="1" align="left">&quot;On&quot;</td>
+      <td colspan="1" rowspan="1" align="left">PHP_INI_SYSTEM</td>
+      <td class="empty">&nbsp;</td>
+     </tr>
+
+     <tr valign="middle">
+      <td colspan="1" rowspan="1" align="left">mysql.max_persistent</td>
+      <td colspan="1" rowspan="1" align="left">&quot;-1&quot;</td>
+      <td colspan="1" rowspan="1" align="left">PHP_INI_SYSTEM</td>
+      <td class="empty">&nbsp;</td>
+     </tr>
+
+     <tr valign="middle">
+      <td colspan="1" rowspan="1" align="left">mysql.max_links</td>
+      <td colspan="1" rowspan="1" align="left">&quot;-1&quot;</td>
+      <td colspan="1" rowspan="1" align="left">PHP_INI_SYSTEM</td>
+      <td class="empty">&nbsp;</td>
+     </tr>
+
+     <tr valign="middle">
+      <td colspan="1" rowspan="1" align="left">mysql.trace_mode</td>
+      <td colspan="1" rowspan="1" align="left">&quot;0&quot;</td>
+      <td colspan="1" rowspan="1" align="left">PHP_INI_ALL</td>
+      <td colspan="1" rowspan="1" align="left">Доступна с PHP 4.3.0.</td>
+     </tr>
+
+     <tr valign="middle">
+      <td colspan="1" rowspan="1" align="left">mysql.default_port</td>
+      <td colspan="1" rowspan="1" align="left">NULL</td>
+      <td colspan="1" rowspan="1" align="left">PHP_INI_ALL</td>
+      <td class="empty">&nbsp;</td>
+     </tr>
+
+     <tr valign="middle">
+      <td colspan="1" rowspan="1" align="left">mysql.default_socket</td>
+      <td colspan="1" rowspan="1" align="left">NULL</td>
+      <td colspan="1" rowspan="1" align="left">PHP_INI_ALL</td>
+      <td colspan="1" rowspan="1" align="left">Доступна с PHP 4.0.1</td>
+     </tr>
+
+     <tr valign="middle">
+      <td colspan="1" rowspan="1" align="left">mysql.default_host</td>
+      <td colspan="1" rowspan="1" align="left">NULL</td>
+      <td colspan="1" rowspan="1" align="left">PHP_INI_ALL</td>
+      <td class="empty">&nbsp;</td>
+     </tr>
+
+     <tr valign="middle">
+      <td colspan="1" rowspan="1" align="left">mysql.default_user</td>
+      <td colspan="1" rowspan="1" align="left">NULL</td>
+      <td colspan="1" rowspan="1" align="left">PHP_INI_ALL</td>
+      <td class="empty">&nbsp;</td>
+     </tr>
+
+     <tr valign="middle">
+      <td colspan="1" rowspan="1" align="left">mysql.default_password</td>
+      <td colspan="1" rowspan="1" align="left">NULL</td>
+      <td colspan="1" rowspan="1" align="left">PHP_INI_ALL</td>
+      <td class="empty">&nbsp;</td>
+     </tr>
+
+     <tr valign="middle">
+      <td colspan="1" rowspan="1" align="left">mysql.connect_timeout</td>
+      <td colspan="1" rowspan="1" align="left">&quot;0&quot;</td>
+      <td colspan="1" rowspan="1" align="left">PHP_INI_SYSTEM</td>
+      <td colspan="1" rowspan="1" align="left">PHP_INI_SYSTEM в PHP &lt;= 4.3.2. Доступна с PHP 4.3.0.</td>
+     </tr>
+
+    </tbody>
+   </colgroup>
+
+  </table>
+
+  Для подробного описания констант
+PHP_INI_*, обратитесь к документации функции <a href="function.ini-set.html" class="function">ini_set()</a>.
+</p>
+
+<p class="para">Краткое разъяснение конфигурационных
+директив.</p>
+
+<p class="para">
+ <dl>
+
+   <dt id="ini.mysql.allow-persistent">
+   <span class="term">
+    <i><tt class="parameter">mysql.allow_persistent</tt></i>
+
+    <span class="type логическое">логическое</span>
+   </span>
+
+   <dd>
+
+    <p class="para">
+     Позволять ли 
+     <a href="features.persistent-connections.html" class="link">постоянные соединения</a>
+     с MySQL.
+    </p>
+   </dd>
+
+  </dt>
+
+  
+  <dt id="ini.mysql.max-persistent">
+   <span class="term">
+    <i><tt class="parameter">mysql.max_persistent</tt></i>
+
+    <span class="type целое">целое</span>
+   </span>
+
+   <dd>
+
+    <p class="para"> 
+     Максимальное количество постоянных соединений на один процесс.
+    </p>
+   </dd>
+
+  </dt>
+
+  
+  <dt id="ini.mysql.max-links">
+   <span class="term">
+    <i><tt class="parameter">mysql.max_links</tt></i>
+
+    <span class="type целое">целое</span>
+   </span>
+
+   <dd>
+
+    <p class="para">
+     Максимальное количество соединений с MySQL на один процесс, включая
+     постоянные соединения.
+    </p>
+   </dd>
+
+  </dt>
+
+   <dt id="ini.mysql.trace-mode">
+    <span class="term">
+     <i><tt class="parameter">mysql.trace_mode</tt></i>
+
+     <a href="language.types.boolean.html" class="type boolean">boolean</a>
+    </span>
+
+    <dd>
+
+     <p class="para">
+     </p>
+    </dd>
+
+   </dt>
+
+   <dt id="ini.mysql.default-port">
+   <span class="term">
+    <i><tt class="parameter">mysql.default_port</tt></i>
+
+    <span class="type строка">строка</span>
+   </span>
+
+   <dd>
+
+    <p class="para">
+     TCP-порт, используемый для соединения с базой данных по умолчанию (если
+     не был указан другой). Если эта директива опущена, порт будет взят из
+     переменной среды <i>MYSQL_TCP_PORT</i>, значения 
+     <i>mysql-tcp</i> в <var class="filename">/etc/services</var> или константы
+     <i>MYSQL_PORT</i>, указанной при компиляции, в указанном порядке. 
+     Win32 использует только константу <i>MYSQL_PORT</i>.
+    </p>
+   </dd>
+
+  </dt>
+
+  
+  <dt id="ini.mysql.default-socket">
+   <span class="term">
+    <i><tt class="parameter">mysql.default_socket</tt></i>
+
+    <span class="type строка">строка</span>
+   </span>
+
+   <dd>
+
+    <p class="para">
+     Тип сокета, используемого для соединения с локальной базой данных, если не
+     был указан другой.
+    </p>
+   </dd>
+
+  </dt>
+
+   <dt id="ini.mysql.default-host">
+   <span class="term">
+    <i><tt class="parameter">mysql.default_host</tt></i>
+
+    <span class="type строка">строка</span>
+   </span>
+
+   <dd>
+
+    <p class="para">
+     Адрес сервера, используемый для соединения с базой данных, если не указан
+     другой. Не работает в 
+     <a href="features.safe-mode.html#ini.safe-mode" class="link">безопасном режиме</a>.
+    </p>
+   </dd>
+
+  </dt>
+
+  
+  <dt id="ini.mysql.default-user">
+   <span class="term">
+    <i><tt class="parameter">mysql.default_user</tt></i>
+
+    <span class="type строка">строка</span>
+   </span>
+
+   <dd>
+
+    <p class="para">
+     Имя пользователя, используемое для соединения с базой данных, если не
+     указано другое. Не работает в 
+     <a href="features.safe-mode.html#ini.safe-mode" class="link">безопасном режиме</a>.
+    </p>
+   </dd>
+
+  </dt>
+
+  
+  <dt id="ini.mysql.default-password">
+   <span class="term">
+    <i><tt class="parameter">mysql.default_password</tt></i>
+
+    <span class="type строка">строка</span>
+   </span>
+
+   <dd>
+
+    <p class="para">
+     Пароль, используемый для соединения с базой данных, если не указан
+     другой. Не работает в
+     <a href="features.safe-mode.html#ini.safe-mode" class="link">безопасном режиме</a>.
+    </p>
+   </dd>
+
+  </dt>
+
+   <dt id="ini.mysql.connect-timeout">
+   <span class="term">
+    <i><tt class="parameter">mysql.connect_timeout</tt></i>
+
+    <span class="type целое">целое</span>
+   </span>
+
+   <dd>
+
+    <p class="para">
+     Время ожидания овета до разрыва соединения в секундах. Linux также использует это значение 
+     при ожидании первого ответа от сервера.
+    </p>
+   </dd>
+
+  </dt>
+
+  
+ </dl>
+
+ </p>
+</div><hr /><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="mysql.installation.html">Установка</a></div>
+ <div class="next" style="float: right;"><a href="mysql.resources.html">Типы ресурсов</a></div>
+ <div class="up"><a href="mysql.setup.html">Установка и настройка</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

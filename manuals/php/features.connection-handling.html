@@ -1,0 +1,97 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <title>Работа с соединениями</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+ </head>
+ <body><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="features.remote-files.html">Работа с удаленными файлами</a></div>
+ <div class="next" style="float: right;"><a href="features.persistent-connections.html">Постоянные соединения с базами данных</a></div>
+ <div class="up"><a href="features.html">Отличительные особенности</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div>
+  <h1>Работа с соединениями</h1>
+
+
+  <blockquote><p><b class="note">Замечание</b>: 
+   Вся последующая информация применима к версиям 3.0.7 и выше.<br />
+  </p></blockquote>
+
+  <p class="para">
+   Статус соединения сохраняется внутренними механизмами PHP.
+   Ниже перечислены три возможные состояния:
+   <ul class="itemizedlist">
+    <li class="listitem"><span class="simpara">0 - NORMAL</span></li>
+    <li class="listitem"><span class="simpara">1 - ABORTED</span></li>
+    <li class="listitem"><span class="simpara">2 - TIMEOUT</span></li>
+   </ul>
+  </p>
+
+  <p class="simpara">
+   Во время штатного выполнения PHP-скрипта установлен статус NORMAL.
+   В случае, если удаленный клиент разорвал соединение, статус изменяется
+   на ABORTED. Чаще всего отсоединение удаленного клиента происходит при
+   нажатии кнопки &quot;Stop&quot; в браузере. В случае, если достигается
+   установленный временной лимит (ознакомьтесь с функцией 
+   <a href="function.set-time-limit.html" class="function">set_time_limit()</a>), будет установлен статус TIMEOUT.
+   </p>
+
+  <p class="simpara">
+   Вы можете решать, приводит ли отключение клиента к завершению вашего 
+   скрипта. Иногда бывает необходимо, чтобы скрипт выполнился до конца,  даже
+   если отсутствует удаленный браузер, которому адресован весь вывод.
+   По умолчанию скрипт завершает свою работу при отключении клиента. Это
+   поведение может быть изменено при помощи опции ignore_user_abort 
+   в конфигурационном файле <var class="filename">php.ini</var>. Такого же результата
+   можно добиться, указав &quot;php_value ignore_user_abort&quot; в конфигурационном
+   файле Apache или воспользовавшись функцией <a href="function.ignore-user-abort.html" class="function">ignore_user_abort()</a>.
+   Если вы явно не указали на необходимость игнорировать разрыв соединения
+   с клиентом, выполнение скрипта будет прервано. Исключением является 
+   тот случай, если используя <a href="function.register-shutdown-function.html" class="function">register_shutdown_function()</a>, 
+   вы указали специальную функцию, вызываемую при завершении скрипта.
+   В таком случае после того, как пользователь нажал кнопку &quot;Stop&quot; в своем
+   браузере, при первой же попытке что-либо вывести PHP обнаруживает, что
+   соединение с клиентом было утеряно, и вызывает завершающую функцию.
+   Эта функция также вызывается при нормальном завершении работы вашего
+   скрипта, поэтому для того, чтобы выполнить некоторые специфические
+   действия при отсоединении клиента, вам понадобится функция
+   <a href="function.connection-aborted.html" class="function">connection_aborted()</a>, которая возвращает
+   <b><tt>TRUE</tt></b>, если соединение было разорвано.
+   </p>
+
+  <p class="simpara">
+   Выполнение вашего скрипта также может быть прервано встроенным таймером.
+   Стандартное ограничение по времени составляет 30 секунд, изменить его
+   можно при помощи директивы <span class="option">max_execution_time</span> в конфигурационном
+   файле <var class="filename">php.ini</var>. Такого же результата можно достичь,
+   добавив <i>php_value max_execution_time</i> в конфигурационный файл Apache 
+   или воспользовавщись функцией <a href="function.set-time-limit.html" class="function">set_time_limit()</a>.
+   При достижении скриптом временного лимита выполнение скрипта прерывается
+   и вызывается завершающая функция, если она была указана. Уточнить
+   причину завершения скрипта вы можете при помощи функции 
+   <a href="function.connection-timeout.html" class="function">connection_timeout()</a>, которая возвращает
+   <b><tt>TRUE</tt></b>, если скрипт был прерван по достижению временного ограничения.
+   </p>
+
+  <p class="simpara">
+   Единственное, что следует заметить - что оба статуса: ABORTED и TIMEOUT,- 
+   могут быть установлены одновременно. Это может произойти в том случае,
+   если вы явно указали необходимость игнорировать отсоединение удаленного 
+   клиента. В таком случае после разрыва соединения, отметив этот факт,
+   PHP продолжит выполнение скрипта, и при достижении временного лимита будет
+   вызвана завершающая функция, если таковая была указана. В этой точке
+   вы можете обнаружить, что и <a href="function.connection-timeout.html" class="function">connection_timeout()</a>, и
+   <a href="function.connection-aborted.html" class="function">connection_aborted()</a> возвращают <b><tt>TRUE</tt></b>.
+   Вы также можете проверить оба статуса одновременно, вызвав функцию
+   <a href="function.connection-status.html" class="function">connection_status()</a>, которая возвращает битовые значения
+   для активных статусов. В случае, если оба статуса активны, она, к примеру, 
+   вернет значение 3.
+  </p>
+
+ </div>
+<hr /><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="features.remote-files.html">Работа с удаленными файлами</a></div>
+ <div class="next" style="float: right;"><a href="features.persistent-connections.html">Постоянные соединения с базами данных</a></div>
+ <div class="up"><a href="features.html">Отличительные особенности</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

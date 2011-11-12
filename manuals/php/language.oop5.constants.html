@@ -1,0 +1,39 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <title>Константы в объектах</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+ </head>
+ <body><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="language.oop5.static.html">Ключевое слово "static"</a></div>
+ <div class="next" style="float: right;"><a href="language.oop5.abstract.html">Абстрактные классы</a></div>
+ <div class="up"><a href="language.oop5.html">Классы и объекты (PHP 5)</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="language.oop5.constants" class="sect1">
+  <h2 class="title">Константы в объектах</h2>
+  <p class="para">
+   Константы также могут быть объявлены и в пределах одного класса.
+   Отличие переменных и констант состоит в том, что при объявлении последних
+   или при обращении к ним не используется символ <var class="varname">$</var>.
+   Как и <a href="language.oop5.static.html" class="xref">Ключевое слово "static"</a> свойства и методы,
+   значения констант, объявленных внутри класса, не могут быть получены
+   через переменную, содержащую экземпляр этого класса.
+  </p>
+
+  <div class="example">
+   <p><b>Пример #1 Объявление и использование константы</b></p>
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">class&nbsp;</span><span style="color: #0000BB">MyClass&nbsp;</span><span style="color: #007700">{<br />&nbsp;&nbsp;const&nbsp;</span><span style="color: #0000BB">constant&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">'значение&nbsp;константы'</span><span style="color: #007700">;<br /><br />&nbsp;&nbsp;function&nbsp;</span><span style="color: #0000BB">showConstant</span><span style="color: #007700">()&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;&nbsp;</span><span style="color: #0000BB">self</span><span style="color: #007700">::</span><span style="color: #0000BB">constant&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br />&nbsp;&nbsp;}<br />}<br /><br />echo&nbsp;</span><span style="color: #0000BB">MyClass</span><span style="color: #007700">::</span><span style="color: #0000BB">constant&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br /><br /></span><span style="color: #0000BB">$class&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">MyClass</span><span style="color: #007700">();<br /></span><span style="color: #0000BB">$class</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">showConstant</span><span style="color: #007700">();<br /></span><span style="color: #FF8000">/*&nbsp;echo&nbsp;$class::constant;&nbsp;-&nbsp;&nbsp;такое&nbsp;использование&nbsp;недопустимо&nbsp;*/<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+   </div>
+
+  </div>
+
+ </div><hr /><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="language.oop5.static.html">Ключевое слово "static"</a></div>
+ <div class="next" style="float: right;"><a href="language.oop5.abstract.html">Абстрактные классы</a></div>
+ <div class="up"><a href="language.oop5.html">Классы и объекты (PHP 5)</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

@@ -1,0 +1,501 @@
+# automatically add a closing '/' to the end of xhtml tags
+# Some useful Unicode entities
+# Non-Breaking Space
+snippet php
+	<?php ${1} ?>
+snippet pp
+	<?php ${1} ?>
+snippet ee
+	<?==${1}?>
+snippet nbs
+	&nbsp;
+# ←
+snippet left
+	&#x2190;
+# →
+snippet right
+	&#x2192;
+# ↑
+snippet up
+	&#x2191;
+# ↓
+snippet down
+	&#x2193;
+# ↩
+snippet return
+	&#x21A9;
+# ⇤
+snippet backtab
+	&#x21E4;
+# ⇥
+snippet shift
+	&#x21E7;
+# ⌃
+snippet control
+	&#x2303;
+# ⌅
+snippet enter
+	&#x2305;
+# ⌘
+snippet command
+	&#x2318;
+# ⌥
+snippet option
+	&#x2325;
+# ⌦
+snippet delete
+	&#x2326;
+# ⌫
+snippet backspace
+	&#x232B;
+# ⎋
+snippet escape
+	&#x238B;
+# Generic Doctype
+snippet doctype HTML 4.01 Strict
+	<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN""
+	"http://www.w3.org/TR/html4/strict.dtd">
+snippet doctype HTML 4.01 Transitional
+	<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN""
+	"http://www.w3.org/TR/html4/loose.dtd">
+snippet doctype HTML 5
+	<!DOCTYPE HTML>
+snippet doctype XHTML 1.0 Frameset
+	<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+snippet doctype XHTML 1.0 Strict
+	<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+snippet doctype XHTML 1.0 Transitional
+	<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+snippet doctype XHTML 1.1
+	<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+	"http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+# HTML Doctype 4.01 Strict
+snippet docts
+	<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN""
+	"http://www.w3.org/TR/html4/strict.dtd">
+# HTML Doctype 4.01 Transitional
+snippet doct
+	<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN""
+	"http://www.w3.org/TR/html4/loose.dtd">
+# HTML Doctype 5
+snippet doct5
+	<!DOCTYPE HTML>
+# XHTML Doctype 1.0 Frameset
+snippet docxf
+	<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Frameset//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-frameset.dtd">
+# XHTML Doctype 1.0 Strict
+snippet docxs
+	<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+# XHTML Doctype 1.0 Transitional
+snippet docxt
+	<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+# XHTML Doctype 1.1
+snippet docx
+	<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+	"http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+snippet html
+	<html>
+	${1}
+	</html>
+snippet xhtml
+	<html xmlns="http://www.w3.org/1999/xhtml">
+	${1}
+	</html>
+snippet body
+	<body>
+		${1}
+	</body>
+
+snippet ti
+	<title>${1:`substitute(Filename("", "Page Title"), "^.", "u&", "")`}</title>${2}
+
+snippet js
+	<script type="text/javascript" charset="utf-8" language="javascript">
+		${1}
+	</script>${2}
+snippet script
+	<script type="text/javascript" charset="utf-8" language="javascript">
+		${1}
+	</script>${2}
+snippet scriptsrc
+	<script src="${1}.js" type="text/javascript" charset="utf-8"></script>${2}
+snippet css
+	<style type="text/css" media="${1:screen}">
+		${2}
+	</style>${3}
+snippet style
+	<style type="text/css" media="${1:screen}">
+		${2}
+	</style>${3}
+snippet base
+	<base href="${1}" target="${2}">
+snippet r
+	<br>
+snippet fieldset
+	<fieldset id="$1">
+		<legend>${1:name}</legend>
+
+		${3}
+	</fieldset>
+snippet form
+	<form action="${1:`Filename('$1_submit')`}" method="${2:GET:POST}" accept-charset="utf-8">
+		${3}
+
+snippet frm
+	<form action="${1:`Filename('$1_submit')`}" method="${2:GET:POST}" accept-charset="utf-8">
+		${3}
+snippet enctype
+	enctype="multipart/form-data"
+snippet h1
+	<h1 id="${1:heading}">${2:$1}</h1>
+snippet input
+	<input type="${1:text/submit/hidden/button}" name="${2:some_name}" id="$2" value="${3}">${4}
+snippet inp
+	<input type="${1:text/submit/hidden/button}" name="${2:some_name}" id="$2" value="${3}">${4}
+snippet i
+	<input type="${1:text/submit/hidden/button}" name="${2}" value="${3}" id="$2">${4}
+snippet label
+	<label for="${2:$1}">${1:name}</label><input type="${3:text/submit/hidden/button}" name="${4:$2}" value="${5}" id="${6:$2}">${7}
+snippet link
+	<link rel="${1:stylesheet}" href="${2:/css/master.css}" type="text/css" media="${3:screen}" charset="utf-8">${4}
+snippet mailto
+	<a href="mailto:${1:joe@example.com}?subject=${2:feedback}">${3:email me}</a>
+snippet meta
+	<meta name="${1:name}" content="${2:content}">${3}
+snippet opt
+	<option value="${1:option}">${2:$1}</option>${3}
+snippet select
+	<select name="${1:some_name}" id="${2:$1}">
+		<option value="${3:option}">${4:$3}</option>
+	</select>${5}
+snippet h
+	<head>
+	<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+	<title>${1}</title>
+	${1}
+	</head>
+	${2}
+snippet head
+	<head>
+	<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+	<title>${1}</title>
+	${2}
+	</head>
+	${3}
+snippet ta
+	<textarea name="${1}" rows="${2}" cols="${3}" id="$1">${4}</textarea>
+	${5}
+snippet movie
+	<object width="${1}" height="${2}"
+	classid="clsid:02BF25D5-8C17-4B23-BC80-D3488ABDDC6B"
+	codebase="http://www.apple.com/qtactivex/qtplugin.cab">
+	<param name="src"
+	value="${3}" />
+	<param name="controller" value="${4}" />
+	<param name="autoplay" value="${5}" />
+	<embed src="${6}"
+	width="${7}" height="${8}"
+	controller="${9}" autoplay="${10}"
+	scale="tofit" cache="true"
+	pluginspage="http://www.apple.com/quicktime/download/"
+	/>
+	</object>
+	${11}
+
+snippet d debug
+	debug( $${1}, "Debug  ".__METHOD__." on line ".__LINE__ );
+snippet d div
+	<div id="${1}" ${2:class="$1"}>${3}</div>
+snippet div
+	<div id="${1}" ${2:class="$1"}>${3}</div>
+snippet sp
+	<span id="${1}" class="${2}">
+	${3}
+	</span>
+	${4}
+snippet span
+	<span id="${1}" class="$1">${2}</span>
+snippet t Html <table>
+	<table border="${1:0}" cellpadding="${2:1:0}" cellspacing="${3:1:0}">
+	<tr>
+		<td>
+			${4}
+		</td>
+	</tr>
+	</table>
+snippet tab
+	<table border="${1:0}" cellpadding="${2:1:0}" cellspacing="${3:1:0}">
+	<tr>
+		<td>
+			${4}
+		</td>
+	</tr>
+	</table>
+snippet tr Table <tr> tag
+	<tr>
+		<td>
+			${1}
+		</td>
+	</tr>
+snippet image
+	<img src="${1:/image/}" alt="$2" title="${2}" class="${3}" id="{$4}"/>
+snippet img
+	<img src="${1:/image/}" alt="$2" title="${2}" class="${3}" id="{$4}"/>
+snippet im
+	<img src="${1:/image/}" alt="$2" title="${2}" class="${3}" id="{$4}"/>
+snippet href
+	<a href="${1}">${1}</a>${2}
+snippet here
+	 <div id="here" style="background: red;height:100px;width: 100px;"></div>
+snippet bo
+	 style="border: 1px solid red;"
+snippet td
+	 <td>${1}</td>
+snippet a
+	<a href="${1}" title="$4" class="${2}" id="${3}">${4}</a>
+snippet al
+	alert(${1});
+snippet cl
+	class="${1}"
+snippet lit
+	{literal}
+		${1}
+	{/literal}
+snippet ajax
+	$.ajax({
+			type: 'POST',
+			url: '${1:/somepage/}',
+			data: $(':text, select, textarea, :radio, :hidden',$('form#${2:formid}')).serialize(),
+			dataType: 'json',
+			complete: response
+		});
+snippet get
+	$.get("${1:/somepage}",${2:false}, ${3:mycallback}, 'json');
+	function $3(response)
+	{
+		${4:alert(response)};
+	}
+
+snippet post
+	$.post("${1:test.php}", $("#i${2:formid}").serialize(), ${3:mycallback}, 'json');
+
+snippet jq
+	$(function()
+	{
+		function()
+		{
+			${1}
+		}
+	});
+
+snippet p
+	<p>${1:&nbsp;}</p>
+snippet vo
+	javascript:void(0);
+snippet void
+	javascript:void(0);
+snippet foreach Smarty foreach
+	{foreach from=$${1:list} item=${2:var} name="${3:name}"}
+	{/foreach}
+
+snippet fun
+	${1:public }function ${2:FunctionName}(${3})
+	{
+		${4:// code...}
+	}
+snippet f
+	${1:public }function ${2:FunctionName}(${3})
+	{
+		${4:// code...}
+	}
+
+snippet jf
+	${1:public }function ${2:FunctionName}(${3})
+	{
+		${4:// code...}
+	}
+snippet tr Zend translate in template
+	<?=$this->translate('${1:keyword}')?>
+snippet part
+	<?=$this->partial('${1:index}.phtml')?>
+snippet ou
+	<?=$this->output('${1:index}')?>
+snippet checked
+	$("input[class='layout']:checked").val()
+snippet click
+	$("${1:#:.}${2:divid:class}").click( function(){
+		${3}
+	});
+snippet each
+	$("input[name^='layout_image']").each(function(i){
+		layout_images.push(this.value);
+	});
+snippet co
+	console.log(${1:"here"});
+snippet l console log
+	console.log(${1:"here"});
+
+#php snippets for zend phtml templates
+snippet ec
+	echo "${1:string}"${2};
+snippet inc
+	include '${1:file}';${2}
+snippet inc1
+	include_once '${1:file}';${2}
+snippet req1
+	require_once '${1:file}';${2}
+snippet vd
+	echo "<pre>";
+	var_dump($${1:variable});
+	echo "</pre>";
+	die( 'Break point : '.__METHOD__.' on line '.__LINE__ );
+snippet if javascript
+	if (${1:/* condition */}) {
+		${2:// code...}
+	}
+snippet ife
+	if (${1:/* condition */}) {
+		${2:// code...}
+	} else {
+		${3:// code...}
+	}
+	${4}
+snippet else
+	else {
+		${1:// code...}
+	}
+snippet elseif
+	elseif (${1:/* condition */}) {
+		${2:// code...}
+	}
+# Tertiary conditional
+snippet switch
+	switch ($${1:variable}) {
+		case '${2:value}':
+			${3:// code...}
+			break;
+		${5}
+		default:
+			${4:// code...}
+			break;
+	}
+snippet case
+	case '${1:value}':
+		${2:// code...}
+		break;${3}
+snippet for
+	for ($${2:i} = 0; $$2 < ${1:count}; $$2${3:++})
+	{
+		${4: // code...}
+	}
+snippet foreach PHP foreach
+	foreach ($${1:variable} as $${2:key})
+	{
+		${3:// code...}
+	}
+snippet prf
+	${1:protected }function ${2:FunctionName}(${3})
+	{
+		${4:// code...}
+	}
+snippet psf
+	publi static function ${2:FunctionName}(${3})
+	{
+		${4:// code...}
+	}
+snippet prsf
+	protected static function ${1:FunctionName}(${2})
+	{
+		${3:// code...}
+	}
+snippet pf
+	${1:public }function ${2:FunctionName}(${3})
+	{
+		${4:// code...}
+	}
+# $... = array (...)
+snippet array
+	$${1:arrayName} = array('${2}' => ${3});${4}
+snippet arr
+	$${1:arrayName} = array('${2}' => ${3});${4}
+snippet alog
+	Logger::addArrayToLog(__METHOD__.' on line '.__LINE__,'${1}');
+snippet dlog
+	Logger::addLog(__METHOD__.' on line '.__LINE__,'${1}');
+snippet dev
+	if(getenv('REMOTE_ADDR') == '93.116.21.37' || getenv('REMOTE_ADDR') == '89.28.80.80')
+	{
+		${1}
+	}
+snippet ob
+	ob_start();
+	 print_r(${1});
+	 $msg = ob_get_contents();
+	file_put_contents('../tmp/logs/log', $msg);
+	ob_end_clean();
+snippet die
+	die( 'Break point : '.__METHOD__.' on line '.__LINE__ );
+	die( 'Break point : '.__METHOD__.' on line '.__LINE__ );
+# ---------------------------  Zend framework snippets  -----------------------
+
+snippet ini
+	ini_set("display_errors",1);
+	error_reporting(E_ALL | E_NOTICE);
+	ini_set("date.timezone", "Europe/Helsinki");
+#
+#
+#			Symfony snippets
+#
+#
+
+snippet l Symfony logger
+	sfContext::getInstance()->getLogger()->debug( 'Symfony logger ' );
+snippet u
+	<a href="<?php echo url_for('${1:product/new}') ?>">${2:New}</a>
+snippet t Symfony php translate
+	$this->getContext()->getI18N()->__($${1:text}, $args, ${2:'messages'});
+snippet t Symmfony template translate
+	<?php echo __('${1:text}');?>
+snippet %%
+	{% ${1} %}
+
+#
+#
+#
+#		    Django snippets
+#
+#
+#
+
+snippet 5
+	{% ${1} %}
+snippet b
+	{% block ${1:name} %}
+	${2}
+	{% endblock %}
+snippet if django template
+	{% if list %}
+		<ul>
+		{% for item in list %}
+			<li><a href="/ad/{{ ad.id }}/">{{ ad.title }}</a></li>
+		{% endfor %}
+		</ul>
+	{% else %}
+		<p>No ads are available.</p>
+	{% endif %}
+
+	snippet win
+	window.open("${1:http://google.com}",'_blank',800,600)
+snippet tr django translate
+	{% trans '${1}' %}
+snippet t django translate
+	{% trans '${1}' %}
+
+snippet url
+	{%url ${1:application}.views.${2:index} ${3:arg1} %}

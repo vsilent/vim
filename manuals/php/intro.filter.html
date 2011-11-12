@@ -1,0 +1,279 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <title>Введение</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+ </head>
+ <body><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="book.filter.html">Filter</a></div>
+ <div class="next" style="float: right;"><a href="filter.setup.html">Установка и настройка</a></div>
+ <div class="up"><a href="book.filter.html">Filter</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="intro.filter" class="preface">
+   <h1 class="title">Введение</h1>
+   <p class="para">
+    Данное расширение помогает проверить и отфильтровать данные, пришедшие из разных ненадежных
+    источников, таких, как пользовательский ввод данных.
+   </p>
+   <p class="para">
+    Нижеперечисленные фильтры существуют в настоящее время; убедитесь, что Вы прочитали раздел
+    <a href="filter.constants.html" class="link">Filter Constants</a> 
+    с информацией, описывающей действие каждой константы:
+    <table border="5">
+     <caption><b>Существующие фильтры</b></caption>
+     <colgroup>
+
+      <thead valign="middle">
+       <tr valign="middle">
+        <th colspan="1">ID</th>
+        <th colspan="1">Имя</th>
+        <th colspan="1">Параметры</th>
+        <th colspan="1">Флаги</th>
+        <th colspan="1">Описание</th>
+       </tr>
+
+      </thead>
+
+      <tbody valign="middle" class="tbody">
+       <tr valign="middle">
+        <td colspan="1" rowspan="1" align="left"><b><tt>FILTER_VALIDATE_INT</tt></b></td>
+        <td colspan="1" rowspan="1" align="left">&quot;int&quot;</td>
+        <td colspan="1" rowspan="1" align="left">
+         <i><tt class="parameter">min_range</tt></i>
+,
+         <i><tt class="parameter">max_range</tt></i>
+
+        </td>
+        <td colspan="1" rowspan="1" align="left">
+         <b><tt>FILTER_FLAG_ALLOW_OCTAL</tt></b>,
+         <b><tt>FILTER_FLAG_ALLOW_HEX</tt></b>
+        </td>
+        <td colspan="1" rowspan="1" align="left">Проверяет значение, как целое, при указанных параматрах проверка производится в указанном диапазоне.</td>
+       </tr>
+
+       <tr valign="middle">
+        <td colspan="1" rowspan="1" align="left"><b><tt>FILTER_VALIDATE_BOOLEAN</tt></b></td>
+        <td colspan="1" rowspan="1" align="left">&quot;boolean&quot;</td>
+        <td class="empty">&nbsp;</td>
+        <td colspan="1" rowspan="1" align="left">
+          <b><tt>FILTER_NULL_ON_FAILURE</tt></b>
+        </td>
+        <td colspan="1" rowspan="1" align="left">
+         <p class="para">
+          Возвращает <b><tt>TRUE</tt></b> для значений &quot;1&quot;, &quot;true&quot;, &quot;on&quot; и &quot;yes&quot;.
+          Возвращает <b><tt>FALSE</tt></b> в противном случае.
+         </p>
+         <p class="para">
+          Если установлен флаг <b><tt>FILTER_NULL_ON_FAILURE</tt></b>, <b><tt>FALSE</tt></b> возвращается
+          только для значений &quot;0&quot;, &quot;false&quot;, &quot;off&quot;, &quot;no&quot;, и &quot;&quot;, и
+          <b><tt>NULL</tt></b> возвращается для всех не булевых значений.
+         </p>
+        </td>
+       </tr>
+
+       <tr valign="middle">
+        <td colspan="1" rowspan="1" align="left"><b><tt>FILTER_VALIDATE_FLOAT</tt></b></td>
+        <td colspan="1" rowspan="1" align="left">&quot;float&quot;</td>
+        <td colspan="1" rowspan="1" align="left">
+         <i><tt class="parameter">decimal</tt></i>
+
+        </td>
+        <td colspan="1" rowspan="1" align="left">
+         <b><tt>FILTER_FLAG_ALLOW_THOUSAND</tt></b>
+        </td>
+        <td colspan="1" rowspan="1" align="left">Проверяет значение, как число с плавающей точкой.</td>
+       </tr>
+
+
+       <tr valign="middle">
+        <td colspan="1" rowspan="1" align="left"><b><tt>FILTER_VALIDATE_REGEXP</tt></b></td>
+        <td colspan="1" rowspan="1" align="left">&quot;validate_regexp&quot;</td>
+        <td colspan="1" rowspan="1" align="left">
+         <i><tt class="parameter">regexp</tt></i>
+
+        </td>
+        <td class="empty">&nbsp;</td>
+        <td colspan="1" rowspan="1" align="left">
+         Проверяет значение на соответствие <i><tt class="parameter">regexp</tt></i>
+,
+         <a href="book.pcre.html" class="link">Perl-совместитому</a> регулярному выражению.
+        </td>
+       </tr>
+
+       <tr valign="middle">
+        <td colspan="1" rowspan="1" align="left"><b><tt>FILTER_VALIDATE_URL</tt></b></td>
+        <td colspan="1" rowspan="1" align="left">&quot;validate_url&quot;</td>
+        <td class="empty">&nbsp;</td>
+        <td colspan="1" rowspan="1" align="left">
+         <b><tt>FILTER_FLAG_PATH_REQUIRED</tt></b>,
+         <b><tt>FILTER_FLAG_QUERY_REQUIRED</tt></b>
+        </td>
+        <td colspan="1" rowspan="1" align="left">Проверяет значение, как URL, при указанных флагах проверяется наличие требуемых компонентов.</td>
+       </tr>
+
+       <tr valign="middle">
+        <td colspan="1" rowspan="1" align="left"><b><tt>FILTER_VALIDATE_EMAIL</tt></b></td>
+        <td colspan="1" rowspan="1" align="left">&quot;validate_email&quot;</td>
+        <td class="empty">&nbsp;</td>
+        <td class="empty">&nbsp;</td>
+        <td colspan="1" rowspan="1" align="left">Проверяет значение, как e-mail.</td>
+       </tr>
+
+       <tr valign="middle">
+        <td colspan="1" rowspan="1" align="left"><b><tt>FILTER_VALIDATE_IP</tt></b></td>
+        <td colspan="1" rowspan="1" align="left">&quot;validate_ip&quot;</td>
+        <td class="empty">&nbsp;</td>
+        <td colspan="1" rowspan="1" align="left">
+         <b><tt>FILTER_FLAG_IPV4</tt></b>,
+         <b><tt>FILTER_FLAG_IPV6</tt></b>,
+         <b><tt>FILTER_FLAG_NO_PRIV_RANGE</tt></b>,
+         <b><tt>FILTER_FLAG_NO_RES_RANGE</tt></b>
+        </td>
+        <td colspan="1" rowspan="1" align="left">
+         Проверяет значение, как IP адрес, при указанных флагах только для протоколов IPv4 или IPv6 или не
+         из частных или зарезервированных диапазонов.
+        </td>
+       </tr>
+
+
+       <tr valign="middle">
+        <td colspan="1" rowspan="1" align="left"><b><tt>FILTER_SANITIZE_STRING</tt></b></td>
+        <td colspan="1" rowspan="1" align="left">&quot;string&quot;</td>
+        <td class="empty">&nbsp;</td>
+        <td colspan="1" rowspan="1" align="left">
+         <b><tt>FILTER_FLAG_NO_ENCODE_QUOTES</tt></b>,
+         <b><tt>FILTER_FLAG_STRIP_LOW</tt></b>,
+         <b><tt>FILTER_FLAG_STRIP_HIGH</tt></b>,
+         <b><tt>FILTER_FLAG_ENCODE_LOW</tt></b>,
+         <b><tt>FILTER_FLAG_ENCODE_HIGH</tt></b>,
+         <b><tt>FILTER_FLAG_ENCODE_AMP</tt></b>
+        </td>
+        <td colspan="1" rowspan="1" align="left">Удаляет тэги, при указанных флагах удаляет или кодирует специальные симолы.</td>
+       </tr>
+
+       <tr valign="middle">
+        <td colspan="1" rowspan="1" align="left"><b><tt>FILTER_SANITIZE_STRIPPED</tt></b></td>
+        <td colspan="1" rowspan="1" align="left">&quot;stripped&quot;</td>
+        <td class="empty">&nbsp;</td>
+        <td class="empty">&nbsp;</td>
+        <td colspan="1" rowspan="1" align="left">Псевдоним фильтра &quot;string&quot;.</td>
+       </tr>
+
+       <tr valign="middle">
+        <td colspan="1" rowspan="1" align="left"><b><tt>FILTER_SANITIZE_ENCODED</tt></b></td>
+        <td colspan="1" rowspan="1" align="left">&quot;encoded&quot;</td>
+        <td class="empty">&nbsp;</td>
+        <td colspan="1" rowspan="1" align="left">
+         <b><tt>FILTER_FLAG_STRIP_LOW</tt></b>,
+         <b><tt>FILTER_FLAG_STRIP_HIGH</tt></b>,
+         <b><tt>FILTER_FLAG_ENCODE_LOW</tt></b>,
+         <b><tt>FILTER_FLAG_ENCODE_HIGH</tt></b>
+        </td>
+        <td colspan="1" rowspan="1" align="left">URL-кодирует строку, при указанных флагах удаляет или кодирует специальные симолы.</td>
+       </tr>
+
+       <tr valign="middle">
+        <td colspan="1" rowspan="1" align="left"><b><tt>FILTER_SANITIZE_SPECIAL_CHARS</tt></b></td>
+        <td colspan="1" rowspan="1" align="left">&quot;special_chars&quot;</td>
+        <td class="empty">&nbsp;</td>
+        <td colspan="1" rowspan="1" align="left">
+         <b><tt>FILTER_FLAG_STRIP_LOW</tt></b>,
+         <b><tt>FILTER_FLAG_STRIP_HIGH</tt></b>,
+         <b><tt>FILTER_FLAG_ENCODE_HIGH</tt></b>
+        </td>
+        <td colspan="1" rowspan="1" align="left">
+         Экранирует HTML-символы <i>&#039;&quot;&lt;&gt;&amp;</i> и символы с
+         ASCII кодом, меньшим 32, при указанных флагах удаляет или кодирует остальные специальные симолы.
+        </td>
+       </tr>
+
+       <tr valign="middle">
+        <td colspan="1" rowspan="1" align="left"><b><tt>FILTER_UNSAFE_RAW</tt></b></td>
+        <td colspan="1" rowspan="1" align="left">&quot;unsafe_raw&quot;</td>
+        <td class="empty">&nbsp;</td>
+        <td colspan="1" rowspan="1" align="left">
+         <b><tt>FILTER_FLAG_STRIP_LOW</tt></b>,
+         <b><tt>FILTER_FLAG_STRIP_HIGH</tt></b>,
+         <b><tt>FILTER_FLAG_ENCODE_LOW</tt></b>,
+         <b><tt>FILTER_FLAG_ENCODE_HIGH</tt></b>,
+         <b><tt>FILTER_FLAG_ENCODE_AMP</tt></b>
+        </td>
+        <td colspan="1" rowspan="1" align="left">Бездействует, при указанных флагах удаляет или кодирует специальные симолы.</td>
+       </tr>
+
+       <tr valign="middle">
+        <td colspan="1" rowspan="1" align="left"><b><tt>FILTER_SANITIZE_EMAIL</tt></b></td>
+        <td colspan="1" rowspan="1" align="left">&quot;email&quot;</td>
+        <td class="empty">&nbsp;</td>
+        <td class="empty">&nbsp;</td>
+        <td colspan="1" rowspan="1" align="left">
+         Удаляет все символы, кроме букв, цифр и
+         <i>!#$%&amp;&#039;*+-/=?^_`{|}~@.[]</i>.
+        </td>
+       </tr>
+
+       <tr valign="middle">
+        <td colspan="1" rowspan="1" align="left"><b><tt>FILTER_SANITIZE_URL</tt></b></td>
+        <td colspan="1" rowspan="1" align="left">&quot;url&quot;</td>
+        <td class="empty">&nbsp;</td>
+        <td class="empty">&nbsp;</td>
+        <td colspan="1" rowspan="1" align="left">
+         Удаляет все символы, кроме букв, цифр и
+         <i>$-_.+!*&#039;(),{}|\\^~[]`&lt;&gt;#%&quot;;/?:@&amp;=</i>.
+        </td>
+       </tr>
+
+       <tr valign="middle">
+        <td colspan="1" rowspan="1" align="left"><b><tt>FILTER_SANITIZE_NUMBER_INT</tt></b></td>
+        <td colspan="1" rowspan="1" align="left">&quot;number_int&quot;</td>
+        <td class="empty">&nbsp;</td>
+        <td class="empty">&nbsp;</td>
+        <td colspan="1" rowspan="1" align="left">
+         Удаляет все символы, кроме цифр и знаков &quot;+&quot; и &quot;-&quot;.
+        </td>
+       </tr>
+
+       <tr valign="middle">
+        <td colspan="1" rowspan="1" align="left"><b><tt>FILTER_SANITIZE_NUMBER_FLOAT</tt></b></td>
+        <td colspan="1" rowspan="1" align="left">&quot;number_float&quot;</td>
+        <td class="empty">&nbsp;</td>
+        <td colspan="1" rowspan="1" align="left">
+         <b><tt>FILTER_FLAG_ALLOW_FRACTION</tt></b>,
+         <b><tt>FILTER_FLAG_ALLOW_THOUSAND</tt></b>,
+         <b><tt>FILTER_FLAG_ALLOW_SCIENTIFIC</tt></b>
+        </td>
+        <td colspan="1" rowspan="1" align="left">
+         Удаляет все символы, кроме цифр, <i>+-</i> и, при установленных
+         флагах, <i>.,eE</i>.
+        </td>
+       </tr>
+
+       <tr valign="middle">
+        <td colspan="1" rowspan="1" align="left"><b><tt>FILTER_SANITIZE_MAGIC_QUOTES</tt></b></td>
+        <td colspan="1" rowspan="1" align="left">&quot;magic_quotes&quot;</td>
+        <td class="empty">&nbsp;</td>
+        <td class="empty">&nbsp;</td>
+        <td colspan="1" rowspan="1" align="left">Применяется функция <a href="function.addslashes.html" class="function">addslashes()</a>.</td>
+       </tr>
+
+
+       <tr valign="middle">
+        <td colspan="1" rowspan="1" align="left"><b><tt>FILTER_CALLBACK</tt></b></td>
+        <td colspan="1" rowspan="1" align="left">&quot;callback&quot;</td>
+        <td colspan="1" rowspan="1" align="left"><a href="language.pseudo-types.html#language.types.callback" class="type callback">callback</a> функция или метод</td>
+        <td class="empty">&nbsp;</td>
+        <td colspan="1" rowspan="1" align="left">Вызывается пользовательская функция для фильтрации данных.</td>
+       </tr>
+
+      </tbody>
+     </colgroup>
+
+    </table>
+
+   </p>
+ </div><hr /><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="book.filter.html">Filter</a></div>
+ <div class="next" style="float: right;"><a href="filter.setup.html">Установка и настройка</a></div>
+ <div class="up"><a href="book.filter.html">Filter</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

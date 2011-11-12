@@ -1,0 +1,58 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <title>Отсортировать массив, используя пользовательскую функцию для сравнения элементов
+     с сохранением ключей</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+ </head>
+ <body><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="function.sort.html">sort</a></div>
+ <div class="next" style="float: right;"><a href="function.uksort.html">uksort</a></div>
+ <div class="up"><a href="ref.array.html">Функции для работы с массивами</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="function.uasort" class="refentry">
+   <div class="refnamediv">
+    <h1 class="refname">uasort</h1>
+    <p class="verinfo">(PHP 4, PHP 5)</p><p class="refpurpose dc-title">uasort — 
+     Отсортировать массив, используя пользовательскую функцию для сравнения элементов
+     с сохранением ключей
+    </p>
+
+   </div>
+   <div class="refsect1 unknown">
+    <h3 class="title">Описание</h3>
+     <div class="methodsynopsis dc-description">
+      <span class="type">bool</span> <span class="methodname"><b><b>uasort</b></b></span>
+       ( <span class="methodparam"><span class="type">array</span> <tt class="parameter reference">&$array</tt></span>
+      , <span class="methodparam"><span class="type"><a href="language.pseudo-types.html#language.types.callback" class="type callback">callback</a></span> <tt class="parameter">$cmp_function</tt></span>
+      )</div>
+
+    <p class="para rdfs-comment">
+     Функция сортирует массив таким образом, что его индексы 
+     сохраняют отношения с элементами, с которыми ранее были ассоциированы.
+     Это особенно полезно при сортировке ассоциативных массивов, актуальный порядок
+     элементов которых значим.  Для сравнения используется функция, определённая пользователем.
+    </p>
+    <p class="para">
+     Возвращает <b><tt>TRUE</tt></b> в случае успешного завершения или <b><tt>FALSE</tt></b> в случае возникновения ошибки.
+    </p>
+    <blockquote><p><b class="note">Замечание</b>: 
+     
+      Пожалуйста, смотрите примеры пользовательских функций в описании
+       <a href="function.usort.html" class="function">usort()</a> и <a href="function.uksort.html" class="function">uksort()</a>.
+     <br />
+    </p></blockquote>
+    <p class="para">
+     См. также <a href="function.usort.html" class="function">usort()</a>, <a href="function.uksort.html" class="function">uksort()</a>,
+     <a href="function.sort.html" class="function">sort()</a>, <a href="function.asort.html" class="function">asort()</a>,
+     <a href="function.arsort.html" class="function">arsort()</a>, <a href="function.ksort.html" class="function">ksort()</a>
+     и <a href="function.rsort.html" class="function">rsort()</a>.
+    </p>
+   </div>
+
+  </div><hr /><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="function.sort.html">sort</a></div>
+ <div class="next" style="float: right;"><a href="function.uksort.html">uksort</a></div>
+ <div class="up"><a href="ref.array.html">Функции для работы с массивами</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

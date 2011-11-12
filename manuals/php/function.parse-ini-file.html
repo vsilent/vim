@@ -1,0 +1,158 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <title>Обрабатывает конфигурационный файл</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+ </head>
+ <body><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="function.move-uploaded-file.html">move_uploaded_file</a></div>
+ <div class="next" style="float: right;"><a href="function.pathinfo.html">pathinfo</a></div>
+ <div class="up"><a href="ref.filesystem.html">Файловая система</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="function.parse-ini-file" class="refentry">
+   <div class="refnamediv">
+    <h1 class="refname">parse_ini_file</h1>
+    <p class="verinfo">(PHP 4, PHP 5)</p><p class="refpurpose dc-title">parse_ini_file — Обрабатывает конфигурационный файл</p>
+
+   </div>
+   <div class="refsect1 unknown">
+    <h3 class="title">Описание</h3>
+     <div class="methodsynopsis dc-description">
+      <span class="type">array</span> <span class="methodname"><b><b>parse_ini_file</b></b></span>
+       ( <span class="methodparam"><span class="type">string</span> <tt class="parameter">$filename</tt></span>
+      [, <span class="methodparam"><span class="type">bool</span> <tt class="parameter">$process_sections</tt></span>
+     ] )</div>
+
+    <p class="para rdfs-comment">
+     <b>parse_ini_file()</b> загружает
+     ini-файл, указанный в аргументе <i><tt class="parameter">filename</tt></i>
+,
+     и возвращает его настройки в виде ассоциативного массива.
+     Установив последний аргумент <i><tt class="parameter">process_sections</tt></i>
+
+     в <b><tt>TRUE</tt></b>, вы получаете многомерный массив, который включает как название
+     отдельных настроек, так и секции. По умолчанию
+     <i><tt class="parameter">process_sections</tt></i>
+ равен <b><tt>FALSE</tt></b>
+    </p>
+    <blockquote><p><b class="note">Замечание</b>: 
+     
+      Эта функция не имеет никакого отношения к файлу <var class="filename">php.ini</var>.
+      К моменту выполнения вашего скрипта, он уже обработан.
+      Эта функция может быть использована для загрузки настроек
+      вашего собственного приложения.
+     <br />
+    </p></blockquote>
+    <blockquote><p><b class="note">Замечание</b>: 
+     
+      Если значение в ini-файле содержит прочие символы, кроме букв и цифр,
+      оно должно заключаться в двойные кавычки (&quot;).
+     <br />
+    </p></blockquote>
+    <blockquote><p><b class="note">Замечание</b>: 
+     <span class="simpara">
+      Начиная с версии PHP 4.2.1, на поведение этой функции влияет <a href="features.safe-mode.html#ini.safe-mode" class="link">безопасный режим</a> и
+      <a href="features.safe-mode.html#ini.open-basedir" class="link">open_basedir</a>.
+     </span>
+    </p></blockquote>
+    <blockquote><p><b class="note">Замечание</b>: 
+     
+      Начиная с версии PHP 5.0, эта функция также обрабатывает переводы строк
+      в значениях.
+     <br />
+    </p></blockquote>
+    <blockquote><p><b class="note">Замечание</b>: 
+     <span class="simpara">
+      Существует зарезервированные слова, которые вы не можете использовать
+      в качестве ключей в ini-файлах. Такими словами являются следующие:
+      null, yes, no, true и false.
+     </span>
+    </p></blockquote>
+    <p class="para">
+     Структура ini-файла похожа на структуру <var class="filename">php.ini</var>.
+    </p>
+    <p class="para">
+     <a href="language.constants.html" class="link">Константы</a> также могут быть
+     обработаны в ini-файле, так что если вы объявите константу в виде значения
+     для ini-файла до вызова <b>parse_ini_file()</b>, она (константа)
+     будет правильно обработана. Таким образом обрабатываются только значения.
+     Например:
+    </p>
+    <p class="para">
+     <div class="example">
+      <p><b>Пример #1 Содержимое <var class="filename">sample.ini</var></b></p>
+      <div class="example-contents">
+<div class="cdata"><pre>
+; Это пример файла настроек
+; Комментарии начинаются с &#039;;&#039;, как в php.ini
+
+[first_section]
+one = 1
+five = 5
+animal = BIRD
+
+[second_section]
+path = /usr/local/bin
+URL = &quot;http://www.example.com/~username&quot;
+</pre></div>
+      </div>
+
+     </div>
+    </p>
+    <p class="para">
+     <div class="example">
+      <p><b>Пример #2 Пример использования функции <b>parse_ini_file()</b></b></p>
+      <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /><br />define</span><span style="color: #007700">(</span><span style="color: #DD0000">'BIRD'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'Dodo&nbsp;bird'</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">//&nbsp;Обрабатываем&nbsp;без&nbsp;секций<br /></span><span style="color: #0000BB">$ini_array&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">parse_ini_file</span><span style="color: #007700">(</span><span style="color: #DD0000">"sample.ini"</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">print_r</span><span style="color: #007700">(</span><span style="color: #0000BB">$ini_array</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">//&nbsp;Обрабатываем&nbsp;с&nbsp;секциями<br /></span><span style="color: #0000BB">$ini_array&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">parse_ini_file</span><span style="color: #007700">(</span><span style="color: #DD0000">"sample.ini"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">true</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">print_r</span><span style="color: #007700">(</span><span style="color: #0000BB">$ini_array</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+      </div>
+
+      <div class="example-contents"><p>
+       Результат:
+      </p></div>
+      <div class="example-contents"><pre>
+<div class="cdata"><pre>
+Array
+(
+    [one] =&gt; 1
+    [five] =&gt; 5
+    [animal] =&gt; Dodo bird
+    [path] =&gt; /usr/local/bin
+    [URL] =&gt; http://www.example.com/~username
+)
+Array
+(
+    [first_section] =&gt; Array
+        (
+            [one] =&gt; 1
+            [five] =&gt; 5
+            [animal] = Dodo bird
+        )
+
+    [second_section] =&gt; Array
+        (
+            [path] =&gt; /usr/local/bin
+            [URL] =&gt; http://www.example.com/~username
+        )
+
+)
+</pre></div>
+      </pre></div>
+     </div>
+    </p>
+    <p class="para">
+     Ключи и имена секций, состоящие из цифр, будут обработаны как
+     <a href="language.types.integer.html" class="link">целые числа</a> в PHP,
+     поэтому числа, начинающиеся с 0 будут считаться восьмиричными,
+     а начинающиеся с 0x - шестнадцатиричными.
+    </p>
+   </div>
+
+  </div><hr /><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="function.move-uploaded-file.html">move_uploaded_file</a></div>
+ <div class="next" style="float: right;"><a href="function.pathinfo.html">pathinfo</a></div>
+ <div class="up"><a href="ref.filesystem.html">Файловая система</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

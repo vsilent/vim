@@ -1,0 +1,524 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <title>Новые функции</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+ </head>
+ <body><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="migration5.configuration.html">Миграция конфигурационных файлов</a></div>
+ <div class="next" style="float: right;"><a href="migration5.newconf.html">Новые директивы</a></div>
+ <div class="up"><a href="migration5.html">Миграция с PHP 4 на PHP 5</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="migration5.functions" class="section">
+   <h2 class="title">Новые функции</h2>
+   <p class="para">
+    В PHP 5 появилось некоторое количество новых функций. Вот их список:
+   </p>
+   <p class="para"><a href="ref.array.html" class="link">Массивы</a>:</p>
+    <ul class="itemizedlist">
+    <li class="listitem">
+     <span class="simpara">
+      <a href="function.array-combine.html" class="function">array_combine()</a> - Создает массив, используя
+      один массив для ключей, а другой - для их значений
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <a href="function.array-diff-uassoc.html" class="function">array_diff_uassoc()</a> - Вычисляет различие
+      массивов с дополнительной проверкой индексов, производимой
+      заданной пользователем функцией обратного вызова
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <a href="function.array-udiff.html" class="function">array_udiff()</a> - Вычисляет различие массивов,
+      используя функцию обратного вызова для сравнения данных
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <a href="function.array-udiff-assoc.html" class="function">array_udiff_assoc()</a> - Вычисляет различие массивов
+      с дополнительной проверкой индексов. Данные сравниваются с использованием
+      функции обратного вызова
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <a href="function.array-udiff-uassoc.html" class="function">array_udiff_uassoc()</a> - Вычисляет различие массивов
+      с дополнительной проверкой индексов. Данные сравниваются с использованием
+      функции обратного вызова. Проверка индексов также производится с использованием
+      функции обратного вызова
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <a href="function.array-walk-recursive.html" class="function">array_walk_recursive()</a> - Применить пользовательскую
+      функцию рекурсивно к каждому элементу массива
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <a href="function.array-uintersect-assoc.html" class="function">array_uintersect_assoc()</a> - Вычисляет пересечение массивов
+      с дополнительной проверкой индексов. Данные сравниваются с использованием
+      функции обратного вызова
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <a href="function.array-uintersect-uassoc.html" class="function">array_uintersect_uassoc()</a> - Вычисляет пересечение массивов
+      с дополнительной проверкой индексов. Как данные, так и индексы сравниваются
+      при помощи функции обратного вызова
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <a href="function.array-uintersect.html" class="function">array_uintersect()</a> - Вычисляет пересечение массивов.
+      Данные сравниваются с использованием функции обратного вызова
+     </span>
+    </li>
+   </ul>
+
+   <p class="para"><a href="ref.ibase.html" class="link">InterBase</a>:</p>
+   <ul class="itemizedlist">
+    <li class="listitem">
+     <span class="simpara">
+      <a href="function.ibase-affected-rows.html" class="function">ibase_affected_rows()</a> - Возвращает количество
+      записей, затронутых предыдущим запросом
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <a href="function.ibase-backup.html" class="function">ibase_backup()</a> - Инициирует задачу резервного
+      копирование в менеджере сервисов и сразу же возвращает управление
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <a href="function.ibase-commit-ret.html" class="function">ibase_commit_ret()</a> - Фиксирует транзакцию, не закрывая
+      ее
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <a href="function.ibase-db-info.html" class="function">ibase_db_info()</a> - Запросить статистику базы данных
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <a href="function.ibase-drop-db.html" class="function">ibase_drop_db()</a> - Удаляет базу данных
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <a href="function.ibase-errcode.html" class="function">ibase_errcode()</a> - Возвращает код ошибки
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <a href="function.ibase-free-event-handler.html" class="function">ibase_free_event_handler()</a> - Отменяет зарегистрированный
+      обработчик события
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <a href="function.ibase-gen-id.html" class="function">ibase_gen_id()</a> - Инкрементирует именованный генератор и
+      возвращает его новое значение
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <a href="function.ibase-maintain-db.html" class="function">ibase_maintain_db()</a> - Выполняет команду поддержки
+      на сервере баз данных
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <a href="function.ibase-name-result.html" class="function">ibase_name_result()</a> - Присваивает имя набору результатов
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <a href="function.ibase-num-params.html" class="function">ibase_num_params()</a> - Возвращает число параметров в
+      подготовленном запросе
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <a href="function.ibase-param-info.html" class="function">ibase_param_info()</a> - Возвращает информацию о
+      параметре в подготовленном запросе
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <a href="function.ibase-restore.html" class="function">ibase_restore()</a> - Инициирует задачу восстановление
+      в менеджере сервисов и сразу же возвращает управление
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <a href="function.ibase-rollback-ret.html" class="function">ibase_rollback_ret()</a> - Откатить транзакцию и
+      запомнить ее контекст
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <a href="function.ibase-server-info.html" class="function">ibase_server_info()</a> - Запршивает статистику базы
+      данных
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <a href="function.ibase-service-attach.html" class="function">ibase_service_attach()</a> - Соединиться с менеджером сервисов
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <a href="function.ibase-service-detach.html" class="function">ibase_service_detach()</a> - Разорвать соединение с
+      менеджером сервисов
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <a href="function.ibase-set-event-handler.html" class="function">ibase_set_event_handler()</a> - Зарегистрировать
+      функцию обратного вызова, которая вызывается при публикации события
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <a href="function.ibase-wait-event.html" class="function">ibase_wait_event()</a> - Ждать события, отправленного
+      базой данных
+     </span>
+    </li>
+   </ul>
+
+   <p class="para"><a href="ref.iconv.html" class="link">iconv</a>:</p>
+   <ul class="itemizedlist">
+    <li class="listitem">
+     <span class="simpara">
+      <a href="function.iconv-mime-decode.html" class="function">iconv_mime_decode()</a> - Декодирует поле MIME-заголовка
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <a href="function.iconv-mime-decode-headers.html" class="function">iconv_mime_decode_headers()</a> - Декодирует сразу несколько полей
+      MIME-заголовков
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <a href="function.iconv-mime-encode.html" class="function">iconv_mime_encode()</a> - Составляет поле MIME-заголовка
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <a href="function.iconv-strlen.html" class="function">iconv_strlen()</a> - Возвращает количество символов
+      в строке
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <a href="function.iconv-strpos.html" class="function">iconv_strpos()</a> - Находит позицию первого вхождения
+      needle внутри haystack
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <a href="function.iconv-strrpos.html" class="function">iconv_strrpos()</a> - Находит позицию последнего вхождения
+      needle внутри указанного ряда haystack
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <a href="function.iconv-substr.html" class="function">iconv_substr()</a> - Вырезать часть строки
+     </span>
+    </li>
+   </ul>
+
+   <p class="para"><a href="ref.stream.html" class="link">Потоки</a>:</p>
+   <ul class="itemizedlist">
+    <li class="listitem">
+     <span class="simpara">
+      <a href="function.stream-copy-to-stream.html" class="function">stream_copy_to_stream()</a> - Копирует данные с одного
+      потока на другой
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <a href="function.stream-get-line.html" class="function">stream_get_line()</a> - Получает строку из заданного 
+      ресурса потока до данного разделителя
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <a href="function.stream-socket-accept.html" class="function">stream_socket_accept()</a> - Разрешить соединение на
+      сокет, созданный <a href="function.stream-socket-server.html" class="function">stream_socket_server()</a>
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <a href="function.stream-socket-client.html" class="function">stream_socket_client()</a> - Открыть Internet или Unix
+      domain сокет
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <a href="function.stream-socket-get-name.html" class="function">stream_socket_get_name()</a> - Получить имя локальных
+      или удаленных сокетов
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <a href="function.stream-socket-recvfrom.html" class="function">stream_socket_recvfrom()</a> - Получает данные
+      от сокета, вне зависимости от того, произведено соединение или нет
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <a href="function.stream-socket-sendto.html" class="function">stream_socket_sendto()</a> - Посылает сообщение сокету,
+      вне зависимости от того, произведено соединение или нет
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <a href="function.stream-socket-server.html" class="function">stream_socket_server()</a> - Создать Internet или
+      или Unix domain сокет на стороне сервера
+     </span>
+    </li>
+   </ul>
+
+   <p class="para"><a href="ref.datetime.html" class="link">Связанные с датой и временем</a>:</p>
+   <ul class="itemizedlist">
+    <li class="listitem">
+     <span class="simpara">
+      <a href="function.idate.html" class="function">idate()</a> - Форматирует локальное время/дату как integer
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <a href="function.date-sunset.html" class="function">date_sunset()</a> - Время захода солнца для данного дня и
+      месторасположения
+    </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <a href="function.date-sunrise.html" class="function">date_sunrise()</a> - Время восхода солнца для данного дня и
+      месторасположения
+    </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <a href="function.time-nanosleep.html" class="function">time_nanosleep()</a> - Задержка на заданное число секунд и
+      наносекунд
+    </span>
+    </li>
+   </ul>
+
+   <p class="para"><a href="ref.strings.html" class="link">Строки</a>:</p>
+   <ul class="itemizedlist">
+    <li class="listitem">
+     <span class="simpara">
+      <a href="function.str-split.html" class="function">str_split()</a> - Преобразовать строку в массив
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <a href="function.strpbrk.html" class="function">strpbrk()</a> - Поиск любого набора символов
+      в строке
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <a href="function.substr-compare.html" class="function">substr_compare()</a> - Безопасное для бинарных данных
+      опционально регистрозависимое сравнение двух строк, начиная с offset и до
+      length символов
+     </span>
+    </li>
+   </ul>
+
+   <p class="para">Другие:</p>
+   <ul class="itemizedlist">
+    <li class="listitem">
+     <span class="simpara">
+      <a href="function.convert-uudecode.html" class="function">convert_uudecode()</a> - декодирует строку, закодированную
+      uuencode
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <a href="function.convert-uuencode.html" class="function">convert_uuencode()</a> - кодирует строку в uuencode
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <a href="function.curl-copy-handle.html" class="function">curl_copy_handle()</a> - Копировать дескриптор cURL 
+      вместе со всеми его настройками
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <a href="function.dba-key-split.html" class="function">dba_key_split()</a> - Разбивает ключ в строковом представлении
+      в представление массива
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <a href="function.dbase-get-header-info.html" class="function">dbase_get_header_info()</a> - Получает заголовочную информацию
+      базы данных dBase
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <a href="function.dbx-fetch-row.html" class="function">dbx_fetch_row()</a> - Выбирает записи из результата запроса,
+      в котором установлен флаг DBX_RESULT_UNBUFFERED
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <a href="function.fbsql-set-password.html" class="function">fbsql_set_password()</a> - Сменить пароль данного
+      пользователя
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <a href="function.file-put-contents.html" class="function">file_put_contents()</a> - Запись строки в файл
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <a href="function.ftp-alloc.html" class="function">ftp_alloc()</a> - Выделяет место для
+      загружаемого файла
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <a href="function.get-declared-interfaces.html" class="function">get_declared_interfaces()</a> - Возвращает массив всех
+      объявленных интерфейсов
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <a href="function.get-headers.html" class="function">get_headers()</a> - Выбирает все заголовки, посланные
+      сервером в ответ на HTTP-запрос
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <a href="function.headers-list.html" class="function">headers_list()</a> - Возвращает список посланных (или готовых к отправке)
+      заголовков ответа
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <a href="function.http-build-query.html" class="function">http_build_query()</a> - Генерирует URL-кодированную строку запроса
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <a href="function.image-type-to-extension.html" class="function">image_type_to_extension()</a> - Получить расширение файла
+      для типа изображения, возвращенного <a href="function.getimagesize.html" class="function">getimagesize()</a>,
+      <a href="function.exif-read-data.html" class="function">exif_read_data()</a>,
+      <a href="function.exif-thumbnail.html" class="function">exif_thumbnail()</a>,
+      <a href="function.exif-imagetype.html" class="function">exif_imagetype()</a>
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <a href="function.imagefilter.html" class="function">imagefilter()</a> - Применяет фильтр изображения, используя
+      выбранную фазу
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <a href="function.imap-getacl.html" class="function">imap_getacl()</a> - Получает ACL для данного почтового ящика
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <a href="function.ldap-sasl-bind.html" class="function">ldap_sasl_bind()</a> - Привязать к LDAP-директории используя SASL
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <a href="function.func-name.html" class="function">mb_list_encodings()</a> - Возвращает массив
+      всех поддерживаемых кодировок
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <a href="function.pcntl-getpriority.html" class="function">pcntl_getpriority()</a> - Получает приоритет любого
+      процесса
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <a href="function.pcntl-wait.html" class="function">pcntl_wait()</a> - Ждет или возвращает статус
+      дочернего разветвленного процесса в зависимости от объявления системного вызова waitpid()
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <a href="function.pg-version.html" class="function">pg_version()</a> - Возвращает массив с информацией о
+      версии клиента, протокола и сервера (если доступно)
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <a href="function.php-check-syntax.html" class="function">php_check_syntax()</a> - Проверить синтаксис
+      указанного файла
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <a href="function.php-strip-whitespace.html" class="function">php_strip_whitespace()</a> - Возвращает исходный код с
+      удаленными комментариями и пробелами
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <a href="function.proc-nice.html" class="function">proc_nice()</a> - Сменить приоритет
+      текущего процесса
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <a href="function.pspell-config-data-dir.html" class="function">pspell_config_data_dir()</a> - Сменить расположение
+      файлов данных языка
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <a href="function.pspell-config-dict-dir.html" class="function">pspell_config_dict_dir()</a> - Сменить расположение основного
+      списка слов
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <a href="function.setrawcookie.html" class="function">setrawcookie()</a> - Посылает cookie без кодирования url
+      значения
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <a href="function.snmp-read-mib.html" class="function">snmp_read_mib()</a> - Читает и анализирует MIB-файл в 
+      активное MIB-дерево
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <a href="function.sqlite-fetch-column-types.html" class="function">sqlite_fetch_column_types()</a> - Возвращает массив типов
+      столбцов для отдельной таблицы
+     </span>
+    </li>
+   </ul>
+   <blockquote><p><b class="note">Замечание</b>: 
+    
+     Модуль <a href="ref.tidy.html" class="link">Tidy</a> полностью сменил свой
+     API.
+    <br />
+   </p></blockquote>
+  </div><hr /><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="migration5.configuration.html">Миграция конфигурационных файлов</a></div>
+ <div class="next" style="float: right;"><a href="migration5.newconf.html">Новые директивы</a></div>
+ <div class="up"><a href="migration5.html">Миграция с PHP 4 на PHP 5</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

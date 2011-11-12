@@ -1,0 +1,632 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <title>Массивы</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+ </head>
+ <body><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="language.types.string.html">Строки</a></div>
+ <div class="next" style="float: right;"><a href="language.types.object.html">Объекты</a></div>
+ <div class="up"><a href="language.types.html">Типы</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="language.types.array" class="sect1">
+   <h2 class="title">Массивы</h2>
+
+   <p class="para">
+    На самом деле массив в PHP - это упорядоченное отображение, которое
+    устанавливает соответствие между <em class="emphasis">значением</em> и
+    <em class="emphasis">ключем</em>. Этот тип оптимизирован в нескольких
+    направлениях, поэтому вы можете использовать его как собственно
+    массив, список (вектор), хэш-таблицу (являющуюся реализацией карты),
+    словарь, коллекцию, стэк, очередь или, возможно, как что-то еще.
+    Поскольку вы можете иметь в качестве значения другой массив PHP, вы
+    можете также легко эмулировать деревья.
+   </p>
+   <p class="para">
+    Объяснение этих структур данных выходит за рамки данного
+    справочного руководства, но вы найдете как минимум один пример
+    каждой из них. За дополнительной информацией вы можете обратиться к
+    соответствующей литературе по этой обширной теме.
+   </p>
+   
+   <div id="language.types.array.syntax" class="sect2">
+    <h3 class="title">Синтаксис</h3>
+    
+    <div id="language.types.array.syntax.array-func" class="sect3">
+     <h4 class="title">Определение при помощи <a href="function.array.html" class="function">array()</a></h4>
+     <p class="para">
+      Массив может быть создан языковой конструкцией <a href="function.array.html" class="function">array()</a>.
+      В качестве параметров она принимает определенное количество разделенных
+      запятыми пар
+      <i><span class="replaceable">key</span> =&gt; <span class="replaceable">value</span></i> (ключ =&gt; значение).
+     </p>
+     <p class="para">
+      <pre class="synopsis">
+array( <span class="optional"> <span class="replaceable">key</span> =&gt; </span> <span class="replaceable">value</span>
+     , ...
+     )
+// <span class="replaceable">key</span> может быть <a href="language.types.integer.html" class="type integer">integer</a> или <a href="language.types.string.html" class="type string">string</a>
+// <span class="replaceable">value</span> может быть любым значением
+      </pre>
+     </p>
+     <p class="para">
+      <div class="informalexample">
+       <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$arr&nbsp;</span><span style="color: #007700">=&nbsp;array(</span><span style="color: #DD0000">"foo"&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">"bar"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">12&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">true</span><span style="color: #007700">);<br /><br />echo&nbsp;</span><span style="color: #0000BB">$arr</span><span style="color: #007700">[</span><span style="color: #DD0000">"foo"</span><span style="color: #007700">];&nbsp;</span><span style="color: #FF8000">//&nbsp;bar<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">$arr</span><span style="color: #007700">[</span><span style="color: #0000BB">12</span><span style="color: #007700">];&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;1<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+       </div>
+
+      </div>
+     </p>
+     <p class="para">
+      <var class="varname">key</var> может быть либо <a href="language.types.integer.html" class="type integer">integer</a>, либо
+      <a href="language.types.string.html" class="type string">string</a>. Если ключ - это стандартное представление
+      <a href="language.types.integer.html" class="type integer">integer</a>, он так и будет интерпретироваться (т.е.
+      <i>&quot;8&quot;</i> будет восприниматься как <i>8</i>,
+      тогда как <i>&quot;08&quot;</i> будет интерпретироваться как
+      <i>&quot;08&quot;</i>). В PHP нет разницы между индексными и
+      ассоциативными массивами; существует только один тип массива,
+      который может содержать и числовые, и строковые индексы.
+     </p>
+     <p class="para">
+      Значение может быть любого имеющегося в PHP типа.
+      <div class="informalexample">
+       <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$arr&nbsp;</span><span style="color: #007700">=&nbsp;array(</span><span style="color: #DD0000">"somearray"&nbsp;</span><span style="color: #007700">=&gt;&nbsp;array(</span><span style="color: #0000BB">6&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">5</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">13&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">9</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"a"&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">42</span><span style="color: #007700">));<br /><br />echo&nbsp;</span><span style="color: #0000BB">$arr</span><span style="color: #007700">[</span><span style="color: #DD0000">"somearray"</span><span style="color: #007700">][</span><span style="color: #0000BB">6</span><span style="color: #007700">];&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;5<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">$arr</span><span style="color: #007700">[</span><span style="color: #DD0000">"somearray"</span><span style="color: #007700">][</span><span style="color: #0000BB">13</span><span style="color: #007700">];&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;9<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">$arr</span><span style="color: #007700">[</span><span style="color: #DD0000">"somearray"</span><span style="color: #007700">][</span><span style="color: #DD0000">"a"</span><span style="color: #007700">];&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;42<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+       </div>
+
+      </div>
+     </p>
+     <p class="para">
+      Если вы не указываете ключ для приведенного значения, то берется
+      максимальный числовой индекс и новый ключ будет равен этому
+      максимуму + 1. Если вы укажите ключ, которому уже присвоено
+      значение, оно будет перезаписано.
+      <div class="informalexample">
+       <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">//&nbsp;Этот&nbsp;массив&nbsp;эквивалентен&nbsp;...<br /></span><span style="color: #007700">array(</span><span style="color: #0000BB">5&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">43</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">32</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">56</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"b"&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">12</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">//&nbsp;...этому&nbsp;массиву<br /></span><span style="color: #007700">array(</span><span style="color: #0000BB">5&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">43</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">6&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">32</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">7&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">56</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"b"&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">12</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+       </div>
+
+      </div>
+     </p>
+     <div class="warning"><b class="warning">Внимание</b>
+      <p class="simpara">
+         Начиная с PHP 4.3.0, вышеописанное поведение генерации индекса
+         изменено. Теперь, если вы будете использовать массив, в котором
+         максимальным в настоящий момент является отрицательный ключ, то
+         следующий созданный ключ будет нулевым (<i>0</i>).
+         Раньше новым индексом становился самый большой существующий
+         ключ + 1, так же как и у положительных индексов.
+      </p>
+     </div>
+     <p class="para">
+      Используя в качестве ключа <b><tt>TRUE</tt></b> вы получите ключ
+      <i>1</i> типа <a href="language.types.integer.html" class="type integer">integer</a>. Используя в
+      качестве ключа <b><tt>FALSE</tt></b> вы получите ключ <i>0</i> типа
+      <a href="language.types.integer.html" class="type integer">integer</a>. Используя в качестве ключа
+      <i>NULL</i>, вы получите пустую строку. Использование в
+      качестве ключа пустой строки создаст (или перезапишет) ключ с пустой
+      строкой и его значение; это не то же самое, что использование пустых
+      квадратных скобок.
+     </p>
+     <p class="para">
+      Вы не можете использовать в качестве ключей массивы или объекты. Это
+      вызовет предупреждение: <i>Illegal offset type</i>
+      (&#039;Недопустимый тип смещения&#039;).
+     </p>
+    </div>
+    
+    <div id="language.types.array.syntax.modifying" class="sect3">
+     <h4 class="title">Создание/модификация с помощью синтаксиса квадратных скобок</h4>
+     <p class="para">
+      Также вы можете изменять существующий массив, явно устанавливая значения
+      в нем.
+     </p>
+     <p class="para">
+      Это выполняется присвоением значений массиву при указании в скобках
+      ключа. Кроме того, вы можете опустить ключ, в этом случае добавьте к
+      имени переменной пустую пару скобок (&quot;<i>[]</i>&quot;).
+      <pre class="synopsis">
+$arr[<span class="replaceable">key</span>] = <span class="replaceable">value</span>;
+$arr[] = <span class="replaceable">value</span>;
+// <span class="replaceable">key</span> может быть <a href="language.types.integer.html" class="type integer">integer</a> или <a href="language.types.string.html" class="type string">string</a>
+// <span class="replaceable">value</span> может быть любым значением
+      </pre>
+      Если массив <var class="varname">$arr</var> еще не существует, он будет создан.
+      Таким образом, это еще один способ определить массив. Для изменения
+      определенного значения просто присвойте элементу с его ключом новое
+      значение. Если вы хотите удалить пару ключ/значение, вам нужно
+      использовать функцию <a href="function.unset.html" class="function">unset()</a>.
+      <div class="informalexample">
+       <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$arr&nbsp;</span><span style="color: #007700">=&nbsp;array(</span><span style="color: #0000BB">5&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">1</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">12&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">2</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">$arr</span><span style="color: #007700">[]&nbsp;=&nbsp;</span><span style="color: #0000BB">56</span><span style="color: #007700">;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;В&nbsp;этом&nbsp;месте&nbsp;скрипта&nbsp;это<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;эквивалентно&nbsp;$arr[13]&nbsp;=&nbsp;56;<br /><br /></span><span style="color: #0000BB">$arr</span><span style="color: #007700">[</span><span style="color: #DD0000">"x"</span><span style="color: #007700">]&nbsp;=&nbsp;</span><span style="color: #0000BB">42</span><span style="color: #007700">;&nbsp;</span><span style="color: #FF8000">//&nbsp;Это&nbsp;добавляет&nbsp;к&nbsp;массиву&nbsp;новый<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;элемент&nbsp;с&nbsp;ключом&nbsp;"x"<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br /></span><span style="color: #007700">unset(</span><span style="color: #0000BB">$arr</span><span style="color: #007700">[</span><span style="color: #0000BB">5</span><span style="color: #007700">]);&nbsp;</span><span style="color: #FF8000">//&nbsp;Это&nbsp;удаляет&nbsp;элемент&nbsp;из&nbsp;массива<br /><br /></span><span style="color: #007700">unset(</span><span style="color: #0000BB">$arr</span><span style="color: #007700">);&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;Это&nbsp;удаляет&nbsp;массив&nbsp;полностью<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div> 
+       </div>
+
+      </div>
+     </p>
+     <blockquote><p><b class="note">Замечание</b>: 
+      
+       Как уже говорилось выше, если вы не укажите в скобках ключа,
+       то будет взят максимальный из существующих целочисленных
+       индексов, и новым ключом будет это максимальное значение + 1.
+       Если целочисленных индексов еще нет, то ключом будет
+       <i>0</i> (ноль). Если вы укажите ключ, которому
+       уже присвоено значение, оно будет перезаписано.
+      <br />
+      
+       <div class="warning"><b class="warning">Внимание</b>
+        <p class="simpara">
+         Начиная с PHP 4.3.0, вышеописанное поведение генерации индекса
+         изменено. Теперь, если вы будете использовать массив, в котором
+         максимальным в настоящий момент является отрицательный ключ, то
+         следующий созданный ключ будет нулевым (<i>0</i>).
+         Раньше новым индексом становился самый большой существующий
+         ключ + 1, так же как и у положительных индексов.
+        </p>
+       </div>
+      <br />
+      
+       Обратите внимание, что максимальный числовой ключ, используемый
+       для этого <em class="emphasis">не обязательно должен существовать в массиве
+       в настоящий момент</em>. Он просто должен был существовать
+       с момента последнего переиндексирования массива. Это
+       иллюстрирует следующий пример:
+      <br />
+
+      <div class="informalexample">
+       <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">//&nbsp;Создаем&nbsp;простой&nbsp;массив.<br /></span><span style="color: #0000BB">$array&nbsp;</span><span style="color: #007700">=&nbsp;array(</span><span style="color: #0000BB">1</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">2</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">3</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">4</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">5</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">print_r</span><span style="color: #007700">(</span><span style="color: #0000BB">$array</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">//&nbsp;Теперь&nbsp;удаляем&nbsp;каждый&nbsp;элемент,&nbsp;но&nbsp;сам&nbsp;массив&nbsp;оставляем&nbsp;нетронутым:<br /></span><span style="color: #007700">foreach&nbsp;(</span><span style="color: #0000BB">$array&nbsp;</span><span style="color: #007700">as&nbsp;</span><span style="color: #0000BB">$i&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">$value</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;unset(</span><span style="color: #0000BB">$array</span><span style="color: #007700">[</span><span style="color: #0000BB">$i</span><span style="color: #007700">]);<br />}<br /></span><span style="color: #0000BB">print_r</span><span style="color: #007700">(</span><span style="color: #0000BB">$array</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">//&nbsp;Создаем&nbsp;элемент&nbsp;(обратите&nbsp;внимание,&nbsp;что&nbsp;новым&nbsp;ключом&nbsp;будет&nbsp;5,<br />//&nbsp;а&nbsp;не&nbsp;0,&nbsp;как&nbsp;вы&nbsp;возможно&nbsp;ожидали).<br /></span><span style="color: #0000BB">$array</span><span style="color: #007700">[]&nbsp;=&nbsp;</span><span style="color: #0000BB">6</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">print_r</span><span style="color: #007700">(</span><span style="color: #0000BB">$array</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">//&nbsp;Переиндексация:<br /></span><span style="color: #0000BB">$array&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">array_values</span><span style="color: #007700">(</span><span style="color: #0000BB">$array</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$array</span><span style="color: #007700">[]&nbsp;=&nbsp;</span><span style="color: #0000BB">7</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">print_r</span><span style="color: #007700">(</span><span style="color: #0000BB">$array</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div> 
+       </div>
+
+       <p class="para">
+        Вышеприведенный пример выведет следующее:
+        <div class="example-contents"><pre>
+<div class="cdata"><pre>
+Array
+(
+    [0] =&gt; 1
+    [1] =&gt; 2
+    [2] =&gt; 3
+    [3] =&gt; 4
+    [4] =&gt; 5
+)
+Array
+(
+)
+Array
+(
+    [5] =&gt; 6
+)
+Array
+(
+    [0] =&gt; 6
+    [1] =&gt; 7
+)
+</pre></div>
+        </pre></div>
+       </p>
+      </div>       
+
+     </p></blockquote>
+    </div>
+   </div>
+   
+   <div id="language.types.array.useful-funcs" class="sect2">
+    <h3 class="title">Полезные функции</h3>
+    <p class="para">
+     Для работы с массивами существует достаточное количество полезных
+     функций. Смотрите раздел <a href="ref.array.html" class="link">функции для работы
+     с массивами</a>.
+    </p>
+    <blockquote><p><b class="note">Замечание</b>: 
+     
+      Функция <a href="function.unset.html" class="function">unset()</a> позволяет удалять ключи массива.
+      Обратите внимание, что массив НЕ будет переиндексирован. Если вы
+      использовали только &quot;обычные числовые индексы&quot; (увеличивающиеся на
+      единицу, начиная с нуля), вы можете переиндексировать массив
+      используя <a href="function.array-values.html" class="function">array_values()</a>.
+      <div class="informalexample">
+       <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$a&nbsp;</span><span style="color: #007700">=&nbsp;array(</span><span style="color: #0000BB">1&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'один'</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">2&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'два'</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">3&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'три'</span><span style="color: #007700">);<br />unset(</span><span style="color: #0000BB">$a</span><span style="color: #007700">[</span><span style="color: #0000BB">2</span><span style="color: #007700">]);<br /></span><span style="color: #FF8000">/*&nbsp;даст&nbsp;массив,&nbsp;представленный&nbsp;так:<br />&nbsp;&nbsp;&nbsp;$a&nbsp;=&nbsp;array(1&nbsp;=&gt;&nbsp;'один',&nbsp;3&nbsp;=&gt;&nbsp;'три');<br />&nbsp;&nbsp;&nbsp;а&nbsp;НЕ&nbsp;так:<br />&nbsp;&nbsp;&nbsp;$a&nbsp;=&nbsp;array(1&nbsp;=&gt;&nbsp;'один',&nbsp;2&nbsp;=&gt;'три');<br />*/<br /><br /></span><span style="color: #0000BB">$b&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">array_values</span><span style="color: #007700">(</span><span style="color: #0000BB">$a</span><span style="color: #007700">);<br /></span><span style="color: #FF8000">//&nbsp;Теперь&nbsp;$b&nbsp;это&nbsp;array(0&nbsp;=&gt;&nbsp;'один',&nbsp;1&nbsp;=&gt;'три')<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+      </div>
+
+     </div>
+     
+     <br />    
+    </p></blockquote> 
+    <p class="para">
+     Управляющая конструкция
+     <a href="control-structures.foreach.html" class="link">foreach</a> существует
+     специально для массивов. Она предоставляет возможность легко
+     пройтись по массиву.
+    </p>
+   </div>
+   
+   <div id="language.types.array.donts" class="sect2">
+    <h3 class="title">Массив делает и не делает</h3>
+
+    <div id="language.types.array.foo-bar" class="sect3">
+     <h4 class="title">Почему <i>$foo[bar]</i> это неверно?</h4>
+     <p class="para">
+      Вы всегда должны заключать индекс ассоциативного массива в кавычки.
+      К примеру, пишите $foo[&#039;bar&#039;], а не $foo[bar]. Но почему $foo[bar]
+      это неверно? Возможно, вы встречали в старых скриптах следующий
+      синтаксис:
+      <div class="informalexample">
+       <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$foo</span><span style="color: #007700">[</span><span style="color: #0000BB">bar</span><span style="color: #007700">]&nbsp;=&nbsp;</span><span style="color: #DD0000">'враг'</span><span style="color: #007700">;<br />echo&nbsp;</span><span style="color: #0000BB">$foo</span><span style="color: #007700">[</span><span style="color: #0000BB">bar</span><span style="color: #007700">];<br /></span><span style="color: #FF8000">//&nbsp;и&nbsp;т.&nbsp;д.<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+       </div>
+
+      </div>
+      Это неверно, хотя и работает. Тогда почему же это неверно? Причина
+      в том, что этот код содержит неопределенную константу (bar), а не
+      строку (&#039;bar&#039; - обратите внимание на кавычки), и PHP в будущем
+      может определить константу, которая к несчастью для вашего кода
+      будет иметь то же самое имя. Это работает, потому что PHP
+      автоматически преобразует <em class="emphasis">голую строку</em> (не
+      заключенную в кавычки строку, которая не соответствует ни одному
+      из известных символов) в строку, которая содержит голую строку.
+      Например, если константа с именем <b><tt>bar</tt></b> не
+      определена, то PHP заменит bar на строку <i>&#039;bar&#039;</i> и
+      использует ее.
+     </p>
+     <blockquote><p><b class="note">Замечание</b>: 
+      <span class="simpara">
+       Это не означает, что нужно <em class="emphasis">всегда</em> заключать
+       ключ в кавычки. Нет необходимости заключать в кавычки <a href="language.constants.html" class="link">константы</a> или <a href="language.variables.html" class="link">переменные</a>, поскольку это
+       помешает PHP обрабатывать их.
+      </span>
+      <div class="informalexample">
+       <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />error_reporting</span><span style="color: #007700">(</span><span style="color: #0000BB">E_ALL</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">ini_set</span><span style="color: #007700">(</span><span style="color: #DD0000">'display_errors'</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">true</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">ini_set</span><span style="color: #007700">(</span><span style="color: #DD0000">'html_errors'</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">false</span><span style="color: #007700">);<br /></span><span style="color: #FF8000">//&nbsp;Простой&nbsp;массив:<br /></span><span style="color: #0000BB">$array&nbsp;</span><span style="color: #007700">=&nbsp;array(</span><span style="color: #0000BB">1</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">2</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$count&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">count</span><span style="color: #007700">(</span><span style="color: #0000BB">$array</span><span style="color: #007700">);<br />for&nbsp;(</span><span style="color: #0000BB">$i&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">0</span><span style="color: #007700">;&nbsp;</span><span style="color: #0000BB">$i&nbsp;</span><span style="color: #007700">&lt;&nbsp;</span><span style="color: #0000BB">$count</span><span style="color: #007700">;&nbsp;</span><span style="color: #0000BB">$i</span><span style="color: #007700">++)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"\nПроверяем&nbsp;$i:&nbsp;\n"</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"Плохо:&nbsp;"&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #0000BB">$array</span><span style="color: #007700">[</span><span style="color: #DD0000">'$i'</span><span style="color: #007700">]&nbsp;.&nbsp;</span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"Хорошо:&nbsp;"&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #0000BB">$array</span><span style="color: #007700">[</span><span style="color: #0000BB">$i</span><span style="color: #007700">]&nbsp;.&nbsp;</span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"Плохо:&nbsp;{$array['$i']}\n"</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"Хорошо:&nbsp;{$array[$i]}\n"</span><span style="color: #007700">;<br />}<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+       </div>
+
+      </div>
+      
+       Вышеприведенный код выведет следующее:
+       <div class="example-contents"><pre>
+<div class="cdata"><pre>
+Проверяем 0: 
+Notice: Undefined index:  $i in /path/to/script.html on line 9
+Плохо: 
+Хорошо: 1
+Notice: Undefined index:  $i in /path/to/script.html on line 11
+Плохо: 
+Хорошо: 1
+
+Проверяем 1: 
+Notice: Undefined index:  $i in /path/to/script.html on line 9
+Плохо: 
+Хорошо: 2
+Notice: Undefined index:  $i in /path/to/script.html on line 11
+Плохо: 
+Хорошо: 2
+</pre></div>        
+       </pre></div>
+      <br />
+     </p></blockquote>
+     <p class="para">
+      Дополнительные примеры, демонстрирующие этот факт:
+      <div class="informalexample">
+       <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">//&nbsp;Давайте&nbsp;покажем&nbsp;все&nbsp;ошибки<br /></span><span style="color: #0000BB">error_reporting</span><span style="color: #007700">(</span><span style="color: #0000BB">E_ALL</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">$arr&nbsp;</span><span style="color: #007700">=&nbsp;array(</span><span style="color: #DD0000">'fruit'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'apple'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'veggie'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'carrot'</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">//&nbsp;Верно<br /></span><span style="color: #007700">print&nbsp;</span><span style="color: #0000BB">$arr</span><span style="color: #007700">[</span><span style="color: #DD0000">'fruit'</span><span style="color: #007700">];&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;apple<br /></span><span style="color: #007700">print&nbsp;</span><span style="color: #0000BB">$arr</span><span style="color: #007700">[</span><span style="color: #DD0000">'veggie'</span><span style="color: #007700">];&nbsp;</span><span style="color: #FF8000">//&nbsp;carrot<br /><br />//&nbsp;Неверно.&nbsp;Это&nbsp;работает,&nbsp;но&nbsp;из-за&nbsp;неопределенной&nbsp;константы&nbsp;с<br />//&nbsp;именем&nbsp;fruit&nbsp;также&nbsp;вызывает&nbsp;ошибку&nbsp;PHP&nbsp;уровня&nbsp;E_NOTICE<br />//&nbsp;<br />//&nbsp;Notice:&nbsp;Use&nbsp;of&nbsp;undefined&nbsp;constant&nbsp;fruit&nbsp;-&nbsp;assumed&nbsp;'fruit'&nbsp;in...<br /></span><span style="color: #007700">print&nbsp;</span><span style="color: #0000BB">$arr</span><span style="color: #007700">[</span><span style="color: #0000BB">fruit</span><span style="color: #007700">];&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;apple<br /><br />//&nbsp;Давайте&nbsp;определим&nbsp;константу,&nbsp;чтобы&nbsp;продемонстрировать,&nbsp;что<br />//&nbsp;происходит.&nbsp;Мы&nbsp;присвоим&nbsp;константе&nbsp;с&nbsp;именем&nbsp;fruit&nbsp;значение&nbsp;'veggie'.<br /></span><span style="color: #0000BB">define</span><span style="color: #007700">(</span><span style="color: #DD0000">'fruit'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'veggie'</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">//&nbsp;Теперь&nbsp;обратите&nbsp;внимание&nbsp;на&nbsp;разницу<br /></span><span style="color: #007700">print&nbsp;</span><span style="color: #0000BB">$arr</span><span style="color: #007700">[</span><span style="color: #DD0000">'fruit'</span><span style="color: #007700">];&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;apple<br /></span><span style="color: #007700">print&nbsp;</span><span style="color: #0000BB">$arr</span><span style="color: #007700">[</span><span style="color: #0000BB">fruit</span><span style="color: #007700">];&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;carrot<br /><br />//&nbsp;Внутри&nbsp;строки&nbsp;это&nbsp;нормально.&nbsp;Внутри&nbsp;строк&nbsp;константы&nbsp;не<br />//&nbsp;рассматриваются,&nbsp;так&nbsp;что&nbsp;ошибки&nbsp;E_NOTICE&nbsp;здесь&nbsp;не&nbsp;произойдет<br /></span><span style="color: #007700">print&nbsp;</span><span style="color: #DD0000">"Hello&nbsp;$arr[fruit]"</span><span style="color: #007700">;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;Hello&nbsp;apple<br /><br />//&nbsp;С&nbsp;одним&nbsp;исключением:&nbsp;фигурные&nbsp;скобки&nbsp;вокруг&nbsp;массивов&nbsp;внутри<br />//&nbsp;строк&nbsp;позволяют&nbsp;константам&nbsp;находится&nbsp;там<br /></span><span style="color: #007700">print&nbsp;</span><span style="color: #DD0000">"Hello&nbsp;{$arr[fruit]}"</span><span style="color: #007700">;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;Hello&nbsp;carrot<br /></span><span style="color: #007700">print&nbsp;</span><span style="color: #DD0000">"Hello&nbsp;{$arr['fruit']}"</span><span style="color: #007700">;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;Hello&nbsp;apple<br /><br />//&nbsp;Это&nbsp;не&nbsp;будет&nbsp;работать&nbsp;и&nbsp;вызовет&nbsp;ошибку&nbsp;обработки,&nbsp;такую&nbsp;как:<br />//&nbsp;Parse&nbsp;error:&nbsp;parse&nbsp;error,&nbsp;expecting&nbsp;T_STRING'&nbsp;or&nbsp;T_VARIABLE'&nbsp;or&nbsp;T_NUM_STRING'<br />//&nbsp;Это,&nbsp;конечно,&nbsp;также&nbsp;приложимо&nbsp;и&nbsp;к&nbsp;использованию&nbsp;в&nbsp;строках&nbsp;автоглобальных&nbsp;переменных<br /></span><span style="color: #007700">print&nbsp;</span><span style="color: #DD0000">"Hello&nbsp;$arr['fruit']"</span><span style="color: #007700">;<br />print&nbsp;</span><span style="color: #DD0000">"Hello&nbsp;$_GET['foo']"</span><span style="color: #007700">;<br /><br /></span><span style="color: #FF8000">//&nbsp;Еще&nbsp;одна&nbsp;возможность&nbsp;-&nbsp;конкатенация<br /></span><span style="color: #007700">print&nbsp;</span><span style="color: #DD0000">"Hello&nbsp;"&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #0000BB">$arr</span><span style="color: #007700">[</span><span style="color: #DD0000">'fruit'</span><span style="color: #007700">];&nbsp;</span><span style="color: #FF8000">//&nbsp;Hello&nbsp;apple<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+       </div>
+
+      </div>
+     </p>
+     <p class="para">
+      Когда вы переведете <a href="function.error-reporting.html" class="function">error_reporting()</a>
+      в режим отображения ошибок уровня
+      <b><tt>E_NOTICE</tt></b> (такой как
+      <b><tt>E_ALL</tt></b>), вы увидите эти ошибки. По
+      умолчанию <a href="errorfunc.configuration.html#ini.error-reporting" class="link">
+      error_reporting</a> установлена их не отображать.
+     </p>
+     <p class="para">
+      Как указано в разделе <a href="language.types.array.html#language.types.array.syntax" class="link">синтаксис</a>, внутри квадратных скобок (&#039;<i>[</i>&#039;
+      и &#039;<i>]</i>&#039;) должно быть выражение. Это означает, что вы
+      можете писать подобно этому:
+      <div class="informalexample">
+       <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">$arr</span><span style="color: #007700">[</span><span style="color: #0000BB">somefunc</span><span style="color: #007700">(</span><span style="color: #0000BB">$bar</span><span style="color: #007700">)];<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+       </div>
+
+      </div>
+      Это пример использования возвращаемого функцией значения
+      в качестве индекса массива. PHP известны также и константы,
+      как вы, возможно, видели упоминание <i>E_*</i> раньше.
+
+      <div class="informalexample">
+       <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$error_descriptions</span><span style="color: #007700">[</span><span style="color: #0000BB">E_ERROR</span><span style="color: #007700">]&nbsp;&nbsp;&nbsp;=&nbsp;</span><span style="color: #DD0000">"Произошла&nbsp;фатальная&nbsp;ошибка"</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$error_descriptions</span><span style="color: #007700">[</span><span style="color: #0000BB">E_WARNING</span><span style="color: #007700">]&nbsp;=&nbsp;</span><span style="color: #DD0000">"PHP&nbsp;сообщает&nbsp;предупреждение"</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$error_descriptions</span><span style="color: #007700">[</span><span style="color: #0000BB">E_NOTICE</span><span style="color: #007700">]&nbsp;&nbsp;=&nbsp;</span><span style="color: #DD0000">"Это&nbsp;лишь&nbsp;неофициальное&nbsp;замечание"</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+       </div>
+
+      </div>
+      Обратите внимание, что <i>E_ERROR</i> - это такой же
+      верный идентификатор, как и <i>bar</i> в первом примере.
+      Но последний пример по сути эквивалентен такой записи:
+      <div class="informalexample">
+       <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$error_descriptions</span><span style="color: #007700">[</span><span style="color: #0000BB">1</span><span style="color: #007700">]&nbsp;=&nbsp;</span><span style="color: #DD0000">"Произошла&nbsp;фатальная&nbsp;ошибка"</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$error_descriptions</span><span style="color: #007700">[</span><span style="color: #0000BB">2</span><span style="color: #007700">]&nbsp;=&nbsp;</span><span style="color: #DD0000">"PHP&nbsp;сообщает&nbsp;предупреждение"</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$error_descriptions</span><span style="color: #007700">[</span><span style="color: #0000BB">8</span><span style="color: #007700">]&nbsp;=&nbsp;</span><span style="color: #DD0000">"Это&nbsp;лишь&nbsp;неофициальное&nbsp;замечание"</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+       </div>
+
+      </div>
+      поскольку <i>E_ERROR</i> соответствует
+      <i>1</i> и т. д.
+     </p>
+     <p class="para">
+      Как мы уже объяснили в вышеприведенных примерах,
+      <i>$foo[bar]</i> по-прежнему работает, но это неверно.
+      Это работает, поскольку в соответствии со своим синтаксисом
+      <i>bar</i> ожидается как константа. Однако, в данном
+      случае константы с именем <i>bar</i> не существует.
+      В таком случае PHP предполагает, что, написав
+      <i>bar</i>, вы имели ввиду строку
+      <i>&quot;bar&quot;</i>, но забыли указать кавычки.
+     </p>
+     <div class="sect4">
+      <h5 class="title">Так что же в этом плохого?</h5>
+      <p class="para">
+       Когда-нибудь в будущем команда разработчиков PHP возможно пожелает
+       добавить еще одну константу или ключевое слово, либо вы можете
+       ввести в ваше приложение еще одну константу и тогда у вас могут
+       возникнуть проблемы. Например, вы уже не можете использовать таким
+       образом слова <i>empty</i> и
+       <i>default</i>, поскольку они являются
+       <a href="reserved.html" class="link">зарезервированными ключевыми словами</a>.
+      </p>
+      <blockquote><p><b class="note">Замечание</b>: 
+       <span class="simpara">
+        Повторим, внутри строки (<a href="language.types.string.html" class="type string">string</a>), заключенной
+        в двойные кавычки правильным является не окружать индексы
+        массива кавычками, поэтому <i>&quot;$foo[bar]&quot;</i>
+        является верным. Более подробно почему - смотрите
+        вышеприведенные примеры, а также раздел
+        <a href="language.types.string.html#language.types.string.parsing" class="link">обработка
+        переменных в строках</a>.
+       </span>
+      </p></blockquote>
+     </div>
+    </div>
+   </div>
+
+   <div id="language.types.array.casting" class="sect2">
+    <h3 class="title">Преобразование в массив</h3>
+    
+    <p class="para">
+     Для любого из типов: <a href="language.types.integer.html" class="type integer">integer</a>, <a href="language.types.float.html" class="type float">float</a>,
+     <a href="language.types.string.html" class="type string">string</a>, <a href="language.types.boolean.html" class="type boolean">boolean</a> и <a href="language.types.resource.html" class="type resource">resource</a>,
+     если вы преобразуете значение в массив, вы получите массив с
+     одним элементом (с индексом 0), являющимся скалярным значением, с
+     которого вы начали.
+    </p>
+    
+    <p class="para">
+     Если вы преобразуете в массив объект (<a href="language.types.object.html" class="type object">object</a>), вы
+     получите в качестве элементов массива свойства (переменные-члены)
+     этого объекта. Ключами будут имена переменных-членов.
+    </p>
+    
+    <p class="para">
+     Если вы преобразуете в массив значение <b><tt>NULL</tt></b>, вы получите
+     пустой массив.
+    </p>
+   </div>
+
+   <div id="language.types.array.comparing" class="sect2">
+    <h3 class="title">Сравнение</h3>
+    <p class="para">
+     Массивы можно сравнивать при помощи функции
+     <a href="function.array-diff.html" class="function">array_diff()</a> и
+     <a href="language.operators.array.html" class="link">Операторов массивов</a>.
+    </p>
+   </div>
+
+   <div id="language.types.array.examples" class="sect2">
+    <h3 class="title">Примеры</h3>
+    <p class="para">
+     Тип массив в PHP является очень гибким, поэтому мы приведем
+     здесь несколько примеров, чтобы продемонстрировать вам все
+     возможности массивов.
+    </p>
+    <p class="para">
+      <div class="informalexample">
+       <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">//&nbsp;это<br /></span><span style="color: #0000BB">$a&nbsp;</span><span style="color: #007700">=&nbsp;array(&nbsp;</span><span style="color: #DD0000">'color'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'red'</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'taste'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'sweet'</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'shape'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'round'</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'name'&nbsp;&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'apple'</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">4&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;ключом&nbsp;будет&nbsp;0<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">//&nbsp;полностью&nbsp;соответствует<br /></span><span style="color: #0000BB">$a</span><span style="color: #007700">[</span><span style="color: #DD0000">'color'</span><span style="color: #007700">]&nbsp;=&nbsp;</span><span style="color: #DD0000">'red'</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$a</span><span style="color: #007700">[</span><span style="color: #DD0000">'taste'</span><span style="color: #007700">]&nbsp;=&nbsp;</span><span style="color: #DD0000">'sweet'</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$a</span><span style="color: #007700">[</span><span style="color: #DD0000">'shape'</span><span style="color: #007700">]&nbsp;=&nbsp;</span><span style="color: #DD0000">'round'</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$a</span><span style="color: #007700">[</span><span style="color: #DD0000">'name'</span><span style="color: #007700">]&nbsp;&nbsp;=&nbsp;</span><span style="color: #DD0000">'apple'</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$a</span><span style="color: #007700">[]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;</span><span style="color: #0000BB">4</span><span style="color: #007700">;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;ключом&nbsp;будет&nbsp;0<br /><br /></span><span style="color: #0000BB">$b</span><span style="color: #007700">[]&nbsp;=&nbsp;</span><span style="color: #DD0000">'a'</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$b</span><span style="color: #007700">[]&nbsp;=&nbsp;</span><span style="color: #DD0000">'b'</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$b</span><span style="color: #007700">[]&nbsp;=&nbsp;</span><span style="color: #DD0000">'c'</span><span style="color: #007700">;<br /></span><span style="color: #FF8000">//&nbsp;создаст&nbsp;массив&nbsp;array(0&nbsp;=&gt;&nbsp;'a'&nbsp;,&nbsp;1&nbsp;=&gt;&nbsp;'b'&nbsp;,&nbsp;2&nbsp;=&gt;&nbsp;'c'),<br />//&nbsp;или&nbsp;просто&nbsp;array('a',&nbsp;'b',&nbsp;'c')<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+       </div>
+
+      </div>
+     </p>
+    
+    <div class="example">
+     <p><b>Пример #1 Использование array()</b></p>
+     <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">//&nbsp;Массив&nbsp;как&nbsp;карта&nbsp;(свойств)<br /></span><span style="color: #0000BB">$map&nbsp;</span><span style="color: #007700">=&nbsp;array(&nbsp;</span><span style="color: #DD0000">'version'&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">4</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'OS'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'Linux'</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'lang'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'english'</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'short_tags'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">true<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br /></span><span style="color: #FF8000">//&nbsp;исключительно&nbsp;числовые&nbsp;ключи<br /></span><span style="color: #0000BB">$array&nbsp;</span><span style="color: #007700">=&nbsp;array(&nbsp;</span><span style="color: #0000BB">7</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">8</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">0</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">156</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-</span><span style="color: #0000BB">10<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">);<br /></span><span style="color: #FF8000">//&nbsp;это&nbsp;то&nbsp;же&nbsp;самое,&nbsp;что&nbsp;и&nbsp;array(0&nbsp;=&gt;&nbsp;7,&nbsp;1&nbsp;=&gt;&nbsp;8,&nbsp;...)<br /><br /></span><span style="color: #0000BB">$switching&nbsp;</span><span style="color: #007700">=&nbsp;array(&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">10</span><span style="color: #007700">,&nbsp;</span><span style="color: #FF8000">//&nbsp;ключ&nbsp;=&nbsp;0<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">5&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">=&gt;&nbsp;&nbsp;</span><span style="color: #0000BB">6</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">3&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">=&gt;&nbsp;&nbsp;</span><span style="color: #0000BB">7</span><span style="color: #007700">,&nbsp;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'a'&nbsp;&nbsp;</span><span style="color: #007700">=&gt;&nbsp;&nbsp;</span><span style="color: #0000BB">4</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">11</span><span style="color: #007700">,&nbsp;</span><span style="color: #FF8000">//&nbsp;ключ&nbsp;=&nbsp;6&nbsp;(максимальным&nbsp;числовым&nbsp;индексом&nbsp;был&nbsp;5)<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'8'&nbsp;&nbsp;</span><span style="color: #007700">=&gt;&nbsp;&nbsp;</span><span style="color: #0000BB">2</span><span style="color: #007700">,&nbsp;</span><span style="color: #FF8000">//&nbsp;ключ&nbsp;=&nbsp;8&nbsp;(число!)<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'02'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">77</span><span style="color: #007700">,&nbsp;</span><span style="color: #FF8000">//&nbsp;ключ&nbsp;=&nbsp;'02'<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">0&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">12&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;значение&nbsp;10&nbsp;будет&nbsp;перезаписано&nbsp;на&nbsp;12<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br /></span><span style="color: #FF8000">//&nbsp;пустой&nbsp;массив<br /></span><span style="color: #0000BB">$empty&nbsp;</span><span style="color: #007700">=&nbsp;array();<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+
+     </div>
+
+    </div>
+
+    <div class="example" id="language.types.array.examples.loop" name="language.types.array.examples.loop">
+     <p><b>Пример #2 Коллекция</b></p>
+     <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$colors&nbsp;</span><span style="color: #007700">=&nbsp;array(</span><span style="color: #DD0000">'красный'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'синий'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'зеленый'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'желтый'</span><span style="color: #007700">);<br /><br />foreach&nbsp;(</span><span style="color: #0000BB">$colors&nbsp;</span><span style="color: #007700">as&nbsp;</span><span style="color: #0000BB">$color</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"Вам&nbsp;нравится&nbsp;$color?\n"</span><span style="color: #007700">;<br />}<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>  
+       </div>
+  
+  <div class="example-contents"><p>  
+        Результат работы приведенного скрипта будет следующий:  
+       </p></div>  
+       <div class="example-contents"><pre>  
+  <div class="cdata"><pre>  
+Вам нравится красный?
+Вам нравится синий?
+Вам нравится зеленый?
+Вам нравится желтый?
+</pre></div>
+		</pre></div> 
+    </div>
+    
+    <p class="para">
+     Обратите внимание, что в настоящее время невозможно изменять
+     значения массива в таком цикле напрямую.
+      
+     Однако можно сделать так:
+     <div class="example" id="language.types.array.examples.changeloop" name="language.types.array.examples.changeloop">
+      <p><b>Пример #3 Коллекция</b></p>
+      <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">foreach&nbsp;(</span><span style="color: #0000BB">$colors&nbsp;</span><span style="color: #007700">as&nbsp;</span><span style="color: #0000BB">$key&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">$color</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;не&nbsp;будет&nbsp;работать:<br />&nbsp;&nbsp;&nbsp;&nbsp;//$color&nbsp;=&nbsp;strtoupper($color);<br />&nbsp;&nbsp;&nbsp;&nbsp;<br />&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;работает:<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$colors</span><span style="color: #007700">[</span><span style="color: #0000BB">$key</span><span style="color: #007700">]&nbsp;=&nbsp;</span><span style="color: #0000BB">strtoupper</span><span style="color: #007700">(</span><span style="color: #0000BB">$color</span><span style="color: #007700">);<br />}<br /></span><span style="color: #0000BB">print_r</span><span style="color: #007700">(</span><span style="color: #0000BB">$colors</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>  
+        </div>
+  
+        <div class="example-contents"><p>  
+        Результат работы приведенного скрипта будет следующий:  
+        </p></div>  
+        <div class="example-contents"><pre>  
+  <div class="cdata"><pre>  
+Array
+(
+    [0] =&gt; КРАСНЫЙ
+    [1] =&gt; СИНИЙ
+    [2] =&gt; ЗЕЛЕНЫЙ
+    [3] =&gt; ЖЕЛТЫЙ
+)
+</pre></div>
+      </pre></div>
+     </div>
+    </p>
+    <p class="para">
+     Следующий пример создает начинающийся с единицы массив.
+     <div class="example">
+      <p><b>Пример #4 Индекс, начинающийся с единицы</b></p>
+      <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$firstquarter&nbsp;&nbsp;</span><span style="color: #007700">=&nbsp;array(</span><span style="color: #0000BB">1&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'Январь'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'Февраль'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'Март'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">print_r</span><span style="color: #007700">(</span><span style="color: #0000BB">$firstquarter</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>  
+        </div>
+  
+        <div class="example-contents"><p>  
+        Результат работы приведенного скрипта будет следующий:  
+        </p></div>  
+        <div class="example-contents"><pre>  
+  <div class="cdata"><pre>  
+Array 
+(
+    [1] =&gt; &#039;Январь&#039;
+    [2] =&gt; &#039;Февраль&#039;
+    [3] =&gt; &#039;Март&#039;
+)
+</pre></div>   
+      </pre></div>
+     </div>
+    </p>
+    <div class="example">
+     <p><b>Пример #5 Заполнение массива</b></p>
+     <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">//&nbsp;заполняет&nbsp;массив&nbsp;всеми&nbsp;элементами&nbsp;директории<br /></span><span style="color: #0000BB">$handle&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">opendir</span><span style="color: #007700">(</span><span style="color: #DD0000">'.'</span><span style="color: #007700">);<br />while&nbsp;(</span><span style="color: #0000BB">false&nbsp;</span><span style="color: #007700">!==&nbsp;(</span><span style="color: #0000BB">$file&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">readdir</span><span style="color: #007700">(</span><span style="color: #0000BB">$handle</span><span style="color: #007700">)))&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$files</span><span style="color: #007700">[]&nbsp;=&nbsp;</span><span style="color: #0000BB">$file</span><span style="color: #007700">;<br />}<br /></span><span style="color: #0000BB">closedir</span><span style="color: #007700">(</span><span style="color: #0000BB">$handle</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+     </div>
+
+    </div>
+    <p class="para">
+     Массивы упорядочены. Вы можете изменять порядок элементов,
+     используя различные функции сортировки. Для дополнительной
+     информации смотрите раздел <a href="ref.array.html" class="link">функции
+     для работы с массивами</a>. Вы можете подсчитать количество
+     элементов в массиве, используя функцию
+     <a href="function.count.html" class="function">count()</a>.
+    </p>
+    <div class="example">
+     <p><b>Пример #6 Сортировка массива</b></p>
+     <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />sort</span><span style="color: #007700">(</span><span style="color: #0000BB">$files</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">print_r</span><span style="color: #007700">(</span><span style="color: #0000BB">$files</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+     </div>
+
+    </div>
+    <p class="para">
+     Поскольку значение массива может быть чем угодно, им также
+     может быть другой массив. Таким образом вы можете создавать
+     рекурсивные и многомерные массивы.
+    </p>
+    <div class="example">
+     <p><b>Пример #7 Рекурсивные и многомерные массивы</b></p>
+     <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$fruits&nbsp;</span><span style="color: #007700">=&nbsp;array&nbsp;(&nbsp;</span><span style="color: #DD0000">"фрукты"&nbsp;</span><span style="color: #007700">=&gt;&nbsp;array&nbsp;(&nbsp;</span><span style="color: #DD0000">"a"&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">"апельсин"</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">"b"&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">"банан"</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">"c"&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">"яблоко"<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">),<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">"числа"&nbsp;&nbsp;</span><span style="color: #007700">=&gt;&nbsp;array&nbsp;(&nbsp;</span><span style="color: #0000BB">1</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">2</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">3</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">4</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">5</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">6<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">),<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">"дырки"&nbsp;&nbsp;</span><span style="color: #007700">=&gt;&nbsp;array&nbsp;(&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">"первая"</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">5&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">"вторая"</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">"третья"<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">)<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;);<br /><br /></span><span style="color: #FF8000">//&nbsp;Несколько&nbsp;примеров&nbsp;доступа&nbsp;к&nbsp;значениям&nbsp;предыдущего&nbsp;массива<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">$fruits</span><span style="color: #007700">[</span><span style="color: #DD0000">"дырки"</span><span style="color: #007700">][</span><span style="color: #0000BB">5</span><span style="color: #007700">];&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;напечатает&nbsp;"вторая"<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">$fruits</span><span style="color: #007700">[</span><span style="color: #DD0000">"фрукты"</span><span style="color: #007700">][</span><span style="color: #DD0000">"a"</span><span style="color: #007700">];&nbsp;</span><span style="color: #FF8000">//&nbsp;напечатает&nbsp;"апельсин"<br /></span><span style="color: #007700">unset(</span><span style="color: #0000BB">$fruits</span><span style="color: #007700">[</span><span style="color: #DD0000">"дырки"</span><span style="color: #007700">][</span><span style="color: #0000BB">0</span><span style="color: #007700">]);&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;удалит&nbsp;"первая"<br /><br />//&nbsp;Создаст&nbsp;новый&nbsp;многомерный&nbsp;массив<br /></span><span style="color: #0000BB">$juices</span><span style="color: #007700">[</span><span style="color: #DD0000">"яблоко"</span><span style="color: #007700">][</span><span style="color: #DD0000">"зеленое"</span><span style="color: #007700">]&nbsp;=&nbsp;</span><span style="color: #DD0000">"хорошее"</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+     </div>
+
+    </div>
+    <p class="para">
+     Обратите внимание, что при присваивании массива всегда
+     происходит копирование значения. Чтобы копировать массив по
+     ссылке, вам нужно использовать оператор ссылки.
+     <div class="informalexample">
+      <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$arr1&nbsp;</span><span style="color: #007700">=&nbsp;array(</span><span style="color: #0000BB">2</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">3</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$arr2&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$arr1</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$arr2</span><span style="color: #007700">[]&nbsp;=&nbsp;</span><span style="color: #0000BB">4</span><span style="color: #007700">;&nbsp;</span><span style="color: #FF8000">//&nbsp;$arr2&nbsp;изменился,<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;$arr1&nbsp;по&nbsp;прежнему&nbsp;array(2,3)<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br /></span><span style="color: #0000BB">$arr3&nbsp;</span><span style="color: #007700">=&nbsp;&amp;</span><span style="color: #0000BB">$arr1</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$arr3</span><span style="color: #007700">[]&nbsp;=&nbsp;</span><span style="color: #0000BB">4</span><span style="color: #007700">;&nbsp;</span><span style="color: #FF8000">//&nbsp;теперь&nbsp;$arr1&nbsp;и&nbsp;$arr3&nbsp;эквивалентны<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+      </div>
+
+     </div>
+    </p>
+   </div>
+  </div><hr /><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="language.types.string.html">Строки</a></div>
+ <div class="next" style="float: right;"><a href="language.types.object.html">Объекты</a></div>
+ <div class="up"><a href="language.types.html">Типы</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

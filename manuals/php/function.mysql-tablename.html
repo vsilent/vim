@@ -1,0 +1,56 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <title>Возвращает имя таблицы, содержащей указанное поле</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+ </head>
+ <body><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="function.mysql-stat.html">mysql_stat</a></div>
+ <div class="next" style="float: right;"><a href="function.mysql-thread-id.html">mysql_thread_id</a></div>
+ <div class="up"><a href="ref.mysql.html">MySQL</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="function.mysql-tablename" class="refentry">
+   <div class="refnamediv">
+    <h1 class="refname">mysql_tablename</h1>
+    <p class="verinfo">(PHP 4, PHP 5, PECL mysql:1.0)</p><p class="refpurpose dc-title">mysql_tablename — Возвращает имя таблицы, содержащей указанное поле</p>
+
+   </div>
+   <div class="refsect1 unknown">
+    <h3 class="title">Описание</h3>
+     <div class="methodsynopsis dc-description">
+      <span class="type">string</span> <span class="methodname"><b><b>mysql_tablename</b></b></span>
+       ( <span class="methodparam"><span class="type">string</span> <tt class="parameter">$result</tt></span>
+      , <span class="methodparam"><span class="type">int</span> <tt class="parameter">$i</tt></span>
+      )</div>
+
+    <p class="para rdfs-comment">
+     <b>mysql_tablename()</b> принимает указатель на результат
+     функции <a href="function.mysql-list-tables.html" class="function">mysql_list_tables()</a> и индекс, возвращая имя
+     таблицы. Функцию <a href="function.mysql-num-rows.html" class="function">mysql_num_rows()</a> можно использовать
+     для определения количества таблиц результата запроса. Используйте функцию
+     <b>mysql_tablename()</b> для работы с результатом запроса,
+     либо любую другую функцию, способную это делать. Например, 
+     <a href="function.mysql-fetch-array.html" class="function">mysql_fetch_array()</a>.
+     <div class="example">
+      <p><b>Пример #1 Пример использования <b>mysql_tablename()</b></b></p>
+      <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />&nbsp;&nbsp;&nbsp;&nbsp;mysql_connect</span><span style="color: #007700">(</span><span style="color: #DD0000">"localhost"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"mysql_user"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"mysql_password"</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$result&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">mysql_list_tables</span><span style="color: #007700">(</span><span style="color: #DD0000">"mydb"</span><span style="color: #007700">);<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;for&nbsp;(</span><span style="color: #0000BB">$i&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">0</span><span style="color: #007700">;&nbsp;</span><span style="color: #0000BB">$i&nbsp;</span><span style="color: #007700">&lt;&nbsp;</span><span style="color: #0000BB">mysql_num_rows</span><span style="color: #007700">(</span><span style="color: #0000BB">$result</span><span style="color: #007700">);&nbsp;</span><span style="color: #0000BB">$i</span><span style="color: #007700">++)<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">printf&nbsp;</span><span style="color: #007700">(</span><span style="color: #DD0000">"Table:&nbsp;%s\n"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">mysql_tablename</span><span style="color: #007700">(</span><span style="color: #0000BB">$result</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$i</span><span style="color: #007700">));<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">mysql_free_result</span><span style="color: #007700">(</span><span style="color: #0000BB">$result</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+      </div>
+
+     </div>
+    </p>
+    <p class="para">
+     См. также 
+     <a href="function.mysql-list-tables.html" class="function">mysql_list_tables()</a>.
+    </p>
+   </div>
+
+  </div><hr /><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="function.mysql-stat.html">mysql_stat</a></div>
+ <div class="next" style="float: right;"><a href="function.mysql-thread-id.html">mysql_thread_id</a></div>
+ <div class="up"><a href="ref.mysql.html">MySQL</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

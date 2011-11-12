@@ -1,0 +1,275 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <title>Write text to the image using fonts using FreeType 2</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+ </head>
+ <body><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="function.imageftbbox.html">imageftbbox</a></div>
+ <div class="next" style="float: right;"><a href="function.imagegammacorrect.html">imagegammacorrect</a></div>
+ <div class="up"><a href="ref.image.html">Image Функции</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="function.imagefttext" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">imagefttext</h1>
+  <p class="verinfo">(PHP 4 &gt;= 4.0.7, PHP 5)</p><p class="refpurpose dc-title">imagefttext — Write text to the image using fonts using FreeType 2</p>
+
+ </div>
+ <div class="refsect1 description">
+  <h3 class="title">Описание</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type">array</span> <span class="methodname"><b><b>imagefttext</b></b></span>
+    ( <span class="methodparam"><span class="type">resource</span> <tt class="parameter">$image</tt></span>
+   , <span class="methodparam"><span class="type">float</span> <tt class="parameter">$size</tt></span>
+   , <span class="methodparam"><span class="type">float</span> <tt class="parameter">$angle</tt></span>
+   , <span class="methodparam"><span class="type">int</span> <tt class="parameter">$x</tt></span>
+   , <span class="methodparam"><span class="type">int</span> <tt class="parameter">$y</tt></span>
+   , <span class="methodparam"><span class="type">int</span> <tt class="parameter">$color</tt></span>
+   , <span class="methodparam"><span class="type">string</span> <tt class="parameter">$font_file</tt></span>
+   , <span class="methodparam"><span class="type">string</span> <tt class="parameter">$text</tt></span>
+   [, <span class="methodparam"><span class="type">array</span> <tt class="parameter">$extrainfo</tt></span>
+  ] )</div>
+
+ </div>
+
+ <div class="refsect1 parameters">
+  <h3 class="title">Список параметров</h3>
+  <p class="para">
+   <dl>
+
+    <dt>
+<span class="term"><i><tt class="parameter">
+image</tt></i>
+</span>
+<dd>
+<p class="para">An image resource, returned by one of the image creation functions, 
+such as <a href="function.imagecreatetruecolor.html" class="function">imagecreatetruecolor()</a>.</p></dd>
+</dt>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">size</tt></i>
+</span>
+
+     <dd>
+
+      <p class="para">The font size to use in points
+      </p>
+     </dd>
+
+    </dt>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">angle</tt></i>
+</span>
+
+     <dd>
+
+      <p class="para"> 
+       The angle in degrees, with 0 degrees being left-to-right reading text.
+       Higher values represent a counter-clockwise rotation. For example, a 
+       value of 90 would result in bottom-to-top reading text.
+      </p>
+     </dd>
+
+    </dt>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">x</tt></i>
+</span>
+
+     <dd>
+
+      <p class="para">
+       The coordinates given by <i><tt class="parameter">x</tt></i>
+ and
+       <i><tt class="parameter">y</tt></i>
+ will define the basepoint of the first
+       character (roughly the lower-left corner of the character). This
+       is different from the <a href="function.imagestring.html" class="function">imagestring()</a>, where
+       <i><tt class="parameter">x</tt></i>
+ and <i><tt class="parameter">y</tt></i>
+ define the
+       upper-left corner of the first character. For example, &quot;top left&quot;
+       is 0, 0.
+      </p>
+     </dd>
+
+    </dt>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">y</tt></i>
+</span>
+
+     <dd>
+
+      <p class="para">
+       The y-ordinate. This sets the position of the fonts baseline, not the
+       very bottom of the character.
+      </p>
+     </dd>
+
+    </dt>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">color</tt></i>
+</span>
+
+     <dd>
+
+      <p class="para">
+       The index of the desired color for the text, see <a href="function.imagecolorexact.html" class="function">imagecolorexact()</a>
+      </p>
+     </dd>
+
+    </dt>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">font_file</tt></i>
+</span>
+
+     <dd>
+
+      <p class="para">
+       The full path to the font being used.
+      </p>
+     </dd>
+
+    </dt>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">text</tt></i>
+</span>
+
+     <dd>
+
+      <p class="para">
+       Text to be inserted into image. 
+      </p>
+     </dd>
+
+    </dt>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">extrainfo</tt></i>
+</span>
+
+     <dd>
+
+      <p class="para">
+      </p>
+     </dd>
+
+    </dt>
+
+   </dl>
+
+  </p>
+ </div>
+
+ <div class="refsect1 returnvalues">
+  <h3 class="title">Возвращаемые значения</h3>
+  <p class="para">
+   This function returns an array defining the four points of the box, starting in the lower left and moving counter-clockwise:
+   <table class="informaltable">
+    <colgroup>
+
+     <tbody valign="middle" class="tbody">
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left">0</td>
+       <td colspan="1" rowspan="1" align="left">lower left x-coordinate</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left">1</td>
+       <td colspan="1" rowspan="1" align="left">lower left y-coordinate</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left">2</td>
+       <td colspan="1" rowspan="1" align="left">lower right x-coordinate</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left">3</td>
+       <td colspan="1" rowspan="1" align="left">lower right y-coordinate</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left">4</td>
+       <td colspan="1" rowspan="1" align="left">upper right x-coordinate</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left">5</td>
+       <td colspan="1" rowspan="1" align="left">upper right y-coordinate</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left">6</td>
+       <td colspan="1" rowspan="1" align="left">upper left x-coordinate</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left">7</td>
+       <td colspan="1" rowspan="1" align="left">upper left y-coordinate</td>
+      </tr>
+
+     </tbody>
+    </colgroup>
+
+   </table>
+  </p>
+ </div>
+
+ <div class="refsect1 notes">
+  <h3 class="title">Примечания</h3>
+  <blockquote><p><b class="note">Замечание</b>: <span class="simpara">Эта функция нуждается в GD версии 2.0.1 или выше.</span></p></blockquote>
+  <blockquote><p><b class="note">Замечание</b>: <span class="simpara">This function is only available if
+PHP is compiled with freetype support (<span class="option">--with-freetype-dir=DIR</span>)
+</span></p></blockquote>
+ </div>
+
+ <div class="refsect1 changelog">
+  <h3 class="title">Список изменений</h3>
+  <p class="para">
+   <table class="informaltable">
+    <colgroup>
+
+     <thead valign="middle">
+      <tr valign="middle">
+       <th colspan="1">Версия</th>
+       <th colspan="1">Описание</th>
+      </tr>
+
+     </thead>
+
+     <tbody valign="middle" class="tbody">
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left">4.3.5</td>
+       <td colspan="1" rowspan="1" align="left">
+        <i><tt class="parameter">extrainfo</tt></i>
+ was made optional.
+       </td>
+      </tr>
+
+     </tbody>
+    </colgroup>
+
+   </table>
+  </p>
+ </div>
+
+</div><hr /><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="function.imageftbbox.html">imageftbbox</a></div>
+ <div class="next" style="float: right;"><a href="function.imagegammacorrect.html">imagegammacorrect</a></div>
+ <div class="up"><a href="ref.image.html">Image Функции</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

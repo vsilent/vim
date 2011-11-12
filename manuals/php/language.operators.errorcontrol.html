@@ -1,0 +1,76 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <title>Оператор управления ошибками</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+ </head>
+ <body><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="language.operators.comparison.html">Операторы сравнения</a></div>
+ <div class="next" style="float: right;"><a href="language.operators.execution.html">Операторы исполнения</a></div>
+ <div class="up"><a href="language.operators.html">Операторы</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="language.operators.errorcontrol" class="sect1">
+   <h2 class="title">Оператор управления ошибками</h2>
+   <p class="simpara">
+    PHP поддерживает один оператор управления ошибками: знак <i>@</i>. 
+	В случае, если он предшествует какому-либо выражению в PHP-коде, любые
+	сообщения об ошибках, генерируемые этим выражением, будут проигнорированы.
+   </p>
+   <p class="simpara">
+    В случае, если установлена опция <a href="errorfunc.configuration.html#ini.track-errors" class="link"><span class="option">track_errors</span></a>,
+	все генерируемые сообщения об ошибках будут сохраняться в переменной
+    <a href="reserved.variables.phperrormsg.html" class="link">$php_errormsg</a>.
+    Эта переменная будет перезаписываться при возникновении каждой новой ошибки,
+	поэтому в случае необходимости проверяйте ее сразу же.
+   </p>
+   <p class="para">
+    <div class="informalexample">
+     <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">//&nbsp;Преднамеренная&nbsp;ошибка&nbsp;при&nbsp;работе&nbsp;с&nbsp;файлами<br /></span><span style="color: #0000BB">$my_file&nbsp;</span><span style="color: #007700">=&nbsp;@</span><span style="color: #0000BB">file&nbsp;</span><span style="color: #007700">(</span><span style="color: #DD0000">'non_existent_file'</span><span style="color: #007700">)&nbsp;or<br />&nbsp;&nbsp;&nbsp;&nbsp;die&nbsp;(</span><span style="color: #DD0000">"Failed&nbsp;opening&nbsp;file:&nbsp;error&nbsp;was&nbsp;'$php_errormsg'"</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">//&nbsp;работает&nbsp;для&nbsp;любых&nbsp;выражений,&nbsp;а&nbsp;не&nbsp;только&nbsp;для&nbsp;функций<br /></span><span style="color: #0000BB">$value&nbsp;</span><span style="color: #007700">=&nbsp;@</span><span style="color: #0000BB">$cache</span><span style="color: #007700">[</span><span style="color: #0000BB">$key</span><span style="color: #007700">];&nbsp;<br /></span><span style="color: #FF8000">//&nbsp;В&nbsp;случае&nbsp;если&nbsp;ключа&nbsp;$key&nbsp;нет,&nbsp;сообщение&nbsp;об&nbsp;ошибке&nbsp;не&nbsp;будет&nbsp;отображено<br /><br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+     </div>
+
+    </div>
+   </p>
+   <blockquote><p><b class="note">Замечание</b>: 
+    <span class="simpara">
+     Оператор <i>@</i> работает только с 
+	 <a href="language.expressions.html" class="link">выражениями</a>. 
+	 Есть простое правило: если произвольная языковая конструкция возвращает
+	 значение, значит вы можете использовать предшествующий ей оператор
+	 <i>@</i>. Например, вы можете использовать <i>@</i> перед
+	 именем переменной, произвольной функцией или вызовом <b>include()</b>, 
+	 константой и так далее. В то же время вы не можете использовать этот оператор
+	 перед определением функции или класса, условными конструкциями, такими как  <i>if</i> или
+     <i>foreach</i>.
+    </span>
+   </p></blockquote>
+   <p class="simpara">
+    Также ознакомьтесь с описанием функции <a href="function.error-reporting.html" class="function">error_reporting()</a> 
+	и соответствующим разделом документации
+    <a href="ref.errorfunc.html" class="link">Обработка ошибок и функции логирования</a>.
+   </p>
+   <blockquote><p><b class="note">Замечание</b>: 
+    
+	 Оператор <i>@</i> не подавляет вывод ошибок, возникающих на
+	 стадии синтаксического разбора скрипта.
+    <br />
+   </p></blockquote>
+   <div class="warning"><b class="warning">Внимание</b>
+    <p class="para">
+	 На сегодняшний день оператор <i>@</i> подавляет
+	 вывод сообщений даже о критических ошибках прерывающих работу
+	 скрипта. Помимо всего прочего, это означает, что если вы использовали
+	 <i>@</i> для подавления ошибок, возникающих при работе какой-либо
+	 функции, в случае если она недоступна или написана неправильно, дальнейшая 
+	 работа скрипта будет остановлена без каких-либо уведомлений.
+    </p>
+   </div>
+  </div><hr /><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="language.operators.comparison.html">Операторы сравнения</a></div>
+ <div class="next" style="float: right;"><a href="language.operators.execution.html">Операторы исполнения</a></div>
+ <div class="up"><a href="language.operators.html">Операторы</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

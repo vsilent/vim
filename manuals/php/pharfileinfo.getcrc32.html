@@ -1,0 +1,81 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <title>Returns CRC32 code or throws an exception if CRC has not been verified</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+ </head>
+ <body><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="phargileinfo.delmetadata.html">PharFileInfo::delMetadata</a></div>
+ <div class="next" style="float: right;"><a href="pharfileinfo.getcompressedsize.html">PharFileInfo::getCompressedSize</a></div>
+ <div class="up"><a href="class.PharFileInfo.html">PharFileInfo</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="pharfileinfo.getcrc32" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">PharFileInfo::getCRC32</h1>
+  <p class="verinfo">(PECL phar:1.0.0-1.2.1)</p><p class="refpurpose dc-title">PharFileInfo::getCRC32 — Returns CRC32 code or throws an exception if CRC has not been verified</p>
+
+ </div>
+ <div class="refsect1 description">
+  <h3 class="title">Описание</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type">int</span> <span class="methodname"><b><b>PharFileInfo::getCRC32</b></b></span>
+    ( <span class="methodparam">void</span>
+   )</div>
+
+
+  <p class="para rdfs-comment">
+   This returns the <a href="function.crc32.html" class="function">crc32()</a> checksum of the file
+   within the Phar archive.
+  </p>
+ </div>
+
+
+ <div class="refsect1 returnvalues">
+  <h3 class="title">Возвращаемые значения</h3>
+  <p class="para">
+   The <a href="function.crc32.html" class="function">crc32()</a> checksum of the file within the Phar archive.
+  </p>
+ </div>
+
+
+ <div class="refsect1 errors">
+  <h3 class="title">Errors/Exceptions</h3>
+  <p class="para">
+   Throws <span class="classname">BadMethodCallException</span> if the file has not
+   yet had its CRC32 verified.  This should be impossible with normal use, as
+   the CRC is verified upon opening the file for reading or writing.
+  </p>
+ </div>
+
+
+ <div class="refsect1 examples">
+  <h3 class="title">Примеры</h3>
+  <p class="para">
+   <div class="example">
+    <p><b>Пример #1 A <b>PharFileInfo::getCRC32()</b> example</b></p>
+    <div class="example-contents"><p>
+    </p></div>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">try&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$p&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">Phar</span><span style="color: #007700">(</span><span style="color: #DD0000">'/path/to/my.phar'</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">0</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'my.phar'</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$p</span><span style="color: #007700">[</span><span style="color: #DD0000">'myfile.txt'</span><span style="color: #007700">]&nbsp;=&nbsp;</span><span style="color: #DD0000">'hi'</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$file&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$p</span><span style="color: #007700">[</span><span style="color: #DD0000">'myfile.txt'</span><span style="color: #007700">];<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #0000BB">$file</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getCRC32</span><span style="color: #007700">();<br />}&nbsp;catch&nbsp;(</span><span style="color: #0000BB">Exception&nbsp;$e</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">'Write&nbsp;operations&nbsp;on&nbsp;my.phar.phar&nbsp;failed:&nbsp;'</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$e</span><span style="color: #007700">;<br />}<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+    <div class="example-contents"><p>Результат выполнения данного примера:</p></div>
+    <div class="example-contents"><pre>
+<div class="cdata"><pre>
+3633523372
+</pre></div>
+    </pre></div>
+   </div>
+  </p>
+ </div>
+
+
+</div><hr /><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="phargileinfo.delmetadata.html">PharFileInfo::delMetadata</a></div>
+ <div class="next" style="float: right;"><a href="pharfileinfo.getcompressedsize.html">PharFileInfo::getCompressedSize</a></div>
+ <div class="up"><a href="class.PharFileInfo.html">PharFileInfo</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

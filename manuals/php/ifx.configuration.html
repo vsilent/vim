@@ -1,0 +1,465 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <title>Настройка во время выполнения</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+ </head>
+ <body><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="ifx.installation.html">Установка</a></div>
+ <div class="next" style="float: right;"><a href="ifx.resources.html">Типы ресурсов</a></div>
+ <div class="up"><a href="ifx.setup.html">Установка и настройка</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="ifx.configuration" class="section">
+ <h2 class="title">Настройка во время выполнения</h2>
+ <p class="simpara">
+Поведение этих функций зависит от установок в <var class="filename">php.ini</var>.
+</p>
+ <blockquote><p><b class="note">Замечание</b>: 
+  
+   Make sure that the Informix environment variables INFORMIXDIR and
+   INFORMIXSERVER are available to the PHP ifx driver, and that the
+   INFORMIX bin directory is in the PATH. Check this by running a
+   script that contains a call to <a href="function.phpinfo.html" class="function">phpinfo()</a>
+   before you start testing. The <a href="function.phpinfo.html" class="function">phpinfo()</a>
+   output should list these environment variables. This is true for
+   both CGI php and Apache mod_php. You may have to set these
+   environment variables in your Apache startup script.
+  <br />
+  
+   The Informix shared libraries should also be available to the
+   loader (check LD_LIBRARY_PATH or ld.so.conf/ldconfig).
+  <br />
+ </p></blockquote>
+ <blockquote><p><b class="note">Замечание</b>: 
+  <b>
+   Some notes on the use of BLOBs (TEXT and BYTE columns)
+  </b>
+  
+   BLOBs are normally addressed by BLOB identifiers.  Select queries
+   return a &quot;blob id&quot; for every BYTE and TEXT column.  You can get
+   at the contents with &quot;string_var = ifx_get_blob($blob_id);&quot; if
+   you choose to get the BLOBs in memory (with:
+   &quot;ifx_blobinfile(0);&quot;).  If you prefer to receive the content of
+   BLOB columns in a file, use &quot;ifx_blobinfile(1);&quot;, and
+   &quot;ifx_get_blob($blob_id);&quot; will get you the filename.  Use normal
+   file I/O to get at the blob contents.
+  <br />
+  
+   For insert/update queries you must create these &quot;blob id&#039;s&quot;
+   yourself with &quot;<a href="function.ifx-create-blob.html" class="function">ifx_create_blob()</a>;&quot;. You then
+   plug the blob id&#039;s into an array, and replace the blob columns
+   with a question mark (?) in the query string.  For
+   updates/inserts, you are responsible for setting the blob
+   contents with <a href="function.ifx-update-blob.html" class="function">ifx_update_blob()</a>.
+  <br />
+  
+   The behaviour of BLOB columns can be altered by configuration
+   variables that also can be set at runtime:
+  <br />
+  
+   configuration variable: ifx.textasvarchar
+  <br />
+  
+   configuration variable: ifx.byteasvarchar
+  <br />
+  
+   runtime functions:
+  <br />
+  
+   ifx_textasvarchar(0): use blob id&#039;s for select queries with TEXT
+   columns
+  <br />
+  
+   ifx_byteasvarchar(0): use blob id&#039;s for select queries with BYTE
+   columns
+  <br />
+  
+   ifx_textasvarchar(1): return TEXT columns as if they were
+   VARCHAR columns, so that you don&#039;t need to use blob id&#039;s for
+   select queries.
+  <br />
+  
+   ifx_byteasvarchar(1): return BYTE columns as if they were
+   VARCHAR columns, so that you don&#039;t need to use blob id&#039;s for
+   select queries.
+  <br />
+  
+   configuration variable: ifx.blobinfile
+  <br />
+  
+   runtime function:
+  <br />
+  
+   ifx_blobinfile_mode(0): return BYTE columns in memory, the blob
+   id lets you get at the contents.
+  <br />
+  
+   ifx_blobinfile_mode(1): return BYTE columns in a file, the blob
+   id lets you get at the file name.
+  <br />
+  
+   If you set ifx_text/byteasvarchar to 1, you can use TEXT and BYTE
+   columns in select queries just like normal (but rather long)
+   VARCHAR fields.  Since all strings are &quot;counted&quot; in PHP, this
+   remains &quot;binary safe&quot;.  It is up to you to handle this
+   correctly. The returned data can contain anything, you are
+   responsible for the contents.
+  <br />
+  
+   If you set ifx_blobinfile to 1, use the file name returned by
+   ifx_get_blob(..) to get at the blob contents.  Note that in this
+   case YOU ARE RESPONSIBLE FOR DELETING THE TEMPORARY FILES CREATED
+   BY INFORMIX when fetching the row.  Every new row fetched will
+   create new temporary files for every BYTE column.
+  <br />
+  
+   The location of the temporary files can be influenced by the
+   environment variable &quot;blobdir&quot;, default is &quot;.&quot; (the current
+   directory).  Something like: putenv(blobdir=tmpblob&quot;); will ease
+   the cleaning up of temp files accidentally left behind (their
+   names all start with &quot;blb&quot;).
+  <br />
+ </p></blockquote>
+ <blockquote><p><b class="note">Замечание</b>: 
+  <b>Automatically trimming &quot;char&quot; (SQLCHAR and SQLNCHAR) data</b>
+  
+   This can be set with the configuration variable
+  <br />
+  
+   ifx.charasvarchar: if set to 1 trailing spaces will be
+   automatically trimmed, to save you some &quot;chopping&quot;.
+  <br />
+ </p></blockquote>
+ <blockquote><p><b class="note">Замечание</b>: 
+  <b><b><tt>NULL</tt></b> values</b>
+  
+   The configuration variable ifx.nullformat (and the runtime
+   function <a href="function.ifx-nullformat.html" class="function">ifx_nullformat()</a>) when set to <b><tt>TRUE</tt></b>
+   will return <b><tt>NULL</tt></b> columns as the string &quot;<b><tt>NULL</tt></b>&quot;, when set to <b><tt>FALSE</tt></b>
+   they return the empty string. This allows you to discriminate
+   between <b><tt>NULL</tt></b> columns and empty columns.
+  <br />
+ </p></blockquote>
+
+ <p class="para">
+ <table border="5">
+  <caption><b>Informix configuration options</b></caption>
+  <colgroup>
+
+   <thead valign="middle">
+    <tr valign="middle">
+     <th colspan="1">Name</th>
+     <th colspan="1">Default</th>
+     <th colspan="1">Changeable</th>
+     <th colspan="1">Changelog</th>
+    </tr>
+
+   </thead>
+
+   <tbody valign="middle" class="tbody">
+    <tr valign="middle">
+     <td colspan="1" rowspan="1" align="left">ifx.allow_persistent</td>
+     <td colspan="1" rowspan="1" align="left">&quot;1&quot;</td>
+     <td colspan="1" rowspan="1" align="left">PHP_INI_SYSTEM</td>
+     <td colspan="1" rowspan="1" align="left">Removed in PHP 5.2.1.</td>
+    </tr>
+
+    <tr valign="middle">
+     <td colspan="1" rowspan="1" align="left">ifx.max_persistent</td>
+     <td colspan="1" rowspan="1" align="left">&quot;-1&quot;</td>
+     <td colspan="1" rowspan="1" align="left">PHP_INI_SYSTEM</td>
+     <td colspan="1" rowspan="1" align="left">Removed in PHP 5.2.1.</td>
+    </tr>
+
+    <tr valign="middle">
+     <td colspan="1" rowspan="1" align="left">ifx.max_links</td>
+     <td colspan="1" rowspan="1" align="left">&quot;-1&quot;</td>
+     <td colspan="1" rowspan="1" align="left">PHP_INI_SYSTEM</td>
+     <td colspan="1" rowspan="1" align="left">Removed in PHP 5.2.1.</td>
+    </tr>
+
+    <tr valign="middle">
+     <td colspan="1" rowspan="1" align="left">ifx.default_host</td>
+     <td colspan="1" rowspan="1" align="left">NULL</td>
+     <td colspan="1" rowspan="1" align="left">PHP_INI_SYSTEM</td>
+     <td colspan="1" rowspan="1" align="left">Removed in PHP 5.2.1.</td>
+    </tr>
+
+    <tr valign="middle">
+     <td colspan="1" rowspan="1" align="left">ifx.default_user</td>
+     <td colspan="1" rowspan="1" align="left">NULL</td>
+     <td colspan="1" rowspan="1" align="left">PHP_INI_SYSTEM</td>
+     <td colspan="1" rowspan="1" align="left">Removed in PHP 5.2.1.</td>
+    </tr>
+
+    <tr valign="middle">
+     <td colspan="1" rowspan="1" align="left">ifx.default_password</td>
+     <td colspan="1" rowspan="1" align="left">NULL</td>
+     <td colspan="1" rowspan="1" align="left">PHP_INI_SYSTEM</td>
+     <td colspan="1" rowspan="1" align="left">Removed in PHP 5.2.1.</td>
+    </tr>
+
+    <tr valign="middle">
+     <td colspan="1" rowspan="1" align="left">ifx.blobinfile</td>
+     <td colspan="1" rowspan="1" align="left">&quot;1&quot;</td>
+     <td colspan="1" rowspan="1" align="left">PHP_INI_ALL</td>
+     <td colspan="1" rowspan="1" align="left">Removed in PHP 5.2.1.</td>
+    </tr>
+
+    <tr valign="middle">
+     <td colspan="1" rowspan="1" align="left">ifx.textasvarchar</td>
+     <td colspan="1" rowspan="1" align="left">&quot;0&quot;</td>
+     <td colspan="1" rowspan="1" align="left">PHP_INI_ALL</td>
+     <td colspan="1" rowspan="1" align="left">Removed in PHP 5.2.1.</td>
+    </tr>
+
+    <tr valign="middle">
+     <td colspan="1" rowspan="1" align="left">ifx.byteasvarchar</td>
+     <td colspan="1" rowspan="1" align="left">&quot;0&quot;</td>
+     <td colspan="1" rowspan="1" align="left">PHP_INI_ALL</td>
+     <td colspan="1" rowspan="1" align="left">Removed in PHP 5.2.1.</td>
+    </tr>
+
+    <tr valign="middle">
+     <td colspan="1" rowspan="1" align="left">ifx.charasvarchar</td>
+     <td colspan="1" rowspan="1" align="left">&quot;0&quot;</td>
+     <td colspan="1" rowspan="1" align="left">PHP_INI_ALL</td>
+     <td colspan="1" rowspan="1" align="left">Removed in PHP 5.2.1.</td>
+    </tr>
+
+    <tr valign="middle">
+     <td colspan="1" rowspan="1" align="left">ifx.nullformat</td>
+     <td colspan="1" rowspan="1" align="left">&quot;0&quot;</td>
+     <td colspan="1" rowspan="1" align="left">PHP_INI_ALL</td>
+     <td colspan="1" rowspan="1" align="left">Removed in PHP 5.2.1.</td>
+    </tr>
+
+   </tbody>
+  </colgroup>
+
+ </table>
+
+ Для подробного описания констант
+PHP_INI_*, обратитесь к документации функции <a href="function.ini-set.html" class="function">ini_set()</a>.
+ </p>
+ 
+ <p class="para">Краткое разъяснение конфигурационных
+директив.</p>
+ 
+ <p class="para">
+ <dl>
+
+  <dt id="ini.ifx.allow-persistent">
+   <span class="term">
+    <i><tt class="parameter">ifx.allow_persistent</tt></i>
+
+    <a href="language.types.boolean.html" class="type boolean">boolean</a>
+   </span>
+
+   <dd>
+
+    <p class="para">
+     Whether to allow persistent Informix connections.
+    </p>
+   </dd>
+
+  </dt>
+
+  
+  <dt id="ini.ifx.max-persistent">
+   <span class="term">
+    <i><tt class="parameter">ifx.max_persistent</tt></i>
+
+    <a href="language.types.integer.html" class="type integer">integer</a>
+   </span>
+
+   <dd>
+
+    <p class="para">
+     The maximum number of persistent Informix connections per
+     process.
+    </p>
+   </dd>
+
+  </dt>
+
+  
+  <dt id="ini.ifx.max-links">
+   <span class="term">
+    <i><tt class="parameter">ifx.max_links</tt></i>
+
+    <a href="language.types.integer.html" class="type integer">integer</a>
+   </span>
+
+   <dd>
+
+    <p class="para">
+     The maximum number of Informix connections per process, including
+     persistent connections.
+    </p>
+   </dd>
+
+  </dt>
+
+   <dt id="ini.ifx.default-host">
+   <span class="term">
+    <i><tt class="parameter">ifx.default_host</tt></i>
+
+    <a href="language.types.string.html" class="type string">string</a>
+   </span>
+
+   <dd>
+
+    <p class="para">
+     The default host to connect to when no host is specified
+     in <a href="function.ifx-connect.html" class="function">ifx_connect()</a> or 
+     <a href="function.ifx-pconnect.html" class="function">ifx_pconnect()</a>. Doesn&#039;t apply in
+     <a href="features.safe-mode.html#ini.safe-mode" class="link">безопасный режим</a>.
+    </p>
+   </dd>
+
+  </dt>
+
+   <dt id="ini.ifx.default-user">
+   <span class="term">
+    <i><tt class="parameter">ifx.default_user</tt></i>
+
+    <a href="language.types.string.html" class="type string">string</a>
+   </span>
+
+   <dd>
+
+    <p class="para">
+     The default user id to use when none is specified 
+     in <a href="function.ifx-connect.html" class="function">ifx_connect()</a> or 
+     <a href="function.ifx-pconnect.html" class="function">ifx_pconnect()</a>. Doesn&#039;t apply in
+     <a href="features.safe-mode.html#ini.safe-mode" class="link">безопасный режим</a>.
+    </p>
+   </dd>
+
+  </dt>
+
+   <dt id="ini.ifx.default-password">
+   <span class="term">
+    <i><tt class="parameter">ifx.default_password</tt></i>
+
+    <a href="language.types.string.html" class="type string">string</a>
+   </span>
+
+   <dd>
+
+    <p class="para">
+     The default password to use when none is specified 
+     in <a href="function.ifx-connect.html" class="function">ifx_connect()</a> or 
+     <a href="function.ifx-pconnect.html" class="function">ifx_pconnect()</a>. Doesn&#039;t apply in
+     <a href="features.safe-mode.html#ini.safe-mode" class="link">безопасный режим</a>.
+    </p>
+   </dd>
+
+  </dt>
+
+   <dt id="ini.ifx.blobinfile">
+   <span class="term">
+    <i><tt class="parameter">ifx.blobinfile</tt></i>
+
+    <a href="language.types.boolean.html" class="type boolean">boolean</a>
+   </span>
+
+   <dd>
+
+    <p class="para">
+     Set to <b><tt>TRUE</tt></b> if you want to return blob columns
+     in a file, <b><tt>FALSE</tt></b> if you want them in memory. You can
+     override the setting at runtime 
+     with <a href="function.ifx-blobinfile-mode.html" class="function">ifx_blobinfile_mode()</a>.
+    </p>
+   </dd>
+
+  </dt>
+
+   <dt id="ini.ifx.textasvarchar">
+   <span class="term">
+    <i><tt class="parameter">ifx.textasvarchar</tt></i>
+
+    <a href="language.types.boolean.html" class="type boolean">boolean</a>
+   </span>
+
+   <dd>
+
+    <p class="para">
+     Set to <b><tt>TRUE</tt></b> if you want to return TEXT columns
+     as normal strings in select statements,
+     <b><tt>FALSE</tt></b> if you want to use blob id parameters. You can
+     override the setting at runtime with 
+    <a href="function.ifx-textasvarchar.html" class="function">ifx_textasvarchar()</a>.
+    </p>
+   </dd>
+
+  </dt>
+
+   <dt id="ini.ifx.byteasvarchar">
+   <span class="term">
+    <i><tt class="parameter">ifx.byteasvarchar</tt></i>
+
+    <a href="language.types.boolean.html" class="type boolean">boolean</a>
+   </span>
+
+   <dd>
+
+    <p class="para">
+     Set to <b><tt>TRUE</tt></b> if you want to return BYTE columns
+     as normal strings in select queries, 
+     <b><tt>FALSE</tt></b> if you want to use blob id parameters. You can
+     override the setting at runtime with 
+     <a href="function.ifx-textasvarchar.html" class="function">ifx_textasvarchar()</a>.
+    </p>
+   </dd>
+
+  </dt>
+
+   <dt id="ini.ifx.charasvarchar">
+   <span class="term">
+    <i><tt class="parameter">ifx.charasvarchar</tt></i>
+
+    <a href="language.types.boolean.html" class="type boolean">boolean</a>
+   </span>
+
+   <dd>
+
+    <p class="para">
+     Set to <b><tt>TRUE</tt></b> if you want to trim trailing spaces
+     from CHAR columns when fetching them.
+    </p>
+   </dd>
+
+  </dt>
+
+   <dt id="ini.ifx.nullformat">
+   <span class="term">
+    <i><tt class="parameter">ifx.nullformat</tt></i>
+
+    <a href="language.types.boolean.html" class="type boolean">boolean</a>
+   </span>
+
+   <dd>
+
+    <p class="para">
+     Set to <b><tt>TRUE</tt></b> if you want to return <b><tt>NULL</tt></b> columns
+     as the literal string &quot;<b><tt>NULL</tt></b>&quot;, <b><tt>FALSE</tt></b> if you want
+     them returned as the empty string &quot;&quot;. You can
+     override this setting at runtime with 
+     <a href="function.ifx-nullformat.html" class="function">ifx_nullformat()</a>.
+    </p>
+   </dd>
+
+  </dt>
+
+ </dl>
+
+ </p>
+</div><hr /><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="ifx.installation.html">Установка</a></div>
+ <div class="next" style="float: right;"><a href="ifx.resources.html">Типы ресурсов</a></div>
+ <div class="up"><a href="ifx.setup.html">Установка и настройка</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

@@ -1,0 +1,108 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <title>Побитовые операторы</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+ </head>
+ <body><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="language.operators.assignment.html">Оператор присвоения</a></div>
+ <div class="next" style="float: right;"><a href="language.operators.comparison.html">Операторы сравнения</a></div>
+ <div class="up"><a href="language.operators.html">Операторы</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="language.operators.bitwise" class="sect1">
+   <h2 class="title">Побитовые операторы</h2>
+   <p class="simpara">
+    Побитовые операторы позволяют устанавливать конкретные биты
+	в 0 или 1 для целочисленных значений. В случае если и левый, и правый 
+	операнды строки, побитовые операции будут работать с их ASCII-представлениями.
+   </p>
+   <p class="para">
+    <div class="informalexample">
+     <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">12&nbsp;</span><span style="color: #007700">^&nbsp;</span><span style="color: #0000BB">9</span><span style="color: #007700">;&nbsp;</span><span style="color: #FF8000">//&nbsp;Выведет&nbsp;'5'<br /><br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #DD0000">"12"&nbsp;</span><span style="color: #007700">^&nbsp;</span><span style="color: #DD0000">"9"</span><span style="color: #007700">;&nbsp;</span><span style="color: #FF8000">//&nbsp;Отобразит&nbsp;симовол&nbsp;возврата&nbsp;каретки&nbsp;(ascii&nbsp;8)<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;('1'&nbsp;(ascii&nbsp;49))&nbsp;^&nbsp;('9'&nbsp;(ascii&nbsp;57))&nbsp;=&nbsp;#8<br /><br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #DD0000">"hallo"&nbsp;</span><span style="color: #007700">^&nbsp;</span><span style="color: #DD0000">"hello"</span><span style="color: #007700">;&nbsp;</span><span style="color: #FF8000">//&nbsp;Выведет&nbsp;следующие&nbsp;ASCII-значения:&nbsp;#0&nbsp;#4&nbsp;#0&nbsp;#0&nbsp;#0<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;'a'&nbsp;^&nbsp;'e'&nbsp;=&nbsp;#4<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+     </div>
+
+    </div> 
+   </p>
+
+   <table border="5">
+    <caption><b>Побитовые операторы</b></caption>
+    <colgroup>
+
+     <thead valign="middle">
+      <tr valign="middle">
+       <th colspan="1">Пример</th>
+       <th colspan="1">Название</th>
+       <th colspan="1">Результат</th>
+      </tr>
+
+     </thead>
+
+     <tbody valign="middle" class="tbody">
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left">$a &amp; $b</td>
+       <td colspan="1" rowspan="1" align="left">Побитовое &#039;и&#039;</td>
+       <td colspan="1" rowspan="1" align="left">Устанавливаются только те биты, которые установлены и в $a, и в $b.</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left">$a | $b</td>
+       <td colspan="1" rowspan="1" align="left">Побитовое &#039;или&#039;</td>
+       <td colspan="1" rowspan="1" align="left">Устанавливаются те биты, которые установлены либо в $a, либо в $b.</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left">$a ^ $b</td>
+       <td colspan="1" rowspan="1" align="left">Исключающее или</td>
+       <td colspan="1" rowspan="1" align="left">
+	   Устанавливаются только те биты, которые установлены либо только в $a, либо только в $b
+       </td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left">~ $a</td>
+       <td colspan="1" rowspan="1" align="left">Отрицание</td>
+       <td colspan="1" rowspan="1" align="left">
+ 	    Устанавливаются те биты, которые в $a не установлены, и наоборот.
+       </td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left">$a &lt;&lt; $b</td>
+       <td colspan="1" rowspan="1" align="left">Сдвиг влево</td>
+       <td colspan="1" rowspan="1" align="left">
+	   Все биты переменной $a сдвигаються на $b позиций влево (каждая позиция
+	   подразумевает &#039;умножение на 2&#039;)
+       </td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left">$a &gt;&gt; $b</td>
+       <td colspan="1" rowspan="1" align="left">Сдвиг вправо</td>
+       <td colspan="1" rowspan="1" align="left">
+	   Все биты переменной $a сдвигаються на $b позиций вправо (каждая позиция
+	   подразумевает &#039;деление на 2&#039;)
+       </td>
+      </tr>
+
+     </tbody>
+    </colgroup>
+
+   </table>
+
+    <div class="warning"><b class="warning">Внимание</b> 
+      <p class="para">
+	   Не используйте сдвиг вправо более чем на 32 бита на тридцатидвухразрядных 
+	   системах. Не используйте сдвиг вправо для получения чисел, требующих для записи 
+	   более ридцатидвух бит.
+      </p> 
+     </div> 
+  </div><hr /><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="language.operators.assignment.html">Оператор присвоения</a></div>
+ <div class="next" style="float: right;"><a href="language.operators.comparison.html">Операторы сравнения</a></div>
+ <div class="up"><a href="language.operators.html">Операторы</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

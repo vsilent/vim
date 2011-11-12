@@ -1,0 +1,108 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <title>Удаляет пробелы из начала строки</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+ </head>
+ <body><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="function.localeconv.html">localeconv</a></div>
+ <div class="next" style="float: right;"><a href="function.md5-file.html">md5_file</a></div>
+ <div class="up"><a href="ref.strings.html">Функции обработки строк</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="function.ltrim" class="refentry">
+   <div class="refnamediv">
+    <h1 class="refname">ltrim</h1> 
+    <p class="verinfo">(PHP 4, PHP 5)</p><p class="refpurpose dc-title">ltrim — 
+     Удаляет пробелы из начала строки
+    </p>
+
+   </div>
+   <div class="refsect1 unknown">
+    <h3 class="title">Описание</h3>
+     <div class="methodsynopsis dc-description">
+      <span class="type">string</span> <span class="methodname"><b><b>ltrim</b></b></span>
+       ( <span class="methodparam"><span class="type">string</span> <tt class="parameter">$str</tt></span>
+      [, <span class="methodparam"><span class="type">string</span> <tt class="parameter">$charlist</tt></span>
+     ] )</div>
+
+    <blockquote><p><b class="note">Замечание</b>: 
+     <span class="simpara">
+      Второй аргумент был добавлен в PHP 4.1.0
+     </span>
+    </p></blockquote>
+    <p class="para">
+     Эта функция возвращает строку <i><tt class="parameter">str</tt></i>
+ с удаленными 
+     из начала строки пробелами.
+     Если второй параметр не передан,
+     <b>ltrim()</b> удаляет следующие символы:
+     
+     <ul class="itemizedlist">
+      <li class="listitem">
+       <span class="simpara">
+        &quot; &quot; (<acronym title="American Standard Code for Information Interchange">ASCII</acronym> <i>32</i> 
+        (<i>0x20</i>)), символ пробела.
+       </span>
+      </li>
+      <li class="listitem">
+       <span class="simpara">
+        &quot;\t&quot; (<acronym title="American Standard Code for Information Interchange">ASCII</acronym> <i>9</i> 
+        (<i>0x09</i>)), символ табуляции.
+       </span>
+      </li>
+      <li class="listitem">
+       <span class="simpara">
+        &quot;\n&quot; (<acronym title="American Standard Code for Information Interchange">ASCII</acronym> <i>10</i> 
+        (<i>0x0A</i>)), символ перевода строки.
+       </span>
+      </li>
+      <li class="listitem">
+       <span class="simpara">
+        &quot;\r&quot; (<acronym title="American Standard Code for Information Interchange">ASCII</acronym> <i>13</i> 
+        (<i>0x0D</i>)), символ возврата каретки.
+       </span>
+      </li>
+      <li class="listitem">
+       <span class="simpara">
+        &quot;\0&quot; (<acronym title="American Standard Code for Information Interchange">ASCII</acronym> <i>0</i> 
+        (<i>0x00</i>)), <i>NUL</i>-байт.
+       </span>
+      </li>
+      <li class="listitem">
+       <span class="simpara"> 
+        &quot;\x0B&quot; (<acronym title="American Standard Code for Information Interchange">ASCII</acronym> <i>11</i> 
+        (<i>0x0B</i>)), вертикальная табуляция.
+       </span>
+      </li>
+     </ul>
+    </p>
+    <p class="para">
+     Можно также задать список символов для удаления с помощью аргумента
+     <i><tt class="parameter">charlist</tt></i>
+.
+     С помощью <i>..</i> можно задать диапазон символов.
+    </p>
+    <div class="example">
+     <p><b>Пример #1 Пример использования <b>ltrim()</b></b></p>
+     <div class="example-contents"><p>
+      <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /><br />$text&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">"\t\tЛишь&nbsp;несколько&nbsp;слов&nbsp;:)&nbsp;...&nbsp;&nbsp;"</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$trimmed&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">ltrim</span><span style="color: #007700">(</span><span style="color: #0000BB">$text</span><span style="color: #007700">);<br /></span><span style="color: #FF8000">//&nbsp;$trimmed&nbsp;=&nbsp;"Лишь&nbsp;несколько&nbsp;слов&nbsp;:)&nbsp;...&nbsp;&nbsp;"<br /></span><span style="color: #0000BB">$trimmed&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">ltrim</span><span style="color: #007700">(</span><span style="color: #0000BB">$text</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"&nbsp;\t."</span><span style="color: #007700">);<br /></span><span style="color: #FF8000">//&nbsp;$trimmed&nbsp;=&nbsp;"Лишь&nbsp;несколько&nbsp;слов&nbsp;:)&nbsp;...&nbsp;&nbsp;"<br /></span><span style="color: #0000BB">$clean&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">ltrim</span><span style="color: #007700">(</span><span style="color: #0000BB">$binary</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"\x00..\x1F"</span><span style="color: #007700">);<br /></span><span style="color: #FF8000">//&nbsp;удалить&nbsp;управляющие&nbsp;символы&nbsp;ASCII&nbsp;из&nbsp;начала&nbsp;строки&nbsp;$binary&nbsp;<br />//&nbsp;(от&nbsp;0&nbsp;до&nbsp;31&nbsp;включительно)<br /><br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+      </div>
+
+     </p></div>
+    </div>
+    <p class="para">
+     См. также описание функций <a href="function.trim.html" class="function">trim()</a> и
+     <a href="function.rtrim.html" class="function">rtrim()</a>.
+    </p>
+   </div>
+
+  </div><hr /><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="function.localeconv.html">localeconv</a></div>
+ <div class="next" style="float: right;"><a href="function.md5-file.html">md5_file</a></div>
+ <div class="up"><a href="ref.strings.html">Функции обработки строк</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

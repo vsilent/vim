@@ -1,0 +1,74 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <title>Округляет число типа float</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+ </head>
+ <body><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="function.rand.html">rand</a></div>
+ <div class="next" style="float: right;"><a href="function.sin.html">sin</a></div>
+ <div class="up"><a href="ref.math.html">Математические функции</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="function.round" class="refentry">
+   <div class="refnamediv">
+    <h1 class="refname">round</h1>
+    <p class="verinfo">(PHP 4, PHP 5)</p><p class="refpurpose dc-title">round — Округляет число типа float</p>
+
+   </div>
+   <div class="refsect1 unknown">
+    <h3 class="title">Описание</h3>
+     <div class="methodsynopsis dc-description">
+      <span class="type">float</span> <span class="methodname"><b><b>round</b></b></span>
+       ( <span class="methodparam"><span class="type">float</span> <tt class="parameter">$val</tt></span>
+      [, <span class="methodparam"><span class="type">int</span> <tt class="parameter">$precision</tt></span>
+     ] )</div>
+
+    <p class="para rdfs-comment">
+     Возвращает округлённое значение <i><tt class="parameter">val</tt></i>
+ с указанной точностью <i><tt class="parameter">precision</tt></i>
+
+     (количество цифр после запятой).
+     Последняя может быть отрицательной или нулём (по умолчанию).
+    </p>
+    <p class="para">
+     <div class="example">
+      <p><b>Пример #1 Примеры функции <b>round()</b></b></p>
+      <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">round</span><span style="color: #007700">(</span><span style="color: #0000BB">3.4</span><span style="color: #007700">);&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;3<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">round</span><span style="color: #007700">(</span><span style="color: #0000BB">3.5</span><span style="color: #007700">);&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;4<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">round</span><span style="color: #007700">(</span><span style="color: #0000BB">3.6</span><span style="color: #007700">);&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;4<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">round</span><span style="color: #007700">(</span><span style="color: #0000BB">3.6</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">0</span><span style="color: #007700">);&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;4<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">round</span><span style="color: #007700">(</span><span style="color: #0000BB">1.95583</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">2</span><span style="color: #007700">);&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;1.96<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">round</span><span style="color: #007700">(</span><span style="color: #0000BB">1241757</span><span style="color: #007700">,&nbsp;-</span><span style="color: #0000BB">3</span><span style="color: #007700">);&nbsp;</span><span style="color: #FF8000">//&nbsp;1242000<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">round</span><span style="color: #007700">(</span><span style="color: #0000BB">5.045</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">2</span><span style="color: #007700">);&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;5.05<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">round</span><span style="color: #007700">(</span><span style="color: #0000BB">5.055</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">2</span><span style="color: #007700">);&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;5.06<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+      </div>
+
+     </div>
+    </p>
+    
+    <p class="para">
+     <blockquote><p><b class="note">Замечание</b>: 
+      <span class="simpara">
+       PHP по умолчанию не может правильно обрабатывать строки типа <i>&quot;12,300.2&quot;</i>. Для подробностей см. <a href="language.types.string.html" class="xref">Строки</a>.
+      </span>
+     </p></blockquote>
+    </p>
+    <p class="para">
+     <blockquote><p><b class="note">Замечание</b>: 
+      <span class="simpara">
+       параметр <i><tt class="parameter">precision</tt></i>
+ был добавлен в PHP 4.
+      </span>
+     </p></blockquote>
+    </p>
+    <p class="simpara">
+     См. также:
+     <a href="function.ceil.html" class="function">ceil()</a>,
+     <a href="function.floor.html" class="function">floor()</a> и 
+     <a href="function.number-format.html" class="function">number_format()</a>.
+    </p>
+   </div>
+
+  </div><hr /><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="function.rand.html">rand</a></div>
+ <div class="next" style="float: right;"><a href="function.sin.html">sin</a></div>
+ <div class="up"><a href="ref.math.html">Математические функции</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

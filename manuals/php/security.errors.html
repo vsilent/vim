@@ -1,0 +1,122 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <title>Сообщения об ошибках</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+ </head>
+ <body><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="security.database.sql-injection.html">SQL-инъекции</a></div>
+ <div class="next" style="float: right;"><a href="security.globals.html">Использование глобальных переменных (Register_Globals)</a></div>
+ <div class="up"><a href="security.html">Безопасность</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div>
+   <h1>Сообщения об ошибках</h1>
+
+   <p class="para">
+    С точки зрения безопасности вывод сообщений об ошибках несет в себе
+    как плюсы, так и минусы.
+   </p>
+   <p class="para">
+    Одна из стандартных методик, применяемых в атаках - ввод некорректных данных с 
+    последующим анализом содержания и характера сообщений об ошибках. Это дает
+    взломщику возможность проверить скрипты и данные сервера на наличие 
+    потенциальных дыр. Например, если взломщик получил некоторую информацию о 
+    странице на основании отправки формы, он попробует предопределить некоторые 
+    передаваемые значения или модифицировать их:
+    <div class="example">
+     <p><b>Пример #1 Атака на переменные в HTML-странице</b></p>
+     <div class="example-contents">
+<div class="cdata"><pre>
+&lt;form method=&quot;post&quot; action=&quot;attacktarget?username=badfoo&amp;amp;password=badfoo&quot;&gt;
+&lt;input type=&quot;hidden&quot; name=&quot;username&quot; value=&quot;badfoo&quot; /&gt;
+&lt;input type=&quot;hidden&quot; name=&quot;password&quot; value=&quot;badfoo&quot; /&gt;
+&lt;/form&gt;
+</pre></div>
+     </div>
+
+    </div>
+   </p>
+   <p class="para">
+    Возникаемые во время работы скриптов ошибки являются достаточно ценной
+    информацией для разработчика, содержащей такие данные, как функция или файл,
+    а также номер строки, в которой возникла ошибка. Вся эта информация может
+    быть использована для взлома. Для PHP-разработчика достаточно привычно пользоваться
+    такими функциями, как <a href="function.show-source.html" class="function">show_source()</a>,
+    <a href="function.highlight-string.html" class="function">highlight_string()</a> или
+    <a href="function.highlight-file.html" class="function">highlight_file()</a> в целях отладки, но в живых сайтах
+    это может открыть информацию о скрытых переменных, непроверяемом синтаксисе и 
+    других потенциально опасных моментах. Особенно опасно наличие кода со встроенным	
+    механизмом отладки в публичных частях сайта. Взломщик может попытаться 
+    запустить отладочный механизм, подбирая основные признаки отладки:
+    <div class="example">
+     <p><b>Пример #2 Использование стандартных отладочных переменных</b></p>
+     <div class="example-contents">
+<div class="cdata"><pre>
+&lt;form method=&quot;post&quot; action=&quot;attacktarget?errors=Y&amp;amp;showerrors=1&amp;amp;debug=1&quot;&gt;
+&lt;input type=&quot;hidden&quot; name=&quot;errors&quot; value=&quot;Y&quot; /&gt;
+&lt;input type=&quot;hidden&quot; name=&quot;showerrors&quot; value=&quot;1&quot; /&gt;
+&lt;input type=&quot;hidden&quot; name=&quot;debug&quot; value=&quot;1&quot; /&gt;
+&lt;/form&gt;
+</pre></div>
+     </div>
+
+    </div>
+   </p>
+   <p class="para">
+    Независимо от метода обработки ошибок возможность проверки системы
+    на наличие ошибок снабжает взломщика дополнительной информацией.
+   </p>
+   <p class="para">
+    Например, стандартный вывод об ошибке указывает операционную систему,
+    в которой выполняются PHP скрипты.  Если взломщик анализирует обыкновенную
+    HTML-страницу, пытаясь найти уязвимые места, используя 
+    ввод неверных данных он может обнаружить использование PHP скриптов в данной системе.
+   </p>
+   <p class="para">
+    Также уведомление об ошибке может дать информацию о том, какая база данных
+    используется, или, к примеру, как построена логика работы скриптов. Это, в свою очередь,
+    может позволить взломщику подключиться к открытому порту базы данных либо найти
+    специфичные ошибки в коде. Пробуя поочередно различные неверные блоки данных,
+    злоумышленник может определить порядок аутентификации в скрипте (например,
+    по номерам строк с ошибками) или проверять на наличие дыр различные участки кода.
+   </p>
+   <p class="para">
+    Вывод стандартных ошибок, связанных с файловой системой, может указать, с какими привелегиями
+    запущен веб-сервер, и как организованы каталоги сайта. Обработка подобных ошибок,
+    написанная разработчиками приложения, может только усугубить проблему, если 
+    взломщиком будет найден способ обнаружить &quot;скрытую&quot; отладочную информацию.
+   </p>
+   <p class="para">
+    Существует три основныч способа решения этой проблемы. Первый заключается в том,
+    чтобы структурировать все функции и попытаться компенсировать объем выдаваемых ошибок.
+    Второй способ - полностью отключить в работающем коде вывод сообщений об ошибках.
+    И, наконец, третий способ - использовать специальные средства PHP для создания
+    собственного обработчика ошибок. В зависимости от используемой вами политики безопасности
+    вы можете применять в вашей конкретной ситуации все три способа.
+   </p>
+   <p class="para">
+    Один из возможных способов обезопасить ваш код перед его публикацией 
+    для общего доступа - индивидуальное  использование <a href="function.error-reporting.html" class="function">error_reporting()</a>,
+    чтобы выявить потенциально опасные переменные. Тестируя код перед выпуском релиза
+    при помощи значения E_ALL, вы достаточно легко можете обнаружить участки
+    кода, в которых переменные могут быть подменены либо модифицированы.
+    После окончания тестирования, установив значение E_NONE, вы можете полностью
+    отключить вывод сообщений об ошибках.
+    <div class="example">
+     <p><b>Пример #3 Поиск потенциально опасных переменных при помощи E_ALL</b></p>
+     <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">if&nbsp;(</span><span style="color: #0000BB">$username</span><span style="color: #007700">)&nbsp;{&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;Переменная&nbsp;не&nbsp;инициализируется&nbsp;перед&nbsp;использованием<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$good_login&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">1</span><span style="color: #007700">;<br />}<br />if&nbsp;(</span><span style="color: #0000BB">$good_login&nbsp;</span><span style="color: #007700">==&nbsp;</span><span style="color: #0000BB">1</span><span style="color: #007700">)&nbsp;{&nbsp;</span><span style="color: #FF8000">//&nbsp;Если&nbsp;предыдущая&nbsp;проверка&nbsp;потерпела&nbsp;неудачу,&nbsp;переменная&nbsp;оказывается&nbsp;неинициализированной<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">readfile&nbsp;</span><span style="color: #007700">(</span><span style="color: #DD0000">"/highly/sensitive/data/index.html"</span><span style="color: #007700">);<br />}<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+     </div>
+
+    </div>
+   </p>
+  </div>
+<hr /><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="security.database.sql-injection.html">SQL-инъекции</a></div>
+ <div class="next" style="float: right;"><a href="security.globals.html">Использование глобальных переменных (Register_Globals)</a></div>
+ <div class="up"><a href="security.html">Безопасность</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

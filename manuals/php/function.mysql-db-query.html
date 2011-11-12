@@ -1,0 +1,70 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <title>Переключается к указанной базе данных и посылает запрос</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+ </head>
+ <body><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="function.mysql-db-name.html">mysql_db_name</a></div>
+ <div class="next" style="float: right;"><a href="function.mysql-drop-db.html">mysql_drop_db</a></div>
+ <div class="up"><a href="ref.mysql.html">MySQL</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="function.mysql-db-query" class="refentry">
+   <div class="refnamediv">
+    <h1 class="refname">mysql_db_query</h1>
+    <p class="verinfo">(PHP 4, PHP 5, PECL mysql:1.0)</p><p class="refpurpose dc-title">mysql_db_query — Переключается к указанной базе данных и посылает запрос</p>
+
+   </div>
+   <div class="refsect1 unknown">
+    <h3 class="title">Описание</h3>
+     <div class="methodsynopsis dc-description">
+      <span class="type">resource</span> <span class="methodname"><b><b>mysql_db_query</b></b></span>
+       ( <span class="methodparam"><span class="type">string</span> <tt class="parameter">$database</tt></span>
+      , <span class="methodparam"><span class="type">string</span> <tt class="parameter">$query</tt></span>
+      [, <span class="methodparam"><span class="type">resource</span> <tt class="parameter">$link_identifier</tt></span>
+     ] )</div>
+
+    <p class="para rdfs-comment">
+     Возвращает указатель на результат запроса к MySQL или <b><tt>FALSE</tt></b> при ошибке.
+     Функция также возвращает <b><tt>TRUE</tt></b>/<b><tt>FALSE</tt></b> для
+     <i>INSERT</i>/<i>UPDATE</i>/<i>DELETE</i>
+     запросов для индикации успеха/провала.
+    </p>
+    <p class="para">
+     <b>mysql_db_query()</b> выбирает указанную базу данных и
+     выполняет указанный запрос. Если опциональный параметр указателя на
+     соединение не указан, функция будет использовать последнее открытое
+     соединение. Если нет ни одного открытого соединения, функция попытается
+     создать новое, аналогично функции <a href="function.mysql-connect.html" class="function">mysql_connect()</a>,
+     вызванной без параметров.
+    </p>
+    <p class="para">
+     Учтите, что эта функция <em class="emphasis">НЕ</em> переключает
+     соединение обратно к предыдущей базе данных. Другими словами, вы не
+     можете использовать эту функцию, чтобы  <em class="emphasis">временно</em> 
+     переключиться на другую базу данных и выполнить запрос. Переключиться
+     обратно вам придётся вручную. Крайне рекомендуется использовать синтаксис
+     <i>database.table</i> в SQL-запросах, вместо использования
+     этой функции.
+    </p>
+    <p class="para">
+     См. также <a href="function.mysql-connect.html" class="function">mysql_connect()</a> и
+     <a href="function.mysql-query.html" class="function">mysql_query()</a>.
+    </p>
+    <p class="para">
+     <blockquote><p><b class="note">Замечание</b>: 
+      <span class="simpara">
+       Функция устарела с выходом PHP 4.0.6.
+       Не используйте её. Используйте комбинацию из <a href="function.mysql-select-db.html" class="function">mysql_select_db()</a>
+       м <a href="function.mysql-query.html" class="function">mysql_query()</a>.
+      </span>
+     </p></blockquote>
+    </p>
+   </div>
+
+  </div><hr /><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="function.mysql-db-name.html">mysql_db_name</a></div>
+ <div class="next" style="float: right;"><a href="function.mysql-drop-db.html">mysql_drop_db</a></div>
+ <div class="up"><a href="ref.mysql.html">MySQL</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

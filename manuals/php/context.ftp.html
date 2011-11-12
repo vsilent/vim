@@ -1,0 +1,167 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <title>FTP context option listing</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+ </head>
+ <body><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="context.http.html">HTTP context options</a></div>
+ <div class="next" style="float: right;"><a href="context.ssl.html">SSL context options</a></div>
+ <div class="up"><a href="context.html">Context options and parameters</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="context.ftp" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">FTP context options</h1>
+  <p class="verinfo">(No version information available, might be only in CVS)</p><p class="refpurpose dc-title">FTP context options — FTP context option listing</p>
+
+ </div>
+ 
+ <div class="refsect1 description">
+  <h3 class="title">Описание</h3>
+  <p class="para">
+   Context options for <i>ftp://</i> and <i>ftps://</i>
+   transports.
+  </p>
+ </div>
+
+
+ <div class="refsect1 options">
+  <h3 class="title">Options</h3>
+  <p class="para">
+   <dl>
+
+    <dt id="context.ftp.overwrite">
+     <span class="term">
+      <i><tt class="parameter">overwrite</tt></i>
+
+      <a href="language.types.boolean.html" class="type boolean">boolean</a>
+     </span>
+
+     <dd>
+
+      <p class="para">
+       Allow overwriting of already existing files on remote server.
+       Applies to write mode (uploading) only.
+      </p>
+      <p class="para">
+       Defaults to <b><tt>FALSE</tt></b>.
+      </p>
+     </dd>
+
+    </dt>
+
+    <dt id="context.ftp.resume-pos">
+     <span class="term">
+      <i><tt class="parameter">resume_pos</tt></i>
+
+      <a href="language.types.integer.html" class="type integer">integer</a>
+     </span>
+
+     <dd>
+
+      <p class="para">
+       File offset at which to begin transfer. Applies to read mode (downloading) only.
+      </p>
+      <p class="para">
+       Defaults to <i>0</i> (Beginning of File).
+      </p>
+     </dd>
+
+    </dt>
+
+    <dt id="context.ftp.proxy">
+     <span class="term">
+      <i><tt class="parameter">proxy</tt></i>
+
+      <a href="language.types.string.html" class="type string">string</a>
+     </span>
+
+     <dd>
+
+      <p class="para">
+       Proxy FTP request via http proxy server. Applies to file read
+       operations only. Ex: <i>tcp://squid.example.com:8000</i>.
+      </p>
+     </dd>
+
+    </dt>
+
+   </dl>
+
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 changelog">
+  <h3 class="title">Список изменений</h3>
+  <p class="para">
+   <table class="informaltable">
+    <colgroup>
+
+     <thead valign="middle">
+      <tr valign="middle">
+       <th colspan="1">Версия</th>
+       <th colspan="1">Описание</th>
+      </tr>
+
+     </thead>
+
+     <tbody valign="middle" class="tbody">
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left">5.1.0</td>
+       <td colspan="1" rowspan="1" align="left">
+        Added <i><tt class="parameter">proxy</tt></i>
+.
+       </td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left">5.0.0</td>
+       <td colspan="1" rowspan="1" align="left">
+        Added <i><tt class="parameter">overwrite</tt></i>
+ and <i><tt class="parameter">resume_pos</tt></i>
+.
+       </td>
+      </tr>
+
+     </tbody>
+    </colgroup>
+
+   </table>
+  </p>
+ </div>
+
+
+ <div class="refsect1 notes">
+  <h3 class="title">Примечания</h3>
+  <blockquote><p><b class="note">Замечание</b>: 
+   <b>Underlying socket stream context options</b>
+   <span class="simpara">
+    Additional context options may be supported by the
+    <a href="transports.html#transports.inet" class="link">underlying transport</a>
+    For <i>ftp://</i> streams, refer to context
+    options for the <i>tcp://</i> transport.  For
+    <i>ftps://</i> streams, refer to context options
+    for the <i>ssl://</i> transport.
+   </span>
+  </p></blockquote>
+ </div>
+
+
+ <div class="refsect1 seealso">
+  <h3 class="title">Смотрите также</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"><a href="context.socket.html" class="xref">Socket context options</a></li>
+    <li class="member"><a href="context.ssl.html" class="xref">SSL context options</a></li>
+   </ul>
+  </p>
+ </div>
+
+
+</div><hr /><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="context.http.html">HTTP context options</a></div>
+ <div class="next" style="float: right;"><a href="context.ssl.html">SSL context options</a></div>
+ <div class="up"><a href="context.html">Context options and parameters</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

@@ -1,0 +1,63 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <title>Сравнение строк с учетом текущей локали</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+ </head>
+ <body><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="function.strcmp.html">strcmp</a></div>
+ <div class="next" style="float: right;"><a href="function.strcspn.html">strcspn</a></div>
+ <div class="up"><a href="ref.strings.html">Функции обработки строк</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="function.strcoll" class="refentry">
+   <div class="refnamediv">
+    <h1 class="refname">strcoll</h1>
+    <p class="verinfo">(PHP 4 &gt;= 4.0.5, PHP 5)</p><p class="refpurpose dc-title">strcoll — Сравнение строк с учетом текущей локали</p>
+
+   </div>
+   <div class="refsect1 unknown">
+    <h3 class="title">Описание</h3>
+     <div class="methodsynopsis dc-description">
+      <span class="type">int</span> <span class="methodname"><b><b>strcoll</b></b></span>
+       ( <span class="methodparam"><span class="type">string</span> <tt class="parameter">$str1</tt></span>
+      , <span class="methodparam"><span class="type">string</span> <tt class="parameter">$str2</tt></span>
+      )</div>
+
+    <p class="simpara">
+     Возвращает положительное число если <i><tt class="parameter">str1</tt></i>
+ меньше, чем
+     <i><tt class="parameter">str2</tt></i>
+; отрицательное число если <i><tt class="parameter">str1</tt></i>
+
+     больше, чем <i><tt class="parameter">str2</tt></i>
+, и 0 если строки равны.
+     <b>strcoll()</b> при сравнении использует установки 
+     текущей локали.  Если установлена локаль C или POSIX, эта функция 
+     аналогична <a href="function.strcmp.html" class="function">strcmp()</a>.
+    </p>
+    <p class="simpara">
+     Обратите внимание, что эта функция учитывает регистр символов, и, в 
+     отличие от <a href="function.strcmp.html" class="function">strcmp()</a> не безопасна для обработки 
+     данных в двоичной форме.
+    </p>
+    <blockquote><p><b class="note">Замечание</b>: 
+     
+      <b>strcoll()</b> была добавлена в PHP 4.0.5, но под
+      Windows не была включена до версии 4.2.3.
+     <br />
+    </p></blockquote>
+    <p class="simpara">
+     См. также описание функций <a href="function.ereg.html" class="function">ereg()</a>, 
+     <a href="function.strcmp.html" class="function">strcmp()</a>, <a href="function.strcasecmp.html" class="function">strcasecmp()</a>, 
+     <a href="function.substr.html" class="function">substr()</a>, <a href="function.stristr.html" class="function">stristr()</a>, 
+     <a href="function.strncasecmp.html" class="function">strncasecmp()</a>, <a href="function.strncmp.html" class="function">strncmp()</a>, 
+     <a href="function.strstr.html" class="function">strstr()</a> и <a href="function.setlocale.html" class="function">setlocale()</a>.
+    </p>
+   </div>
+
+  </div><hr /><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="function.strcmp.html">strcmp</a></div>
+ <div class="next" style="float: right;"><a href="function.strcspn.html">strcspn</a></div>
+ <div class="up"><a href="ref.strings.html">Функции обработки строк</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

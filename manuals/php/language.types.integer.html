@@ -1,0 +1,205 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <title>Целые</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+ </head>
+ <body><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="language.types.boolean.html">Булев</a></div>
+ <div class="next" style="float: right;"><a href="language.types.float.html">Числа с плавающей точкой</a></div>
+ <div class="up"><a href="language.types.html">Типы</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="language.types.integer" class="sect1">
+    <h2 class="title">Целые</h2>
+    
+    <p class="simpara">
+     Целое это число из множества Z = {..., -2, -1, 0, 1, 2, ...}.
+    </p>
+     
+    <p class="para">
+     Смотрите также:
+     <a href="ref.gmp.html" class="link">Целые произвольной длины / GMP</a>,
+     <a href="language.types.float.html" class="link">Числа с плавающей точкой</a> и
+     <a href="ref.bc.html" class="link">Произвольная точность / BCMath</a>
+    </p>
+
+    <div id="language.types.integer.syntax" class="sect2">
+     <h3 class="title">Синтаксис</h3>
+     <p class="simpara">
+      Целые могут быть указаны в десятичной, шестнадцатеричной или
+      восьмеричной системе счисления, по желанию с предшествующим знаком (- или +).
+     </p>
+     <p class="para">
+      Если вы используете восьмеричную систему счисления, вы должны
+      предварить число <i>0</i> (нулем), для использования
+      шестнадцатеричной системы нужно поставить перед числом <i>0x</i>.
+      <div class="example">
+       <p><b>Пример #1 Целые</b></p>
+       <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$a&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">1234</span><span style="color: #007700">;&nbsp;</span><span style="color: #FF8000">//&nbsp;десятичное&nbsp;число<br /></span><span style="color: #0000BB">$a&nbsp;</span><span style="color: #007700">=&nbsp;-</span><span style="color: #0000BB">123</span><span style="color: #007700">;&nbsp;</span><span style="color: #FF8000">//&nbsp;отрицательное&nbsp;число<br /></span><span style="color: #0000BB">$a&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">0123</span><span style="color: #007700">;&nbsp;</span><span style="color: #FF8000">//&nbsp;восьмеричное&nbsp;число&nbsp;(эквивалентно&nbsp;83&nbsp;в&nbsp;десятичной&nbsp;системе)<br /></span><span style="color: #0000BB">$a&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">0x1A</span><span style="color: #007700">;&nbsp;</span><span style="color: #FF8000">//&nbsp;шестнадцатеричное&nbsp;число&nbsp;(эквивалентно&nbsp;26&nbsp;в&nbsp;десятичной&nbsp;системе)<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+       </div>
+
+      </div>
+      Формально возможная структура целых такова:
+      <div class="informalexample">
+       <div class="example-contents">
+<div class="cdata"><pre>
+десятичные        : [1-9][0-9]*
+                  | 0
+
+шестнадцатеричные : 0[xX][0-9a-fA-F]+
+
+восьмеричные      : 0[0-7]+
+
+целые             : [+-]?десятичные
+                  | [+-]?шестнадцатеричные
+                  | [+-]?восьмеричные
+</pre></div>
+       </div>
+
+      </div>
+      Размер целого зависит от платформы, хотя, как правило,
+      максимальное значение около двух миллиардов
+      (это 32-битное знаковое). PHP не поддерживает беззнаковые целые.
+     </p>
+    </div>
+   
+    <div id="language.types.integer.overflow" class="sect2">
+     <h3 class="title">Превышение размера целого</h3>
+     <p class="para">
+      Если вы определите число, превышающее пределы целого типа, оно будет
+      интерпретировано как число с плавающей точкой. Также, если вы
+      используете оператор, результатом работы которого будет число,
+      превышающее пределы целого, вместо него будет возвращено число с
+      плавающей точкой.
+
+      <div class="informalexample">
+       <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$large_number&nbsp;</span><span style="color: #007700">=&nbsp;&nbsp;</span><span style="color: #0000BB">2147483647</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$large_number</span><span style="color: #007700">);<br /></span><span style="color: #FF8000">//&nbsp;вывод:&nbsp;int(2147483647)<br /><br /></span><span style="color: #0000BB">$large_number&nbsp;</span><span style="color: #007700">=&nbsp;&nbsp;</span><span style="color: #0000BB">2147483648</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$large_number</span><span style="color: #007700">);<br /></span><span style="color: #FF8000">//&nbsp;вывод:&nbsp;float(2147483648)<br /><br />//&nbsp;это&nbsp;справедливо&nbsp;и&nbsp;для&nbsp;шестнадцатеричных&nbsp;целых:<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(&nbsp;</span><span style="color: #0000BB">0x80000000&nbsp;</span><span style="color: #007700">);<br /></span><span style="color: #FF8000">//&nbsp;вывод:&nbsp;float(2147483648)<br /><br /></span><span style="color: #0000BB">$million&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">1000000</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$large_number&nbsp;</span><span style="color: #007700">=&nbsp;&nbsp;</span><span style="color: #0000BB">50000&nbsp;</span><span style="color: #007700">*&nbsp;</span><span style="color: #0000BB">$million</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$large_number</span><span style="color: #007700">);<br /></span><span style="color: #FF8000">//&nbsp;вывод:&nbsp;float(50000000000)<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+       </div>
+
+      </div>
+      <div class="warning"><b class="warning">Внимание</b>
+       <p class="simpara">
+        К сожалению, в PHP была ошибка, так что это не всегда верно
+        работает, когда используются отрицательные числа.
+        Например: когда вы умножаете <i>-50000 *
+        $million</i>, результатом будет
+        <i>-429496728</i>. Однако, если оба операнда
+        положительны, проблем не возникает.
+       </p>
+       <p class="simpara">
+        Эта ошибка устранена в PHP 4.1.0.
+       </p>
+      </div>
+     </p>
+     <p class="para">
+      в PHP не существует оператора деления целых.
+      Результатом <i>1/2</i> будет число с плавающей точкой
+      <i>0.5</i>. Вы можете привести значение к целому, что
+      всегда округляет его в меньшую сторону, либо использовать функцию
+      <a href="function.round.html" class="function">round()</a>.
+      <div class="informalexample">
+       <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">25</span><span style="color: #007700">/</span><span style="color: #0000BB">7</span><span style="color: #007700">);&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;float(3.5714285714286)&nbsp;<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">((int)&nbsp;(</span><span style="color: #0000BB">25</span><span style="color: #007700">/</span><span style="color: #0000BB">7</span><span style="color: #007700">));&nbsp;</span><span style="color: #FF8000">//&nbsp;int(3)<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">round</span><span style="color: #007700">(</span><span style="color: #0000BB">25</span><span style="color: #007700">/</span><span style="color: #0000BB">7</span><span style="color: #007700">));&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;float(4)<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+       </div>
+
+      </div>
+     </p>
+    </div>
+   
+
+    <div id="language.types.integer.casting" class="sect2">
+     <h3 class="title">Преобразование в целое</h3>
+      <p class="simpara">
+       Для несомненного преобразования значения в целое используйте приведение
+       типа <i>(int)</i> или <i>(integer)</i>.
+       Однако в большинстве случаев вам нет необходимости использовать приведение типа,
+       поскольку значение будет автоматически преобразовано, если оператор, функция или 
+       управляющая конструкция требует целый аргумент. Вы также можете преобразовать
+       значение в целое при помощи функции <a href="function.intval.html" class="function">intval()</a>.
+      </p>
+      <p class="simpara">
+       Смотрите также <a href="language.types.type-juggling.html" class="link">Манипуляции с типами</a>.
+      </p>
+      
+      <div id="language.types.integer.casting.from-boolean" class="sect3">
+       <h4 class="title">Из <a href="language.types.boolean.html" class="link">булева</a> типа</h4>
+       <p class="simpara">
+        <b><tt>FALSE</tt></b> преобразуется в
+        <i>0</i> (ноль), а <b><tt>TRUE</tt></b> 
+        - в <i>1</i> (единицу).
+       </p>
+      </div>
+
+      <div id="language.types.integer.casting.from-float" class="sect3">
+       <h4 class="title">Из <a href="language.types.float.html" class="link">чисел с плавающей точкой</a></h4> 
+       <p class="simpara">
+        При преобразовании из числа с плавающей точкой в целое, число будет
+        округлено <em class="emphasis">в сторону нуля</em>.
+       </p>
+       
+       <p class="para">
+        Если число с плавающей точкой превышает пределы целого
+        (как правило, это <i>+/- 2.15e+9 = 2^31</i>), 
+        результат будет неопределенным, так как целое не имеет достаточной
+        точности, чтобы вернуть верный результат. В этом случае не будет
+        выведено ни предупреждения, ни даже замечания!
+       </p>
+       
+       <div class="warning"><b class="warning">Внимание</b><p class="para">
+        Никогда не приводите неизвестную дробь к целому, так как это
+        может иногда дать неожиданные результаты.
+        <div class="informalexample">
+         <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">echo&nbsp;(int)&nbsp;(&nbsp;(</span><span style="color: #0000BB">0.1</span><span style="color: #007700">+</span><span style="color: #0000BB">0.7</span><span style="color: #007700">)&nbsp;*&nbsp;</span><span style="color: #0000BB">10&nbsp;</span><span style="color: #007700">);&nbsp;</span><span style="color: #FF8000">//&nbsp;выводит&nbsp;7!<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+         </div>
+
+        </div>
+        
+        Смотрите более подробно: <a href="language.types.float.html#warn.float-precision" class="link">предупреждение о точности
+        чисел с плавающей точкой</a>.
+       </p></div>
+      </div>
+      
+      <div id="language.types.integer.casting.from-string" class="sect3">
+       <h4 class="title">Из строк</h4>
+       <p class="simpara">
+        Смотрите <a href="language.types.string.html#language.types.string.conversion" class="link">Преобразование
+        строк в числа</a>
+       </p>
+      </div>
+      
+      <div id="language.types.integer.casting.from-other" class="sect3">
+       <h4 class="title">Из других типов</h4>
+       <p class="para">
+        <div class="caution"><b class="caution">Предостережение</b>
+         <p class="simpara">
+          Для других типов поведение преобразования в целое не определено.
+          В настоящее время поведение такое же, как если бы значение
+          сперва было <a href="language.types.boolean.html#language.types.boolean.casting" class="link">преобразовано в булев тип</a>. Однако
+          <em class="emphasis">не</em> полагайтесь на это поведение, так
+          как он может измениться без предупреждения.
+         </p>
+        </div>
+       </p>
+      </div>
+    </div>
+  </div><hr /><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="language.types.boolean.html">Булев</a></div>
+ <div class="next" style="float: right;"><a href="language.types.float.html">Числа с плавающей точкой</a></div>
+ <div class="up"><a href="language.types.html">Типы</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

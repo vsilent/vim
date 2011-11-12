@@ -1,0 +1,45 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <title>Вариант 2: использование --enable-force-cgi-redirect</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+ </head>
+ <body><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="security.cgi-bin.default.html">Вариант 1: обслуживаются только общедоступные файлы</a></div>
+ <div class="next" style="float: right;"><a href="security.cgi-bin.doc-root.html">Вариант 3: использование опций doc_root и user_dir</a></div>
+ <div class="up"><a href="security.cgi-bin.html">Если PHP установлен как CGI</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="security.cgi-bin.force-redirect" class="sect1">
+    <h2 class="title">Вариант 2: использование --enable-force-cgi-redirect</h2>
+    <p class="simpara">
+     Эта опция, указываемая во время сборки PHP, предотвращает вызов 
+     скриптов непосредственно по адресу вида <var class="filename">http://my.host/cgi-bin/php/secretdir/script.php</var>.
+     Вместо этого, PHP будет обрабатывать пришедший запрос только в том случае,
+     если он был перенаправлен веб-сервером.
+    </p>
+    <p class="simpara">
+     Обычно перенаправление в веб-сервере Apache настраивается при помощи
+     следующих опций:
+    </p>
+    <div class="example-contents">
+<div class="cdata"><pre>
+Action php-script /cgi-bin/php
+AddHandler php-script .php
+</pre></div>
+    </div>
+
+    <p class="simpara">
+     Эта опция проверена только для веб-сервера Apache, ее работа основывается
+     на установке в случае перенаправления нестандартной переменной <span class="envar">REDIRECT_STATUS</span>, 
+     находящейся в CGI-окружении. В случае, если ваш веб-сервер
+     не предоставляет возможности однозначно идентифицировать, является
+     ли данный запрос перенаправленным, вы не можете использовать описываемую
+     в данном разделе опцию и должны воспользоваться любым другим методом
+     работы с CGI-приложениями.
+    </p>
+   </div><hr /><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="security.cgi-bin.default.html">Вариант 1: обслуживаются только общедоступные файлы</a></div>
+ <div class="next" style="float: right;"><a href="security.cgi-bin.doc-root.html">Вариант 3: использование опций doc_root и user_dir</a></div>
+ <div class="up"><a href="security.cgi-bin.html">Если PHP установлен как CGI</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

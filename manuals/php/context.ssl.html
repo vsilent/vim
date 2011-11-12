@@ -1,0 +1,304 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <title>SSL context option listing</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+ </head>
+ <body><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="context.ftp.html">FTP context options</a></div>
+ <div class="next" style="float: right;"><a href="context.curl.html">CURL context options</a></div>
+ <div class="up"><a href="context.html">Context options and parameters</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="context.ssl" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">SSL context options</h1>
+  <p class="verinfo">(No version information available, might be only in CVS)</p><p class="refpurpose dc-title">SSL context options — SSL context option listing</p>
+
+ </div>
+ 
+ <div class="refsect1 description">
+  <h3 class="title">Описание</h3>
+  <p class="para">
+   Context options for <i>ssl://</i> and <i>tls://</i>
+   transports.
+  </p>
+ </div>
+
+
+ <div class="refsect1 options">
+  <h3 class="title">Options</h3>
+  <p class="para">
+   <dl>
+
+    <dt id="context.ssl.verify-peer">
+     <span class="term">
+      <i><tt class="parameter">verify_peer</tt></i>
+
+      <a href="language.types.boolean.html" class="type boolean">boolean</a>
+     </span>
+
+     <dd>
+
+      <p class="para">
+       Require verification of SSL certificate used.
+      </p>
+      <p class="para">
+       Defaults to <b><tt>FALSE</tt></b>.
+      </p>
+     </dd>
+
+    </dt>
+
+    <dt id="context.ssl.allow-self-signed">
+     <span class="term">
+      <i><tt class="parameter">allow_self_signed</tt></i>
+
+      <a href="language.types.boolean.html" class="type boolean">boolean</a>
+     </span>
+
+     <dd>
+
+      <p class="para">
+       Allow self-signed certificates.
+      </p>
+      <p class="para">
+       Defaults to <b><tt>FALSE</tt></b>
+      </p>
+     </dd>
+
+    </dt>
+
+    <dt id="context.ssl.cafile">
+     <span class="term">
+      <i><tt class="parameter">cafile</tt></i>
+
+      <a href="language.types.string.html" class="type string">string</a>
+     </span>
+
+     <dd>
+
+      <p class="para">
+       Location of Certificate Authority file on local filesystem
+       which should be used with the <i>verify_peer</i>
+       context option to authenticate the identity of the remote peer.
+      </p>
+     </dd>
+
+    </dt>
+
+    <dt id="context.ssl.capath">
+     <span class="term">
+      <i><tt class="parameter">capath</tt></i>
+
+      <a href="language.types.string.html" class="type string">string</a>
+     </span>
+
+     <dd>
+
+      <p class="para">
+       If <i>cafile</i> is not specified or if the certificate
+       is not found there, the directory pointed to by <i>capath</i> 
+       is searched for a suitable certificate.  <i>capath</i>
+       must be a correctly hashed certificate directory.
+      </p>
+     </dd>
+
+    </dt>
+
+    <dt id="context.ssl.local-cert">
+     <span class="term">
+      <i><tt class="parameter">local_cert</tt></i>
+
+      <a href="language.types.string.html" class="type string">string</a>
+     </span>
+
+     <dd>
+
+      <p class="para">
+       Path to local certificate file on filesystem.  It must be a PEM
+       encoded file which contains your certificate and private key.
+       It can optionally contain the certificate chain of issuers.
+      </p>
+     </dd>
+
+    </dt>
+
+    <dt id="context.ssl.passphrase">
+     <span class="term">
+      <i><tt class="parameter">passphrase</tt></i>
+
+      <a href="language.types.string.html" class="type string">string</a>
+     </span>
+
+     <dd>
+
+      <p class="para">
+       Passphrase with which your <i>local_cert</i> file
+       was encoded.
+      </p>
+     </dd>
+
+    </dt>
+
+    <dt id="context.ssl.cn-match">
+     <span class="term">
+      <i><tt class="parameter">CN_match</tt></i>
+
+      <a href="language.types.string.html" class="type string">string</a>
+     </span>
+
+     <dd>
+
+      <p class="para">
+       Common Name we are expecting.  PHP will perform limited wildcard
+       matching.  If the Common Name does not match this, the connection
+       attempt will fail.
+      </p>
+     </dd>
+
+    </dt>
+
+    <dt id="context.ssl.verify-depth">
+     <span class="term">
+      <i><tt class="parameter">verify_depth</tt></i>
+
+      <a href="language.types.integer.html" class="type integer">integer</a>
+     </span>
+
+     <dd>
+
+      <p class="para">
+       Abort if the certificate chain is too deep.
+      </p>
+      <p class="para">
+       Defaults to no verification.
+      </p>
+     </dd>
+
+    </dt>
+
+    <dt id="context.ssl.ciphers">
+     <span class="term">
+      <i><tt class="parameter">ciphers</tt></i>
+
+      <a href="language.types.string.html" class="type string">string</a>
+     </span>
+
+     <dd>
+
+      <p class="para">
+       Sets the list of available ciphers. The format of the string is described
+       in <a href="http://www.openssl.org/docs/apps/ciphers.html#CIPHER_LIST_FORMAT" class="link external">&raquo; ciphers(1)</a>.
+      </p>
+      <p class="para">
+       Defaults to <i>DEFAULT</i>.
+      </p>
+     </dd>
+
+    </dt>
+
+    <dt id="context.ssl.capture-peer-cert">
+     <span class="term">
+      <i><tt class="parameter">capture_peer_cert</tt></i>
+
+      <a href="language.types.boolean.html" class="type boolean">boolean</a>
+     </span>
+
+     <dd>
+
+      <p class="para">
+       If set to <b><tt>TRUE</tt></b> a <i>peer_certificate</i> context option
+       will be created containing the peer certificate.
+      </p>
+     </dd>
+
+    </dt>
+
+    <dt id="context.ssl.capture-peer-chain">
+     <span class="term">
+      <i><tt class="parameter">capture_peer_chain</tt></i>
+
+      <a href="language.types.boolean.html" class="type boolean">boolean</a>
+     </span>
+
+     <dd>
+
+      <p class="para">
+       If set to <b><tt>TRUE</tt></b> a <i>peer_certificate_chain</i> context
+       option will be created containing the certificate chain.
+      </p>
+     </dd>
+
+    </dt>
+
+   </dl>
+
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 changelog">
+  <h3 class="title">Список изменений</h3>
+  <p class="para">
+   <table class="informaltable">
+    <colgroup>
+
+     <thead valign="middle">
+      <tr valign="middle">
+       <th colspan="1">Версия</th>
+       <th colspan="1">Описание</th>
+      </tr>
+
+     </thead>
+
+     <tbody valign="middle" class="tbody">
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left">5.0.0</td>
+       <td colspan="1" rowspan="1" align="left">
+        Added <i><tt class="parameter">capture_peer_cert</tt></i>
+,
+        <i><tt class="parameter">capture_peer_chain</tt></i>
+ and
+        <i><tt class="parameter">ciphers</tt></i>
+.
+       </td>
+      </tr>
+
+     </tbody>
+    </colgroup>
+
+   </table>
+  </p>
+ </div>
+
+
+ <div class="refsect1 notes">
+  <h3 class="title">Примечания</h3>
+  <blockquote><p><b class="note">Замечание</b>: 
+   <span class="simpara">
+    Because <i>ssl://</i> is the underlying transport for the
+    <a href="wrappers.http.html" class="link"><i>https://</i></a> and
+    <a href="wrappers.ftp.html" class="link"><i>ftps://</i></a> wrappers, 
+    any context options which apply to <i>ssl://</i> also apply to
+    <i>https://</i> and <i>ftps://</i>.
+   </span>
+  </p></blockquote>
+ </div>
+
+
+ <div class="refsect1 seealso">
+  <h3 class="title">Смотрите также</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"><a href="context.socket.html" class="xref">Socket context options</a></li>
+   </ul>
+  </p>
+ </div>
+
+
+</div><hr /><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="context.ftp.html">FTP context options</a></div>
+ <div class="next" style="float: right;"><a href="context.curl.html">CURL context options</a></div>
+ <div class="up"><a href="context.html">Context options and parameters</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

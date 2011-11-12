@@ -1,0 +1,48 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <title>Установка</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+ </head>
+ <body><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="mqseries.setup.html">Установка и настройка</a></div>
+ <div class="next" style="float: right;"><a href="mqseries.ini.html">Настройка во время выполнения</a></div>
+ <div class="up"><a href="mqseries.setup.html">Установка и настройка</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="mqseries.configure" class="section">
+ <h2 class="title">Установка</h2>
+ <p class="para">
+  Это расширение <a href="http://pecl.php.net/" class="link external">&raquo; PECL</a>
+не поставляется вместе с PHP.
+ </p>
+ <p class="para">
+  Дополнительная информация, такая как новый версии,
+скачивание, исходные файлы, информация о разработчике и CHANGELOG, могут
+быть найдены здесь:  <a href="http://pecl.php.net/package/mqseries" class="link external">&raquo; http://pecl.php.net/package/mqseries</a>.
+ </p>
+ <blockquote><p><b class="note">Замечание</b>: 
+  <span class="simpara">
+   The official name of this extension is <em class="emphasis">mqseries</em>.
+  </span>
+ </p></blockquote>
+ <p class="para">
+  There are two ways to connecto to a queue manager. These depend on the way the extention is compiled and linked.
+   <ul class="itemizedlist">
+    <li class="listitem">
+     <p class="para">First one and also the default one is using the mqic libraries. Compiling and linking the
+     extention against these IBM WebSphere MQSeries libraries allows the extention to connect to the
+      Queue manager using the client interface. Remote conections are posible this way.</p>
+    </li> 
+    <li class="listitem">
+     <p class="para">The other way is to compile and link against the mqm libraries. Using these libraries it is 
+     possible to make use of the transaction management of a queue manager.</p>
+    </li>
+   </ul>
+ </p>
+ <p class="para">Currently selecting the libraries to use is done by changing the config.m4 file.</p>
+</div><hr /><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="mqseries.setup.html">Установка и настройка</a></div>
+ <div class="next" style="float: right;"><a href="mqseries.ini.html">Настройка во время выполнения</a></div>
+ <div class="up"><a href="mqseries.setup.html">Установка и настройка</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

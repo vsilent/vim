@@ -1,0 +1,114 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <title>Установка</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+ </head>
+ <body><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="yaz.setup.html">Установка и настройка</a></div>
+ <div class="next" style="float: right;"><a href="yaz.configuration.html">Настройка во время выполнения</a></div>
+ <div class="up"><a href="yaz.setup.html">Установка и настройка</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="yaz.installation" class="section">
+ <h2 class="title">Установка</h2>
+ <p class="para">
+  Obtain YAZ (ANSI/NISO Z39.50 support) and install it. 
+  YAZ can be fetched in source or in various prebuilt packages
+  from the <a href="http://ftp.indexdata.dk/pub/yaz/" class="link external">&raquo; YAZ archive</a>. 
+  Systems such as Debian GNU/Linux, Suse Linux, FreeBSD also has YAZ
+  as part of their distribution.
+ </p>
+ <p class="para">
+  For the PHP 4 series, the YAZ extension is bundled (but not YAZ itself)
+  Build PHP with your favorite modules and add option 
+  <span class="option">--with-yaz[=DIR]</span>.
+ </p>
+ <div class="example">
+  <p><b>Пример #1 YAZ compilation for PHP 4 on Unix</b></p>
+  <div class="example-contents">
+   <div class="cdata"><pre>
+gunzip -c php-4.4.X.tar.gz|tar xf -
+gunzip -c yaz-2.1.8.tar.gz|tar xf -
+cd yaz-2.1.8
+./configure --prefix=/usr
+make
+sudo make install
+cd ../php-4.4.X.
+./configure --with-yaz=/usr/bin
+make
+sudo make install
+</pre></div>
+  </div>
+
+ </div>
+ <p class="para">
+  For PHP 5, the YAZ extension is in <a href="http://pecl.php.net/" class="link external">&raquo; PECL</a>
+  and is installed as a shared object/dll.
+  If you have pear installed the easiest way to download, configure and
+  install the YAZ extension is by using the <strong class="command">pecl</strong> command.
+ </p>
+ <p class="para">
+  Installation of YAZ on Linux
+ </p>
+ <p class="para">
+  Дополнительная информация, такая как новый версии,
+скачивание, исходные файлы, информация о разработчике и CHANGELOG, могут
+быть найдены здесь: 
+  <a href="http://pecl.php.net/package/yaz" class="link external">&raquo; http://pecl.php.net/package/yaz</a>
+ </p>
+ <p class="para">
+  Installation on Windows systems
+ </p> 
+ <p class="para">
+  Вы можете скачать <acronym title="Dynamic Link Library">DLL</acronym> этого
+расширения <acronym title="PHP Extension and Application Repository">PECL</acronym> со страницы <a href="http://www.php.net/downloads.php" class="link external">&raquo; 
+PHP Downloads</a> или <a href="http://snaps.php.net/" class="link external">&raquo; 
+http://snaps.php.net/</a>.
+  <var class="filename">php_yaz.dll</var> depends on 
+  <var class="filename">yaz.dll</var>. The <var class="filename">yaz.dll</var>
+  is part of the Win32 ZIP from the PHP site. It is also part 
+  of the Windows YAZ install available from the
+  <a href="http://ftp.indexdata.dk/pub/yaz/win32/" class="link external">&raquo; YAZ WIN32 area</a>.
+ </p>
+ <div class="warning"><b class="warning">Внимание</b>
+  <p class="para">
+   The PHP 5.0.5 Win32 zip includes a too old version of
+   <var class="filename">yaz.dll</var> (version 1.9.1 &lt; required version 2.0.13).
+   If that&#039;s the case use the <var class="filename">yaz.dll</var> from a newer
+   <a href="http://ftp.indexdata.dk/pub/yaz/win32/" class="link external">&raquo; YAZ WIN32 install</a>.
+  </p>
+ </div>
+
+ <p class="para">
+  On windows, don&#039;t forget to add the PHP directory to the PATH, so that the
+  <var class="filename">yaz.dll</var> file can be found by the system.
+ </p>
+
+ <p class="para">
+  If you are using YAZ as a shared extension, add (or uncomment) the following
+  line in <var class="filename">php.ini</var> on Unix:
+  <div class="example-contents"><pre>
+   extension=yaz.so
+  </pre></div>
+  And for Windows:
+  <div class="example-contents"><pre>
+   extension=php_yaz.dll
+  </pre></div>
+ </p>
+
+ <div class="warning"><b class="warning">Внимание</b><p class="simpara">Расширение <a href="ref.imap.html" class="link">IMAP</a> не может использоваться вместе с расширениями
+<a href="ref.recode.html" class="link">перекодировки</a> или <a href="ref.yaz.html" class="link">YAZ</a>. Это связано с тем фактом, что они оба
+используют один и тот же внутренний символ.</p></div>
+
+ <blockquote><p><b class="note">Замечание</b>: 
+  
+   The above problem is solved in version 2.0 of YAZ.
+  <br />
+ </p></blockquote>
+
+</div><hr /><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="yaz.setup.html">Установка и настройка</a></div>
+ <div class="next" style="float: right;"><a href="yaz.configuration.html">Настройка во время выполнения</a></div>
+ <div class="up"><a href="yaz.setup.html">Установка и настройка</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

@@ -1,0 +1,101 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <title>Initializes a stored procedure or a remote stored procedure</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+ </head>
+ <body><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="function.mssql-guid-string.html">mssql_guid_string</a></div>
+ <div class="next" style="float: right;"><a href="function.mssql-min-error-severity.html">mssql_min_error_severity</a></div>
+ <div class="up"><a href="ref.mssql.html">Microsoft SQL Server Functions</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="function.mssql-init" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">mssql_init</h1>
+  <p class="verinfo">(PHP 4 &gt;= 4.0.7, PHP 5, PECL odbtp:1.1.1-1.1.4)</p><p class="refpurpose dc-title">mssql_init — Initializes a stored procedure or a remote stored procedure</p>
+
+ </div>
+ 
+ <div class="refsect1 description">
+  <h3 class="title">Описание</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type">resource</span> <span class="methodname"><b><b>mssql_init</b></b></span>
+    ( <span class="methodparam"><span class="type">string</span> <tt class="parameter">$sp_name</tt></span>
+   [, <span class="methodparam"><span class="type">resource</span> <tt class="parameter">$link_identifier</tt></span>
+  ] )</div>
+
+  <p class="para rdfs-comment">
+   Initializes a stored procedure or a remote stored procedure.
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters">
+  <h3 class="title">Список параметров</h3>
+  <p class="para">
+   <dl>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">sp_name</tt></i>
+</span>
+
+     <dd>
+
+      <p class="para">
+       Stored procedure name, like <i>ownew.sp_name</i> or
+       <i>otherdb.owner.sp_name</i>. 
+      </p>
+     </dd>
+
+    </dt>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">link_identifier</tt></i>
+</span>
+
+     <dd>
+
+      <p class="para">
+       A MS SQL link identifier, returned by 
+       <a href="function.mssql-connect.html" class="function">mssql_connect()</a>.
+      </p>
+     </dd>
+
+    </dt>
+
+   </dl>
+
+  </p>
+ </div>
+
+
+ <div class="refsect1 returnvalues">
+  <h3 class="title">Возвращаемые значения</h3>
+  <p class="para">
+   Returns a resource identifier &quot;statement&quot;, used in subsequent calls to
+   <a href="function.mssql-bind.html" class="function">mssql_bind()</a> and <a href="function.mssql-execute.html" class="function">mssql_execute()</a>,
+   or <b><tt>FALSE</tt></b> on errors. 
+  </p>
+ </div>
+
+
+ <div class="refsect1 seealso">
+  <h3 class="title">Смотрите также</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"><a href="function.mssql-bind.html" class="function" rel="rdfs-seeAlso">mssql_bind()</a></li>
+    <li class="member"><a href="function.mssql-execute.html" class="function" rel="rdfs-seeAlso">mssql_execute()</a></li>
+    <li class="member"><a href="function.mssql-free-statement.html" class="function" rel="rdfs-seeAlso">mssql_free_statement()</a></li>
+   </ul>
+  </p>
+ </div>
+
+
+</div><hr /><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="function.mssql-guid-string.html">mssql_guid_string</a></div>
+ <div class="next" style="float: right;"><a href="function.mssql-min-error-severity.html">mssql_min_error_severity</a></div>
+ <div class="up"><a href="ref.mssql.html">Microsoft SQL Server Functions</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

@@ -1,0 +1,99 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <title>Экранирует спецсимволы в стиле языка C</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+ </head>
+ <body><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="ref.strings.html">Функции обработки строк</a></div>
+ <div class="next" style="float: right;"><a href="function.addslashes.html">addslashes</a></div>
+ <div class="up"><a href="ref.strings.html">Функции обработки строк</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="function.addcslashes" class="refentry">
+   <div class="refnamediv">
+    <h1 class="refname">addcslashes</h1>
+    <p class="verinfo">(PHP 4, PHP 5)</p><p class="refpurpose dc-title">addcslashes — Экранирует спецсимволы в стиле языка C</p>
+
+   </div>
+   <div class="refsect1 unknown">
+    <h3 class="title">Описание</h3>
+     <div class="methodsynopsis dc-description">
+      <span class="type">string</span> <span class="methodname"><b><b>addcslashes</b></b></span>
+       ( <span class="methodparam"><span class="type">string</span> <tt class="parameter">$str</tt></span>
+      , <span class="methodparam"><span class="type">string</span> <tt class="parameter">$charlist</tt></span>
+      )</div>
+
+    <p class="para rdfs-comment">
+     Возвращает сроку <i><tt class="parameter">str</tt></i>
+, в которой перед каждым 
+     символом из перечисленных в  <i><tt class="parameter">charlist</tt></i>
+ символов 
+     добавлен обратный слэш (<i>\</i>). Экранируются
+     <i>\n</i>, <i>\r</i> и т.д. в стиле языка C,
+     символы с ASCII менее 32 и более 126 преобразуются в восьмеричное 
+     представление.
+    </p>
+    <p class="para">
+     Будьте внимательны при экранировании символв 0, a, b, f, n, r, 
+     t и v. Они будут преобразованы в \0, \a, \b, \f, \n, \r, \t 
+     и \v. 
+     В C все они являются предопреденными escape-последовательностями, в 
+     то время как в PHP только \0 (<b><tt>NULL</tt></b>), \r (возврат каретки), \n 
+     (перевод строки) и \t (табуляция).
+    </p>
+    <p class="para">
+     При передаче <i><tt class="parameter">charlist</tt></i>
+ вида &quot;\0..\37&quot; будут 
+     экранированы символы с ASCII кодами от 0 до 37.
+     <div class="example">
+      <p><b>Пример #1 Пример использования <b>addcslashes()</b></b></p>
+      <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$escaped&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">addcslashes</span><span style="color: #007700">(</span><span style="color: #0000BB">$not_escaped</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"\0..\37!@\177..\377"</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+      </div>
+
+     </div>
+    </p>
+    <p class="para">
+     Следует быть внимательным при указании диапазона символов в аргументе 
+     charlist. Проверяйте, какие символы входят в этот диапазон.
+     <div class="informalexample">
+      <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">addcslashes</span><span style="color: #007700">(</span><span style="color: #DD0000">'foo[&nbsp;]'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'A..z'</span><span style="color: #007700">);<br /></span><span style="color: #FF8000">//&nbsp;выводит:&nbsp;&nbsp;\f\o\o\[&nbsp;\]<br />//&nbsp;Будут&nbsp;экранированы&nbsp;заглавные&nbsp;и&nbsp;строчные&nbsp;английские&nbsp;буквы<br />//&nbsp;...&nbsp;а&nbsp;также&nbsp;[\]^_`&nbsp;&nbsp;а&nbsp;также&nbsp;табуляция,<br />//&nbsp;возврат&nbsp;каретки,&nbsp;перевод&nbsp;строки&nbsp;и&nbsp;т.д.<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+      </div>
+
+     </div>
+     Также, если ASCII код первого символа диапозона больше, чем 
+     последнего, диапазон не будет создан. Вместо этого будут 
+     экранироваться только первый и последний символы и 
+     точка. Для  определения ASCII кода символов используйте функцию 
+     <a href="function.ord.html" class="function">ord()</a>.
+     <div class="informalexample">
+      <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">addcslashes</span><span style="color: #007700">(</span><span style="color: #DD0000">"zoo['.']"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'z..A'</span><span style="color: #007700">);<br /></span><span style="color: #FF8000">//&nbsp;выводит:&nbsp;&nbsp;\zoo['\.']<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+      </div>
+
+     </div>
+    </p>
+    <p class="para">
+     См. также описание функций <a href="function.stripcslashes.html" class="function">stripcslashes()</a>, 
+     <a href="function.stripslashes.html" class="function">stripslashes()</a>, 
+     <a href="function.htmlspecialchars.html" class="function">htmlspecialchars()</a> и
+     <a href="function.quotemeta.html" class="function">quotemeta()</a>.
+    </p>
+   </div>
+
+  </div><hr /><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="ref.strings.html">Функции обработки строк</a></div>
+ <div class="next" style="float: right;"><a href="function.addslashes.html">addslashes</a></div>
+ <div class="up"><a href="ref.strings.html">Функции обработки строк</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

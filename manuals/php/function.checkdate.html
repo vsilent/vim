@@ -1,0 +1,86 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <title>Проверяет правильность даты по грегорианскому календарю</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+ </head>
+ <body><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="ref.datetime.html">Date/Time</a></div>
+ <div class="next" style="float: right;"><a href="function.date-create.html">date_create</a></div>
+ <div class="up"><a href="ref.datetime.html">Date/Time</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="function.checkdate" class="refentry">
+   <div class="refnamediv">
+    <h1 class="refname">checkdate</h1>
+    <p class="verinfo">(PHP 4, PHP 5)</p><p class="refpurpose dc-title">checkdate — Проверяет правильность даты по грегорианскому календарю</p>
+
+   </div>
+   <div class="refsect1 unknown">
+    <h3 class="title">Описание</h3>
+     <div class="methodsynopsis dc-description">
+      <span class="type">bool</span> <span class="methodname"><b><b>checkdate</b></b></span>
+       ( <span class="methodparam"><span class="type">int</span> <tt class="parameter">$month</tt></span>
+      , <span class="methodparam"><span class="type">int</span> <tt class="parameter">$day</tt></span>
+      , <span class="methodparam"><span class="type">int</span> <tt class="parameter">$year</tt></span>
+      )</div>
+
+    <p class="para rdfs-comment">
+     Возвращает <b><tt>TRUE</tt></b> если дата, заданная аргументами, является правильной; 
+     иначе возвращает <b><tt>FALSE</tt></b>.
+     Дата считается правильной, если:
+     <ul class="itemizedlist">
+      <li class="listitem">
+       <span class="simpara">
+        год в диапазоне от 1 до 32767 включительно
+       </span>
+      </li>
+      <li class="listitem">
+       <span class="simpara">
+        месяц в диапазоне от 1 до 12 включительно
+       </span>
+      </li>
+      <li class="listitem">
+       <span class="simpara">
+        <i><tt class="parameter">day</tt></i>
+ является допустимым номером дня для 
+        месяца, заданного аргументом
+        <i><tt class="parameter">month</tt></i>
+, принимая во внимание,что
+        <i><tt class="parameter">year</tt></i>
+ может задавать високосный год.
+       </span>
+      </li>
+     </ul>
+    </p>
+    <p class="para">
+     <div class="example">
+      <p><b>Пример #1 Пример использования функции <b>checkdate()</b></b></p>
+      <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">checkdate</span><span style="color: #007700">(</span><span style="color: #0000BB">12</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">31</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">2000</span><span style="color: #007700">));<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">checkdate</span><span style="color: #007700">(</span><span style="color: #0000BB">2</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">29</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">2001</span><span style="color: #007700">));<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+      </div>
+
+      <div class="example-contents"><p>
+       Приведенный выше пример выведет:
+      </p></div>
+      <div class="example-contents"><pre>
+<div class="cdata"><pre>
+bool(true)
+bool(false)
+</pre></div>
+      </pre></div>
+     </div>
+    </p>
+    <p class="para">
+     См.также описание функций <a href="function.mktime.html" class="function">mktime()</a> и <a href="function.strtotime.html" class="function">strtotime()</a>.
+    </p>
+   </div>
+
+  </div><hr /><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="ref.datetime.html">Date/Time</a></div>
+ <div class="next" style="float: right;"><a href="function.date-create.html">date_create</a></div>
+ <div class="up"><a href="ref.datetime.html">Date/Time</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

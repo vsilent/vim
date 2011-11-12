@@ -1,0 +1,56 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <title>Определяет, доступен ли файл для чтения</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+ </head>
+ <body><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="function.is-link.html">is_link</a></div>
+ <div class="next" style="float: right;"><a href="function.is-uploaded-file.html">is_uploaded_file</a></div>
+ <div class="up"><a href="ref.filesystem.html">Файловая система</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="function.is-readable" class="refentry">
+   <div class="refnamediv">
+    <h1 class="refname">is_readable</h1>
+    <p class="verinfo">(PHP 4, PHP 5)</p><p class="refpurpose dc-title">is_readable — Определяет, доступен ли файл для чтения</p>
+
+   </div>
+   <div class="refsect1 unknown">
+    <h3 class="title">Описание</h3>
+     <div class="methodsynopsis dc-description">
+      <span class="type">bool</span> <span class="methodname"><b><b>is_readable</b></b></span>
+       ( <span class="methodparam"><span class="type">string</span> <tt class="parameter">$filename</tt></span>
+      )</div>
+
+    <p class="para rdfs-comment">
+     Возвращает <b><tt>TRUE</tt></b>, если файл существует и доступен для чтения.
+    </p>
+    <p class="para">
+     Не забывайте, что PHP может обращаться к файлам от имени
+     пользователя, от которого запущен веб-сервер (часто &#039;nobody&#039;).
+     Ограничения безопасного режима не беруться во внимание.
+    </p>
+
+    <blockquote><p><b class="note">Замечание</b>: <span class="simpara">Результаты этой функции
+кэшируются. Более подробную информацию смотрите в разделе
+<a href="function.clearstatcache.html" class="function">clearstatcache()</a>.</span></p></blockquote>
+
+    <div class="tip"><b class="tip">Подсказка</b><p class="simpara">Начиная с 
+<i>PHP 5.0.0</i>, эта функция также может быть
+использована с <em class="emphasis">некоторыми</em> упаковщиками url.
+Список упаковщиков, поддерживаемых семейством функций
+<a href="function.stat.html" class="function">stat()</a>, смотрите в <a href="wrappers.html" class="xref">List of Supported Protocols/Wrappers</a>.</p></div>
+
+    <p class="para">
+     См. также описание функций <a href="function.is-writable.html" class="function">is_writable()</a>, 
+     <a href="function.file-exists.html" class="function">file_exists()</a> и
+     <a href="function.fgets.html" class="function">fgets()</a>.
+    </p>
+   </div>
+
+  </div><hr /><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="function.is-link.html">is_link</a></div>
+ <div class="next" style="float: right;"><a href="function.is-uploaded-file.html">is_uploaded_file</a></div>
+ <div class="up"><a href="ref.filesystem.html">Файловая система</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

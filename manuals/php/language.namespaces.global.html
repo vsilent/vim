@@ -1,0 +1,34 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <title>Глобальное пространство имён</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+ </head>
+ <body><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="language.namespaces.using.html">Использование пространств имён</a></div>
+ <div class="next" style="float: right;"><a href="language.namespaces.constant.html">__NAMESPACE__</a></div>
+ <div class="up"><a href="language.namespaces.html">Пространства имён</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="language.namespaces.global" class="sect1">
+  <h2 class="title">Глобальное пространство имён</h2>
+  <p class="para">
+   Без определения какого-либо пространства имён, все определения классов 
+   и функциий оказываются в глобальном пространстве - как это было в PHP
+   до появления поддержки пространств имён. Префиксирование имени знаками 
+   <i>::</i> указывает, что имя из глобального пространства 
+   имён - работает даже в контексте пространства имён.
+   <div class="example">
+    <p><b>Пример #1 Использование указания на глобальное пространство имён </b></p>
+    <div class="example-contents"><div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;namespace&nbsp;A</span><span style="color: #007700">::</span><span style="color: #0000BB">B</span><span style="color: #007700">::</span><span style="color: #0000BB">C</span><span style="color: #007700">;<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">/*&nbsp;This&nbsp;function&nbsp;is&nbsp;A::B::C::fopen&nbsp;*/<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">function&nbsp;</span><span style="color: #0000BB">fopen</span><span style="color: #007700">()&nbsp;{&nbsp;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">/*&nbsp;...&nbsp;*/<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$f&nbsp;</span><span style="color: #007700">=&nbsp;::</span><span style="color: #0000BB">fopen</span><span style="color: #007700">(...);&nbsp;</span><span style="color: #FF8000">//&nbsp;вызывает&nbsp;глобальную&nbsp;fopen<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">return&nbsp;</span><span style="color: #0000BB">$f</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div></div>
+
+   </div>
+  </p>
+ </div><hr /><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="language.namespaces.using.html">Использование пространств имён</a></div>
+ <div class="next" style="float: right;"><a href="language.namespaces.constant.html">__NAMESPACE__</a></div>
+ <div class="up"><a href="language.namespaces.html">Пространства имён</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

@@ -1,0 +1,121 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <title>Copy a file internal to the phar archive to another new file within the phar</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+ </head>
+ <body><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="phardata.converttoexecutable.html">PharData::convertToExecutable</a></div>
+ <div class="next" style="float: right;"><a href="phardata.decompress.html">PharData::decompress</a></div>
+ <div class="up"><a href="class.PharData.html">PharData</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="phardata.copy" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">PharData::copy</h1>
+  <p class="verinfo">(No version information available, might be only in CVS)</p><p class="refpurpose dc-title">PharData::copy — Copy a file internal to the phar archive to another new file within the phar</p>
+
+ </div>
+
+ <div class="refsect1 description">
+  <h3 class="title">Описание</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type">bool</span> <span class="methodname"><b><b>PharData::copy</b></b></span>
+    ( <span class="methodparam"><span class="type">string</span> <tt class="parameter">$oldfile</tt></span>
+   , <span class="methodparam"><span class="type">string</span> <tt class="parameter">$newfile</tt></span>
+   )</div>
+
+
+  <p class="para rdfs-comment">
+   Copy a file internal to the tar/zip archive to another new file within the same archive.
+   This is an object-oriented alternative to using <a href="function.copy.html" class="function">copy()</a> with
+   the phar stream wrapper.
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters">
+  <h3 class="title">Список параметров</h3>
+  <p class="para">
+   <dl>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">oldfile</tt></i>
+</span>
+
+     <dd>
+
+      <p class="para">
+      </p>
+     </dd>
+
+    </dt>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">newfile</tt></i>
+</span>
+
+     <dd>
+
+      <p class="para">
+      </p>
+     </dd>
+
+    </dt>
+
+   </dl>
+
+  </p>
+
+ </div>
+
+ <div class="refsect1 returnvalues">
+  <h3 class="title">Возвращаемые значения</h3>
+  <p class="para">
+   returns <b><tt>TRUE</tt></b> on success, but it is safer to encase method call in a
+   try/catch block and assume success if no exception is thrown.
+  </p>
+ </div>
+
+
+ <div class="refsect1 errors">
+  <h3 class="title">Errors/Exceptions</h3>
+  <p class="para">
+   throws <span class="classname">UnexpectedValueException</span> if the source file does not
+   exist, the destination file already exists, write access is disabled, opening either
+   file fails, reading the source file fails, or a <span class="classname">PharException</span>
+   if writing the changes to the phar fails.
+  </p>
+ </div>
+
+
+ <div class="refsect1 examples">
+  <h3 class="title">Примеры</h3>
+  <p class="para">
+   <div class="example">
+    <p><b>Пример #1 A <b>PharData::copy()</b> example</b></p>
+    <div class="example-contents"><p>
+     This example shows using <b>PharData::copy()</b> and the
+     equivalent stream wrapper performance of the same thing.  The primary
+     difference between the two approaches is error handling.  All PharData methods
+     throw exceptions, whereas the stream wrapper uses <a href="function.trigger-error.html" class="function">trigger_error()</a>.
+    </p></div>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">try&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$phar&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">PharData</span><span style="color: #007700">(</span><span style="color: #DD0000">'myphar.tar'</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$phar</span><span style="color: #007700">[</span><span style="color: #DD0000">'a'</span><span style="color: #007700">]&nbsp;=&nbsp;</span><span style="color: #DD0000">'hi'</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$phar</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">copy</span><span style="color: #007700">(</span><span style="color: #DD0000">'a'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'b'</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #0000BB">$phar</span><span style="color: #007700">[</span><span style="color: #DD0000">'b'</span><span style="color: #007700">];&nbsp;</span><span style="color: #FF8000">//&nbsp;outputs&nbsp;"hi"<br /></span><span style="color: #007700">}&nbsp;catch&nbsp;(</span><span style="color: #0000BB">Exception&nbsp;$e</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;handle&nbsp;error<br /></span><span style="color: #007700">}<br /><br /></span><span style="color: #FF8000">//&nbsp;the&nbsp;stream&nbsp;wrapper&nbsp;equivalent&nbsp;of&nbsp;the&nbsp;above&nbsp;code.<br />//&nbsp;E_WARNINGS&nbsp;are&nbsp;triggered&nbsp;on&nbsp;error&nbsp;rather&nbsp;than&nbsp;exceptions.<br /></span><span style="color: #0000BB">copy</span><span style="color: #007700">(</span><span style="color: #DD0000">'phar://myphar.tar/a'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'phar//myphar.tar/c'</span><span style="color: #007700">);<br />echo&nbsp;</span><span style="color: #0000BB">file_get_contents</span><span style="color: #007700">(</span><span style="color: #DD0000">'phar://myphar.tar/c'</span><span style="color: #007700">);&nbsp;</span><span style="color: #FF8000">//&nbsp;outputs&nbsp;"hi"<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+  </p>
+ </div>
+
+
+</div><hr /><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="phardata.converttoexecutable.html">PharData::convertToExecutable</a></div>
+ <div class="next" style="float: right;"><a href="phardata.decompress.html">PharData::decompress</a></div>
+ <div class="up"><a href="class.PharData.html">PharData</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

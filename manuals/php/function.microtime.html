@@ -1,0 +1,69 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <title>Возвращает метку времени с микросекундами</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+ </head>
+ <body><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="function.localtime.html">localtime</a></div>
+ <div class="next" style="float: right;"><a href="function.mktime.html">mktime</a></div>
+ <div class="up"><a href="ref.datetime.html">Date/Time</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="function.microtime" class="refentry">
+   <div class="refnamediv">
+    <h1 class="refname">microtime</h1>
+    <p class="verinfo">(PHP 4, PHP 5)</p><p class="refpurpose dc-title">microtime — Возвращает метку времени с микросекундами</p>
+
+   </div>
+   <div class="refsect1 unknown">
+    <h3 class="title">Описание</h3>
+     <div class="methodsynopsis dc-description">
+      <span class="type"><a href="language.pseudo-types.html#language.types.mixed" class="type mixed">mixed</a></span> <span class="methodname"><b><b>microtime</b></b></span>
+       ([ <span class="methodparam"><span class="type">bool</span> <tt class="parameter">$get_as_float</tt></span>
+     ] )</div>
+
+    <p class="para rdfs-comment">
+     Функция <b>microtime()</b> возвращает текущую метку 
+     времени с микросекундами. Эта функция доступна только на операционных 
+     системах, в которых есть системная функция gettimeofday().
+    </p>
+    <p class="para">
+     При вызове без необязательного параметра, возвращается строка в 
+     формате &quot;msec sec&quot;, где sec - это количество секунд, прошедших с 
+     начала Эпохи Unix (The Unix Epoch, 1 января 1970, 00:00:00 GMT), а msec - это дробная часть. 
+    </p>
+    <p class="para">
+     Если передан аргумент <i><tt class="parameter">get_as_float</tt></i>
+, равный 
+     <b><tt>TRUE</tt></b>, функция <b>microtime()</b> возвращает действительное число.
+    </p>
+    <blockquote><p><b class="note">Замечание</b>: 
+     <span class="simpara">
+      Аргумент <i><tt class="parameter">get_as_float</tt></i>
+ появился в 
+      <i>PHP 5.0.0</i>.
+     </span>
+    </p></blockquote>
+    <p class="para">
+     <div class="example">
+      <p><b>Пример #1 Пример использования функции <b>microtime()</b></b></p>
+      <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /><br /></span><span style="color: #007700">function&nbsp;</span><span style="color: #0000BB">getmicrotime</span><span style="color: #007700">()&nbsp;<br />{&nbsp;<br />&nbsp;&nbsp;&nbsp;&nbsp;list(</span><span style="color: #0000BB">$usec</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$sec</span><span style="color: #007700">)&nbsp;=&nbsp;</span><span style="color: #0000BB">explode</span><span style="color: #007700">(</span><span style="color: #DD0000">"&nbsp;"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">microtime</span><span style="color: #007700">());&nbsp;<br />&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;((float)</span><span style="color: #0000BB">$usec&nbsp;</span><span style="color: #007700">+&nbsp;(float)</span><span style="color: #0000BB">$sec</span><span style="color: #007700">);&nbsp;<br />}&nbsp;<br /><br /></span><span style="color: #0000BB">$time_start&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">getmicrotime</span><span style="color: #007700">();<br />&nbsp;&nbsp;&nbsp;&nbsp;<br />for&nbsp;(</span><span style="color: #0000BB">$i</span><span style="color: #007700">=</span><span style="color: #0000BB">0</span><span style="color: #007700">;&nbsp;</span><span style="color: #0000BB">$i&nbsp;</span><span style="color: #007700">&lt;&nbsp;</span><span style="color: #0000BB">1000</span><span style="color: #007700">;&nbsp;</span><span style="color: #0000BB">$i</span><span style="color: #007700">++)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;Ничего&nbsp;не&nbsp;делать.&nbsp;Повторить&nbsp;1000&nbsp;раз<br /></span><span style="color: #007700">}<br /><br /></span><span style="color: #0000BB">$time_end&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">getmicrotime</span><span style="color: #007700">();<br /></span><span style="color: #0000BB">$time&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$time_end&nbsp;</span><span style="color: #007700">-&nbsp;</span><span style="color: #0000BB">$time_start</span><span style="color: #007700">;<br /><br />echo&nbsp;</span><span style="color: #DD0000">"Ничего&nbsp;не&nbsp;делал&nbsp;$time&nbsp;секунд\n"</span><span style="color: #007700">;<br /><br /></span><span style="color: #FF8000">//&nbsp;в&nbsp;PHP&nbsp;5&nbsp;то&nbsp;же&nbsp;самое&nbsp;можно&nbsp;сделать&nbsp;вот&nbsp;так:<br /><br /></span><span style="color: #0000BB">$time_start&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">microtime</span><span style="color: #007700">(</span><span style="color: #0000BB">1</span><span style="color: #007700">);<br /><br />for&nbsp;(</span><span style="color: #0000BB">$i</span><span style="color: #007700">=</span><span style="color: #0000BB">0</span><span style="color: #007700">;&nbsp;</span><span style="color: #0000BB">$i&nbsp;</span><span style="color: #007700">&lt;&nbsp;</span><span style="color: #0000BB">1000</span><span style="color: #007700">;&nbsp;</span><span style="color: #0000BB">$i</span><span style="color: #007700">++)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;Ничего&nbsp;не&nbsp;делать.&nbsp;Повторить&nbsp;1000&nbsp;раз<br /></span><span style="color: #007700">}<br /><br /></span><span style="color: #0000BB">$time_end&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">microtime</span><span style="color: #007700">(</span><span style="color: #0000BB">1</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$time&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$time_end&nbsp;</span><span style="color: #007700">-&nbsp;</span><span style="color: #0000BB">$time_start</span><span style="color: #007700">;<br /><br />echo&nbsp;</span><span style="color: #DD0000">"Ничего&nbsp;не&nbsp;делал&nbsp;$time&nbsp;секунд\n"</span><span style="color: #007700">;<br /><br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+      </div>
+
+     </div>
+    </p>
+    <p class="para">
+     См. также описание функции <a href="function.time.html" class="function">time()</a>.
+    </p>
+   </div>
+
+  </div><hr /><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="function.localtime.html">localtime</a></div>
+ <div class="next" style="float: right;"><a href="function.mktime.html">mktime</a></div>
+ <div class="up"><a href="ref.datetime.html">Date/Time</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

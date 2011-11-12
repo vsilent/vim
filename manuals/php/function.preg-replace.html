@@ -1,0 +1,240 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <title>Выполняет поиск и замену по регулярному выражению</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+ </head>
+ <body><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="function.preg-replace-callback.html">preg_replace_callback</a></div>
+ <div class="next" style="float: right;"><a href="function.preg-split.html">preg_split</a></div>
+ <div class="up"><a href="ref.pcre.html">PCRE</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="function.preg-replace" class="refentry">
+   <div class="refnamediv">
+    <h1 class="refname">preg_replace</h1>
+    <p class="verinfo">(PHP 4, PHP 5)</p><p class="refpurpose dc-title">preg_replace — Выполняет поиск и замену по регулярному выражению</p>
+
+   </div>
+   <div class="refsect1 unknown">
+    <h3 class="title">Описание</h3>
+     <div class="methodsynopsis dc-description">
+      <span class="type"><a href="language.pseudo-types.html#language.types.mixed" class="type mixed">mixed</a></span> <span class="methodname"><b><b>preg_replace</b></b></span>
+       ( <span class="methodparam"><span class="type"><a href="language.pseudo-types.html#language.types.mixed" class="type mixed">mixed</a></span> <tt class="parameter">$pattern</tt></span>
+      , <span class="methodparam"><span class="type"><a href="language.pseudo-types.html#language.types.mixed" class="type mixed">mixed</a></span> <tt class="parameter">$replacement</tt></span>
+      , <span class="methodparam"><span class="type"><a href="language.pseudo-types.html#language.types.mixed" class="type mixed">mixed</a></span> <tt class="parameter">$subject</tt></span>
+      [, <span class="methodparam"><span class="type">int</span> <tt class="parameter">$limit</tt></span>
+     ] )</div>
+
+    <p class="para rdfs-comment">
+     Выполняет поиск в строке <i><tt class="parameter">subject</tt></i>
+ совпадений с шаблоном
+     <i><tt class="parameter">pattern</tt></i>
+ и заменяет их на
+     <i><tt class="parameter">replacement</tt></i>
+. В случае, если параметр
+     <i><tt class="parameter">limit</tt></i>
+ указан, будет произведена замена 
+     <i><tt class="parameter">limit</tt></i>
+ вхождений шаблона; в случае, если
+     <i><tt class="parameter">limit</tt></i>
+ опущен либо равняется -1, будут заменены все вхождения шаблона.
+    </p>
+    <p class="para">
+     <i><tt class="parameter">Replacement</tt></i>
+ может содержать ссылки вида
+     <i>\\<span class="replaceable">n</span></i> либо (начиная с PHP 4.0.4)
+     <i><span class="replaceable">$n</span></i>, причем последний вариант 
+     предпочтительней. Каждая такая ссылка, будет заменена на подстроку, соответствующую
+     <span class="replaceable">n</span>&#039;нной заключенной в круглые скобки подмаске.
+     <span class="replaceable">n </span>может принимать значения от 0 до 99, причем ссылка
+     <i>\\0</i> (либо <i>$0</i>) соответствует вхождению всего шаблона.
+     Подмаски нумеруются слева направо, начиная с единицы.
+    </p>
+    <p class="para">
+     При использовании замены по шаблону с использованием ссылок на подмаски 
+     может возникнуть ситуация, когда непосредственно за маской следует цифра.
+     В таком случае нотация вида <i>\\n</i> приводит к ошибке: ссылка на первую подмаску, за которой 
+     следует цифра 1, запишется как <i>\\11</i>, что будет интерпретировано как ссылка на одиннадцатую подмаску.
+     Это недоразумение можно устранить, если воспользоваться конструкцией 
+     <i>\${1}1</i>, указывающей на изолированную ссылку на первую подмаску, и следующую за ней
+     цифру <i>1</i>.
+    </p>
+    <p class="para">
+     <div class="example">
+      <p><b>Пример #1 Использование подмасок, за которыми следует цифра</b></p>
+      <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$string&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">"April&nbsp;15,&nbsp;2003"</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$pattern&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">"/(\w+)&nbsp;(\d+),&nbsp;(\d+)/i"</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$replacement&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">"\${1}1,\$3"</span><span style="color: #007700">;<br />echo&nbsp;</span><span style="color: #0000BB">preg_replace</span><span style="color: #007700">(</span><span style="color: #0000BB">$pattern</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$replacement</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$string</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+      </div>
+
+      <div class="example-contents"><p>
+       Результатом работы этого примера будет:
+      </p></div>
+      <div class="example-contents"><pre>
+<div class="cdata"><pre>
+April1,2003
+</pre></div>
+      </pre></div>
+     </div>
+    </p>
+    <p class="para">
+    Если во время выполнения функции были обнаружены совпадения с шаблоном,
+    будет возвращено измененное значение <i><tt class="parameter">subject</tt></i>
+,
+    в противном случае будет возвращен исходный текст <i><tt class="parameter">subject</tt></i>
+.
+    </p>
+    <p class="para">
+    Первые три параметра функции <b>preg_replace()</b> 
+    могут быть одномерными массивами. В случае, если массив использует ключи, при обработке массива
+    они будут взяты в том порядке, в котором они расположены в массиве.
+    Указание ключей в массиве для <i><tt class="parameter">pattern</tt></i>
+ и <i><tt class="parameter">replacement</tt></i>
+ не
+    является обязательным.
+    Если вы все же решили использовать индексы, для сопоставления шаблонов и строк, участвующих в замене,
+    используйте функцию <a href="function.ksort.html" class="function">ksort()</a>  для каждого из массивов.
+    </p>
+    <p class="para">
+     <div class="example">
+      <p><b>Пример #2 Использование массивов с числовыми индексами в качестве аргументов функции <b>preg_replace()</b></b></p>
+      <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$string&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">"The&nbsp;quick&nbsp;brown&nbsp;fox&nbsp;jumped&nbsp;over&nbsp;the&nbsp;lazy&nbsp;dog."</span><span style="color: #007700">;<br /><br /></span><span style="color: #0000BB">$patterns</span><span style="color: #007700">[</span><span style="color: #0000BB">0</span><span style="color: #007700">]&nbsp;=&nbsp;</span><span style="color: #DD0000">"/quick/"</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$patterns</span><span style="color: #007700">[</span><span style="color: #0000BB">1</span><span style="color: #007700">]&nbsp;=&nbsp;</span><span style="color: #DD0000">"/brown/"</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$patterns</span><span style="color: #007700">[</span><span style="color: #0000BB">2</span><span style="color: #007700">]&nbsp;=&nbsp;</span><span style="color: #DD0000">"/fox/"</span><span style="color: #007700">;<br /><br /></span><span style="color: #0000BB">$replacements</span><span style="color: #007700">[</span><span style="color: #0000BB">2</span><span style="color: #007700">]&nbsp;=&nbsp;</span><span style="color: #DD0000">"bear"</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$replacements</span><span style="color: #007700">[</span><span style="color: #0000BB">1</span><span style="color: #007700">]&nbsp;=&nbsp;</span><span style="color: #DD0000">"black"</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$replacements</span><span style="color: #007700">[</span><span style="color: #0000BB">0</span><span style="color: #007700">]&nbsp;=&nbsp;</span><span style="color: #DD0000">"slow"</span><span style="color: #007700">;<br /><br />echo&nbsp;</span><span style="color: #0000BB">preg_replace</span><span style="color: #007700">(</span><span style="color: #0000BB">$patterns</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$replacements</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$string</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+      </div>
+
+      <div class="example-contents"><p>
+       Результат:
+      </p></div>
+      <div class="example-contents"><pre>
+<div class="cdata"><pre>
+The bear black slow jumped over the lazy dog.
+</pre></div>
+      </pre></div>
+      <div class="example-contents"><p>
+       Используя <a href="function.ksort.html" class="function">ksort()</a>, получаем желаемый результат:
+      </p></div>
+      <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /><br />ksort</span><span style="color: #007700">(</span><span style="color: #0000BB">$patterns</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">ksort</span><span style="color: #007700">(</span><span style="color: #0000BB">$replacements</span><span style="color: #007700">);<br /><br />echo&nbsp;</span><span style="color: #0000BB">preg_replace</span><span style="color: #007700">(</span><span style="color: #0000BB">$patterns</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$replacements</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$string</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+      </div>
+
+      <div class="example-contents"><p>
+      Результат:
+      </p></div>
+      <div class="example-contents"><pre>
+<div class="cdata"><pre>
+The slow black bear jumped over the lazy dog.
+</pre></div>
+      </pre></div>
+     </div>
+    </p>
+    <p class="para">
+     В случае, если параметр <i><tt class="parameter">subject</tt></i>
+ является массивом,
+     поиск и замена по шаблону производятся для каждого из его элементов.
+     Возвращаемый результат также будет массивом.
+    </p>
+    <p class="para">
+    В случае, если параметры <i><tt class="parameter">pattern</tt></i>
+ и <i><tt class="parameter">replacement</tt></i>
+ являются
+    массивами, <b>preg_replace()</b> поочередно извлекает из обоих массивов
+    по паре элементов и использует их для операции поиска и замены.
+    Если массив <i><tt class="parameter">replacement</tt></i>
+ содержит больше элементов, чем
+    <i><tt class="parameter">pattern</tt></i>
+, вместо недостающих элементов для замены будут взяты пустые строки.
+    В случае, если <i><tt class="parameter">pattern</tt></i>
+ является массивом, а <i><tt class="parameter">replacement</tt></i>
+ - строкой,
+    по каждому элементу массива <i><tt class="parameter">pattern</tt></i>
+ будет осущесвтлен поиск
+    и замена на <i><tt class="parameter">pattern</tt></i>
+ (шаблоном будут поочередно все элементы массива, в то время как строка замены остается фиксированной). 
+    Вариант, когда <i><tt class="parameter">pattern</tt></i>
+ является строкой, а <i><tt class="parameter">replacement</tt></i>
+ - массивом, не имеет смысла.
+    </p>
+    <p class="para">
+     Модификатор <i>/e</i> меняет поведение функции <b>preg_replace()</b> таким образом, 
+     что параметр <i><tt class="parameter">replacement</tt></i>
+ после выполнения необходимых подстановок интерпретируется как PHP-код и 
+     только после этого используется для замены. Используя данный модификатор, будьте внимательны:
+     параметр <i><tt class="parameter">replacement</tt></i>
+ должен содержать корректный PHP-код,
+     в противном случае в строке, содержащей вызов функции <b>preg_replace()</b>, возникнет 
+     ошибка синтаксиса.
+    </p>
+    <p class="para">
+     <div class="example">
+      <p><b>Пример #3 Замена по нескольким шаблонам</b></p>
+      <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$patterns&nbsp;</span><span style="color: #007700">=&nbsp;array&nbsp;(</span><span style="color: #DD0000">"/(19|20)(\d{2})-(\d{1,2})-(\d{1,2})/"</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">"/^\s*{(\w+)}\s*=/"</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$replace&nbsp;</span><span style="color: #007700">=&nbsp;array&nbsp;(</span><span style="color: #DD0000">"\\3/\\4/\\1\\2"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"$\\1&nbsp;="</span><span style="color: #007700">);<br />echo&nbsp;</span><span style="color: #0000BB">preg_replace</span><span style="color: #007700">(</span><span style="color: #0000BB">$patterns</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$replace</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"{startDate}&nbsp;=&nbsp;1999-5-27"</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+      </div>
+
+      <div class="example-contents"><p>
+       Этот пример выведет:
+      </p></div>
+      <div class="example-contents"><pre>
+<div class="cdata"><pre>
+$startDate = 5/27/1999
+</pre></div>
+      </pre></div>
+     </div>
+    </p>
+    <p class="para">
+     <div class="example">
+      <p><b>Пример #4 Использование модификатора /e</b></p>
+      <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />preg_replace</span><span style="color: #007700">(</span><span style="color: #DD0000">"/(&lt;\/?)(\w+)([^&gt;]*&gt;)/e"</span><span style="color: #007700">,&nbsp;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">"'\\1'.strtoupper('\\2').'\\3'"</span><span style="color: #007700">,&nbsp;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$html_body</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+      </div>
+
+      <div class="example-contents"><p>
+      Преобразует все HTML-теги к верхнему регистру
+      </p></div>
+     </div>
+    </p>
+    <p class="para">
+     <div class="example">
+      <p><b>Пример #5 Конвертор HTML в текст</b></p>
+      <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">//&nbsp;$document&nbsp;на&nbsp;выходе&nbsp;должен&nbsp;содержать&nbsp;HTML-документ.<br />//&nbsp;Необходимо&nbsp;удалить&nbsp;все&nbsp;HTML-теги,&nbsp;секции&nbsp;javascript,<br />//&nbsp;пробельные&nbsp;символы.&nbsp;Также&nbsp;необходимо&nbsp;заменить&nbsp;некоторые<br />//&nbsp;HTML-сущности&nbsp;на&nbsp;их&nbsp;эквивалент.<br /><br /></span><span style="color: #0000BB">$search&nbsp;</span><span style="color: #007700">=&nbsp;array&nbsp;(</span><span style="color: #DD0000">"'&lt;script[^&gt;]*?&gt;.*?&lt;/script&gt;'si"</span><span style="color: #007700">,&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;Вырезает&nbsp;javaScript<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">"'&lt;[\/\!]*?[^&lt;&gt;]*?&gt;'si"</span><span style="color: #007700">,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;Вырезает&nbsp;HTML-теги<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">"'([\r\n])[\s]+'"</span><span style="color: #007700">,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;Вырезает&nbsp;пробельные&nbsp;символы<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">"'&amp;(quot|#34);'i"</span><span style="color: #007700">,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;Заменяет&nbsp;HTML-сущности<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">"'&amp;(amp|#38);'i"</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">"'&amp;(lt|#60);'i"</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">"'&amp;(gt|#62);'i"</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">"'&amp;(nbsp|#160);'i"</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">"'&amp;(iexcl|#161);'i"</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">"'&amp;(cent|#162);'i"</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">"'&amp;(pound|#163);'i"</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">"'&amp;(copy|#169);'i"</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">"'&amp;#(\d+);'e"</span><span style="color: #007700">);&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;интерпретировать&nbsp;как&nbsp;php-код<br /><br /></span><span style="color: #0000BB">$replace&nbsp;</span><span style="color: #007700">=&nbsp;array&nbsp;(</span><span style="color: #DD0000">""</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">""</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">"\\1"</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">"\""</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">"&amp;"</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">"&lt;"</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">"&gt;"</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">"&nbsp;"</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">chr</span><span style="color: #007700">(</span><span style="color: #0000BB">161</span><span style="color: #007700">),<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">chr</span><span style="color: #007700">(</span><span style="color: #0000BB">162</span><span style="color: #007700">),<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">chr</span><span style="color: #007700">(</span><span style="color: #0000BB">163</span><span style="color: #007700">),<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">chr</span><span style="color: #007700">(</span><span style="color: #0000BB">169</span><span style="color: #007700">),<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">"chr(\\1)"</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">$text&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">preg_replace</span><span style="color: #007700">(</span><span style="color: #0000BB">$search</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$replace</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$document</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+      </div>
+
+     </div>
+    </p>
+    <blockquote><p><b class="note">Замечание</b>: 
+     
+      Параметр <i><tt class="parameter">limit</tt></i>
+ доступен в PHP 4.0.1pl2 и выше.
+     <br />
+    </p></blockquote>
+    <p class="para">
+     Смотрите также <a href="function.preg-match.html" class="function">preg_match()</a>,
+     <a href="function.preg-match-all.html" class="function">preg_match_all()</a>, и
+     <a href="function.preg-split.html" class="function">preg_split()</a>.
+    </p>
+   </div>
+
+  </div><hr /><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="function.preg-replace-callback.html">preg_replace_callback</a></div>
+ <div class="next" style="float: right;"><a href="function.preg-split.html">preg_split</a></div>
+ <div class="up"><a href="ref.pcre.html">PCRE</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

@@ -1,0 +1,197 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <title>Список поддерживаемых транспортных протоколов</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+ </head>
+ <body><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="filters.encryption.html">Шифрующие фильтры</a></div>
+ <div class="next" style="float: right;"><a href="transports.unix.html">Unix-сокеты: UNIX и UDG</a></div>
+ <div class="up"><a href="appendices.html">Appendices</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div>
+ <h1>Список поддерживаемых транспортных протоколов</h1>
+<h2>Содержание</h2><ul class="chunklist chunklist_appendix"><li><a href="transports.unix.html">Unix-сокеты: UNIX и UDG</a></li></ul>
+
+ <p class="para">
+  Нижеследующий список содержит информацию о протоколах передачи встроенных в
+  PHP и готовых для использования в функциями работы с сокетами, такими как
+  <a href="function.fsockopen.html" class="function">fsockopen()</a> и
+  <a href="function.stream-socket-client.html" class="function">stream_socket_client()</a>. Эти протоколы 
+  <em class="emphasis">не</em> применяются в 
+  <a href="ref.sockets.html" class="link">Расширении для работы с Сокетами</a>.
+ </p>
+
+ <p class="para">
+  Для получения списка поддерживаемых протоколов передачи, встроенных в вашу версию
+  <i>PHP</i>, используйте функцию <a href="function.stream-get-transports.html" class="function">stream_get_transports()</a>.
+ </p>
+
+ <div id="transports.inet" class="section">
+  <h2 class="title">Интернет-сокеты: TCP, UDP, SSL, and TLS</h2>
+  <p class="simpara">PHP 3, PHP 4. <i>ssl://</i> и <i>tls://</i> начиная с PHP 4.3</p>
+
+  <blockquote><p><b class="note">Замечание</b>: 
+   <span class="simpara">
+    Если транспортный протокол не указан, будет использован <i>tcp://</i>.
+   </span>
+  </p></blockquote>
+
+  <ul class="itemizedlist">
+   <li class="listitem"><span class="simpara"><i>127.0.0.1</i></span></li>
+   <li class="listitem"><span class="simpara"><i>fe80::1</i></span></li>
+   <li class="listitem"><span class="simpara"><i>www.example.com</i></span></li>
+   <li class="listitem"><span class="simpara"><i>tcp://127.0.0.1</i></span></li>
+   <li class="listitem"><span class="simpara"><i>tcp://fe80::1</i></span></li>
+   <li class="listitem"><span class="simpara"><i>tcp://www.example.com</i></span></li>
+   <li class="listitem"><span class="simpara"><i>udp://www.example.com</i></span></li>
+   <li class="listitem"><span class="simpara"><i>ssl://www.example.com</i></span></li>
+   <li class="listitem"><span class="simpara"><i>tls://www.example.com</i></span></li>
+  </ul>
+
+  <p class="simpara">
+   Интернет-сокеты требуют указания порта в дополнение к адресу. В
+   случае <a href="function.fsockopen.html" class="function">fsockopen()</a>, порт передаётся вторым параметром и
+   не затрагивает строку адреса. При работе с 
+   <a href="function.stream-socket-client.html" class="function">stream_socket_client()</a> и другими близкими функциями, как
+   и в случае со стандартными URL, порт указывается в конце адреса, отделённый
+   двоеточием.
+  </p>
+
+  <ul class="itemizedlist">
+   <li class="listitem"><span class="simpara"><i>tcp://127.0.0.1:80</i></span></li>
+   <li class="listitem"><span class="simpara"><i>tcp://[fe80::1]:80</i></span></li>
+   <li class="listitem"><span class="simpara"><i>tcp://www.example.com:80</i></span></li>
+  </ul>
+
+  <blockquote><p><b class="note">Замечание</b>: 
+   <b>IPv6 численные адреса с указанием порта</b>
+   <span class="simpara">
+    Во втором примере выше, IPv6 адрес, заключён в квадратные скобки:
+    <i>[fe80::1]</i>. Это сделано для того, чтобы отличить
+    двоеточие в адресе от двоеточия при указании порта.
+   </span>
+  </p></blockquote>
+
+  <p class="simpara">
+   Протоколы <i>ssl://</i> and <i>tls://</i>
+   (доступные только если поддержка openssl включена в PHP) являются
+   расширениями <i>tcp://</i>, дополняющими его SSL-шифрованием.
+   Начиная с <i>PHP 4.3.0</i>, для работы с ssl-протоколами,
+   <i>PHP</i>
+   должен быть собран с поддержкой OpenSSL, в <i>PHP 5.0.0</i>
+   он может быть представлен как модуль. 
+  </p>
+
+  <p class="para">
+   <table border="5">
+    <caption><b>
+     Параметры для протоколов <i>ssl://</i> и <i>tls://</i> 
+     (начиная с <i>PHP 4.3.2</i>)
+    </b></caption>
+    <colgroup>
+
+     <thead valign="middle">
+      <tr valign="middle">
+       <th colspan="1">Имя</th>
+       <th colspan="1">Использование</th>
+       <th colspan="1">По умолчанию</th>
+      </tr>
+
+     </thead>
+
+     <tbody valign="middle" class="tbody">
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left"><i>verify_peer</i></td>
+       <td colspan="1" rowspan="1" align="left">
+        <b><tt>TRUE</tt></b> или <b><tt>FALSE</tt></b>.
+        Требует проверки SSL-сертификата.
+       </td>
+       <td colspan="1" rowspan="1" align="left"><b><tt>FALSE</tt></b></td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left"><i>allow_self_signed</i></td>
+       <td colspan="1" rowspan="1" align="left">
+        <b><tt>TRUE</tt></b> или <b><tt>FALSE</tt></b>.
+        Позволяет использовать само-подписанные сертификаты.
+       </td>
+       <td colspan="1" rowspan="1" align="left"><b><tt>FALSE</tt></b></td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left"><i>cafile</i></td>
+       <td colspan="1" rowspan="1" align="left">
+        Расположение в локальной файловой системе файла сертификата, который
+        будет использовать <i>verify_peer</i> для
+        аутентифицирования идентификатора удалённого сервера(клиента).
+       </td>
+       <td class="empty">&nbsp;</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left"><i>capath</i></td>
+       <td colspan="1" rowspan="1" align="left">
+        Если <i>cafile</i> не указан, или сертификат не найден,
+        поиск подходящего сертификата продолжается в директории <i>capath</i>.
+        Значением директивы должен быть путь к директории, содержащей сертификаты.
+       </td>
+       <td class="empty">&nbsp;</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left"><i>local_cert</i></td>
+       <td colspan="1" rowspan="1" align="left">
+        Путь к локальному файлу сертификата. Это должен быть
+        PEM-энкодированный файл, содержащий ваш сертификат и частный ключ.
+        Опционально он может содержать цепочку сертфиикатов издателей.
+       </td>
+       <td class="empty">&nbsp;</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left"><i>passphrase</i></td>
+       <td colspan="1" rowspan="1" align="left">
+        Ключевое слово, по которому был энкодирован ваш <i>local_cert</i>.
+       </td>
+       <td class="empty">&nbsp;</td>
+      </tr>
+
+      <tr valign="middle">
+       <td colspan="1" rowspan="1" align="left"><i>CN_match</i></td>
+       <td colspan="1" rowspan="1" align="left">
+        Общее название (Common Name), которого мы ожидаем. PHP будет сравнивать, используя
+        вайлд-карды. Если общее название не подходит, соединение будет
+        разорвано.
+       </td>
+       <td class="empty">&nbsp;</td>
+      </tr>
+
+     </tbody>
+    </colgroup>
+
+   </table>
+
+  </p>
+
+  <blockquote><p><b class="note">Замечание</b>: 
+   <span class="simpara">
+    Постольку поскольку <i>ssl://</i> протокол является базисом
+    для 
+    <a href="wrappers.http.html" class="link"><i>https://</i></a> и
+    <a href="wrappers.ftp.html" class="link"><i>ftps://</i></a> врапперов, 
+    все директивы <i>ssl://</i> применяются как для
+    <i>https://</i>, так и для <i>ftps://</i>.
+   </span>
+  </p></blockquote>
+ </div>
+
+ 
+
+</div>
+<hr /><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="filters.encryption.html">Шифрующие фильтры</a></div>
+ <div class="next" style="float: right;"><a href="transports.unix.html">Unix-сокеты: UNIX и UDG</a></div>
+ <div class="up"><a href="appendices.html">Appendices</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

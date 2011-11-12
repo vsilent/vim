@@ -1,0 +1,143 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <title>Execute an SQL statement and return the number of affected rows</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+ </head>
+ <body><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="pdo.errorinfo.html">PDO::errorInfo</a></div>
+ <div class="next" style="float: right;"><a href="pdo.getattribute.html">PDO::getAttribute</a></div>
+ <div class="up"><a href="class.pdo.html">PDO</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="pdo.exec" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">PDO::exec</h1>
+  <p class="verinfo">(PHP 5 &gt;= 5.1.0, PECL pdo:0.1-1.0.3)</p><p class="refpurpose dc-title">PDO::exec — 
+   Execute an SQL statement and return the number of affected rows
+  </p>
+
+ </div>
+ <div class="refsect1 description">
+  <h3 class="title">Описание</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type">int</span> <span class="methodname"><b><b>PDO::exec</b></b></span>
+    ( <span class="methodparam"><span class="type">string</span> <tt class="parameter">$statement</tt></span>
+   )</div>
+
+
+  <p class="para rdfs-comment">
+   <b>PDO::exec()</b> executes an SQL statement in
+   a single function call, returning the number of rows affected by the
+   statement.
+  </p>
+  <p class="para">
+   <b>PDO::exec()</b> does not return results from a SELECT
+   statement. For a SELECT statement that you only need to issue once
+   during your program, consider issuing <a href="pdo.query.html" class="function">PDO::query()</a>.
+   For a statement that you need to issue multiple times, prepare 
+   a PDOStatement object with <a href="pdo.prepare.html" class="function">PDO::prepare()</a> and issue
+   the statement with <a href="pdostatement.execute.html" class="function">PDOStatement::execute()</a>.
+  </p>
+
+ </div>
+
+ <div class="refsect1 parameters">
+  <h3 class="title">Список параметров</h3>
+  <p class="para">
+   <dl>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">statement</tt></i>
+</span>
+
+      <dd>
+
+       <p class="para">
+        The SQL statement to prepare and execute.
+       </p>
+      </dd>
+
+     </dt>
+
+   </dl>
+
+  </p>
+ </div>
+
+ <div class="refsect1 returnvalues">
+  <h3 class="title">Возвращаемые значения</h3>
+  <p class="para">
+   <b>PDO::exec()</b> returns the number of rows that were modified
+   or deleted by the SQL statement you issued. If no rows were affected, 
+   <b>PDO::exec()</b> returns <i>0</i>. 
+  </p>
+
+  <div class="warning"><b class="warning">Внимание</b><p class="simpara">Эта функция
+может возвращать как логическое значение <b><tt>FALSE</tt></b>, так и не относящееся к логическому типу
+значение, которое приводится к <b><tt>FALSE</tt></b>, например, <i>0</i> или
+&quot;&quot;. За более подробной информации обратитесь к разделу <a href="language.types.boolean.html" class="link">Булев тип</a>. Используйте <a href="language.operators.comparison.html" class="link">оператор ===</a> для проверки значения,
+возвращаемого этой функцией.</p></div>
+  <p class="para">
+   The following example incorrectly relies on the return value of
+   <b>PDO::exec()</b>, wherein a statement that affected 0 rows
+   results in a call to <a href="function.die.html" class="function">die()</a>:
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$db</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">exec</span><span style="color: #007700">()&nbsp;or&nbsp;die(</span><span style="color: #0000BB">$db</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">errorInfo</span><span style="color: #007700">());<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+   </div>
+
+  </p>
+
+ </div>
+
+
+ <div class="refsect1 examples">
+  <h3 class="title">Примеры</h3>
+  <p class="para">
+   <div class="example">
+    <p><b>Пример #1 Issuing a DELETE statement</b></p>
+    <div class="example-contents"><p>
+     Count the number of rows deleted by a DELETE statement with no WHERE
+     clause.
+    </p></div>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$dbh&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">PDO</span><span style="color: #007700">(</span><span style="color: #DD0000">'odbc:sample'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'db2inst1'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'ibmdb2'</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">/*&nbsp;Delete&nbsp;all&nbsp;rows&nbsp;from&nbsp;the&nbsp;FRUIT&nbsp;table&nbsp;*/<br /></span><span style="color: #0000BB">$count&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$dbh</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">exec</span><span style="color: #007700">(</span><span style="color: #DD0000">"DELETE&nbsp;FROM&nbsp;fruit&nbsp;WHERE&nbsp;colour&nbsp;=&nbsp;'red'"</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">/*&nbsp;Return&nbsp;number&nbsp;of&nbsp;rows&nbsp;that&nbsp;were&nbsp;deleted&nbsp;*/<br /></span><span style="color: #007700">print(</span><span style="color: #DD0000">"Deleted&nbsp;$count&nbsp;rows.\n"</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+    <div class="example-contents"><p>Результат выполнения данного примера:</p></div>
+    <div class="example-contents"><pre>
+<div class="cdata"><pre>
+Deleted 1 rows.
+</pre></div>
+    </pre></div>
+   </div>
+  </p>
+ </div>
+
+
+
+ <div class="refsect1 seealso">
+  <h3 class="title">Смотрите также</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"><a href="pdo.prepare.html" class="function" rel="rdfs-seeAlso">PDO::prepare()</a></li>
+    <li class="member"><a href="pdo.query.html" class="function" rel="rdfs-seeAlso">PDO::query()</a></li>
+    <li class="member"><a href="pdostatement.execute.html" class="function" rel="rdfs-seeAlso">PDOStatement::execute()</a></li>
+   </ul>
+  </p>
+ </div>
+
+
+
+</div><hr /><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="pdo.errorinfo.html">PDO::errorInfo</a></div>
+ <div class="next" style="float: right;"><a href="pdo.getattribute.html">PDO::getAttribute</a></div>
+ <div class="up"><a href="class.pdo.html">PDO</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

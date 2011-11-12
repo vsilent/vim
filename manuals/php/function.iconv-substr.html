@@ -1,0 +1,89 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <title>Возвращает подстроку</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+ </head>
+ <body><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="function.iconv-strrpos.html">iconv_strrpos</a></div>
+ <div class="next" style="float: right;"><a href="function.iconv.html">iconv</a></div>
+ <div class="up"><a href="ref.iconv.html">iconv</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="function.iconv-substr" class="refentry">
+   <div class="refnamediv">
+    <h1 class="refname">iconv_substr</h1>
+    <p class="verinfo">(PHP 5)</p><p class="refpurpose dc-title">iconv_substr — 
+     Возвращает подстроку
+    </p>
+
+   </div>
+   <div class="refsect1 unknown">
+    <h3 class="title">Описание</h3>
+    <div class="methodsynopsis dc-description">
+     <span class="type">string</span> <span class="methodname"><b><b>iconv_substr</b></b></span>
+      ( <span class="methodparam"><span class="type">string</span> <tt class="parameter">$str</tt></span>
+     , <span class="methodparam"><span class="type">int</span> <tt class="parameter">$offset</tt></span>
+     [, <span class="methodparam"><span class="type">int</span> <tt class="parameter">$length</tt></span>
+     [, <span class="methodparam"><span class="type">string</span> <tt class="parameter">$charset</tt></span>
+    ]] )</div>
+
+
+    <p class="para rdfs-comment">
+     Возвращает подстроку строки <i><tt class="parameter">str</tt></i>
+ длиной <i><tt class="parameter">length</tt></i>
+, начинающуюся с позиции <i><tt class="parameter">start</tt></i>
+.
+    </p>
+
+    <p class="para">
+     Если <i><tt class="parameter">start</tt></i>
+ неотрицателен, возвращаемая подстрока начинается в позиции с индексом <i><tt class="parameter">start</tt></i>
+ от начала строки, считая от нуля.
+    </p>
+
+    <p class="para">
+     Если <i><tt class="parameter">start</tt></i>
+ отрицательный, возвращаемая подстрока начинается с позиции <i><tt class="parameter">start</tt></i>
+ считая с конца строки <i><tt class="parameter">str</tt></i>
+.
+    </p>
+
+    <p class="para">
+     Если <i><tt class="parameter">length</tt></i>
+ положительный, возвращаемая строка будет не длиннее <i><tt class="parameter">length</tt></i>
+ символов. Если длина строки <i><tt class="parameter">str</tt></i>
+ меньше длины <i><tt class="parameter">start</tt></i>
+, возвращается <b><tt>FALSE</tt></b>.
+    </p>
+
+    <p class="para">
+     Если передан отрицательный <i><tt class="parameter">length</tt></i>
+ 
+     будет возвращено указанное этим аргументом число символов начиная с позиции <i><tt class="parameter">start</tt></i>
+ и заканчивая <i><tt class="parameter">length</tt></i>
+ в направлении от конца.
+     Если <i><tt class="parameter">start</tt></i>
+ также отрицателен, начальная позиция считается относительно конца строки.
+    </p>
+
+    <p class="para">
+     Обратите внмание, что параметры <i><tt class="parameter">offset</tt></i>
+ и <i><tt class="parameter">length</tt></i>
+ всегда представляют количество символов (в той или иной кодировке), а в      <a href="function.substr.html" class="function">substr()</a> - количество байт.
+     Если параметр <i><tt class="parameter">charset</tt></i>
+ опущен, предполагается, что кодировка строки <i><tt class="parameter">str</tt></i>
+ равна <a href="iconv.configuration.html" class="link">iconv.internal_charset</a>.
+    </p>
+
+    <p class="para">
+     См. также  <a href="function.substr.html" class="function">substr()</a>, <a href="function.mb-substr.html" class="function">mb_substr()</a>
+     и <a href="function.mb-strcut.html" class="function">mb_strcut()</a>.
+    </p>
+   </div>
+
+  </div><hr /><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="function.iconv-strrpos.html">iconv_strrpos</a></div>
+ <div class="next" style="float: right;"><a href="function.iconv.html">iconv</a></div>
+ <div class="up"><a href="ref.iconv.html">iconv</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

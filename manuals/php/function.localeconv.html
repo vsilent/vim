@@ -1,0 +1,236 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <title>Возвращает информацию о числовых форматах</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+ </head>
+ <body><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="function.levenshtein.html">levenshtein</a></div>
+ <div class="next" style="float: right;"><a href="function.ltrim.html">ltrim</a></div>
+ <div class="up"><a href="ref.strings.html">Функции обработки строк</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="function.localeconv" class="refentry">
+   <div class="refnamediv">
+    <h1 class="refname">localeconv</h1>
+    <p class="verinfo">(PHP 4 &gt;= 4.0.5, PHP 5)</p><p class="refpurpose dc-title">localeconv — Возвращает информацию о числовых форматах</p>
+
+   </div>
+   <div class="refsect1 unknown">
+    <h3 class="title">Описание</h3>
+     <div class="methodsynopsis dc-description">
+      <span class="type">array</span> <span class="methodname"><b><b>localeconv</b></b></span>
+       ( <span class="methodparam">void</span>
+      )</div>
+
+    <p class="para rdfs-comment">
+     Возвращает ассоциативный массив с информацией о числовых и денежных 
+     форматах в текущей локали.
+    </p>
+    <p class="para">
+     <b>localeconv()</b> возвращает данные, основанные на 
+     текущей локали, установленной функцией <a href="function.setlocale.html" class="function">setlocale()</a>.
+     Возвращаемый массив содержит следующие элементы:
+     <table class="informaltable">
+      <colgroup>
+
+       <thead valign="middle">
+        <tr valign="middle">
+         <th colspan="1">Элемент</th>
+         <th colspan="1">Описание</th>
+        </tr>
+
+       </thead>
+
+       <tbody valign="middle" class="tbody">
+        <tr valign="middle">
+         <td colspan="1" rowspan="1" align="left">decimal_point</td>
+         <td colspan="1" rowspan="1" align="left">Символ десятичной точки</td>
+        </tr>
+
+        <tr valign="middle">
+         <td colspan="1" rowspan="1" align="left">thousands_sep</td>
+         <td colspan="1" rowspan="1" align="left">Разделитель групп</td>
+        </tr>
+
+        <tr valign="middle">
+         <td colspan="1" rowspan="1" align="left">grouping</td>
+         <td colspan="1" rowspan="1" align="left">
+          Массив, содержащий количества цифр в группах для числовых 
+          данных
+         </td>
+        </tr>
+
+        <tr valign="middle">
+         <td colspan="1" rowspan="1" align="left">int_curr_symbol</td>
+         <td colspan="1" rowspan="1" align="left">Международное обозначение валюты (например RUR)</td>
+        </tr>
+
+        <tr valign="middle">
+         <td colspan="1" rowspan="1" align="left">currency_symbol</td>
+         <td colspan="1" rowspan="1" align="left">Национальное обозначение валюты (например р.)</td>
+        </tr>
+
+        <tr valign="middle">
+         <td colspan="1" rowspan="1" align="left">mon_decimal_point</td>
+         <td colspan="1" rowspan="1" align="left">Символ десятичной точки в денежном формате</td>
+        </tr>
+
+        <tr valign="middle">
+         <td colspan="1" rowspan="1" align="left">mon_thousands_sep</td>
+         <td colspan="1" rowspan="1" align="left">Разделитель групп в денежном формате</td>
+        </tr>
+
+        <tr valign="middle">
+         <td colspan="1" rowspan="1" align="left">mon_grouping</td>
+         <td colspan="1" rowspan="1" align="left">
+          Массив, содержащий количества цифр в группах для денежных
+          данных
+         </td>
+        </tr>
+
+        <tr valign="middle">
+         <td colspan="1" rowspan="1" align="left">positive_sign</td>
+         <td colspan="1" rowspan="1" align="left">Знак для положительных чисел</td>
+        </tr>
+
+        <tr valign="middle">
+         <td colspan="1" rowspan="1" align="left">negative_sign</td>
+         <td colspan="1" rowspan="1" align="left">Знак для отрицательных чисел</td>
+        </tr>
+
+        <tr valign="middle">
+         <td colspan="1" rowspan="1" align="left">int_frac_digits</td>
+         <td colspan="1" rowspan="1" align="left">Число разрядов после точки (международное)</td>
+        </tr>
+
+        <tr valign="middle">
+         <td colspan="1" rowspan="1" align="left">frac_digits</td>
+         <td colspan="1" rowspan="1" align="left">Число разрядов после точки (национальное)</td>
+        </tr>
+
+        <tr valign="middle">
+         <td colspan="1" rowspan="1" align="left">p_cs_precedes</td>
+         <td colspan="1" rowspan="1" align="left">
+          <b><tt>TRUE</tt></b> если currency_symbol записывется перед положительным значением,
+          иначе <b><tt>FALSE</tt></b>
+         </td>
+        </tr>
+
+        <tr valign="middle">
+         <td colspan="1" rowspan="1" align="left">p_sep_by_space</td>
+         <td colspan="1" rowspan="1" align="left">
+          <b><tt>TRUE</tt></b> если currency_symbol отделяется от положительного 
+          значения пробелом, иначе <b><tt>FALSE</tt></b>
+         </td>
+        </tr>
+
+        <tr valign="middle">
+         <td colspan="1" rowspan="1" align="left">n_cs_precedes</td>
+         <td colspan="1" rowspan="1" align="left">
+          <b><tt>TRUE</tt></b> если currency_symbol записывется перед отрицательным 
+          значением, иначе <b><tt>FALSE</tt></b>
+         </td>
+        </tr>
+
+        <tr valign="middle">
+         <td colspan="1" rowspan="1" align="left">n_sep_by_space</td>
+         <td colspan="1" rowspan="1" align="left">
+          <b><tt>TRUE</tt></b> если currency_symbol отделяется от отрицательного
+          значения пробелом, иначе <b><tt>FALSE</tt></b>
+         </td>
+        </tr>
+
+        <tr valign="top">
+         <td colspan="1" rowspan="1" align="left">p_sign_posn</td>
+         <td colspan="1" rowspan="1" align="left">
+          Для положительных чисел
+          <ul class="simplelist">
+           <li class="member">0</li>
+           <li class="member">
+            Число и обозначение валюты заключаются в скобки</li>
+           <li class="member">1</li>
+           <li class="member">
+            Знак записывается перед числом и обозначением валюты
+           </li>
+           <li class="member">2</li>
+           <li class="member">
+            Знак записывается после числа и обозначения валюты
+           </li>
+           <li class="member">3</li>
+           <li class="member">
+            Знак записывается перед обозначением валюты
+           </li>
+           <li class="member">4</li>
+           <li class="member">
+            Знак записывается после обозначения валюты
+           </li>
+          </ul>
+         </td>
+        </tr>
+
+        <tr valign="top">
+         <td colspan="1" rowspan="1" align="left">n_sign_posn</td>
+         <td colspan="1" rowspan="1" align="left">
+          Для отрицательных чисел
+          <ul class="simplelist">
+           <li class="member">0</li>
+           <li class="member">
+            Число и обозначение валюты заключаются в скобки</li>
+           <li class="member">1</li>
+           <li class="member">
+            Знак записывается перед числом и обозначением валюты
+           </li>
+           <li class="member">2</li>
+           <li class="member">
+            Знак записывается после числа и обозначения валюты
+           </li>
+           <li class="member">3</li>
+           <li class="member">
+            Знак записывается перед обозначением валюты
+           </li>
+           <li class="member">4</li>
+           <li class="member">
+            Знак записывается после обозначения валюты
+           </li>
+          </ul>
+         </td>
+        </tr>
+
+       </tbody>
+      </colgroup>
+
+     </table>
+    </p>
+    <p class="para">
+     Элементы группировки описывают способ группировки цифр. Например, в 
+     локали en_US элемент grouping содержит массив из 2 элементов со 
+     значениями 3 и 3.
+     Больший индек массива соответствует группировке цифр, расположенных 
+     левее. Если элемент массива равен CHAR_MAX, последующие цифры не 
+     группируются. Если элемент массива равен 0, используется значение 
+     предыдущего элемента.
+    </p>
+    <div class="example">
+     <p><b>Пример #1 Пример использования <b>localeconv()</b></b></p>
+     <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />setlocale</span><span style="color: #007700">(</span><span style="color: #0000BB">LC_ALL</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"ru_RU"</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">$locale_info&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">localeconv</span><span style="color: #007700">();<br /><br />echo&nbsp;</span><span style="color: #DD0000">"&lt;pre&gt;\n"</span><span style="color: #007700">;<br />echo&nbsp;</span><span style="color: #DD0000">"----------------------------------------------\n"</span><span style="color: #007700">;<br />echo&nbsp;</span><span style="color: #DD0000">"Информация&nbsp;о&nbsp;форматировании&nbsp;числовых&nbsp;величин:&nbsp;&nbsp;\n"</span><span style="color: #007700">;<br />echo&nbsp;</span><span style="color: #DD0000">"----------------------------------------------\n\n"</span><span style="color: #007700">;<br /><br />echo&nbsp;</span><span style="color: #DD0000">"int_curr_symbol:&nbsp;&nbsp;&nbsp;{$locale_info["int_curr_symbol"]}\n"</span><span style="color: #007700">;<br />echo&nbsp;</span><span style="color: #DD0000">"currency_symbol:&nbsp;&nbsp;&nbsp;{$locale_info["currency_symbol"]}\n"</span><span style="color: #007700">;<br />echo&nbsp;</span><span style="color: #DD0000">"mon_decimal_point:&nbsp;{$locale_info["mon_decimal_point"]}\n"</span><span style="color: #007700">;<br />echo&nbsp;</span><span style="color: #DD0000">"mon_thousands_sep:&nbsp;{$locale_info["mon_thousands_sep"]}\n"</span><span style="color: #007700">;<br />echo&nbsp;</span><span style="color: #DD0000">"positive_sign:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{$locale_info["positive_sign"]}\n"</span><span style="color: #007700">;<br />echo&nbsp;</span><span style="color: #DD0000">"negative_sign:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{$locale_info["negative_sign"]}\n"</span><span style="color: #007700">;<br />echo&nbsp;</span><span style="color: #DD0000">"int_frac_digits:&nbsp;&nbsp;&nbsp;{$locale_info["int_frac_digits"]}\n"</span><span style="color: #007700">;<br />echo&nbsp;</span><span style="color: #DD0000">"frac_digits:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{$locale_info["frac_digits"]}\n"</span><span style="color: #007700">;<br />echo&nbsp;</span><span style="color: #DD0000">"p_cs_precedes:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{$locale_info["p_cs_precedes"]}\n"</span><span style="color: #007700">;<br />echo&nbsp;</span><span style="color: #DD0000">"p_sep_by_space:&nbsp;&nbsp;&nbsp;&nbsp;{$locale_info["p_sep_by_space"]}\n"</span><span style="color: #007700">;<br />echo&nbsp;</span><span style="color: #DD0000">"n_cs_precedes:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{$locale_info["n_cs_precedes"]}\n"</span><span style="color: #007700">;<br />echo&nbsp;</span><span style="color: #DD0000">"n_sep_by_space:&nbsp;&nbsp;&nbsp;&nbsp;{$locale_info["n_sep_by_space"]}\n"</span><span style="color: #007700">;<br />echo&nbsp;</span><span style="color: #DD0000">"p_sign_posn:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{$locale_info["p_sign_posn"]}\n"</span><span style="color: #007700">;<br />echo&nbsp;</span><span style="color: #DD0000">"n_sign_posn:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{$locale_info["n_sign_posn"]}\n"</span><span style="color: #007700">;<br />echo&nbsp;</span><span style="color: #DD0000">"&lt;/pre&gt;\n"</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+     </div>
+
+    </div>
+    <p class="para">
+     Использование константы CHAR_MAX описано выше.
+    </p>
+    <p class="para">
+     См. также описание функции <a href="function.setlocale.html" class="function">setlocale()</a>.
+    </p>
+   </div>
+
+  </div><hr /><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="function.levenshtein.html">levenshtein</a></div>
+ <div class="next" style="float: right;"><a href="function.ltrim.html">ltrim</a></div>
+ <div class="up"><a href="ref.strings.html">Функции обработки строк</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

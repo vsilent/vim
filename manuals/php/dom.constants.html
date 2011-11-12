@@ -1,0 +1,482 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <title>Предопределенные константы</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+ </head>
+ <body><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="dom.resources.html">Типы ресурсов</a></div>
+ <div class="next" style="float: right;"><a href="class.domattr.html">DOMAttr</a></div>
+ <div class="up"><a href="book.dom.html">DOM</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div>
+ <h1>Предопределенные константы</h1>
+
+ <p class="simpara">
+Перечисленные ниже константы определены данным расширением и могут быть
+доступны только в том случае, если PHP был собран с
+поддержкой этого расширения или же в том случае, если
+данное расширение подгружается во время выполнения.
+</p>
+  <table border="5">
+   <caption><b>XML constants</b></caption>
+   <colgroup>
+
+    <thead valign="middle">
+     <tr valign="middle">
+      <th colspan="1">Constant</th>
+      <th colspan="1">Value</th>
+      <th colspan="1">Description</th>
+     </tr>
+
+    </thead>
+
+    <tbody valign="middle" class="tbody">
+     <tr valign="middle">
+      <td colspan="1" rowspan="1" align="left">
+       <b><tt>XML_ELEMENT_NODE</tt></b>
+       (<a href="language.types.integer.html" class="type integer">integer</a>)
+      </td>
+      <td colspan="1" rowspan="1" align="left">1</td>
+      <td colspan="1" rowspan="1" align="left">Node is a <span class="classname">DOMElement</span></td>
+     </tr>
+
+     <tr valign="middle">
+      <td colspan="1" rowspan="1" align="left">
+       <b><tt>XML_ATTRIBUTE_NODE</tt></b> 
+      (<a href="language.types.integer.html" class="type integer">integer</a>)
+      </td>
+      <td colspan="1" rowspan="1" align="left">2</td>
+      <td colspan="1" rowspan="1" align="left">Node is a <span class="classname">DOMAttr</span></td>
+     </tr>
+
+     <tr valign="middle">
+      <td colspan="1" rowspan="1" align="left">
+       <b><tt>XML_TEXT_NODE</tt></b>
+       (<a href="language.types.integer.html" class="type integer">integer</a>)
+      </td>
+      <td colspan="1" rowspan="1" align="left">3</td>
+      <td colspan="1" rowspan="1" align="left">Node is a <span class="classname">DOMText</span></td>
+     </tr>
+
+     <tr valign="middle">
+      <td colspan="1" rowspan="1" align="left">
+       <b><tt>XML_CDATA_SECTION_NODE</tt></b>
+       (<a href="language.types.integer.html" class="type integer">integer</a>)
+      </td>
+      <td colspan="1" rowspan="1" align="left">4</td>
+      <td colspan="1" rowspan="1" align="left">Node is a <span class="classname">DOMCharacterData</span></td>
+     </tr>
+
+     <tr valign="middle">
+      <td colspan="1" rowspan="1" align="left">
+       <b><tt>XML_ENTITY_REF_NODE</tt></b>
+       (<a href="language.types.integer.html" class="type integer">integer</a>)
+      </td>
+      <td colspan="1" rowspan="1" align="left">5</td>
+      <td colspan="1" rowspan="1" align="left">Node is a <span class="classname">DOMEntityReference</span></td>
+     </tr>
+
+     <tr valign="middle">
+      <td colspan="1" rowspan="1" align="left">
+       <b><tt>XML_ENTITY_NODE</tt></b>
+       (<a href="language.types.integer.html" class="type integer">integer</a>)
+      </td>
+      <td colspan="1" rowspan="1" align="left">6</td>
+      <td colspan="1" rowspan="1" align="left">Node is a <span class="classname">DOMEntity</span></td>
+     </tr>
+
+     <tr valign="middle">
+      <td colspan="1" rowspan="1" align="left">
+       <b><tt>XML_PI_NODE</tt></b>
+       (<a href="language.types.integer.html" class="type integer">integer</a>)
+      </td>
+      <td colspan="1" rowspan="1" align="left">7</td>
+      <td colspan="1" rowspan="1" align="left">Node is a <span class="classname">DOMProcessingInstruction</span></td>
+     </tr>
+
+     <tr valign="middle">
+      <td colspan="1" rowspan="1" align="left">
+       <b><tt>XML_COMMENT_NODE</tt></b>
+       (<a href="language.types.integer.html" class="type integer">integer</a>)
+      </td>
+      <td colspan="1" rowspan="1" align="left">8</td>
+      <td colspan="1" rowspan="1" align="left">Node is a <span class="classname">DOMComment</span></td>
+     </tr>
+
+     <tr valign="middle">
+      <td colspan="1" rowspan="1" align="left">
+       <b><tt>XML_DOCUMENT_NODE</tt></b>
+       (<a href="language.types.integer.html" class="type integer">integer</a>)
+      </td>
+      <td colspan="1" rowspan="1" align="left">9</td>
+      <td colspan="1" rowspan="1" align="left">Node is a <span class="classname">DOMDocument</span></td>
+     </tr>
+
+     <tr valign="middle">
+      <td colspan="1" rowspan="1" align="left">
+       <b><tt>XML_DOCUMENT_TYPE_NODE</tt></b>
+       (<a href="language.types.integer.html" class="type integer">integer</a>)
+      </td>
+      <td colspan="1" rowspan="1" align="left">10</td>
+      <td colspan="1" rowspan="1" align="left">Node is a <span class="classname">DOMDocumentType</span></td>
+     </tr>
+
+     <tr valign="middle">
+      <td colspan="1" rowspan="1" align="left">
+       <b><tt>XML_DOCUMENT_FRAG_NODE</tt></b>
+       (<a href="language.types.integer.html" class="type integer">integer</a>)
+      </td>
+      <td colspan="1" rowspan="1" align="left">11</td>
+      <td colspan="1" rowspan="1" align="left">Node is a <span class="classname">DOMDocumentFragment</span></td>
+     </tr>
+
+     <tr valign="middle">
+      <td colspan="1" rowspan="1" align="left">
+       <b><tt>XML_NOTATION_NODE</tt></b>
+       (<a href="language.types.integer.html" class="type integer">integer</a>)
+      </td>
+      <td colspan="1" rowspan="1" align="left">12</td>
+      <td colspan="1" rowspan="1" align="left">Node is a <span class="classname">DOMNotation</span></td>
+     </tr>
+
+     <tr valign="middle">
+      <td colspan="1" rowspan="1" align="left">
+       <b><tt>XML_HTML_DOCUMENT_NODE</tt></b>
+       (<a href="language.types.integer.html" class="type integer">integer</a>)
+      </td>
+      <td colspan="1" rowspan="1" align="left">13</td>
+      <td class="empty">&nbsp;</td>
+     </tr>
+
+     <tr valign="middle">
+      <td colspan="1" rowspan="1" align="left">
+       <b><tt>XML_DTD_NODE</tt></b>
+       (<a href="language.types.integer.html" class="type integer">integer</a>)
+      </td>
+      <td colspan="1" rowspan="1" align="left">14</td>
+      <td class="empty">&nbsp;</td>
+     </tr>
+
+     <tr valign="middle">
+      <td colspan="1" rowspan="1" align="left">
+       <b><tt>XML_ELEMENT_DECL_NODE</tt></b>
+       (<a href="language.types.integer.html" class="type integer">integer</a>)
+      </td>
+      <td colspan="1" rowspan="1" align="left">15</td>
+      <td class="empty">&nbsp;</td>
+     </tr>
+
+     <tr valign="middle">
+      <td colspan="1" rowspan="1" align="left">
+       <b><tt>XML_ATTRIBUTE_DECL_NODE</tt></b>
+       (<a href="language.types.integer.html" class="type integer">integer</a>)
+      </td>
+      <td colspan="1" rowspan="1" align="left">16</td>
+      <td class="empty">&nbsp;</td>
+     </tr>
+
+     <tr valign="middle">
+      <td colspan="1" rowspan="1" align="left">
+       <b><tt>XML_ENTITY_DECL_NODE</tt></b>
+       (<a href="language.types.integer.html" class="type integer">integer</a>)
+      </td>
+      <td colspan="1" rowspan="1" align="left">17</td>
+      <td class="empty">&nbsp;</td>
+     </tr>
+
+     <tr valign="middle">
+      <td colspan="1" rowspan="1" align="left">
+       <b><tt>XML_NAMESPACE_DECL_NODE</tt></b>
+       (<a href="language.types.integer.html" class="type integer">integer</a>)
+      </td>
+      <td colspan="1" rowspan="1" align="left">18</td>
+      <td class="empty">&nbsp;</td>
+     </tr>
+
+     <tr valign="middle">
+      <td colspan="1" rowspan="1" align="left">
+       <b><tt>XML_ATTRIBUTE_CDATA</tt></b>
+       (<a href="language.types.integer.html" class="type integer">integer</a>)
+      </td>
+      <td colspan="1" rowspan="1" align="left">1</td>
+      <td class="empty">&nbsp;</td>
+     </tr>
+
+     <tr valign="middle">
+      <td colspan="1" rowspan="1" align="left">
+       <b><tt>XML_ATTRIBUTE_ID</tt></b>
+       (<a href="language.types.integer.html" class="type integer">integer</a>)
+      </td>
+      <td colspan="1" rowspan="1" align="left">2</td>
+      <td class="empty">&nbsp;</td>
+     </tr>
+
+     <tr valign="middle">
+      <td colspan="1" rowspan="1" align="left">
+       <b><tt>XML_ATTRIBUTE_IDREF</tt></b>
+       (<a href="language.types.integer.html" class="type integer">integer</a>)
+      </td>
+      <td colspan="1" rowspan="1" align="left">3</td>
+      <td class="empty">&nbsp;</td>
+     </tr>
+
+     <tr valign="middle">
+      <td colspan="1" rowspan="1" align="left">
+       <b><tt>XML_ATTRIBUTE_IDREFS</tt></b>
+       (<a href="language.types.integer.html" class="type integer">integer</a>)
+      </td>
+      <td colspan="1" rowspan="1" align="left">4</td>
+      <td class="empty">&nbsp;</td>
+     </tr>
+
+     <tr valign="middle">
+      <td colspan="1" rowspan="1" align="left">
+       <b><tt>XML_ATTRIBUTE_ENTITY</tt></b>
+       (<a href="language.types.integer.html" class="type integer">integer</a>)
+      </td>
+      <td colspan="1" rowspan="1" align="left">5</td>
+      <td class="empty">&nbsp;</td>
+     </tr>
+
+     <tr valign="middle">
+      <td colspan="1" rowspan="1" align="left">
+       <b><tt>XML_ATTRIBUTE_NMTOKEN</tt></b>
+       (<a href="language.types.integer.html" class="type integer">integer</a>)
+      </td>
+      <td colspan="1" rowspan="1" align="left">7</td>
+      <td class="empty">&nbsp;</td>
+     </tr>
+
+     <tr valign="middle">
+      <td colspan="1" rowspan="1" align="left">
+       <b><tt>XML_ATTRIBUTE_NMTOKENS</tt></b>
+       (<a href="language.types.integer.html" class="type integer">integer</a>)
+      </td>
+      <td colspan="1" rowspan="1" align="left">8</td>
+      <td class="empty">&nbsp;</td>
+     </tr>
+
+     <tr valign="middle">
+      <td colspan="1" rowspan="1" align="left">
+       <b><tt>XML_ATTRIBUTE_ENUMERATION</tt></b>
+       (<a href="language.types.integer.html" class="type integer">integer</a>)
+      </td>
+      <td colspan="1" rowspan="1" align="left">9</td>
+      <td class="empty">&nbsp;</td>
+     </tr>
+
+     <tr valign="middle">
+      <td colspan="1" rowspan="1" align="left">
+       <b><tt>XML_ATTRIBUTE_NOTATION</tt></b>
+       (<a href="language.types.integer.html" class="type integer">integer</a>)
+      </td>
+      <td colspan="1" rowspan="1" align="left">10</td>
+      <td class="empty">&nbsp;</td>
+     </tr>
+
+    </tbody>
+   </colgroup>
+
+  </table>
+
+  <table border="5">
+   <caption><b>DOMException constants</b></caption>
+   <colgroup>
+
+    <thead valign="middle">
+     <tr valign="middle">
+      <th colspan="1">Constant</th>
+      <th colspan="1">Value</th>
+      <th colspan="1">Description</th>
+     </tr>
+
+    </thead>
+
+    <tbody valign="middle" class="tbody">
+     <tr valign="middle">
+      <td colspan="1" rowspan="1" align="left">
+       <b><tt>DOM_INDEX_SIZE_ERR</tt></b>
+       (<a href="language.types.integer.html" class="type integer">integer</a>)
+      </td>
+      <td colspan="1" rowspan="1" align="left">1</td>
+      <td colspan="1" rowspan="1" align="left">
+       If index or size is negative, or greater than the allowed value.
+      </td>
+     </tr>
+
+     <tr valign="middle">
+      <td colspan="1" rowspan="1" align="left">
+       <b><tt>DOMSTRING_SIZE_ERR</tt></b>
+       (<a href="language.types.integer.html" class="type integer">integer</a>)
+      </td>
+      <td colspan="1" rowspan="1" align="left">2</td>
+      <td colspan="1" rowspan="1" align="left">
+       If the specified range of text does not fit into a 
+       <span class="classname">DOMString</span>.
+      </td>
+     </tr>
+
+     <tr valign="middle">
+      <td colspan="1" rowspan="1" align="left">
+       <b><tt>DOM_HIERARCHY_REQUEST_ERR</tt></b>
+       (<a href="language.types.integer.html" class="type integer">integer</a>)
+      </td>
+      <td colspan="1" rowspan="1" align="left">3</td>
+      <td colspan="1" rowspan="1" align="left">If any node is inserted somewhere it doesn&#039;t belong</td>
+     </tr>
+
+     <tr valign="middle">
+      <td colspan="1" rowspan="1" align="left">
+       <b><tt>DOM_WRONG_DOCUMENT_ERR</tt></b>
+       (<a href="language.types.integer.html" class="type integer">integer</a>)
+      </td>
+      <td colspan="1" rowspan="1" align="left">4</td>
+      <td colspan="1" rowspan="1" align="left">
+       If a node is used in a different document than the one that created it.
+      </td>
+     </tr>
+
+     <tr valign="middle">
+      <td colspan="1" rowspan="1" align="left">
+       <b><tt>DOM_INVALID_CHARACTER_ERR</tt></b>
+       (<a href="language.types.integer.html" class="type integer">integer</a>)
+      </td>
+      <td colspan="1" rowspan="1" align="left">5</td>
+      <td colspan="1" rowspan="1" align="left">
+       If an invalid or illegal character is specified, such as in a name.
+      </td>
+     </tr>
+
+     <tr valign="middle">
+      <td colspan="1" rowspan="1" align="left">
+       <b><tt>DOM_NO_DATA_ALLOWED_ERR</tt></b>
+       (<a href="language.types.integer.html" class="type integer">integer</a>)
+      </td>
+      <td colspan="1" rowspan="1" align="left">6</td>
+      <td colspan="1" rowspan="1" align="left">
+       If data is specified for a node which does not support data.
+      </td>
+     </tr>
+
+     <tr valign="middle">
+      <td colspan="1" rowspan="1" align="left">
+       <b><tt>DOM_NO_MODIFICATION_ALLOWED_ERR</tt></b>
+       (<a href="language.types.integer.html" class="type integer">integer</a>)
+      </td>
+      <td colspan="1" rowspan="1" align="left">7</td>
+      <td colspan="1" rowspan="1" align="left">
+       If an attempt is made to modify an object where modifications are not allowed.
+      </td>
+     </tr>
+
+     <tr valign="middle">
+      <td colspan="1" rowspan="1" align="left">
+       <b><tt>DOM_NOT_FOUND_ERR</tt></b>
+       (<a href="language.types.integer.html" class="type integer">integer</a>)
+      </td>
+      <td colspan="1" rowspan="1" align="left">8</td>
+      <td colspan="1" rowspan="1" align="left">
+       If an attempt is made to reference a node in a context where it does not exist.
+      </td>
+     </tr>
+
+     <tr valign="middle">
+      <td colspan="1" rowspan="1" align="left">
+       <b><tt>DOM_NOT_SUPPORTED_ERR</tt></b>
+       (<a href="language.types.integer.html" class="type integer">integer</a>)
+      </td>
+      <td colspan="1" rowspan="1" align="left">9</td>
+      <td colspan="1" rowspan="1" align="left">
+       If the implementation does not support the requested type of object or operation.
+      </td>
+     </tr>
+
+     <tr valign="middle">
+      <td colspan="1" rowspan="1" align="left">
+       <b><tt>DOM_INUSE_ATTRIBUTE_ERR</tt></b>
+       (<a href="language.types.integer.html" class="type integer">integer</a>)
+      </td>
+      <td colspan="1" rowspan="1" align="left">10</td>
+      <td colspan="1" rowspan="1" align="left">
+       If an attempt is made to add an attribute that is already in use elsewhere.
+      </td>
+     </tr>
+
+     <tr valign="middle">
+      <td colspan="1" rowspan="1" align="left">
+       <b><tt>DOM_INVALID_STATE_ERR</tt></b>
+       (<a href="language.types.integer.html" class="type integer">integer</a>)
+      </td>
+      <td colspan="1" rowspan="1" align="left">11</td>
+      <td colspan="1" rowspan="1" align="left">
+       If an attempt is made to use an object that is not, or is no longer, usable.
+      </td>
+     </tr>
+
+     <tr valign="middle">
+      <td colspan="1" rowspan="1" align="left">
+       <b><tt>DOM_SYNTAX_ERR</tt></b>
+       (<a href="language.types.integer.html" class="type integer">integer</a>)
+      </td>
+      <td colspan="1" rowspan="1" align="left">12</td>
+      <td colspan="1" rowspan="1" align="left">If an invalid or illegal string is specified.</td>
+     </tr>
+
+     <tr valign="middle">
+      <td colspan="1" rowspan="1" align="left">
+       <b><tt>DOM_INVALID_MODIFICATION_ERR</tt></b>
+       (<a href="language.types.integer.html" class="type integer">integer</a>)
+      </td>
+      <td colspan="1" rowspan="1" align="left">13</td>
+      <td colspan="1" rowspan="1" align="left">If an attempt is made to modify the type of the underlying object.</td>
+     </tr>
+
+     <tr valign="middle">
+      <td colspan="1" rowspan="1" align="left">
+       <b><tt>DOM_NAMESPACE_ERR</tt></b>
+       (<a href="language.types.integer.html" class="type integer">integer</a>)
+      </td>
+      <td colspan="1" rowspan="1" align="left">14</td>
+      <td colspan="1" rowspan="1" align="left">
+       If an attempt is made to create or change an object in a way which is 
+       incorrect with regard to namespaces.
+      </td>
+     </tr>
+
+     <tr valign="middle">
+      <td colspan="1" rowspan="1" align="left">
+       <b><tt>DOM_INVALID_ACCESS_ERR</tt></b>
+       (<a href="language.types.integer.html" class="type integer">integer</a>)
+      </td>
+      <td colspan="1" rowspan="1" align="left">15</td>
+      <td colspan="1" rowspan="1" align="left">
+       If a parameter or an operation is not supported by the underlying object.
+      </td>
+     </tr>
+
+     <tr valign="middle">
+      <td colspan="1" rowspan="1" align="left">
+       <b><tt>DOM_VALIDATION_ERR</tt></b>
+       (<a href="language.types.integer.html" class="type integer">integer</a>)
+      </td>
+      <td colspan="1" rowspan="1" align="left">16</td>
+      <td colspan="1" rowspan="1" align="left">
+       If a call to a method such as insertBefore or removeChild would make the Node
+       invalid with respect to &quot;partial validity&quot;, this exception would be raised and 
+       the operation would not be done.
+      </td>
+     </tr>
+
+    </tbody>
+   </colgroup>
+
+  </table>
+
+ </div>
+<hr /><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="dom.resources.html">Типы ресурсов</a></div>
+ <div class="next" style="float: right;"><a href="class.domattr.html">DOMAttr</a></div>
+ <div class="up"><a href="book.dom.html">DOM</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

@@ -1,0 +1,45 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <title>Проверяет соединение с сервером и пересоединяется при необходимости</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+ </head>
+ <body><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="function.mysql-pconnect.html">mysql_pconnect</a></div>
+ <div class="next" style="float: right;"><a href="function.mysql-query.html">mysql_query</a></div>
+ <div class="up"><a href="ref.mysql.html">MySQL</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="function.mysql-ping" class="refentry">
+   <div class="refnamediv">
+    <h1 class="refname">mysql_ping</h1>
+    <p class="verinfo">(PHP 4 &gt;= 4.3.0, PHP 5, PECL mysql:1.0)</p><p class="refpurpose dc-title">mysql_ping — Проверяет соединение с сервером и пересоединяется при необходимости</p>
+
+   </div>
+   <div class="refsect1 unknown">
+    <h3 class="title">Описание</h3>
+     <div class="methodsynopsis dc-description">
+      <span class="type">bool</span> <span class="methodname"><b><b>mysql_ping</b></b></span>
+       ([ <span class="methodparam"><span class="type">resource</span> <tt class="parameter">$link_identifier</tt></span>
+     ] )</div>
+
+    <p class="para rdfs-comment">
+     <b>mysql_ping()</b> проверяет соединение с сервером. Если оно
+     утеряно, автоматически предпринимается попытка пересоединения. Эта
+     функция может быть использована в скриптах, работающих на протяжении
+     долгого времени.
+     <b>mysql_ping()</b> возвращает <b><tt>TRUE</tt></b>, если соединение в
+     рабочем состоянии и <b><tt>FALSE</tt></b> в противном случае.
+    </p>
+    <p class="para">
+     См. также 
+     <a href="function.mysql-thread-id.html" class="function">mysql_thread_id()</a> и 
+     <a href="function.mysql-list-processes.html" class="function">mysql_list_processes()</a>.
+    </p>
+   </div>
+
+  </div><hr /><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="function.mysql-pconnect.html">mysql_pconnect</a></div>
+ <div class="next" style="float: right;"><a href="function.mysql-query.html">mysql_query</a></div>
+ <div class="up"><a href="ref.mysql.html">MySQL</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

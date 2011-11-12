@@ -1,0 +1,141 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <title>Set collation attribute</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+ </head>
+ <body><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="collator.getstrength.html">Collator::getStrength</a></div>
+ <div class="next" style="float: right;"><a href="collator.setstrength.html">Collator::setStrength</a></div>
+ <div class="up"><a href="class.collator.html">Collator</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="collator.setattribute" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">Collator::setAttribute</h1>
+  <h1 class="refname">collator_set_attribute</h1>
+  <p class="verinfo">(No version information available, might be only in CVS)</p><p class="refpurpose dc-title">collator_set_attribute — Set collation attribute</p>
+
+ </div>
+ 
+ <div class="refsect1 description">
+  <h3 class="title">Описание</h3>
+  <p class="para">
+   Object oriented style
+  </p>
+  <div class="methodsynopsis dc-description">
+   <span class="type">bool</span>
+    <span class="methodname"><b><b>Collator::setAttribute</b></b></span>
+    ( <span class="methodparam"><span class="type">integer</span> <tt class="parameter">$attr</tt></span>
+   , <span class="methodparam"><span class="type">integer</span> <tt class="parameter">$val</tt></span>
+   )</div>
+
+  <p class="para rdfs-comment">
+   Procedural style
+  </p>
+  <div class="methodsynopsis dc-description">
+   <span class="type">bool</span>
+    <span class="methodname"><b><b>collator_set_attribute</b></b></span>
+    ( <span class="methodparam"><span class="type"><a href="class.collator.html" class="type Collator">Collator</a></span> <tt class="parameter">$coll</tt></span>
+   , <span class="methodparam"><span class="type">integer</span> <tt class="parameter">$attr</tt></span>
+   , <span class="methodparam"><span class="type">integer</span> <tt class="parameter">$val</tt></span>
+   )</div>
+
+  <p class="para rdfs-comment">
+   
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters">
+  <h3 class="title">Список параметров</h3>
+  <p class="para">
+   <dl>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">coll</tt></i>
+</span>
+
+     <dd>
+
+      <p class="para">
+       <span class="classname">Collator</span> <a href="language.types.object.html" class="type object">object</a>.
+      </p>
+     </dd>
+
+    </dt>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">attr</tt></i>
+</span>
+
+     <dd>
+
+      <p class="para">Attribute.</p>
+     </dd>
+
+    </dt>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">val</tt></i>
+</span>
+
+     <dd>
+
+      <p class="para">
+       Attribute value.
+      </p>
+     </dd>
+
+    </dt>
+
+   </dl>
+
+  </p>
+ </div>
+
+
+ <div class="refsect1 returnvalues">
+  <h3 class="title">Возвращаемые значения</h3>
+  <p class="para">
+   Возвращает <b><tt>TRUE</tt></b> в случае успешного завершения или <b><tt>FALSE</tt></b> в случае возникновения ошибки.
+  </p>
+ </div>
+
+
+ <div class="refsect1 examples">
+  <h3 class="title">Примеры</h3>
+  <p class="para">
+   <div class="example">
+    <p><b>Пример #1 <b>collator_set_attribute()</b> example</b></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$coll&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">collator_create</span><span style="color: #007700">(&nbsp;</span><span style="color: #DD0000">'en_CA'&nbsp;</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$val&nbsp;&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">collator_get_attribute</span><span style="color: #007700">(&nbsp;</span><span style="color: #0000BB">$coll</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">Collator</span><span style="color: #007700">::</span><span style="color: #0000BB">NUMERIC_COLLATION&nbsp;</span><span style="color: #007700">);<br />if&nbsp;(</span><span style="color: #0000BB">$val&nbsp;</span><span style="color: #007700">===&nbsp;</span><span style="color: #0000BB">false</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;Handle&nbsp;error.<br /></span><span style="color: #007700">}&nbsp;elseif&nbsp;(</span><span style="color: #0000BB">$val&nbsp;</span><span style="color: #007700">===&nbsp;</span><span style="color: #0000BB">Collator</span><span style="color: #007700">::</span><span style="color: #0000BB">ON</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;Do&nbsp;something&nbsp;useful.<br /></span><span style="color: #007700">}<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+  </p>
+ </div>
+
+
+ <div class="refsect1 seealso">
+  <h3 class="title">Смотрите также</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"><a href="class.collator.html#intl.collator-constants" class="link"><span class="classname">Collator</span> constants</a></li>
+    <li class="member"><a href="collator.getattribute.html" class="function" rel="rdfs-seeAlso">collator_get_attribute()</a></li>
+    <li class="member"><a href="collator.setstrength.html" class="function" rel="rdfs-seeAlso">collator_set_strength()</a></li>
+   </ul>
+  </p>
+ </div>
+
+</div><hr /><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="collator.getstrength.html">Collator::getStrength</a></div>
+ <div class="next" style="float: right;"><a href="collator.setstrength.html">Collator::setStrength</a></div>
+ <div class="up"><a href="class.collator.html">Collator</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

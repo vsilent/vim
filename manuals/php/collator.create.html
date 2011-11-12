@@ -1,0 +1,114 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <title>Create a collator</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+ </head>
+ <body><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="collator.construct.html">Collator::__construct</a></div>
+ <div class="next" style="float: right;"><a href="collator.getattribute.html">Collator::getAttribute</a></div>
+ <div class="up"><a href="class.collator.html">Collator</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="collator.create" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">Collator::create</h1>
+  <h1 class="refname">collator_create</h1>
+  <p class="verinfo">(No version information available, might be only in CVS)</p><p class="refpurpose dc-title">collator_create — Create a collator</p>
+
+ </div>
+
+ <div class="refsect1 description">
+  <h3 class="title">Описание</h3>
+  <p class="para">Object oriented style</p>
+  <div class="methodsynopsis dc-description">
+   <span class="modifier">static</span>
+   <span class="type"><a href="class.collator.html" class="type Collator">Collator</a></span>
+    <span class="methodname"><b><b>Collator::create</b></b></span>
+    ( <span class="methodparam"><span class="type">string</span> <tt class="parameter">$locale</tt></span>
+   )</div>
+
+  <p class="para rdfs-comment">
+   Procedural style
+  </p>
+  <div class="methodsynopsis dc-description">
+   <span class="type"><a href="class.collator.html" class="type Collator">Collator</a></span>
+    <span class="methodname"><b><b>collator_create</b></b></span>
+    ( <span class="methodparam"><span class="type">string</span> <tt class="parameter">$locale</tt></span>
+   )</div>
+
+  <p class="para rdfs-comment">
+   The strings will be compared using the options already specified.
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters">
+  <h3 class="title">Список параметров</h3>
+  <p class="para">
+   <dl>
+
+    <dt>
+
+     <span class="term"><i><tt class="parameter">locale</tt></i>
+</span>
+
+     <dd>
+
+      <p class="para">
+       The locale containing the required collation rules. Special values for
+       locales can be passed in - if null is passed for the locale, the
+       default locale collation rules will be used. If empty string (&quot;&quot;) or
+       &quot;root&quot; are passed, UCA rules will be used.
+      </p>
+     </dd>
+
+    </dt>
+
+   </dl>
+
+  </p>
+ </div>
+
+
+
+ <div class="refsect1 returnvalues">
+  <h3 class="title">Возвращаемые значения</h3>
+  <p class="para">
+   Return new instance of <span class="classname">Collator</span> object, or <b><tt>NULL</tt></b>
+   on error.
+  </p>
+ </div>
+
+
+ <div class="refsect1 examples">
+  <h3 class="title">Примеры</h3>
+  <p class="para">
+   <div class="example">
+    <p><b>Пример #1 <b>collator_create()</b> example</b></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$coll&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">collator_create</span><span style="color: #007700">(&nbsp;</span><span style="color: #DD0000">'en_US'&nbsp;</span><span style="color: #007700">);<br /><br />if(&nbsp;!isset(&nbsp;</span><span style="color: #0000BB">$coll&nbsp;</span><span style="color: #007700">)&nbsp;)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">printf</span><span style="color: #007700">(&nbsp;</span><span style="color: #DD0000">"Collator&nbsp;creation&nbsp;failed:&nbsp;%s\n"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">intl_get_error_message</span><span style="color: #007700">()&nbsp;);<br />&nbsp;&nbsp;&nbsp;&nbsp;exit(&nbsp;</span><span style="color: #0000BB">1&nbsp;</span><span style="color: #007700">);<br />}<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+  </p>
+ </div>
+
+
+ <div class="refsect1 seealso">
+  <h3 class="title">Смотрите также</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"><a href="collator.construct.html" class="function" rel="rdfs-seeAlso">Collator::__construct()</a></li>
+   </ul>
+  </p>
+ </div>
+
+</div><hr /><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="collator.construct.html">Collator::__construct</a></div>
+ <div class="next" style="float: right;"><a href="collator.getattribute.html">Collator::getAttribute</a></div>
+ <div class="up"><a href="class.collator.html">Collator</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

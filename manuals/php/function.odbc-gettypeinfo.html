@@ -1,0 +1,63 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <title>Returns a result identifier containing information about data types supported by the data source</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+ </head>
+ <body><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="function.odbc-free-result.html">odbc_free_result</a></div>
+ <div class="next" style="float: right;"><a href="function.odbc-longreadlen.html">odbc_longreadlen</a></div>
+ <div class="up"><a href="ref.uodbc.html">ODBC Функции (Unified)</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="function.odbc-gettypeinfo" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">odbc_gettypeinfo</h1>
+  <p class="verinfo">(PHP 4, PHP 5)</p><p class="refpurpose dc-title">odbc_gettypeinfo — Returns a result identifier containing information about data types supported by the data source</p>
+
+ </div>
+ <div class="refsect1 unknown">
+  <h3 class="title">Description</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type">resource</span> <span class="methodname"><b><b>odbc_gettypeinfo</b></b></span>
+    ( <span class="methodparam"><span class="type">resource</span> <tt class="parameter">$connection_id</tt></span>
+   [, <span class="methodparam"><span class="type">int</span> <tt class="parameter">$data_type</tt></span>
+  ] )</div>
+
+  <p class="para rdfs-comment">
+   Retrieves information about data types supported by the data
+   source.  Returns an ODBC result identifier or
+   <b><tt>FALSE</tt></b> on failure.  The optional argument
+   <i><tt class="parameter">data_type</tt></i>
+ can be used to restrict the
+   information to a single data type.
+  </p>
+  <p class="para">
+   The result set has the following columns:
+   <ul class="itemizedlist">
+    <li class="listitem"><span class="simpara">TYPE_NAME</span></li>
+    <li class="listitem"><span class="simpara">DATA_TYPE</span></li>
+    <li class="listitem"><span class="simpara">PRECISION</span></li>
+    <li class="listitem"><span class="simpara">LITERAL_PREFIX</span></li>
+    <li class="listitem"><span class="simpara">LITERAL_SUFFIX</span></li>
+    <li class="listitem"><span class="simpara">CREATE_PARAMS</span></li>
+    <li class="listitem"><span class="simpara">NULLABLE</span></li>
+    <li class="listitem"><span class="simpara">CASE_SENSITIVE</span></li>
+    <li class="listitem"><span class="simpara">SEARCHABLE</span></li>
+    <li class="listitem"><span class="simpara">UNSIGNED_ATTRIBUTE</span></li>
+    <li class="listitem"><span class="simpara">MONEY</span></li>
+    <li class="listitem"><span class="simpara">AUTO_INCREMENT</span></li>
+    <li class="listitem"><span class="simpara">LOCAL_TYPE_NAME</span></li>
+    <li class="listitem"><span class="simpara">MINIMUM_SCALE</span></li>
+    <li class="listitem"><span class="simpara">MAXIMUM_SCALE</span></li>
+   </ul>
+  </p>
+  <p class="simpara">The result set is ordered by DATA_TYPE and TYPE_NAME.
+  </p>
+ </div>
+
+</div><hr /><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="function.odbc-free-result.html">odbc_free_result</a></div>
+ <div class="next" style="float: right;"><a href="function.odbc-longreadlen.html">odbc_longreadlen</a></div>
+ <div class="up"><a href="ref.uodbc.html">ODBC Функции (Unified)</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

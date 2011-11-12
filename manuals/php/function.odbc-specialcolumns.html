@@ -1,0 +1,69 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <title>Returns either the optimal set of columns that uniquely identifies a row in the table or columns that are automatically updated when any value in the row is updated by a transaction</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+ </head>
+ <body><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="function.odbc-setoption.html">odbc_setoption</a></div>
+ <div class="next" style="float: right;"><a href="function.odbc-statistics.html">odbc_statistics</a></div>
+ <div class="up"><a href="ref.uodbc.html">ODBC Функции (Unified)</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="function.odbc-specialcolumns" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">odbc_specialcolumns</h1>
+  <p class="verinfo">(PHP 4, PHP 5)</p><p class="refpurpose dc-title">odbc_specialcolumns — Returns either the optimal set of columns that uniquely identifies a row in the table or columns that are automatically updated when any value in the row is updated by a transaction</p>
+
+ </div>
+ <div class="refsect1 unknown">
+  <h3 class="title">Description</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type">resource</span> <span class="methodname"><b><b>odbc_specialcolumns</b></b></span>
+    ( <span class="methodparam"><span class="type">resource</span> <tt class="parameter">$connection_id</tt></span>
+   , <span class="methodparam"><span class="type">int</span> <tt class="parameter">$type</tt></span>
+   , <span class="methodparam"><span class="type">string</span> <tt class="parameter">$qualifier</tt></span>
+   , <span class="methodparam"><span class="type">string</span> <tt class="parameter">$owner</tt></span>
+   , <span class="methodparam"><span class="type">string</span> <tt class="parameter">$table</tt></span>
+   , <span class="methodparam"><span class="type">int</span> <tt class="parameter">$scope</tt></span>
+   , <span class="methodparam"><span class="type">int</span> <tt class="parameter">$nullable</tt></span>
+   )</div>
+
+  <p class="simpara">
+   When the type argument is SQL_BEST_ROWID,
+   <b>odbc_specialcolumns()</b> returns the
+   column or columns that uniquely identify each row in the table.
+  </p>
+  <p class="simpara">
+   When the type argument is SQL_ROWVER,
+   <b>odbc_specialcolumns()</b> returns the column or columns in the
+   specified table, if any, that are automatically updated by the data source
+   when any value in the row is updated by any transaction.
+  </p>
+  <p class="simpara">
+   Returns an ODBC result identifier or <b><tt>FALSE</tt></b> on
+   failure.
+  </p>
+  <p class="para">
+   The result set has the following columns:
+   <ul class="itemizedlist">
+    <li class="listitem"><span class="simpara">SCOPE</span></li>
+    <li class="listitem"><span class="simpara">COLUMN_NAME</span></li>
+    <li class="listitem"><span class="simpara">DATA_TYPE</span></li>
+    <li class="listitem"><span class="simpara">TYPE_NAME</span></li>
+    <li class="listitem"><span class="simpara">PRECISION</span></li>
+    <li class="listitem"><span class="simpara">LENGTH</span></li>
+    <li class="listitem"><span class="simpara">SCALE</span></li>
+    <li class="listitem"><span class="simpara">PSEUDO_COLUMN</span></li>
+   </ul>
+  </p>
+  <p class="simpara">
+   The result set is ordered by SCOPE.
+  </p>
+ </div>
+
+</div><hr /><div style="text-align: center;">
+ <div class="prev" style="float: left;"><a href="function.odbc-setoption.html">odbc_setoption</a></div>
+ <div class="next" style="float: right;"><a href="function.odbc-statistics.html">odbc_statistics</a></div>
+ <div class="up"><a href="ref.uodbc.html">ODBC Функции (Unified)</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>
