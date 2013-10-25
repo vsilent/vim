@@ -19,3 +19,57 @@
 [submodule "bundle/identline"]
 	path = bundle/identline
 	url = git://github.com/Yggdroot/indentLine.git
+[submodule "bundle/jedi-vim"]
+	path = bundle/jedi-vim
+	url = git://github.com/davidhalter/jedi-vim.git
+[submodule "bundle/jslint"]
+	path = bundle/jslint
+	url = git://github.com/hallettj/jslint.vim
+[submodule "bundle/vim-kolor"]
+	path = bundle/vim-kolor
+	url = git://github.com/zeis/vim-kolor.git
+[submodule "bundle/nerdcommenter"]
+	path = bundle/nerdcommenter
+	url = git://github.com/scrooloose/nerdcommenter.git
+[submodule "bundle/nerdtree"]
+	path = bundle/nerdtree
+	url = git://github.com/scrooloose/nerdtree.git
+[submodule "bundle/phpcomplete"]
+	path = bundle/phpcomplete
+	url = git://github.com/shawncplus/phpcomplete.vim
+[submodule "bundle/python-mode"]
+	path = bundle/python-mode
+	url = git://github.com/klen/python-mode.git
+[submodule "python-syntax"]
+	path = python-syntax
+	url = git://github.com/hdima/python-syntax.git
+[submodule "bundle/supertab"]
+	path = bundle/supertab
+	url = git://github.com/ervandew/supertab
+[submodule "bundle/syntastic"]
+	path = bundle/syntastic
+	url = git://github.com/scrooloose/syntastic.git
+[submodule "bundle/tlib"]
+	path = bundle/tlib
+	url = git://github.com/vim-scripts/tlib.git
+[submodule "bundle/vdebug"]
+	path = bundle/vdebug
+	url = git://github.com/joonty/vdebug.git
+[submodule "bundle/vim-bundle-update"]
+	path = bundle/vim-bundle-update
+	url = git://github.com/kugaevsky/vim-bundle-update.git
+[submodule "bundle/vim-commentary"]
+	path = bundle/vim-commentary
+	url = git://github.com/tpope/vim-commentary
+[submodule "bundle/vim-eunuch"]
+	path = bundle/vim-eunuch
+	url = git://github.com/tpope/vim-eunuch.git
+[submodule "bundle/vim-fugitive"]
+	path = bundle/vim-fugitive
+	url = git://github.com/tpope/vim-fugitive.git
+[submodule "bundle/vim-repeat"]
+	path = bundle/vim-repeat
+	url = git://github.com/tpope/vim-repeat.git
+[submodule "bundle/vim-surround"]
+	path = bundle/vim-surround
+	url = git://github.com/tpope/vim-surround.git
