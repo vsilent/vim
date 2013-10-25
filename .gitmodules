@@ -1,0 +1,89 @@
+[submodule "color_highlight"]
+	path = color_highlight
+	url = https://github.com/chrisbra/color_highlight.git
+
+[submodule "current-func-info"]
+	path = current-func-info.vim
+	url = http://github.com/tyru/current-func-info.vim
+
+[submodule "indentLine"]
+	path = indentLine
+	url = https://github.com/Yggdroot/indentLine.git
+
+[submodule "jedi-vim"]
+	path = jedi-vim
+	url = https://github.com/davidhalter/jedi-vim.git
+
+[submodule "jslint"]
+	path = jslint
+	url = http://github.com/hallettj/jslint.vim
+
+[submodule "kolor"]
+	path = kolor
+	url = https://github.com/zeis/vim-kolor.git
+
+[submodule "nerdcommenter"]
+	path = nerdcommenter
+	url = https://github.com/scrooloose/nerdcommenter.git
+
+[submodule "nerdtree"]
+	path = nerdtree
+	url = https://github.com/scrooloose/nerdtree.git
+
+
+[submodule "phpcomplete"]
+	path = phpcomplete.vim
+	url = http://github.com/shawncplus/phpcomplete.vim
+
+[submodule "python-mode"]
+	path = python-mode
+	url = https://github.com/klen/python-mode.git
+
+[submodule "python-syntax"]
+	path = python-syntax
+	url = https://github.com/hdima/python-syntax.git
+
+[submodule "snipmate.vim"]
+	url = https://github.com/msanders/snipmate.vim.git
+	path = snipmate.vim
+
+[submodule "supertab.vim"]
+	path = supertab
+	url = https://github.com/ervandew/supertab
+
+[submodule "syntastic.vim"]
+	path = syntastic
+	url = https://github.com/scrooloose/syntastic.git
+
+[submodule "tlib"]
+	path = tlib
+	url = https://github.com/vim-scripts/tlib.git
+
+[submodule "vdebug"]
+	path = vdebug
+	url = https://github.com/joonty/vdebug.git
+
+[submodule "vim-bundle-update"]
+	path = vim-bundle-update
+	url = https://github.com/kugaevsky/vim-bundle-update.git
+
+[submodule "vim-commentary"]
+	path = vim-commentary
+	url = https://github.com/tpope/vim-commentary
+
+[submodule "vim-eunuch"]
+	path = vim-eunuch
+	url = git://github.com/tpope/vim-eunuch.git
+
+[submodule "vim-fugitive"]
+	path = vim-fugitive
+	url = https://github.com/tpope/vim-fugitive.git
+
+
+[submodule "vim-repeat"]
+	path = vim-repeat
+	url = http://github.com/tpope/vim-repeat
+
+[submodule "vim-surround"]
+	path = vim-surround
+	url = https://github.com/tpope/vim-surround.git
