@@ -1,8 +1,8 @@
 " Vim syntax file
 " Language:    jQuery
 " Maintainer:  Bruno Michel <brmichel@free.fr>
-" Last Change: May 4th, 2011
-" Version:     0.5
+" Last Change: May 28th, 2011
+" Version:     0.5.2
 " URL:         http://api.jquery.com/
 
 if version < 600
@@ -57,7 +57,7 @@ syn keyword jProperties     contained browser context fx.interval fx.off length 
 syn keyword jTraversing     contained eq filter first has is last map not slice
 syn keyword jTraversing     contained add andSelf contents end
 syn keyword jTraversing     contained children closest find next nextAll nextUntil parent parents parentsUntil prev prevAll prevUntil siblings
-syn keyword jUtilities      contained contains each extend globalEval grep inArray isArray isEmptyObject isFunction isPlainObject isWindow isXMLDoc makeArray merge noop now parseJSON parseXML trim type unique
+syn keyword jUtilities      contained each extend globalEval grep inArray isArray isEmptyObject isFunction isPlainObject isWindow isXMLDoc makeArray merge noop now parseJSON parseXML trim type unique
 
 
 syn region  javaScriptStringD          start=+"+  skip=+\\\\\|\\"+  end=+"\|$+  contains=javaScriptSpecial,@htmlPreproc,@jSelectors
@@ -66,7 +66,7 @@ syn region  javaScriptStringS          start=+'+  skip=+\\\\\|\\'+  end=+'\|$+  
 syn cluster jSelectors      contains=jId,jClass,jOperators,jBasicFilters,jContentFilters,jVisibility,jChildFilters,jForms,jFormFilters
 syn match   jId             contained /#[0-9A-Za-z_\-]\+/
 syn match   jClass          contained /\.[0-9A-Za-z_\-]\+/
-syn match   jOperators      contained /*\|>\|+\|-\|~/
+syn match   jOperators      contained /*\|>\|+\|-\|\~/
 syn match   jBasicFilters   contained /:\(animated\|eq\|even\|first\|focus\|gt\|header\|last\|lt\|not\|odd\)/
 syn match   jChildFilters   contained /:\(first\|last\|nth\|only\)-child/
 syn match   jContentFilters contained /:\(contains\|empty\|has\|parent\)/
