@@ -1,0 +1,12 @@
+[submodule "bundle/snipmate"]
+	path = bundle/snipmate
+	url = git://github.com/msanders/snipmate.vim.git
+[submodule "bundles/color_highlight"]
+	path = bundles/color_highlight
+	url = git://github.com/chrisbra/color_highlight.git
+[submodule "bundles/current-func-info"]
+	path = bundles/current-func-info
+	url = git://github.com/tyru/current-func-info.vim
+[submodule "bundles/identline"]
+	path = bundles/identline
+	url = git://github.com/Yggdroot/indentLine.git
