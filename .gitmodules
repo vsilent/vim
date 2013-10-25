@@ -1,18 +1,18 @@
 [submodule "color_highlight"]
-	path = bundle/color_highlight
-	url = https://github.com/chrisbra/color_highlight.git
+	path = color_highlight
+	url = git://github.com/chrisbra/color_highlight.git
 
 [submodule "current-func-info"]
-	path = bundle/current-func-info.vim
-	url = http://github.com/tyru/current-func-info.vim
+	path = current-func-info
+	url = git://github.com/tyru/current-func-info.vim
 
 [submodule "indentLine"]
 	path = bundle/indentLine
 	url = https://github.com/Yggdroot/indentLine.git
 
 [submodule "jedi-vim"]
-	path = bundle/jedi-vim
-	url = https://github.com/davidhalter/jedi-vim.git
+	path = jedi-vim
+	url = git://github.com/davidhalter/jedi-vim.git
 
 [submodule "jslint"]
 	path = bundle/jslint
@@ -87,3 +87,9 @@
 [submodule "vim-surround"]
 	path = bundle/vim-surround
 	url = https://github.com/tpope/vim-surround.git
+[submodule "identLine"]
+	path = identLine
+	url = git://github.com/Yggdroot/indentLine.git
+[submodule "bundle/snipmate"]
+	path = bundle/snipmate
+	url = git://github.com/msanders/snipmate.vim.git
