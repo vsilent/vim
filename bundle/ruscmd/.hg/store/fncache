@@ -1,0 +1,4 @@
+data/.hgignore.i
+data/Makefile.i
+data/.hgtags.i
+data/plugin/ruscmd.vim.i
