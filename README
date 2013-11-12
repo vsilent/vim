@@ -2,3 +2,6 @@ This is my set of vim plugins and configurations.
 
 For questions contact vsatwebdirect.md
 
+<code>
+after cloning run: git submodule update
+</code>
