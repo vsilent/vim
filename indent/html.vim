@@ -13,14 +13,11 @@
 "endif
 "let b:did_indent = 1
 
-if exists("g:js_indent") 
+if exists("g:js_indent")
 	so g:js_indent
-else 
+else
 	ru! indent/javascript.vim
 endif
-
-echo "Sourcing html indent"
-
 
 " [-- local settings (must come before aborting the script) --]
 setlocal indentexpr=HtmlIndentGetter(v:lnum)
@@ -178,7 +175,7 @@ fun! <SID>HtmlIndentSum(lnum, style)
 endfun
 
 fun! HtmlIndentGetter(lnum)
-	
+
 	echo "Grabbing html indent for line: " . a:lnum
     " Find a non-empty line above the current line.
     let lnum = prevnonblank(a:lnum - 1)
@@ -216,11 +213,11 @@ fun! HtmlIndentGetter(lnum)
     if   0 < searchpair(js, '', '</script>', 'nWb')
     \ && 0 < searchpair(js, '', '</script>', 'nW')
 	" we're inside javascript
-	
+
 	if getline(lnum) !~ js && getline(a:lnum) !~ '</script>'
 	    if restore_ic == 0
 	      setlocal noic
-	    endif	
+	    endif
 		return GetJsIndent(a:lnum)
 	endif
     endif
