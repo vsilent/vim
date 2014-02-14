@@ -834,38 +834,14 @@ snippet r
 	$this->_redirect($this->getRequest()->getRequestUri());
 
 
-#---------- Symfony snippets ----------
-
-snippet l Symfony logger
-	sfContext::getInstance()->getLogger()->debug( 'Symfony logger ' );
-snippet sl
-	sfContext::getInstance()->getLogger()->debug( 'Symfony logger ' );
-snippet url
-	<a href="<?php echo url_for('${1:product/new}') ?>">${2:New}</a>
-snippet tr Symfony translate in php
-	$this->getContext()->getI18N()->__($${1:text}, $args, ${2:'messages'});
-
-snippet t symfony translate in template
-	<?php echo __('${1:text}');?>
-
-snippet sf
-	public function execute${1}(sfWebRequest $request)
-		{
-			$this->forward404Unless($request->isMethod(sfRequest::POST) || $request->isMethod(sfRequest::PUT));
-			$this->forward404Unless($rudcom_category = Doctrine::getTable('RudcomCategory')->find(array($request->getParameter('id'))), sprintf('Object rudcom_category does not exist (%s).', $request->getParameter('id')));
-			$this->form = new RudcomCategoryForm($rudcom_category);
-
-			$this->processForm($request, $this->form);
-
-			$this->setTemplate('edit');
-		}
-
 #Symfony2 snippets
 
 snippet sur
 	use Symfony\Component\HttpFoundation\Response;
+
 snippet suq
 	use Symfony\Component\HttpFoundation\Request;
+
 snippet sctrl
 	// src/Acme/${1:Hello}Bundle/Controller/$1Controller.php
 	namespace Acme\$1Bundle\Controller;
@@ -878,8 +854,23 @@ snippet sctrl
 
 		}
 	}
+
 snippet sr
 	return $this->render('Acme{$1:Hello}Bundle:$1:index.html.twig', array('name' => $name));
+
+snippet onetoone
+	@ORM\OneToOne(targetEntity="${1:Shipping}")
+	@ORM\JoinColumn(name="${2:shipping_id}", referencedColumnName="${3:id}")
+
+snippet onetomany
+	@ORM\OneToMany(targetEntity="${1:Category}", mappedBy="parent")
+
+snippet manytoone
+	@ORM\ManyToOne(targetEntity="${1:Address}")
+	@ORM\JoinColumn(name="address_id", referencedColumnName="id")
+
+snippet manytomany
+	@ORM\ManyToMany(targetEntity="Group")
 
 snippet pa
 	/**
@@ -901,12 +892,22 @@ snippet pra
 		${4://code here...}
 	}
 
+snippet sd
+	$repository = $this->getDoctrine()->getRepository('TemaApiUserBundle:Client');
+	$clients = $repository->findAll();
+
+snippet sdr
+	$repository = $this->getDoctrine()->getRepository('TemaApiUserBundle:Client');
+	$clients = $repository->findAll();
+
 snippet em
 	$em = $this->getDoctrine()->getEntityManager();
 	$em->persist(${1});
 	$em->flush(${2});
+
 snippet ss
 	$session = $this->getRequest()->getSession();
+
 snippet re
 	return new Response(${1});
 
@@ -927,42 +928,73 @@ snippet zauth
 	Zend_Auth::getInstance()->hasIdentity()
 
 snippet one symfony2 get single object from doctrine repository
-	${1:product} = $this->getDoctrine()->getRepository('${2:DriveBroStoreBundle}:${3:Product}')->find($id);
+	${1:product} = $this->getDoctrine()->getRepository('${2:DriveBroStoreBundle}:${3:Product}')->findOne($id);
+
 snippet fone
-	${1:product} = $this->getDoctrine()->getRepository('${2:DriveBroStoreBundle}:${3:Product}')->find($id);
+	${1:product} = $this->getDoctrine()->getRepository('${2:DriveBroStoreBundle}:${3:Product}')->findOne($id);
+
 snippet fo
-	${1:product} = $this->getDoctrine()->getRepository('${2:DriveBroStoreBundle}:${3:Product}')->find($id);
+	${1:product} = $this->getDoctrine()->getRepository('${2:DriveBroStoreBundle}:${3:Product}')->findOne($id);
+#All users that are 20 years old and have a surname of 'Miller'
+
+snippet dfb
+	${1:users} = $this->getDoctrine()->getRepository('${2:MyProject\Domain\User'})->findBy(4{3:array('age' => 20, 'surname' => 'Miller')});
+snippet fb
+	${1:users} = $this->getDoctrine()->getRepository('${2:MyProject\Domain\User'})->findBy(4{3:array('age' => 20, 'surname' => 'Miller')});
+snippet by
+	${1:users} = $this->getDoctrine()->getRepository('${2:MyProject\Domain\User'})->findBy(4{3:array('age' => 20, 'surname' => 'Miller')});
+snippet findby
+	${1:users} = $this->getDoctrine()->getRepository('${2:MyProject\Domain\User'})->findBy(4{3:array('age' => 20, 'surname' => 'Miller')});
+snippet dfob
+	${1:users} = $this->getDoctrine()->getRepository('${2:MyProject\Domain\User'})->findBy(4{3:array('age' => 20, 'surname' => 'Miller')});
+snippet fob
+	${1:users} = $this->getDoctrine()->getRepository('${2:MyProject\Domain\User'})->findBy(4{3:array('age' => 20, 'surname' => 'Miller')});
+snippet sby find one by column
+	${1:user} = $this->getDoctrine()->getRepository('${2:MyProject\Domain\User'})->findOneBy(${2:Name});
+snippet sone find one by name ( column name )
+	${1:user} = $this->getDoctrine()->getRepository('${2:MyProject\Domain\User'})->findOneByName($name);
+
+
+snippet do
+	$users = $this->getDoctrine()->getRepository('MyProject\Domain\User')->findBy(array('age' => 20, 'surname' => 'Miller'));
+
+snippet dall
+	${1:users} = $this->getDoctrine()->getRepository('${2:MyProject\Domain\User'})->findAll();
+
+snippet all
+	${1:users} = $this->getDoctrine()->getRepository('${2:MyProject\Domain\User'})->findAll();
 
 snippet find find one by primary key
-	${1:product} = $repository->find($id);
+	${1:product} = $this->getDoctrine()->getRepository('${2:MyProject\Domain\User'})->find($id);
+
 snippet find find one by column key id
 	${1:product} = $repository->findOneById($id);
-snippet find find one by name ( column name )
-	${1:product} = $repository->findOneByName($name);
-snippet find find one by column
-	${1:product} = $repository->findOneBy${2:Name}($${3:name});
-snippet find find all
-	${1:product} = $repository->findAll();
-snippet all
-	${1:product} = $repository->findAll();
-snippet rep
-	$this->getDoctrine()->getRepository('${1:DriveBroStoreBundle}:${2:Product}')->find($${3:id});
 
-snippet t just $this->
-	$this->${1:var};
+snippet rep
+	$this->getDoctrine()->getRepository('${2:MyProject\Domain\User'});
+
+
 snippet zmail
 		$msg = '';
 		$mail = new Zend_Mail('UTF-8');
 		$mail->setFrom('${1}');
-		$mail->addTo('vs@bridge-moldova.md');
+		$mail->addTo('vs@webdirect.md');
 		$mail->addTo(${2});
-		//$mail->addTo('frank@ictsense.nl');
 		$mail->setSubject('${3}');
 		$mail->setBodyText($msg);
 		return $mail->send();
 
 snippet db
 	$db = Zend_Registry::get('${1:database}');
+
+snippet dq
+	$q = $this->getDoctrine()->getEntityManager()->createQuery("select u from MyDomain\Model\User u where u.age >= 20 and u.age <= 30");
+	$users = $q->getResult();
+
+
+
+
+
 snippet red
 	$this->_redirect('${1}');
 
@@ -981,12 +1013,12 @@ snippet try
 	{
 		${1}
 	}
-	catch ( Exception $e )
+	catch ( \Exception $e )
 	{
-		throw new Exception( $e->getMessage() );
+		throw new \Exception( $e->getMessage() );
 	}
 snippet throw
-	throw new Exception( "${1}" );
+	throw new \Exception( "${1}" );
 
 snippet trans
 	$db = Zend_Registry::getInstance()->database;
@@ -1728,7 +1760,6 @@ snippet d
 	print_r($${1:this->getRequest()->getParams()});
 	echo "</pre>";
 	die( 'Break point : '.__METHOD__.' on line '.__LINE__ );
-	${2}
 snippet pre
 	echo "<pre>";
 	${1}
@@ -1740,17 +1771,17 @@ snippet s
 snippet skip
 	$this->markTestSkipped('${1}');
 
-snippet dtree
+snippet zdtree
 	$treeObject = Product_Model_DbTable_Category::getInstance()->getTree();
-snippet done
+snippet zdone
 	return Product_Model_DbTable_Category::getInstance()->findOneBy('id', $id);
-snippet dl
+snippet zdl
 	return Product_Model_DbTable_Category::getInstance()->findAll();
-snippet dlist
+snippet zdlist
 	return Product_Model_DbTable_Category::getInstance()->findAll();
-snippet dall
+snippet zdall
 	return Product_Model_DbTable_Category::getInstance()->findAll();
-snippet dfind
+snippet zdfind
 	return Product_Model_DbTable_Category::getInstance()->findOneBy('sysname', $sysname);
 	$favorites = Product_Model_DbTable_Favorite::getInstance()->findBy('user_id', $identity->id);
 
@@ -1783,5 +1814,9 @@ snippet back
 	echo "<pre>";
 	print_r($backtrace);
 	echo "</pre>";
+	die( 'Break point : '.__METHOD__.' on line '.__LINE__ );
+
+snippet dd
+	\Doctrine\Common\Util\Debug::dump(${1:entity});
 	die( 'Break point : '.__METHOD__.' on line '.__LINE__ );
 

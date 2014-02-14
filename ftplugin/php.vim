@@ -80,7 +80,7 @@ vnoremap <buffer> <C-P> :call PhpDocRange()<CR>
 " Generate @uses tag based on inheritance info
 let g:pdv_cfg_Uses = 1
 " Set default Copyright
-"let g:pdv_cfg_Copyright = "Copyright (C) 2013 Web Direct SRL"
+"let g:pdv_cfg_Copyright = "Copyright (C) 2013 WEB DIRECT SRL"
 
 " Exuberant Ctags
 
@@ -140,11 +140,11 @@ let PHP_autoformatcomment = 1 "default is 1)
 "let PHP_removeCRwhenUnix = 1
 "Will make the script automatically remove CR at end of lines (by default this option is unset), NOTE that you MUST remove CR when the fileformat is UNIX else the indentation won't be correct...
 
-let PHP_BracesAtCodeLevel = 1
+"let PHP_BracesAtCodeLevel = 1
 " You might also find this useful
 " PHP Generated Code Highlights (HTML & SQL)
 let php_sql_query=1
-let php_htmlInStrings=1
+"let php_htmlInStrings=1
 "Will indent the '{' and '}' at the same level than the code they contain.
 
 nnoremap <silent> <c-/> /<C-r>=expand('<cword>')
