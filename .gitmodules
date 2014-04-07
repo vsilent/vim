@@ -1,3 +1,9 @@
+[submodule "bundles/vim-gnupg"]
+	path = bundles/vim-gnupg
+	url = git://github.com/jamessan/vim-gnupg.git
+[submodule "bundles/vim-twig"]
+	path = bundles/vim-twig
+	url = git://github.com/vsilent/vim-twig.git
 [submodule "bundles/color_highlight"]
 	path = bundles/color_highlight
 	url = git://github.com/chrisbra/color_highlight.git
@@ -73,3 +79,6 @@
 [submodule "bundle/python-syntax"]
 	path = bundle/python-syntax
 	url = git://github.com/hdima/python-syntax.git
+[submodule "bundles/pydiction"]
+	path = bundles/pydiction
+	url = git://github.com/rkulla/pydiction.git
