@@ -1,0 +1,87 @@
+# Basic Twig snippets
+# Maintainer: F. Gabriel Gosselin <gabrielNOSPAM@evidens.ca>
+
+# include
+snippet inc
+	{% include '${1:AcmeDemoBundle:Demo:template.html.twig}' %}
+snippet	e
+	{% extends '${1:AcmeDemoBundle::template.html.twig}' %}
+# extend
+snippet ext
+	{% extends '${1:AcmeDemoBundle::template.html.twig}' %}
+# extends
+snippet extends
+	{% extends '${1:template}' %}${2}
+# if
+
+snippet ren
+	{% render "${1:AcmeDemoBundle:Demo:fancy}" with { '${2:name}' : ${3:name}, '${4:color}' : ${5:color} } %}
+snippet if
+	{% if ${1} %}
+		${2}
+	{% endif %}
+# else
+snippet else
+	{% else %}
+		${1}
+
+snippet ifel
+	{% if ${1} %}
+		${2}
+	{% else %}
+		${3}
+	{% endif %}
+# for
+snippet for
+	{% for ${2:item} in ${1:items} %}
+		${3}{{ $2 }}
+	{% endfor %}
+# Set
+snippet set
+	{% set ${1:var} = ${2:value} %}${3}
+# Print variable
+snippet }}
+	{{ ${1} }}${2}
+# Single Regular execution block
+snippet %%
+	{% ${1} %}${2}
+# Comment block
+snippet ##
+	{# ${1} #}${2}
+# Open/close block
+snippet %end
+	{% ${1:block} %}${2}{% end$1 %}
+# Named block
+snippet b
+	{% block ${1:name} %}
+	${2}
+	{% endblock %}
+snippet bl
+	{% block ${1} %}
+	{% endblock %}
+snippet f_date
+	{{ ${1:a_date}|date("${2:m/d/Y}") }}
+
+snippet tw
+	{% ${1} %}
+snippet i
+	{% include '{$2}' %}
+snippet set
+	{% set ${1} = ${2} %}
+snippet tran
+	{{ '${1}'|trans({${2}}, '${3:domain}') }}
+snippet path
+	{{ path('${1:route}', { '${2}' : ${3} }) }}
+snippet url
+	{{ url('${1:route}', { '${2}' : ${3} }) }}
+snippet as
+	{{ asset('${1:images/logo.png')}}
+snippet u
+	{{ user.${1:id}}}
+snippet uid
+	{{ user.${1:id}}}
+snippet un
+	{{ user.name }}
+snippet ud
+	{{ user.date }}
+

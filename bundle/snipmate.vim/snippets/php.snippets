@@ -311,10 +311,6 @@ snippet fad
 	Factory::getAdo()->debug = true;
 snippet faf
 	Factory::getAdo()->debug = false;
-snippet l Logger::addArrayToLog
-	Logger::addArrayToLog(__METHOD__.' on line '.__LINE__,'${1}');
-snippet l Logger::addLog
-	Logger::addLog(__METHOD__.' on line '.__LINE__,'${1}');
 snippet dev
 	if(getenv('REMOTE_ADDR') == '${89.28.84.116}' || getenv('REMOTE_ADDR') == '89.28.80.80'){
 		${1}
@@ -380,7 +376,7 @@ snippet	sav
 		return $id;
 	}
 
-snippet update simple ZF update
+snippet zupdate simple ZF update
 	public function update($input, $${1:id})
 	{
 		// get an instance of the registry and retrieve database object from it
@@ -452,10 +448,10 @@ snippet fm
 snippet opt Zend's get config option
 	$options = $this->getInvokeArg('bootstrap')->getOptions();
 
-snippet l  Sly's log
+snippet sl	Sly's log
 	Slys_Log::log('${1:Error occured}', Zend_Log::ERR);
 
-snippet log  Sly's log
+snippet slog  Sly's log
 	Slys_Log::log('${1:Error occured}', Zend_Log::ERR);
 
 snippet qw
@@ -836,6 +832,9 @@ snippet r
 
 #Symfony2 snippets
 
+snippet l symfony log
+	$this->get('logger')->info("${1}");
+
 snippet sur
 	use Symfony\Component\HttpFoundation\Response;
 
@@ -1009,16 +1008,14 @@ snippet jj
 				->where( '$1.${7}=?', ${8});
 		$rs = $select->query()->fetchAll();
 snippet try
-	try
-	{
+	try{
 		${1}
 	}
-	catch ( \Exception $e )
-	{
-		throw new \Exception( $e->getMessage() );
+	catch(\Exception $e){
+		throw new \Exception($e->getMessage());
 	}
 snippet throw
-	throw new \Exception( "${1}" );
+	throw new \Exception("Break point at ".__METHOD__." ".__LINE__);
 
 snippet trans
 	$db = Zend_Registry::getInstance()->database;
@@ -1491,7 +1488,8 @@ snippet each
 	});
 snippet co
 	console.log(${1:"here"});
-snippet l console log
+
+snippet cl console log
 	console.log(${1:"here"});
 
 snippet ai
@@ -1817,6 +1815,6 @@ snippet back
 	die( 'Break point : '.__METHOD__.' on line '.__LINE__ );
 
 snippet dd
-	\Doctrine\Common\Util\Debug::dump(${1:entity});
-	die( 'Break point : '.__METHOD__.' on line '.__LINE__ );
+	\Doctrine\Common\Util\Debug::dump($${1:entity});
+	throw new \Exception("break point at ".__METHOD__." ".__LINE__);
 
