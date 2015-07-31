@@ -68,16 +68,15 @@ call pathogen#helptags()
 
 filetype plugin indent on
 
-let g:ctrlp_map = '<leader><leader>'
-nmap <leader><leader> :CtrlPBuffer<cr>
-map <leader><leader>  :CtrlPBuffer<cr>
+let g:ctrlp_map = '<leader>h'
+nmap <M-leader> :CtrlPBuffer<cr>
+map <M-leader>  :CtrlPBuffer<cr>
 map <M-o>  :CtrlPBuffer<cr>
+map <C-o>  :CtrlPBuffer<cr>
 let g:ctrlp_working_path_mode = 2
 let g:ctrlp_by_filename = 1
 let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
 
-"
-" space - обозреватель файлов
 "nmap <space> :FufBuffer<cr>
 "map <space> :FufBuffer<cr>
 "vmap <space> <esc>:FufBuffer<cr>i
@@ -89,15 +88,10 @@ let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
 
 :set nocursorline
 
-"
 " Usefull regexp for "/" search
 "
-"split('\[\/\.-\]'
-":%s//preg_split('\/[\\\/-]\/'/gcl
-
 let g:nickID = 'Anonymous'
-" Настройки для Tlist (показвать  только  текущий файл  в окне
-"навигации   по    коду)
+" show only current file in the list
 let g:Tlist_Show_One_File   = 0
 let g:Tlist_Process_File_Always = 1
 let g:Tlist_Show_Menu     = 1
@@ -115,8 +109,6 @@ let $PAGER='vim'
 if &term == 'xterm' || &term == 'screen-bce' || &term == 'screen' || &term == 'rxvt-unicode'
   set t_Co=256 " Let ViM know we have a 256 color capible terminal
   " Color schemes
-  "colo zenburn
-  "colo silent
   colo wombat
 else
   colo wombat
@@ -159,16 +151,10 @@ set statusline+=%{&fileformat}]        " file format
 set statusline+=%=               " right align
 set statusline+=%-14.(%l,%c%V%)\ %<%P    " offset
 
-
 set nocompatible
 set winaltkeys=yes
 
-" Avoid loading MatchParen plugin
-"let loaded_matchparen = 1
-
-"set mps-=[:]
 " Popup menu hightLight Group
-"set completeopt=menu,longest,preview
 set completeopt=menu,preview,menuone
 ""
 "" GLOBAL SETTINGS
@@ -209,20 +195,9 @@ set smartcase
 
 " Показывать незавершённые команды в статусбаре
 set showcmd
-
-" Включаем нумерацию строк
 set nu
-
-" Фолдинг по отсупам
-"set foldmethod=indent
 set hlsearch
 set incsearch
-
-" Теперь нет необходимости передвигать курсор к краю экрана, чтобы подняться в режиме редактирования
-"set scrolljump=7
-
-" Теперь нет необходимости передвигать курсор к краю экрана, чтобы опуститься в режиме редактирования
-"set scrolloff=7
 
 " Выключаем надоедливый "звонок"
 set t_vb=
@@ -242,13 +217,12 @@ set ch=1
 "" Скрывать указатель мыши, когда печатаем
 set mousehide
 
-
 "" allow to use backspace instead of "x"
 set backspace=indent,eol,start whichwrap+=<,>,[,]
 
-
 " Fix <Enter> for comment
 set fo+=cr
+
 " Опции сесссий
 set sessionoptions=curdir,buffers,tabpages
 " set vertical and horizontal lines
@@ -267,8 +241,8 @@ set wildignore=*.o,*.obj,*.exe,*.dll,*.com,*.class,*.au,*.wav,*.mp[23g],*.jar,*.
 set wildmode=longest,list,full
 set wildmenu
 
-set lazyredraw    " Don't redraw while executing macros
-set nolist      " Don't show  as ^I and end-of-line as $
+set lazyredraw      " Don't redraw while executing macros
+set nolist          " Don't show  as ^I and end-of-line as $
 set shortmess=aOItT " To avoid the 'Hit ENTER to continue' prompt
 set modeline
 
@@ -289,7 +263,6 @@ set complete+=t
 "nmap 00 :FuzzyFinderBookmark<cr>
 "nmap <S-m> :FuzzyFinderAddBookmark<cr>
 "nmap ¹ :TRegisters<cr>
-"nmap 33 :Search
 "nmap <M-4> :%s/\<<c-r>=expand("<cword>")<cr>\>/that/gcl
 imap ø <esc>C
 imap Â <esc>C
@@ -326,27 +299,22 @@ vmap ;; <esc>:'<,'>B s/;/;\r/g<cr>vaB=
 
 noremap L f$l
 noremap H T$
-noremap cir f=lC<space>
 
 " -----------------------------------META(ALT)-----------------------------------
 vmap <M-;> <esc>:'<,'>B s/\n/,\r/g<cr>gv=
 vmap <M-,> <esc>:'<,'>B s/\n/,\r/g<cr>vaB=
-"noremap <M-,> <esc>f,l
 "search in the selected area
-"noremap <M-a>
 "Copy this line to that position
 map <c-c> :<c-r>=line(".")<cr>co
 "inoremap <M-d> <ESC>:AutoPreviewToggle<CR>i
 "Clear table information that is come from db
 imap <M-e> <esc>2la
 noremap <M-e> "_diw[p
-"map S diw"2P
 
-"noremap <M-f> [m
 "search for two words in buffers
 noremap <M-f> /.*function\&.*
 noremap <M-d> /.*def\&.*
-noremap <M-g> g]
+"noremap <M-g> g]
 
 imap <M-h> <esc>^i
 imap <M-l> <esc>$a
@@ -358,7 +326,7 @@ noremap <M-j> <c-w>b
 noremap <M-k> <c-u>
 noremap <M-j> <c-d>
 noremap <M-l> $
-imap <C-Space> <c-n>
+"imap <C-Space> <c-n>
 "map <M-m> :<c-r>=line(".")<cr>,4mo5
 noremap <M-s> :GrepBuffer<cr>
 
@@ -371,26 +339,23 @@ inoremap <M-n> <Plug>Goto_next_sign
 
 "Put from clipboard
 map <M-p> :YRShow<cr>
+
 " Quoting word back in insert mode
 noremap <M-q> f'l
+
 imap <silent><M-q> <esc>m`bysw'``
+
 " Поиск и замена слова под курсором
 nmap <M-r> :%s//
 vmap <M-r> :B s/\<<c-r>=expand("<cword>")<cr>\>/
 "snippets
+
 noremap <M-t> :ToggleWord<cr>
-noremap <M-s-t> <esc>"aditi<?=$this->translate('<esc>"a]pa')?><esc>
+
 "Remove back
 imap <M-w> <c-w>
 " Jump to next window very usefull
 noremap <M-w> <c-w>w
-"imap <M-x> <esc>f'ci'<C-r>.<esc>
-"map <M-x> f'ci'<C-r>.
-"map <M-x> <esc>:NERDTree<cr>
-"noremap <M-z>
-"imap <M-=> =>
-"imap <M-'> <esc>f'l
-"noremap <M-'> f'l
 
 "Very usefull
 vmap <M-/> <Esc>/\%V
@@ -401,27 +366,13 @@ noremap gd <c-]><cr>
 "browse file with w3m
 noremap <S-b> ^"ay$:!w3m <c-r>a<cr>
 noremap <S-y> y$
-"Last commented
-"noremap <S-Right> gt
-"noremap <S-Left> gT
-"noremap <S-Right> gt
-" Заставляем shift-insert работать как в Xterm
-"Last commented Thu Nov 27 14:23:02 EET 2008
-"map <S-Insert> <MiddleMouse>
 
 " -----------------------------------CTRL-----------------------------------
 " map CTRL-L to piece-wise copying of the line above the current one
 "inoremap <c-l> @@@<ESC>hhkywjl?@@@<CR>P/@@@<CR>3s
 
-"Last commented Thu Nov 27 14:23:02 EET 2008
 nmap <C-a> ggvG$
-"noremap <C-b>
-" C-c and C-v - Copy into global clipboard
-"vmap <C-C> "+yi
-"noremap <C-d>
-"noremap <C-e>
-"nnoremap <silent> <C-f><C-t> :FuzzyFinderTag!<CR>
-"noremap <C-g>
+
 "go to previous tab
 noremap <c-h> gT
 imap <c-h> <c-w>
@@ -430,21 +381,10 @@ noremap <C-J> <C-W>j<C-W>_
 noremap <C-K> <C-W>k<C-W>_
 "go to next tab
 noremap <C-l> gt
-"noremap <C-m>
-"noremap <C-n>
-"noremap <C-o>
-"noremap <C-p>
-"noremap <C-q>
-"noremap <C-r>
 noremap <c-t> :tabe<cr>
-"noremap <C-u>
-"imap <C-V> <esc>"+gPi
-"noremap <C-x>
-"noremap <C-w>
-"noremap <C-z>
-"
-"vnoremap <c-/> y/\V<C-R>=substitute(escape(@@,"/\\"),"\n","\\\\n","ge")<CR><CR>gV
-vnoremap <c-/> <esc>,cc
+noremap t :tabe<cr>
+
+vnoremap <c-/> <esc><leader>cc
 vnoremap <c-?> y?\V<C-R>=substitute(escape(@@,"?\\"),"\n","\\\\n","ge")<CR><CR>gV
 " GTAGS\
 "Remove word back insert mode
@@ -571,10 +511,10 @@ imap <F3> <esc>:new<cr>
 
 let g:NERDTreeBookmarksFile = "~/.vim/bookmarks"
 let NERDTreeShowHidden=1
+let NERDTreeIgnore=['\.pyc$']
 map <F1> :NERDTreeToggle<cr>
 vmap <F1> <esc>:NERDTreeToggle<cr>i
 imap <F1> <esc>:NERDTreeToggle<cr>i
-let NERDTreeIgnore=['\.pyc$']
 
 nmap t :FufTag<cr>
 
@@ -583,10 +523,10 @@ map <F12> :CtrlP<cr>
 map <leader>o :CtrlPMRU<cr>
 
 
-let g:EasyMotion_mapping_f = '?'
+"let g:EasyMotion_mapping_f = '?'
 "let g:EasyMotion_mapping_t  = 'f'
-let g:EasyMotion_mapping_gE = '#'
-let g:EasyMotion_do_shade = 0
+"let g:EasyMotion_mapping_gE = '#'
+"let g:EasyMotion_do_shade = 0
 
 map <F4> :Replace
 
@@ -644,21 +584,21 @@ let g:acp_behaviorKeywordLength=4
 let g:Signs_file_path_corey='/home/vs/.vim/tmp/vimmarks'
 
 
-function! GetHTML()
-python << EOF
-import vim, BeautifulSoup, urllib
-handle = urllib.urlopen(vim.current.line)
-soup = BeautifulSoup.BeautifulSoup(handle.read())
-vim.current.buffer[:] = soup.prettify().split('\n')
-EOF
-endfunction
-
 set et  "Tabs to spaces
 " Tab is tab \t
 "set noet "Spaces to tabs
 "set tw=0
 "Remove unwaanted spaces at the end of each line!!!!!!!!!!!!!!!!!SUPER
 autocmd BufWritePre * :%s/\s\+$//e
+
+"" Включить автоотступы
+set autoindent
+" Размер табулации по умолчанию
+set tabstop=4
+set sw=4
+set sts=4
+" use tabs instead of spaces
+set noexpandtab
 
 au BufRead,BufNewFile  *.tpl   set ft=html
 au BufRead,BufNewFile  *.wsgi  set ft=python
@@ -669,26 +609,20 @@ au BufRead,BufNewFile  *.txt   set spell spelllang=en_us
 au BufRead,BufNewFile  *.html  set ft=html
 
 au BufRead,BufNewFile  *.js    set ft=javascript
-":autocmd BufRead,BufNewFile *.js set ft=javascript.jquery
-"au BufRead,BufNewFile *.js set ft=javascript.jquery
-"au BufRead,BufNewFile jquery.*.js set ft=javascript syntax=jquery
 
 "au FileType python set sw=4 sts=4 ts=4 et
-"
 au FileType javascript :map <F9> :make<cr>
 
 au BufRead,BufNewFile  *.phtml *.html.twig set ft=html
 au FileType php set sw=4 sts=4 ts=4 et
-au FileType phtml set sw=2 sts=2 ts=2 et
-au FileType phtml set sw=2 sts=2 ts=2 et
-au FileType html set sw=2 sts=2 ts=2 et
-au FileType twig set sw=2 sts=2 ts=2 et
+au FileType phtml set sw=4 sts=4 ts=4 et
+au FileType phtml set sw=4 sts=4 ts=4 et
+au FileType html set sw=4 sts=4 ts=4 et
+au FileType twig set sw=4 sts=4 ts=4 et
 
-"au Filetype smarty exec('set dictionary=~/.vim/syntax/smarty.vim')
-"au Filetype smarty set complete+=k
 "
 " Jump to the last edited position
-au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$")|execute("normal `\"")|endif
+"au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$")|execute("normal `\"")|endif
 
 ""Session Manager
 let g:SessionMgr_AutoManage  = 0
@@ -734,16 +668,6 @@ inoremap <expr> -  smartchr#loop('-', '--', '->')
 inoremap <expr> ==  smartchr#loop('==', '=>', '<?=?>')
 inoremap <expr> %  smartchr#loop('%','%%','{% %}')
 
-"silent map <M-v> :SfSwitchView <CR>
-
-"" Включить автоотступы
-set autoindent
-" Размер табулации по умолчанию
-set tabstop=4
-set sw=4
-set sts=4
-" use tabs instead of spaces
-set noexpandtab
 
 " Включаем "умные" отспупы ( например, автоотступ после    {)
 set smartindent
