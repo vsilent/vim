@@ -17,7 +17,7 @@ set formatoptions+=tcqlro
 " Enable folding of class/function blocks
 let php_folding = 0
 " Do not use short tags to find PHP blocks
-let php_noShortTags = 1
+let php_noShortTags = 0
 " Highlighti SQL inside PHP strings
 "let php_sql_query=1
 "
@@ -80,7 +80,6 @@ vnoremap <buffer> <C-P> :call PhpDocRange()<CR>
 " Generate @uses tag based on inheritance info
 let g:pdv_cfg_Uses = 1
 " Set default Copyright
-"let g:pdv_cfg_Copyright = "Copyright (C) 2013 WEB DIRECT SRL"
 
 " Exuberant Ctags
 
@@ -172,10 +171,8 @@ let g:fuf_modesDisable = [ 'mrufile', 'mrucmd', ]
 " Autocompl popup of snipmate
 :let g:acp_behaviorSnipmateLength = 1
 
-set omnifunc=phpcomplete#CompletePHP
-
+"set omnifunc=phpcomplete#CompletePHP
 "spaces only for php and python files
-"au FileType php set sw=4 sts=4 ts=4 et
 
 "
 " Размер табулации по умолчанию

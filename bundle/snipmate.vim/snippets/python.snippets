@@ -90,7 +90,7 @@ snippet ifmain
 snippet _
 	__${1:init}__${2}
 snippet d
-	logging.debug(" dumped: %s ", ${1})
+	import pudb; pudb.set_trace()
 snippet concat
 	return ''.join([`num` for num in xrange(loop_count)])
 snippet con
@@ -119,8 +119,6 @@ snippet logging
 	logging.basicConfig(level=logging.DEBUG)
 snippet l
 	logging.info(${1:here})
-snippet ld
-	logging.debug(${1:here})
 snippet le
 	logging.exception(e)
 

@@ -1,6 +1,9 @@
 [submodule "bundles/vim-gnupg"]
 	path = bundles/vim-gnupg
 	url = git://github.com/jamessan/vim-gnupg.git
+[submodule "bundles/semantic-highlight.vim"]
+	path = bundles/semantic-highlight.vim
+	url = git://github.com/jaxbot/semantic-highlight.vim.git
 [submodule "bundles/vim-twig"]
 	path = bundles/vim-twig
 	url = git://github.com/vsilent/vim-twig.git

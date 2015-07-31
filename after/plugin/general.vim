@@ -12,8 +12,8 @@ if exists('loaded_taglist')
 	let tlist_php_settings = 'php;c:class;d:constant;f:function'
 endif
 
-" Set svn executable for VCSCommand plugin
+" Set git executable for VCSCommand plugin
 if exists('loaded_VCSCommand')
-	let VCSCommandCVSExec="svn"
+	let VCSCommandCVSExec="git"
 endif
 " vim: set fdm=marker:

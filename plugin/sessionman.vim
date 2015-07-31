@@ -5,7 +5,7 @@
 "  Copyright (c) Yuri Klubakov
 "
 "  Author:      Yuri Klubakov <yuri.mlists at gmail dot com>
-"  Version:     1.05 (2011-05-05)
+"  Version:     1.07 (2015-04-08)
 "  Requires:    Vim 6
 "  License:     GPL
 "
@@ -112,13 +112,17 @@ function! s:OpenSession(name)
 		endif
 		try
 			set eventignore=all
-			execute 'silent! 1,' . bufnr('$') . 'bwipeout!'
+			execute 'silent! %bwipeout!'
 			let n = bufnr('%')
 			execute 'silent! so ' . s:sessions_path . '/' . a:name
 			execute 'silent! bwipeout! ' . n
 		finally
 			set eventignore=
 			doautoall BufRead
+			doautoall FileType
+			doautoall BufEnter
+			doautoall BufWinEnter
+			doautoall TabEnter
 			doautoall SessionLoadPost
 		endtry
 		if has('cscope')
@@ -132,7 +136,7 @@ endfunction
 
 function! s:CloseSession()
 	call s:RestoreDefaults()
-	execute 'silent! 1,' . bufnr('$') . 'bwipeout!'
+	execute 'silent! %bwipeout!'
 	if has('cscope')
 		silent! cscope kill -1
 	endif
@@ -226,6 +230,7 @@ function! s:ListSessions()
 	0,1d
 	execute l
 	setlocal nomodifiable
+	setlocal nospell
 endfunction
 
 "============================================================================"
