@@ -1,20 +1,23 @@
-[submodule "bundles/vim-gnupg"]
-	path = bundles/vim-gnupg
+[submodule "bundle/ctrlp.vim"]
+	path = bundle/ctrlp.vim
+	url = https://github.com/kien/ctrlp.vim.git
+[submodule "bundle/vim-gnupg"]
+	path = bundle/vim-gnupg
 	url = git://github.com/jamessan/vim-gnupg.git
-[submodule "bundles/semantic-highlight.vim"]
-	path = bundles/semantic-highlight.vim
+[submodule "bundle/semantic-highlight.vim"]
+	path = bundle/semantic-highlight.vim
 	url = git://github.com/jaxbot/semantic-highlight.vim.git
-[submodule "bundles/vim-twig"]
-	path = bundles/vim-twig
+[submodule "bundle/vim-twig"]
+	path = bundle/vim-twig
 	url = git://github.com/vsilent/vim-twig.git
-[submodule "bundles/color_highlight"]
-	path = bundles/color_highlight
+[submodule "bundle/color_highlight"]
+	path = bundle/color_highlight
 	url = git://github.com/chrisbra/color_highlight.git
-[submodule "bundles/current-func-info"]
-	path = bundles/current-func-info
+[submodule "bundle/current-func-info"]
+	path = bundle/current-func-info
 	url = git://github.com/tyru/current-func-info.vim
-[submodule "bundles/identline"]
-	path = bundles/identline
+[submodule "bundle/identline"]
+	path = bundle/identline
 	url = git://github.com/Yggdroot/indentLine.git
 [submodule "bundle/color_highlight"]
 	path = bundle/color_highlight
@@ -82,6 +85,6 @@
 [submodule "bundle/python-syntax"]
 	path = bundle/python-syntax
 	url = git://github.com/hdima/python-syntax.git
-[submodule "bundles/pydiction"]
-	path = bundles/pydiction
+[submodule "bundle/pydiction"]
+	path = bundle/pydiction
 	url = git://github.com/rkulla/pydiction.git
