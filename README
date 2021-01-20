@@ -1,13 +1,11 @@
 This is my set of vim plugins and configurations.
 
 For questions contact vasili.pascal a t gmail.com
-
-<code>
+```
 
 git submodule update --init --recursive
 
 git submodule update
 
-
 git submodule foreach 'git pull origin master'
-</code>
+```
