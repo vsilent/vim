@@ -1,11 +1,11 @@
 This is my set of vim plugins and configurations.
 
-For questions contact vsatwebdirect.md
-
-<code>
+For questions contact vasili.pascal a t gmail.com
+```
 
 git submodule update --init --recursive
 
 git submodule update
 
-</code>
+git submodule foreach 'git pull origin master'
+```
