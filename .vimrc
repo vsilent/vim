@@ -92,10 +92,10 @@ let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn|pyc)$'
 "
 let g:nickID = 'Anonymous'
 " show only current file in the list
-let g:Tlist_Show_One_File	= 0
-let g:Tlist_Process_File_Always = 1
-let g:Tlist_Show_Menu	  = 1
-let g:Tlist_Display_Prototype = 1
+"let g:Tlist_Show_One_File	= 0
+"let g:Tlist_Process_File_Always = 1
+"let g:Tlist_Show_Menu	  = 1
+"let g:Tlist_Display_Prototype = 1
 "
 " would default to pasting from register 0 but still allow you to force pasting from
 "the default register via ""p for those (not so uncommon) instances where you want to paste the last thing you
@@ -139,7 +139,6 @@ endif
 " Status Bar
 set laststatus=2
 set statusline=
-set statusline=%([%{Tlist_Get_Tagname_By_Line()}]%) " func name
 set statusline+=%2*%-3.3n%0*\		 " buffer number
 set statusline+=%f\				 " file name
 set statusline+=%h%1*%m%r%w%0*		   " flags

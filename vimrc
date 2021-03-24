@@ -139,7 +139,6 @@ endif
 " Status Bar
 set laststatus=2
 set statusline=
-set statusline=%([%{Tlist_Get_Tagname_By_Line()}]%) " func name
 set statusline+=%2*%-3.3n%0*\		 " buffer number
 set statusline+=%f\				 " file name
 set statusline+=%h%1*%m%r%w%0*		   " flags
