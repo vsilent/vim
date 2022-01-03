@@ -235,11 +235,11 @@ snippet case
 		${2:// code...}
 		break;${3}
 snippet for
-	for ($${2:i} = 0; $$2 < ${1:count}; $$2${3:++}){
+	for ($${2:i} = 0; $$2 < ${1:count}; $$2${3:++}) {
 		${4: // code...}
 	}
 snippet foreach
-	foreach ($${1:variable} as $${2:key}){
+	foreach ($${1:variable} as $${2:key}) {
 		${3:// code...}
 	}
 snippet prf
@@ -1008,10 +1008,9 @@ snippet jj
 				->where( '$1.${7}=?', ${8});
 		$rs = $select->query()->fetchAll();
 snippet try
-	try{
+	try {
 		${1}
-	}
-	catch(\Exception $e){
+	} catch (\Exception $e) {
 		throw new \Exception($e->getMessage());
 	}
 snippet throw
@@ -1020,17 +1019,14 @@ snippet throw
 snippet trans
 	$db = Zend_Registry::getInstance()->database;
 	$db->beginTransaction();
-	try
-	{
+	try {
 		// Attempt to execute one or more queries:
 		${1}
 		// If all succeed, commit the transaction and all changes
 		// are committed at once.
 		$db->commit();
 
-	}
-	catch (Exception $e)
-	{
+	} catch (Exception $e) {
 		// If any of the queries failed and threw an exception,
 		// we want to roll back the whole transaction, reversing
 		// changes made in the transaction, even those that succeeded.

@@ -531,9 +531,12 @@ vmap <F11> <esc>:TlistToggle<cr>
 imap <F11> <esc>:TlistToggle<cr>
 map <F12> :CtrlP<cr>
 
-map <M-F7> :Rgrep<cr>
-vmap <M-F7> <esc>:Rgrep<cr>
-imap <M-F7> <esc>:Rgrep<cr>
+"map <M-F7> :Rgrep<cr>
+"vmap <M-F7> <esc>:Rgrep<cr>
+"imap <M-F7> <esc>:Rgrep<cr>
+map <M-F7> :Rg<cr>
+vmap <M-F7> <esc>:Rg<cr>
+imap <M-F7> <esc>:Rg<cr>
 
 map <c-f> :find
 vmap <c-f> :find
