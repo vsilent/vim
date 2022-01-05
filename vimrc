@@ -1,3 +1,23 @@
+g:snipMate.snippet_version=0
+set encoding=utf-8
+"Kite
+"
+" Python, JavaScript, Go
+let g:kite_supported_languages = ['python', 'javascript', 'rust']
+let g:kite_tab_complete=1
+autocmd CompleteDone * if !pumvisible() | pclose | endif
+set belloff+=ctrlg  " if vim beeps during completion
+set statusline=%<%f\ %h%m%r%{kite#statusline()}%=%-14.(%l,%c%V%)\ %P
+set laststatus=2  " always display the status line
+
+set guifont=Monaco:h13
+let mapleader = "\<Space>"
+set mouse=v " for easy copy"
+
+set autoread
+let g:Grep_Xargs_Options = ' -0 '
+let g:rg_command = 'rg --vimgrep -S'
+set rtp+=/usr/local/opt/fzf
 " move window to the right
 " Set xterm window title
 highlight ExtraWhitespace ctermbg=red guibg=red
@@ -8,85 +28,70 @@ highlight ExtraWhitespace ctermbg=red guibg=red
 :hi wikiHeader5 guifg=#00FFFF
 :hi wikiHeader6 guifg=#FFFF00
 
-map <M-S-l> <C-W>L
-map <M-S-h> <C-W>R
-map <M-S-j> <C-W>J
-map <M-S-k> <C-W>K
+map <Leader-S-l> <C-W>L
+map <Leader-S-h> <C-W>R
+map <Leader-S-j> <C-W>J
+map <Leader-S-k> <C-W>K
 
 let g:jedi#auto_initialization = 1
 let g:jedi#auto_vim_configuration = 1
-let g:jedi#goto_assignments_command = "<leader>g"
-let g:jedi#goto_definitions_command = "<leader>d"
+let g:jedi#goto_assignments_command = "<Leader>g"
+let g:jedi#goto_definitions_command = "<Leader>d"
 let g:jedi#documentation_command = "K"
-let g:jedi#usages_command = "<leader>n"
-let g:jedi#completions_command = "<C-Space>"
-let g:jedi#rename_command = "<leader>r"
+let g:jedi#usages_command = "<Leader>n"
+let g:jedi#completions_command = "<C-Leader>"
+let g:jedi#rename_command = "<Leader>r"
 let g:jedi#show_call_signatures = "1"
 
-call pathogen#infect()
 
+let g:ycm_rust_src_path="/Users/vasilipascal/work/rust"
 let g:airline_powerline_fonts = 1
-let g:airline_theme='wombat'
+let g:airline_theme='molokai'
 
-let g:vdebug_options= {
-	  \  "port" : 9002,
-	  \  "server" : '127.0.0.1',
-	  \  "timeout" : 10,
-	  \  "on_close" : 'detach',
-	  \  "break_on_open" : 1,
-	  \  "ide_key" : '',
-	  \  "remote_path" : "",
-	  \  "local_path" : "",
-	  \  "debug_window_level" : 0,
-	  \  "debug_file_level" : 0,
-	  \  "debug_file" : "",
-	  \}
-
-let g:vdebug_keymap = {
-	  \  "run" : "<F9>",
-	  \  "run_to_cursor" : "<F10>",
-	  \  "step_over" : "<F4>",
-	  \  "step_into" : "<F5>",
-	  \  "step_out" : "<F6>",
-	  \  "close" : "<M-c>",
-	  \  "detach" : "<M-7>",
-	  \  "set_breakpoint" : "<F3>",
-	  \  "get_context" : "<M-9>",
-	  \}
-
-let mapleader = ","
-"let mapleader = "\<Space>"
+"let g:vdebug_options= {
+"	  \  "port" : 9002,
+"	  \  "server" : '127.0.0.1',
+"	  \  "timeout" : 10,
+"	  \  "on_close" : 'detach',
+"	  \  "break_on_open" : 1,
+"	  \  "ide_key" : '',
+"	  \  "remote_path" : "",
+"	  \  "local_path" : "",
+"	  \  "debug_window_level" : 0,
+"	  \  "debug_file_level" : 0,
+"	  \  "debug_file" : "",
+"	  \}
+"
+"let g:vdebug_keymap = {
+"	  \  "run" : "<Leader>9",
+"	  \  "run_to_cursor" : "<F11>",
+"	  \  "step_over" : "<F4>",
+"	  \  "step_into" : "<F5>",
+"	  \  "step_out" : "<F6>",
+"	  \  "close" : "<Leader>c",
+"	  \  "detach" : "<Leader>7",
+"	  \  "set_breakpoint" : "<F3>",
+"	  \  "get_context" : "<Leader>9",
+"	  \}
+"
 
 nmap p	p==
 let g:yankring_enabled = 1
 
-" Pathogen load
 filetype off
-
-call pathogen#infect()
-call pathogen#helptags()
-
 filetype plugin indent on
 
 set runtimepath^=~/.vim/bundle/ctrlp.vim
 let g:ctrlp_working_path_mode = 'ra'
-"let g:ctrlp_map = '<leader>'
-let g:ctrlp_cmd = 'CtrlPBuffer'
-nmap <M-Space> :CtrlPBuffer<cr>
-map <M-o>  :CtrlPBuffer<cr>
-let g:ctrlp_by_filename = 1
-let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn|pyc)$'
+"let g:ctrlp_cmd = 'CtrlP'
+nmap <Leader><Space> :CtrlPBuffer<cr>
+nmap <C-Leader> :CtrlPBuffer<cr>
+map <Leader>o  :CtrlPBuffer<cr>
+nmap t  :CtrlPTag<cr>
+"let g:ctrlp_by_filename = 1
+"let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn|pyc)$'
 
-"nmap <space> :FufBuffer<cr>
-"map <space> :FufBuffer<cr>
-"vmap <space> <esc>:FufBuffer<cr>i
-"vmap <space> <esc>:FufBuffer<cr>i
-
-"map <S-space> :FufRenewCache<cr>
-"imap <S-space> <esc>:FufRenewCache<cr>
-"vmap <S-space> <esc>:FufRenewCache<cr>
-
-:set nocursorline
+set nocursorline
 
 " Usefull regexp for "/" search
 "
@@ -106,13 +111,7 @@ noremap ""p p
 
 let $PAGER='vim'
 
-if &term == 'xterm' || &term == 'screen-bce' || &term == 'screen' || &term == 'rxvt-unicode'
-  set t_Co=256 " Let ViM know we have a 256 color capible terminal
-  " Color schemes
-  colo wombat
-else
-  colo wombat
-endif
+
 " Nice window title
 if has('title') && (has('gui_running') || &title)
   set titlestring=
@@ -123,6 +122,7 @@ if has('title') && (has('gui_running') || &title)
 endif
 if has('gui')
   "this option for enabling menu
+  set macmeta
   set guioptions+=m
   set guioptions-=T
   set guioptions-=l
@@ -138,18 +138,18 @@ endif
 
 " Status Bar
 set laststatus=2
-set statusline=
-set statusline=%([%{Tlist_Get_Tagname_By_Line()}]%) " func name
-set statusline+=%2*%-3.3n%0*\		 " buffer number
-set statusline+=%f\				 " file name
-set statusline+=%h%1*%m%r%w%0*		   " flags
-set statusline+=\[%{strlen(&ft)?&ft:'none'}, " filetype
-set statusline+=\enc:\ %{&encoding},	 " encoding
-set statusline+=\fenc:\ %{&fileencoding},  " file encoding
-set statusline+=\termenc:\ %{&termencoding}, " term encoding
-set statusline+=%{&fileformat}]		   " file format
-set statusline+=%=				 " right align
-set statusline+=%-14.(%l,%c%V%)\ %<%P	 " offset
+"set statusline=
+"set statusline=%([%{Tlist_Get_Tagname_By_Line()}]%) " func name
+"set statusline+=%2*%-3.3n%0*\		 " buffer number
+"set statusline+=%f\				 " file name
+"set statusline+=%h%1*%m%r%w%0*		   " flags
+"set statusline+=\[%{strlen(&ft)?&ft:'none'}, " filetype
+"set statusline+=\enc:\ %{&encoding},	 " encoding
+"set statusline+=\fenc:\ %{&fileencoding},  " file encoding
+"set statusline+=\termenc:\ %{&termencoding}, " term encoding
+"set statusline+=%{&fileformat}]		   " file format
+"set statusline+=%=				 " right align
+"set statusline+=%-14.(%l,%c%V%)\ %<%P	 " offset
 
 set nocompatible
 set winaltkeys=yes
@@ -177,7 +177,7 @@ set shiftround
 " Don't request terminal version string (for xterm)
 set t_RV=
 set updatecount=50
-set viminfo='20,\"250,:220,%,n~/.vim/tmp/.viminfo
+"set viminfo='20,\"250,:220,%,n~/.vim/tmp/.viminfo
 "Disable dictionary
 set clipboard-=autoselect
 
@@ -231,13 +231,12 @@ set sessionoptions=curdir,buffers,tabpages
 ":set cursorcolumn
 let foldenable = 0
 
-syntax on "Syntax on
-
 "Tags
 "set showfulltag
 set tags=./tags,tags
 
 set wildignore=*.o,*.obj,*.exe,*.dll,*.com,*.class,*.au,*.wav,*.mp[23g],*.jar,*.rar,*.zip,*.gz,*.tgz,*.jpg,*.png,*.gif,*.avi,*.wmv,*.flv,*.djvu,*.pdf,*.chm,*.ps,*.dvi,tags,*/CVS/,*/.hg/,*.~*,*~,*.sql,*.svn,*.pyc,*.swp
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*/vendor/*,*/\.git/*
 set wildmode=longest,list,full
 set wildmenu
 
@@ -263,30 +262,30 @@ set complete+=t
 "nmap 00 :FuzzyFinderBookmark<cr>
 "nmap <S-m> :FuzzyFinderAddBookmark<cr>
 "nmap ¹ :TRegisters<cr>
-"nmap <M-4> :%s/\<<c-r>=expand("<cword>")<cr>\>/that/gcl
+"nmap <Leader>4 :%s/\<<c-r>=expand("<cword>")<cr>\>/that/gcl
 imap ø <esc>C
 imap Â <esc>C
 "
 "Copy that line to this position
 nmap _ ggy$``o<esc>pV=
 nmap <m-a> ggy$``o<esc>pV=
-imap <M-Tab> <esc>dBi$this->getRequest->getParam('<esc>]pi');
+imap <Leader><Tab> <esc>dBi$this->getRequest->getParam('<esc>]pi');
 
 "***********************   MAPPINGS  ***********************
 " mapping will find all {#vars#} in the template and will copy them in the
 " clipboard (ULTRA !!!!!!!!)
-"noremap <leader>f 0"+y0 :g/{#\w\+#}/call CopyMultiMatches()<cr>p
+"noremap <Leader>f 0"+y0 :g/{#\w\+#}/call CopyMultiMatches()<cr>p
 "noremap ,f 0"+y0 :g/{\$\w\+}/call CopyMultiMatches()<cr>p
 noremap ,$ 0"+y0 :g/\$\w\+/call CopyMultiMatches()<cr>p
-noremap <leader>z 0"+y0 :g/^\w\+@\w\+/call CopyMultiMatches()<cr>p
-noremap <leader>a 0"+y0 :g/.*function\&.*Action()/call CopyMultiMatches()<cr>p
+noremap <Leader>z 0"+y0 :g/^\w\+@\w\+/call CopyMultiMatches()<cr>p
+noremap <Leader>a 0"+y0 :g/.*function\&.*Action()/call CopyMultiMatches()<cr>p
 "Show list of all vars included in {#var#} (Smarty)
-"noremap <leader>f :g/{#.\+#}/p<cr>
-"noremap <leader>f :g/{#\w\+#}/y A<cr>
+"noremap <Leader>f :g/{#.\+#}/p<cr>
+"noremap <Leader>f :g/{#\w\+#}/y A<cr>
 "beautify code {}
-"noremap <leader>n :%s/{/\r{/g<cr>gg=G
-noremap <leader>' :s/'/\\'/g<cr>
-noremap <leader>' :s/"/\\"/g<cr>
+"noremap <Leader>n :%s/{/\r{/g<cr>gg=G
+noremap <Leader>' :s/'/\\'/g<cr>
+noremap <Leader>' :s/"/\\"/g<cr>
 "
 "Remove all HTML tags except {#vars#} {$var}
 "vnoremap \\ s/<.[^{\#\$]*>//g<cr>
@@ -301,56 +300,56 @@ noremap L f$l
 noremap H T$
 
 " -----------------------------------META(ALT)-----------------------------------
-vmap <M-;> <esc>:'<,'>B s/\n/,\r/g<cr>gv=
-vmap <M-,> <esc>:'<,'>B s/\n/,\r/g<cr>vaB=
+"vmap <Leader>l <esc>:'<,'>B s/\n/,\r/g<cr>gv=
+"vmap <Leader>, <esc>:'<,'>B s/\n/,\r/g<cr>vaB=
 "search in the selected area
 "Copy this line to that position
 map <c-c> :<c-r>=line(".")<cr>co
-"inoremap <M-d> <ESC>:AutoPreviewToggle<CR>i
+"inoremap <space-d> <ESC>:AutoPreviewToggle<CR>i
 "Clear table information that is come from db
-imap <M-e> <esc>2la
-noremap <M-e> "_diw[p
+imap <space-e> <esc>2la
+noremap <Leader-e> "_diw[p
 
 "search for two words in buffers
-noremap <M-f> /.*function\&.*
-noremap <M-d> /.*def\&.*
-"noremap <M-g> g]
+noremap <Leader-f> /.*function\&.*
+noremap <Leader-d> /.*def\&.*
+"noremap <Leader-g> g]
 
-imap <M-h> <esc>^i
-imap <M-l> <esc>$a
-imap <M-j> <esc>gji
-imap <M-k> <esc>gki
+"nmap <Leader>h <esc>^i
+"nmap <Leader>k <esc>$a
+"nmap <Leader>j <esc>gji
+"nmap <Leader>k <esc>gki
 
 noremap <M-h> ^
 noremap <M-j> <c-w>b
-noremap <M-k> <c-u>
-noremap <M-j> <c-d>
+noremap <M-k> <PageUp>
+noremap <M-j> <PageDown>
 noremap <M-l> $
-"imap <C-Space> <c-n>
-"map <M-m> :<c-r>=line(".")<cr>,4mo5
 noremap <M-s> :GrepBuffer<cr>
 
 
 " Mark Corey
 " ---------------------------------------------------------------------
 map mm <Plug>Place_sign
-map <M-m> <Plug>Goto_prev_sign
-inoremap <M-n> <Plug>Goto_next_sign
+map <Leader-m> <Plug>Goto_prev_sign
+inoremap <Leader-n> <Plug>Goto_next_sign
 
 "Put from clipboard
-map <M-p> :YRShow<cr>
+map <Leader-p> :YRShow<cr>
 
 " Quoting word back in insert mode
-noremap <M-q> f'l
+noremap <Leader-q> f'l
 
-imap <silent><M-q> <esc>m`bysw'``
+imap <silent><Leader-q> <esc>m`bysw'``
 
 " Поиск и замена слова под курсором
-nmap <M-r> :%s//
-vmap <M-r> :B s/\<<c-r>=expand("<cword>")<cr>\>/
+
+nmap <Leader-r> :%s//
+nmap <D-r> :%s//
+vmap <Leader-r> :B s/\<<c-r>=expand("<cword>")<cr>\>/
 "snippets
 
-noremap <M-t> :ToggleWord<cr>
+noremap <Leader-t> :ToggleWord<cr>
 
 "Remove back
 imap <M-w> <c-w>
@@ -358,7 +357,7 @@ imap <M-w> <c-w>
 noremap <M-w> <c-w>w
 
 "Very usefull
-vmap <M-/> <Esc>/\%V
+vmap <Leader-/> <Esc>/\%V
 noremap gd <c-]><cr>
 
 "-----------------------------------SHIFT-----------------------------------
@@ -375,17 +374,16 @@ nmap <C-a> ggvG$
 
 "go to previous tab
 noremap <c-h> gT
-noremap <leader>h gT
 imap <c-h> <c-w>
 "noremap <C-i> in vim use (Move to the previous jump from history)
 noremap <C-J> <C-W>j<C-W>_
 noremap <C-K> <C-W>k<C-W>_
 "go to next tab
 noremap <C-l> gt
-noremap <leader>l gt
 noremap <c-t> :tabe<cr>
 
-vnoremap <c-/> <esc><leader>cc
+vnoremap <D-/> <Leader>cc
+
 vnoremap <c-?> y?\V<C-R>=substitute(escape(@@,"?\\"),"\n","\\\\n","ge")<CR><CR>gV
 " GTAGS\
 "Remove word back insert mode
@@ -394,9 +392,9 @@ vnoremap <c-?> y?\V<C-R>=substitute(escape(@@,"?\\"),"\n","\\\\n","ge")<CR><CR>g
 
 " ----------------------------------- , -----------------------------------
 
-nmap <leader>b :CtrlPBuffer<cr>
+nmap <Leader>b :CtrlPBuffer<cr>
 
-noremap ,d	iAdded by baz@optimum-web.com <esc>:r! date<cr>kJ
+noremap ,d	iupdated by baz@optimum-web.com <esc>:r! date<cr>kJ
 
 " Append modeline after last line in buffer.
 " Use substitute() instead of printf() to handle '%%s' modeline in LaTeX
@@ -419,31 +417,31 @@ map \m :call Save_signs_to_file()<cr>
 map \l :call Load_signs_from_file()<cr>
 "Used for displaying function prototype
 
-noremap <leader>o :SessionList<cr>
 noremap ,o :SessionList<cr>
-noremap <leader>r :Gbuffersearch<cr>
-noremap <leader>re :Greplace<cr>
-noremap <leader>rd :DirReplace<cr>
-noremap <leader>s :SessionSave<cr>
+noremap <Leader>r :Gbuffersearch<cr>
+noremap <Leader>re :Greplace<cr>
+noremap <Leader>rd :DirReplace<cr>
+noremap ,s :SessionSave<cr>
 
 noremap ,v :edit ~/.vimrc<cr>
-noremap <leader>g :edit ~/.gvimrc<cr>
-noremap <leader>w <c-w>w
+noremap <Leader>g :edit ~/.gvimrc<cr>
+noremap <Leader>w <c-w>w
 "Remove empty lines
-noremap <leader>x :%s /^\n\{1}//g<cr>
+noremap <Leader>x :%s /^\n\{1}//g<cr>
 "Recursive search and replace
 inoremap ,, <esc>m`F4r$``a
-"vmap <leader><leader> <esc>:'<,'>B s/,/,\r/g<cr>
+"vmap <Leader><Leader> <esc>:'<,'>B s/,/,\r/g<cr>
 
-vnoremap <leader>[ :%s/^\@<!{/\r{\r/g<cr>
-vnoremap <leader>] :%s/^\@<!}/\r}/g<cr>
-vnoremap <leader>< :%s/^\@<!</\r<\r/g<cr>
+vnoremap <Leader>[ :%s/^\@<!{/\r{\r/g<cr>
+vnoremap <Leader>] :%s/^\@<!}/\r}/g<cr>
+vnoremap <Leader>< :%s/^\@<!</\r<\r/g<cr>
 
 
-" ----------------------------------- LEADER -----------------------------------
+" ----------------------------------- Leader -----------------------------------
 noremap \u :%s/<c-V><c-M>/<c-V><c-M>/g
 map \gr :r!find ./* -type f -iname "*.py" -exec grep -HEnq 'def myfunc(' {} \; -a -print
-noremap <leader>v :edit ~/.vimrc<cr>
+map <Leader>f :grep -n -r "rmilter" . /dev/null 2>&1
+noremap <Leader>v :edit ~/.vimrc<cr>
 "vnoremap \\ :B s/<.[^{]*>//g<cr>
 "map \o :Unite file <C-r>=expand('<cword>')<CR><CR>
 "noremap \s :source ~/.vimrc<cr>
@@ -481,12 +479,11 @@ nmap k gk
 " Горячие клавишы
 "-------------------------
 "display registers
-nmap <M-y> :YRShow<cr>
-vmap <M-y> <esc>:YRShow<cr>
-map <c-s> :w!<cr>
+nmap <Leader-y> :YRShow<cr>
+vmap <Leader-y> <esc>:YRShow<cr>
 imap ZZ <esc>:make<cr> :w!<cr>
 
-let g:NERDTreeBookmarksFile = "~/.vim/bookmarks"
+let g:NERDTreeBookmarksFile = "/home/vs/.vim/bookmarks"
 let NERDTreeShowHidden=1
 let NERDTreeIgnore=['\.pyc$']
 map <F1> :NERDTreeToggle<cr>
@@ -511,7 +508,12 @@ imap <F2> <esc>:w!<cr>:%retab!<cr>
 "map <F4> :Replace
 "nmap <F5> :YRShow<cr>
 "nmap <F6> :YRShow<cr>
-noremap <F7> :GrepBuffer<cr>
+
+"noremap <F7> :Rgrep<cr>
+noremap <F7> :Rg<space>
+noremap <S-F7> :GrepBuffer<cr>
+
+map <F4> :Replace
 " F8 - delete buffer
 map <F8> :bd<cr>
 vmap <F8> <esc>:bd<cr>
@@ -522,18 +524,18 @@ vmap <F9> <esc>:make<cr>i
 imap <F9> <esc>:make<cr>i
 " F10 - unload buffer but keep it in the buffer list
 "map ,k :bd<cr>
-"map <F10> :bun!<cr>
-"vmap <F10> <esc>:bun!<cr>
-"imap <F10> <esc>:bun!<cr>
+map <F10> :bun!<cr>
+vmap <F10> <esc>:bun!<cr>
+imap <F10> <esc>:bun!<cr>
 " F11 - показать окно Taglist
 map <F11> :TlistToggle<cr>
 vmap <F11> <esc>:TlistToggle<cr>
 imap <F11> <esc>:TlistToggle<cr>
 map <F12> :CtrlP<cr>
 
-map <M-F7> :Rgrep<cr>
-vmap <M-F7> <esc>:Rgrep<cr>
-imap <M-F7> <esc>:Rgrep<cr>
+map <Leader-F7> :Rgrep<cr>
+vmap <Leader-F7> <esc>:Rgrep<cr>
+imap <Leader-F7> <esc>:Rgrep<cr>
 
 map <c-f> :find
 vmap <c-f> :find
@@ -554,23 +556,26 @@ vmap <S-tab> <<
 nmap <S-tab> <<
 ""*********************** PLUGIN'S SETTINGS ***********************
 
-let g:SuperTabLongestHighlight = 1
-let g:SuperTabMidWordCompletion = 1
-let g:SuperTabRetainCompletionType = 1
+"let g:SuperTabLongestHighlight = 1
+"let g:SuperTabMidWordCompletion = 1
+"let g:SuperTabRetainCompletionType = 1
+"
+" Syntastic
 let g:syntastic_python_checkers = ['pylint']
+let g:syntastic_php_checkers=['php', 'phpcs']
+let g:syntastic_php_phpcs_args='--standard=PSR2 -n'
 
 "" Omnicompletion popup settings
 "" set 4 symbols before completion starts
 let g:acp_behaviorHtmlOmniLength=4
 let g:acp_behaviorKeywordLength=4
 
+let g:Signs_file_path_corey='~/.vim/tmp/vimmarks'
 
-let g:Signs_file_path_corey='/home/vs/.vim/tmp/vimmarks'
 
-
-set et	"Tabs to spaces
+"set et	"Tabs to spaces
 " Tab is tab \t
-"set noet "Spaces to tabs
+set noet "spaces to tabs
 "set tw=0
 "Remove unwaanted spaces at the end of each line!!!!!!!!!!!!!!!!!SUPER
 autocmd BufWritePre * :%s/\s\+$//e
@@ -582,31 +587,29 @@ set tabstop=4
 set sw=4
 set sts=4
 " use tabs instead of spaces
-set noexpandtab
+"set noexpandtab
+set expandtab
 
+au BufRead,BufNewFile  *.yml   set ft=yaml
+autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
 au BufRead,BufNewFile  *.tpl   set ft=html
 au BufRead,BufNewFile  *.wsgi  set ft=python
 au BufRead,BufNewFile  *.py    set ft=python
-au BufRead,BufNewFile  *.txt   set dictionary+=/usr/share/dict/words
+"au BufRead,BufNewFile  *.txt   set dictionary+=/usr/share/dict/words
 au BufRead,BufNewFile  *.txt   set spell spelllang=en_us
 au BufRead,BufNewFile  *.txt   set spell spelllang=en_us
 au BufRead,BufNewFile  *.html  set ft=html
-
 au BufRead,BufNewFile  *.js    set ft=javascript
 
 "au FileType python set sw=4 sts=4 ts=4 et
 au FileType javascript :map <F9> :make<cr>
 
-au BufRead,BufNewFile  *.phtml *.html.twig set ft=html
-au FileType php set sw=4 sts=4 ts=4 et
-au FileType phtml set sw=4 sts=4 ts=4 et
-au FileType phtml set sw=4 sts=4 ts=4 et
-au FileType html set sw=4 sts=4 ts=4 et
-au FileType twig set sw=4 sts=4 ts=4 et
-
-"
-" Jump to the last edited position
-"au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$")|execute("normal `\"")|endif
+au BufRead,BufNewFile  *.phtml *.html *.twig  *.html.twig set ft=html
+au FileType php set sw=4 sts=4 ts=4 noet
+au FileType phtml set sw=4 sts=4 ts=4 noet
+au FileType phtml set sw=4 sts=4 ts=4 noet
+au FileType html set sw=4 sts=4 ts=4 noet
+au FileType twig set ft=html sw=4 sts=4 ts=4 noet
 
 ""Session Manager
 let g:SessionMgr_AutoManage  = 0
@@ -623,6 +626,12 @@ function! CopyMultiMatches()
   let text = join(getline(".", "$"), "\n") . "\n"
   let @+ .= matchstr(text, @/) . "\n"
 endfunction
+
+function! D2u()
+    execute "<esc>%s///g"
+endfunction
+
+
 " Use 0"+y0 to clear the clipboard, then
 " :g/pattern/call CopyMatches()
 " to copy all hits (just the text which matches pattern).
@@ -655,4 +664,410 @@ inoremap <expr> %  smartchr#loop('%','%%','{% %}')
 
 " Включаем "умные" отспупы ( например, автоотступ после    {)
 set smartindent
-nnoremap ,s  :<C-U>setlocal lcs=tab:>-,trail:-,eol:$ list! list? <CR>
+nnoremap <c-s>  :<C-U>setlocal lcs=tab:>-,trail:-,eol:$ list! list? <CR>
+
+if exists("g:ctrl_user_command")
+  unlet g:ctrlp_user_command
+endif
+
+
+set winaltkeys=no
+set nocompatible              " be iMproved, required
+filetype off                  " required
+
+
+call plug#begin('~/.vim/plugged')
+
+Plug 'tpope/vim-sensible'
+Plug 'tpope/vim-fugitive'
+Plug 'git://git.wincent.com/command-t.git'
+Plug 'rstacruz/sparkup', {'rtp': 'vim/'}
+" Install L9 and avoid a Naming conflict if you've already installed a
+" different version somewhere else.
+" Plugin 'ascenator/L9', {'name': 'newL9'}
+Plug 'morhetz/gruvbox'
+Plug 'davidhalter/jedi-vim'
+
+Plug 'scrooloose/nerdcommenter'
+Plug 'vimwiki/vimwiki'
+Plug 'kien/ctrlp.vim'
+Plug 'klen/python-mode'	 " Python mode (docs, refactor, lints, highlighting, run and ipdb and more)
+Plug 'mitsuhiko/vim-jinja'		" Jinja support for vim
+Plug 'mitsuhiko/vim-python-combined'  " Combined Python 2/3 for Vim
+
+"Plugin 'andrewstuart/vim-kubernetes'
+Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
+Plug 'ciaranm/securemodelines'
+Plug 'editorconfig/editorconfig-vim'
+Plug 'justinmk/vim-sneak'
+
+" GUI enhancements
+Plug 'itchyny/lightline.vim'
+Plug 'machakann/vim-highlightedyank'
+Plug 'andymass/vim-matchup'
+
+" Fuzzy finder
+Plug 'airblade/vim-rooter'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
+
+" Semantic language support
+"Plug 'neovim/nvim-lspconfig'
+"Plug 'nvim-lua/lsp_extensions.nvim'
+"Plug 'hrsh7th/cmp-nvim-lsp', {'branch': 'main'}
+"Plug 'hrsh7th/cmp-buffer', {'branch': 'main'}
+"Plug 'hrsh7th/cmp-path', {'branch': 'main'}
+"Plug 'hrsh7th/nvim-cmp', {'branch': 'main'}
+"Plug 'ray-x/lsp_signature.nvim'
+
+" Only because nvim-cmp _requires_ snippets
+Plug 'hrsh7th/cmp-vsnip', {'branch': 'main'}
+Plug 'hrsh7th/vim-vsnip'
+
+" Syntactic language support
+Plug 'cespare/vim-toml'
+Plug 'stephpy/vim-yaml'
+Plug 'rust-lang/rust.vim'
+Plug 'rhysd/vim-clang-format'
+"Plug 'fatih/vim-go'
+Plug 'dag/vim-fish'
+Plug 'godlygeek/tabular'
+Plug 'plasticboy/vim-markdown'
+
+Plug 'vim-scripts/sessionman.vim'
+Plug 'nvim-lua/lsp_extensions.nvim'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+"Plug 'garbas/vim-snipmate'
+"Plug 'MarcWeber/vim-addon-mw-utils'
+"Plug 'tomtom/tlib_vim'
+
+" Track the engine.
+#Plugin 'SirVer/ultisnips'
+
+" Snippets are separated from the engine. Add this if you want them:
+#Plugin 'honza/vim-snippets'
+
+call plug#end()
+
+" Trigger configuration. You need to change this to something other than <tab> if you use one of the following:
+" - https://github.com/Valloric/YouCompleteMe
+" - https://github.com/nvim-lua/completion-nvim
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+
+" If you want :UltiSnipsEdit to split your window.
+let g:UltiSnipsEditSplit="vertical"
+" All of your Plugins must be added before the following line
+"
+filetype plugin indent on    " required
+" To ignore plugin indent changes, instead use:
+"filetype plugin on
+"
+" Brief help
+" :PluginList       - lists configured plugins
+" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
+" :PluginSearch foo - searches for foo; append `!` to refresh local cache
+" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
+"
+" see :h vundle for more details or wiki for FAQ
+" Put your non-Plugin stuff after this line
+"
+"
+syntax on "Syntax on
+let $JS_CMD='node'
+
+if has('nvim')
+    set guicursor=n-v-c:block-Cursor/lCursor-blinkon0,i-ci:ver25-Cursor/lCursor,r-cr:hor20-Cursor/lCursor
+    set inccommand=nosplit
+    noremap <C-q> :confirm qall<CR>
+end
+
+
+set bg=dark
+if &term == 'xterm' || &term == 'screen-bce' || &term == 'screen' || &term == 'rxvt-unicode'
+  set t_Co=256 " Let ViM know we have a 256 color capible terminal
+  " Color schemes
+  colo gruvbox
+  "colo molokai
+  "colo wombat
+else
+  set t_Co=256 " Let ViM know we have a 256 color capible terminal
+  "colo molokai
+  "colo wombat
+  colo gruvbox
+endif
+
+" LSP configuration
+"lua << END
+"local cmp = require'cmp'
+"
+"local lspconfig = require'lspconfig'
+"cmp.setup({
+"  snippet = {
+"    -- REQUIRED by nvim-cmp. get rid of it once we can
+"    expand = function(args)
+"      vim.fn["vsnip#anonymous"](args.body)
+"    end,
+"  },
+"  mapping = {
+"    -- Tab immediately completes. C-n/C-p to select.
+"    ['<Tab>'] = cmp.mapping.confirm({ select = true })
+"  },
+"  sources = cmp.config.sources({
+"    -- TODO: currently snippets from lsp end up getting prioritized -- stop that!
+"    { name = 'nvim_lsp' },
+"  }, {
+"    { name = 'path' },
+"  }),
+"  experimental = {
+"    ghost_text = true,
+"  },
+"})
+"
+"-- Enable completing paths in :
+"cmp.setup.cmdline(':', {
+"  sources = cmp.config.sources({
+"    { name = 'path' }
+"  })
+"})
+"
+"-- Setup lspconfig.
+"local on_attach = function(client, bufnr)
+"  local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
+"  local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
+"
+"  --Enable completion triggered by <c-x><c-o>
+"  buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
+"
+"  -- Mappings.
+"  local opts = { noremap=true, silent=true }
+"
+"  -- See `:help vim.lsp.*` for documentation on any of the below functions
+"  buf_set_keymap('n', 'gD', '<Cmd>lua vim.lsp.buf.declaration()<CR>', opts)
+"  buf_set_keymap('n', 'gd', '<Cmd>lua vim.lsp.buf.definition()<CR>', opts)
+"  buf_set_keymap('n', 'K', '<Cmd>lua vim.lsp.buf.hover()<CR>', opts)
+"  buf_set_keymap('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
+"  buf_set_keymap('n', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
+"  buf_set_keymap('n', '<space>D', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
+"  buf_set_keymap('n', '<space>r', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
+"  buf_set_keymap('n', '<space>a', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
+"  buf_set_keymap('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
+"  buf_set_keymap('n', '<space>e', '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>', opts)
+"  buf_set_keymap('n', '[d', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>', opts)
+"  buf_set_keymap('n', ']d', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>', opts)
+"  buf_set_keymap('n', '<space>q', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', opts)
+"  buf_set_keymap("n", "<space>f", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
+"
+"  -- Get signatures (and _only_ signatures) when in argument lists.
+"  require "lsp_signature".on_attach({
+"    doc_lines = 0,
+"    handler_opts = {
+"      border = "none"
+"    },
+"  })
+"end
+"
+"local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
+"lspconfig.rust_analyzer.setup {
+"  on_attach = on_attach,
+"  flags = {
+"    debounce_text_changes = 150,
+"  },
+"  settings = {
+"    ["rust-analyzer"] = {
+"      cargo = {
+"        allFeatures = true,
+"      },
+"      completion = {
+"	postfix = {
+"	  enable = false,
+"	},
+"      },
+"    },
+"  },
+"  capabilities = capabilities,
+"}
+"
+"vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
+"  vim.lsp.diagnostic.on_publish_diagnostics, {
+"    virtual_text = true,
+"    signs = true,
+"    update_in_insert = true,
+"  }
+")
+"END
+
+" Enable type inlay hints
+autocmd CursorHold,CursorHoldI *.rs :lua require'lsp_extensions'.inlay_hints{ only_current_line = true }
+
+" Plugin settings
+let g:secure_modelines_allowed_items = [
+                \ "textwidth",   "tw",
+                \ "softtabstop", "sts",
+                \ "tabstop",     "ts",
+                \ "shiftwidth",  "sw",
+                \ "expandtab",   "et",   "noexpandtab", "noet",
+                \ "filetype",    "ft",
+                \ "foldmethod",  "fdm",
+                \ "readonly",    "ro",   "noreadonly", "noro",
+                \ "rightleft",   "rl",   "norightleft", "norl",
+                \ "colorcolumn"
+                \ ]
+
+" Lightline
+let g:lightline = {
+      \ 'active': {
+      \   'left': [ [ 'mode', 'paste' ],
+      \             [ 'readonly', 'filename', 'modified' ] ],
+      \   'right': [ [ 'lineinfo' ],
+      \              [ 'percent' ],
+      \              [ 'fileencoding', 'filetype' ] ],
+      \ },
+      \ 'component_function': {
+      \   'filename': 'LightlineFilename'
+      \ },
+      \ }
+function! LightlineFilename()
+  return expand('%:t') !=# '' ? @% : '[No Name]'
+endfunction
+
+" from http://sheerun.net/2014/03/21/how-to-boost-your-vim-productivity/
+if executable('ag')
+	set grepprg=ag\ --nogroup\ --nocolor
+endif
+if executable('rg')
+	set grepprg=rg\ --no-heading\ --vimgrep
+	set grepformat=%f:%l:%c:%m
+endif
+
+" Javascript
+let javaScript_fold=0
+
+" rust
+let g:rustfmt_autosave = 1
+let g:rustfmt_emit_files = 1
+let g:rustfmt_fail_silently = 0
+let g:rust_clip_command = 'xclip -selection clipboard'
+
+" Follow Rust code style rules
+au Filetype rust source ~/.config/nvim/scripts/spacetab.vim
+au Filetype rust set colorcolumn=100
+
+" Neat X clipboard integration
+" ,p will paste clipboard into buffer
+" ,c will copy entire buffer into clipboard
+noremap <leader>p :read !xsel --clipboard --output<cr>
+noremap <leader>c :w !xsel -ib<cr><cr>
+
+" <leader>s for Rg search
+noremap <leader>s :Rg
+let g:fzf_layout = { 'down': '~20%' }
+command! -bang -nargs=* Rg
+  \ call fzf#vim#grep(
+  \   'rg --column --line-number --no-heading --color=always '.shellescape(<q-args>), 1,
+  \   <bang>0 ? fzf#vim#with_preview('up:60%')
+  \           : fzf#vim#with_preview('right:50%:hidden', '?'),
+  \   <bang>0)
+
+function! s:list_cmd()
+  let base = fnamemodify(expand('%'), ':h:.:S')
+  return base == '.' ? 'fd --type file --follow' : printf('fd --type file --follow | proximity-sort %s', shellescape(expand('%')))
+endfunction
+
+command! -bang -nargs=? -complete=dir Files
+  \ call fzf#vim#files(<q-args>, {'source': s:list_cmd(),
+  \                               'options': '--tiebreak=index'}, <bang>0)
+
+
+" nvim
+if has('nvim')
+	runtime! plugin/python_setup.vim
+endif
+
+" Give more space for displaying messages.
+set cmdheight=2
+
+" Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable
+" delays and poor user experience.
+set updatetime=300
+
+" Don't pass messages to |ins-completion-menu|.
+set shortmess+=c
+
+" Always show the signcolumn, otherwise it would shift the text each time
+" diagnostics appear/become resolved.
+if has("nvim-0.5.0") || has("patch-8.1.1564")
+  " Recently vim can merge signcolumn and number column into one
+  set signcolumn=number
+else
+  set signcolumn=yes
+endif
+
+" Use tab for trigger completion with characters ahead and navigate.
+" NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
+" other plugin before putting this into your config.
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+" Use <c-space> to trigger completion.
+if has('nvim')
+  inoremap <silent><expr> <c-space> coc#refresh()
+else
+  inoremap <silent><expr> <c-@> coc#refresh()
+endif
+
+" Make <CR> auto-select the first completion item and notify coc.nvim to
+" format on enter, <cr> could be remapped by other vim plugin
+inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
+                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+
+" Use `[g` and `]g` to navigate diagnostics
+" Use `:CocDiagnostics` to get all diagnostics of current buffer in location list.
+nmap <silent> [g <Plug>(coc-diagnostic-prev)
+nmap <silent> ]g <Plug>(coc-diagnostic-next)
+
+" GoTo code navigation.
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+
+" Use K to show documentation in preview window.
+nnoremap <silent> K :call <SID>show_documentation()<CR>
+
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  elseif (coc#rpc#ready())
+    call CocActionAsync('doHover')
+  else
+    execute '!' . &keywordprg . " " . expand('<cword>')
+  endif
+endfunction
+
+" Highlight the symbol and its references when holding the cursor.
+autocmd CursorHold * silent call CocActionAsync('highlight')
+
+" Symbol renaming.
+nmap <leader>rn <Plug>(coc-rename)
+
+" Formatting selected code.
+xmap <leader>f  <Plug>(coc-format-selected)
+nmap <leader>f  <Plug>(coc-format-selected)
+
+augroup mygroup
+  autocmd!
+  " Setup formatexpr specified filetype(s).
+  autocmd FileType typescript,json setl formatexpr=CocAction('formatSelected')
+  " Update signature help on jump placeholder.
+  autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
+augroup end
